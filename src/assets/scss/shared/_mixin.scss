@@ -1,0 +1,42 @@
+// custom fonts
+@font-face {
+    font-family: 'Maven Pro';
+    src: url("@/assets/fonts/MavenPro/MavenPro-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url("@/assets/fonts/Poppins-Font-2/Poppins-Regular.ttf");
+}
+
+@mixin flexed-Container($direction: row, $justify-content: center, $align-items: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+// Prefixes for interface:
+
+//     webKit (Chrome, Safari, newer versions of Opera and Edge, almost all iOS browsers (including Firefox for iOS); basically, any WebKit and Chromium-based browser)
+//     moz (Firefox)
+//     o (Older, pre-WebKit, versions of Opera)
+//     ms (Internet Explorer and Microsoft Edge, before Chromium)
+
+// List of browsers prefixes
+$prefixes: ("webkit", "moz", "o", "ms" );
+
+@mixin vendorPrefixes ($property, $value, $prefixes){
+    @each $prefix in $prefixes {
+        #{"-" + $prefix + "-" + $property}: $value !important;
+    }
+}
+
+@mixin textStyles( $font-family, $font-weight, $font-size, $line-height){
+    // "Maven Pro" and Poppins
+    font-family: $font-family;
+    font-style: normal;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+}

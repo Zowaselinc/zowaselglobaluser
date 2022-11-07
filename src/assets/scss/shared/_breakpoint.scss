@@ -1,0 +1,55 @@
+$breakpoints: (
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+);
+
+// Small devices (landscape phones, 576px and down)
+@mixin sm {
+    @media (max-width: map-get($breakpoints, "sm")) {
+        @content;
+    }
+}
+
+// Medium devices (tablets, 768px and down)
+@mixin md {
+    @media (max-width: map-get($breakpoints, "md")) {
+        @content;
+    }
+}
+
+// Large devices (desktops, 992px and down)
+@mixin lg {
+    @media (max-width: map-get($breakpoints, "lg")) {
+        @content;
+    }
+}
+
+// X-Large devices (large desktops, 1200px and down)
+@mixin xl {
+    @media (max-width: map-get($breakpoints, "xl")) {
+        @content;
+    }
+}
+
+// XX-Large devices (larger desktops, 1400px and down)
+@mixin xxl {
+    @media (max-width: map-get($breakpoints, "xxl")) {
+    }
+}
+
+// Custom breakpoint for max-width
+@mixin breakpoint($bp: 0) {
+    @media (max-width: $bp) {
+        @content;
+    }
+}
+
+// Custom breakpoint for min-width
+@mixin min-breakpoint($bp: 0) {
+    @media (min-width: $bp) {
+        @content;
+    }
+}

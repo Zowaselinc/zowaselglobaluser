@@ -15,7 +15,7 @@ import ForgotPassword from "@/pages/auth/ForgotPassword.vue";
 import CheckEmail from "@/pages/auth/CheckEmail.vue";
 import ResetPassword from "@/pages/auth/ResetPassword.vue";
 import ResetSuccess from "@/pages/auth/ResetSuccess.vue";
-
+import Navigation from "@/layouts/partials/Navigation.vue";
 
 
 
@@ -102,8 +102,12 @@ const routes = [
         name:"ResetSuccess",
         component:ResetSuccess,
     },
-   
-   
+    {
+        path: "/navigation",
+        name:"Navigation",
+        component:Navigation,
+    }
+
 ];
 
 const router = createRouter({
