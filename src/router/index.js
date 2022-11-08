@@ -1,9 +1,9 @@
 import { createWebHistory, createRouter } from "vue-router";
-import MerchantSignUp from "@/pages/auth/merchant/SignUp.vue";
-import MerchantCompanyDetails from "@/pages/auth/merchant/CompanyDetails.vue";
-import MerchantVerifyAccount from "@/pages/auth/merchant/VerifyAccount.vue";
-import MerchantCreatePassword from "@/pages/auth/merchant/CreatePassword.vue";
-import MerchantWelcome from "@/pages/auth/merchant/Welcome.vue";
+import SignUp from "@/pages/auth/SignUp.vue";
+import CompanyDetails from "@/pages/auth/CompanyDetails.vue";
+import VerifyAccount from "@/pages/auth/VerifyAccount.vue";
+import CreatePassword from "@/pages/auth/CreatePassword.vue";
+import Welcome from "@/pages/auth/Welcome.vue";
 import PartnerCompanyDetails from "@/pages/auth/partner/CompanyDetails.vue";
 import PartnerCreatePassword from "@/pages/auth/partner/CreatePassword.vue";
 import PartnerSignUp from "@/pages/auth/partner/SignUp.vue";
@@ -21,31 +21,31 @@ import Navigation from "@/layouts/partials/Navigation.vue";
 
 const routes = [
     {
-        path: "/merchant/signup",
-        name:"MerchantSignUp",
-        component:MerchantSignUp,
+        path: "/",
+        name:"SignUp",
+        component:SignUp,
     },
     {
-        path: "/merchant/companydetails",
-        name:"MerhantCompanyDetails",
-        component:MerchantCompanyDetails,
+        path: "/companydetails",
+        name:"CompanyDetails",
+        component:CompanyDetails,
     },
     {
-        path: "/merchant/verifyaccount",
-        name:"MerchantVerifyAccount",
-        component:MerchantVerifyAccount,
+        path: "/verifyaccount",
+        name:"VerifyAccount",
+        component:VerifyAccount,
     }
     ,
     {
-        path: "/merchant/createpassword",
-        name:"MerchantCreatePassword",
-        component:MerchantCreatePassword,
+        path: "/createpassword",
+        name:"CreatePassword",
+        component:CreatePassword,
     }
     ,
     {
-        path: "/merchant/welcome",
-        name:"MerchantWelcome",
-        component:MerchantWelcome,
+        path: "/welcome",
+        name:"Welcome",
+        component:Welcome,
     },
     {
         path: "/partner/companydetails",
@@ -58,7 +58,7 @@ const routes = [
         component:PartnerCreatePassword,
     },
     {
-        path: "/partner/signup",
+        path: "register/:type",
         name:"PartnerSignUp",
         component:PartnerSignUp,
     },
