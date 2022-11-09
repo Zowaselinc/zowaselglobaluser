@@ -111,9 +111,28 @@
 
     .radios-container{
         margin-top: 20px;
-    }   
+    }  
+    
+    .radios{
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        input{
+            margin-top: 1px;
+        }
+    }
     .radios label{
-        margin-left: 10px;
+        margin: 0px 10px;
     } 
+
+    .checking p{
+        margin : 0px 10px;
+
+    }
+
+    .checking input{
+        margin-top: 1px;
+    }
 
 </style>
