@@ -7,22 +7,22 @@
                 <div class="login-views-1 d-flex flex-row">
                     <div class="merchant">
                         <span class="d-block">Merchant</span>
-                        <button type="button" class="btn d-block">Select</button>
+                        <button @click="beginRegistration('merchant')" type="button" class="btn d-block">Select</button>
                     </div>
                     <div class="buyer">
                         <span class="d-block">Buyer</span>
-                        <button type="button" class="btn d-block">Select</button>
+                        <button @click="beginRegistration('buyer')" type="button" class="btn d-block">Select</button>
                     </div>
                 </div>
                 <div class="login-views-1 d-flex flex-row">
 
                     <div class="partner">
                         <span class="d-block">Partner</span>
-                        <button type="button" class="btn d-block">Select</button>
+                        <button type="button" @click="beginRegistration('partner')" class="btn d-block">Select</button>
                     </div>
                     <div class="agent">
                         <span class="d-block">Agent</span>
-                        <button type="button" class="btn d-block">Select</button>
+                        <button type="button" @click="beginRegistration('agent')" class="btn d-block">Select</button>
                     </div>
                 </div>
             </div>
@@ -125,6 +125,9 @@ export default {
                     document.querySelector(`#${elem.className}`).style.display = 'none';
                 });
             })
+        },
+        beginRegistration(type){
+            this.$router.push(`/${type}/register`);
         }
     },
     mounted() {

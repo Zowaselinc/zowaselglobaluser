@@ -6,7 +6,7 @@
                 <h1 class="text-center">Welcome</h1>
                 <p class="text-center">You have successfully registered with Zowasel as {{type}}. Proceed to your dashboard to add team members.</p>
             </div>
-            <button >Go to dashboard</button>
+            <button @click="goTo()">Go to dashboard</button>
         </div>
             
     </div>
@@ -19,6 +19,11 @@
             return {
                 type : this.$route.params.type
             };
+        },
+        methods : {
+            goTo(){
+                this.$router.push('/navigation');
+            }
         }
     }
 </script>

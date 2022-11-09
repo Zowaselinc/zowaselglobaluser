@@ -33,7 +33,7 @@
                         </div>
                     
                     </div>
-                    <div class="row radios-container">
+                    <div v-if="type != 'partner'" class="row radios-container">
                         <div class="col-3 radios">
                             <input type="radio" name="account-type" value="individual">
                             <label for="">Individual Account</label>
@@ -95,8 +95,12 @@
 
                 var accountType = form.get('account-type');
 
+                if(this.type == "partner"){
+                    accountType = "conpany";
+                }
+
                 accountType == "individual" ? this.$router.push(`/${this.type}/verifyaccount`) : this.$router.push(`/${this.type}/companydetails`);
-                
+
             }
         }
     }

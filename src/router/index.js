@@ -83,7 +83,7 @@ const routes = [
         component:Navigation,
     },
     {
-        path: "/usertype",
+        path: "/getstarted",
         name: "UserType",
         component:UserType,
     },

@@ -14,11 +14,20 @@
                 
                 <div v-if="type == 'agent' || type == 'partner'" class="form-group">
                     <label for="">Type of {{type}}</label>
-                    <select v-if="type == partner" class="form-control form-control-lg" name="subtype" required>
+
+                    <select v-if="type == 'partner'" class="form-control" name="subtype" required>
                         <option value=""> Select Type</option>
                         <option value="logistics"> Logistics partner </option>
                         <option value="financial"> Financial partner </option>
                     </select>
+
+                    <select v-if="type == 'agent'" class="form-control" name="subtype" required>
+                        <option value=""> Select Type</option>
+                        <option value="inspectors">Inspector</option>
+                        <option value="field">Field agent</option>
+                        <option value="data-collector">Data collector</option>
+                    </select>
+
                 </div>
                 
                 <div class="form-group">
@@ -33,7 +42,7 @@
                     <div class="row">
                         <div class="col">
                             <label for="">State</label>
-                            <select class="form-control form-control-lg" name="state" required>
+                            <select class="form-control" name="state" required>
                                 <option value="" selected>Select State</option>
                                 <option v-for="state in states" :key="state" value="state">{{state}}</option>
                             </select>
