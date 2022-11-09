@@ -35,7 +35,7 @@
     .left-content{
         width: 65%;
         height: 100%;
-        padding: 15% 15% 0% 15%;
+        padding: 15% 12% 0% 12%;
         box-sizing: border-box;
         
     }

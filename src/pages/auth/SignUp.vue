@@ -36,11 +36,11 @@
                     
                     </div>
                     <div class="row radios-container">
-                        <div class="col-3 radios">
+                        <div class="col radios">
                             <input type="radio" name="account-type">
                             <label for="">Individual Account</label>
                         </div>
-                        <div class="col-3 radios">
+                        <div class="col radios">
                             <input type="radio" name="account-type">
                             <label for="">Company Address</label>
                         </div>
@@ -71,7 +71,7 @@
 <script>
     import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
     export default {
-        name:'MerchantSignUp',
+        name:'SignUp',
         components: {
             AuthSharedLayout
         },

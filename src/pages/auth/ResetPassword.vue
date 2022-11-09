@@ -92,7 +92,7 @@
   
     .right-content{
         width: 35%;
-        height: 100%;
+        height: 100vh;
     }
     .right-content img{
         width: 100%;

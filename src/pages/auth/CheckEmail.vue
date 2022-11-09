@@ -24,8 +24,8 @@
        
         </div>
         <div class="right-content">
-            <img class="background-img" src="@/assets/images/backgrounds/right-side.png" alt="">
-            <img class="logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
+            <img src="@/assets/images/backgrounds/right-side.png" alt="">
+       
         </div>
     </div>
     </AuthSharedLayout>
@@ -51,7 +51,7 @@
     .left-content{
         width: 65%;
         height: 100%;
-        padding: 10% 15% 0% 15%;
+        padding: 10% 12% 0% 12%;
        
         box-sizing: border-box;
     }
@@ -81,10 +81,11 @@
   
     .right-content{
         width: 35%;
-        height: 100%;
+        height: 100vh;
     }
     .right-content img{
         width: 100%;
         height: 100%;
     }
+   
 </style>

@@ -11,6 +11,7 @@ import CheckEmail from "@/pages/auth/CheckEmail.vue";
 import ResetPassword from "@/pages/auth/ResetPassword.vue";
 import ResetSuccess from "@/pages/auth/ResetSuccess.vue";
 import Navigation from "@/layouts/partials/Navigation.vue";
+import AgentType from "@/pages/auth/AgentType.vue";
 
 
 
@@ -80,6 +81,11 @@ const routes = [
         path: "/navigation",
         name:"Navigation",
         component:Navigation,
+    },
+    {
+        path: "/agent-type",
+        name:"AgentType",
+        component:AgentType,
     }
 
 ];
