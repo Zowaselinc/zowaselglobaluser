@@ -10,43 +10,49 @@
                 <p>OR</p>
                 <div class="line"></div>
             </div>
-            <form>
+            <form id="register-form" action="javascript:void()" @submit="submitForm($event)">
                 
-                
+                <div v-if="type == 'agent' || type == 'partner'" class="form-group">
+                    <label for="">Type of {{type}}</label>
+                    <select v-if="type == partner" class="form-control form-control-lg" name="subtype" required>
+                        <option value=""> Select Type</option>
+                        <option value="logistics"> Logistics partner </option>
+                        <option value="financial"> Financial partner </option>
+                    </select>
+                </div>
                 
                 <div class="form-group">
                     <label for="">Company Name</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your company name">
+                    <input type="text" class="form-control" name="company-name" required id="formGroupExampleInput" placeholder="Enter your company name">
                 </div>
                 <div class="form-group">
-                    <label for="">Company Details</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter your company details">
+                    <label for="">Company Address</label>
+                    <input type="text" class="form-control" name="company-address" required id="formGroupExampleInput2" placeholder="Enter your company address">
                 </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col">
                             <label for="">State</label>
-                            <select class="form-control form-control-lg">
-                                <option>Select State</option>
+                            <select class="form-control form-control-lg" name="state" required>
+                                <option value="" selected>Select State</option>
+                                <option v-for="state in states" :key="state" value="state">{{state}}</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="">RC Number</label>
-                            <input type="text" class="form-control" placeholder="Enter company RC number">
+                            <input type="text" class="form-control" name="rc-number" required placeholder="Enter company RC number">
                         </div>
-                        
-                    
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col">
                             <label for="">Company Email</label>
-                            <input type="email" class="form-control" placeholder="Enter company email">
+                            <input type="email" name="company-email" required class="form-control" placeholder="Enter company email">
                         </div>
                         <div class="col">
                             <label for="">Company Phone Number</label>
-                            <input type="text" class="form-control" placeholder="Enter company phone number">
+                            <input type="text" name="company-phone" required class="form-control" placeholder="Enter company phone number">
                         </div>
                         
                     
@@ -54,9 +60,9 @@
                 </div>
                 <div class="buttons">
                     <div class="form-group">
-                        <router-link to="/merchant/verifyaccount" type="button" class="btn  btn-lg green-btn btn-block">Continue</router-link>
+                        <button type="submit" class="btn  btn-lg green-btn btn-block">Continue</button>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" v-if="false">
                         <router-link to="/merchant/verifyaccount" class="btn skip btn-lg btn-block">Skip this step</router-link>
                     </div>
                 </div>
@@ -76,6 +82,7 @@
 
 <script>
 import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
+import states from "@/data/states";
     export default {
         name:'MerchantCompanyDetails',
         components: {
@@ -83,8 +90,47 @@ import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
         },
         data(){
             return {
-                type : this.$route.params.type
+                type : this.$route.params.type,
+                states : states
             };
+        },
+        methods:{
+            submitForm(e){
+
+                var form = new FormData(document.querySelector('#register-form'));
+
+                var registerData = {
+                    has_company : true,
+                    company_name : form.get('company-name'),
+                    company_address : form.get('company-address'),
+                    company_email : form.get('company-email'),
+                    company_state : form.get('state'),
+                    rc_number : form.get('rc-number'),
+                    company_phone : form.get('company-phone'),
+                };
+
+                //Check for subtype
+                var subtype = form.get('subtype');
+
+                if(subtype){
+                    if(this.type == "agent"){
+                        registerData['agent_type'] = subtype;
+                    }
+                    if(this.type == "partner"){
+                        registerData['partnership_type'] = subtype;
+                    }
+                }
+
+                var previousData = JSON.parse(window.localStorage.getItem('registerData'));
+
+                window.localStorage.setItem('registerData',JSON.stringify({
+                    ...previousData,
+                    ...registerData
+                }));
+
+                this.$router.push(`/${this.type}/verifyaccount`);
+                
+            }
         }
     }
   

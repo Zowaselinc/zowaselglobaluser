@@ -17,31 +17,10 @@
          
             <div class="form-group">
                 <div class="row">
-                    <div class="col">
-                        <input type="password" class="form-control" placeholder="">
-                    </div>
-                    <div class="col">
-                        
-                        <input type="password" class="form-control" placeholder="">
-                    </div>
-                     <div class="col">
-                        
-                        <input type="password" class="form-control" placeholder="">
-                    </div>
-                     <div class="col">
-                        
-                        <input type="password" class="form-control" placeholder="">
-                    </div>
-                     <div class="col">
-                        
-                        <input type="password" class="form-control" placeholder="">
-                    </div>
-                     <div class="col">
-                        
-                        <input type="password" class="form-control" placeholder="">
+                    <div v-for="input,index in codeInputs" :key="index" class="col">
+                        <input type="password"  v-model="codeInputs[index]" maxlength="1" @keyup="moveToNext($event)"  class="form-control code-input" placeholder="">
                     </div>
                     
-                
                 </div>
             </div>
             <div class="last-text">
@@ -50,7 +29,7 @@
             
            
             <div class="form-group">
-                <router-link to="/merchant/createpassword" type="button" class="btn green-btn btn-lg btn-block">Continue</router-link>
+                <button @click="verifyCode()" type="button" class="btn green-btn btn-lg btn-block">Continue</button>
             </div>
             
         </form>
@@ -67,6 +46,7 @@
 
 <script>
     import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
+    import AuthService from "@/services/auth";
     export default {
         name:'MerchantVerifyAccount',
         components: {
@@ -74,8 +54,45 @@
         },
         data(){
             return {
-                type : this.$route.params.type
+                type : this.$route.params.type,
+                codeInputs : ["","","","","",""]
             };
+        },
+        methods:{
+            moveToNext(e){
+                if(e.key == "Backspace"){
+                    var previousChildTree = e.target.parentElement.previousElementSibling?.children;
+                    if(previousChildTree){
+                        previousChildTree[0].focus();
+                    }
+                }else{
+                    var nextChildTree = e.target.parentElement.nextElementSibling?.children;
+                    if(nextChildTree){
+                        nextChildTree[0].focus();
+                    }
+                }
+                
+
+            },
+            sendVerification(){
+                var registerData = JSON.parse(window.localStorage.getItem('registerData'));
+
+                AuthService.sendVerification(registerData.email);
+            },
+            verifyCode(){
+                let vm = this;
+                var registerData = JSON.parse(window.localStorage.getItem('registerData'));
+
+                AuthService.confirmVerification(registerData.email, this.codeInputs.join(''),(response)=>{
+                    if(response.status){
+                        window.localStorage.setItem("isEmailVerified","true");
+                        vm.$router.push(`/${vm.type}/createpassword`);
+                    }
+                })
+            }
+        },
+        created(){
+            this.sendVerification();
         }
     }
 </script>
@@ -92,6 +109,13 @@
     .check-p{
         margin-top: -5px;
         margin-left: 10px;
+    }
+
+    .code-input{
+        font-size : 25px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
     }
 
 </style>
