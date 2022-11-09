@@ -5,7 +5,7 @@
             <div class="left-content">
                 
                 <h1 class="text-center">Create an Account</h1>
-                <p id="emailHelp" class="form-text text-muted text-center">Get connected with your network of vetted growers</p>
+                <p id="emailHelp" class="form-text text-center">Get connected with your network of vetted growers</p>
                 <div class="lines">
                     <div class="line"></div>
                     <p>OR</p>
@@ -17,11 +17,11 @@
                     
                     <div class="form-group">
                         <label for="">First Name</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your first name">
+                        <input type="text" class="form-control"  placeholder="Enter your first name">
                     </div>
                     <div class="form-group">
                         <label for="">Last Name</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter your last name">
+                        <input type="text" class="form-control"  placeholder="Enter your last name">
                     </div>
                     <div class="form-group">
                     <div class="row ">
@@ -56,11 +56,12 @@
                     </div>
                 </form>
                 <div class="last-text">
-                    <p id="emailHelp" class="form-text text-muted text-center">Do you already have an account?</p> <router-link class="link" to="/welcomeback">Login</router-link>
+                    <p id="emailHelp" class="form-text text-center">Do you already have an account?</p> <router-link class="link" to="/welcomeback">Login</router-link>
                 </div>
             </div>
             <div class="right-content">
-                <img class="background-img" src="@/assets/images/backgrounds/merchant-background2.png" alt="">
+                <img   class="background-img" v-if="type == 'merchant' || type=='buyer'" src="@/assets/images/backgrounds/merchant-background2.png" alt="">
+                <img   class="background-img" v-if="type=='partner' || type=='agent'" src="@/assets/images/backgrounds/partner-background2.png" alt="">
                 <img class="logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
             </div>
         </div>
@@ -73,11 +74,17 @@
         name:'MerchantSignUp',
         components: {
             AuthSharedLayout
+        },
+        data(){
+            return {
+                type : this.$route.params.type
+            };
         }
     }
 </script>
 
 <style lang="scss" scoped>  
+    @import "@/assets/scss/main.scss";
 
     .radios-container{
         margin-top: 20px;

@@ -4,11 +4,6 @@ import CompanyDetails from "@/pages/auth/CompanyDetails.vue";
 import VerifyAccount from "@/pages/auth/VerifyAccount.vue";
 import CreatePassword from "@/pages/auth/CreatePassword.vue";
 import Welcome from "@/pages/auth/Welcome.vue";
-import PartnerCompanyDetails from "@/pages/auth/partner/CompanyDetails.vue";
-import PartnerCreatePassword from "@/pages/auth/partner/CreatePassword.vue";
-import PartnerSignUp from "@/pages/auth/partner/SignUp.vue";
-import PartnerVerifyAccount from "@/pages/auth/partner/VerifyAccount.vue";
-import PartnerWelcome from "@/pages/auth/partner/Welcome.vue";
 import VerifyEmail from "@/pages/auth/VerifyEmail.vue";
 import WelcomeBack from "@/pages/auth/WelcomeBack.vue";
 import ForgotPassword from "@/pages/auth/ForgotPassword.vue";
@@ -21,57 +16,36 @@ import Navigation from "@/layouts/partials/Navigation.vue";
 
 const routes = [
     {
-        path: "/",
+        path: "/:type/register",
         name:"SignUp",
         component:SignUp,
     },
+
     {
-        path: "/companydetails",
+        path: "/:type/companydetails",
         name:"CompanyDetails",
         component:CompanyDetails,
     },
     {
-        path: "/verifyaccount",
+        path: "/:type/verifyaccount",
         name:"VerifyAccount",
         component:VerifyAccount,
-    }
-    ,
+    },
     {
-        path: "/createpassword",
+        path: "/:type/createpassword",
         name:"CreatePassword",
         component:CreatePassword,
-    }
-    ,
+    },
     {
-        path: "/welcome",
+        path: "/:type/welcome",
         name:"Welcome",
         component:Welcome,
     },
-    {
-        path: "/partner/companydetails",
-        name:"PartnerCompanyDetails",
-        component:PartnerCompanyDetails,
-    },
-    {
-        path: "/partner/createpassword",
-        name:"PartnerCreatePassword",
-        component:PartnerCreatePassword,
-    },
-    {
-        path: "register/:type",
-        name:"PartnerSignUp",
-        component:PartnerSignUp,
-    },
-    {
-        path: "/partner/verifyaccount",
-        name:"PartnerVerifyAccount",
-        component:PartnerVerifyAccount,
-    },
-    {
-        path: "/partner/welcome",
-        name:"PartnerWelcome",
-        component:PartnerWelcome,
-    },
+
+
+ 
+    
+   
     {
         path: "/verifyemail",
         name:"VerifyEmail",

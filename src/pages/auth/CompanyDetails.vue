@@ -66,7 +66,8 @@
         
         </div>
         <div class="right-content">
-                <img class="background-img" src="@/assets/images/backgrounds/merchant-background2.png" alt="">
+                <img   class="background-img" v-if="type == 'merchant' || type=='buyer'" src="@/assets/images/backgrounds/merchant-background2.png" alt="">
+                <img   class="background-img" v-if="type=='partner' || type=='agent'" src="@/assets/images/backgrounds/partner-background2.png" alt="">
                 <img class="logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
             </div>
     </div>
@@ -79,13 +80,18 @@ import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
         name:'MerchantCompanyDetails',
         components: {
             AuthSharedLayout
+        },
+        data(){
+            return {
+                type : this.$route.params.type
+            };
         }
     }
   
 </script>
 
 <style lang="scss"  scoped>
-
+    
     .checking{
         display: flex;
         margin-top: 60px;
