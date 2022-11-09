@@ -1,14 +1,9 @@
 import { createWebHistory, createRouter } from "vue-router";
-import MerchantSignUp from "@/pages/auth/merchant/SignUp.vue";
-import MerchantCompanyDetails from "@/pages/auth/merchant/CompanyDetails.vue";
-import MerchantVerifyAccount from "@/pages/auth/merchant/VerifyAccount.vue";
-import MerchantCreatePassword from "@/pages/auth/merchant/CreatePassword.vue";
-import MerchantWelcome from "@/pages/auth/merchant/Welcome.vue";
-import PartnerCompanyDetails from "@/pages/auth/partner/CompanyDetails.vue";
-import PartnerCreatePassword from "@/pages/auth/partner/CreatePassword.vue";
-import PartnerSignUp from "@/pages/auth/partner/SignUp.vue";
-import PartnerVerifyAccount from "@/pages/auth/partner/VerifyAccount.vue";
-import PartnerWelcome from "@/pages/auth/partner/Welcome.vue";
+import SignUp from "@/pages/auth/SignUp.vue";
+import CompanyDetails from "@/pages/auth/CompanyDetails.vue";
+import VerifyAccount from "@/pages/auth/VerifyAccount.vue";
+import CreatePassword from "@/pages/auth/CreatePassword.vue";
+import Welcome from "@/pages/auth/Welcome.vue";
 import VerifyEmail from "@/pages/auth/VerifyEmail.vue";
 import WelcomeBack from "@/pages/auth/WelcomeBack.vue";
 import ForgotPassword from "@/pages/auth/ForgotPassword.vue";
@@ -22,57 +17,36 @@ import Navigation from "@/layouts/partials/Navigation.vue";
 
 const routes = [
     {
-        path: "/merchant/signup",
-        name:"MerchantSignUp",
-        component:MerchantSignUp,
+        path: "/:type/register",
+        name:"SignUp",
+        component:SignUp,
+    },
+
+    {
+        path: "/:type/companydetails",
+        name:"CompanyDetails",
+        component:CompanyDetails,
     },
     {
-        path: "/merchant/companydetails",
-        name:"MerhantCompanyDetails",
-        component:MerchantCompanyDetails,
+        path: "/:type/verifyaccount",
+        name:"VerifyAccount",
+        component:VerifyAccount,
     },
     {
-        path: "/merchant/verifyaccount",
-        name:"MerchantVerifyAccount",
-        component:MerchantVerifyAccount,
-    }
-    ,
-    {
-        path: "/merchant/createpassword",
-        name:"MerchantCreatePassword",
-        component:MerchantCreatePassword,
-    }
-    ,
-    {
-        path: "/merchant/welcome",
-        name:"MerchantWelcome",
-        component:MerchantWelcome,
+        path: "/:type/createpassword",
+        name:"CreatePassword",
+        component:CreatePassword,
     },
     {
-        path: "/partner/companydetails",
-        name:"PartnerCompanyDetails",
-        component:PartnerCompanyDetails,
+        path: "/:type/welcome",
+        name:"Welcome",
+        component:Welcome,
     },
-    {
-        path: "/partner/createpassword",
-        name:"PartnerCreatePassword",
-        component:PartnerCreatePassword,
-    },
-    {
-        path: "/partner/signup",
-        name:"PartnerSignUp",
-        component:PartnerSignUp,
-    },
-    {
-        path: "/partner/verifyaccount",
-        name:"PartnerVerifyAccount",
-        component:PartnerVerifyAccount,
-    },
-    {
-        path: "/partner/welcome",
-        name:"PartnerWelcome",
-        component:PartnerWelcome,
-    },
+
+
+ 
+    
+   
     {
         path: "/verifyemail",
         name:"VerifyEmail",
