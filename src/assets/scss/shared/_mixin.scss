@@ -40,3 +40,9 @@ $prefixes: ("webkit", "moz", "o", "ms" );
     font-size: $font-size;
     line-height: $line-height;
 }
+
+@mixin background {
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}

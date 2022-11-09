@@ -15,6 +15,7 @@ import ForgotPassword from "@/pages/auth/ForgotPassword.vue";
 import CheckEmail from "@/pages/auth/CheckEmail.vue";
 import ResetPassword from "@/pages/auth/ResetPassword.vue";
 import ResetSuccess from "@/pages/auth/ResetSuccess.vue";
+import UserType from "@/pages/auth/UserType.vue";
 import Navigation from "@/layouts/partials/Navigation.vue";
 
 
@@ -106,7 +107,12 @@ const routes = [
         path: "/navigation",
         name:"Navigation",
         component:Navigation,
-    }
+    },
+    {
+        path: "/usertype",
+        name: "UserType",
+        component:UserType,
+    },
 
 ];
 
