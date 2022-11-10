@@ -53,7 +53,7 @@ const routes = [
         component:VerifyEmail,
     },
     {
-        path: "/welcomeback",
+        path: "/login",
         name:"WelcomeBack",
         component:WelcomeBack,
     },
@@ -68,7 +68,7 @@ const routes = [
         component:CheckEmail,
     },
     {
-        path: "/resetpassword",
+        path: "/resetpassword/:token",
         name:"ResetPassword",
         component:ResetPassword,
     },
