@@ -5,9 +5,9 @@
             <img src="@/assets/images/vectors/tick-circle.png" alt="">
            
                 
-                <h5 class="text-center">You have successfully registered with Zowasel as Corporate. Proceed to your dashboard to add team members.</h5>
+                <h5 class="text-center">Passport Reset Successfully</h5>
             
-            <button>Go to dashboard</button>
+            <button @click="$router.replace('/login')">Login</button>
         </div>
             
     </div>

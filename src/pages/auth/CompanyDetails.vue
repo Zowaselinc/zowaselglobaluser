@@ -93,7 +93,7 @@
 import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
 import states from "@/data/states";
     export default {
-        name:'MerchantCompanyDetails',
+        name:'CompanyDetails',
         components: {
             AuthSharedLayout
         },

@@ -12,17 +12,17 @@
             
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="email" class="form-control" id="formGroupExampleInput" placeholder="Enter your email">
+                <input type="email" v-model="email" class="form-control" id="formGroupExampleInput" placeholder="Enter your email">
             </div>
             <div class="form-group">
                 <label for="">Password</label>
-                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Enter your password">
+                <input type="password" v-model="password" class="form-control" id="formGroupExampleInput2" placeholder="Enter your password">
             </div>
             
             
             <div class="buttons">
                 <div class="form-group">
-                    <button type="button" class="btn  btn-lg btn-block">Login</button>
+                    <button type="button" @click="loginAccount()" class="btn  btn-lg btn-block">Login</button>
                 </div>
                 <div class="lines">
                     <div class="line"></div>
@@ -43,7 +43,7 @@
        
         </div>
          <div class="right-content">
-            <img class="background-img" src="@/assets/images/backgrounds/merchant-background2.png" alt="">
+            <img class="background-img" src="@/assets/images/backgrounds/right-side2.png" alt="">
             <img class="logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
         </div>
     </div>
@@ -52,10 +52,30 @@
 
 <script>
     import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
+    import AuthService from "@/services/auth";
     export default {
         name:'WelcomeBack',
         components: {
             AuthSharedLayout
+        },
+        data(){
+            return {
+                email : "",
+                password : ""
+            };
+        },
+        methods: {
+            loginAccount(){
+                let vm = this;
+                AuthService.loginUser({
+                    email : vm.email,
+                    password : vm.password
+                },(response)=>{
+                    if(!response.error){
+                        vm.$router.push('/navigation');
+                    }
+                })
+            }
         }
     }
 </script>

@@ -75,7 +75,7 @@ import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
 import AuthService from "@/services/auth";
 
     export default {
-        name:'MerchantCreatePassword',
+        name:'CreatePassword',
         components: {
             AuthSharedLayout
         },

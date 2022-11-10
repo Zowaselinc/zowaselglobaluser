@@ -8,18 +8,18 @@
             
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="email" class="form-control" id="formGroupExampleInput" placeholder="Enter your email">
+                <input type="email" class="form-control" v-model="email" id="formGroupExampleInput" placeholder="Enter your email">
             </div>
             
             
             
             <div class="buttons">
                 <div class="form-group">
-                    <button type="button" class="btn  btn-lg btn-block">Send</button>
+                    <button type="button" @click="sendMail()" class="btn  btn-lg btn-block">Send</button>
                 </div>
                 
                 <div class="form-group">
-                    <button type="button" class="btn skip btn-lg btn-block">Back to Login</button>
+                    <button @click="$router.replace('/login')" type="button" class="btn skip btn-lg btn-block">Back to Login</button>
                 </div>
             </div>
            
@@ -34,8 +34,27 @@
 </template>
 
 <script>
+    import AuthService from '@/services/auth'; 
     export default {
-        name:'ForgotPassword'
+        name:'ForgotPassword',
+        data(){
+            return {
+                email : ""
+            };
+        },
+        methods:{
+            sendMail(){
+                let vm = this;
+                if(this.email){
+                    AuthService.sendResetEmail(this.email,(response)=>{
+                        if(response.status){
+                            window.localStorage.setItem('resetEmail',vm.email);
+                            vm.$router.push('/checkemail');
+                        }
+                    });
+                }
+            }
+        }
     }
 </script>
 
@@ -49,7 +68,7 @@
     .left-content{
         width: 65%;
         height: 100%;
-        padding: 10% 15% 0% 15%;
+        padding: 10% 12% 0% 12%;
        
         box-sizing: border-box;
     }
@@ -79,7 +98,7 @@
   
     .right-content{
         width: 35%;
-        height: 100%;
+        height: 100vh;
     }
     .right-content img{
         width: 100%;

@@ -11,6 +11,8 @@ import CheckEmail from "@/pages/auth/CheckEmail.vue";
 import ResetPassword from "@/pages/auth/ResetPassword.vue";
 import ResetSuccess from "@/pages/auth/ResetSuccess.vue";
 import UserType from "@/pages/auth/UserType.vue";
+import AgentType from "@/pages/auth/AgentType.vue";
+import CorporateDashboard from "@/pages/dashboard/Corporate.vue"
 import DefaultNav from "@/layouts/DefaultNav.vue";
 
 
@@ -48,7 +50,7 @@ const routes = [
         component:VerifyEmail,
     },
     {
-        path: "/welcomeback",
+        path: "/login",
         name:"WelcomeBack",
         component:WelcomeBack,
     },
@@ -63,7 +65,7 @@ const routes = [
         component:CheckEmail,
     },
     {
-        path: "/resetpassword",
+        path: "/resetpassword/:token",
         name:"ResetPassword",
         component:ResetPassword,
     },
@@ -78,9 +80,19 @@ const routes = [
         component:DefaultNav,
     },
     {
+        path: "/agent-type",
+        name:"AgentType",
+        component:AgentType,
+    },
+    {
         path: "/getstarted",
         name: "UserType",
         component:UserType,
+    },
+    {
+        path: "/dashboard/corporate",
+        name: "CorporateDashboard",
+        component:CorporateDashboard,
     },
 
 ];

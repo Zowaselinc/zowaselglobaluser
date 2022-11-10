@@ -8,21 +8,21 @@
             
             <div class="form-group">
                 <label for="">New Password</label>
-                <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Enter new password">
+                <input type="password" v-model="password" class="form-control" id="formGroupExampleInput" placeholder="Enter new password">
             </div>
             <div class="form-group">
                 <label for="">Password</label>
-                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Confirm your new password">
+                <input type="password" v-model="confirmPassword" class="form-control" id="formGroupExampleInput2" placeholder="Confirm your new password">
             </div>
             
             
             <div class="buttons">
                 <div class="form-group">
-                    <button type="button" class="btn  btn-lg btn-block">Login</button>
+                    <button type="button" @click="resetPassword()" class="btn  btn-lg btn-block">Reset Password</button>
                 </div>
               
                 <div class="form-group">
-                    <button type="button" class="btn skip btn-lg btn-block">Reset Password</button>
+                    <button type="button" @click="$router.replace('/login')" class="btn skip btn-lg btn-block">Back to login</button>
                 </div>
                 
                 
@@ -39,8 +39,72 @@
 </template>
 
 <script>
+    import AuthService from "@/services/auth";
     export default {
-        name:'ResetPassword'
+        name:'ResetPassword',
+        computed : {
+            hasNumbers(){
+                return /[0-9]+/.test(this.password);
+            },
+            hasSpecial(){
+                return /[!@~#$%^.,'"&*\(\)\/]+/.test(this.password);
+            },
+            hasUppercase(){
+                return /[A-Z]+/.test(this.password);
+            },
+            characterMin(){
+                return this.password.length >= 8;
+            },
+            mustMatch(){
+                return (this.password == this.confirmPassword) && this.password;
+            },
+            strength(){
+                var strength = 0 ;
+                if(this.characterMin){
+                    strength += 1;
+                }
+                if(this.hasNumbers){
+                    strength += 1;
+                }
+                if(this.hasUppercase){
+                    strength += 1;
+                }
+                if(this.hasSpecial){
+                    strength += 1;
+                }
+                return strength;
+            }
+        },
+        data(){
+            return {
+                password : "",
+                confirmPassword : "",
+                token : this.$route.params.token
+            };
+        },
+        methods : {
+            resetPassword(){
+                let vm = this;
+                if(this.password == this.confirmPassword){
+                    AuthService.resetPassword({
+                        token : vm.token,
+                        password : vm.password
+                    },(response)=>{
+                        if(response.status){
+                            vm.$router.push('/resetsuccess');
+                        }
+                    });
+                }
+            }
+        },
+        mounted(){
+            let vm = this;
+            AuthService.verifyResetToken(this.token,(response)=>{
+                if(!response.status){
+                    vm.$router.replace('/login');
+                }
+            })
+        }
     }
 </script>
 
@@ -92,7 +156,7 @@
   
     .right-content{
         width: 35%;
-        height: 100%;
+        height: 100vh;
     }
     .right-content img{
         width: 100%;
