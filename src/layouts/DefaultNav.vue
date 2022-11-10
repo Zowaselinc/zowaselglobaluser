@@ -1,8 +1,12 @@
 
 <template>
     <TopHeader />
-    <SideBar />
-    <slot></slot>
+    <div class="big-content">
+        <SideBar />
+        <slot></slot>
+    </div>
+    
+    
     <Footer />
 </template>
 
@@ -22,4 +26,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.big-content{
+    display: flex;
+    flex-direction: row;
+}
 </style>

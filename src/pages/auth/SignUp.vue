@@ -69,7 +69,7 @@
 <script>
     import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
     export default {
-        name:'MerchantSignUp',
+        name:'SignUp',
         components: {
             AuthSharedLayout
         },
