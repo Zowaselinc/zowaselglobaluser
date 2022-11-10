@@ -77,9 +77,11 @@
 
                 </div>
             </div>
-            <div class="copyright d-flex flex-row ">
+        </div>
+        <div class="copyright">
+            <div class="copyright-container  d-flex flex-row position-relative">
                 <p>Copyright © 2021 Zowasel Inc. All Right Reserved.</p>
-                <div class="social-media d-flex">
+                <div class="social-media d-flex position-absolute">
                     <a href="#">
                         <img src="@/assets/images/vectors/facebook.svg" alt="facebook">
                     </a>
@@ -94,7 +96,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+            </div>
     </footer>
 </template>
 

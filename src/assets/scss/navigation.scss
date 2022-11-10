@@ -30,9 +30,9 @@ nav {
 
         .search-barr {
             flex: 1;
-            border: 1px solid #EDEDEE;
+            border: 1px solid #ededee;
             border-radius: 4px;
-            background: #FFFFFF;
+            background: #ffffff;
             padding: 5px 16px;
             gap: 10px;
 
@@ -46,7 +46,7 @@ nav {
 
                 &::placeholder {
                     @include textStyles(Poppins, 500, 12px, 20px);
-                    color: #96949C;
+                    color: #96949c;
                 }
             }
         }
@@ -61,37 +61,34 @@ nav {
 // Side Bar
 #sidebarMenu {
     padding: 60px 16px 4px;
-    height: 801px;
+    height: 100vh;
     width: 18%;
     z-index: 600;
-    color: #FFFFFF;
-    background: linear-gradient(180deg, #29333F 0%, #1C2131 100%);
+    color: #ffffff;
+    background: linear-gradient(180deg, #29333f 0%, #1c2131 100%);
 
     #side-menu {
         a span {
             margin-left: 20.28px;
             @include textStyles("Maven Pro", 400, 14px, 116%);
-
         }
     }
 
     .sidebar-active {
-        background: #05B050;
+        background: #05b050;
         border-radius: 4px;
         padding-inline: 16px;
     }
 }
 
-// footer 
+// footer
 footer {
     width: 100%;
     height: 496px;
-    background: #1C2130;
-
+background: #262C3F;
     .footer-main {
         margin-inline: 10.13% 11.5%;
         position: relative;
-
     }
 
     .footer-top {
@@ -116,27 +113,25 @@ footer {
 
         .send-icon {
             width: 55px;
-            background: #4FAD5B;
+            background: #4fad5b;
             border-radius: 2px;
             height: inherit;
 
-            >img {
+            > img {
                 height: 50%;
             }
-
         }
     }
 
     // footer info
-
 }
 
 .footer-info {
     @include flexed-Container(row, flex-start, flex-start);
     @include textStyles("Maven Pro", 400, 12px, 130%);
-    color: #B5B4B9;
+    color: #b5b4b9;
     letter-spacing: 0.04em;
-    gap: 65px;
+    gap: 80px;
     padding-top: 80px;
 
     .footer-item-A {
@@ -144,10 +139,9 @@ footer {
             width: 161px;
         }
 
-        >div {
+        > div {
             padding: 10px;
         }
-
 
         .footer-contact {
             h2 {
@@ -156,22 +150,18 @@ footer {
 
             h2,
             p {
-
                 padding: 0 !important;
             }
-
         }
     }
 
     h2 {
         letter-spacing: 0.04em;
         @include textStyles("Maven Pro", 700, 16px, 130%);
-        color: #F1F1F1;
-
-
+        color: #f1f1f1;
     }
 
-    div~div>* {
+    div ~ div > * {
         padding: 10px;
     }
 
@@ -182,7 +172,6 @@ footer {
             border: 0.7px solid rgba(255, 255, 255, 0.1);
             border-radius: 5px;
             padding: 0;
-
         }
 
         .google-Img {
@@ -190,20 +179,24 @@ footer {
         }
     }
 }
-
+.copyright-container {
+    margin-inline: 10.13% 11.5%;
+}
 .copyright {
-    padding: 22px 146px;
+    padding-block: 22px;
+    height: 60px;
+    align-items: baseline;
     background: #1C2130;
-    justify-content: space-between;
 
     p {
         @include textStyles("Maven Pro", 400, 12px, 130%);
         letter-spacing: 0.04em;
-        color: #B5B4B9;
+        color: #b5b4b9;
     }
     .social-media {
         // width: 8.68%;
         gap: 25px;
+        right: 0%;
 
     }
 }
