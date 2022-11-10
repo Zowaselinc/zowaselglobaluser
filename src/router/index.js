@@ -11,10 +11,9 @@ import CheckEmail from "@/pages/auth/CheckEmail.vue";
 import ResetPassword from "@/pages/auth/ResetPassword.vue";
 import ResetSuccess from "@/pages/auth/ResetSuccess.vue";
 import UserType from "@/pages/auth/UserType.vue";
-import Navigation from "@/layouts/partials/Navigation.vue";
 import AgentType from "@/pages/auth/AgentType.vue";
 import CorporateDashboard from "@/pages/dashboard/Corporate.vue"
-
+import DefaultNav from "@/layouts/DefaultNav.vue";
 
 
 const routes = [
@@ -45,10 +44,6 @@ const routes = [
         component:Welcome,
     },
 
-
- 
-    
-   
     {
         path: "/verifyemail",
         name:"VerifyEmail",
@@ -81,8 +76,8 @@ const routes = [
     },
     {
         path: "/navigation",
-        name:"Navigation",
-        component:Navigation,
+        name:"DefaultNav",
+        component:DefaultNav,
     },
     {
         path: "/agent-type",
