@@ -4,9 +4,9 @@
             <img src="@/assets/images/logos/zowasel-grey-logo.png" alt="">
             <div class="texts">
                 <h1 class="text-center">Welcome</h1>
-                <p class="text-center">You have successfully registered with Zowasel as Corporate. Proceed to your dashboard to add team members.</p>
+                <p class="text-center">You have successfully registered with Zowasel as {{type}}. Proceed to your dashboard to add team members.</p>
             </div>
-            <button>Go to dashboard</button>
+            <button @click="goTo()">Go to dashboard</button>
         </div>
             
     </div>
@@ -14,7 +14,17 @@
 
 <script>
     export default {
-        name:'MerchantWelcome'
+        name:'MerchantWelcome',
+        data(){
+            return {
+                type : this.$route.params.type
+            };
+        },
+        methods : {
+            goTo(){
+                this.$router.push('/navigation');
+            }
+        }
     }
 </script>
 

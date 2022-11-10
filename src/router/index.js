@@ -78,7 +78,7 @@ const routes = [
         component:DefaultNav,
     },
     {
-        path: "/usertype",
+        path: "/getstarted",
         name: "UserType",
         component:UserType,
     },

@@ -11,48 +11,46 @@
                     <p>OR</p>
                     <div class="line"></div>
                 </div>
-                <form>
-                    
-                    
+                <form id="register-form" action="javascript:void()" @submit="submitForm($event)">
                     
                     <div class="form-group">
                         <label for="">First Name</label>
-                        <input type="text" class="form-control"  placeholder="Enter your first name">
+                        <input type="text" class="form-control" required name="first-name" placeholder="Enter your first name">
                     </div>
                     <div class="form-group">
                         <label for="">Last Name</label>
-                        <input type="text" class="form-control"  placeholder="Enter your last name">
+                        <input type="text" class="form-control" required name="last-name" placeholder="Enter your last name">
                     </div>
                     <div class="form-group">
                     <div class="row ">
                         <div class="col">
                             <label for="">Email Address</label>
-                            <input type="text" class="form-control" placeholder="Enter email address">
+                            <input type="text" class="form-control" required name="email" placeholder="Enter email address">
                         </div>
                         <div class="col">
                             <label for="">Phone Number</label>
-                            <input type="text" class="form-control" placeholder="Enter phone number">
+                            <input type="text" class="form-control" required name="phone" placeholder="Enter phone number">
                         </div>
                     
                     </div>
-                    <div class="row radios-container">
+                    <div v-if="type != 'partner'" class="row radios-container">
                         <div class="col-3 radios">
-                            <input type="radio" name="account-type">
+                            <input type="radio" name="account-type" value="individual">
                             <label for="">Individual Account</label>
                         </div>
                         <div class="col-3 radios">
-                            <input type="radio" name="account-type">
-                            <label for="">Company Address</label>
+                            <input type="radio" name="account-type" value="company">
+                            <label for="">Company Account</label>
                         </div>
                     
                     </div>
                     </div>
                     <div class="form-group checking">
-                        <input type="checkbox">
+                        <input type="checkbox" name="accept" required>
                         <p class="check-p">I confirm that I have read and accepted the privacy policy</p>
                     </div>
                     <div class="form-group">
-                        <router-link to="/merchant/companydetails" type="button" class="btn  btn-lg btn-block green-btn">Continue</router-link>
+                        <button type="submit" class="btn  btn-lg btn-block green-btn">Continue</button>
                     </div>
                 </form>
                 <div class="last-text">
@@ -77,8 +75,33 @@
         },
         data(){
             return {
+                
                 type : this.$route.params.type
             };
+        },
+        methods:{
+            submitForm(e){
+
+                var form = new FormData(document.querySelector('#register-form'));
+
+                var registerData = {
+                    first_name : form.get('first-name'),
+                    last_name : form.get('last-name'),
+                    email : form.get('email'),
+                    phone : form.get('phone'),
+                };
+
+                window.localStorage.setItem('registerData',JSON.stringify(registerData));
+
+                var accountType = form.get('account-type');
+
+                if(this.type == "partner"){
+                    accountType = "conpany";
+                }
+
+                accountType == "individual" ? this.$router.push(`/${this.type}/verifyaccount`) : this.$router.push(`/${this.type}/companydetails`);
+
+            }
         }
     }
 </script>
@@ -88,9 +111,28 @@
 
     .radios-container{
         margin-top: 20px;
-    }   
+    }  
+    
+    .radios{
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        input{
+            margin-top: 1px;
+        }
+    }
     .radios label{
-        margin-left: 10px;
+        margin: 0px 10px;
     } 
+
+    .checking p{
+        margin : 0px 10px;
+
+    }
+
+    .checking input{
+        margin-top: 1px;
+    }
 
 </style>
