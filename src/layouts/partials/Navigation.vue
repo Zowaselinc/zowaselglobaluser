@@ -145,9 +145,6 @@ nav {
 // Side Bar
 #sidebarMenu{
     padding: 60px 16px 4px;
-    position: fixed;
-    top: 86px !important;
-    inset: 0;
     height: 801px;
     width: 18%;
     z-index: 600;

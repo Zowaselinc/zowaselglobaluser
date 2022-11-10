@@ -10,8 +10,10 @@ import ForgotPassword from "@/pages/auth/ForgotPassword.vue";
 import CheckEmail from "@/pages/auth/CheckEmail.vue";
 import ResetPassword from "@/pages/auth/ResetPassword.vue";
 import ResetSuccess from "@/pages/auth/ResetSuccess.vue";
+import UserType from "@/pages/auth/UserType.vue";
 import Navigation from "@/layouts/partials/Navigation.vue";
 import AgentType from "@/pages/auth/AgentType.vue";
+import CorporateDashboard from "@/pages/dashboard/Corporate.vue"
 
 
 
@@ -86,7 +88,17 @@ const routes = [
         path: "/agent-type",
         name:"AgentType",
         component:AgentType,
-    }
+    },
+    {
+        path: "/getstarted",
+        name: "UserType",
+        component:UserType,
+    },
+    {
+        path: "/dashboard/corporate",
+        name: "CorporateDashboard",
+        component:CorporateDashboard,
+    },
 
 ];
 

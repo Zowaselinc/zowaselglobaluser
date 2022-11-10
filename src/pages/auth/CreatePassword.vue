@@ -12,45 +12,50 @@
             
             <div class="form-group">
                 <label for="">Password</label>
-                <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Create Password">
+                <input type="password" v-model="password" class="form-control" id="formGroupExampleInput" placeholder="Create Password">
             </div>
             <div class="form-group">
                 <label for="">Confirm Password</label>
-                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Confirm Password">
+                <input type="password" v-model="confirmPassword" class="form-control" id="formGroupExampleInput2" placeholder="Confirm Password">
             </div>
             <div class="lines">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
+                <div :class="['line', strength > 2 ? 'strong' : strength > 0 ? 'weak' : '' ]"></div>
+                <div :class="['line', strength > 2 ? 'strong' : strength > 1 ? 'weak' : '' ]"></div>
+                <div :class="['line', strength > 2 ? 'strong' : '' ]"></div>
+                <div :class="['line', strength > 3 ? 'strong' : '' ]"></div>
             </div>
 
             <div class="required">
                 <div class="each-required">
-                    <img src="@/assets/images/vectors/tick-right.svg" alt="">
-                    <p>contains numbers</p>
+                    <img v-if="hasNumbers" src="@/assets/images/vectors/tick-right.svg" alt="">
+                    <img v-if="!hasNumbers" src="@/assets/images/vectors/tick-wrong.svg" alt="">
+                    <p :class="hasNumbers ? 'right-text' : 'wrong-text' ">Contains numbers</p>
                 </div>
                 <div class="each-required">
-                    <img src="@/assets/images/vectors/tick-wrong.svg" alt="">
-                    <p>contains numbers</p>
+                    <img v-if="hasSpecial" src="@/assets/images/vectors/tick-right.svg" alt="">
+                    <img v-if="!hasSpecial" src="@/assets/images/vectors/tick-wrong.svg" alt="">
+                    <p :class="hasSpecial ? 'right-text' : 'wrong-text' ">has at least one special character (@#$)</p>
                 </div>
                 <div class="each-required">
-                    <img src="@/assets/images/vectors/tick-right.svg" alt="">
-                    <p>contains numbers</p>
+                    <img v-if="hasUppercase" src="@/assets/images/vectors/tick-right.svg" alt="">
+                    <img v-if="!hasUppercase" src="@/assets/images/vectors/tick-wrong.svg" alt="">
+                    <p :class="hasUppercase ? 'right-text' : 'wrong-text' ">have uppercase letters</p>
                 </div>
                 <div class="each-required">
-                    <img src="@/assets/images/vectors/tick-wrong.svg" alt="">
-                    <p>contains numbers</p>
+                    <img v-if="characterMin" src="@/assets/images/vectors/tick-right.svg" alt="">
+                    <img v-if="!characterMin" src="@/assets/images/vectors/tick-wrong.svg" alt="">
+                    <p :class="characterMin ? 'right-text' : 'wrong-text' ">be greater than 8 characters</p>
                 </div>
                 <div class="each-required">
-                    <img src="@/assets/images/vectors/tick-wrong.svg" alt="">
-                    <p>contains numbers</p>
+                    <img v-if="mustMatch" src="@/assets/images/vectors/tick-right.svg" alt="">
+                    <img v-if="!mustMatch" src="@/assets/images/vectors/tick-wrong.svg" alt="">
+                    <p :class="mustMatch ? 'right-text' : 'wrong-text' ">Must match</p>
                 </div>
             </div>
             
            
             <div class="form-group">
-                <router-link type="button" to="/merchant/welcome" class="btn green-btn btn-lg btn-block">Complete Registration</router-link>
+                <button type="button" @click="submitForm()" class="btn green-btn btn-lg btn-block">Complete Registration</button>
             </div>
             
         </form>
@@ -67,16 +72,81 @@
 
 <script>
 import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
+import AuthService from "@/services/auth";
+
     export default {
         name:'CreatePassword',
         components: {
             AuthSharedLayout
         },
+        computed : {
+            hasNumbers(){
+                return /[0-9]+/.test(this.password);
+            },
+            hasSpecial(){
+                return /[!@~#$%^.,'"&*\(\)\/]+/.test(this.password);
+            },
+            hasUppercase(){
+                return /[A-Z]+/.test(this.password);
+            },
+            characterMin(){
+                return this.password.length >= 8;
+            },
+            mustMatch(){
+                return (this.password == this.confirmPassword) && this.password;
+            },
+            strength(){
+                var strength = 0 ;
+                if(this.characterMin){
+                    strength += 1;
+                }
+                if(this.hasNumbers){
+                    strength += 1;
+                }
+                if(this.hasUppercase){
+                    strength += 1;
+                }
+                if(this.hasSpecial){
+                    strength += 1;
+                }
+                return strength;
+            }
+        },
         data(){
             return {
-                type : this.$route.params.type
+                type : this.$route.params.type,
+                password : '',
+                confirmPassword : "",
             };
+        },
+        methods : {
+            submitForm(){
+                let vm = this;
+                var registerData = JSON.parse(window.localStorage.getItem('registerData'));
+                if(this.hasNumbers && this.hasSpecial && this.hasUppercase && this.characterMin && this.mustMatch){
+                    registerData = {
+                        ...registerData,
+                        ...{password : this.password, user_type : this.type}
+                    };
+                    AuthService.registerUser(registerData,(response)=>{
+                        if(response.status){
+                            window.localStorage.setItem('accessToken', response.token);
+                            window.localStorage.setItem('userData', response.user);
+                            window.localStorage.removeItem('registerData');
+                            window.localStorage.removeItem('isVerifiedEmail');
+                            vm.$router.push(`/${vm.type}/welcome`)
+                        }
+                    });
+                }
+            }
+        },
+        mounted(){
+            var verifiedCheck = window.localStorage.getItem('isEmailVerified');
+            if(!verifiedCheck){
+                this.$router.replace(`/${this.type}/register`);
+            }
         }
+
     }
  
 </script>
@@ -104,6 +174,20 @@ import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
     .check-p{
         margin-top: -5px;
         margin-left: 10px;
+    }
+
+    .right-text{
+        color : #1D3557;
+    }
+    .wrong-text{
+        color : #B0B0B0;
+    }
+    .weak{
+        border-color: #FFBD00;
+    }
+
+    .strong{
+        border-color: #22D66A;
     }
    
 </style>
