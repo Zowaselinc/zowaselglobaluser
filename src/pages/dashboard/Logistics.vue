@@ -2,32 +2,28 @@
     <DefaultNav>
         <div class="big-container">
             <div class="welcome-text">
-                <h2>Welcome, Carbury</h2>
+                <h2>Welcome, Ample Logistics</h2>
                 <p>Wallet Balance: <span>$5070</span></p>
             </div>
-           
-           <Cards></Cards>
-            <div class="chart">
-                <div class="chart-text">
-                    <h2>Sales Analytics</h2>
-                    <div class="filter">Filter By | Last 12months</div>
-                </div>
-                <img src="@/assets/images/backgrounds/linechartmain.png" alt="">
-                <div class="dots">
-                    <div class="green-dot"></div>
-                    <p class="green-text">Sales</p>
-                    <div class="red-dot"></div>
-                    <p class="red-text">Revenue</p>
-                </div>
-            </div>
+            <Cards></Cards>
+            
 
             <div class="row table-area">
-                <div class="col-8 big-table">
+                <div class="col-12 big-table">
                     <div class="theading">
-                        <h4>Transactions</h4>
+                        <h4>Delivery History</h4>
                         <p>See all Transactions</p>
                     </div>
                     <table class="table table-borderless">
+                        <thead>
+                            <th>STATUS</th>
+                            <th>FROM</th>
+                            <th>PICKUP</th>
+                            <th>TO</th>
+                            <th>DELIVERY</th>
+                            <th>DATE</th>
+                            <th></th>
+                        </thead>
                     
                         <tbody>
                             <tr>
@@ -37,8 +33,10 @@
                                         <p>Completed</p> 
                                     </div>                                    
                                 </td>
-                                <td>20 bags of Dangote Fertilizer</td>
-                                <td>N303,909.99</td>
+                                <td>Naziri Farms</td>
+                                <td>10 Adetokunmbo street,Umuahia, Abia.</td>
+                                <td>Havillah flour processors</td>
+                                <td>10 Adetokunmbo street,Umuahia, Abia.</td>
                                 <td>21 Oct, 2022</td>
                                 <td>...</td>
                             </tr>
@@ -49,8 +47,10 @@
                                         <p>Completed</p> 
                                     </div>
                                 </td>
-                                <td>20 bags of Dangote Fertilizer</td>
-                                <td>N303,909.99</td>
+                                <td>Naziri Farms</td>
+                                <td>10 Adetokunmbo street,Umuahia, Abia.</td>
+                                <td>Havillah flour processors</td>
+                                <td>10 Adetokunmbo street,Umuahia, Abia.</td>
                                 <td>21 Oct, 2022</td>
                                 <td>...</td>
                             </tr>
@@ -61,8 +61,10 @@
                                         <p>Completed</p> 
                                     </div>
                                 </td>
-                                <td>20 bags of Dangote Fertilizer</td>
-                                <td>N303,909.99</td>
+                                <td>Naziri Farms</td>
+                                <td>10 Adetokunmbo street,Umuahia, Abia.</td>
+                                <td>Havillah flour processors</td>
+                                <td>10 Adetokunmbo street,Umuahia, Abia.</td>
                                 <td>21 Oct, 2022</td>
                                 <td>...</td>
                             </tr>
@@ -73,8 +75,10 @@
                                         <p>Completed</p> 
                                     </div>                                    
                                 </td>
-                                <td>20 bags of Dangote Fertilizer</td>
-                                <td>N303,909.99</td>
+                                <td>Naziri Farms</td>
+                                <td>10 Adetokunmbo street,Umuahia, Abia.</td>
+                                <td>Havillah flour processors</td>
+                                <td>10 Adetokunmbo street,Umuahia, Abia.</td>
                                 <td>21 Oct, 2022</td>
                                 <td>...</td>
                             </tr>
@@ -85,41 +89,26 @@
                                         <p>Completed</p> 
                                     </div>                                    
                                 </td>
-                                <td>20 bags of Dangote Fertilizer</td>
-                                <td>N303,909.99</td>
+                                <td>Naziri Farms</td>
+                                <td>10 Adetokunmbo street,Umuahia, Abia.</td>
+                                <td>Havillah flour processors</td>
+                                <td>10 Adetokunmbo street,Umuahia, Abia.</td>
                                 <td>21 Oct, 2022</td>
                                 <td>...</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="col-3 small-table">
-                    <h4>Orders in Transit</h4>
-                    <div class="spaced">
-                        <p><span class="green-p">FROM </span> <br>Naziri Farms</p>
-                        <p scope="col">10,000tons of cocoa</p>
-                    </div>
-                    <div class="spaced">
-                        <p><span class="green-p">From </span> <br>Naziri Farms</p>
-                        <p>10,000tons of cocoa</p>
-                    </div>
-                    <div class="spaced">
-                        <p><span class="red-p">TO </span> <br>Naziri Farms</p>
-                        <p>10,000tons of cocoa</p>
-                    </div>
-                    <div class="spaced">
-                        <p><span class="green-p">From </span> <br>Naziri Farms</p>
-                        <p>10,000tons of cocoa</p>
-                    </div>
-                    <div class="spaced">
-                        <p><span class="red-p">TO </span> <br>Naziri Farms</p>
-                        <p>10,000tons of cocoa</p>
-                    </div>
-                    <div class="spaced">
-                        <p><span class="green-p">From </span> <br>Naziri Farms</p>
-                        <p>10,000tons of cocoa</p>
-                    </div>
+                
+            </div>
+
+            <div class=" col-12 map-area">
+                <div class="theading">
+                    <h4>Map monitor - Track deliveries in transit</h4>
+                    <p>See all Transactions</p>
                 </div>
+
+                <img src="@/assets/images/backgrounds/map.png" alt="">
             </div>
 
         </div>
@@ -133,7 +122,7 @@
     import DefaultNav from "@/layouts/DefaultNav.vue";
     import Cards from "./components/Cards.vue";
     export default {
-        name: 'CorporateDashboard',
+        name: 'LogisticsDashboard',
         components:{
             DefaultNav,
             Cards,
@@ -178,36 +167,10 @@
         }
     }
 
+    
    
 
-    .chart{
-        width: 100%;
-        margin-top: 50px;
-        padding: 30px;
-        background: white;
-
-        .chart-text{
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-
-            h2{
-                font-family: 'Poppins';
-                font-style: normal;
-                font-weight: 700;
-                font-size: 18px;
-                color: #4A4754;
-            }
-            .filter{
-                background-color: #05B050;
-                padding: 8px 14px;
-                color: white;
-            }
-        }
-    }
-    .chart img{
-        width: 100%;
-    }
+    
     .table-area{
         margin-top: 50px;
         display: flex;
@@ -216,48 +179,43 @@
     .big-table{
         background-color: white;
         padding: 30px;
+
+        th{
+            font-family: 'Maven Pro';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            color: #4A4754;
+            border-bottom: 0.7px solid #EDEDEE;
+            padding: 20px 25px;
+        }
+
+        td{
+            font-family: 'Maven Pro';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            color: #696671;
+            padding: 20px 25px;
+        }
     }
-    .small-table{
-        background-color: white;
-        padding: 30px;
-        margin-left: 50px;
-        
-    }
+ 
     .theading{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        margin-bottom: 20px;
+
+        h4{
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            color: #4A4754;
+        }
     }
 
-    .dots{
-        margin-top: 20px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-
-        .green-dot{
-            width: 20px;
-            height: 20px;
-            background-color: #05B050;
-            border-radius: 50%;
-        }
-
-        .red-dot{
-            width: 20px;
-            height: 20px;
-            background-color: #CD4647;
-            border-radius: 50%;
-            margin-left: 20px;
-        }
-        .green-text{
-            color: #05B050;
-            margin-left: 10px;
-        }
-        .red-text{
-            color: #CD4647;
-            margin-left: 10px;
-        }
-    }
+  
     .colored-green{
         display: flex;
         height: 35px;
@@ -302,27 +260,13 @@
             margin-left: 5px;
         }
     }
-    .spaced{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .green-p{
-        font-family: 'Maven Pro';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        color: #05B050;
-    }
-    .red-p{
-        font-family: 'Maven Pro';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        color: #C32021;
-    }
-    
 
 
+    .map-area{
+        margin-top: 50px;
+        margin-bottom: 50px;
+        img{
+            width: 100%;
+        }
+    }
 </style>

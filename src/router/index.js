@@ -12,7 +12,11 @@ import ResetPassword from "@/pages/auth/ResetPassword.vue";
 import ResetSuccess from "@/pages/auth/ResetSuccess.vue";
 import UserType from "@/pages/auth/UserType.vue";
 import AgentType from "@/pages/auth/AgentType.vue";
-import CorporateDashboard from "@/pages/dashboard/Corporate.vue"
+import CorporateDashboard from "@/pages/dashboard/Corporate.vue";
+import LogisticsDashboard from "@/pages/dashboard/Logistics.vue";
+import FinanceDashboard from "@/pages/dashboard/Finance.vue";
+import DoKyb from "@/pages/dashboard/DoKyb.vue";
+import AccountSettings from "@/pages/dashboard/AccountSettings.vue";
 import DefaultNav from "@/layouts/DefaultNav.vue";
 
 
@@ -93,6 +97,26 @@ const routes = [
         path: "/dashboard/corporate",
         name: "CorporateDashboard",
         component:CorporateDashboard,
+    },
+    {
+        path: "/dashboard/logistics",
+        name: "LogisticsDashboard",
+        component:LogisticsDashboard,
+    },
+    {
+        path: "/dashboard/finance",
+        name: "FinanceDashboard",
+        component:FinanceDashboard,
+    },
+    {
+        path: "/dashboard/do-kyb",
+        name: "DoKyb",
+        component:DoKyb,
+    },
+    {
+        path: "/dashboard/accountsettings",
+        name: "AccountSettings",
+        component:AccountSettings
     },
 
 ];

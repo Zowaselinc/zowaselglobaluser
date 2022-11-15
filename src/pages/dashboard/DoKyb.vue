@@ -2,8 +2,12 @@
     <DefaultNav>
         <div class="big-container">
             <div class="welcome-text">
-                <h2>Welcome, Carbury</h2>
-                <p>Wallet Balance: <span>$5070</span></p>
+                <h2>Welcome, Pamela Cocoa</h2>
+                <p>Wallet Balance: <span>NGN0.00</span></p>
+            </div>
+
+            <div class="big-notification">
+                <p>You are required to provide some details about your company. <a href="#">Click here to proceed</a></p>
             </div>
            
            <Cards></Cards>
@@ -12,7 +16,7 @@
                     <h2>Sales Analytics</h2>
                     <div class="filter">Filter By | Last 12months</div>
                 </div>
-                <img src="@/assets/images/backgrounds/linechartmain.png" alt="">
+                <img src="@/assets/images/backgrounds/emptychart.png" alt="">
                 <div class="dots">
                     <div class="green-dot"></div>
                     <p class="green-text">Sales</p>
@@ -27,97 +31,17 @@
                         <h4>Transactions</h4>
                         <p>See all Transactions</p>
                     </div>
-                    <table class="table table-borderless">
-                    
-                        <tbody>
-                            <tr>
-                                <td scope="row">
-                                    <div class="colored-green">
-                                        <div class="green-dot"></div>
-                                        <p>Completed</p> 
-                                    </div>                                    
-                                </td>
-                                <td>20 bags of Dangote Fertilizer</td>
-                                <td>N303,909.99</td>
-                                <td>21 Oct, 2022</td>
-                                <td>...</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">
-                                    <div class="colored-yellow">
-                                        <div class="yellow-dot"></div>
-                                        <p>Completed</p> 
-                                    </div>
-                                </td>
-                                <td>20 bags of Dangote Fertilizer</td>
-                                <td>N303,909.99</td>
-                                <td>21 Oct, 2022</td>
-                                <td>...</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">
-                                    <div class="colored-yellow">
-                                        <div class="yellow-dot"></div>
-                                        <p>Completed</p> 
-                                    </div>
-                                </td>
-                                <td>20 bags of Dangote Fertilizer</td>
-                                <td>N303,909.99</td>
-                                <td>21 Oct, 2022</td>
-                                <td>...</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">
-                                    <div class="colored-green">
-                                        <div class="green-dot"></div>
-                                        <p>Completed</p> 
-                                    </div>                                    
-                                </td>
-                                <td>20 bags of Dangote Fertilizer</td>
-                                <td>N303,909.99</td>
-                                <td>21 Oct, 2022</td>
-                                <td>...</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">
-                                    <div class="colored-green">
-                                        <div class="green-dot"></div>
-                                        <p>Completed</p> 
-                                    </div>                                    
-                                </td>
-                                <td>20 bags of Dangote Fertilizer</td>
-                                <td>N303,909.99</td>
-                                <td>21 Oct, 2022</td>
-                                <td>...</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="empty-img">
+                        <img src="@/assets/images/backgrounds/empty-box.png" alt="">
+                        <p>No information available yet</p>
+                    </div>
                 </div>
                 <div class="col-3 small-table">
                     <h4>Orders in Transit</h4>
-                    <div class="spaced">
-                        <p><span class="green-p">FROM </span> <br>Naziri Farms</p>
-                        <p scope="col">10,000tons of cocoa</p>
-                    </div>
-                    <div class="spaced">
-                        <p><span class="green-p">From </span> <br>Naziri Farms</p>
-                        <p>10,000tons of cocoa</p>
-                    </div>
-                    <div class="spaced">
-                        <p><span class="red-p">TO </span> <br>Naziri Farms</p>
-                        <p>10,000tons of cocoa</p>
-                    </div>
-                    <div class="spaced">
-                        <p><span class="green-p">From </span> <br>Naziri Farms</p>
-                        <p>10,000tons of cocoa</p>
-                    </div>
-                    <div class="spaced">
-                        <p><span class="red-p">TO </span> <br>Naziri Farms</p>
-                        <p>10,000tons of cocoa</p>
-                    </div>
-                    <div class="spaced">
-                        <p><span class="green-p">From </span> <br>Naziri Farms</p>
-                        <p>10,000tons of cocoa</p>
+                 
+                    <div class="empty-img">
+                        <img src="@/assets/images/backgrounds/empty-box.png" alt="">
+                        <p class="small-text">No information available yet</p>
                     </div>
                 </div>
             </div>
@@ -133,7 +57,7 @@
     import DefaultNav from "@/layouts/DefaultNav.vue";
     import Cards from "./components/Cards.vue";
     export default {
-        name: 'CorporateDashboard',
+        name: 'DoKyb',
         components:{
             DefaultNav,
             Cards,
@@ -178,7 +102,26 @@
         }
     }
 
-   
+    .big-notification{
+        width: 100%;
+        height: 60px;
+        color: white;
+        background: #CD4647;
+        box-shadow: 0px 12px 24px rgba(44, 39, 56, 0.04), 0px 24px 48px rgba(44, 39, 56, 0.08);
+        border-radius: 4px;
+        margin-bottom: 30px;
+        padding: 0px 24px;
+        display: flex;
+        align-items: center;
+
+        p{
+            margin: 0px;
+            padding: 0px;
+        }
+        a{
+            color: white;
+        }
+    }
 
     .chart{
         width: 100%;
@@ -322,7 +265,20 @@
         font-size: 14px;
         color: #C32021;
     }
-    
+    .empty-img{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 70px;
+    }
+    .empty-img img{
+        width: 200px;
+        height: 200px;
+    }
+    .small-text{
+        font-size: 12px;
+    }
 
 
 </style>
