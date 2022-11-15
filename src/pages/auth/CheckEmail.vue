@@ -3,7 +3,7 @@
     <div class="big-container">
         <div class="left-content">
         <h1 class="text-center">Check Your Email</h1>
-        <p id="emailHelp" class="form-text text-muted text-center">We have sent an email with password reset information to F****h@gmail.com.</p>
+        <p id="emailHelp" class="form-text text-muted text-center">We have sent an email with password reset information to {{email}}.</p>
         
          <form>
             
@@ -11,11 +11,11 @@
                         
             <div class="buttons">
                 <div class="form-group">
-                    <button type="button" class="btn  btn-lg btn-block">Send</button>
+                    <button type="button" @click="resendEmail()" class="btn  btn-lg btn-block">Send</button>
                 </div>
                 
                 <div class="form-group">
-                    <button type="button" class="btn skip btn-lg btn-block">Back to Login</button>
+                    <button type="button" @click="$router.replace('/login')" class="btn skip btn-lg btn-block">Back to Login</button>
                 </div>
             </div>
            
@@ -25,7 +25,7 @@
         </div>
         <div class="right-content">
             <img src="@/assets/images/backgrounds/right-side.png" alt="">
-       
+
         </div>
     </div>
     </AuthSharedLayout>
@@ -33,10 +33,26 @@
 
 <script>
     import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
+    import AuthService from '@/services/auth'; 
     export default {
         name:'CheckEmail',
+        data(){
+            return {
+                email : window.localStorage.getItem('resetEmail')
+            };
+        },
         components: {
             AuthSharedLayout
+        },
+        methods:{
+            resendEmail(){
+                AuthService.sendResetEmail(this.email,(response)=>{
+                    if(response.status){
+                        window.localStorage.setItem('resetEmail',vm.email);
+                        vm.$router.push('/checkemail');
+                    }
+                });
+            }
         }
     }
 </script>
