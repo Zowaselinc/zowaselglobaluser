@@ -131,8 +131,14 @@ footer {
     width: 100%;
     height: 496px;
     background: #262c3f;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
     .footer-main {
-        margin-inline: 10.13% 11.5%;
+       
+        width: 80%;
         position: relative;
     }
 
