@@ -1,5 +1,5 @@
 <template>
-        <footer class="position-relative">
+    <footer class="position-relative">
         <hr>
         <div class="footer-main">
             <div class="footer-top">
@@ -17,7 +17,7 @@
                         <img class="img-fluid" src="@/assets/images/logos/zowasel-grey-logo.png" alt="logo">
                     </div>
                     <div class="address footer-contact">
-                        <p class="mt-3 mb-1">Collins Street West, Victoria,</p>
+                        <p class="">Collins Street West, Victoria,</p>
                         <p>Australia (AU4578).</p>
                     </div>
                     <div class="footer-email footer-contact">
@@ -55,32 +55,36 @@
                 <div class=" gadget d-flex flex-column">
                     <h2>Download Apps</h2>
                     <!-- Google play -->
-                    <div class="google store-box d-flex flex-row align-items-center ">
-                        <div class="google-Img">
-                            <img src="@/assets/images/vectors/PlayStore.svg" alt="google play">
-                        </div>
-                        <div class="google-play d-flex flex-column  ">
-                            <div>Google Play</div>
-                            <div>Get It Now</div>
+                    <div class="app-store-container">
+                        <div class="google store-box d-flex flex-row align-items-center ">
+                            <div class="google-Img">
+                                <img src="@/assets/images/vectors/PlayStore.svg" alt="google play">
+                            </div>
+                            <div class="google-play d-flex flex-column  ">
+                                <div>Google Play</div>
+                                <div>Get It Now</div>
+                            </div>
                         </div>
                     </div>
                     <!-- App Store -->
-                    <div class="apple store-box d-flex flex-row align-items-center">
-                        <div>
-                            <img src="@/assets/images/vectors/appleStore.svg" alt="google play">
-                        </div>
-                        <div class="apple-store d-flex flex-column ">
-                            <div>App Store</div>
-                            <div>Get It Now</div>
+                    <div class="app-store-container">
+                        <div class="apple store-box d-flex flex-row align-items-center">
+                            <div>
+                                <img src="@/assets/images/vectors/appleStore.svg" alt="google play">
+                            </div>
+                            <div class="apple-store d-flex flex-column ">
+                                <div>App Store</div>
+                                <div>Get It Now</div>
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
         </div>
-        <div class="copyright">
+        <div class="copyright" @click="accordion()">
             <div class="copyright-container  d-flex flex-row position-relative">
-                <p>Copyright © 2021 Zowasel Inc. All Right Reserved.</p>
+                <div class="copy-right-2021">Copyright © 2021 Zowasel Inc. All Right Reserved.</div>
                 <div class="social-media d-flex position-absolute">
                     <a href="#">
                         <img src="@/assets/images/vectors/facebook.svg" alt="facebook">
@@ -96,17 +100,16 @@
                     </a>
                 </div>
             </div>
-            </div>
+        </div>
     </footer>
 </template>
 
 <script>
-    export default {
-        
-    }
+export default {
+
+}
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/navigation";
-
 </style>
