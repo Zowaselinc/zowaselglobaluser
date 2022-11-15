@@ -38,7 +38,8 @@
                                         <p>Paid</p> 
                                     </div>                                    
                                 </td>
-                                <td>...</td>
+                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+
                             </tr>
                             <tr>
                                 <td>Ann Peterson</td>
@@ -52,7 +53,8 @@
                                         <p>Due</p> 
                                     </div>
                                 </td>
-                                <td>...</td>
+                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+
                             </tr>
                             <tr>
                                 <td>Ann Peterson</td>
@@ -66,7 +68,8 @@
                                         <p>Paid</p> 
                                     </div>                                    
                                 </td>
-                                <td>...</td>
+                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+
                             </tr>
                             <tr>
                                 <td>Ann Peterson</td>
@@ -80,7 +83,8 @@
                                         <p>Past Due</p> 
                                     </div>
                                 </td>
-                                <td>...</td>
+                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+
                             </tr>
                             <tr>
                                 <td>Ann Peterson</td>
@@ -94,7 +98,8 @@
                                         <p>Paid</p> 
                                     </div>                                    
                                 </td>
-                                <td>...</td>
+                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+
                             </tr>
                             <tr>
                                 <td>Ann Peterson</td>
@@ -108,7 +113,8 @@
                                         <p>Due</p> 
                                     </div>
                                 </td>
-                                <td>...</td>
+                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+
                             </tr>
                             <tr>
                                 <td>Ann Peterson</td>
@@ -122,7 +128,8 @@
                                         <p>Paid</p> 
                                     </div>                                    
                                 </td>
-                                <td>...</td>
+                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+
                             </tr>
                             <tr>
                                 <td>Ann Peterson</td>
@@ -136,7 +143,8 @@
                                         <p>Past Due</p> 
                                     </div>
                                 </td>
-                                <td>...</td>
+                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+
                             </tr>
                             <tr>
                                 <td>Ann Peterson</td>
@@ -150,7 +158,8 @@
                                         <p>Past Due</p> 
                                     </div>                                    
                                 </td>
-                                <td>...</td>
+                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+
                             </tr>
                             <tr>
                                 <td>Ann Peterson</td>
@@ -164,7 +173,8 @@
                                         <p>Due</p> 
                                     </div>
                                 </td>
-                                <td>...</td>
+                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+
                             </tr>
                         </tbody>
                     </table>
@@ -195,6 +205,7 @@
 
 
 <style lang="scss" scoped>
+@import "@/assets/scss/main.scss";
 .big-container{
     width: 100%;
     height: auto;
@@ -202,11 +213,23 @@
     display: flex;
     flex-direction: column;
     padding:1% 5% 2% 5%;
+    @include breakpoint-between(md, lg) {
+        width: 60.5%;
+    }
+
+    @include breakpoint-between(lg, xl) {
+        width: 69.5%;
+    }
+
+    @include breakpoint-between(xl, xxl) {
+        width: 76%;
+    }
 }
     .welcome-text{
         display: flex;
         justify-content: space-between;
-        margin-bottom: 45px;
+        margin-bottom: 47px;
+        padding-top: 30px;
 
 
         h2{
