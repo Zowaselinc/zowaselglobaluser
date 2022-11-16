@@ -17,6 +17,8 @@ import LogisticsDashboard from "@/pages/dashboard/Logistics.vue";
 import FinanceDashboard from "@/pages/dashboard/Finance.vue";
 import DoKyb from "@/pages/dashboard/DoKyb.vue";
 import AccountSettings from "@/pages/dashboard/AccountSettings.vue";
+import Notifications from "@/pages/dashboard/Notifications.vue";
+import Messages from "@/pages/dashboard/Messages.vue";
 import DefaultNav from "@/layouts/DefaultNav.vue";
 
 
@@ -118,6 +120,17 @@ const routes = [
         name: "AccountSettings",
         component:AccountSettings
     },
+    {
+        path: "/dashboard/notifications",
+        name: "Notifications",
+        component:Notifications
+    },
+    {
+        path: "/dashboard/messages",
+        name: "Messages",
+        component:Messages
+    },
+
 
 ];
 
