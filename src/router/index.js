@@ -19,7 +19,6 @@ import DoKyb from "@/pages/dashboard/DoKyb.vue";
 import AccountSettings from "@/pages/dashboard/AccountSettings.vue";
 import Notifications from "@/pages/dashboard/Notifications.vue";
 import Messages from "@/pages/dashboard/Messages.vue";
-import DefaultNav from "@/layouts/DefaultNav.vue";
 
 
 const routes = [
@@ -79,11 +78,6 @@ const routes = [
         path: "/resetsuccess",
         name:"ResetSuccess",
         component:ResetSuccess,
-    },
-    {
-        path: "/navigation",
-        name:"DefaultNav",
-        component:DefaultNav,
     },
     {
         path: "/agent-type",

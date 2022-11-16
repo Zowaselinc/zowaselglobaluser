@@ -64,23 +64,21 @@ nav {
 }
 
 // Side Bar
-.active{
-    display: none;
-}
+
 #sidebarMenu {
     padding: 32px 16px;
     width: 20%;
     z-index: 600;
     color: #ffffff;
     background: linear-gradient(180deg, #29333f 0%, #1c2131 100%);
-    @include breakpoint-up(md) {
+    @include breakpoint-between(md, lg) {
         width: 39.5%;
     }
-    @include breakpoint-up(lg) {
+    @include breakpoint-between(lg, xl) {
         width: 30.5%;
     }
     @include breakpoint-between(xl, xxl) {
-        width: 23.5%;
+        width: 24%;
     }
 
     #side-menu {
@@ -89,7 +87,9 @@ nav {
             .drop-menu {
                 @include textStyles("Maven Pro", 400, 16px, 147%);
                 color: #ffffff;
-                margin-left: 53px;
+                margin-left: 18%;
+                margin-top: 10px;
+                display: none;
                 div {
                     padding: 9px 15px;
                     &:hover {
@@ -97,6 +97,12 @@ nav {
                         border-radius: 4px;
                     }
                 }
+            }
+        }
+// toggle
+        a.nav-item.active {
+            .drop-menu{
+                display: block;
             }
         }
         a span {
@@ -124,7 +130,21 @@ nav {
             display: none;
         }
     }
+    // toggle
+    a.nav-item.active {
+        .ripple{
+            background: #05B050;
+            border-radius: 4px;
+            img.carret-down{
+                display: none;
+            }
+            img.carretUp{
+                display: block;
+            }
+        }
+    }
 }
+
 
 // footer
 footer {
@@ -176,9 +196,7 @@ footer {
     }
 }
 // footer info
-footer h2{
-    // margin-bottom: 0rem;
-}
+
 .footer-info {
     @include flexed-Container(row, flex-start, flex-start);
     @include textStyles("Maven Pro", 400, 12px, 130%);
@@ -267,7 +285,6 @@ footer h2{
         color: #b5b4b9;
     }
     .social-media {
-        // width: 8.68%;
         gap: 25px;
         right: 0%;
     }
