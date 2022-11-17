@@ -15,14 +15,14 @@
                 <img src="@/assets/images/backgrounds/linechartmain.png" alt="">
                 <div class="dots">
                     <div class="green-dot"></div>
-                    <p class="green-text">Sales</p>
+                    <p>Sales</p>
                     <div class="red-dot"></div>
-                    <p class="red-text">Revenue</p>
+                    <p>Revenue</p>
                 </div>
             </div>
 
             <div class="row table-area">
-                <div class="col-8 big-table">
+                <div class="big-table">
                     <div class="theading">
                         <h4>Transactions</h4>
                         <p>See all Transactions</p>
@@ -98,7 +98,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-3 small-table">
+                <div class="small-table">
                     <h4>Orders in Transit</h4>
                     <div class="spaced">
                         <p><span class="green-p">FROM </span> <br>Naziri Farms</p>
@@ -237,8 +237,11 @@ export default {
 }
 
 .table-area {
+    width: 100%;
     margin-top: 50px;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 5px 0px 0px;
     gap: 8px;
 }
@@ -246,12 +249,39 @@ export default {
 .big-table {
     background-color: white;
     padding: 30px;
+    box-sizing: border-box;
+    width: 64%;
+
+    td{
+        font-family: 'Maven Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        color: #4A4754;
+    }
 }
 
 .small-table {
     background-color: white;
     padding: 30px;
-    margin-left: 50px;
+    box-sizing: border-box;
+    width: 35%;
+
+    p{
+        font-family: 'Maven Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        color: #4A4754;
+    }
+
+    h4{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        color: #4A4754;
+    }
 
 }
 
@@ -259,6 +289,20 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    h4{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        color: #4A4754;
+    }
+    p{
+        font-family: 'Maven Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        color: #96949C;
+    }
 }
 
 .dots {
@@ -266,31 +310,29 @@ export default {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 
     .green-dot {
-        width: 20px;
-        height: 20px;
+        width: 12px;
+        height: 12px;
         background-color: #05B050;
         border-radius: 50%;
     }
 
     .red-dot {
-        width: 20px;
-        height: 20px;
+        width: 12px;
+        height: 12px;
         background-color: #CD4647;
         border-radius: 50%;
         margin-left: 20px;
     }
 
-    .green-text {
-        color: #05B050;
+    p{
         margin-left: 10px;
+        margin-top: 12px;
     }
 
-    .red-text {
-        color: #CD4647;
-        margin-left: 10px;
-    }
+   
 }
 
 .colored-green {

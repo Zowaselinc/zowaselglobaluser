@@ -19,6 +19,7 @@ import DoKyb from "@/pages/dashboard/DoKyb.vue";
 import AccountSettings from "@/pages/dashboard/AccountSettings.vue";
 import Notifications from "@/pages/dashboard/Notifications.vue";
 import Messages from "@/pages/dashboard/Messages.vue";
+import Subscription from "@/pages/dashboard/Subscription.vue";
 
 
 const routes = [
@@ -123,6 +124,11 @@ const routes = [
         path: "/dashboard/messages",
         name: "Messages",
         component:Messages
+    },
+    {
+        path: "/dashboard/subscription",
+        name: "Subscription",
+        component:Subscription
     },
 
 
