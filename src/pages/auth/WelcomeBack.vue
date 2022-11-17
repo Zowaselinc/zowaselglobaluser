@@ -72,7 +72,7 @@
                     password : vm.password
                 },(response)=>{
                     if(!response.error){
-                        vm.$router.push('/navigation');
+                        vm.$router.push('/dashboard/corporate');
                     }
                 })
             }

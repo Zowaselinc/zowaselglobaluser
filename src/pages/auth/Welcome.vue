@@ -6,7 +6,7 @@
                 <h1 class="text-center">Welcome</h1>
                 <p class="text-center">You have successfully registered with Zowasel as {{type}}. Proceed to your dashboard to add team members.</p>
             </div>
-            <button @click="goTo()">Go to dashboard</button>
+            <button @click="openDashboard()">Go to dashboard</button>
         </div>
             
     </div>
@@ -21,8 +21,20 @@
             };
         },
         methods : {
-            goTo(){
-                this.$router.push('/navigation');
+            goTo(path){
+                this.$router.push(path);
+            },
+            openDashboard(){
+                if(this.type == "buyer"){
+                    this.goTo('/dashboard/corporate');
+                    return 0;
+                }
+                if(this.type == "partner"){
+                    this.goTo('/dashboard/logistics');
+                    return 0;
+                }
+                this.goTo('/dashboard/merchant');
+
             }
         }
     }

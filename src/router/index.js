@@ -91,6 +91,11 @@ const routes = [
         component:UserType,
     },
     {
+        path: "/dashboard/merchant",
+        name: "MerchantDashboard",
+        component:CorporateDashboard,
+    },
+    {
         path: "/dashboard/corporate",
         name: "CorporateDashboard",
         component:CorporateDashboard,
