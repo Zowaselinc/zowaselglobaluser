@@ -22,7 +22,7 @@
         },
         methods : {
             goTo(){
-                this.$router.push('/navigation');
+                this.$router.push('/dashboard/corporate');
             }
         }
     }
