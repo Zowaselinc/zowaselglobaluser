@@ -118,7 +118,7 @@ nav {
             background: rgba(0, 0, 0, 0.27);
             border-radius: 4px;
         }
-        &.active{
+        &.actives{
             background: #05B050;
         }
         img.arrow-symbol {
@@ -137,7 +137,6 @@ nav {
     // toggle
     a.nav-item.active {
         .ripple{
-            background: #05B050;
             border-radius: 4px;
             img.carret-down{
                 display: none;

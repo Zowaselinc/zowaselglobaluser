@@ -136,7 +136,6 @@ const routes = [
         component:Subscription
     },
 
-
 ];
 
 const router = createRouter({
