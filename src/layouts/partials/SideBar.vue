@@ -2,7 +2,7 @@
     <!-- Side Bar -->
     <nav id="sidebarMenu" class="collapse d-md-block">
         <div id="side-menu" class="list-group list-group-flush">
-            <a href="javascript:void(0)" class="nav-item" aria-current="true">
+            <a href="/dashboard/corporate" class="nav-item" aria-current="true">
                 <div class="ripple active">
                     <img class="img-fluid" src="@/assets/images/vectors/house.svg" alt="house">
                     <span>Home</span>
@@ -19,11 +19,13 @@
                 </div>
                 <!-- drop menu -->
                 <div class="drop-menu wallet-menu">
-                    <div>Credit wallet</div>
-                    <div>Withdrawal</div>
+                    <!-- /dashboard/creditwallet -->
+                    <div @click='changeDir("/dashboard/creditwallet")'>Credit wallet</div>
+                    <!-- /dashboard/widthdrwal -->
+                    <div @click='changeDir(" /dashboard/widthdrwal")'>Withdrawal</div>
                 </div>
             </a>
-            <a href="javascript:void(0)" class="nav-item">
+            <a href="/dashboard/messages" class="nav-item">
                 <div class="ripple">
                     <img class="img-fluid" src="@/assets/images/vectors/ChatText.svg"
                         alt="ChatText"><span>Message</span>
@@ -40,9 +42,10 @@
                 </div>
                 <!-- drop menu -->
                 <div class="drop-menu marketplace-menu">
-                    <div>Input market</div>
-                    <div>Crop market</div>
-                    <div>Logistics</div>
+                    <div @click='changeDir(" /dashboard/inputmarket")'>Input market</div>
+                    <div @click='changeDir(" /dashboard/cropmarket")'>Crop market</div>
+                    <!-- /dashboard/logistics -->
+                    <div @click='changeDir("/dashboard/logistics")'>Logistics</div>
                 </div>
             </a>
             <a href="javascript:void(0)" class="nav-item">
@@ -57,13 +60,14 @@
                 </div>
                 <!-- drop menu -->
                 <div class="drop-menu scoring-menu">
-                    <div>Credit score point system</div>
-                    <div>credit scor analysis</div>
-                    <div>Loans</div>
-                    <div>Score Analysis</div>
+                    <div @click='changeDir(" /dashboard/creditscoringpointsystem")'>Credit score point system</div>
+                    <div @click='changeDir(" /dashboard/creditscoreanalysis")'>credit score analysis</div>
+                    <div @click='changeDir(" /dashboard/loans")'>Loans</div>
+                    <div @click='changeDir(" /dashboard/scoreanalysis")'>Score Analysis</div>
                 </div>
 
             </a>
+            <!-- no page available -->
             <a href="javascript:void(0)" class="nav-item">
                 <div class="ripple">
                     <img class="img-fluid" src="@/assets/images/vectors/File.svg" alt="file"><span>Invoice</span>
@@ -80,8 +84,10 @@
                 </div>
                 <!-- drop menu -->
                 <div class="drop-menu api-menu ">
-                    <div>service subscription</div>
-                    <div>Renewal manager</div>
+                    <!-- /dashboard/subscription -->
+                    <div @click='changeDir(" /dashboard/subscription")'>service subscription</div>
+                    <!-- /dashboard/renewalmanager -->
+                    <div @click='changeDir("/dashboard/renewalmanager")'>Renewal manager</div>
                     <div>Traffic & usage stats</div>
                     <div>Changelog notification</div>
 
@@ -148,7 +154,11 @@ export default {
                 });
 
             }
+        },
+        changeDir(path){
+            window.location.assign(path);
         }
+
     },
     mounted() {
         this.accordion();
