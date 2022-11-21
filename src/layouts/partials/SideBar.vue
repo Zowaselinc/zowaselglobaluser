@@ -42,8 +42,8 @@
                 </div>
                 <!-- drop menu -->
                 <div class="drop-menu marketplace-menu">
-                    <div>Input market</div>
-                    <div>Crop market</div>
+                    <div @click='changeDir(" /dashboard/inputmarket")'>Input market</div>
+                    <div @click='changeDir(" /dashboard/cropmarket")'>Crop market</div>
                     <!-- /dashboard/logistics -->
                     <div @click='changeDir("/dashboard/logistics")'>Logistics</div>
                 </div>
@@ -60,10 +60,10 @@
                 </div>
                 <!-- drop menu -->
                 <div class="drop-menu scoring-menu">
-                    <div>Credit score point system</div>
-                    <div>credit scor analysis</div>
-                    <div>Loans</div>
-                    <div>Score Analysis</div>
+                    <div @click='changeDir(" /dashboard/creditscoringpointsystem")'>Credit score point system</div>
+                    <div @click='changeDir(" /dashboard/creditscoreanalysis")'>credit score analysis</div>
+                    <div @click='changeDir(" /dashboard/loans")'>Loans</div>
+                    <div @click='changeDir(" /dashboard/scoreanalysis")'>Score Analysis</div>
                 </div>
 
             </a>
@@ -87,7 +87,7 @@
                     <!-- /dashboard/subscription -->
                     <div @click='changeDir(" /dashboard/subscription")'>service subscription</div>
                     <!-- /dashboard/renewalmanager -->
-                    <div>Renewal manager</div>
+                    <div @click='changeDir("/dashboard/renewalmanager")'>Renewal manager</div>
                     <div>Traffic & usage stats</div>
                     <div>Changelog notification</div>
 
