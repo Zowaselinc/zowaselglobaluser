@@ -99,9 +99,9 @@ nav {
                 }
             }
         }
-// toggle
+        // toggle
         a.nav-item.active {
-            .drop-menu{
+            .drop-menu {
                 display: block;
             }
         }
@@ -118,8 +118,8 @@ nav {
             background: rgba(0, 0, 0, 0.27);
             border-radius: 4px;
         }
-        &.actives{
-            background: #05B050;
+        &.actives {
+            background: #05b050;
         }
         img.arrow-symbol {
             float: right;
@@ -136,18 +136,17 @@ nav {
     }
     // toggle
     a.nav-item.active {
-        .ripple{
+        .ripple {
             border-radius: 4px;
-            img.carret-down{
+            img.carret-down {
                 display: none;
             }
-            img.carretUp{
+            img.carretUp {
                 display: block;
             }
         }
     }
 }
-
 
 // footer
 footer {
@@ -160,7 +159,6 @@ footer {
     align-items: center;
 
     .footer-main {
-       
         width: 80%;
         position: relative;
     }
@@ -179,7 +177,7 @@ footer {
             border: none !important;
             box-shadow: 0 0;
             margin-top: 0;
-            color: #F1F1F1;
+            color: #f1f1f1;
 
             &::placeholder {
                 @include textStyles("Maven Pro", 600, 13px, 140%);
