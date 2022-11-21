@@ -3,7 +3,7 @@
     <nav id="sidebarMenu" class="collapse d-md-block">
         <div id="side-menu" class="list-group list-group-flush">
             <a href="javascript:void(0)" class="nav-item" aria-current="true">
-                <div class="ripple">
+                <div class="ripple active">
                     <img class="img-fluid" src="@/assets/images/vectors/house.svg" alt="house">
                     <span>Home</span>
                 </div>
@@ -72,8 +72,7 @@
             </a>
             <a href="javascript:void(0)" class="nav-item">
                 <div class="ripple accordion-header">
-                    <img class="img-fluid" src="@/assets/images/vectors/Folder.svg" alt="folder"><span>API and
-                        subscription</span>
+                    <img class="img-fluid" src="@/assets/images/vectors/Folder.svg" alt="folder"><span>API & subscription</span>
                     <img class="arrow-symbol carret-down" src="@/assets/images/vectors/arrowSymbol.svg"
                         alt="Arrow-Symbol">
                     <img class="arrow-symbol carretUp" src="@/assets/images/vectors/arrowupsymbol.svg"
