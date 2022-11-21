@@ -86,30 +86,87 @@
             <div class="right-top-section">
                 <h1>Naziri Farms</h1>
             </div>
+            
             <div class="opened-message">
                 <p class="centered-text">Yesterday, 9:52pm</p>
                 <div class="sent-message">
                     <div class="sent-content">
-                        <p>I would buy for N3,8202,894 lo</p>
+                        <p>I would buy for N3,8202,894</p>
                         <span class="sent-time">10:35pm</span>
                     </div>
                     
                 </div>
                 <div class="incoming-message">
                     <div class="incoming-content">
-                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Dolorum totam quasi, minus nulla officiis vel ad ipsam,
-                             maxime fugit facere rerum explicabo tenetur voluptatum labore neque.
-                              Similique doloribus corrupti repellat.
-                              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                              Earum dignissimos vero similique vitae? Eum, iure autem soluta delectus 
-                              perspiciatis sequi. Ut illo mollitia, iste voluptate labore modi! Repudiandae, 
-                              assumenda repellat?</p>
-                        <span class="sent-time">10:35pm</span>
+                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Nemo sint dolor tenetur veritatis ab aperiam optio quisquam, 
+                            deleniti dolorem pariatur minima aliquid, reiciendis perferendis!
+                             Incidunt cum quam deserunt error vero?
+                         </p>
+                        <span class="received-time">10:35pm</span>
                     </div>
                    
                 </div>
+
+                <div class="centered">
+                    <div class="lines"></div>
+                    <p class="today">Today</p>
+                    <div class="lines"></div>
+                </div>
+
+                
+
+                <div class="sent-message">
+                    <div class="sent-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                            Doloribus eos earum blanditiis vitae quibusdam quod voluptatum 
+                            quos laboriosam officiis magni asperiores nisi repellat eum dolores, et, 
+                            reiciendis recusandae quia rem.
+                            </p>
+                        <span class="sent-time">10:35pm</span>
+                    </div>
+                    
+                </div>
+                <div class="incoming-message">
+                    <div class="incoming-content">
+                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sint dolor tenetur veritatis ab aperiam optio quisquam, deleniti dolorem pariatur minima aliquid, reiciendis perferendis! Incidunt cum quam deserunt error vero?
+                         </p>
+                        <span class="received-time">10:35pm</span>
+                    </div>
+                   
+                </div>
+                <div class="incoming-message">
+                    <div class="incoming-content">
+                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sint dolor tenetur veritatis ab aperiam optio quisquam, deleniti dolorem pariatur minima aliquid, reiciendis perferendis! Incidunt cum quam deserunt error vero?
+                         </p>
+                        <span class="received-time">10:35pm</span>
+                    </div>
+                   
+                </div>
+
+
+                
+                
             </div>
+
+            <div class="typing-zone">
+            
+                <form action="">
+                    <div class="typing">
+                        <p>Zowasel is typing...</p> 
+                    </div>
+                    <div class="form-content">
+                    <input type="text">
+                    <button>Send Offer</button>
+                    </div>
+                    
+                </form>
+            </div>
+
+            
         </div>
     </div>
 </template>
@@ -176,6 +233,8 @@
     background: #FFFFFF;
     border-radius: 4px;
     margin-top: 20px;
+    height: 700px;
+    overflow-y: scroll;
 
    
     .each-message{
@@ -228,6 +287,8 @@
     width: 72%;
     background-color: white;
     position: relative;
+    overflow-y: hidden;
+    
 
     .right-top-section{
         height: 89px;
@@ -237,35 +298,72 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 20;
     }
+      .centered-text{
+            text-align: center;
+            margin-top: 30px;
+        }
     .opened-message{
         padding: 37px 58px 37px 57px;
+        width: 100%;
+        height: 700px;
+        overflow-y: scroll;
         position: relative;
         display: flex;
         flex-direction: column;
+        overflow-y: scroll;
 
-        .centered-text{
-            text-align: center;
+
+        .centered{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+
+            .lines{
+                border-bottom: 1px solid #D8D8D8;
+                width: 40%;
+            }
+            .today{
+                margin-left: 10px;
+                margin-right: 10px;
+            }
         }
+      
 
         .sent-message{
-            position: absolute;
-            right: 57px;
-            text-align: right;
-            bottom: 20px;
-            max-width: 50%;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            width: 100%;
+            .sent-content{
+                max-width: 50%;
+                text-align: right;
+            }
 
         .sent-content p{
             padding: 16px 16px;
             height: auto;
             background: #F9F9F9;
             border-radius: 4px;
+            text-align: left;
+            margin: 0px;
         }
         }
         .incoming-message{
-            margin-top: 80px;
-            margin-bottom: 80px;
+            max-width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            
+        }
+        .incoming-content{
             max-width: 50%;
+            text-align: right;
         }
      
         .incoming-content p{
@@ -273,9 +371,66 @@
             height: auto;
             border-radius: 4px;
             background: #FFF8E6;
+            text-align: left;
+            margin: 0px;
         }
+
+
+        
     }
+
 }
+.typing-zone{
+            width: 100%;
+            padding: 0px 58px 0px 57px;
+
+
+        .form-content{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+        .typing{
+            width: 100%;
+            text-align: right;
+            margin-bottom: 0px;
+            
+            p{
+                margin: 0px;
+                font-family: 'Maven Pro';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                color: #05B050;
+            }
+        }
+
+            input{
+                width: 70%;
+                height: 60px;
+                padding: 10px 25px;
+                gap: 39px;
+                background: rgba(249, 249, 249, 0.5);
+                border: 1px solid #05B050 !important;
+                border-radius: 4px;
+            }
+            button{
+                width: 28%;
+                color: white;
+                height: 60px;
+                background: #05B050;
+                box-shadow: 0px 2.58333px 5.16667px rgba(44, 39, 56, 0.08), 0px 5.16667px 10.3333px rgba(44, 39, 56, 0.08);
+                border-radius: 5.16667px;
+                border: none;
+                font-family: 'Maven Pro';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 20.6667px;
+                margin-top: 5px;
+            }
+        }
 
 
     

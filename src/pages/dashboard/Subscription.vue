@@ -246,7 +246,7 @@ export default {
     background: linear-gradient(116.78deg, #FFFFFF 0.51%, rgba(255, 255, 255, 0) 66.77%);
     backdrop-filter: blur(21px);
     border-radius: 7px;
-    padding: 0px 20px 10px 20px;
+    padding: 0px 20px 30px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -294,6 +294,9 @@ export default {
     }
     ul{
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
