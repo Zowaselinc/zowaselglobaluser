@@ -1,4 +1,5 @@
 <template>
+<div class="bigger-container">
     <TopHeader>              
     </TopHeader>
     <div class="big-container">
@@ -9,6 +10,16 @@
             </div>
             <input type="text" class="search" placeholder="search messages">
             <div class="messages">
+                <div class="each-message">
+                    <div class="left-message">
+                        <h3>Nagari Farms</h3>
+                        <p>Lorem ipsum dolor</p>
+                    </div>
+                    <div class="right-message">
+                        <p>today, 9:52pm</p>
+                        <img src="@/assets/images/vectors/checks.png" alt="">
+                    </div>
+                </div>
                 <div class="each-message">
                     <div class="left-message">
                         <h3>Nagari Farms</h3>
@@ -169,6 +180,8 @@
             
         </div>
     </div>
+</div>
+    
 </template>
 
 <script> 
@@ -183,6 +196,10 @@
 
 
 <style lang="scss" scoped>
+.bigger-container{
+    height: 100vh;
+    overflow-y: hidden;
+}
 .big-container{
     width: 100%;
     height: auto;
@@ -190,6 +207,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    
 }
 
 .left{
@@ -199,6 +217,8 @@
     display: flex;
     flex-direction:column;
     box-sizing: border-box;
+    height: 100%;
+    overflow-y: hidden;
 
      .search{
         padding: 10px 25px;
@@ -233,7 +253,7 @@
     background: #FFFFFF;
     border-radius: 4px;
     margin-top: 20px;
-    height: 700px;
+    height: 600px;
     overflow-y: scroll;
 
    
@@ -287,7 +307,6 @@
     width: 72%;
     background-color: white;
     position: relative;
-    overflow-y: hidden;
     
 
     .right-top-section{
