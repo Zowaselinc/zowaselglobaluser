@@ -3,7 +3,7 @@
     <nav id="sidebarMenu" class="collapse d-md-block">
         <div id="side-menu" class="list-group list-group-flush">
             <a href="/dashboard/corporate" class="nav-item" aria-current="true">
-                <div class="ripple active">
+                <div id="home" class="ripple active">
                     <img class="img-fluid" src="@/assets/images/vectors/house.svg" alt="house">
                     <span>Home</span>
                 </div>
@@ -84,9 +84,7 @@
                 </div>
                 <!-- drop menu -->
                 <div class="drop-menu api-menu ">
-                    <!-- /dashboard/subscription -->
                     <div @click='changeDir(" /dashboard/subscription")'>service subscription</div>
-                    <!-- /dashboard/renewalmanager -->
                     <div @click='changeDir("/dashboard/renewalmanager")'>Renewal manager</div>
                     <div>Traffic & usage stats</div>
                     <div>Changelog notification</div>
@@ -147,10 +145,18 @@ export default {
 
         accordion() {
             let accordion = document.getElementsByClassName("accordion-header");
+            let homeElement = document.getElementById("home");
+            const homeArr = homeElement.classList;
             for (let index = 0; index < accordion.length; index++) {
                 const element = accordion[index];
                 element.addEventListener("click", () => {
                     element.parentElement.classList.toggle('active');
+                    if (index >0){
+                        homeArr.remove("active")
+                    }else{
+                        homeArr.add("active")
+                    }
+
                 });
 
             }

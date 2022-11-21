@@ -20,12 +20,6 @@ import AccountSettings from "@/pages/dashboard/AccountSettings.vue";
 import Notifications from "@/pages/dashboard/Notifications.vue";
 import Messages from "@/pages/dashboard/Messages.vue";
 import Subscription from "@/pages/dashboard/Subscription.vue";
-import RenewalManager from "@/pages/dashboard/RenewalManager.vue";
-import ChanelLog from "@/pages/dashboard/ChanelLog.vue";
-import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
-import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
-import InputMarket from "@/pages/dashboard/InputMarket.vue";
-import CropMarket from "@/pages/dashboard/CropMarket.vue";
 
 
 const routes = [
@@ -141,36 +135,7 @@ const routes = [
         name: "Subscription",
         component:Subscription
     },
-    {
-        path: "/dashboard/renewalmanager",
-        name: "renewalmanager",
-        component:RenewalManager
-    },
-    {
-        path: "/dashboard/chanellog",
-        name: "chanellog",
-        component:ChanelLog
-    },
-    {
-        path: "/dashboard/creditwallet",
-        name: "creditwallet",
-        component:CreditWallet
-    },
-    {
-        path: "/dashboard/withdrawal",
-        name: "withdrawal",
-        component:Withdrawal
-    },
-    {
-        path: "/dashboard/inputmarket",
-        name: "InputMarket",
-        component:InputMarket
-    },
-    {
-        path: "/dashboard/cropmarket",
-        name: "CropMarket",
-        component:CropMarket
-    },
+
 
 ];
 
