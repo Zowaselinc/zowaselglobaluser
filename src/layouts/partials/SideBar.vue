@@ -76,7 +76,8 @@
             </a>
             <a href="javascript:void(0)" class="nav-item">
                 <div class="ripple accordion-header">
-                    <img class="img-fluid" src="@/assets/images/vectors/Folder.svg" alt="folder"><span>API & subscription</span>
+                    <img class="img-fluid" src="@/assets/images/vectors/Folder.svg" alt="folder"><span>API &
+                        subscription</span>
                     <img class="arrow-symbol carret-down" src="@/assets/images/vectors/arrowSymbol.svg"
                         alt="Arrow-Symbol">
                     <img class="arrow-symbol carretUp" src="@/assets/images/vectors/arrowupsymbol.svg"
@@ -145,21 +146,15 @@ export default {
 
         accordion() {
             let accordion = document.getElementsByClassName("accordion-header");
-            let homeElement = document.getElementById("home");
-            const homeArr = homeElement.className;
-            // console.log(homeArr.includes('active'));
-
             for (let index = 0; index < accordion.length; index++) {
                 const element = accordion[index];
                 element.addEventListener("click", () => {
                     element.parentElement.classList.toggle('active');
-                
-
                 });
 
             }
         },
-        changeDir(path){
+        changeDir(path) {
             window.location.assign(path);
         }
 
