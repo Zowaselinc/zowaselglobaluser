@@ -26,7 +26,7 @@ import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
 import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
 import InputMarket from "@/pages/dashboard/InputMarket.vue";
 import CropMarket from "@/pages/dashboard/CropMarket.vue"; 
-import NotificationSettings from "@/pages/dashboard/NotificationSettings.vue";
+import Settings from "@/pages/dashboard/settings/Settings.vue";
 
 
 const routes = [
@@ -173,9 +173,9 @@ const routes = [
         component:CropMarket
     },
     {
-        path: "/dashboard/notificationsettings",
-        name: "NotificationSettings",
-        component:NotificationSettings
+        path: "/dashboard/settings",
+        name: "Settings",
+        component:Settings
     },
 
 
