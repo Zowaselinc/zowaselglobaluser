@@ -1,11 +1,11 @@
 // custom fonts
 @font-face {
-    font-family: 'Maven Pro';
+    font-family: "Maven Pro";
     src: url("@/assets/fonts/MavenPro/MavenPro-Regular.ttf");
 }
 
 @font-face {
-    font-family: 'Poppins';
+    font-family: "Poppins";
     src: url("@/assets/fonts/Poppins-Font-2/Poppins-Regular.ttf");
 }
 
@@ -24,15 +24,15 @@
 //     ms (Internet Explorer and Microsoft Edge, before Chromium)
 
 // List of browsers prefixes
-$prefixes: ("webkit", "moz", "o", "ms" );
+$prefixes: ("webkit", "moz", "o", "ms");
 
-@mixin vendorPrefixes ($property, $value, $prefixes){
+@mixin vendorPrefixes($property, $value, $prefixes) {
     @each $prefix in $prefixes {
         #{"-" + $prefix + "-" + $property}: $value !important;
     }
 }
 
-@mixin textStyles( $font-family, $font-weight, $font-size, $line-height){
+@mixin textStyles($font-family, $font-weight, $font-size, $line-height) {
     // "Maven Pro" and Poppins
     font-family: $font-family;
     font-style: normal;
@@ -45,4 +45,25 @@ $prefixes: ("webkit", "moz", "o", "ms" );
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
+}
+
+@mixin big-container-all {
+    width: 100%;
+    height: auto;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    padding: 2% 5% 2% 3%;
+
+    @include breakpoint-between(md, lg) {
+        width: 60.5%;
+    }
+
+    @include breakpoint-between(lg, xl) {
+        width: 69.5%;
+    }
+
+    @include breakpoint-between(xl, xxl) {
+        width: 76%;
+    }
 }
