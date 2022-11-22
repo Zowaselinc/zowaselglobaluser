@@ -132,7 +132,6 @@
         padding: 14.4715px 43.4146px;
         border: 1px solid #696671;
         border-radius: 50px;
-        width: 170px;
 
     }
     .gren-btn{

@@ -20,6 +20,7 @@ import AccountSettings from "@/pages/dashboard/AccountSettings.vue";
 import Notifications from "@/pages/dashboard/Notifications.vue";
 import Messages from "@/pages/dashboard/Messages.vue";
 import Subscription from "@/pages/dashboard/Subscription.vue";
+import BalancePayment from "@/pages/dashboard/BalancePayment.vue"
 
 
 const routes = [
@@ -135,6 +136,12 @@ const routes = [
         name: "Subscription",
         component:Subscription
     },
+    {
+        path: "/dashboard/balancepayment",
+        name: "BalancePayment",
+        component:BalancePayment
+    },
+
 
 
 ];
