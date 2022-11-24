@@ -20,6 +20,7 @@ import AccountSettings from "@/pages/dashboard/AccountSettings.vue";
 import Notifications from "@/pages/dashboard/Notifications.vue";
 import Messages from "@/pages/dashboard/Messages.vue";
 import Subscription from "@/pages/dashboard/Subscription.vue";
+import BalancePayment from "@/pages/dashboard/BalancePayment.vue"
 import RenewalManager from "@/pages/dashboard/RenewalManager.vue";
 import ChanelLog from "@/pages/dashboard/ChanelLog.vue";
 import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
@@ -141,6 +142,11 @@ const routes = [
         path: "/dashboard/subscription",
         name: "Subscription",
         component:Subscription
+    },
+    {
+        path: "/dashboard/balancepayment",
+        name: "BalancePayment",
+        component:BalancePayment
     },
     {
         path: "/dashboard/renewalmanager",
