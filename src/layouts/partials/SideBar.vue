@@ -2,7 +2,7 @@
     <!-- Side Bar -->
     <nav id="sidebarMenu" class="collapse d-md-block">
         <div id="side-menu" class="list-group list-group-flush">
-            <a href="/dashboard/corporate" class="nav-item" aria-current="true">
+            <a href="/:type/register" class="nav-item" aria-current="true">
                 <div id="home" class="ripple actives">
                     <img class="img-fluid" src="@/assets/images/vectors/house.svg" alt="house">
                     <span>Home</span>
@@ -22,7 +22,7 @@
                     <!-- /dashboard/creditwallet -->
                     <div @click='changeDir("/dashboard/creditwallet")'>Credit wallet</div>
                     <!-- /dashboard/widthdrwal -->
-                    <div @click='changeDir(" /dashboard/widthdrwal")'>Withdrawal</div>
+                    <div @click='changeDir(" /dashboard/withdrawal")'>Withdrawal</div>
                 </div>
             </a>
             <a href="/dashboard/messages" class="nav-item">
@@ -116,7 +116,7 @@
 
                 </div>
             </a>
-            <a href="javascript:void(0)" class="nav-item">
+            <a href="/dashboard/settings" class="nav-item">
                 <div class="ripple">
                     <img class="img-fluid" src="@/assets/images/vectors/GearSixBold.svg"
                         alt="settings"><span>Settings</span>

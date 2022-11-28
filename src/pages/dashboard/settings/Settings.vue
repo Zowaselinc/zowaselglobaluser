@@ -4,42 +4,48 @@
             <h1>Settings</h1>
             <!-- buttons group -->
             <div class="bntn-group d-flex flex-row">
-                <button type="button" class="btn btn-1">My Profile</button>
-                <button id="notification-settings" type="button" @click="switchTab('notification')" class="btn btn-1">Notifications Settings</button>
-                <button id="email-settings" type="button" class="btn btn-1">Email Subscriptions</button>
-                <button id="my-profile" type="button" class="btn btn-1">My Profile</button>
+                <button :class="['btn btn-1',(activeTab == 'profile' ? 'active-tab' : '')]" type="button" @click="switchTab('profile')">My Profile</button>
+                <button :class="['btn btn-1',(activeTab == 'notification' ? 'active-tab' : '')]" type="button" @click="switchTab('notification')"
+                    >Notifications Settings</button>
+                <button :class="['btn btn-1',(activeTab == 'emailSubcription' ? 'active-tab' : '')]"  type="button" @click="switchTab('emailSubcription')">Email Subscriptions</button>
             </div>
+            <!-- Profile -->
+            <Profile v-if = "activeTab =='profile'"></Profile>
             <!-- notification body -->
-
-            <NotificationSettings v-if="activeTab == 'notification'"/>
-
+            <NotificationSettings v-if="activeTab == 'notification'" />
+            <!-- email notification -->
+            <EmailSubcription v-if = "activeTab == 'emailSubcription'"></EmailSubcription>
         </div>
     </DefaultNav>
 </template>
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
+import Profile from "@/pages/dashboard/settings/Profile.vue";
 import NotificationSettings from "@/pages/dashboard/settings/NotificationSettings.vue";
+import EmailSubcription from "@/pages/dashboard/settings/EmailSubcription.vue";
 
 export default {
     name: "Settings",
     components: {
         DefaultNav,
-        NotificationSettings
+        NotificationSettings,
+        EmailSubcription,
+        Profile
     },
-    data(){
+    data() {
         return {
-            activeTab : "notification"
+            activeTab: "notification"
         };
     },
     methods: {
-        switchTab(tab){
+        switchTab(tab) {
             this.activeTab = tab;
-        }
+        },
     },
     mounted() {
-            this.switches();
-        }
+
+    }
 }
 </script>
 
@@ -54,6 +60,7 @@ export default {
         letter-spacing: 0.01em;
         font-feature-settings: 'liga' off;
         color: #4A4754;
+        padding-block: 38px 51px;
     }
 }
 
@@ -72,23 +79,19 @@ export default {
         color: #696671;
     }
 
-    #notification-settings {
-        padding: 11.1212px 33.3637px;
+
+
+    button.btn-1.active-tab{
         background: #05B050;
         color: #FFFFFF;
-        border: 0;
-
-    }
-
-    #email-settings {
+        border : 0;
         padding: 11.1212px 33.3637px;
-        background: #FFFFFF;
     }
 
-    #my-profile {
-        padding: 11.1212px 33.3637px;
-        background: #FFFFFF;
-    }
+    // // toggle Class on Email button
+    // #my-profile {
+    //     padding: 11.1212px 33.3637px;
+    //     background: #FFFFFF;
+    // }
 }
-
 </style>
