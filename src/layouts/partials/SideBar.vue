@@ -129,7 +129,7 @@
 
                 </div>
             </a>
-            <a href="javascript:void(0)" class="nav-item">
+            <a href="javascript:void(0)" class="nav-item" @click="logOut()">
                 <div class="ripple">
                     <img class="img-fluid" src="@/assets/images/vectors/SignOut.svg" alt="SignOut"><span>Logout</span>
 
@@ -140,6 +140,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name: "SideBar",
     methods: {
@@ -156,8 +157,13 @@ export default {
         },
         changeDir(path) {
             window.location.assign(path);
+        },
+        logOut() {
+            if (this.$store.state.authData.token) {
+                this.$store.dispatch('setAuth',null);
+                this.$router.push('/login');
+            }
         }
-
     },
     mounted() {
         this.accordion();

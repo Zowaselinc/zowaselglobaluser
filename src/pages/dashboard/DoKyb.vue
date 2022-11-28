@@ -2,7 +2,7 @@
     <DefaultNav>
         <div class="big-container">
             <div class="welcome-text">
-                <h2>Welcome, Pamela Cocoa</h2>
+                <h2>Welcome, {{userData.user.first_name}} Cocoa</h2>
                 <p>Wallet Balance: <span>NGN0.00</span></p>
             </div>
 
@@ -58,6 +58,11 @@
     import Cards from "./components/Cards.vue";
     export default {
         name: 'DoKyb',
+        data() {
+        return {
+            userData: this.$store.state.user
+        }
+    },
         components:{
             DefaultNav,
             Cards,
