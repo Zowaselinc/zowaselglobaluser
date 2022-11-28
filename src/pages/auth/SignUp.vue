@@ -54,7 +54,7 @@
                     </div>
                 </form>
                 <div class="last-text">
-                    <p id="emailHelp" class="form-text text-center">Do you already have an account?</p> <router-link class="link" to="/welcomeback">Login</router-link>
+                    <p id="" class="text-center">Do you already have an account? <a href="#" class="login-text">Login</a></p> 
                 </div>
             </div>
             <div class="right-content">
@@ -133,6 +133,9 @@
 
     .checking input{
         margin-top: 1px;
+    }
+    .login-text{
+        color: green;
     }
 
 </style>

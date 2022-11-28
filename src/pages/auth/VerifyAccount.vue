@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="last-text">
-                <p id="emailHelp" class="form-text text-muted text-center">Didn't get the code in your mail?</p>
+                <p id="emailHelp" class="form-text text-muted text-center">Didn't get the code in your mail? <a href="#" class="login-text">Resend Code</a></p>
             </div>
             
            
@@ -117,5 +117,8 @@
         margin-left: auto;
         margin-right: auto;
     }
-
+    .login-text{
+        color: green;
+        text-decoration: none;
+    }
 </style>

@@ -33,7 +33,7 @@
                     <button type="button" class="btn skip btn-lg btn-block">Continue with Google</button>
                 </div>
                 <div class="last-text">
-                    <p id="emailHelp" class="form-text text-muted text-center">Don't have an account?</p>
+                    <p id="emailHelp" class="form-text text-muted text-center">Don't have an account? <a href="/register">Sign Up</a></p>
                 </div>
                 
             </div>
@@ -95,6 +95,10 @@
     .skip{
         background: #2D3748;
 
+    }
+    .last-text a{
+        text-decoration: none;
+        color: #008D40;
     }
    
   
