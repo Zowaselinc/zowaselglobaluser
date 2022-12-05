@@ -1,0 +1,105 @@
+// Media Queries
+
+// To call the media queries for min width; @include breakpoint-up(value){...}, for max-width; @include breakpoint-up(value){...}
+// for breakpoint-between; @include breakpoint-between(value){...} 
+// for custom breakpoints: @include custom-breakpoint-up(value){...} for max-width: @include custom-beakpoint-down(value){...}
+// for Custom breakpoints between: @include custom-breakpoint-between(value-1, value-2){...}
+// ------------------------------------------------------------------------------------------------
+
+// Map Of Breakoints
+
+$breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+);
+
+// Breakoints  for min-width
+//---------------------------------------------------------------------------------------------------
+// Including breakpoints-up for min-width
+@mixin breakpoint-up($breakpoint) {
+    // Check if breakpoint exits in the breakpoints map
+    @if map-has-key($breakpoints, $breakpoint) {
+        // Get the breakpoint value from breakpoints map
+        $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+        // Write the media query
+
+        @media (min-width: $breakpoint-value) {
+            @content;
+        }
+    } @else {
+        // Log error if the beakpoint does not exits in the breakpoints Map
+
+        @warn "Invalid breakpoint value: " + $breakpoint;
+    }
+}
+
+
+// Breakoints For max-width
+//---------------------------------------------------------------------------------------------------
+// including breakpoints-up for min-width
+@mixin breakpoint-down($breakpoint) {
+    // Check if breakpoint exits in the breakpoints map
+    @if map-has-key($breakpoints, $breakpoint) {
+        // Get the breakpoint value from breakpoints map
+        $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+        // Write the media query
+
+        @media (max-width: ($breakpoint-value - .02px)) {
+            @content;
+        }
+    } @else {
+        // Log error if the beakpoint does not exits in the breakpoints Map
+
+        @warn "Invalid breakpoint value: " + $breakpoint;
+    }
+}
+
+// For between the breakpoints
+
+@mixin breakpoint-between($min, $max) {
+    // Check if both min and max exits in the breakpoints Map
+    @if map-has-key($breakpoints, $min) and map-has-key($breakpoints, $max) {
+        // Get the breakpoint values from breakpoints map
+        $min-breakpoint-value: map-get($breakpoints, $min);
+        $max-breakpoint-value: map-get($breakpoints, $max);
+        // Write the media query
+        @media (min-width: $min-breakpoint-value) and (max-width: ($max-breakpoint-value - .02px)) {
+            @content;
+        }
+    } @else {
+        // Log error if the beakpoint does not exits in the breakpoints Map
+        @warn "Invalid breakpoint values: #{$min} and #{$max}";
+    }
+}
+
+
+// Cutom breakpoints 
+// ----------------------------------------------------------------------------------------------
+// custom breakpoint for min-width
+@mixin custom-breakpoint-up($min-b) {
+    @media (min-width: $min-b) {
+        @content;
+    }
+}
+
+// custom breakpoint for max-width
+@mixin custom-breakpoint-down($max-b) {
+    @media (max-width: $max-b) {
+        @content;
+    }
+}
+
+// custom breakpoint for breakpoint between
+@mixin custom-breakpoint-between($min-b, $max-b) {
+    @media (min-width: $min-b) and (max-width: $max-b) {
+        @content;
+    }
+}
+
+// Using KING SCSS.......................................................................................

@@ -1,0 +1,292 @@
+@import "@/assets/scss/main.scss";
+
+hr {
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    position: absolute;
+    width: 100%;
+    top: 89px;
+    z-index: 1000;
+}
+// overide boostrap styles for input
+input {
+    padding: 0 !important;
+    margin-top: 0px;
+    border: 0 !important;
+}
+// top navigation
+nav {
+    width: 100%;
+    padding: 19px 100px 19px 50px;
+
+    .logo-background {
+        width: 172.84px;
+        height: 23.66px;
+        background-image: url("@/assets/images/logos/zowasel-grey-logo.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    #nav-container {
+        a#zowasel-nav-brand {
+            margin-right: 8.1%;
+        }
+
+        .search-barr {
+            flex: 1;
+            border: 1px solid #ededee;
+            border-radius: 4px;
+            background: #ffffff;
+            padding: 0px 16px;
+            height: 45px;
+            gap: 10px;
+
+            #search-icon {
+                width: 18px;
+            }
+
+            #seachID {
+                border: none !important;
+                box-shadow: 0 0;
+
+                &::placeholder {
+                    @include textStyles(Poppins, 500, 12px, 20px);
+                    color: #96949c;
+                }
+            }
+        }
+
+        .navbar-icons {
+            margin-left: 8.1%;
+            gap: 40px;
+        }
+    }
+}
+
+// Side Bar
+
+#sidebarMenu {
+    padding: 32px 16px;
+    width: 20%;
+    z-index: 600;
+    color: #ffffff;
+    background: linear-gradient(180deg, #29333f 0%, #1c2131 100%);
+    @include breakpoint-between(md, lg) {
+        width: 39.5%;
+    }
+    @include breakpoint-between(lg, xl) {
+        width: 30.5%;
+    }
+    @include breakpoint-between(xl, xxl) {
+        width: 24%;
+    }
+
+    #side-menu {
+        a.nav-item {
+            margin-bottom: 4px;
+            .drop-menu {
+                @include textStyles("Maven Pro", 400, 16px, 147%);
+                color: #ffffff;
+                margin-left: 18%;
+                margin-top: 10px;
+                display: none;
+                div {
+                    padding: 9px 15px;
+                    &:hover {
+                        background: rgba(0, 0, 0, 0.27);
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
+        // toggle
+        a.nav-item.active {
+            .drop-menu {
+                display: block;
+            }
+        }
+        a span {
+            margin-left: 18px;
+            @include textStyles("Maven Pro", 400, 14px, 116%);
+        }
+    }
+    .ripple {
+        position: relative;
+        padding: 12px 25px;
+        border-radius: 4px;
+        &:hover {
+            background: rgba(0, 0, 0, 0.27);
+            border-radius: 4px;
+        }
+        &.actives {
+            background: #05b050;
+        }
+        img.arrow-symbol {
+            float: right;
+            margin: 0;
+            position: absolute;
+            top: 55%;
+            right: 6%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+        img.carretUp {
+            display: none;
+        }
+    }
+    // toggle
+    a.nav-item.active {
+        .ripple {
+            border-radius: 4px;
+            img.carret-down {
+                display: none;
+            }
+            img.carretUp {
+                display: block;
+            }
+        }
+    }
+}
+
+// footer
+footer {
+    width: 100%;
+    height: 496px;
+    background: #262c3f;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .footer-main {
+        width: 80%;
+        position: relative;
+    }
+
+    .footer-top {
+        @include flexed-Container(row, flex-start, flex-start);
+        height: 50px;
+        padding-top: 19px;
+        margin-bottom: 20px;
+
+        #exampleInputEmail1 {
+            width: 26.38%;
+            background: #202536;
+            border-radius: 2px;
+            padding: 12.2px 15px !important;
+            border: none !important;
+            box-shadow: 0 0;
+            margin-top: 0;
+            color: #f1f1f1;
+
+            &::placeholder {
+                @include textStyles("Maven Pro", 600, 13px, 140%);
+            }
+        }
+
+        .send-icon {
+            width: 55px;
+            background: #4fad5b;
+            border-radius: 2px;
+            height: inherit;
+
+            > img {
+                height: 50%;
+            }
+        }
+    }
+}
+// footer info
+
+.footer-info {
+    @include flexed-Container(row, flex-start, flex-start);
+    @include textStyles("Maven Pro", 400, 12px, 130%);
+    color: #b5b4b9;
+    letter-spacing: 0.04em;
+    gap: 7.22%;
+    padding-top: 80px;
+
+    .footer-item-A {
+        .brand-logo {
+            width: 161px;
+        }
+
+        > div {
+            padding-bottom: 20px;
+        }
+        .address {
+            width: max-content;
+        }
+
+        .footer-contact {
+            h2 {
+                @include textStyles("Maven Pro", 700, 12px, 130%);
+            }
+
+            h2,
+            p {
+                padding: 0 !important;
+            }
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    h2 {
+        letter-spacing: 0.04em;
+        @include textStyles("Maven Pro", 700, 16px, 130%);
+        color: #f1f1f1;
+    }
+
+    div ~ div > * {
+        padding-bottom: 20px;
+    }
+
+    .gadget {
+        > h2 {
+            padding-bottom: 10px;
+        }
+        gap: 10px;
+        .app-store-container {
+            padding: 11px 85px 14px 16px;
+            border: 0.7px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+        .store-box {
+            padding: 0;
+            gap: 14px;
+            > div:nth-of-type(2) {
+                gap: 5px;
+
+                div {
+                    padding: 0 !important;
+                }
+            }
+        }
+        .apple > div {
+            padding: 0;
+        }
+    }
+}
+.copyright-container {
+    margin-inline: 10.13% 11.5%;
+}
+.copyright {
+    padding-block: 22px;
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    background: #1c2130;
+
+    .copy-right-2021 {
+        @include textStyles("Maven Pro", 400, 12px, 130%);
+        letter-spacing: 0.04em;
+        color: #b5b4b9;
+    }
+    .social-media {
+        gap: 25px;
+        right: 0%;
+    }
+}

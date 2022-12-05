@@ -1,0 +1,9 @@
+// Global Styles 
+
+a {
+    text-decoration: none;
+    color: white;
+    &:hover {
+        color: unset;
+    }
+}
