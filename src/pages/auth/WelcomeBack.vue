@@ -3,7 +3,7 @@
         <div class="big-container">
             <img class="mobile-logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
             <div class="left-content">
-                <h1 class="text-center">Welcome Back {{}}</h1>
+                <h1 class="text-center">Welcome Back</h1>
                 <form>
                     <div class="form-group">
                         <label for="">Email</label>

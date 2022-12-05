@@ -27,7 +27,6 @@ export default {
       if (!response.error) {
         this.$store.dispatch('setUser', response.data)
         this.userData = this.$store.state.user;
-
       }
     })
     }
