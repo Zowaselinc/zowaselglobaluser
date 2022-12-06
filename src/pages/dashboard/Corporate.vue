@@ -2,7 +2,7 @@
     <DefaultNav>
         <div class="big-container">
             <div class="welcome-text">
-                <h2>Welcome, Carbury</h2>
+                <h2 v-if="userData">Welcome, {{userData.user.first_name}}</h2>
                 <p>Wallet Balance: <span>$5070</span></p>
             </div>
 
@@ -139,10 +139,15 @@ import DefaultNav from "@/layouts/DefaultNav.vue";
 import Cards from "./components/Cards.vue";
 export default {
     name: 'CorporateDashboard',
+    data() {
+        return {
+            userData: this.$store.state.user
+        }
+    },
     components: {
         DefaultNav,
         Cards,
-    }
+    },
 }
 </script>
 
@@ -173,6 +178,7 @@ export default {
 
 .welcome-text {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     margin-bottom: 47px;
     padding-top: 30px;
@@ -252,7 +258,7 @@ export default {
     box-sizing: border-box;
     width: 64%;
 
-    td{
+    td {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 400;
@@ -267,7 +273,7 @@ export default {
     box-sizing: border-box;
     width: 35%;
 
-    p{
+    p {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 400;
@@ -275,7 +281,7 @@ export default {
         color: #4A4754;
     }
 
-    h4{
+    h4 {
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 700;
@@ -289,14 +295,16 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    h4{
+
+    h4 {
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 700;
         font-size: 18px;
         color: #4A4754;
     }
-    p{
+
+    p {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 400;
@@ -327,12 +335,12 @@ export default {
         margin-left: 20px;
     }
 
-    p{
+    p {
         margin-left: 10px;
         margin-top: 12px;
     }
 
-   
+
 }
 
 .colored-green {

@@ -2,7 +2,7 @@
     <DefaultNav>
         <div class="big-container">
             <div class="welcome-text">
-                <h2>Welcome, Ample Logistics</h2>
+                <h2>Welcome, {{userData.user.first_name}} Logistics</h2>
                 <p>Wallet Balance: <span>$5070</span></p>
             </div>
             <Cards></Cards>
@@ -120,6 +120,11 @@ import DefaultNav from "@/layouts/DefaultNav.vue";
 import Cards from "./components/Cards.vue";
 export default {
     name: 'LogisticsDashboard',
+    data() {
+        return {
+            userData: this.$store.state.user
+        }
+    },
     components: {
         DefaultNav,
         Cards,
