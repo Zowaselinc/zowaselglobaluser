@@ -28,6 +28,7 @@ import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
 import InputMarket from "@/pages/dashboard/InputMarket.vue";
 import CropMarket from "@/pages/dashboard/CropMarket.vue"; 
 import Settings from "@/pages/dashboard/settings/Settings.vue";
+import MarketPlace from "@/pages/dashboard/marketPlace/Overview.vue";
 
 
 const routes = [
@@ -182,6 +183,11 @@ const routes = [
         path: "/dashboard/settings",
         name: "Settings",
         component:Settings
+    },
+    {
+        path: "/dashboard/marketplace",
+        name: "MarketPlace",
+        component:MarketPlace
     },
 
 
