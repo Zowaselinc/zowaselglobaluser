@@ -25,9 +25,13 @@ import RenewalManager from "@/pages/dashboard/RenewalManager.vue";
 import ChanelLog from "@/pages/dashboard/ChanelLog.vue";
 import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
 import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
-import InputMarket from "@/pages/dashboard/InputMarket.vue";
 import CropMarket from "@/pages/dashboard/CropMarket.vue"; 
 import Settings from "@/pages/dashboard/settings/Settings.vue";
+import MarketPlace from "@/pages/marketPlace/Overview.vue";
+import Product from "@/pages/marketPlace/ProductPage.vue";
+import InputMarket from "@/pages/marketPlace/InputMarket.vue";
+import ProductDescription from "@/pages/marketPlace/Products.vue";
+
 
 
 const routes = [
@@ -182,6 +186,26 @@ const routes = [
         path: "/dashboard/settings",
         name: "Settings",
         component:Settings
+    },
+    {
+        path: "/marketplace",
+        name: "MarketPlace",
+        component:MarketPlace
+    },
+    {
+        path: "/marketplace/product",
+        name: "Product",
+        component:Product
+    },
+    {
+        path: "/marketplace/inputmarket",
+        name: "Inputmarket",
+        component:InputMarket
+    },
+    {
+        path: "/marketplace/product-description",
+        name: "ProductDescription",
+        component:ProductDescription
     },
 
 

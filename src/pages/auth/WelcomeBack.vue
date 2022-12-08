@@ -39,9 +39,24 @@
                 </form>
 
             </div>
-            <div class="right-content">
-                <img class="background-img" src="@/assets/images/backgrounds/right-side2.png" alt="">
-                <img class="logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
+            
+            
+            <div class="buttons">
+                <div class="form-group">
+                    <button type="button" @click="loginAccount()" class="btn  btn-lg btn-block">Login</button>
+                </div>
+                <div class="lines">
+                    <div class="line"></div>
+                    <p>OR</p>
+                    <div class="line"></div>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn skip btn-lg btn-block">Continue with Google</button>
+                </div>
+                <div class="last-text">
+                    <p id="emailHelp" class="form-text text-muted text-center">Don't have an account? <a href="/register">Sign Up</a></p>
+                </div>
+                
             </div>
         </div>
     </AuthSharedLayout>
@@ -103,4 +118,10 @@ button {
     background: #2D3748;
 
 }
+.last-text a{
+    text-decoration: none;
+    color: #008D40;
+}
+   
+  
 </style>
