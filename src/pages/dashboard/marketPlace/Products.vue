@@ -95,14 +95,20 @@
                 <div class="left-reviews">
                     <div class="each-review">
                         <div class="head-review">
-                            <div class="lefted">
+                            <div class="lefts">
                                 <div class="img-contain">
-                                <img src="@/assets/images/vectors/avatar.svg" alt="">
+                                    <img src="@/assets/images/vectors/avatar.svg" alt="">
+                                </div>
+                                <div class="title">
+                                    <h4>Pamela Njoku</h4>
+                                    <p>05 Nov 2022</p>
+                                </div>
                             </div>
-                            <div class="title">
-                                <h4>Pamela Njoku</h4>
-                                <p>05 Nov 2022</p>
-                            </div>
+                            <div class="stars">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
                             </div>
                         </div>
                     </div>
@@ -341,6 +347,9 @@
 
 
             }
+    .reviews{
+        width: 100%;
+    }
 
 }
     
