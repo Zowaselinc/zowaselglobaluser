@@ -8,7 +8,7 @@
             <div class="input-area">
                 <input type="text" placeholder="Search">
                 <div class="icon">
-                    <img src="@/assets/images/vectors/Search.svg" alt="">
+                    <img src="@/assets/images/vectors/search-icon.svg" alt="">
                 </div>
             </div>
             <div class="button-area">
