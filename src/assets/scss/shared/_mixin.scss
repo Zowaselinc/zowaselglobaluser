@@ -9,6 +9,11 @@
     src: url("@/assets/fonts/Poppins-Font-2/Poppins-Regular.ttf");
 }
 
+@font-face {
+    font-family: "Inter";
+    src: url("@/assets/fonts/Inter/Inter-Regular.woff");
+}
+
 @mixin flexed-Container($direction: row, $justify-content: center, $align-items: center) {
     display: flex;
     flex-direction: $direction;

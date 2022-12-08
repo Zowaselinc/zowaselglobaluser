@@ -2,7 +2,6 @@
     <MarketPlaceTopNav></MarketPlaceTopNav>
     <slot></slot>
     <Footer></Footer>
-
 </template>
 
 <script>
