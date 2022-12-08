@@ -21,7 +21,7 @@
                 <a href="#">Messages</a>
             </div>
             <div class="each-link">
-                <img src="@/assets/images/vectors/bell.svg" alt="">
+                <img src="@/assets/images/vectors/bell-icon.svg" alt="">
                 <a href="#">Notifications</a>
             </div>
             <div class="each-link">

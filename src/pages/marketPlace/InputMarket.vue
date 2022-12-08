@@ -8,7 +8,7 @@
             <div class="input-area">
                 <input type="text" placeholder="Search">
                 <div class="icon">
-                    <img src="@/assets/images/vectors/Search.svg" alt="">
+                    <img src="@/assets/images/vectors/search-icon.svg" alt="">
                 </div>
             </div>
             <div class="button-area">
@@ -213,78 +213,136 @@
                         </select>
                     </div>
                 </div>
-                <div class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
+                <div class="big-contents">
+                    <div class="small-contents">
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>                    
+                    </div>
+                    <h3 class="heading">Inputs</h3>
+                    <div class="small-contents">
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                    
+
+
+                        
+                    </div>
+                    <h3 class="heading">Auction</h3>
+                    <div class="small-contents">
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                    
+
+
+                        
+                    </div>
+                    <div class="tags">
+                        <h4>Related</h4>
+                        <p>cash Crops</p>
+                        <p>Seeds</p>
+                        <p>Cocoa</p>
+                        <p>Machinery</p>
+                        <p>grains</p>
+                        <p>Palm Oil</p>
+                    </div>
                 </div>
-                <div class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="tags">
-                    <h4>Related</h4>
-                    <p>cash Crops</p>
-                    <p>Seeds</p>
-                    <p>Cocoa</p>
-                    <p>Machinery</p>
-                    <p>grains</p>
-                    <p>Palm Oil</p>
-                </div>
+
+                
+                
+           
+                
             </div>
         </div>
     </MarketPlaceLayout>
@@ -293,7 +351,7 @@
 <script>
     import  MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue"
     export default {
-        name:'overview',
+        name:'inputmarket',
         components: {
             MarketPlaceLayout,
             },
@@ -539,19 +597,59 @@
             }
         }
     }
-    .each-item{
+    .big-contents{
+        margin-top: 30px;
+    }
+    .small-contents{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+        flex-wrap: wrap;
+
+        .each-product{
+            background-color: white;
+            padding: 10px;
+            width: 260px;
+            position: relative;
+
+            h3{
+                margin-top: 16px;
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 18px;
+                color: #4A4754;
+            }
+            p{
+                font-family: 'Maven Pro';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 12px;
+                color: #4A4754;
+            }
+            .badge{
+                position: absolute;
+                top: 24px;
+                left: 22px;
+                background: #FAB900;
+                border-radius: 4px;
+                color: white;
+                font-family: 'Maven Pro';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 12px;
+                line-height: 130%;
+            }
+        }
+    }
+    .heading{
+        margin-top: 40px;
+    }
+ .tags{
         width: 100%;
-        background-color: white;
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        margin-top: 50px;
-        padding: 10px 25px;
-    }
-    .tags{
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
         margin-top: 50px;
         align-items: center;
         h4{

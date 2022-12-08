@@ -27,10 +27,10 @@ import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
 import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
 import CropMarket from "@/pages/dashboard/CropMarket.vue"; 
 import Settings from "@/pages/dashboard/settings/Settings.vue";
-import MarketPlace from "@/pages/dashboard/marketPlace/Overview.vue";
-import Product from "@/pages/dashboard/marketPlace/ProductPage.vue";
-import InputMarket from "@/pages/dashboard/marketPlace/InputMarket.vue";
-import ProductDescription from "@/pages/dashboard/marketPlace/Products.vue";
+import MarketPlace from "@/pages/marketPlace/Overview.vue";
+import Product from "@/pages/marketPlace/ProductPage.vue";
+import InputMarket from "@/pages/marketPlace/InputMarket.vue";
+import ProductDescription from "@/pages/marketPlace/Products.vue";
 
 
 
@@ -188,22 +188,22 @@ const routes = [
         component:Settings
     },
     {
-        path: "/dashboard/marketplace",
+        path: "/marketplace",
         name: "MarketPlace",
         component:MarketPlace
     },
     {
-        path: "/dashboard/marketplace/product",
+        path: "/marketplace/product",
         name: "Product",
         component:Product
     },
     {
-        path: "/dashboard/marketplace/inputmarket",
+        path: "/marketplace/inputmarket",
         name: "Inputmarket",
         component:InputMarket
     },
     {
-        path: "/dashboard/marketplace/product-description",
+        path: "/marketplace/product-description",
         name: "ProductDescription",
         component:ProductDescription
     },
