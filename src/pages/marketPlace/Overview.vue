@@ -8,7 +8,7 @@
             <div class="input-area">
                 <input type="text" placeholder="Search">
                 <div class="icon">
-                    <img src="@/assets/images/vectors/search-icon.svg" alt="">
+                    <img src="@/assets/images/vectors/Search.svg" alt="">
                 </div>
             </div>
             <div class="button-area">
@@ -213,77 +213,77 @@
                         </select>
                     </div>
                 </div>
-                <div class="each-item">
+                <a href="#" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
+                </a>
+                <a href="#" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
+                </a>
+                <a href="#" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
+                </a>
+                <a href="#" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
+                </a>
+                <a href="#" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
+                </a>
+                <a href="#" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
+                </a>
+                <a href="#" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
+                </a>
+                <a href="#" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
-                </div>
-                <div class="each-item">
+                </a>
+                <a href="#" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
-                </div>
+                </a>
                 <div class="tags">
                     <h4>Related</h4>
-                    <p>cash Crops</p>
-                    <p>Seeds</p>
-                    <p>Cocoa</p>
-                    <p>Machinery</p>
-                    <p>grains</p>
-                    <p>Palm Oil</p>
+                    <a href="#">cash Crops</a>
+                    <a href="#">Seeds</a>
+                    <a href="#">Cocoa</a>
+                    <a href="#">Machinery</a>
+                    <a href="#">grains</a>
+                    <a href="#">aalm Oil</a>
                 </div>
             </div>
         </div>
@@ -547,6 +547,17 @@
         align-items: center;
         margin-top: 50px;
         padding: 10px 25px;
+        text-decoration: none;
+        font-family: 'Maven Pro';
+        font-style: normal;
+        font-weight: 400;
+        text-transform: capitalize;
+        p{
+            margin: 0px;
+        }
+
+
+color: #4A4754;
     }
     .tags{
         width: 100%;
@@ -562,7 +573,7 @@
             color: #19191D;
         }
 
-        p{
+        a{
             padding: 10px 20px;
             background: #EDEDF0;
             border-radius: 99px;
@@ -571,6 +582,7 @@
             font-weight: 400;
             font-size: 14px;
             color: #4A4B57;
+            text-decoration: none;
         }
     }
     
