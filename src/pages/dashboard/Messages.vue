@@ -300,7 +300,7 @@
 
             </div>
         </div>
-
+    </div>
 </template>
 
 <script>
@@ -331,11 +331,8 @@ export default {
             }
         }
     }
-},
-components: {
-    TopHeader,
-    }
 }
+
 </script>
 
 

@@ -93,10 +93,10 @@
 
 <script>
 import MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue"
-import PricingDetails from "@/pages/dashboard/marketPlace/checkout/components/PricingDetails.vue";
-import FullSpecification from "@/pages/dashboard/marketPlace/checkout/components/FullSpecification.vue";
-import PurchaseOrder from "@/pages/dashboard/marketPlace/checkout/components/PurchaseOrder.vue";
-import WaybillDetails from '@/pages/dashboard/marketPlace/checkout/components/WaybillDetails.vue';
+import PricingDetails from "@/pages/marketPlace/checkout/components/PricingDetails.vue";
+import FullSpecification from "@/pages/marketPlace/checkout/components/FullSpecification.vue";
+import PurchaseOrder from "@/pages/marketPlace/checkout/components/PurchaseOrder.vue";
+import WaybillDetails from '@/pages/marketPlace/checkout/components/WaybillDetails.vue';
 export default {
     name: "TransactionSummary",
     components: {
