@@ -201,17 +201,17 @@ const routes = [
         component:MarketPlace
     },
     {
-        path: "/dashboard/transactionsumary",
+        path: "/marketplace/transactionsumary",
         name: "Transactionsumary",
         component:TransactionSumary
     },
     {
-        path: "/dashboard/ordertracking",
+        path: "/marketplace/ordertracking",
         name: "OrderTracking",
         component:OrderTracking
     },
     {
-        path: "/dashboard/newcrop",
+        path: "/marketplace/newcrop",
         name: "NewCrop",
         component: NewCrop
     },
