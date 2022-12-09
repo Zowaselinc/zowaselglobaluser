@@ -331,10 +331,6 @@ export default {
             }
         }
     }
-},
-components: {
-    TopHeader,
-    }
 }
 </script>
 

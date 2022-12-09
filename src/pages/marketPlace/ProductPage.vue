@@ -19,7 +19,7 @@
                     <p class="farmer">Naziri Farms <span> <img src="@/assets/images/vectors/verified.svg" alt=""> Verified merchant</span></p>
                 </div>
                 <div class="right">
-                    <a href="/dashboard/transaction" class="fulfil">Fulfil/Accept Offer</a>
+                    <a href="/marketplace/transactionsumary" class="fulfil">Fulfil/Accept Offer</a>
                     <a href="/dashboard/messages" class="negotiate">Negotiate</a>
                 </div>
             </div>
