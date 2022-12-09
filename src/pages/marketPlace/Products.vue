@@ -96,13 +96,18 @@
                     <div class="each-review">
                         <div class="head-review">
                             <div class="lefts">
-                                <div class="img-contain">
-                                    <img src="@/assets/images/vectors/avatar.svg" alt="">
-                                </div>
+                               
                                 <div class="title">
-                                    <h4>Pamela Njoku</h4>
-                                    <p>05 Nov 2022</p>
+                                     <div class="img-contain">
+                                        <img src="@/assets/images/vectors/avatar.svg" alt="">
+                                    </div>
+                                    <div class="texts">
+                                        <h4>Pamela Njoku</h4>
+                                        <p>05 Nov 2022</p>
+                                    </div>
+                                    
                                 </div>
+                                
                             </div>
                             <div class="stars">
                                 <img src="@/assets/images/vectors/star.svg" alt="">
@@ -110,14 +115,266 @@
                                 <img src="@/assets/images/vectors/star.svg" alt="">
                                 <img src="@/assets/images/vectors/star.svg" alt="">
                             </div>
+                            
                         </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, 
+                            purus sit amet luctus venenatis, lectus magna fringilla urna, 
+                            porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
+                        </p>
+                    </div>
+                     <div class="each-review">
+                        <div class="head-review">
+                            <div class="lefts">
+                               
+                                <div class="title">
+                                     <div class="img-contain">
+                                        <img src="@/assets/images/vectors/avatar.svg" alt="">
+                                    </div>
+                                    <div class="texts">
+                                        <h4>Pamela Njoku</h4>
+                                        <p>05 Nov 2022</p>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div class="stars">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                            </div>
+                            
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, 
+                            purus sit amet luctus venenatis, lectus magna fringilla urna, 
+                            porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
+                        </p>
+                    </div>
+                     <div class="each-review">
+                        <div class="head-review">
+                            <div class="lefts">
+                               
+                                <div class="title">
+                                     <div class="img-contain">
+                                        <img src="@/assets/images/vectors/avatar.svg" alt="">
+                                    </div>
+                                    <div class="texts">
+                                        <h4>Pamela Njoku</h4>
+                                        <p>05 Nov 2022</p>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div class="stars">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                            </div>
+                            
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, 
+                            purus sit amet luctus venenatis, lectus magna fringilla urna, 
+                            porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
+                        </p>
                     </div>
                 </div>
                 <div class="right-reviews">
-
+                     <div class="each-review">
+                        <div class="head-review">
+                            <div class="lefts">
+                               
+                                <div class="title">
+                                     <div class="img-contain">
+                                        <img src="@/assets/images/vectors/avatar.svg" alt="">
+                                    </div>
+                                    <div class="texts">
+                                        <h4>Pamela Njoku</h4>
+                                        <p>05 Nov 2022</p>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div class="stars">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                            </div>
+                            
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, 
+                            purus sit amet luctus venenatis, lectus magna fringilla urna, 
+                            porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
+                        </p>
+                    </div>
+                     <div class="each-review">
+                        <div class="head-review">
+                            <div class="lefts">
+                               
+                                <div class="title">
+                                     <div class="img-contain">
+                                        <img src="@/assets/images/vectors/avatar.svg" alt="">
+                                    </div>
+                                    <div class="texts">
+                                        <h4>Pamela Njoku</h4>
+                                        <p>05 Nov 2022</p>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div class="stars">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                            </div>
+                            
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, 
+                            purus sit amet luctus venenatis, lectus magna fringilla urna, 
+                            porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
+                        </p>
+                    </div>
+                     <div class="each-review">
+                        <div class="head-review">
+                            <div class="lefts">
+                               
+                                <div class="title">
+                                     <div class="img-contain">
+                                        <img src="@/assets/images/vectors/avatar.svg" alt="">
+                                    </div>
+                                    <div class="texts">
+                                        <h4>Pamela Njoku</h4>
+                                        <p>05 Nov 2022</p>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div class="stars">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                                <img src="@/assets/images/vectors/star.svg" alt="">
+                            </div>
+                            
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, 
+                            purus sit amet luctus venenatis, lectus magna fringilla urna, 
+                            porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
+                        </p>
+                    </div>
                 </div>
             </div>
+            
+            
         </div>
+        <div class="other-products">
+                <div class="others">
+                    <h1>other products from this Merchant</h1>
+                    <a href="">Go to Merchant's store</a>
+                </div>
+
+                 <div class="small-contents">
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>                    
+                    </div>
+            </div>
+            <div class="may-also">
+                <div class="others">
+                    <h1>You May Also Want</h1>
+                </div>
+
+                 <div class="small-contents">
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>
+                        <div class="each-product">
+                            <p class="badge">-36%</p>
+                            <img src="@/assets/images/backgrounds/seed.png" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>NGN103,373,281</h3>
+                        </div>                    
+                    </div>
+            </div>
     </MarketPlaceLayout>
 </template>
 
@@ -349,9 +606,147 @@
             }
     .reviews{
         width: 100%;
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+        gap: 100px;
+        .left-reviews{
+            width: 50%;
+        }
+        .right-reviews{
+            width: 50%;
+        }
+
+    }
+    .each-review{
+        margin-top: 50px;
+        h4{
+            font-family: 'Maven Pro';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            color: #191D23;
+            margin-bottom: 0px;
+        }
+    }
+    .texts p{
+        font-family: 'Maven Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 12px;
+        color: #64748B;
+    }
+    .head-review{
+        display: flex;
+        justify-content: space-between;
+        .stars{
+            display: flex;
+            gap:10px;
+
+            img{
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+    .title{
+        display: flex;
+    }
+    .img-contain{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        img{
+            border-radius: 50%;
+        }
     }
 
 }
+.other-products{
+    margin-top: 50px;
+    padding-top: 50px;
+    padding: 100px 90px;
+    background: #F6F6F6;
+}
+.may-also{
+    padding-top: 50px;
+    padding: 100px 90px;
+    background: #FFFBEF;
+}
+.others{
+    display: flex;
+    justify-content: space-between;
+
+    a{
+        background: #05B050;
+        box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08), 0px 4px 8px rgba(44, 39, 56, 0.08);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 20px;
+        color: white;
+        text-decoration: none;
+        font-family: 'Maven Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 147%;
+        color: #E6F7EE;
+
+        
+    }
+    h1{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 34px;
+        color: #22262A;
+    }
+}
+.small-contents{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+        flex-wrap: wrap;
+
+        .each-product{
+            padding: 10px;
+            width: 260px;
+            position: relative;
+
+            h3{
+                margin-top: 16px;
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 18px;
+                color: #4A4754;
+            }
+            p{
+                font-family: 'Maven Pro';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 12px;
+                color: #4A4754;
+            }
+            .badge{
+                position: absolute;
+                top: 24px;
+                left: 22px;
+                background: #FAB900;
+                border-radius: 4px;
+                color: white;
+                font-family: 'Maven Pro';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 12px;
+                line-height: 130%;
+            }
+        }
+    }
     
 
 </style>

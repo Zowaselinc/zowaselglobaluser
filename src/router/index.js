@@ -31,6 +31,10 @@ import MarketPlace from "@/pages/marketPlace/Overview.vue";
 import Product from "@/pages/marketPlace/ProductPage.vue";
 import InputMarket from "@/pages/marketPlace/InputMarket.vue";
 import ProductDescription from "@/pages/marketPlace/Products.vue";
+import CardPayment from "@/pages/marketPlace/CardPayment.vue";
+import Checkout from "@/pages/marketPlace/Checkout.vue";
+import Transactions from "@/pages/marketPlace/Transactions.vue";
+import MyProducts from "@/pages/marketPlace/MyProducts.vue";
 
 
 
@@ -206,6 +210,26 @@ const routes = [
         path: "/marketplace/product-description",
         name: "ProductDescription",
         component:ProductDescription
+    },
+    {
+        path: "/marketplace/cardpayment",
+        name: "CardPayment",
+        component:CardPayment
+    },
+    {
+        path: "/marketplace/checkout",
+        name: "Checkout",
+        component:Checkout
+    },
+    {
+        path: "/marketplace/transactions",
+        name: "Transactions",
+        component:Transactions
+    },
+    {
+        path: "/marketplace/myproducts",
+        name: "MyProducts",
+        component:MyProducts
     },
 
 
