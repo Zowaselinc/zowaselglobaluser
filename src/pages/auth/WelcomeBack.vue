@@ -86,7 +86,7 @@ export default {
                 if (!response.error) {
                     this.$store.dispatch('setAuth', {
                         token: response.token,
-                        key: response.user._uniqueKey,
+                        key: response.user.id,
                     })
 
                     window.localStorage.setItem('authToken', response.token);

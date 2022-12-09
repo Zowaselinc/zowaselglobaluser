@@ -28,7 +28,9 @@ import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
 import CropMarket from "@/pages/dashboard/CropMarket.vue"; 
 import Settings from "@/pages/dashboard/settings/Settings.vue";
 import MarketPlace from "@/pages/marketPlace/Overview.vue";
+import CropsSale from "@/pages/marketPlace/CropsSale.vue";
 import Product from "@/pages/marketPlace/ProductPage.vue";
+import ProductNegotiation from "@/pages/marketPlace/ProductNegotiation.vue"
 import InputMarket from "@/pages/marketPlace/InputMarket.vue";
 import ProductDescription from "@/pages/marketPlace/Products.vue";
 
@@ -193,9 +195,19 @@ const routes = [
         component:MarketPlace
     },
     {
-        path: "/marketplace/product",
-        name: "Product",
+        path: "/marketplace/cropsale",
+        name: "CropSale",
+        component:CropsSale
+    },
+    {
+        path: "/marketplace/crop/:id",
+        name: "CropDetails",
         component:Product
+    },
+    {
+        path: "/marketplace/crop/:id/negotiate",
+        name: "CropNegotiation",
+        component:ProductNegotiation
     },
     {
         path: "/marketplace/inputmarket",

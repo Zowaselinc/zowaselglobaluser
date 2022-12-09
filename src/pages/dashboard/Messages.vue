@@ -376,9 +376,9 @@
             
 
 
-            </div>
         </div>
     </div>
+</div>
 
 </template>
 
@@ -389,32 +389,26 @@
         components:{
             TopHeader,
         },
-
         methods:{
-            main: function(){
+            main(){
                 var chat= document.getElementById('chat-section');
-          var form = document.getElementById('offer-form');
-        function offer(){
-          
-          if (chat.style.display ='block'){
-            chat.style.display="none";
-            form.style.display="block"
-          }else{
-            chat.style.display="block";
-          }
-        }
-
-        function closeForm(){
-           chat.style.display="block";
-            form.style.display="none"
-        }
+                var form = document.getElementById('offer-form');
+            },
+            offer(){
+                
+                if (chat.style.display ='block'){
+                    chat.style.display="none";
+                    form.style.display="block"
+                }else{
+                    chat.style.display="block";
+                }
+            },
+            closeForm(){
+                chat.style.display="block";
+                form.style.display="none"
             }
         }
-    },
-    components: {
-        TopHeader,
     }
-}
 </script>
 
 
@@ -638,9 +632,6 @@
         height: 700px;
         overflow-y: scroll;
 }
-.typing-zone{
-            width: 100%;
-            padding: 0px 58px 0px 57px;
 
 .typing-zone {
     width: 100%;
@@ -659,6 +650,10 @@
         width: 100%;
         text-align: right;
         margin-bottom: 0px;
+    }
+
+}
+        
 
     
 #offer-form{

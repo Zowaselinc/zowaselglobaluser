@@ -12,8 +12,8 @@
                 </div>
             </div>
             <div class="button-area">
-                <button>Crops for sale</button>
-                <button class="green-btns">Crops Wanted</button>
+                <button class="green-btns">Crops for sale</button>
+                <button>Crops Wanted</button>
                 <button>Crop Auction</button>
                 <button>Input Market</button>
                 <button>All</button>
@@ -114,7 +114,7 @@
                     <select name="" id="">
                         <option value="">kilogram</option>
                     </select>
-                    <input type="text">
+                    <input type="text" v-model="filters.kg">
                 </div>
                 <h3>Shipping Method</h3>
                 <div class="shipping">
@@ -170,69 +170,12 @@
                         </select>
                     </div>
                 </div>
-                <a href="#" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
+                <a href="#" @click="$router.push({name : 'CropDetails', params : {id : crop.id}})" v-for="crop,index in products.rows" :key="index" class="each-item">
+                    <p>{{ crop.title}}</p>
+                    <p>{{ crop.currency}} {{ crop.specification.price}}/{{crop.packaging}}</p>
+                     <p>{{ crop.user.first_name }}</p>
                 </a>
-                <a href="#" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="#" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="#" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="#" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="#" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="#" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="#" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="#" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
+
                 <div class="tags">
                     <h4>Related</h4>
                     <a href="#">cash Crops</a>
@@ -257,13 +200,18 @@
         },
         data(){
             return {
-                categories : []
+                categories : [],
+                products : [],
+                filters : {
+                    type : "",
+                    kg : ""
+                }
             };
         },
         methods:{
             checked (){
                 var box = document.getElementById('checkbox');
-                var deColor =box.style.backgroundColor;
+                var deColor = box.style.backgroundColor;
                 if(deColor== "white"){
                     deColor= 'green';
                 }
@@ -272,10 +220,16 @@
                 MarketplaceService.getCropCategories((response)=>{
                     this.categories = response.data;
                 });
+            },
+            getCropsForSale(){
+                MarketplaceService.getCropsForSale((response)=>{
+                    this.products = response.data;
+                })
             }
         },
         mounted(){
             this.getCropCategories();
+            this.getCropsForSale();
         }
     }
 </script>

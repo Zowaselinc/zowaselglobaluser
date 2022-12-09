@@ -1,39 +1,27 @@
 <template>
     <MarketPlaceLayout>
-        <div class="big-content">
-            <div class="image-area">
-                <img src="@/assets/images/backgrounds/okro.png" alt="">
-                <div class="small-images">
-                    <img src="@/assets/images/backgrounds/okro-small.png" alt="">
-                    <img src="@/assets/images/backgrounds/okro-small.png" alt="">
-                    <img src="@/assets/images/backgrounds/okro-small.png" alt="">
-                    <img src="@/assets/images/backgrounds/okro-small.png" alt="">
-                    <img src="@/assets/images/backgrounds/okro-small.png" alt="">
+        <div class="big-content" v-if="product">
+            <div v-if="product && product.images.length" class="image-area">
+                <img :src="product.images[0]" alt="">
+                <div v-if="(product.images.length > 1)" class="small-images">
+                    <img v-for="image,index in product.images.slice(1)" :key="index" :src="image" alt="">
                 </div>
             </div>
 
-            <div class="topic">
+            <div class="topic" v-if="product">
                 <div class="left">
-                    <h1>Irish Potato</h1>
-                    <p class="price">NGN39,097,450/bag</p>
-                    <p class="farmer">Naziri Farms <span> <img src="@/assets/images/vectors/verified.svg" alt=""> Verified merchant</span></p>
+                    <h1>{{ product.title }}</h1>
+                    <p class="price">{{ product.currency }}{{product.specification.price }}/{{ product.packaging}}</p>
+                    <p class="farmer">{{ product.user.first_name +" "+product.user.last_name }} <span> <img src="@/assets/images/vectors/verified.svg" alt=""> Verified merchant</span></p>
                 </div>
                 <div class="right">
-                    <a href="/dashboard/messages" class="fulfil">Fulfil/Accept Offer</a>
-                    <a href="" class="negotiate">Negotiate</a>
+                    <a href="#" class="fulfil">Fulfil/Accept Offer</a>
+                    <a href="#" class="negotiate" @click="$router.push({ name : 'CropNegotiation', params : {id : product.id}})">Negotiate</a>
                 </div>
             </div>
             <div class="description">
                 <h3>Description</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec sagittis nunc, imperdiet volutpat magnis bibendum. Ultrices lorem
-                     amet pharetra interdum lorem ornare eu. Tellus semper aenean mauris facilisi placerat sapien urna velit. Duis faucibus convallis 
-                     posuere neque neque adipiscing quis egestas nulla. Viverra senectus nisl quis urna, enim id dolor pulvinar. Aliquam mi, dui pellentesque ut. 
-                     Sit egestas arcu nunc lacus, ipsum odio montes, pellentesque eget. In ac est sapien orci magna nisi, volutpat et cras. Fermentum egestas at volutpat
-                      donec faucibus et.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec sagittis nunc, imperdiet volutpat magnis bibendum. Ultrices lorem amet 
-                      pharetra interdum lorem ornare eu. Tellus semper aenean mauris facilisi placerat sapien urna velit. Duis faucibus convallis posuere neque neque
-                       adipiscing quis egestas nulla. Viverra senectus nisl quis urna, enim id dolor pulvinar. Aliquam mi, dui pellentesque ut.
-                       Sit egestas arcu nunc lacus, ipsum odio montes, pellentesque eget. In ac est sapien orci magna nisi, volutpat et cras. 
-                       Fermentum egestas at volutpat donec faucibus et.
+                <p>{{ product.description }}
                 </p>
             </div>
             <hr>
@@ -42,61 +30,61 @@
                     <div class="left-line">
                         <div class="each-detail">
                             <h4>Product Category</h4>
-                            <p>Grain</p>
+                            <p>{{ product.crop_category.name}}</p>
                         </div>
                         <div class="each-detail">
                             <h4>Color</h4>
-                            <p>Brown</p>
+                            <p>{{ product.specification.color}}</p>
                         </div>
                         <div class="each-detail">
                             <h4>Moisture</h4>
-                            <p>0%</p>
+                            <p>{{ product.specification.moisture}}%</p>
                         </div>
                         <div class="each-detail">
                             <h4>Foreign Matter (FM)</h4>
-                            <p>3%</p>
+                            <p>{{ product.specification.foreign_matter}}%</p>
                         </div>
                         <div class="each-detail">
                             <h4>Broken Grains</h4>
-                            <p>6%</p>
+                            <p>{{ product.specification.broken_grains}}%</p>
                         </div>
                         <div class="each-detail">
                             <h4>Weevil</h4>
-                            <p>0%</p>
+                            <p>{{ product.specification.weevil}}%</p>
                         </div>
                         <div class="each-detail">
                             <h4>Damaged kernel</h4>
-                            <p>2%</p>
+                            <p>{{ product.specification.dk}}%</p>
                         </div>
                         <div class="each-detail">
                             <h4>Rotten Shriveled</h4>
-                            <p>6%</p>
+                            <p>{{ product.specification.rotten_shriveled}}%</p>
                         </div>
                     </div>
                     <div class="right-line">
                         <div class="each-detail">
                             <h4>Test Weight</h4>
-                            <p>MT</p>
+                            <p>{{ product.specification.test_weight}}</p>
                         </div>
                         <div class="each-detail">
                             <h4>Hardness</h4>
-                            <p>Hard</p>
+                            <p>{{ product.specification.hardness}}</p>
                         </div>
                         <div class="each-detail">
                             <h4>Split</h4>
-                            <p>1%</p>
+                            <p>{{ product.specification.splits}}%</p>
                         </div>
                         <div class="each-detail">
                             <h4>Oil Content</h4>
-                            <p>0%</p>
+                            <p>{{ product.specification.oil_content}}%</p>
                         </div>
                         <div class="each-detail">
                             <h4>Infestation</h4>
-                            <p>5%</p>
+                            <p>{{ product.specification.infestation}}%</p>
                         </div>
                         <div class="each-detail">
                             <h4>Grain size</h4>
-                            <p>Whole grain</p>
+                            <p>{{ product.specification.grain_size}}</p>
                         </div>
                     </div>
                    
@@ -123,12 +111,30 @@
 </template>
 
 <script>
-    import  MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue"
+    import  MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue";
+    import MarketPlaceService from "@/services/marketplace";
     export default {
         name:'product',
         components: {
             MarketPlaceLayout,
-            },
+        },
+        data(){
+            return {
+                product : null
+            }
+        },
+        methods : {
+            getProduct(){
+                MarketPlaceService.getCropById(this.$route.params.id,(response)=>{
+                    this.product = response.data;
+                    this.product.images = JSON.parse(this.product.images);
+                })
+            }
+        },
+        mounted(){
+            this.getProduct();
+        }
+
     }
 </script>
 
