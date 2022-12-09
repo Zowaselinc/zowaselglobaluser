@@ -1,105 +1,159 @@
 <template>
-<AuthSharedLayout>
-    <div class="big-container">
-        <img class="mobile-logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
-        <div class="left-content">
-        <h1 class="text-center">Welcome Back</h1>
-        
-        
-         <form>
-            
-            
-            
-            <div class="form-group">
-                <label for="">Email</label>
-                <input type="email" v-model="email" class="form-control" id="formGroupExampleInput" placeholder="Enter your email">
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="wrap d-md-flex">
+                        <div class="img"></div>
+                        <div class="login-wrap p-4 p-md-5">
+                            <div class="d-flex top-container">
+                                <div class="w-100">
+                                    <h3 class="mb-4">Sign In</h3>
+                                </div>
+                                <!-- <div class="zowasel-logo">
+                                    <img class="img-fluid" src="@/assets/images/logos/zowasel-grey-logo.png">
+                                </div> -->
+                            </div>
+                            <form action="#" class="signin-form">
+                                <div class="form-group mb-3">
+                                    <label class="label" for="name">Username</label>
+                                    <input type="text" class="form-control" placeholder="Username" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="label" for="password">Password</label>
+                                    <input type="password" v-model="password" class="form-control" placeholder="Password" required>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit"
+                                        class="form-control btn btn-primary-green rounded submit px-3"  @click="loginAccount()">Login
+                                        In</button>
+                                </div>
+                                <div class="form-group d-md-flex forget-remember">
+                                    <div class="w-50 text-left">
+                                        <label class="checkbox-wrap checkbox-primary mb-0">Remember Me
+                                            <input type="checkbox" checked>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="w-50 text-md-right">
+                                        <a class=" sign-up" href="#">Forgot Password</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <p class="text-center mt-4">Don’t have an account? <a class="sign-up" data-toggle="tab"
+                                    href="#signup">Sign Up</a></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="">Password</label>
-                <input type="password" v-model="password" class="form-control" id="formGroupExampleInput2" placeholder="Enter your password">
-            </div>
-            
-            
-            <div class="buttons">
-                <div class="form-group">
-                    <button type="button" @click="loginAccount()" class="btn  btn-lg btn-block">Login</button>
-                </div>
-                <div class="lines">
-                    <div class="line"></div>
-                    <p>OR</p>
-                    <div class="line"></div>
-                </div>
-                <div class="form-group">
-                    <button type="button" class="btn skip btn-lg btn-block">Continue with Google</button>
-                </div>
-                <div class="last-text">
-                    <p id="emailHelp" class="form-text text-muted text-center">Don't have an account? <a href="/register">Sign Up</a></p>
-                </div>
-                
-            </div>
-           
-            
-        </form>
-       
         </div>
-         <div class="right-content">
-            <img class="background-img" src="@/assets/images/backgrounds/right-side2.png" alt="">
-            <img class="logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
-        </div>
-    </div>
-    </AuthSharedLayout>
+    </section>
 </template>
 
 <script>
-    import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
-    import AuthService from "@/services/auth";
-    export default {
-        name:'WelcomeBack',
-        components: {
-            AuthSharedLayout
-        },
-        data(){
-            return {
-                email : "",
-                password : ""
-            };
-        },
-        methods: {
-            loginAccount(){
-                let vm = this;
-                AuthService.loginUser({
-                    email : vm.email,
-                    password : vm.password
-                },(response)=>{
-                    if(!response.error){
-                        vm.$router.push('/dashboard/corporate');
-                    }
-                })
-            }
+import AuthService from "@/services/auth";
+export default {
+    name: 'WelcomeBack',
+    components: {
+
+    },
+    data() {
+        return {
+            email: "",
+            password: ""
+        };
+    },
+    methods: {
+        loginAccount() {
+            let vm = this;
+            AuthService.loginUser({
+                email: vm.email,
+                password: vm.password
+            }, (response) => {
+                if (!response.error) {
+                    this.$store.dispatch('setAuth', {
+                        token: response.token,
+                        key: response.user._uniqueKey,
+                    })
+
+                    window.localStorage.setItem('authToken', response.token);
+                    vm.$router.push('/dashboard/corporate');
+                }
+            })
+        }
+    },
+    created() {
+        if (this.$store.state.authData) {
+            this.$router.replace('/dashboard/corporate');
         }
     }
+}
 </script>
 
 <style lang="scss"  scoped>
-  
-   
-  
-    .buttons{
-        margin-top: 50px;
-    }
-    button{
-        background-color:  #008D40;
-        width: 100%;
-        color: white;
-    }
-    .skip{
-        background: #2D3748;
+.ftco-section {
+    padding: 7em 0;
+}
 
+.wrap {
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+}
+
+.login-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.forget-remember {
+    align-items: baseline !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn.btn-primary-green {
+    background: #008D40 !important;
+    border: 1px solid #008D40 !important;
+    color: #fff !important;
+}
+
+.sign-up {
+    color: #008D40 !important;
+}
+
+@media (min-width: 768px) {
+    .d-md-flex {
+        display: -webkit-box !important;
+        display: -ms-flexbox !important;
+        display: flex !important;
     }
-    .last-text a{
-        text-decoration: none;
-        color: #008D40;
+
+    .p-md-5 {
+        padding: 3rem !important;
     }
-   
-  
+}
+
+@media (max-width: 991.98px) {
+
+    .img,
+    .login-wrap {
+        width: 100%;
+    }
+}
+
+
+.img {
+    width: 100%;
+    background-image: url("@/assets/images/backgrounds/partner-background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 </style>

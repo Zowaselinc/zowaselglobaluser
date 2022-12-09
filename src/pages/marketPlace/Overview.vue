@@ -1,4 +1,4 @@
-<template>
+ <template>
     <MarketPlaceLayout>
         <div class="top-text">
             <h1>Buy & Sell with Ease</h1>

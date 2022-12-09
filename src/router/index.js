@@ -27,6 +27,10 @@ import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
 import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
 import CropMarket from "@/pages/dashboard/CropMarket.vue"; 
 import Settings from "@/pages/dashboard/settings/Settings.vue";
+import MarketPlace from "@/pages/dashboard/marketPlace/Overview.vue";
+import TransactionSumary from "@/pages/dashboard/marketPlace/checkout/TransactionSumary.vue";
+import OrderTracking from "@/pages/dashboard/marketPlace/ordering/OrderTracking.vue";
+import NewCrop from "@/pages/dashboard/marketPlace/NewCrop.vue";
 import MarketPlace from "@/pages/marketPlace/Overview.vue";
 import Product from "@/pages/marketPlace/ProductPage.vue";
 import InputMarket from "@/pages/marketPlace/InputMarket.vue";
@@ -195,6 +199,21 @@ const routes = [
         path: "/marketplace",
         name: "MarketPlace",
         component:MarketPlace
+    },
+    {
+        path: "/marketplace/transactionsumary",
+        name: "Transactionsumary",
+        component:TransactionSumary
+    },
+    {
+        path: "/marketplace/ordertracking",
+        name: "OrderTracking",
+        component:OrderTracking
+    },
+    {
+        path: "/marketplace/newcrop",
+        name: "NewCrop",
+        component: NewCrop
     },
     {
         path: "/marketplace/product",

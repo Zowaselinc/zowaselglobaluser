@@ -5,8 +5,6 @@
         <SideBar />
         <slot></slot>
     </div>
-    
-    
     <Footer />
 </template>
 
@@ -19,9 +17,16 @@ export default {
     components: {
         TopHeader,
         SideBar,
-        Footer,
+        Footer
     },
+    created(){
+        if(!this.$store.state.authData){
+            window.location.replace('/login');
+        }
+    },
+    mounted() {
 
+    },
 }
 </script>
 
