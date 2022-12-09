@@ -8,14 +8,14 @@
             <div class="input-area">
                 <input type="text" placeholder="Search">
                 <div class="icon">
-                    <img src="@/assets/images/vectors/search-icon.svg" alt="">
+                    <img src="@/assets/images/vectors/Search.svg" alt="">
                 </div>
             </div>
             <div class="button-area">
                 <button>Crops for sale</button>
-                <button class="green-btns">Crops Wanted</button>
+                <button >Crops Wanted</button>
                 <button>Crop Auction</button>
-                <button>Input Market</button>
+                <button class="green-btns">Input Market</button>
                 <button>All</button>
             </div>
         </div>
@@ -215,58 +215,58 @@
                 </div>
                 <div class="big-contents">
                     <div class="small-contents">
-                        <div class="each-product">
+                        <a href="/marketplace/product-description" class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
                             <h3>Product Title</h3>
                             <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
                             <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
+                        </a>
+                        <a href="/marketplace/product-description" class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
                             <h3>Product Title</h3>
                             <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
                             <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
+                        </a>
+                        <a href="/marketplace/product-description" class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
                             <h3>Product Title</h3>
                             <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
                             <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
+                        </a>
+                        <a href="/marketplace/product-description" class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
                             <h3>Product Title</h3>
                             <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
                             <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
+                        </a>
+                        <a href="/marketplace/product-description" class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
                             <h3>Product Title</h3>
                             <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
                             <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
+                        </a>
+                        <a href="/marketplace/product-description" class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
                             <h3>Product Title</h3>
                             <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
                             <h3>NGN103,373,281</h3>
-                        </div>                    
+                        </a>                
                     </div>
                     <h3 class="heading">Inputs</h3>
                     <div class="small-contents">
-                        <div class="each-product">
+                        <a href="#" class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
                             <h3>Product Title</h3>
                             <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
                             <h3>NGN103,373,281</h3>
-                        </div>
+                        </a>
                         <div class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
@@ -612,6 +612,7 @@
             padding: 10px;
             width: 260px;
             position: relative;
+            text-decoration: none;
 
             h3{
                 margin-top: 16px;

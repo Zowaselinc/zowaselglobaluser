@@ -12,11 +12,11 @@
                 </div>
             </div>
             <div class="button-area">
-                <button>Crops for sale</button>
-                <button class="green-btns">Crops Wanted</button>
-                <button>Crop Auction</button>
-                <button>Input Market</button>
-                <button>All</button>
+                <a href="#">Crops for sale</a>
+                <a href="#" class="green-btns">Crops Wanted</a>
+                <a href="#">Crop Auction</a>
+                <a href="/marketplace/inputmarket">Input Market</a>
+                <a href="#">All</a>
             </div>
         </div>
 
@@ -365,10 +365,9 @@
         width: 60%;
         justify-content: space-between;
 
-        button{
+        a{
             background-color: white;
-            height: 40px;
-            padding: 0px 35px;
+            padding:10px 35px;
             border: 1px solid #696671;
             border-radius: 55px;
             font-family: 'Maven Pro';
@@ -376,6 +375,10 @@
             font-weight: 700;
             font-size: 15px;
             color: #696671;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
 
            
         }

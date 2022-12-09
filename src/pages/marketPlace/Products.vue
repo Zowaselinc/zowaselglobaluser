@@ -42,8 +42,8 @@
                    <h3 class="ships">Shipping: <span>NGN3050.01</span></h3>
                    <h3 class="ships">Estimated Delivery <span>to Abeoukuta on</span> 23rd November</h3>
                    <div class="buttonss">
-                        <button class="buy">Buy now</button>
-                        <button class="cart">Add to Cart</button>
+                        <a  href="#" class="buy">Buy now</a>
+                        <a href="#" class="cart">Add to Cart</a>
                    </div>
                    
                 </div>
@@ -525,6 +525,11 @@
                     font-size: 16px;
                     line-height: 147%;
                     color: #E6F7EE;
+                    text-decoration: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
                 }
                 .cart{
                         height: 55px;
@@ -539,6 +544,10 @@
                         line-height: 147%;
                         color: #05B050;
                         border: 1px solid #05B050;
+                        text-decoration: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                     }
             }
             hr{
@@ -662,7 +671,7 @@
         }
     }
 
-}
+
 .other-products{
     margin-top: 50px;
     padding-top: 50px;
