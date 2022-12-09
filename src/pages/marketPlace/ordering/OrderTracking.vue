@@ -13,7 +13,7 @@
                     <!-- progress bar -->
                     <div class="progress-bar-wrapper d-flex flex-column w-100 position-relative">
                         <div class="progress progress-outer">
-                            <div class="progress progress-inner"></div>
+                            <div class="progress progress-inner" :style="('width : '+orderProgress+'%')"></div>
                         </div>
                         <div class="circle d-flex w-100 position-absolute">
                             <div class="circle-1 circle-main"><span></span></div>
@@ -84,9 +84,9 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a  class="btn payment-status"  v-if="visible">Payment Status: Pending</a>
-                    <a id="payment-state" class="btn payment-status" v-if="!visible">Payment Status: <strong>Completed</strong></a>
-                    <a class="btn payment-status wallet d-inline-block position-absolute" v-if="!visible">Go to wallet</a>
+                    <a  class="btn payment-status"  v-if="(orderProgress != 100)">Payment Status: Pending</a>
+                    <a id="payment-state" class="btn payment-status" v-if="(orderProgress == 100)">Payment Status: <strong>Completed</strong></a>
+                    <a class="btn payment-status wallet d-inline-block position-absolute" v-if="(orderProgress == 100)">Go to wallet</a>
                 </div>
             </div>
             <!-- right -->
@@ -238,12 +238,19 @@ export default {
     data() {
         return {
             visible: false,
-            width: 100
+            orderProgress : 0
         };
     },
     computed: {
 
     },
+    mounted(){
+        setInterval(()=>{
+            if(this.orderProgress < 100){
+                this.orderProgress++;
+            }
+        },500);
+    }
 }
 </script>
 
