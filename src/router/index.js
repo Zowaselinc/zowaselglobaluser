@@ -30,6 +30,9 @@ import CropMarket from "@/pages/dashboard/CropMarket.vue";
 import Settings from "@/pages/dashboard/settings/Settings.vue";
 import MarketPlace from "@/pages/dashboard/marketPlace/Overview.vue";
 import TransactionSumary from "@/pages/dashboard/marketPlace/checkout/TransactionSumary.vue";
+import OrderTracking from "@/pages/dashboard/marketPlace/ordering/OrderTracking.vue";
+import NewCrop from "@/pages/dashboard/marketPlace/NewCrop.vue";
+
 
 
 const routes = [
@@ -194,6 +197,16 @@ const routes = [
         path: "/dashboard/transactionsumary",
         name: "Transactionsumary",
         component:TransactionSumary
+    },
+    {
+        path: "/dashboard/ordertracking",
+        name: "OrderTracking",
+        component:OrderTracking
+    },
+    {
+        path: "/dashboard/newcrop",
+        name: "NewCrop",
+        component: NewCrop
     },
 
 

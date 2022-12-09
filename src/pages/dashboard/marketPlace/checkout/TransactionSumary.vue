@@ -2,7 +2,7 @@
     <marketPlaceLayout>
         <!-- header -->
         <div class="page-header d-flex justify-content-center align-items-center">
-            <h1 v-if="(step == 1)">TransactionSummary</h1>
+            <h1 v-if="(step == 1)">Transaction Summary</h1>
             <!-- for waybill details -->
             <div :class="['waybills', 'w-100']" v-if="(step == 2)">
                 <a class="arrow-left-img " @click="previouStep()">
@@ -209,7 +209,7 @@ export default {
                 position: relative;
                 display: flex;
                 flex-direction: row;
-                margin-bottom: 43px;
+                margin-bottom: 37px;
 
                 >div {
 
@@ -219,12 +219,12 @@ export default {
                     }
 
                     &:nth-of-type(1) {
-                        @include textStyles(Poppins, 800, 20px, 166.67%);
+                        @include textStyles(Poppins, 800, 18px, 33px);
                         color: rgba(45, 55, 72, 0.6);
                     }
 
                     &:nth-of-type(2) {
-                        @include textStyles(Poppins, 500, 20px, 147%);
+                        @include textStyles(Poppins, 500, 18px, 29px);
                         color: #696671;
                     }
                 }
@@ -235,7 +235,7 @@ export default {
         // button group
         .table-btn {
             gap: 25px;
-            margin-bottom: 233px;
+            margin-bottom: 100px;
 
             button {
                 padding: 15px 20px;

@@ -55,7 +55,7 @@ hr {
     position: relative;
     display: flex;
     flex-direction: row;
-    margin-bottom: 48px;
+    margin-bottom: 40px;
 
     >div {
         &:last-child:not(.quality-spec) {
@@ -64,12 +64,12 @@ hr {
         }
 
         &:nth-of-type(1) {
-            @include textStyles(Poppins, 800, 20px, 166.67%);
+            @include textStyles(Poppins, 800, 18px, 166.67%);
             color: rgba(45, 55, 72, 0.6);
         }
 
         &:nth-of-type(2) {
-            @include textStyles("Maven Pro", 700, 20px, 147%);
+            @include textStyles("Maven Pro", 700, 18px, 147%);
             color: #696671;
         }
     }
