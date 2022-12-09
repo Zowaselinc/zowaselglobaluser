@@ -25,13 +25,20 @@ import RenewalManager from "@/pages/dashboard/RenewalManager.vue";
 import ChanelLog from "@/pages/dashboard/ChanelLog.vue";
 import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
 import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
-import InputMarket from "@/pages/dashboard/InputMarket.vue";
 import CropMarket from "@/pages/dashboard/CropMarket.vue"; 
 import Settings from "@/pages/dashboard/settings/Settings.vue";
 import MarketPlace from "@/pages/dashboard/marketPlace/Overview.vue";
 import TransactionSumary from "@/pages/dashboard/marketPlace/checkout/TransactionSumary.vue";
 import OrderTracking from "@/pages/dashboard/marketPlace/ordering/OrderTracking.vue";
 import NewCrop from "@/pages/dashboard/marketPlace/NewCrop.vue";
+import MarketPlace from "@/pages/marketPlace/Overview.vue";
+import Product from "@/pages/marketPlace/ProductPage.vue";
+import InputMarket from "@/pages/marketPlace/InputMarket.vue";
+import ProductDescription from "@/pages/marketPlace/Products.vue";
+import CardPayment from "@/pages/marketPlace/CardPayment.vue";
+import Checkout from "@/pages/marketPlace/Checkout.vue";
+import Transactions from "@/pages/marketPlace/Transactions.vue";
+import MyProducts from "@/pages/marketPlace/MyProducts.vue";
 
 
 
@@ -189,7 +196,7 @@ const routes = [
         component:Settings
     },
     {
-        path: "/dashboard/marketplace",
+        path: "/marketplace",
         name: "MarketPlace",
         component:MarketPlace
     },
@@ -207,6 +214,41 @@ const routes = [
         path: "/dashboard/newcrop",
         name: "NewCrop",
         component: NewCrop
+    },
+    {
+        path: "/marketplace/product",
+        name: "Product",
+        component:Product
+    },
+    {
+        path: "/marketplace/inputmarket",
+        name: "Inputmarket",
+        component:InputMarket
+    },
+    {
+        path: "/marketplace/product-description",
+        name: "ProductDescription",
+        component:ProductDescription
+    },
+    {
+        path: "/marketplace/cardpayment",
+        name: "CardPayment",
+        component:CardPayment
+    },
+    {
+        path: "/marketplace/checkout",
+        name: "Checkout",
+        component:Checkout
+    },
+    {
+        path: "/marketplace/transactions",
+        name: "Transactions",
+        component:Transactions
+    },
+    {
+        path: "/marketplace/myproducts",
+        name: "MyProducts",
+        component:MyProducts
     },
 
 

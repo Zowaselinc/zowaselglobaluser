@@ -7,7 +7,7 @@
             </a>
             <div class="search-barr d-flex flex-row justify-content-center align-items-center">
                 <div id="search-icon">
-                    <img class=" img-fluid" src="@/assets/images/vectors/search.svg">
+                    <img class="img-fluid" src="@/assets/images/vectors/search-icon.svg">
                 </div>
                 <input type="search" id="seachID" class="form-control" aria-describedby="passwordHelpBlock"
                     placeholder="Type to search">
@@ -15,7 +15,7 @@
 
             <div class="navbar-icons d-flex flex-row justify-content-center align-items-center">
                 <div class="bell">
-                    <img class="img-fluid" src="@/assets/images/vectors/Bell.svg" alt="bell">
+                    <img class="img-fluid" src="@/assets/images/vectors/bell-icon.svg" alt="bell">
                 </div>
                 <div class="gear">
                     <img class="img-fluid" src="@/assets/images/vectors/GearSix.svg" alt="gear">

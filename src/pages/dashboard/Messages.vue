@@ -4,108 +4,126 @@
         </TopHeader>
         <div class="big-container">
             <div class="left">
-                <div class="top-section">
-                    <img src="@/assets/images/vectors/arrowleft.png" alt="">
-                    <h2>Messages</h2>
-                </div>
-                <input type="text" class="search" placeholder="search messages">
-                <div class="messages">
-                    <div class="each-message">
-                        <div class="left-message">
-                            <h3>{{ userData.user.first_name }} Farms</h3>
-                            <p>Lorem ipsum dolor</p>
-                        </div>
-                        <div class="right-message">
-                            <p>today, 9:52pm</p>
-                            <img src="@/assets/images/vectors/checks.png" alt="">
-                        </div>
-                    </div>
-                    <div class="each-message">
-                        <div class="left-message">
-                            <h3>Nagari Farms</h3>
-                            <p>Lorem ipsum dolor</p>
-                        </div>
-                        <div class="right-message">
-                            <p>today, 9:52pm</p>
-                            <img src="@/assets/images/vectors/checks.png" alt="">
-                        </div>
-                    </div>
-                    <div class="each-message">
-                        <div class="left-message">
-                            <h3>Nagari Farms</h3>
-                            <p>Lorem ipsum dolor</p>
-                        </div>
-                        <div class="right-message">
-                            <p>today, 9:52pm</p>
-                            <p class="red-p">1</p>
-                        </div>
-                    </div>
-                    <div class="each-message">
-                        <div class="left-message">
-                            <h3>Nagari Farms</h3>
-                            <p>Lorem ipsum dolor</p>
-                        </div>
-                        <div class="right-message">
-                            <p>today, 9:52pm</p>
-                            <p class="red-p">1</p>
-                        </div>
-                    </div>
-                    <div class="each-message">
-                        <div class="left-message">
-                            <h3>Nagari Farms</h3>
-                            <p>Lorem ipsum dolor</p>
-                        </div>
-                        <div class="right-message">
-                            <p>today, 9:52pm</p>
-                            <img src="@/assets/images/vectors/checks.png" alt="">
-                        </div>
-                    </div>
-                    <div class="each-message">
-                        <div class="left-message">
-                            <h3>Nagari Farms</h3>
-                            <p>Lorem ipsum dolor</p>
-                        </div>
-                        <div class="right-message">
-                            <p>today, 9:52pm</p>
-                            <img src="@/assets/images/vectors/checks.png" alt="">
-                        </div>
-                    </div>
-                    <div class="each-message">
-                        <div class="left-message">
-                            <h3>Nagari Farms</h3>
-                            <p>Lorem ipsum dolor</p>
-                        </div>
-                        <div class="right-message">
-                            <p>today, 9:52pm</p>
-                            <p class="red-p">1</p>
-                        </div>
-                    </div>
-                    <div class="each-message">
-                        <div class="left-message">
-                            <h3>Nagari Farms</h3>
-                            <p>Lorem ipsum dolor</p>
-                        </div>
-                        <div class="right-message">
-                            <p>today, 9:52pm</p>
-                            <img src="@/assets/images/vectors/checks.png" alt="">
-                        </div>
-                    </div>
-
-                </div>
+                <!-- <div class="top-section">
+                <img src="@/assets/images/vectors/arrowleft.png" alt="">
+                <h2>Messages</h2>
             </div>
             <div class="right">
                 <div class="right-top-section">
                     <h1>{{ userData.user.first_name }}  Farms</h1>
                 </div>
 
-                <div class="opened-message">
-                    <p class="centered-text">Yesterday, 9:52pm</p>
-                    <div class="sent-message">
-                        <div class="sent-content">
-                            <p>I would buy for N3,8202,894</p>
-                            <span class="sent-time">10:35pm</span>
+            </div> -->
+
+                <h1>Irish Potato</h1>
+                <p>NGN3,940,450/bag</p>
+                <p>Naziri Farms</p>
+
+                <p><img src="@/assets/images/vectors/verified.svg" alt=""><span>verified merchant</span></p>
+
+                <h4>Product Specification</h4>
+
+                <div class="actual-details">
+                    <div class="left-line">
+                        <div class="each-detail">
+                            <h4>Product Category</h4>
+                            <p>Grain</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Color</h4>
+                            <p>Brown</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Moisture</h4>
+                            <p>0%</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Foreign Matter (FM)</h4>
+                            <p>3%</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Broken Grains</h4>
+                            <p>6%</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Weevil</h4>
+                            <p>0%</p>
                         </div>
 
+                    </div>
+                    <div class="right-line">
+                        <div class="each-detail">
+                            <h4>Test Weight</h4>
+                            <p>MT</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Hardness</h4>
+                            <p>Hard</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Split</h4>
+                            <p>1%</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Oil Content</h4>
+                            <p>0%</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Infestation</h4>
+                            <p>5%</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Grain size</h4>
+                            <p>Whole grain</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="middle-line">
+                        <div class="each-detail">
+                            <h4>Test Weight</h4>
+                            <p>MT</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Hardness</h4>
+                            <p>Hard</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Split</h4>
+                            <p>1%</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Oil Content</h4>
+                            <p>0%</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Infestation</h4>
+                            <p>5%</p>
+                        </div>
+                        <div class="each-detail">
+                            <h4>Grain size</h4>
+                            <p>Whole grain</p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+            <div class="right">
+                <div class="right-top-section">
+                    <h1>Naziri Farms</h1>
+                </div>
+                <div class="contents">
+                    <!-- <div class="opened-message" id="chat-section">
+                <p class="centered-text">Yesterday, 9:52pm</p>
+                <div class="sent-message">
+                    <div class="sent-content">
+                        <p>I would buy for N3,8202,894</p>
+                        <span class="sent-time">10:35pm</span>
                     </div>
                     <div class="incoming-message">
                         <div class="incoming-content">
@@ -182,9 +200,106 @@
                 </div>
 
 
+                
+                
+                </div>
+                <form id="offer-form">
+               <a href="#" class="close-form" v-on:click="closeForm()"> X </a>
+              <div class="main-form" >
+                  <div class="form-row">
+                  <div class="form-group form-inputs">
+                    <label for="formGroupExampleInput">Quantity</label>
+                    <div class="quantity">
+                     
+                    </div>
+                   
+                    
+                  </div>
+                  <div class="form-group form-inputs">
+                    <label for="formGroupExampleInput2">Price</label>
+                    <input type="text" class="form-control amount " id="" placeholder="Enter Amount">
+                  </div>
+                  <div class="form-group form-inputs">
+                    <label for="formGroupExampleInput2">Oil Content</label>
+                    <input type="text" class="form-control percentage" id="" placeholder="%">
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group form-inputs">
+                    <label for="formGroupExampleInput">Foreign Matter</label>
+                    <input type="text" class="form-control percentage" id="formGroupExampleInput" placeholder="%">
+                  </div>
+                  <div class="form-group form-inputs">
+                    <label for="formGroupExampleInput2">Infestation</label>
+                    <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
+                  </div>
+                  <div class="form-group form-inputs">
+                    <label for="formGroupExampleInput2">Moisture</label>
+                    <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group form-inputs">
+                    <label for="formGroupExampleInput">Weevil</label>
+                    <input type="text" class="form-control percentage" id="formGroupExampleInput" placeholder="%">
+                  </div>
+                  <div class="form-group form-inputs">
+                    <label for="formGroupExampleInput2">Hardness</label>
+                    <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
+                  </div>
+                  <div class="form-group form-inputs">
+                    <label for="formGroupExampleInput2">Splits</label>
+                    <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="form-group form-inputs">
+                    <label for="formGroupExampleInput">Weevil</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                  </div>
+                  <div class="form-group form-inputs">
+                    <label for="formGroupExampleInput2">Hardness</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                  </div>
+                  <div class="form-group form-inputs">
+                    <label for="formGroupExampleInput2">Splits</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                  </div>
+              </div>
+              </div>
+              <div class="form-row">
+                  <button class="form-send">Send</button>
+              </div>
+             
+            
+                </form> -->
+
+                    <div class="chat-image">
+                        <img src="@/assets/images/backgrounds/ChatsCircle.png" alt="">
+                        <h1>Chat or send an offer to negotiate</h1>
+                    </div>
+
+                </div>
+
+
+
+                <div class="typing-zone">
+
+                    <form action="">
+                        <div class="typing">
+                            <p>Zowasel is typing...</p>
+                        </div>
+                        <div class="form-content">
+                            <input type="text">
+                            <button>Send Offer</button>
+                        </div>
+
+                    </form>
+                </div>
+
+
             </div>
         </div>
-    </div>
 
 </template>
 
@@ -192,13 +307,33 @@
 import TopHeader from "@/layouts/partials/TopHeader.vue";
 export default {
     name: 'Messages',
-    data() {
-        return {
-            userData: this.$store.state.user
-        }
-    },
     components: {
         TopHeader,
+    },
+
+    methods: {
+        main: function () {
+            var chat = document.getElementById('chat-section');
+            var form = document.getElementById('offer-form');
+            function offer() {
+
+                if (chat.style.display = 'block') {
+                    chat.style.display = "none";
+                    form.style.display = "block"
+                } else {
+                    chat.style.display = "block";
+                }
+            }
+
+            function closeForm() {
+                chat.style.display = "block";
+                form.style.display = "none"
+            }
+        }
+    }
+},
+components: {
+    TopHeader,
     }
 }
 </script>
@@ -343,9 +478,7 @@ export default {
 
     .opened-message {
         padding: 37px 58px 37px 57px;
-        width: 100%;
-        height: 700px;
-        overflow-y: scroll;
+
         position: relative;
         display: flex;
         flex-direction: column;
@@ -422,6 +555,12 @@ export default {
 
 }
 
+.contents {
+    width: 100%;
+    height: 700px;
+    overflow-y: scroll;
+}
+
 .typing-zone {
     width: 100%;
     padding: 0px 58px 0px 57px;
@@ -448,6 +587,145 @@ export default {
             font-size: 18px;
             color: #05B050;
         }
+
+        .typing {
+            width: 100%;
+            text-align: right;
+            margin-bottom: 0px;
+
+            p {
+                margin: 0px;
+                font-family: 'Maven Pro';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                color: #05B050;
+            }
+        }
+
+        input {
+            width: 70%;
+            height: 60px;
+            padding: 10px 25px;
+            gap: 39px;
+            background: rgba(249, 249, 249, 0.5);
+            border: 1px solid #05B050 !important;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 28%;
+            color: white;
+            height: 60px;
+            background: #05B050;
+            box-shadow: 0px 2.58333px 5.16667px rgba(44, 39, 56, 0.08), 0px 5.16667px 10.3333px rgba(44, 39, 56, 0.08);
+            border-radius: 5.16667px;
+            border: none;
+            font-family: 'Maven Pro';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20.6667px;
+            margin-top: 5px;
+        }
+    }
+
+
+
+    #offer-form {
+        margin-top: 200px;
+        padding: 30px;
+        width: 90%;
+        margin-left: 3%;
+        border: 1px solid rgba(48, 189, 110, 0.4);
+        position: relative;
+
+        .main-form {
+            margin-top: 50px;
+            height: 400px;
+            overflow-y: scroll;
+        }
+
+        .form-row {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .form-inputs {
+            width: 30%;
+        }
+
+        label {
+            font-family: Maven Pro;
+            font-style: Medium;
+            font-size: 21.33px;
+            color: #B5B4B9;
+        }
+
+        .form-send {
+            border: 2px solid #6ED19A;
+            width: 100%;
+            height: 48px;
+            background-color: white;
+            font-family: Maven Pro;
+            font-style: Bold;
+            font-size: 16px;
+            color: #6ED19A;
+            font-weight: bold;
+        }
+
+        .close-form {
+            position: absolute;
+            right: 30px;
+            background-color: #696671;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        select {
+            height: 50px;
+            border: 1px solid #dde6ef;
+            margin-bottom: 10px;
+            box-shadow: none;
+            border-radius: 0;
+            background: #fbfdff;
+            font-size: 15px;
+            color: #445461;
+            font-weight: 400;
+        }
+
+        .quantity {
+            display: flex;
+        }
+
+        .percentage::placeholder {
+            text-align: right;
+            font-family: "Maven Pro";
+            font-style: "Regular";
+            font-size: 21.33px;
+            color: #696671;
+        }
+
+        .amount::placeholder {
+            font-family: "Maven Pro";
+            font-style: "Regular";
+            font-size: 21.33px;
+            color: #696671;
+        }
+
+        input {
+            font-family: "Maven Pro";
+            font-style: "Regular";
+            font-size: 21.33px;
+            color: #696671;
+        }
     }
 
     input {
@@ -460,19 +738,39 @@ export default {
         border-radius: 4px;
     }
 
-    button {
-        width: 28%;
-        color: white;
-        height: 60px;
-        background: #05B050;
-        box-shadow: 0px 2.58333px 5.16667px rgba(44, 39, 56, 0.08), 0px 5.16667px 10.3333px rgba(44, 39, 56, 0.08);
-        border-radius: 5.16667px;
-        border: none;
-        font-family: 'Maven Pro';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20.6667px;
-        margin-top: 5px;
+    .actual-details {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .each-detail {
+            margin-top: 30px;
+
+            h4 {
+                font-family: 'Maven Pro';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 12px;
+                color: #696671;
+            }
+        }
+    }
+
+    .chat-image {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            font-family: 'Maven Pro';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 34px;
+            color: #4A4754;
+        }
     }
 }
 </style>

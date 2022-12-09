@@ -5,28 +5,28 @@
         </div>
         <div class="links">
             <div class="each-link">
-                <img src="@/assets/images/vectors/home.svg" alt="">
-                <a href="#">Home</a>
+                
+                <a href="#"><img src="@/assets/images/vectors/home.svg" alt=""> Home</a>
             </div>
             <div class="each-link">
-                <img src="@/assets/images/vectors/Storefront-grey.svg" alt="">
-                <a href="#">Marketplace</a>
+                
+                <a href="#"><img src="@/assets/images/vectors/Storefront-grey.svg" alt=""> Marketplace</a>
             </div>
             <div class="each-link">
-                <img src="@/assets/images/vectors/cart.svg" alt="">
-                <a href="#">Cart</a>
+                
+                <a href="#"><img src="@/assets/images/vectors/cart.svg" alt=""> Cart</a>
             </div>
             <div class="each-link">
-                <img src="@/assets/images/vectors/message.svg" alt="">
-                <a href="#">Messages</a>
+                
+                <a href="#"><img src="@/assets/images/vectors/message.svg" alt=""> Messages</a>
             </div>
             <div class="each-link">
-                <img src="@/assets/images/vectors/bell.svg" alt="">
-                <a href="#">Notifications</a>
+                
+                <a href="#"><img src="@/assets/images/vectors/bell-icon.svg" alt=""> Notifications</a>
             </div>
             <div class="each-link">
-                <img src="@/assets/images/vectors/profile.svg" alt="">
-                <a href="#">Profile</a>
+                
+                <a href="#"><img src="@/assets/images/vectors/profile.svg" alt=""> Profile</a>
             </div>
 
         </div>
