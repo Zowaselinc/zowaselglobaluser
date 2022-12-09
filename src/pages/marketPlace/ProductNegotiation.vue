@@ -247,7 +247,40 @@ export default {
         return {
             product: null,
             userData: this.$store.state.user,
-            negotiations: []
+            negotiations: [],
+            message : "",
+            offerData : {
+                qty: "",
+                price: "",
+                color: "",
+                moisture: "",
+                foreign_matter: "",
+                broken_grains: "",
+                weevil: "",
+                dk: "",
+                rotten_shriveled: "",
+                test_weight: "",
+                hectoliter: "",
+                hardness: "",
+                splits: "",
+                oil_content: "",
+                infestation: "",
+                grain_size: "",
+                total_defects: "",
+                dockage: "",
+                ash_content: "",
+                acid_ash: "",
+                volatile: "",
+                mold: "",
+                drying_process: "",
+                dead_insect: "",
+                mammalian: "",
+                infested_by_weight: "",
+                curcumin_content: "",
+                extraneous: "",
+                kg: "",
+                liters: ""
+            }
         }
     },
     methods: {
@@ -282,7 +315,30 @@ export default {
             }, (response) => {
                 this.negotiations = response.data;
             })
-        }
+        },
+        sendNegotiationMessage(){
+            MarketPlaceService.sendNegotiationMessage({
+                sender_id : this.userData.user.id,
+                receiver_id : this.product.user.id,
+                crop_id : this.product.id,
+                type : this.userData.user.type,
+                message : this.message
+            },(response)=>{
+                console.log(response);
+            });
+        },
+        sendNegotiationOffer(){
+            MarketPlaceService.sendNegotiationOffer({
+                sender_id : this.userData.user.id,
+                receiver_id : this.product.user.id,
+                crop_id : this.product.id,
+                type : this.userData.user.type,
+                message : "offer",
+                ...this.offer
+            },(response)=>{
+                console.log(response);
+            });
+        },
     },
     mounted() {
         this.getProduct();
