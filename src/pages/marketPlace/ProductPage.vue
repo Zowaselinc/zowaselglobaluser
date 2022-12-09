@@ -2,7 +2,7 @@
     <MarketPlaceLayout>
         <div class="big-content">
             <div class="image-area">
-                <img src="@/assets/images/backgrounds/okro.png" alt="">
+                <img  class="big-img" src="@/assets/images/backgrounds/okro.png" alt="">
                 <div class="small-images">
                     <img src="@/assets/images/backgrounds/okro-small.png" alt="">
                     <img src="@/assets/images/backgrounds/okro-small.png" alt="">
@@ -19,8 +19,8 @@
                     <p class="farmer">Naziri Farms <span> <img src="@/assets/images/vectors/verified.svg" alt=""> Verified merchant</span></p>
                 </div>
                 <div class="right">
-                    <a href="/dashboard/messages" class="fulfil">Fulfil/Accept Offer</a>
-                    <a href="" class="negotiate">Negotiate</a>
+                    <a href="/dashboard/transaction" class="fulfil">Fulfil/Accept Offer</a>
+                    <a href="/dashboard/messages" class="negotiate">Negotiate</a>
                 </div>
             </div>
             <div class="description">
@@ -140,9 +140,9 @@
 }
     .image-area{
         width: 100%;
-        img{
-            width: 100%;
-            height: 100%;
+        .big-img{
+            width: 80%;
+            margin-left: 10%;
         }
         .small-images{
             margin-top: 40px;
@@ -152,6 +152,7 @@
             gap:10px;
             overflow-x: scroll;
             img{
+                
                 width: 350px;
                 height: 350px;
             }

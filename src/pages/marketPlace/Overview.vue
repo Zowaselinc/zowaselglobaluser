@@ -213,63 +213,63 @@
                         </select>
                     </div>
                 </div>
-                <a href="#" class="each-item">
+                <a href="/marketplace/product" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
                 </a>
-                <a href="#" class="each-item">
+                <a href="/marketplace/product" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
                 </a>
-                <a href="#" class="each-item">
+                <a href="/marketplace/product" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
                 </a>
-                <a href="#" class="each-item">
+                <a href="/marketplace/product" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
                 </a>
-                <a href="#" class="each-item">
+                <a href="/marketplace/product" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
                 </a>
-                <a href="#" class="each-item">
+                <a href="/marketplace/product" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
                 </a>
-                <a href="#" class="each-item">
+                <a href="/marketplace/product" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
                 </a>
-                <a href="#" class="each-item">
+                <a href="/marketplace/product" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
                      <p>cal-maine foods, inc., feed division - union city,
                          OH 013953 (facility) - 100 miles</p>
                 </a>
-                <a href="#" class="each-item">
+                <a href="/marketplace/product" class="each-item">
                     <p>Corn - No. 2 Yellow</p>
                     <p>Feb 1, 2020 -Feb 29,2022</p>
                     <p>NGN, 23,980/bag</p>
