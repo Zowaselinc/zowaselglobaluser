@@ -8,7 +8,7 @@
                 <p>{{ product.currency }}{{ product.specification.price }}/{{ product.packaging }}</p>
                 <p>{{ product.user.first_name + " " + product.user.last_name }}</p>
 
-                <p><img src="@/assets/images/vectors/verified.svg" alt=""><span>verified merchant</span></p>
+                <p><img src="@/assets/images/vectors/verified.svg" alt=""><span> verified merchant</span></p>
 
                 <h4>Product Specification</h4>
 
@@ -140,12 +140,48 @@
                             </div>
 
                         </div>
+                        <div class="offered">
+                            <h3>Offer</h3>
+                            <hr>
+                            <div class="white-line"></div>
+                            <div class="each-item">
+                                <p>Required Item</p>
+                                <h4>10,000kg</h4>
+                            </div>
+                            <div class="each-item">
+                                <p>Offer Price</p>
+                                <h4>2%</h4>
+                            </div>
+                            <div class="each-item">
+                                <p>Oil content</p>
+                                <h4>2%</h4>
+                            </div>
+                            <div class="each-item">
+                                <p>Foreign matter</p>
+                                <h4>2%</h4>
+                            </div>
+                            <div class="each-item">
+                                <p>Infestation</p>
+                                <h4>2%</h4>
+                            </div>
+                            <div class="each-item">
+                                <p>Infestation</p>
+                                <h4>2%</h4>
+                            </div>
+                            <div class="each-item">
+                                <p>Infestation</p>
+                                <h4>2%</h4>
+                            </div>
+                            <div class="each-item">
+                                <p>Splits</p>
+                                <h4>2%</h4>
+                            </div>
+                            <button>View Full Specification</button>
+                        </div>
                     </div>
 
-                    <div class="typing-zone">
-
-                    </div>
-                    <form id="offer-form">
+                    
+                    <form id="offer-form" v-if="offerFormVisible">
                         <a href="#" class="close-form" v-on:click="closeForm()"> X </a>
                         <div class="main-form">
                             <div class="form-row">
@@ -222,11 +258,26 @@
 
                     </form>
 
-                    <div class="chat-image" v-if="!negotiations.length">
+                    <!-- <div class="chat-image" v-if="!negotiations.length">
                         <img src="@/assets/images/backgrounds/ChatsCircle.png" alt="">
                         <h1>Chat or send an offer to negotiate</h1>
-                    </div>
+                    </div>  -->
 
+                </div>
+                <div class="typing-zone">
+                    <p class="typing">Zowasel is typing</p>
+                    <div class="form-content">                        
+                        <div class="input-session">
+                            <input class="no-border" type="text" placeholder="Type your message here">
+                            <div class="icons">
+                                <a href=""><img src="@/assets/images/vectors/attach.svg" alt=""></a>
+                                <a href=""><img src="@/assets/images/vectors/emoji.svg" alt=""></a>
+                                <a href=""><img src="@/assets/images/vectors/PaperPlaneTilt.svg" alt=""></a>
+                            </div>
+                        </div>
+                        <button @click="offer()">Send Offer <img src="@/assets/images/vectors/arrow-down.svg"></button>
+                    </div>
+                        
                 </div>
 
             </div>
@@ -245,6 +296,7 @@ export default {
     },
     data() {
         return {
+            offerFormVisible:false,
             product: null,
             userData: this.$store.state.user,
             negotiations: [],
@@ -284,22 +336,11 @@ export default {
         }
     },
     methods: {
-        main() {
-            var chat = document.getElementById('chat-section');
-            var form = document.getElementById('offer-form');
-        },
         offer() {
-
-            if (chat.style.display = 'block') {
-                chat.style.display = "none";
-                form.style.display = "block"
-            } else {
-                chat.style.display = "block";
-            }
+            this.offerFormVisible =true
         },
         closeForm() {
-            chat.style.display = "block";
-            form.style.display = "none"
+            this.offerFormVisible=false
         },
         getProduct() {
             MarketPlaceService.getCropById(this.$route.params.id, (response) => {
@@ -348,16 +389,20 @@ export default {
     
     
 <style lang="scss" scoped>
+
 .bigger-container {
     height: 100vh;
     overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .big-container {
     width: 100%;
-    height: auto;
     background: #F5F5F5;
     display: flex;
+    flex: 1;
+    min-height: 0;
     flex-direction: row;
     justify-content: space-between;
 
@@ -464,6 +509,9 @@ export default {
 
 .right {
     width: 72%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: white;
     position: relative;
 
@@ -486,7 +534,7 @@ export default {
 
     .opened-message {
         padding: 37px 58px 37px 57px;
-
+        height:100%;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -565,13 +613,23 @@ export default {
 
 .contents {
     width: 100%;
-    height: 700px;
-    overflow-y: scroll;
+    flex: 1;
+    position: relative;
+    min-height: 0px;
+    padding-bottom: 20px;
 }
 
 .typing-zone {
     width: 100%;
-    padding: 0px 58px 0px 57px;
+    padding: 0px 58px 20px 57px;
+    .typing{
+        font-family: 'Maven Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 135%;
+        color: #05B050;
+    }
 
 
     .form-content {
@@ -579,7 +637,46 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 10px;
 
+        .input-session{
+            width: 80%;
+            height: 60px;
+            background: rgba(249, 249, 249, 0.5);
+            border: 1px solid #05B050 !important;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+
+            .no-border{
+                width: 85%;
+                height: 100%;
+                margin: 0;
+                border: none !important;
+            }
+            .no-border:focus,
+            .no-border:active,
+            .no-border:focus-visible{
+                 border: none !important;
+                 outline: none;
+            }
+
+            .icons{
+                width: 15%;
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+        button{
+            width: 20%;
+            background: #05B050;
+            box-shadow: 0px 2.58333px 5.16667px rgba(44, 39, 56, 0.08), 0px 5.16667px 10.3333px rgba(44, 39, 56, 0.08);
+            border-radius: 6px;
+            height: 60px;
+            border: none;
+            color: white;
+        }
     }
 
     .typing {
@@ -593,12 +690,13 @@ export default {
 
 
 #offer-form {
-    margin-top: 200px;
     padding: 30px;
     width: 90%;
-    margin-left: 3%;
+    margin-left: 5%;
     border: 1px solid rgba(48, 189, 110, 0.4);
-    position: relative;
+    position: absolute;
+    bottom: 20px;
+    background-color: white;
 
     .main-form {
         margin-top: 50px;
@@ -722,6 +820,56 @@ export default {
         font-weight: 700;
         font-size: 34px;
         color: #4A4754;
+    }
+}
+
+.offered{
+    width: 50%;
+    padding: 16px;
+    gap: 10px;
+    background: #F9E9E9;
+    border-radius: 4px;
+
+    h3{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 147%;
+        color: #4A4754;
+        margin-bottom: 0px;
+    }
+    hr{
+        color: white;
+        height: 3px;
+    }
+    .each-item{
+        display: flex;
+        justify-content: space-between;
+
+        p{
+            font-family: 'Maven Pro';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 147%;
+            color: #4A4754;
+        }
+        h4{
+            font-family: 'Maven Pro';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 147%;
+            color: #4A4754;
+        }
+    }
+    button{
+        width: 100%;
+        height: 30px;
+        background: #696671;
+        color: white;
+        border: none;
     }
 }
 </style>
