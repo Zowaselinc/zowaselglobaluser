@@ -8,6 +8,8 @@ const GET_CROP_PATH = (id) => `crop/getbyid/${id}`;
 const GET_CROP_NEGOTIATIONS_PATH = (cropId,userId) => `crop/${cropId}/negotiation/getbyuserid/${userId}`;
 const SEND_NEGOTIATION_MESSAGE_PATH = () => 'crop/negotiation/add';
 const SEND_NEGOTIATION_OFFER_PATH = () => "crop/negotiation/sendoffer";
+const ACCEPT_NEGOTIATION_OFFER_PATH = () => "/crop/negotiation/accept";
+const DECLINE_NEGOTIATION_OFFER_PATH = () => "/crop/negotiation/decline";
 
 export default {
     getCropCategories : function(callback){
@@ -55,6 +57,24 @@ export default {
     sendNegotiationOffer : function(data,callback){
         axios.post(config.BASE_URL + SEND_NEGOTIATION_OFFER_PATH(),{
             ...data
+        }).then((response)=>{
+            callback(response.data);
+        }).catch((error)=>{
+        });
+    },
+
+    acceptNegotiationOffer : function(offerId,callback){
+        axios.post(config.BASE_URL + ACCEPT_NEGOTIATION_OFFER_PATH(),{
+            id : offerId
+        }).then((response)=>{
+            callback(response.data);
+        }).catch((error)=>{
+        });
+    },
+
+    declineNegotiationOffer : function(offerId,callback){
+        axios.post(config.BASE_URL + DECLINE_NEGOTIATION_OFFER_PATH(),{
+            id : offerId
         }).then((response)=>{
             callback(response.data);
         }).catch((error)=>{

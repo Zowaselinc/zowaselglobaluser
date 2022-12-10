@@ -92,91 +92,63 @@
                 </div>
                 <div class="contents">
                     <div class="opened-message" id="chat-section">
-                        <p class="centered-text">Yesterday, 9:52pm</p>
-                        <div class="sent-message">
-                            <div class="sent-content">
-                                <p>I would buy for N3,8202,894</p>
-                                <span class="sent-time">10:35pm</span>
-                            </div>
-                        </div>
-
-                        <div class="centered">
-                            <div class="lines"></div>
-                            <p class="today">Today</p>
-                            <div class="lines"></div>
-                        </div>
-
-                        <div class="sent-message">
-                            <div class="sent-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Doloribus eos earum blanditiis vitae quibusdam quod voluptatum
-                                    quos laboriosam officiis magni asperiores nisi repellat eum dolores, et,
-                                    reiciendis recusandae quia rem.
-                                </p>
-                                <span class="sent-time">10:35pm</span>
-                            </div>
-
-                        </div>
-
-                        <div class="incoming-message">
-                            <div class="incoming-content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sint dolor tenetur
-                                    veritatis ab aperiam optio quisquam, deleniti dolorem pariatur minima aliquid,
-                                    reiciendis perferendis! Incidunt cum quam deserunt error vero?
-                                </p>
-                                <span class="received-time">10:35pm</span>
-                            </div>
-
-                        </div>
-                        <div class="incoming-message">
-                            <div class="incoming-content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sint dolor tenetur
-                                    veritatis ab aperiam optio quisquam, deleniti dolorem pariatur minima aliquid,
-                                    reiciendis perferendis! Incidunt cum quam deserunt error vero?
-                                </p>
-                                <span class="received-time">10:35pm</span>
-                            </div>
-
-                        </div>
-                        <div class="offered">
-                            <h3>Offer</h3>
-                            <hr>
-                            <div class="white-line"></div>
-                            <div class="each-item">
-                                <p>Required Item</p>
-                                <h4>10,000kg</h4>
-                            </div>
-                            <div class="each-item">
-                                <p>Offer Price</p>
-                                <h4>2%</h4>
-                            </div>
-                            <div class="each-item">
-                                <p>Oil content</p>
-                                <h4>2%</h4>
-                            </div>
-                            <div class="each-item">
-                                <p>Foreign matter</p>
-                                <h4>2%</h4>
-                            </div>
-                            <div class="each-item">
-                                <p>Infestation</p>
-                                <h4>2%</h4>
-                            </div>
-                            <div class="each-item">
-                                <p>Infestation</p>
-                                <h4>2%</h4>
-                            </div>
-                            <div class="each-item">
-                                <p>Infestation</p>
-                                <h4>2%</h4>
-                            </div>
-                            <div class="each-item">
-                                <p>Splits</p>
-                                <h4>2%</h4>
-                            </div>
-                            <button>View Full Specification</button>
+                        <div v-for="group,index in groupMessages" :key="index">
+                            <p class="centered-text">{{ group.date }}</p>
+                            <template v-for="message,index in group.messages" :key="index">
+                                <div v-if="((message.sender_id == userData.user.id) && message.messagetype == 'text')" class="sent-message">
+                                    <div class="sent-content">
+                                        <p>{{ message.message }}</p>
+                                        <span class="sent-time">{{ message.time }}</span>
+                                    </div>
+                                </div>
+                                <div v-if="((message.receiver_id == userData.user.id) && message.messagetype == 'text')" class="incoming-message">
+                                    <div class="incoming-content">
+                                        <p>{{ message.message}}
+                                        </p>
+                                        <span class="received-time">{{ message.time }}</span>
+                                    </div>
+                                </div>
+                                <div v-if="message.messagetype == 'offer'" :class="(message.receiver_id == userData.user.id) ? 'offer-left' : 'offer-right'">
+                                    <div class="offered">
+                                        <h3>Offer</h3>
+                                        <hr>
+                                        <div class="white-line"></div>
+                                        <div class="each-item">
+                                            <p>Required Item</p>
+                                            <h4>10,000kg</h4>
+                                        </div>
+                                        <div class="each-item">
+                                            <p>Offer Price</p>
+                                            <h4>2%</h4>
+                                        </div>
+                                        <div class="each-item">
+                                            <p>Oil content</p>
+                                            <h4>2%</h4>
+                                        </div>
+                                        <div class="each-item">
+                                            <p>Foreign matter</p>
+                                            <h4>2%</h4>
+                                        </div>
+                                        <div class="each-item">
+                                            <p>Infestation</p>
+                                            <h4>2%</h4>
+                                        </div>
+                                        <div class="each-item">
+                                            <p>Infestation</p>
+                                            <h4>2%</h4>
+                                        </div>
+                                        <div class="each-item">
+                                            <p>Infestation</p>
+                                            <h4>2%</h4>
+                                        </div>
+                                        <div class="each-item">
+                                            <p>Splits</p>
+                                            <h4>2%</h4>
+                                        </div>
+                                        <button>View Full Specification</button>
+                                    </div>
+                                </div>
+                            </template>
                         </div>
                     </div>
 
@@ -258,28 +230,26 @@
 
                     </form>
 
-                    <!-- <div class="chat-image" v-if="!negotiations.length">
+                    <div class="chat-image" v-if="!negotiations.length">
                         <img src="@/assets/images/backgrounds/ChatsCircle.png" alt="">
                         <h1>Chat or send an offer to negotiate</h1>
-                    </div>  -->
+                    </div> 
 
                 </div>
                 <div class="typing-zone">
-                    <p class="typing">Zowasel is typing</p>
+                    <p class="typing" v-if="false">Zowasel is typing</p>
                     <div class="form-content">                        
                         <div class="input-session">
-                            <input class="no-border" type="text" placeholder="Type your message here">
+                            <input class="no-border" v-model="message" type="text" placeholder="Type your message here">
                             <div class="icons">
                                 <a href=""><img src="@/assets/images/vectors/attach.svg" alt=""></a>
                                 <a href=""><img src="@/assets/images/vectors/emoji.svg" alt=""></a>
-                                <a href=""><img src="@/assets/images/vectors/PaperPlaneTilt.svg" alt=""></a>
+                                <a href="javascript:void(0)" @click="sendNegotiationMessage()"><img src="@/assets/images/vectors/PaperPlaneTilt.svg" alt=""></a>
                             </div>
                         </div>
                         <button @click="offer()">Send Offer <img src="@/assets/images/vectors/arrow-down.svg"></button>
                     </div>
-                        
                 </div>
-
             </div>
         </div>
     </div>
@@ -289,6 +259,7 @@
 <script>
 import TopHeader from "@/layouts/partials/TopHeader.vue";
 import MarketPlaceService from "@/services/marketplace";
+import DateUtils from "@/utilities/date";
 export default {
     name: 'ProductNegotiation',
     components: {
@@ -335,6 +306,39 @@ export default {
             }
         }
     },
+    computed : {
+        groupMessages(){
+
+            var groups = {};
+
+            this.negotiations.forEach((item)=>{
+                var timestamp = DateUtils.formatDateFromApi(item.created_at);
+                var timeString;
+                var today= new Date();
+                var yesterday = new Date();
+                yesterday.setDate((new Date()).getDate -1);
+                var messageDate = new Date(item.created_at);
+                item.time = timestamp.time;
+                if (today.toDateString() === messageDate.toDateString()) {
+                    timeString = `Today`
+                }
+                if (yesterday.toDateString() === messageDate.toDateString()) {
+                    timeString = `Yesterday`
+                }else{
+                    timeString = `${timestamp.date}`
+                } 
+
+                groups[timestamp.date] = groups[timestamp.date] ? {
+                    date : timeString,
+                    messages : [ ...groups[timestamp.date].messages , item ]
+                } : { 
+                    date : timeString,
+                    messages : [item]
+                };
+            });
+            return Object.values(groups);
+        }
+    },
     methods: {
         offer() {
             this.offerFormVisible =true
@@ -355,6 +359,7 @@ export default {
                 userId: this.$store.state.authData.key
             }, (response) => {
                 this.negotiations = response.data;
+                document.getElementById('chat-section').scrollTop = document.getElementById('chat-section').scrollHeight;
             })
         },
         sendNegotiationMessage(){
@@ -365,12 +370,12 @@ export default {
                 type : this.userData.user.type,
                 message : this.message
             },(response)=>{
-                console.log(response);
+                this.getNegotiation();
             });
         },
         sendNegotiationOffer(){
             MarketPlaceService.sendNegotiationOffer({
-                sender_id : this.userData.user.id,
+                sender_id : this.userData.user.user_id,
                 receiver_id : this.product.user.id,
                 crop_id : this.product.id,
                 type : this.userData.user.type,
@@ -380,9 +385,20 @@ export default {
                 console.log(response);
             });
         },
+        acceptNegotiationOffer(id){
+            MarketPlaceService.acceptNegotiationOffer(id,(response)=>{
+
+            });
+        },
+        declineNegotiationOffer(id){
+            MarketPlaceService.declineNegotiationOffer(id,(response)=>{
+                
+            });
+        },
     },
     mounted() {
         this.getProduct();
+        console.log(this.userData);
     }
 }
 </script>
@@ -537,7 +553,7 @@ export default {
         height:100%;
         position: relative;
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         overflow-y: scroll;
 
 
@@ -823,6 +839,18 @@ export default {
     }
 }
 
+.offer-left{
+    width : 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.offer-right{
+    width : 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
 .offered{
     width: 50%;
     padding: 16px;
