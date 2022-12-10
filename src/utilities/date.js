@@ -2,7 +2,7 @@
 const DateUtils = {
 
     formatDateFromApi(dateString){
-        var splitter = dateString.split("T");
+        var splitter = dateString.split(" ");
         var date = splitter[0];
         var time = splitter[1];
         return {
