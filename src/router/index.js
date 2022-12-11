@@ -38,6 +38,10 @@ import CardPayment from "@/pages/marketPlace/CardPayment.vue";
 import Checkout from "@/pages/marketPlace/Checkout.vue";
 import Transactions from "@/pages/marketPlace/Transactions.vue";
 import MyProducts from "@/pages/marketPlace/MyProducts.vue";
+import Payments from "@/pages/marketPlace/payment/Payments.vue";
+import Confirm from "@/pages/marketPlace/payment/Confirm.vue";
+import PaymentsConfirmed from "@/pages/marketPlace/payment/PaymentsConfirmed.vue";
+
 
 
 
@@ -249,7 +253,21 @@ const routes = [
         name: "MyProducts",
         component:MyProducts
     },
-
+    {
+        path: "/marketplace/payments",
+        name: "Payments",
+        component:Payments
+    },
+    {
+        path: "/marketplace/confirmpayments",
+        name: "Confirm",
+        component:Confirm
+    },
+    {
+        path: "/marketplace/paymentsconfirmed",
+        name: "PaymentsConfirmed",
+        component:PaymentsConfirmed
+    },
 
 ];
 

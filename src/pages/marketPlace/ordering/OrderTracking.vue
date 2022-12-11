@@ -13,7 +13,7 @@
                     <!-- progress bar -->
                     <div class="progress-bar-wrapper d-flex flex-column w-100 position-relative">
                         <div class="progress progress-outer">
-                            <div class="progress progress-inner" :style="('width : '+orderProgress+'%')"></div>
+                            <div class="progress progress-inner" :style="('width : ' + orderProgress + '%')"></div>
                         </div>
                         <div class="circle d-flex w-100 position-absolute">
                             <div class="circle-1 circle-main"><span></span></div>
@@ -84,9 +84,16 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a  class="btn payment-status"  v-if="(orderProgress != 100)">Payment Status: Pending</a>
-                    <a id="payment-state" class="btn payment-status" v-if="(orderProgress == 100)">Payment Status: <strong>Completed</strong></a>
-                    <a class="btn payment-status wallet d-inline-block position-absolute" v-if="(orderProgress == 100)">Go to wallet</a>
+                    <a class="btn payment-status" v-if="(orderProgress != 100)">Payment Status: Pending</a>
+                    <a id="payment-state" class="btn payment-status" v-if="(orderProgress == 100)">Payment Status:
+                        <strong>Completed</strong></a>
+                    <a class="btn payment-status wallet d-inline-block position-absolute"
+                        v-if="(orderProgress == 100)">Go to wallet</a>
+                    <!-- for buyers view -->
+                    <a class="btn payment-status d-block confirm-delivery" v-if="(orderProgress == 100)">Confirm Delivery</a>
+                    <a class="btn payment-status wallet d-block w-100"
+                        v-if="(orderProgress == 100)">Confirm Delivery</a>
+
                 </div>
             </div>
             <!-- right -->
@@ -237,19 +244,18 @@ export default {
     },
     data() {
         return {
-            visible: false,
-            orderProgress : 0
+            orderProgress: 0
         };
     },
     computed: {
 
     },
-    mounted(){
-        setInterval(()=>{
-            if(this.orderProgress < 100){
+    mounted() {
+        setInterval(() => {
+            if (this.orderProgress < 100) {
                 this.orderProgress++;
             }
-        },500);
+        }, 100);
     }
 }
 </script>
@@ -275,7 +281,7 @@ export default {
 
     .left-container {
         background: #FFFFFF;
-        width: 50%;
+        width: 53%;
 
         .left-container-wrapper {
             margin-inline: 8% 9.16%;
@@ -291,9 +297,11 @@ export default {
 
             .progress-bar-wrapper {
                 gap: 15px;
-            .progress{
-                height: .8rem;
-            }
+
+                .progress {
+                    height: .5rem;
+                }
+
                 .progress-outer {
                     background: #B5B4B9;
 
@@ -306,7 +314,7 @@ export default {
                 .circle {
                     justify-content: space-around;
                     margin-left: 4%;
-                    top: -8px;
+                    top: -10px;
 
                     .circle-main {
                         width: 27px;
@@ -328,6 +336,8 @@ export default {
                 }
 
                 .progress-level-container {
+                    gap: 15px;
+
                     .levels {
                         h3 {
                             @include textStyles(Poppins, 800, 16px, 27px);
@@ -386,13 +396,29 @@ export default {
                 text-align: center;
                 @include textStyles('Maven Pro', 600, 18px, 24px);
             }
-            a.wallet{
+
+            a.wallet {
                 color: #FFFFFF;
                 background: #05B050;
                 right: 0;
                 width: 45%;
             }
-            #payment-state{
+
+            a.confirm-delivery {
+                color: #34323B;
+                text-align: center;
+
+                background: #E6F7EE;
+
+                /* Black/Light */
+                border: 1px solid #EDEDEE;
+                box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.08);
+                border-radius: 4px;
+                mix-blend-mode: normal;
+                opacity: 0.24;
+            }
+
+            #payment-state {
                 background: #E6F7EE;
             }
         }
@@ -428,7 +454,7 @@ export default {
     // Right-container
     .right-container {
         background: #F5F5F5;
-        width: 50%;
+        width: 47%;
 
         .right-container-wrapper {
             margin-inline: 5% 7%;
