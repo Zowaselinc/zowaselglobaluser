@@ -1,6 +1,9 @@
 <template>
-    <marketPlaceLayout>
-        <!-- header for oder tracking  -->
+    <DefaultNav>
+        <div class="big-container">
+           
+              
+             <!-- header for oder tracking  -->
         <div class="page-header d-flex justify-content-center align-items-center">
             <h1>Order Tracking</h1>
         </div>
@@ -231,21 +234,30 @@
                 </div>
             </div>
         </div>
-    </marketPlaceLayout>
+
+            
+
+        </div>
+
+
+
+    </DefaultNav>
 </template>
 
 <script>
-import MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue"
+import DefaultNav from "@/layouts/DefaultNav.vue";
 
 export default {
-    name: "OrderTracking",
-    components: {
-        MarketPlaceLayout,
-    },
+    name: 'OrderTracking',
     data() {
         return {
-            orderProgress: 0
-        };
+            userData: this.$store.state.user,
+             orderProgress: 0
+
+        }
+    },
+    components: {
+        DefaultNav,
     },
     computed: {
 
@@ -260,10 +272,30 @@ export default {
 }
 </script>
 
+
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
 
+.big-container {
+    width: 100%;
+    height: auto;
+    background: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+   
 
+    @include breakpoint-between(md, lg) {
+        width: 60.5%;
+    }
+
+    @include breakpoint-between(lg, xl) {
+        width: 69.5%;
+    }
+
+    @include breakpoint-between(xl, xxl) {
+        width: 76%;
+    }
+}
 .page-header {
     width: 100%;
     height: 87px;
@@ -545,4 +577,5 @@ export default {
     }
 
 }
+
 </style>
