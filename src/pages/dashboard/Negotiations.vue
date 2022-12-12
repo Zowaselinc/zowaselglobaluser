@@ -943,10 +943,14 @@
     }
     .offered{
         width: 50%;
-        padding: 16px;
         gap: 10px;
-        background: #F9E9E9;
+        
         border-radius: 4px;
+        .colored{
+            background: #F9E9E9;
+            padding: 16px;
+        gap: 10px;
+        }
 
         h3{
             font-family: 'Poppins';
@@ -988,7 +992,31 @@
             background: #696671;
             color: white;
             border: none;
+            margin-bottom: 45px;
         }
+    }
+    .bottom-container{
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        .check-buttons{
+        background-color: white;
+        display: flex;
+        width: 50%;
+        justify-content: space-evenly;
+        align-items: center;
+        input{
+            width: 20px;
+            height: 20px;
+        }
+    }
+    .timed{
+        display: flex;
+        justify-content: flex-end;
+        width: 50%;
+        align-items: center;
+    }
     }
     
     </style>
