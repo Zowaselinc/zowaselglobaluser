@@ -31,21 +31,16 @@
                         alt="ChatText"><span>Message</span>
                 </div>
             </a>
-            <a href="javascript:void(0)" class="nav-item">
-                <div class="ripple accordion-header">
+            <a href="/dashboard/marketplace" class="nav-item">
+                <div class="ripple">
                     <img class="img-fluid" src="@/assets/images/vectors/Storefront.svg"
-                        alt="marketplace"><span>Marketplace</span>
-                    <img class="arrow-symbol carret-down" src="@/assets/images/vectors/arrowSymbol.svg"
-                        alt="Arrow-Symbol">
-                    <img class="arrow-symbol carretUp" src="@/assets/images/vectors/arrowupsymbol.svg"
-                        alt="Arrow-Symbol">
+                        alt="ChatText"><span>Marketplace</span>
                 </div>
-                <!-- drop menu -->
-                <div class="drop-menu marketplace-menu">
-                    <div @click='changeDir(" /dashboard/inputmarket")'>Input market</div>
-                    <div @click='changeDir(" /dashboard/cropmarket")'>Crop market</div>
-                    <!-- /dashboard/logistics -->
-                    <div @click='changeDir("/dashboard/logistics")'>Logistics</div>
+            </a>
+            <a href="/dashboard/negotiations" class="nav-item">
+                <div class="ripple">
+                    <img class="img-fluid" src="@/assets/images/vectors/ChatText.svg"
+                        alt="ChatText"><span>Negotiations</span>
                 </div>
             </a>
             <a href="javascript:void(0)" class="nav-item">

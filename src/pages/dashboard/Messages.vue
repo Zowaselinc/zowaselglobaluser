@@ -4,24 +4,12 @@
     </TopHeader>
     <div class="big-container">
         <div class="left">
-            <!-- <div class="top-section">
+            <div class="top-section">
                 <img src="@/assets/images/vectors/arrowleft.png" alt="">
                 <h2>Messages</h2>
             </div>
             <input type="text" class="search" placeholder="search messages">
             <div class="messages">
-                <div class="each-message">
-                    <div class="left-message">
-                        <h3>Nagari Farms</h3>
-                        <p>Lorem ipsum dolor</p>
-                    </div>
-                    <div class="right-message">
-                        <p>today, 9:52pm</p>
-                        <img src="@/assets/images/vectors/checks.png" alt="">
-                    </div>
-                </div>
-                <input type="text" class="search" placeholder="search messages">
-                <div class="messages">
                     <div class="each-message">
                         <div class="left-message">
                             <h3>{{ userData.user.first_name }} Farms</h3>
@@ -104,279 +92,150 @@
                     </div>
 
                 </div>
-            </div>
-            <div class="right">
+        </div>
+        <div class="right">
                 <div class="right-top-section">
                     <h1>{{ userData.user.first_name }}  Farms</h1>
                 </div>
 
-                <div class="opened-message">
-                    <p class="centered-text">Yesterday, 9:52pm</p>
-                    <div class="sent-message">
-                        <div class="sent-content">
-                            <p>I would buy for N3,8202,894</p>
-                            <span class="sent-time">10:35pm</span>
+                <div class="contents">
+                    <div class="opened-message" id="chat-section">
+                        <p class="centered-text">Yesterday, 9:52pm</p>
+                        <div class="sent-message">
+                            <div class="sent-content">
+                                <p>I would buy for N3,8202,894</p>
+                                <span class="sent-time">10:35pm</span>
+                            </div>
                         </div>
 
-                    </div>
-                    <div class="incoming-message">
-                        <div class="incoming-content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Nemo sint dolor tenetur veritatis ab aperiam optio quisquam,
-                                deleniti dolorem pariatur minima aliquid, reiciendis perferendis!
-                                Incidunt cum quam deserunt error vero?
-                            </p>
-                            <span class="received-time">10:35pm</span>
-                        </div>
-
-            </div> -->
-
-            <h1>Irish Potato</h1>
-            <p>NGN3,940,450/bag</p>
-            <p>Naziri Farms</p>
-
-           <p><img src="@/assets/images/vectors/verified.svg" alt=""><span>verified merchant</span></p> 
-
-           <h4>Product Specification</h4>
-
-           <div class="actual-details">
-                    <div class="left-line">
-                        <div class="each-detail">
-                            <h4>Product Category</h4>
-                            <p>Grain</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Color</h4>
-                            <p>Brown</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Moisture</h4>
-                            <p>0%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Foreign Matter (FM)</h4>
-                            <p>3%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Broken Grains</h4>
-                            <p>6%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Weevil</h4>
-                            <p>0%</p>
-                        </div>
-                       
-                    </div>
-                    <div class="right-line">
-                        <div class="each-detail">
-                            <h4>Test Weight</h4>
-                            <p>MT</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Hardness</h4>
-                            <p>Hard</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Split</h4>
-                            <p>1%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Oil Content</h4>
-                            <p>0%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Infestation</h4>
-                            <p>5%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Grain size</h4>
-                            <p>Whole grain</p>
-                        </div>
-                    </div>
+                            <div class="centered">
+                                <div class="lines"></div>
+                                <p class="today">Today</p>
+                                <div class="lines"></div>
+                            </div>
 
 
 
-                    <div class="middle-line">
-                        <div class="each-detail">
-                            <h4>Test Weight</h4>
-                            <p>MT</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Hardness</h4>
-                            <p>Hard</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Split</h4>
-                            <p>1%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Oil Content</h4>
-                            <p>0%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Infestation</h4>
-                            <p>5%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Grain size</h4>
-                            <p>Whole grain</p>
-                        </div>
-                    </div>
-                   
-                  
-                   
-                </div>
+                            <div class="sent-message">
+                                <div class="sent-content">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Doloribus eos earum blanditiis vitae quibusdam quod voluptatum
+                                        quos laboriosam officiis magni asperiores nisi repellat eum dolores, et,
+                                        reiciendis recusandae quia rem.
+                                    </p>
+                                    <span class="sent-time">10:35pm</span>
+                                </div>
 
+                            </div>
+                            <div class="incoming-message">
+                                <div class="incoming-content">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sint dolor tenetur
+                                        veritatis ab aperiam optio quisquam, deleniti dolorem pariatur minima aliquid,
+                                        reiciendis perferendis! Incidunt cum quam deserunt error vero?
+                                    </p>
+                                    <span class="received-time">10:35pm</span>
+                                </div>
 
-        </div>
-        <div class="right">
-            <div class="right-top-section">
-                <h1>Naziri Farms</h1>
-            </div>
-            <div class="contents">
-                <!-- <div class="opened-message" id="chat-section">
-                <p class="centered-text">Yesterday, 9:52pm</p>
-                <div class="sent-message">
-                    <div class="sent-content">
-                        <p>I would buy for N3,8202,894</p>
-                        <span class="sent-time">10:35pm</span>
-                    </div>
+                            </div>
+                            <div class="incoming-message">
+                                <div class="incoming-content">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sint dolor tenetur
+                                        veritatis ab aperiam optio quisquam, deleniti dolorem pariatur minima aliquid,
+                                        reiciendis perferendis! Incidunt cum quam deserunt error vero?
+                                    </p>
+                                    <span class="received-time">10:35pm</span>
+                                </div>
 
-                    <div class="centered">
-                        <div class="lines"></div>
-                        <p class="today">Today</p>
-                        <div class="lines"></div>
-                    </div>
+                            </div>
 
 
 
-                    <div class="sent-message">
-                        <div class="sent-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Doloribus eos earum blanditiis vitae quibusdam quod voluptatum
-                                quos laboriosam officiis magni asperiores nisi repellat eum dolores, et,
-                                reiciendis recusandae quia rem.
-                            </p>
-                            <span class="sent-time">10:35pm</span>
-                        </div>
-
-                    </div>
-                    <div class="incoming-message">
-                        <div class="incoming-content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sint dolor tenetur
-                                veritatis ab aperiam optio quisquam, deleniti dolorem pariatur minima aliquid,
-                                reiciendis perferendis! Incidunt cum quam deserunt error vero?
-                            </p>
-                            <span class="received-time">10:35pm</span>
-                        </div>
-
-                    </div>
-                    <div class="incoming-message">
-                        <div class="incoming-content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sint dolor tenetur
-                                veritatis ab aperiam optio quisquam, deleniti dolorem pariatur minima aliquid,
-                                reiciendis perferendis! Incidunt cum quam deserunt error vero?
-                            </p>
-                            <span class="received-time">10:35pm</span>
-                        </div>
 
                     </div>
 
+                    <div class="typing-zone">
 
-
-
-                </div>
-
-                <div class="typing-zone">
-
-                
-                
-                </div>
-                <form id="offer-form">
-               <a href="#" class="close-form" v-on:click="closeForm()"> X </a>
-              <div class="main-form" >
-                  <div class="form-row">
-                  <div class="form-group form-inputs">
-                    <label for="formGroupExampleInput">Quantity</label>
-                    <div class="quantity">
-                     
-                    </div>
-                   
                     
-                  </div>
-                  <div class="form-group form-inputs">
-                    <label for="formGroupExampleInput2">Price</label>
-                    <input type="text" class="form-control amount " id="" placeholder="Enter Amount">
-                  </div>
-                  <div class="form-group form-inputs">
-                    <label for="formGroupExampleInput2">Oil Content</label>
-                    <input type="text" class="form-control percentage" id="" placeholder="%">
-                  </div>
-              </div>
-              <div class="form-row">
-                  <div class="form-group form-inputs">
-                    <label for="formGroupExampleInput">Foreign Matter</label>
-                    <input type="text" class="form-control percentage" id="formGroupExampleInput" placeholder="%">
-                  </div>
-                  <div class="form-group form-inputs">
-                    <label for="formGroupExampleInput2">Infestation</label>
-                    <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
-                  </div>
-                  <div class="form-group form-inputs">
-                    <label for="formGroupExampleInput2">Moisture</label>
-                    <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
-                  </div>
-              </div>
-              <div class="form-row">
-                  <div class="form-group form-inputs">
-                    <label for="formGroupExampleInput">Weevil</label>
-                    <input type="text" class="form-control percentage" id="formGroupExampleInput" placeholder="%">
-                  </div>
-                  <div class="form-group form-inputs">
-                    <label for="formGroupExampleInput2">Hardness</label>
-                    <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
-                  </div>
-                  <div class="form-group form-inputs">
-                    <label for="formGroupExampleInput2">Splits</label>
-                    <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
-                  </div>
-              </div>
-              <div class="form-row">
-                  <div class="form-group form-inputs">
-                    <label for="formGroupExampleInput">Weevil</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-                  </div>
-                  <div class="form-group form-inputs">
-                    <label for="formGroupExampleInput2">Hardness</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
-                  </div>
-                  <div class="form-group form-inputs">
-                    <label for="formGroupExampleInput2">Splits</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
-                  </div>
-              </div>
-              </div>
-              <div class="form-row">
-                  <button class="form-send">Send</button>
-              </div>
-             
-            
-                </form> -->
-
-                <div class="chat-image">
-                    <img src="@/assets/images/backgrounds/ChatsCircle.png" alt="">
-                    <h1>Chat or send an offer to negotiate</h1>
+                    
+                    </div>
+                    <form id="offer-form">
+                    <a href="#" class="close-form" v-on:click="closeForm()"> X </a>
+                    <div class="main-form" >
+                        <div class="form-row">
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput">Quantity</label>
+                            <div class="quantity">
+                            
+                            </div>
+                        
+                            
+                        </div>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Price</label>
+                            <input type="text" class="form-control amount " id="" placeholder="Enter Amount">
+                        </div>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Oil Content</label>
+                            <input type="text" class="form-control percentage" id="" placeholder="%">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput">Foreign Matter</label>
+                            <input type="text" class="form-control percentage" id="formGroupExampleInput" placeholder="%">
+                        </div>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Infestation</label>
+                            <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
+                        </div>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Moisture</label>
+                            <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput">Weevil</label>
+                            <input type="text" class="form-control percentage" id="formGroupExampleInput" placeholder="%">
+                        </div>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Hardness</label>
+                            <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
+                        </div>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Splits</label>
+                            <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput">Weevil</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                        </div>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Hardness</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                        </div>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Splits</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="form-row">
+                        <button class="form-send">Send</button>
+                    </div>
+                    
+                    
+                    </form>
+                    <div class="chat-image">
+                        <img src="@/assets/images/backgrounds/ChatsCircle.png" alt="">
+                        <h1>Chat or send an offer to negotiate</h1>
+                    </div>
                 </div>
-                
             </div>
-            
-            
-
-
-        </div>
     </div>
 </div>
 
@@ -388,6 +247,11 @@
         name: 'Messages',
         components:{
             TopHeader,
+        },
+        data(){
+            return {
+                userData : this.$store.state.user
+            }
         },
         methods:{
             main(){

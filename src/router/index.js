@@ -33,6 +33,7 @@ import Product from "@/pages/marketPlace/ProductPage.vue";
 import ProductNegotiation from "@/pages/marketPlace/ProductNegotiation.vue"
 import InputMarket from "@/pages/marketPlace/InputMarket.vue";
 import ProductDescription from "@/pages/marketPlace/Products.vue";
+import Negotiations from "@/pages/dashboard/Negotiations.vue"
 
 
 
@@ -143,6 +144,11 @@ const routes = [
         path: "/dashboard/messages",
         name: "Messages",
         component:Messages
+    },
+    {
+        path: "/dashboard/negotiations",
+        name: "Negotiations",
+        component:Negotiations
     },
     {
         path: "/dashboard/subscription",

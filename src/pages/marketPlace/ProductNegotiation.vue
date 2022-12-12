@@ -80,18 +80,14 @@
                             <p>{{ product.specification.foreign_matter }}%</p>
                         </div>
                     </div>
-
-
-
                 </div>
-
             </div>
             <div class="right" v-if="product">
                 <div class="right-top-section">
                     <h1>{{ product.user.first_name + " " + product.user.last_name }}</h1>
                 </div>
                 <div class="contents">
-                    <div class="opened-message" id="chat-section">
+                    <div class="opened-message" v-if="negotiations.length" id="chat-section">
                         <div v-for="group,index in groupMessages" :key="index">
                             <p class="centered-text">{{ group.date }}</p>
                             <template v-for="message,index in group.messages" :key="index">
@@ -160,10 +156,7 @@
                                 <div class="form-group form-inputs">
                                     <label for="formGroupExampleInput">Quantity</label>
                                     <div class="quantity">
-
                                     </div>
-
-
                                 </div>
                                 <div class="form-group form-inputs">
                                     <label for="formGroupExampleInput2">Price</label>
@@ -301,24 +294,23 @@ export default {
                 infested_by_weight: "",
                 curcumin_content: "",
                 extraneous: "",
-                kg: "",
+                unit: "",
                 liters: ""
             }
         }
     },
     computed : {
         groupMessages(){
-
             var groups = {};
-
             this.negotiations.forEach((item)=>{
                 var timestamp = DateUtils.formatDateFromApi(item.created_at);
                 var timeString;
                 var today= new Date();
                 var yesterday = new Date();
-                yesterday.setDate((new Date()).getDate -1);
+                yesterday.setDate((new Date()).getDate - 1);
                 var messageDate = new Date(item.created_at);
                 item.time = timestamp.time;
+                item.utcTime = messageDate.getTime();
                 if (today.toDateString() === messageDate.toDateString()) {
                     timeString = `Today`
                 }
@@ -335,6 +327,8 @@ export default {
                     date : timeString,
                     messages : [item]
                 };
+
+                groups[timestamp.date].messages.sort((a,b) => a.utcTime - b.utcTime);
             });
             return Object.values(groups);
         }
@@ -357,7 +351,7 @@ export default {
             MarketPlaceService.getCropNegotiations({
                 cropId: this.$route.params.id,
                 userId: this.$store.state.authData.key
-            }, (response) => {
+            }, (response) => {   
                 this.negotiations = response.data;
                 document.getElementById('chat-section').scrollTop = document.getElementById('chat-section').scrollHeight;
             })
@@ -371,6 +365,7 @@ export default {
                 message : this.message
             },(response)=>{
                 this.getNegotiation();
+                this.message = "";
             });
         },
         sendNegotiationOffer(){
@@ -397,8 +392,11 @@ export default {
         },
     },
     mounted() {
+        let vm = this;
         this.getProduct();
-        console.log(this.userData);
+        setInterval(()=>{
+            vm.getNegotiation();
+        },8000);
     }
 }
 </script>
