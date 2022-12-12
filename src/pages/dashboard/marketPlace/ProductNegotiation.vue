@@ -144,7 +144,7 @@
                                         </div>
                                         <button>View Full Specification</button>
                                         </div>
-                                        <div class="bottom-container">
+                                        <div class="bottom-container" v-if="message.sender_id != userData.user_id">
                                             <div class="check-buttons">
                                                 <input type="checkbox">
                                                 <label for="">Accept</label>
@@ -152,7 +152,7 @@
                                                 <label for="">Decline</label>
                                             </div>
                                             <div class="timed">
-                                                <p>7:23pm</p>
+                                                <p>{{ message.time }}</p>
                                             </div>
                                         </div>
                                         

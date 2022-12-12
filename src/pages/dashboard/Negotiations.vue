@@ -171,6 +171,17 @@
                                         </div>
                                         <button>View Full Specification</button>
                                     </div>
+                                    <div class="bottom-container">
+                                        <div class="check-buttons">
+                                            <input type="checkbox">
+                                            <label for="">Accept</label>
+                                            <input type="checkbox">
+                                            <label for="">Decline</label>
+                                        </div>
+                                        <div class="timed">
+                                            <p>{{ message.time }}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </template>
                         </div>
