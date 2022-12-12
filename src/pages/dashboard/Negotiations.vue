@@ -359,7 +359,7 @@
 
                         groups[timestamp.date].messages.sort((a,b) => a.utcTime - b.utcTime);
                     });
-                    return Object.values(groups);
+                    return Object.values(groups).sort((a,b) => b.date.localeCompare(a.date));
                 }
             },
             methods:{
@@ -409,8 +409,10 @@
                         cropId: this.product.id,
                         userId: this.participant(this.conversationData).id
                     }, (response) => {   
-                        this.negotiations = response.data;
-                        document.getElementById('chat-section').scrollTop = document.getElementById('chat-section').scrollHeight;
+                        if(response){
+                            this.conversationData.negotiations = response.data;
+                            document.getElementById('chat-section').scrollTop = document.getElementById('chat-section').scrollHeight;
+                        }
                     })
                 },
                 getConversations(){
@@ -421,7 +423,7 @@
                 sendNegotiationMessage(){
                     MarketPlaceService.sendNegotiationMessage({
                         sender_id : this.userData.user.id,
-                        receiver_id : this.product.user.id,
+                        receiver_id : this.participant(this.conversationData).id,
                         crop_id : this.product.id,
                         type : this.userData.user.type,
                         message : this.message
@@ -433,13 +435,15 @@
                 sendNegotiationOffer(){
                     MarketPlaceService.sendNegotiationOffer({
                         sender_id : this.userData.user.user_id,
-                        receiver_id : this.product.user.id,
+                        receiver_id : this.participant(this.conversationData).id,
                         crop_id : this.product.id,
                         type : this.userData.user.type,
                         message : "offer",
                         ...this.offer
                     },(response)=>{
                         console.log(response);
+                        this.getNegotiation();
+                        this.message = "";
                     });
                 },
                 acceptNegotiationOffer(id){
@@ -460,7 +464,7 @@
                     if(vm.product){
                         vm.getNegotiation();
                     }
-                },8000);
+                },5000);
             }
         }
     </script>
