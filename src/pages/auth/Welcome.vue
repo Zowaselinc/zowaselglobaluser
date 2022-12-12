@@ -43,7 +43,7 @@
 <style  scoped>
     .big-container{
         width: 100%;
-        height: auto;
+        height: 100vh;
         padding: 10%;
         box-sizing: border-box;
         display: flex;
@@ -70,10 +70,10 @@
     }
     img{
         width: 50%;
-        margin-bottom: 25%;
+        margin-bottom: 150px;
     }
     .texts{
-        margin-bottom: 25%;
+        margin-bottom: 55px;
     }
 
     

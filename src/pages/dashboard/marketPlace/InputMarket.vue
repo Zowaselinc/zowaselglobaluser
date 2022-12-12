@@ -1,6 +1,9 @@
 <template>
-    <MarketPlaceLayout>
-        <div class="top-text">
+    <DefaultNav>
+        <div class="big-container">
+           
+        
+          <div class="top-text">
             <h1>Buy & Sell with Ease</h1>
             <p>Empowering growers from seed to market</p>
         </div>
@@ -345,17 +348,32 @@
                 
             </div>
         </div>
-    </MarketPlaceLayout>
+            
+
+            
+
+        </div>
+
+
+
+    </DefaultNav>
 </template>
 
 <script>
-    import  MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue"
-    export default {
-        name:'inputmarket',
-        components: {
-            MarketPlaceLayout,
-            },
-            methods:{
+import DefaultNav from "@/layouts/DefaultNav.vue";
+
+export default {
+    name: 'CardDetails',
+    data() {
+        return {
+            userData: this.$store.state.user
+        }
+    },
+    components: {
+        DefaultNav,
+       
+    },
+    methods:{
               checked:function (){
                 var box = document.getElementById('checkbox');
                 var deColor =box.style.backgroundColor;
@@ -365,11 +383,35 @@
                 
                }
             }
-    }
+}
 </script>
 
+
 <style lang="scss" scoped>
-  .top-text{
+@import "@/assets/scss/main.scss";
+
+.big-container {
+    width: 100%;
+    height: auto;
+    background: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+   
+
+    @include breakpoint-between(md, lg) {
+        width: 60.5%;
+    }
+
+    @include breakpoint-between(lg, xl) {
+        width: 69.5%;
+    }
+
+    @include breakpoint-between(xl, xxl) {
+        width: 76%;
+    }
+}
+
+.top-text{
         width: 100%;
         background: #262C3F;
         color: white;
@@ -672,6 +714,6 @@
             color: #4A4B57;
         }
     }
-    
+
 
 </style>

@@ -1,6 +1,9 @@
 <template>
-    <MarketPlaceLayout>
-        <div class="big-content">
+    <DefaultNav>
+        <div class="big-container">
+                    
+            
+             <div class="big-content">
             <div class="image-area">
                 <div class="image-container">
                      <img src="@/assets/images/backgrounds/okro-2.png" alt="">
@@ -375,31 +378,56 @@
                         </div>                    
                     </div>
             </div>
-    </MarketPlaceLayout>
+            
+
+        </div>
+
+
+
+    </DefaultNav>
 </template>
 
 <script>
-    import  MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue"
-    export default {
-        name:'Products',
-        components: {
-            MarketPlaceLayout,
-            },
-            methods:{
-              checked:function (){
-                var box = document.getElementById('checkbox');
-                var deColor =box.style.backgroundColor;
-                if(deColor== "white"){
-                    deColor= 'green';
-                }
-                
-               }
-            }
-    }
+import DefaultNav from "@/layouts/DefaultNav.vue";
+
+export default {
+    name: 'Products',
+    data() {
+        return {
+            userData: this.$store.state.user
+        }
+    },
+    components: {
+        DefaultNav,
+       
+    },
+}
 </script>
 
+
 <style lang="scss" scoped>
- 
+@import "@/assets/scss/main.scss";
+
+.big-container {
+    width: 100%;
+    height: auto;
+    background: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+   
+
+    @include breakpoint-between(md, lg) {
+        width: 60.5%;
+    }
+
+    @include breakpoint-between(lg, xl) {
+        width: 69.5%;
+    }
+
+    @include breakpoint-between(xl, xxl) {
+        width: 76%;
+    }
+}
 .big-content{
     width: 100%;
     padding: 90px;
@@ -756,6 +784,5 @@
             }
         }
     }
-    
 
 </style>

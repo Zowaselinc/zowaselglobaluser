@@ -27,17 +27,20 @@ import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
 import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
 import CropMarket from "@/pages/dashboard/CropMarket.vue"; 
 import Settings from "@/pages/dashboard/settings/Settings.vue";
-import MarketPlace from "@/pages/marketPlace/Overview.vue";
+import MarketPlace from "@/pages/dashboard/marketPlace/Overview.vue";
 import TransactionSumary from "@/pages/marketPlace/checkout/TransactionSumary.vue";
 import OrderTracking from "@/pages/marketPlace/ordering/OrderTracking.vue";
 import NewCrop from "@/pages/marketPlace/NewCrop.vue";
-import Product from "@/pages/marketPlace/ProductPage.vue";
-import InputMarket from "@/pages/marketPlace/InputMarket.vue";
-import ProductDescription from "@/pages/marketPlace/Products.vue";
-import CardPayment from "@/pages/marketPlace/CardPayment.vue";
-import Checkout from "@/pages/marketPlace/Checkout.vue";
-import Transactions from "@/pages/marketPlace/Transactions.vue";
-import MyProducts from "@/pages/marketPlace/MyProducts.vue";
+import Product from "@/pages/dashboard/marketPlace/ProductPage.vue";
+import InputMarket from "@/pages/dashboard/marketPlace/InputMarket.vue";
+import ProductDescription from "@/pages/dashboard/marketPlace/ProductDescription.vue";
+import CardPayment from "@/pages/dashboard/marketPlace/CardPayment.vue";
+import CheckOut from "@/pages/dashboard/marketPlace/CheckOut.vue";
+import Transactions from "@/pages/dashboard/marketPlace/Transactions.vue";
+import MyProducts from "@/pages/dashboard/marketPlace/MyProducts.vue";
+import Confirmed from "@/pages/dashboard/marketPlace/Confirmed.vue";
+import TrackingOrder from "@/pages/dashboard/marketPlace/TrackingOrder.vue";
+import CardDetails from "@/pages/dashboard/marketPlace/CardDetails.vue"
 
 
 
@@ -237,7 +240,7 @@ const routes = [
     {
         path: "/marketplace/checkout",
         name: "Checkout",
-        component:Checkout
+        component:CheckOut
     },
     {
         path: "/marketplace/transactions",
@@ -248,6 +251,21 @@ const routes = [
         path: "/marketplace/myproducts",
         name: "MyProducts",
         component:MyProducts
+    },
+    {
+        path: "/marketplace/card-details",
+        name: "CardDetails",
+        component:CardDetails
+    },
+    {
+        path: "/marketplace/confirmed",
+        name: "Confirmed",
+        component:Confirmed
+    },
+    {
+        path: "/marketplace/trackingorder",
+        name: "TrackingOrder",
+        component:TrackingOrder
     },
 
 

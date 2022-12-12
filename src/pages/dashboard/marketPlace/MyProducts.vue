@@ -1,11 +1,12 @@
 <template>
-    <MarketPlaceLayout>
-        <div class="welcome-text">
+    <DefaultNav>
+       
+
+        <div class="big-container">
+             <div class="welcome-text">
             <h2>My Crops/Inputs</h2>
             
         </div>
-
-        <div class="big-container">
             <div class="contents">
                 <a  href="#" class="each-product">
                     <div class="top-address">
@@ -75,18 +76,25 @@
 
 
 
-    </MarketPlaceLayout>
+
+    </DefaultNav>
 </template>
 
 <script>
-import  MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue"
-    export default {
-        name:'MyProducts',
-        components: {
-            MarketPlaceLayout,
-            },
-            
-    }
+import DefaultNav from "@/layouts/DefaultNav.vue";
+
+export default {
+    name: 'MyProducts',
+    data() {
+        return {
+            userData: this.$store.state.user
+        }
+    },
+    components: {
+        DefaultNav,
+       
+    },
+}
 </script>
 
 
@@ -99,7 +107,6 @@ import  MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue"
     background: #F5F5F5;
     display: flex;
     flex-direction: column;
-    padding: 1% 10% 2% 10%;
 
     @include breakpoint-between(md, lg) {
         width: 60.5%;
@@ -121,6 +128,7 @@ import  MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue"
     background: #262C3F;
     color:white ;
     height: 90px;
+    width: 100%;
 
 
     h2 {
@@ -231,13 +239,4 @@ import  MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue"
 
     }
 
-
-// .map-area {
-//     margin-top: 50px;
-//     margin-bottom: 50px;
-
-//     img {
-//         width: 100%;
-//     }
-// }
 </style>

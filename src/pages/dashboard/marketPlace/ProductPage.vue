@@ -1,6 +1,8 @@
 <template>
-    <MarketPlaceLayout>
-        <div class="big-content">
+    <DefaultNav>
+        <div class="big-container">
+ 
+             <div class="big-content">
             <div class="image-area">
                 <img  class="big-img" src="@/assets/images/backgrounds/okro.png" alt="">
                 <div class="small-images">
@@ -115,24 +117,56 @@
                 </div>
             </div>
         </div>
-        
+            
+
+        </div>
 
 
-       
-    </MarketPlaceLayout>
+
+    </DefaultNav>
 </template>
 
 <script>
-    import  MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue"
-    export default {
-        name:'product',
-        components: {
-            MarketPlaceLayout,
-            },
-    }
+import DefaultNav from "@/layouts/DefaultNav.vue";
+
+export default {
+    name: 'ProductPage',
+    data() {
+        return {
+            userData: this.$store.state.user
+        }
+    },
+    components: {
+        DefaultNav,
+       
+    },
+}
 </script>
 
+
 <style lang="scss" scoped>
+@import "@/assets/scss/main.scss";
+
+.big-container {
+    width: 80%;
+    height: auto;
+    background: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+   
+
+    @include breakpoint-between(md, lg) {
+        width: 60.5%;
+    }
+
+    @include breakpoint-between(lg, xl) {
+        width: 69.5%;
+    }
+
+    @include breakpoint-between(xl, xxl) {
+        width: 76%;
+    }
+}
 .big-content{
     
         width: 100%;
@@ -285,6 +319,5 @@
     height: 1000px;
 }
    
-
 
 </style>
