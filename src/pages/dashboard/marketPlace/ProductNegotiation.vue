@@ -112,35 +112,35 @@
                                         <div class="white-line"></div>
                                         <div class="each-item">
                                             <p>Required Item</p>
-                                            <h4>10,000kg</h4>
+                                            <h4>{{parseOffer(message).qty}}kg</h4>
                                         </div>
                                         <div class="each-item">
                                             <p>Offer Price</p>
-                                            <h4>2%</h4>
+                                            <h4>{{parseOffer(message).price}}%</h4>
                                         </div>
                                         <div class="each-item">
                                             <p>Oil content</p>
-                                            <h4>2%</h4>
+                                            <h4>{{parseOffer(message).oil_content}}%</h4>
                                         </div>
                                         <div class="each-item">
                                             <p>Foreign matter</p>
-                                            <h4>2%</h4>
+                                            <h4>{{parseOffer(message).foreign_matter}}%</h4>
                                         </div>
                                         <div class="each-item">
                                             <p>Infestation</p>
-                                            <h4>2%</h4>
+                                            <h4>{{parseOffer(message).infestation}}%</h4>
                                         </div>
                                         <div class="each-item">
-                                            <p>Infestation</p>
-                                            <h4>2%</h4>
+                                            <p>Moisture</p>
+                                            <h4>{{parseOffer(message).moisture}}%</h4>
                                         </div>
                                         <div class="each-item">
-                                            <p>Infestation</p>
-                                            <h4>2%</h4>
+                                            <p>Weevil</p>
+                                            <h4>{{parseOffer(message).weevil}}%</h4>
                                         </div>
                                         <div class="each-item">
                                             <p>Splits</p>
-                                            <h4>2%</h4>
+                                            <h4>{{parseOffer(message).splits}}%</h4>
                                         </div>
                                         <button>View Full Specification</button>
                                         </div>
@@ -351,6 +351,9 @@ export default {
     methods: {
         offer() {
             this.offerFormVisible =true
+        },
+        parseOffer(message){
+            return JSON.parse(message.message);
         },
         closeForm() {
             this.offerFormVisible=false
