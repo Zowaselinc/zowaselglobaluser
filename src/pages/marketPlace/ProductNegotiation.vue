@@ -106,7 +106,8 @@
                                 </div>
                                 <div v-if="message.messagetype == 'offer'" :class="(message.receiver_id == userData.user.id) ? 'offer-left' : 'offer-right'">
                                     <div class="offered">
-                                        <h3>Offer</h3>
+                                        <div class="colored">
+                                            <h3>Offer</h3>
                                         <hr>
                                         <div class="white-line"></div>
                                         <div class="each-item">
@@ -142,6 +143,19 @@
                                             <h4>2%</h4>
                                         </div>
                                         <button>View Full Specification</button>
+                                        </div>
+                                        <div class="bottom-container">
+                                            <div class="check-buttons">
+                                                <input type="checkbox">
+                                                <label for="">Accept</label>
+                                                <input type="checkbox">
+                                                <label for="">Decline</label>
+                                            </div>
+                                            <div class="timed">
+                                                <p>7:23pm</p>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </template>
@@ -851,10 +865,14 @@ export default {
 }
 .offered{
     width: 50%;
-    padding: 16px;
     gap: 10px;
-    background: #F9E9E9;
+    
     border-radius: 4px;
+    .colored{
+        background: #F9E9E9;
+        padding: 16px;
+    gap: 10px;
+    }
 
     h3{
         font-family: 'Poppins';
@@ -896,6 +914,31 @@ export default {
         background: #696671;
         color: white;
         border: none;
+        margin-bottom: 45px;
     }
 }
+.bottom-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .check-buttons{
+    background-color: white;
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+    align-items: center;
+    input{
+        width: 20px;
+        height: 20px;
+    }
+}
+.timed{
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+    align-items: center;
+}
+}
+
 </style>
