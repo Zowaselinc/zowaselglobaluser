@@ -41,6 +41,10 @@ import MyProducts from "@/pages/dashboard/marketPlace/MyProducts.vue";
 import Confirmed from "@/pages/dashboard/marketPlace/Confirmed.vue";
 import TrackingOrder from "@/pages/dashboard/marketPlace/TrackingOrder.vue";
 import CardDetails from "@/pages/dashboard/marketPlace/CardDetails.vue"
+import Payments from "@/pages/marketPlace/payment/Payments.vue";
+import Confirm from "@/pages/marketPlace/payment/Confirm.vue";
+import PaymentsConfirmed from "@/pages/marketPlace/payment/PaymentsConfirmed.vue";
+
 
 
 
@@ -267,7 +271,21 @@ const routes = [
         name: "TrackingOrder",
         component:TrackingOrder
     },
-
+    {
+        path: "/marketplace/payments",
+        name: "Payments",
+        component:Payments
+    },
+    {
+        path: "/marketplace/confirmpayments",
+        name: "Confirm",
+        component:Confirm
+    },
+    {
+        path: "/marketplace/paymentsconfirmed",
+        name: "PaymentsConfirmed",
+        component:PaymentsConfirmed
+    },
 
 ];
 
