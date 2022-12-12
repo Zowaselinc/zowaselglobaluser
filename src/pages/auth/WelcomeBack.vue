@@ -73,6 +73,9 @@ export default {
                         token: response.token,
                         key: response.user.id,
                     })
+                    this.$store.dispatch('setUser',{
+                        user : response.user
+                    })
 
                     window.localStorage.setItem('authToken', response.token);
                     vm.$router.push('/dashboard/corporate');

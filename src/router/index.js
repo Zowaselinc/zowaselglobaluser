@@ -27,10 +27,10 @@ import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
 import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
 import CropMarket from "@/pages/dashboard/CropMarket.vue"; 
 import Settings from "@/pages/dashboard/settings/Settings.vue";
-import MarketPlace from "@/pages/dashboard/marketPlace/Overview.vue";
+import MarketPlace from "@/pages/dashboard/marketPlace/Market.vue";
 import TransactionSumary from "@/pages/dashboard/marketPlace/checkout/TransactionSumary.vue";
 import OrderTracking from "@/pages/dashboard/marketPlace/ordering/OrderTracking.vue";
-import NewCrop from "@/pages/marketPlace/NewCrop.vue";
+import NewCrop from "@/pages/dashboard/marketPlace/NewCrop.vue";
 import Product from "@/pages/dashboard/marketPlace/ProductPage.vue";
 import InputMarket from "@/pages/dashboard/marketPlace/InputMarket.vue";
 import ProductDescription from "@/pages/dashboard/marketPlace/ProductDescription.vue";
@@ -46,7 +46,7 @@ import Confirm from "@/pages/dashboard/marketPlace/payment/Confirm.vue";
 import PaymentsConfirmed from "@/pages/dashboard/marketPlace/payment/PaymentsConfirmed.vue";
 import CropsSale from "@/pages/dashboard/marketPlace/CropsSale.vue";
 import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation.vue"
-import Negotiations from "@/pages/dashboard/marketPlace/Negotiations.vue"
+import Negotiations from "@/pages/dashboard/Negotiations.vue"
 
 
 
@@ -209,7 +209,7 @@ const routes = [
         component:Settings
     },
     {
-        path: "/marketplace",
+        path: "/dashboard/marketplace",
         name: "MarketPlace",
         component:MarketPlace
     },

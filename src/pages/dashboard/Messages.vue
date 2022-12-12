@@ -55,62 +55,63 @@
                     <a href="#" class="close-form" v-on:click="closeForm()"> X </a>
                     <div class="main-form" >
                         <div class="form-row">
-                        <div class="form-group form-inputs">
-                            <label for="formGroupExampleInput">Quantity</label>
-                            <div class="quantity">
+                            <div class="form-group form-inputs">
+                                <label for="formGroupExampleInput">Quantity</label>
+                                <div class="quantity">
+                                
+                                </div>
                             
+                                
                             </div>
-                        
-                            
+                            <div class="form-group form-inputs">
+                                <label for="formGroupExampleInput2">Price</label>
+                                <input type="text" class="form-control amount " id="" placeholder="Enter Amount">
+                            </div>
+                            <div class="form-group form-inputs">
+                                <label for="formGroupExampleInput2">Oil Content</label>
+                                <input type="text" class="form-control percentage" id="" placeholder="%">
+                            </div>
                         </div>
-                        <div class="form-group form-inputs">
-                            <label for="formGroupExampleInput2">Price</label>
-                            <input type="text" class="form-control amount " id="" placeholder="Enter Amount">
+                        <div class="form-row">
+                            <div class="form-group form-inputs">
+                                <label for="formGroupExampleInput">Foreign Matter</label>
+                                <input type="text" class="form-control percentage" id="formGroupExampleInput" placeholder="%">
+                            </div>
+                            <div class="form-group form-inputs">
+                                <label for="formGroupExampleInput2">Infestation</label>
+                                <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
+                            </div>
+                            <div class="form-group form-inputs">
+                                <label for="formGroupExampleInput2">Moisture</label>
+                                <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
+                            </div>
                         </div>
-                        <div class="form-group form-inputs">
-                            <label for="formGroupExampleInput2">Oil Content</label>
-                            <input type="text" class="form-control percentage" id="" placeholder="%">
+                        <div class="form-row">
+                            <div class="form-group form-inputs">
+                                <label for="formGroupExampleInput">Weevil</label>
+                                <input type="text" class="form-control percentage" id="formGroupExampleInput" placeholder="%">
+                            </div>
+                            <div class="form-group form-inputs">
+                                <label for="formGroupExampleInput2">Hardness</label>
+                                <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
+                            </div>
+                            <div class="form-group form-inputs">
+                                <label for="formGroupExampleInput2">Splits</label>
+                                <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group form-inputs">
-                            <label for="formGroupExampleInput">Foreign Matter</label>
-                            <input type="text" class="form-control percentage" id="formGroupExampleInput" placeholder="%">
-                        </div>
-                        <div class="form-group form-inputs">
-                            <label for="formGroupExampleInput2">Infestation</label>
-                            <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
-                        </div>
-                        <div class="form-group form-inputs">
-                            <label for="formGroupExampleInput2">Moisture</label>
-                            <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group form-inputs">
-                            <label for="formGroupExampleInput">Weevil</label>
-                            <input type="text" class="form-control percentage" id="formGroupExampleInput" placeholder="%">
-                        </div>
-                        <div class="form-group form-inputs">
-                            <label for="formGroupExampleInput2">Hardness</label>
-                            <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
-                        </div>
-                        <div class="form-group form-inputs">
-                            <label for="formGroupExampleInput2">Splits</label>
-                            <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group form-inputs">
-                            <label for="formGroupExampleInput">Weevil</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
-                        </div>
-                        <div class="form-group form-inputs">
-                            <label for="formGroupExampleInput2">Hardness</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                        <div class="form-row">
+                            <div class="form-group form-inputs">
+                                <label for="formGroupExampleInput">Weevil</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                            </div>
+                            <div class="form-group form-inputs">
+                                <label for="formGroupExampleInput2">Hardness</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                            </div>
                         </div>
                     </div>
-
+                    </form>
 
 
                 </div>
@@ -281,7 +282,6 @@
 
                     </form>
                 </div>
-
 
             </div>
         </div>

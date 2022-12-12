@@ -114,7 +114,7 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
-import MarketplaceService from "@/services/marketplace";
+import MarketPlaceService from "@/services/marketplace";
 export default {
     name: 'ProductPage',
     components: {
@@ -172,6 +172,10 @@ export default {
 }
     .image-area{
         width: 100%;
+
+        img{
+            width: 100%;
+        }
         .big-img{
             width: 80%;
             margin-left: 10%;

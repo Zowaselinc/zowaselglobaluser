@@ -4,8 +4,8 @@
 </template>
 
 <script>
-import DispatchSection from "@/pages/marketPlace/checkout/components/DispatchSection.vue";
-import ReportSection from "@/pages/marketPlace/checkout/components/ReportSection.vue";
+import DispatchSection from "@/pages/dashboard/marketPlace/checkout/components/DispatchSection.vue";
+import ReportSection from "@/pages/dashboard/marketPlace/checkout/components/ReportSection.vue";
 
     export default {
         name:'WaybillDetails',
