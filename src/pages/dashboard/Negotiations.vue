@@ -184,63 +184,64 @@
                                 <div class="form-group form-inputs">
                                     <label for="formGroupExampleInput">Quantity</label>
                                     <div class="quantity">
+                                        <input type="text" class="form-control amount" v-model="offerData.qty" id="" placeholder="Enter Amount"/>
                                     </div>
                                 </div>
                                 <div class="form-group form-inputs">
                                     <label for="formGroupExampleInput2">Price</label>
-                                    <input type="text" class="form-control amount " id="" placeholder="Enter Amount">
+                                    <input type="text" class="form-control amount" v-model="offerData.price" id="" placeholder="Enter Amount">
                                 </div>
                                 <div class="form-group form-inputs">
                                     <label for="formGroupExampleInput2">Oil Content</label>
-                                    <input type="text" class="form-control percentage" id="" placeholder="%">
+                                    <input type="text" class="form-control percentage" v-model="offerData.oil_content" id="" placeholder="%">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group form-inputs">
                                     <label for="formGroupExampleInput">Foreign Matter</label>
-                                    <input type="text" class="form-control percentage" id="formGroupExampleInput"
+                                    <input type="text" class="form-control percentage" v-model="offerData.foreign_matter" id="formGroupExampleInput"
                                         placeholder="%">
                                 </div>
                                 <div class="form-group form-inputs">
                                     <label for="formGroupExampleInput2">Infestation</label>
-                                    <input type="text" class="form-control percentage" id="formGroupExampleInput2"
+                                    <input type="text" class="form-control percentage" v-model="offerData.infestation" id="formGroupExampleInput2"
                                         placeholder="%">
                                 </div>
                                 <div class="form-group form-inputs">
                                     <label for="formGroupExampleInput2">Moisture</label>
-                                    <input type="text" class="form-control percentage" id="formGroupExampleInput2"
+                                    <input type="text" class="form-control percentage" v-model="offerData.moisture" id="formGroupExampleInput2"
                                         placeholder="%">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group form-inputs">
                                     <label for="formGroupExampleInput">Weevil</label>
-                                    <input type="text" class="form-control percentage" id="formGroupExampleInput"
+                                    <input type="text" class="form-control percentage" v-model="offerData.weevil" id="formGroupExampleInput"
                                         placeholder="%">
                                 </div>
                                 <div class="form-group form-inputs">
                                     <label for="formGroupExampleInput2">Hardness</label>
-                                    <input type="text" class="form-control percentage" id="formGroupExampleInput2"
+                                    <input type="text" class="form-control percentage" v-model="offerData.hardness" id="formGroupExampleInput2"
                                         placeholder="%">
                                 </div>
                                 <div class="form-group form-inputs">
                                     <label for="formGroupExampleInput2">Splits</label>
-                                    <input type="text" class="form-control percentage" id="formGroupExampleInput2"
+                                    <input type="text" class="form-control percentage" v-model="offerData.splits" id="formGroupExampleInput2"
                                         placeholder="%">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput">Weevil</label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                                    <label for="formGroupExampleInput">Broken Grains</label>
+                                    <input type="text" class="form-control" v-model="offerData.broken_grains" id="formGroupExampleInput" placeholder="">
                                 </div>
                                 <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Hardness</label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                                    <label for="formGroupExampleInput2">Rotten Shriveled</label>
+                                    <input type="text" class="form-control" v-model="offerData.rotten_shriveled" id="formGroupExampleInput2" placeholder="">
                                 </div>
                                 <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Splits</label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                                    <label for="formGroupExampleInput2">Damaged Kernel</label>
+                                    <input type="text" class="form-control" v-model="offerData.dk" id="formGroupExampleInput2" placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -439,11 +440,11 @@
                         crop_id : this.product.id,
                         type : this.userData.user.type,
                         message : "offer",
-                        ...this.offer
+                        ...this.offerData
                     },(response)=>{
-                        console.log(response);
                         this.getNegotiation();
                         this.message = "";
+                        this.closeForm();
                     });
                 },
                 acceptNegotiationOffer(id){

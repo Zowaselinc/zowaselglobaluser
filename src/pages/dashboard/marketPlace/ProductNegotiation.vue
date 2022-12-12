@@ -401,12 +401,10 @@ export default {
         },
         acceptNegotiationOffer(id){
             MarketPlaceService.acceptNegotiationOffer(id,(response)=>{
-
             });
         },
         declineNegotiationOffer(id){
             MarketPlaceService.declineNegotiationOffer(id,(response)=>{
-                
             });
         },
     },
