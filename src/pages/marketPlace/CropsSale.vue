@@ -1,8 +1,6 @@
 <template>
-    <DefaultNav>
-        <div class="big-container">
-
-                <div class="top-text">
+    <MarketPlaceLayout>
+        <div class="top-text">
             <h1>Buy & Sell with Ease</h1>
             <p>Empowering growers from seed to market</p>
         </div>
@@ -14,11 +12,11 @@
                 </div>
             </div>
             <div class="button-area">
-                <a href="#">Crops for sale</a>
-                <a href="#" class="green-btns">Crops Wanted</a>
-                <a href="#">Crop Auction</a>
-                <a href="/marketplace/inputmarket">Input Market</a>
-                <a href="#">All</a>
+                <button class="green-btns">Crops for sale</button>
+                <button>Crops Wanted</button>
+                <button>Crop Auction</button>
+                <button>Input Market</button>
+                <button>All</button>
             </div>
         </div>
 
@@ -116,7 +114,7 @@
                     <select name="" id="">
                         <option value="">kilogram</option>
                     </select>
-                    <input type="text">
+                    <input type="text" v-model="filters.kg">
                 </div>
                 <h3>Shipping Method</h3>
                 <div class="shipping">
@@ -172,69 +170,12 @@
                         </select>
                     </div>
                 </div>
-                <a href="/marketplace/product" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
+                <a href="#" @click="$router.push({name : 'CropDetails', params : {id : crop.id}})" v-for="crop,index in products.rows" :key="index" class="each-item">
+                    <p>{{ crop.title}}</p>
+                    <p>{{ crop.currency}} {{ crop.specification.price}}/{{crop.packaging}}</p>
+                     <p>{{ crop.user.first_name }}</p>
                 </a>
-                <a href="/marketplace/product" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="/marketplace/product" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="/marketplace/product" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="/marketplace/product" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="/marketplace/product" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="/marketplace/product" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="/marketplace/product" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
-                <a href="/marketplace/product" class="each-item">
-                    <p>Corn - No. 2 Yellow</p>
-                    <p>Feb 1, 2020 -Feb 29,2022</p>
-                    <p>NGN, 23,980/bag</p>
-                     <p>cal-maine foods, inc., feed division - union city,
-                         OH 013953 (facility) - 100 miles</p>
-                </a>
+
                 <div class="tags">
                     <h4>Related</h4>
                     <a href="#">cash Crops</a>
@@ -245,77 +186,56 @@
                     <a href="#">aalm Oil</a>
                 </div>
             </div>
-        </div>   
-
         </div>
-
-
-
-    </DefaultNav>
+    </MarketPlaceLayout>
 </template>
 
 <script>
-import DefaultNav from "@/layouts/DefaultNav.vue";
-import MarketplaceService from "@/services/marketplace";
-
-export default {
-    name: 'CardDetails',
-    components: {
-        DefaultNav,
-       
-    },
-    data(){
-        return {
-            categories : []
-        };
-    },
-    methods:{
-        checked (){
-            var box = document.getElementById('checkbox');
-            var deColor =box.style.backgroundColor;
-            if(deColor== "white"){
-                deColor= 'green';
+    import  MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue"
+    import MarketplaceService from "@/services/marketplace";
+    export default {
+        name:'overview',
+        components: {
+            MarketPlaceLayout,
+        },
+        data(){
+            return {
+                categories : [],
+                products : [],
+                filters : {
+                    type : "",
+                    kg : ""
+                }
+            };
+        },
+        methods:{
+            checked (){
+                var box = document.getElementById('checkbox');
+                var deColor = box.style.backgroundColor;
+                if(deColor== "white"){
+                    deColor= 'green';
+                }
+            },
+            getCropCategories(){
+                MarketplaceService.getCropCategories((response)=>{
+                    this.categories = response.data;
+                });
+            },
+            getCropsForSale(){
+                MarketplaceService.getCropsForSale((response)=>{
+                    this.products = response.data;
+                })
             }
         },
-        getCropCategories(){
-            MarketplaceService.getCropCategories((response)=>{
-                this.categories = response.data;
-            });
+        mounted(){
+            this.getCropCategories();
+            this.getCropsForSale();
         }
-    },
-    mounted(){
-        this.getCropCategories();
     }
-
-}
 </script>
 
-
 <style lang="scss" scoped>
-@import "@/assets/scss/main.scss";
-
-.big-container {
-    width: 100%;
-    height: auto;
-    background: #F5F5F5;
-    display: flex;
-    flex-direction: column;
-   
-
-    @include breakpoint-between(md, lg) {
-        width: 60.5%;
-    }
-
-    @include breakpoint-between(lg, xl) {
-        width: 69.5%;
-    }
-
-    @include breakpoint-between(xl, xxl) {
-        width: 76%;
-    }
-}
-
-.top-text{
+  .top-text{
         width: 100%;
         background: #262C3F;
         color: white;
@@ -369,9 +289,10 @@ export default {
         width: 60%;
         justify-content: space-between;
 
-        a{
+        button{
             background-color: white;
-            padding:10px 35px;
+            height: 40px;
+            padding: 0px 35px;
             border: 1px solid #696671;
             border-radius: 55px;
             font-family: 'Maven Pro';
@@ -379,10 +300,6 @@ export default {
             font-weight: 700;
             font-size: 15px;
             color: #696671;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
 
            
         }
@@ -593,6 +510,5 @@ color: #4A4754;
         }
     }
     
-
 
 </style>

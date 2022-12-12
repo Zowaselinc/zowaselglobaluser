@@ -41,10 +41,12 @@ import MyProducts from "@/pages/dashboard/marketPlace/MyProducts.vue";
 import Confirmed from "@/pages/dashboard/marketPlace/Confirmed.vue";
 import TrackingOrder from "@/pages/dashboard/marketPlace/TrackingOrder.vue";
 import CardDetails from "@/pages/dashboard/marketPlace/CardDetails.vue"
-import Payments from "@/pages/marketPlace/payment/Payments.vue";
-import Confirm from "@/pages/marketPlace/payment/Confirm.vue";
-import PaymentsConfirmed from "@/pages/marketPlace/payment/PaymentsConfirmed.vue";
-
+import Payments from "@/pages/dashboard/marketPlace/payment/Payments.vue";
+import Confirm from "@/pages/dashboard/marketPlace/payment/Confirm.vue";
+import PaymentsConfirmed from "@/pages/dashboard/marketPlace/payment/PaymentsConfirmed.vue";
+import CropsSale from "@/pages/dashboard/marketPlace/CropsSale.vue";
+import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation.vue"
+import Negotiations from "@/pages/dashboard/marketPlace/Negotiations.vue"
 
 
 
@@ -157,6 +159,11 @@ const routes = [
         component:Messages
     },
     {
+        path: "/dashboard/negotiations",
+        name: "Negotiations",
+        component:Negotiations
+    },
+    {
         path: "/dashboard/subscription",
         name: "Subscription",
         component:Subscription
@@ -224,7 +231,19 @@ const routes = [
     {
         path: "/marketplace/product",
         name: "Product",
+        path: "/marketplace/cropsale",
+        name: "CropSale",
+        component:CropsSale
+    },
+    {
+        path: "/marketplace/crop/:id",
+        name: "CropDetails",
         component:Product
+    },
+    {
+        path: "/marketplace/crop/:id/negotiate",
+        name: "CropNegotiation",
+        component:ProductNegotiation
     },
     {
         path: "/marketplace/inputmarket",

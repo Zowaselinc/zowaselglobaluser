@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import config from '@/config';
 
-const GET_USER_PATH = (id) => `/users/${id}`
+const GET_USER_PATH = (id) => `users/${id}`
 
 
 export default {

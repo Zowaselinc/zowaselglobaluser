@@ -51,59 +51,63 @@
                         </div>
 
                     </div>
-                    <div class="right-line">
-                        <div class="each-detail">
-                            <h4>Test Weight</h4>
-                            <p>MT</p>
+                    <form id="offer-form">
+                    <a href="#" class="close-form" v-on:click="closeForm()"> X </a>
+                    <div class="main-form" >
+                        <div class="form-row">
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput">Quantity</label>
+                            <div class="quantity">
+                            
+                            </div>
+                        
+                            
                         </div>
-                        <div class="each-detail">
-                            <h4>Hardness</h4>
-                            <p>Hard</p>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Price</label>
+                            <input type="text" class="form-control amount " id="" placeholder="Enter Amount">
                         </div>
-                        <div class="each-detail">
-                            <h4>Split</h4>
-                            <p>1%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Oil Content</h4>
-                            <p>0%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Infestation</h4>
-                            <p>5%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Grain size</h4>
-                            <p>Whole grain</p>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Oil Content</label>
+                            <input type="text" class="form-control percentage" id="" placeholder="%">
                         </div>
                     </div>
-
-
-
-                    <div class="middle-line">
-                        <div class="each-detail">
-                            <h4>Test Weight</h4>
-                            <p>MT</p>
+                    <div class="form-row">
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput">Foreign Matter</label>
+                            <input type="text" class="form-control percentage" id="formGroupExampleInput" placeholder="%">
                         </div>
-                        <div class="each-detail">
-                            <h4>Hardness</h4>
-                            <p>Hard</p>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Infestation</label>
+                            <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
                         </div>
-                        <div class="each-detail">
-                            <h4>Split</h4>
-                            <p>1%</p>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Moisture</label>
+                            <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
                         </div>
-                        <div class="each-detail">
-                            <h4>Oil Content</h4>
-                            <p>0%</p>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput">Weevil</label>
+                            <input type="text" class="form-control percentage" id="formGroupExampleInput" placeholder="%">
                         </div>
-                        <div class="each-detail">
-                            <h4>Infestation</h4>
-                            <p>5%</p>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Hardness</label>
+                            <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
                         </div>
-                        <div class="each-detail">
-                            <h4>Grain size</h4>
-                            <p>Whole grain</p>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Splits</label>
+                            <input type="text" class="form-control percentage" id="formGroupExampleInput2" placeholder="%">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput">Weevil</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                        </div>
+                        <div class="form-group form-inputs">
+                            <label for="formGroupExampleInput2">Hardness</label>
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
                         </div>
                     </div>
 
@@ -155,29 +159,10 @@
                             </p>
                             <span class="sent-time">10:35pm</span>
                         </div>
-
                     </div>
-                    <div class="incoming-message">
-                        <div class="incoming-content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sint dolor tenetur
-                                veritatis ab aperiam optio quisquam, deleniti dolorem pariatur minima aliquid,
-                                reiciendis perferendis! Incidunt cum quam deserunt error vero?
-                            </p>
-                            <span class="received-time">10:35pm</span>
-                        </div>
-
                     </div>
-                    <div class="incoming-message">
-                        <div class="incoming-content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo sint dolor tenetur
-                                veritatis ab aperiam optio quisquam, deleniti dolorem pariatur minima aliquid,
-                                reiciendis perferendis! Incidunt cum quam deserunt error vero?
-                            </p>
-                            <span class="received-time">10:35pm</span>
-                        </div>
-
+                    <div class="form-row">
+                        <button class="form-send">Send</button>
                     </div>
 
 
