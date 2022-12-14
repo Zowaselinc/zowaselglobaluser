@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <!-- for buyers view -->
+    <!-- for corporates view -->
     <div class="payment-option-wrapper">
         <!-- payment option header -->
         <h2>Payment Option</h2>
@@ -223,7 +223,7 @@ hr {
     }
 }
 
-// for buyers view
+// for corporates view
 .payment-option-wrapper {
     margin-bottom: 40px;
 

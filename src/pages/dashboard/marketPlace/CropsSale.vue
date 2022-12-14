@@ -10,11 +10,20 @@
                     </select>
                 </div>
             </div>
-            <a href="#" @click="$router.push({name : 'CropDetails', params : {id : crop.id}})" v-for="crop,index in products.rows" :key="index" class="each-item">
-                <p>{{ crop.title}}</p>
-                <p>{{ crop.currency}} {{ crop.specification.price}}/{{crop.packaging}}</p>
+            <template v-if="type == 'crops-sale'">
+                <a href="#"  @click="$router.push({name : 'CropDetails', params : {id : crop.id}})" v-for="crop,index in sales.rows" :key="index" class="each-item">
+                    <p>{{ crop.title}}</p>
+                    <p>{{ crop.currency}} {{ crop.specification.price}}/{{crop.packaging}}</p>
                     <p>{{ crop.user.first_name }}</p>
-            </a>
+                </a>
+            </template>
+            <template v-if="type == 'crops-auctions'">
+                <a href="#"  @click="$router.push({name : 'CropDetails', params : {id : crop.id}})" v-for="crop,index in auctions.rows" :key="index" class="each-item">
+                    <p>{{ crop.title}}</p>
+                    <p>{{ crop.currency}} {{ crop.specification.price}}/{{crop.packaging}}</p>
+                    <p>{{ crop.user.first_name }}</p>
+                </a>
+            </template >
 
             <div class="tags">
                 <h4>Related</h4>
@@ -33,12 +42,16 @@
     import MarketplaceService from "@/services/marketplace";
     export default {
         name:'overview',
+        props : {
+            type : String
+        },
         components: {
         },
         data(){
             return {
                 categories : [],
-                products : [],
+                sales : {},
+                auctions : {},
                 filters : {
                     type : "",
                     kg : ""
@@ -60,13 +73,20 @@
             },
             getCropsForSale(){
                 MarketplaceService.getCropsForSale((response)=>{
-                    this.products = response.data;
+                    this.sales = response.data;
                 })
-            }
+            },
+            getCropsForAuction(){
+                MarketplaceService.getCropsForAuction((response)=>{
+                    this.auctions = response.data;
+                })
+            },
         },
         mounted(){
             this.getCropCategories();
             this.getCropsForSale();
+            this.getCropsForAuction();
+
         }
     }
 </script>
