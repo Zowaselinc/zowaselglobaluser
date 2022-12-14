@@ -240,7 +240,7 @@
                     <div class="form-content">
                         <div class="input-session">
                             <input class="no-border" v-model="message" type="text" placeholder="Type your message here">
-                            <div class="icons">
+                            <div class="icons me-">
                                 <a href=""><img src="@/assets/images/vectors/attach.svg" alt=""></a>
                                 <a href=""><img src="@/assets/images/vectors/emoji.svg" alt=""></a>
                                 <a href="javascript:void(0)" @click="sendNegotiationMessage()"><img
@@ -683,8 +683,8 @@ export default {
         gap: 10px;
 
         .input-session {
-            width: 80%;
-            height: 60px;
+            width: 70%;
+            // height: 60px;
             background: rgba(249, 249, 249, 0.5);
             border: 1px solid #05B050 !important;
             border-radius: 4px;
@@ -707,9 +707,12 @@ export default {
             }
 
             .icons {
-                width: 15%;
+                width: auto;
                 display: flex;
-                justify-content: space-around;
+                // justify-content:;
+                img{
+                    height: 60%;
+                }
             }
         }
 
@@ -721,6 +724,10 @@ export default {
             height: 60px;
             border: none;
             color: white;
+            font-size: 14px;
+            img{
+                width: 18%;
+            }
         }
     }
 

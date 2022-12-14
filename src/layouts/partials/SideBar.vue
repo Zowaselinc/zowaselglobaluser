@@ -168,4 +168,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/navigation";
+#sidebarMenu {
+  overflow-y: scroll;
+  }
 </style>
