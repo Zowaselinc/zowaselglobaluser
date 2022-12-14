@@ -1,7 +1,5 @@
 <template>
-    <div class="bigger-container">
-        <TopHeader>
-        </TopHeader>
+    <DefaultNav>
         <div class="big-container">
             <div class="left" v-if="product">
                 <h1>{{ product.title }}</h1>
@@ -260,18 +258,18 @@
                 </div>
             </div>
         </div>
-    </div>
+    </DefaultNav>
 
 </template>
     
 <script>
-import TopHeader from "@/layouts/partials/TopHeader.vue";
+import DefaultNav from "@/layouts/DefaultNav.vue"
 import MarketPlaceService from "@/services/marketplace";
 import DateUtils from "@/utilities/date";
 export default {
     name: 'ProductNegotiation',
     components: {
-        TopHeader,
+        DefaultNav
     },
     data() {
         return {

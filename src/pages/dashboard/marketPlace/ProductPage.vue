@@ -2,17 +2,20 @@
     <DefaultNav>
         <div class="big-container">
             <div class="big-content" v-if="product">
-            <div v-if="product && product.images.length" class="image-area">
+            <!-- <div v-if="product && product.images.length" class="image-area">
                 <img :src="product.images[0]" alt="">
                 <div v-if="(product.images.length > 1)" class="small-images">
                     <img v-for="image,index in product.images.slice(1)" :key="index" :src="image" alt="">
                 </div>
-            </div>
+            </div> -->
             <div class="topic" v-if="product">
                 <div class="left">
                     <h1>{{ product.title }}</h1>
                     <p class="price">{{ product.currency }}{{product.specification.price }}/{{ product.packaging}}</p>
                     <p class="farmer">{{ product.user.first_name +" "+product.user.last_name }} <span> <img src="@/assets/images/vectors/verified.svg" alt=""> Verified merchant</span></p>
+                </div>
+                 <div v-if="(product.images.length > 1)" class="small-images">
+                    <img v-for="image,index in product.images.slice(1)" :key="index" :src="image" alt="">
                 </div>
                 <div class="right">
                     <a href="#" class="fulfil">Fulfil/Accept Offer</a>
@@ -320,5 +323,18 @@ export default {
     height: 1000px;
 }
    
-
+.small-images{
+            
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            gap:10px;
+            overflow-x: scroll;
+            margin-left: 30px;
+            img{
+                
+                width: 350px;
+                height: 350px;
+            }
+        }
 </style>

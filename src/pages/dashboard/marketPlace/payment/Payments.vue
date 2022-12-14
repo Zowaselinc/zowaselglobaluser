@@ -1,7 +1,8 @@
 <template>
-    <marketPlaceLayout>
+    <DefaultNav>
         <!-- header -->
-        <div class="page-header d-flex justify-content-center align-items-center">
+        <div class="big-container">
+            <div class="page-header d-flex justify-content-center align-items-center">
             <h1>Payment</h1>
         </div>
         <!--body container -->
@@ -54,18 +55,20 @@
             <OrderSummary v-if="(activeTab == 'ordersummary')"></OrderSummary>
             <BalancePayment v-if="(activeTab == 'balancepayment')"></BalancePayment>
         </div>
-    </marketPlaceLayout>
+        </div>
+        
+    </DefaultNav>
 </template>
 
 <script>
-import MarketPlaceLayout from "@/layouts/MarketPlaceLayout.vue"
+import DefaultNav from "@/layouts/DefaultNav.vue"
 import OrderSummary from "./components/OrderSummary.vue";
 import BalancePayment from "./components/BalancePayment.vue";
 
 export default {
     name: "Payments",
     components: {
-        MarketPlaceLayout,
+        DefaultNav,
         OrderSummary,
         BalancePayment
     },
@@ -85,6 +88,26 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
+.big-container {
+    width: 100%;
+    height: auto;
+    background: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+   
+
+    @include breakpoint-between(md, lg) {
+        width: 60.5%;
+    }
+
+    @include breakpoint-between(lg, xl) {
+        width: 69.5%;
+    }
+
+    @include breakpoint-between(xl, xxl) {
+        width: 76%;
+    }
+}
 
 .page-header {
     width: 100%;
