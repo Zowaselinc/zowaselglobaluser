@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="d-grid table-btn mt-4">
-                        <!-- for buyers view -->
+                        <!-- for corporates view -->
                         <a
                             :class="['btn', 'btn-procceed-waybil']"
                             type="button" @click="changeTab('balancepayment')" v-if="activeTab == 'ordersummary'">Confim Payment

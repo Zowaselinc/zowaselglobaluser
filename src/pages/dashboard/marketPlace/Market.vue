@@ -15,18 +15,18 @@
             </div>
 
             <div class="button-area" v-if="userData.user.type == 'merchant'">
-                <a href="#" :class="[activeTab == 'crops-wanted' ? 'green-btns' : '']">Crops Wanted</a>
-                <a href="#" :class="[activeTab == 'input-market' ? 'green-btns' : '']">Input Market</a>
+                <a href="#" @click="changeTab('crops-wanted')" :class="[activeTab == 'crops-wanted' ? 'green-btns' : '']">Crops Wanted</a>
+                <a href="#" @click="changeTab('input-market')" :class="[activeTab == 'input-market' ? 'green-btns' : '']">Input Market</a>
             </div>
             
             <div class="button-area" v-else-if="userData.user.type == 'corporate'">
-                <a href="#" :class="[activeTab == 'crops-sale' ? 'green-btns' : '']">Crops for sale</a>
-                <a href="#" :class="[activeTab == 'crops-auction' ? 'green-btns' : '']">Crop Auction</a>
+                <a href="#" @click="changeTab('crops-sale')" :class="[activeTab == 'crops-sale' ? 'green-btns' : '']">Crops for sale</a>
+                <a href="#" @click="changeTab('crops-auction')" :class="[activeTab == 'crops-auction' ? 'green-btns' : '']">Crop Auction</a>
             </div>
         </div>
 
         <!-- MAIN CONTENT GOES HERE -->
-        <CropsForSale v-if="activeTab == 'crops-sale'"></CropsForSale>
+        <CropsForSale v-if="userData.user.type == 'corporate'" :type="activeTab"></CropsForSale>
         </div>
 
 
@@ -53,6 +53,9 @@ export default {
         };
     },
     methods:{
+        changeTab(tab){
+            this.activeTab = tab;
+        },
         checked (){
             var box = document.getElementById('checkbox');
             var deColor =box.style.backgroundColor;
@@ -67,7 +70,7 @@ export default {
         },
     },
     mounted(){
-        console.log(this.userData);
+
         this.activeTab = this.userData.user.type == "merchant" ? "crops-wanted" : "crops-sale";
         this.getCropCategories();
     }

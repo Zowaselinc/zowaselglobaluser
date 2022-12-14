@@ -66,7 +66,7 @@
                                 :class="['btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button" @click="nextStep()">Proceed to waybill
                             </button>
-                            <!-- for buyers view -->
+                            <!-- for corporates view -->
                             <a href="/marketplace/payments"
                                 :class="['btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button">Proceed to payment

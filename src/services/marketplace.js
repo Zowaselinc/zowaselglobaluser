@@ -4,6 +4,7 @@ import config from '@/config';
 const GET_CROP_CATEGORIES_PATH = () => "category/crop/getall";
 const GET_INPUT_CATEGORIES_PATH = () => "category/input/getall";
 const GET_CROPS_SALE_PATH = () => "crop/getbycropoffer";
+const GET_CROPS_AUCTION_PATH = () => "crop/getbycropauction";
 const GET_CROP_PATH = (id) => `crop/getbyid/${id}`;
 
 
@@ -31,6 +32,12 @@ export default {
     },
     getCropsForSale : function(callback){
         axios.get(config.BASE_URL + GET_CROPS_SALE_PATH()).then((response)=>{
+            callback(response.data);
+        }).catch((error)=>{
+        });
+    },
+    getCropsForAuction : function(callback){
+        axios.get(config.BASE_URL + GET_CROPS_AUCTION_PATH()).then((response)=>{
             callback(response.data);
         }).catch((error)=>{
         });

@@ -426,6 +426,7 @@ export default {
     width: 100%;
     background: #F5F5F5;
     display: flex;
+    height : auto;
     flex: 1;
     min-height: 0;
     flex-direction: row;

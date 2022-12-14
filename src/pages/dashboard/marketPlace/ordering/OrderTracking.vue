@@ -92,7 +92,7 @@
                         <strong>Completed</strong></a>
                     <a class="btn payment-status wallet d-inline-block position-absolute"
                         v-if="(orderProgress == 100)">Go to wallet</a>
-                    <!-- for buyers view -->
+                    <!-- for corporates view -->
                     <a class="btn payment-status d-block confirm-delivery" v-if="(orderProgress == 100)">Confirm Delivery</a>
                     <a class="btn payment-status wallet d-block w-100"
                         v-if="(orderProgress == 100)">Confirm Delivery</a>
@@ -220,7 +220,7 @@
                                         is generated from zowasel
                                         portal by registered sellers or transporters who undertake movement of
                                         commodities and must be presented at point
-                                        of delivery in the buyer.
+                                        of delivery in the corporate.
                                     </p>
 
                                 </div>
