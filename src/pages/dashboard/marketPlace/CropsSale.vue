@@ -4,7 +4,7 @@
             <div class="top-texts">
                 <h3>Newest</h3>
                 <div class="top-text-right">
-                    <p>sort by </p>
+                    <p class="mb-0">sort by </p>
                     <select name="" id="">
                         <option value="">Best net price</option>
                     </select>
@@ -17,7 +17,7 @@
             </a>
 
             <div class="tags">
-                <h4>Related</h4>
+                <h4 class="mb-0">Related</h4>
                 <a href="#">cash Crops</a>
                 <a href="#">Seeds</a>
                 <a href="#">Cocoa</a>
@@ -72,6 +72,18 @@
 </script>
 
 <style lang="scss" scoped>
+.top-texts{
+     h3{
+        font-size: 20px;
+     }
+     select{
+        font-size: 14px;
+     }
+     p{
+        font-size: 14px;
+     }
+    
+}
   .top-text{
         width: 100%;
         background: #262C3F;
@@ -285,17 +297,19 @@
 
         .top-text-right{
             display: flex;
-            align-items: center;
+            align-items: baseline;
+
 
             p{
                 margin-top: 5px;
+                
             }
             select{
                 margin-left: 10px;
                 margin-top: 0px;
                 background-color: white;
                 border: 1px solid #05B050 !important;
-                height: 50px;
+                // height: 50px;
                 padding: 0px 0px 0px 20px;
             }
         }
@@ -325,7 +339,7 @@ color: #4A4754;
         display: flex;
         justify-content: space-around;
         margin-top: 50px;
-        align-items: center;
+        align-items: baseline;
         h4{
             font-family: 'Poppins';
             font-style: normal;

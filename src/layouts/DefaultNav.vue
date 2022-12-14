@@ -1,10 +1,12 @@
 
 <template>
+   <div class="view">
     <TopHeader />
     <div class="big-content">
         <SideBar />
         <slot></slot>
     </div>
+   </div>
     <Footer />
 </template>
 
@@ -34,5 +36,9 @@ export default {
 .big-content{
     display: flex;
     flex-direction: row;
+
+}
+.view{
+    height: 100vh;
 }
 </style>

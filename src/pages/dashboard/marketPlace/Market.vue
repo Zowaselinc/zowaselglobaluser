@@ -104,7 +104,7 @@ export default {
         width: 100%;
         background: #262C3F;
         color: white;
-        padding: 25px 30px;
+        padding: 14px 30px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -112,13 +112,15 @@ export default {
 
         p{
             margin-bottom: 0px;
+            font-size: 14px;
+            
         }
         
         h1{
             font-family: 'Poppins';
             font-style: normal;
             font-weight: 700;
-            font-size: 50px;
+            font-size: 24px;
         }
     }
     .second-bar{
@@ -165,7 +167,7 @@ export default {
             font-family: 'Maven Pro';
             font-style: normal;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             color: #696671;
             display: flex;
             justify-content: center;
