@@ -1,54 +1,55 @@
 <template>
-    <div class="main-container d-flex position-relative justify-content-center">
-        <div
-            class="order-confirm d-flex flex-column position-relative container w-50 align-items-center justify-content-center">
-            <div class="zowasel-logo position-relative">
-                <img class="img-fluid" src="@/assets/images/logos/zowasel-grey-logo.png" alt="" srcset="">
+    <DefaultNav>
+        <div class="main-container d-flex position-relative justify-content-center">
+            <div
+                class="order-confirm d-flex flex-column position-relative container w-50 align-items-center justify-content-center">
+                <div class="zowasel-logo position-relative">
+                    <img class="img-fluid" src="@/assets/images/logos/zowasel-grey-logo.png" alt="" srcset="">
+                </div>
+                <div class="text-container w-75 mb-5 text-center">
+                    <h1>Order Confirmed</h1>
+                    <p class="text-justify">You have successfully registered with Zowasel as a {{type}}. Proceed to your
+                        dashboard to set up account.
+                    </p>
+                </div>
+                <div class="d-grid w-75">
+                    <a href="/dashboard/marketplace/:market" :class="['btn', 'btn-goto-marketplace', 'mb-3 ']"
+                        type="button">Go to
+                        market place
+                    </a>
+                    <a href="/marketplace/ordertracking" :class="['btn', 'btn-track', 'mt-2 mb-4']" type="button">Track
+                        order
+                    </a>
+                    <!-- for buyers view -->
+                    <a href="/marketplace/ordertracking" :class="['btn', 'btn-track', 'mt-2 mb-1']" type="button">Print
+                        reciept
+                    </a>
+                </div>
             </div>
-            <div class="text-container w-75 mb-5 text-center">
-                <h1>Order Confirmed</h1>
-                <p class="text-justify">You have successfully registered with Zowasel as a partner. Proceed to your
-                    dashboard to set up account.
-                </p>
+            <div class="dot bottom position-absolute">
+                <img src="@/assets/images/vectors/dot.svg">
             </div>
-            <div class="d-grid w-75">
-                <a href="/dashboard/marketplace/:market" :class="['btn', 'btn-goto-marketplace', 'mb-3 ']"
-                    type="button">Go to
-                    market place
-                </a>
-                <a href="/marketplace/ordertracking" :class="['btn', 'btn-track', 'mt-2 mb-4']" type="button">Track
-                    order
-                </a>
-                <!-- for buyers view -->
-                <a href="/marketplace/ordertracking" :class="['btn', 'btn-track', 'mt-2 mb-1']" type="button">Print reciept
-                </a>
+            <div class="dot top position-absolute">
+                <img src="@/assets/images/vectors/dot.svg">
             </div>
         </div>
-        <div class="dot bottom position-absolute">
-            <img src="@/assets/images/vectors/dot.svg">
-        </div>
-        <div class="dot top position-absolute">
-            <img src="@/assets/images/vectors/dot.svg">
-        </div>
-    </div>
+       
+    </DefaultNav>
 </template>
 
 <script>
-export default {
-    name: "Confirm",
-    components: {
+import DefaultNav from "@/layouts/DefaultNav.vue";
 
-    },
+export default {
+    name:  "Confirm",
     data() {
         return {
-
-        };
+            userData: this.$store.state.user
+        }
     },
-    methods: {
-    
-    },
-    mounted() {
-        
+    components: {
+        DefaultNav,
+       
     },
 }
 </script>
@@ -86,11 +87,12 @@ export default {
         z-index: 99;
     }
 
-    .bottom{
+    .bottom {
         bottom: 100px;
         left: -25px;
     }
-    .top{
+
+    .top {
         top: 100px;
         right: -25px;
     }
@@ -106,14 +108,14 @@ export default {
     .text-container {
         h1 {
             text-transform: capitalize;
-            @include textStyles(Poppins, 700, 54px, 76px);
+            @include textStyles(Poppins, 700, 30px, 76px);
             color: #1D1D1D;
 
         }
 
         p {
             color: rgba(45, 55, 72, 0.6);
-            @include textStyles(Poppins, 400, 16px, 22px);
+            @include textStyles(Poppins, 400, 15.5px, 22px);
 
         }
     }
