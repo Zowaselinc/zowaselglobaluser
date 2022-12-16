@@ -20,7 +20,7 @@ import AccountSettings from "@/pages/dashboard/AccountSettings.vue";
 import Notifications from "@/pages/dashboard/Notifications.vue";
 import Messages from "@/pages/dashboard/Messages.vue";
 import Subscription from "@/pages/dashboard/Subscription.vue";
-import BalancePayment from "@/pages/dashboard/BalancePayment.vue"
+import SubscriptionPayment from "@/pages/dashboard/SubscriptionPayment.vue"
 import RenewalManager from "@/pages/dashboard/RenewalManager.vue";
 import ChanelLog from "@/pages/dashboard/ChanelLog.vue";
 import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
@@ -45,8 +45,15 @@ import Payments from "@/pages/dashboard/marketPlace/payment/Payments.vue";
 import Confirm from "@/pages/dashboard/marketPlace/payment/Confirm.vue";
 import PaymentsConfirmed from "@/pages/dashboard/marketPlace/payment/PaymentsConfirmed.vue";
 import CropsSale from "@/pages/dashboard/marketPlace/CropsSale.vue";
-import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation.vue"
-import Negotiations from "@/pages/dashboard/Negotiations.vue"
+import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation.vue";
+import Negotiations from "@/pages/dashboard/Negotiations.vue";
+import Invoice from "@/pages/dashboard/Invoice.vue";
+import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
+import Loan from "@/pages/dashboard/Loan.vue";
+import Tickets from "@/pages/dashboard/Tickets.vue";
+import NewTicket from "@/pages/dashboard/NewTicket.vue";
+
+
 
 
 
@@ -169,9 +176,9 @@ const routes = [
         component:Subscription
     },
     {
-        path: "/dashboard/balancepayment",
-        name: "BalancePayment",
-        component:BalancePayment
+        path: "/dashboard/subscriptionpayment",
+        name: "SubscriptionPayment",
+        component:SubscriptionPayment
     },
     {
         path: "/dashboard/renewalmanager",
@@ -207,6 +214,21 @@ const routes = [
         path: "/dashboard/settings",
         name: "Settings",
         component:Settings
+    },
+    {
+        path: "/dashboard/invoice",
+        name: "Invoice",
+        component:Invoice
+    },
+    {
+        path: "/dashboard/each-invoice",
+        name: "EachInvoice",
+        component:EachInvoice,
+    },
+    {
+        path: "/dashboard/loan",
+        name: "Loan",
+        component:Loan,
     },
     {
         path: "/dashboard/marketplace",
@@ -305,6 +327,18 @@ const routes = [
         name: "PaymentsConfirmed",
         component:PaymentsConfirmed
     },
+    {
+        path: "/dashboard/tickets",
+        name: "Tickets",
+        component:Tickets
+    },
+    {
+        path: "/dashboard/new-ticket",
+        name: "NewTicket",
+        component:NewTicket
+    },
+    
+    
 
 ];
 

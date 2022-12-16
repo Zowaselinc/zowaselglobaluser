@@ -1,71 +1,72 @@
 <template>
 
-    <TopHeader>
-    </TopHeader>
-    <div class="top-section">
-        <h1>Subscription Payment</h1>
-    </div>
-    <div class="big-container">
-        <div class="left">
-            <form action="">
-                <div class="form-group">
-                    <label for="">Card Number</label>
-                    <input type="email" class="form-control" id="" aria-describedby="" placeholder="1234 5678 9101 1121">
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="inputEmail4">Expiration Date</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="MM/YY">
+    <DefaultNav>
+        
+        <div class="big-container">
+            <div class="top-section">
+                <h1>Subscription Payment</h1>
+            </div>
+            <div class="contents">
+                <div class="left">
+                <form action="">
+                    <div class="form-group">
+                        <label for="">Card Number</label>
+                        <input type="email" class="form-control" id="" aria-describedby="" placeholder="1234 5678 9101 1121">
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputEmail4">CCV</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="123">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Expiration Date</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">CCV</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="123">
+                        </div>
                     </div>
-                </div>
-                 <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="inputEmail4">Pin</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="Pin">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Pin</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Pin">
+                        </div>
+                    
                     </div>
-                  
-                </div>
-                <div class="row">
-                    <button>Confirm Payment</button>
-                  
-                </div>
-                
-            </form>
-        </div>
-        <div class="right">
-            <div class="details">
-                <h1>Subscription Summary</h1>
-                <h3>Data Sharing</h3>
-                <p class="underlined">NGN 10,000/month</p>
-                <p>Suitable for DFI, MFIs,  <br>
-                    Out-growers, and other <br>
-                    lenders seeking smallholder farmers data to make <br>
-                    potential loan decisions.
-                </p>
-                <h3>Features</h3>
-                <ul>
-                    <li>Access to basic data points for potential loan decisions</li>
-                    <li>Data storage and privacy</li>
-                    <li>No data editing</li>
-                    <li>No analysis/recommendation</li>
-                </ul>
+                    <div class="row">
+                        <button>Confirm Payment</button>
+                    
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="right">
+                <div class="details">
+                    <h1>Subscription Summary</h1>
+                    <h3>Data Sharing</h3>
+                    <p class="underlined">NGN 10,000/month</p>
+                    <p>Suitable for DFI, MFIs,  <br>
+                        Out-growers, and other <br>
+                        lenders seeking smallholder farmers data to make <br>
+                        potential loan decisions.
+                    </p>
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Access to basic data points for potential loan decisions</li>
+                        <li>Data storage and privacy</li>
+                        <li>No data editing</li>
+                        <li>No analysis/recommendation</li>
+                    </ul>
 
-                <div class="total-area">
-                    <div class="black-line"></div>
-                    <div class="total-texts">
-                        <h3>Amount Due</h3>
-                        <h3>NGN10,000</h3>
+                    <div class="total-area">
+                        <div class="black-line"></div>
+                        <div class="total-texts">
+                            <h3>Amount Due</h3>
+                            <h3>NGN10,000</h3>
+                        </div>
                     </div>
                 </div>
             </div>
+            </div>
         </div>
-    </div>
-    <Footer>
-    </Footer>
+    </DefaultNav>
 
     
         
@@ -75,13 +76,11 @@
 </template>
 
 <script> 
-    import TopHeader from "@/layouts/partials/TopHeader.vue";
-    import Footer from "@/layouts/partials/Footer.vue";
+    import DefaultNav from "@/layouts/DefaultNav.vue";
     export default {
         name: 'BalancePayment',
         components:{
-            TopHeader,
-            Footer
+            DefaultNav
         }
     }
 </script>
@@ -110,7 +109,10 @@
     height: auto;
     background: #F5F5F5;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    .contents{
+        display: flex;
+    }
     .left{
         padding-top: 100px;
         padding-bottom: 100px;
