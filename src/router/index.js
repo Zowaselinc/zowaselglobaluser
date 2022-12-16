@@ -87,7 +87,7 @@ const routes = [
     },
     {
         path: "/",
-        name:"WelcomeBack",
+        name:"Index",
         component:WelcomeBack,
     },
     {
