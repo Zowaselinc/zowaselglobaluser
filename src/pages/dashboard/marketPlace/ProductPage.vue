@@ -36,7 +36,7 @@
                         <div class="left-line">
                             <div class="each-detail">
                                 <h4>Product Category</h4>
-                                <p>{{ product.crop_category.name }}</p>
+                                <p>{{ product.category.name }}</p>
                             </div>
                             <div class="each-detail">
                                 <h4>Color</h4>
