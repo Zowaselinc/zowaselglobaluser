@@ -262,8 +262,11 @@ export default {
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox active d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox"/>
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
                             </div>
                             <div class="ms-3 check-words">60 Days</div>
                         </div>
@@ -388,25 +391,38 @@ export default {
             .rowz {
                 display: flex !important;
 
-                .checkbox {
-                    border: 2px solid #D1D1D1;
+                .checkbox-container{
                     width: 24px;
                     height: 24px;
+                }
+                .checkbox-input{
+                    position: absolute;
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .checkbox {
+                    border: 2px solid #D1D1D1;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 3px;
 
                     img {
                         display: none;
                     }
                 }
 
-                // toggle
-                .active {
+                .checkbox-input:checked + .checkbox{
                     background: #05B050;
                     border: 1.5px solid #047B38;
 
                     img {
                         display: block !important;
+                        width: 80%;
                     }
                 }
+
 
                 .check-words {
                     @include textStyles('Maven Pro', 400, 16px, 24px);

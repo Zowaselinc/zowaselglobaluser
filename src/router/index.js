@@ -12,7 +12,7 @@ import ResetPassword from "@/pages/auth/ResetPassword.vue";
 import ResetSuccess from "@/pages/auth/ResetSuccess.vue";
 import UserType from "@/pages/auth/UserType.vue";
 import AgentType from "@/pages/auth/AgentType.vue";
-import CorporateDashboard from "@/pages/dashboard/Corporate.vue";
+import DashboardHome from "@/pages/dashboard/DashboardHome.vue";
 import LogisticsDashboard from "@/pages/dashboard/Logistics.vue";
 import FinanceDashboard from "@/pages/dashboard/Finance.vue";
 import DoKyb from "@/pages/dashboard/DoKyb.vue";
@@ -25,14 +25,12 @@ import RenewalManager from "@/pages/dashboard/RenewalManager.vue";
 import ChanelLog from "@/pages/dashboard/ChanelLog.vue";
 import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
 import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
-import CropMarket from "@/pages/dashboard/CropMarket.vue"; 
 import Settings from "@/pages/dashboard/settings/Settings.vue";
 import MarketPlace from "@/pages/dashboard/marketPlace/Market.vue";
 import TransactionSumary from "@/pages/dashboard/marketPlace/checkout/TransactionSumary.vue";
 import OrderTracking from "@/pages/dashboard/marketPlace/ordering/OrderTracking.vue";
 import NewCrop from "@/pages/dashboard/marketPlace/NewCrop.vue";
 import Product from "@/pages/dashboard/marketPlace/ProductPage.vue";
-import InputMarket from "@/pages/dashboard/marketPlace/InputMarket.vue";
 import ProductDescription from "@/pages/dashboard/marketPlace/ProductDescription.vue";
 import CardPayment from "@/pages/dashboard/marketPlace/CardPayment.vue";
 import CheckOut from "@/pages/dashboard/marketPlace/CheckOut.vue";
@@ -44,7 +42,7 @@ import CardDetails from "@/pages/dashboard/marketPlace/CardDetails.vue"
 import Payments from "@/pages/dashboard/marketPlace/payment/Payments.vue";
 import Confirm from "@/pages/dashboard/marketPlace/payment/Confirm.vue";
 import PaymentsConfirmed from "@/pages/dashboard/marketPlace/payment/PaymentsConfirmed.vue";
-import CropsSale from "@/pages/dashboard/marketPlace/CropsSale.vue";
+import CropsSale from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
 import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation.vue"
 import Negotiations from "@/pages/dashboard/Negotiations.vue"
 
@@ -77,7 +75,6 @@ const routes = [
         name:"Welcome",
         component:Welcome,
     },
-
     {
         path: "/verifyemail",
         name:"VerifyEmail",
@@ -85,6 +82,11 @@ const routes = [
     },
     {
         path: "/login",
+        name:"WelcomeBack",
+        component:WelcomeBack,
+    },
+    {
+        path: "/",
         name:"WelcomeBack",
         component:WelcomeBack,
     },
@@ -119,14 +121,9 @@ const routes = [
         component:UserType,
     },
     {
-        path: "/dashboard/merchant",
-        name: "MerchantDashboard",
-        component:CorporateDashboard,
-    },
-    {
-        path: "/dashboard/corporate",
-        name: "CorporateDashboard",
-        component:CorporateDashboard,
+        path: "/dashboard",
+        name: "DashboardHome",
+        component:DashboardHome,
     },
     {
         path: "/dashboard/logistics",
@@ -194,22 +191,12 @@ const routes = [
         component:Withdrawal
     },
     {
-        path: "/dashboard/inputmarket",
-        name: "InputMarket",
-        component:InputMarket
-    },
-    {
-        path: "/dashboard/cropmarket",
-        name: "CropMarket",
-        component:CropMarket
-    },
-    {
         path: "/dashboard/settings",
         name: "Settings",
         component:Settings
     },
     {
-        path: "/dashboard/marketplace",
+        path: "/dashboard/marketplace/:market",
         name: "MarketPlace",
         component:MarketPlace
     },
@@ -244,11 +231,6 @@ const routes = [
         path: "/marketplace/crop/:id/negotiate",
         name: "CropNegotiation",
         component:ProductNegotiation
-    },
-    {
-        path: "/marketplace/inputmarket",
-        name: "Inputmarket",
-        component:InputMarket
     },
     {
         path: "/marketplace/product-description",

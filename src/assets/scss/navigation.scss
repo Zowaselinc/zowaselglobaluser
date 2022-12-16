@@ -86,10 +86,9 @@ nav {
         a.nav-item {
             margin-bottom: 4px;
             .drop-menu {
-                @include textStyles("Maven Pro", 400, 16px, 147%);
+                @include textStyles("Maven Pro", 400, 14px, 147%);
                 color: #ffffff;
                 margin-left: 18%;
-                margin-top: 10px;
                 display: none;
                 div {
                     padding: 9px 15px;

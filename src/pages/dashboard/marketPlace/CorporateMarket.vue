@@ -10,18 +10,20 @@
                     </select>
                 </div>
             </div>
-            <template v-if="type == 'crops-sale'">
+            <template v-if="view == 'cropsale'">
                 <a href="#" @click="$router.push({ name: 'CropDetails', params: { id: crop.id } })"
                     v-for="crop, index in sales.rows" :key="index" class="each-item">
                     <p>{{ crop.title }}</p>
+                    <p><b>{{crop.category.name}}</b></p>
                     <p>{{ crop.currency }} {{ crop.specification.price }}/{{ crop.packaging }}</p>
                     <p>{{ crop.user.first_name }}</p>
                 </a>
             </template>
-            <template v-if="type == 'crops-auctions'">
+            <template v-if="view == 'cropauction'">
                 <a href="#" @click="$router.push({ name: 'CropDetails', params: { id: crop.id } })"
                     v-for="crop, index in auctions.rows" :key="index" class="each-item">
-                    <p>{{ crop.title }}</p>
+                    <p>{{ crop.title}}</p>
+                    <p><b>{{crop.category.name}}</b></p>
                     <p>{{ crop.currency }} {{ crop.specification.price }}/{{ crop.packaging }}</p>
                     <p>{{ crop.user.first_name }}</p>
                 </a>
@@ -61,9 +63,9 @@
 <script>
 import MarketplaceService from "@/services/marketplace";
 export default {
-    name: 'overview',
+    name: 'CorporateMarket',
     props: {
-        type: String
+        view: String
     },
     components: {
     },

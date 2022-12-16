@@ -2,7 +2,7 @@
     <!-- Side Bar -->
     <nav id="sidebarMenu" class="collapse d-md-block collapsed-menu">
         <div id="side-menu" class="list-group list-group-flush">
-            <a href="/:type/register" class="nav-item" aria-current="true">
+            <a href="/dashboard" class="nav-item" aria-current="true">
                 <div id="home" class="ripple actives">
                     <img class="img-fluid" src="@/assets/images/vectors/house.svg" alt="house">
                     <span>Home</span>
@@ -31,10 +31,27 @@
                         alt="ChatText"><span>Message</span>
                 </div>
             </a>
-            <a href="/dashboard/marketplace" class="nav-item">
-                <div class="ripple">
+            <a href="javascript:void(0)" class="nav-item">
+                <div class="ripple accordion-header">
                     <img class="img-fluid" src="@/assets/images/vectors/Storefront.svg"
-                        alt="ChatText"><span>Marketplace</span>
+                        alt="marketplace"><span>Marketplace</span>
+                    <img class="arrow-symbol carret-down" src="@/assets/images/vectors/arrowSymbol.svg"
+                        alt="Arrow-Symbol">
+                    <img class="arrow-symbol carretUp" src="@/assets/images/vectors/arrowupsymbol.svg"
+                        alt="Arrow-Symbol">
+                </div>
+                <!-- drop menu -->
+                <div class="drop-menu marketplace-menu">
+                    <template v-if="userData.user.type == 'corporate'">
+                        <div @click='changeDir("/dashboard/marketplace/cropsale")'>Crops for Sale</div>
+                        <div @click='changeDir("/dashboard/marketplace/cropauction")'>Crops for auction</div>
+                    </template>
+                    <template v-if="userData.user.type == 'merchant'">
+                        <div @click='changeDir("/dashboard/marketplace/cropwanted")'>Crops Wanted</div>
+                        <div @click='changeDir("/dashboard/marketplace/inputs")'>Input Market</div>
+                    </template>
+                    <!-- /dashboard/logistics -->
+                    <!-- <div @click='changeDir("/dashboard/logistics")'>Logistics</div> -->
                 </div>
             </a>
             <a href="/dashboard/negotiations" class="nav-item">
@@ -138,6 +155,11 @@
 import axios from 'axios';
 export default {
     name: "SideBar",
+    data(){
+        return {
+            userData : this.$store.state.user
+        };
+    },
     methods: {
 
         accordion() {
