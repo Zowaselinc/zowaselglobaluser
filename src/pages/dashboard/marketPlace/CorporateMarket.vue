@@ -14,7 +14,7 @@
                 <a href="#" @click="$router.push({ name: 'CropDetails', params: { id: crop.id } })"
                     v-for="crop, index in sales.rows" :key="index" class="each-item">
                     <p>{{ crop.title }}</p>
-                    <p><b>{{crop.category.name}}</b></p>
+                    <p><b>{{ crop.category.name }}</b></p>
                     <p>{{ crop.currency }} {{ crop.specification.price }}/{{ crop.packaging }}</p>
                     <p>{{ crop.user.first_name }}</p>
                 </a>
@@ -22,14 +22,14 @@
             <template v-if="view == 'cropauction'">
                 <a href="#" @click="$router.push({ name: 'CropDetails', params: { id: crop.id } })"
                     v-for="crop, index in auctions.rows" :key="index" class="each-item">
-                    <p>{{ crop.title}}</p>
-                    <p><b>{{crop.category.name}}</b></p>
+                    <p>{{ crop.title }}</p>
+                    <p><b>{{ crop.category.name }}</b></p>
                     <p>{{ crop.currency }} {{ crop.specification.price }}/{{ crop.packaging }}</p>
                     <p>{{ crop.user.first_name }}</p>
                 </a>
             </template>
 
-            <div class="tags">
+            <div class="tags mb-2">
                 <h4 class="mb-0">Related</h4>
                 <a href="#">cash Crops</a>
                 <a href="#">Seeds</a>
@@ -42,15 +42,17 @@
             <nav aria-label="Page navigation example" class="d-flex justify-content-center my-4">
                 <ul class="pagination">
                     <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span  aria-hidden="true">&lt;</span>
+                        <a id="carret-icon" class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
                     <li class="page-item"><a class="page-link" href="#">1</a></li>
                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                     <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
                     <li id="carret-icon" class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
+                        <a id="#carret-icon" class="page-link" href="#" aria-label="Next">
                             <span aria-hidden="true">&gt;</span>
                         </a>
                     </li>
@@ -449,14 +451,21 @@ ul.pagination {
                 color: #ffffff;
                 background: #05B050;
             }
+
             &:focus {
                 box-shadow: 0px 0px !important;
             }
+
             span {
                 color: #05B050;
             }
         }
     }
 
+}
+
+a>p:hover {
+    text-decoration: underline;
+    text-decoration-color: #05B050;
 }
 </style>

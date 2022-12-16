@@ -80,9 +80,8 @@
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Overage
                         Policy</h1>
-                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
-                <div class="modal-body container    ">
+                <div class="modal-body px-3 ">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Habitant morbi justo, ullamcorper urna
                     tristique. Ornare ut mi interdum nunc rutrum cursus aliquet. Posuere vel vel, tristique egestas. Sit
                     eu ac sed urna eleifend egestas praesent quis. Dui egestas gravida amet, vel. Facilisis lorem vel
@@ -124,9 +123,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Rejection Policy</h1>
-                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
-                <div class="modal-body container    ">
+                <div class="modal-body px-3">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Habitant morbi justo, ullamcorper urna
                     tristique. Ornare ut mi interdum nunc rutrum cursus aliquet. Posuere vel vel, tristique egestas. Sit
                     eu ac sed urna eleifend egestas praesent quis. Dui egestas gravida amet, vel. Facilisis lorem vel
@@ -331,7 +329,7 @@ hr {
     justify-content: center;
 
     h1 {
-        @include textStyles(Inter, 600, 24px, 28px);
+        @include textStyles(Inter, 600, 20px, 28px);
         letter-spacing: -0.02em;
         color: #0A0D13;
         border-bottom: 0px ! important;
@@ -350,7 +348,9 @@ hr {
         border-color: #05B050;
     }
 }
-
+.modal-body{
+    font-size: 14px;
+}
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 690px;

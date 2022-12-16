@@ -62,6 +62,13 @@
                         </div>
                         <div class="d-grid table-btn">
                             <button class="btn btn-purchase-order" type="button">View purchase order</button>
+                            <!-- transaction flow buyers view -->
+                            <button
+                                :class="['btn', 'btn-procceed-waybil']"
+                                type="button" @click="nextStep()">Click to proceed
+                            </button>
+
+                            <!-- end -->
                             <button
                                 :class="['btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button" @click="nextStep()">Proceed to waybill
