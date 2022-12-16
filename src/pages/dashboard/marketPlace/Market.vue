@@ -6,7 +6,7 @@
                 <p>Empowering growers from seed to market</p>
             </div>
         <div class="second-bar">
-
+            <Filter></Filter>
             <div class="input-area" v-if="false">
                 <input type="text" placeholder="Search">
                 <div class="icon">
@@ -28,12 +28,14 @@
 import DefaultNav from "@/layouts/DefaultNav.vue";
 import MarketplaceService from "@/services/marketplace";
 import CorporateMarket from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
+import Filter from "@/pages/dashboard/marketPlace/components/Filter.vue"
 
 export default {
     name: 'Market',
     components: {
         DefaultNav,
-        CorporateMarket
+        CorporateMarket,
+        Filter
     },
     data(){
         return {
@@ -117,8 +119,7 @@ export default {
         }
     }
     .second-bar{
-         width: 100%;
-        background-color: white;
+        width: 100%;
         padding: 25px 0px;
         display: flex;
         flex-direction: column;

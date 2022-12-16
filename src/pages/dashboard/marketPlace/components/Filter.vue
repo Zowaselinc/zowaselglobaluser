@@ -282,7 +282,7 @@ export default {
 @import "@/assets/scss/main.scss";
 
 .filter-header {
-    width: 60%;
+    width: 90%;
     background: #FFFFFF;
 }
 
@@ -305,13 +305,16 @@ export default {
     padding: 5px;
 
     .filter-header-content {
-        top: 10px;
+        padding: 10px 0px;
+        display: flex;
+        align-items: center;
     }
 
     h2 {
         @include textStyles(Poppins, 700, 16px, 24px);
         letter-spacing: 0.01em;
         color: #4A4754;
+        margin-bottom: 0px;
     }
 
     .filter-header-icon {
