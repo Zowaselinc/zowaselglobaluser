@@ -145,8 +145,8 @@ export default {
 
 <!-- Filter header on temporary  components -->
 <template>
-    <div class="filter-header">
-        <div class="filter-content-wrapper container">
+    <div class="filter-header px-2">
+        <div class="filter-content-wrapper">
             <!--  filter header -->
             <div class="filter-header-content d-flex position-relative align-items-center">
                 <h2 class="filter-header-text-h1">Filter by</h2>
@@ -158,53 +158,68 @@ export default {
 
             <!-- main Content -->
 
-            <div class="filter-main-container d-flex">
+            <div class="filter-main-container d-flex pe-5">
                 <!-- row 1 -->
-                <div class="filter-item d-flex flex-column col ">
+                <div class="filter-item d-flex flex-column row-1 ">
                     <!-- type -->
-                    <div class="rowz d-flex align-items-center mb-4">
-                        <h2>Type</h2>
+                    <div class="rowz d-flex align-items-center mb-2">
+                        <h2>Product Type</h2>
                     </div>
-                    <div class="rowz d-flex align-items-center mb-3 position-relative">
+                    <div class="rowz d-flex align-items-center mb-2 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox  d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox" />
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
                             </div>
                             <div class="ms-3 check-words">Fertilizers</div>
                         </div>
                         <div class="number-identifier "><span>54688</span></div>
                     </div>
-                    <div class="rowz d-flex align-items-center mb-3 position-relative">
+                    <div class="rowz d-flex align-items-center mb-2 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox active d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox" />
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
                             </div>
                             <div class="ms-3 check-words">Herbicides</div>
                         </div>
                         <div class="number-identifier "><span>345890</span></div>
                     </div>
-                    <div class="rowz d-flex align-items-center mb-3 position-relative">
+                    <div class="rowz d-flex align-items-center mb-2 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox active d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox" />
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
                             </div>
                             <div class="ms-3 check-words">Fungicides</div>
                         </div>
                         <div class="number-identifier "><span>47953</span></div>
                     </div>
-                    <div class="rowz d-flex align-items-center mb-3 position-relative">
+                    <div class="rowz d-flex align-items-center mb-2 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox" />
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
                             </div>
                             <div class="ms-3 check-words">Insectides</div>
                         </div>
                         <div class="number-identifier "><span>56780</span></div>
                     </div>
-                    <div class="rowz d-flex align-items-center mb-3 position-relative">
+                    <div class="rowz d-flex align-items-center mb-2 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox active d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox" />
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
                             </div>
                             <div class="ms-3 check-words">Seeds</div>
                         </div>
@@ -212,23 +227,24 @@ export default {
                     </div>
 
                     <!-- price -->
-                    <div class="rowz d-flex align-items-center mb-3 mt-4">
+                    <div class="rowz d-flex align-items-center mb-2 mt-3">
                         <div class="ms-3 check-words-price">Price</div>
                     </div>
                     <!-- progress bar -->
                     <div class="position-relative">
-                        <div class="ms-3 progress-bar mt-3 position-relative">
+                        <div class="ms-3 progress-bar mt-2 position-relative">
                             <div class="progress"></div>
                         </div>
                         <div id="circle-1" class="circlee  circle-1 position-absolute"><span></span></div>
                         <div id="circle-2" class="circlee   circle-2 position-absolute"><span></span></div>
                     </div>
-                    <div class="row mt-3">
+                    <div class="d-flex mt-2">
                         <div class="col">
                             <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">min</label>
                             <input type="text" class="form-control mt-0" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" placeholder="0" min="0">
                         </div>
+                        <div id="minus-sign" class="check-words col">-</div>
                         <div class="col">
                             <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Max</label>
                             <input type="text" class="form-control mt-0" id="exampleInputEmail1"
@@ -237,33 +253,39 @@ export default {
                     </div>
                 </div>
                 <!-- row 2 -->
-                <div class="filter-item d-flex flex-column col-2 ">
+                <div class="filter-item d-flex flex-column row-2 ">
                     <!-- type -->
-                    <div class="rowz d-flex align-items-center mb-4">
-                        <h2>Type</h2>
+                    <div class="rowz d-flex align-items-center mb-2">
+                        <h2>Manufacturer</h2>
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox  d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox" />
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
                             </div>
-                            <div class="ms-3 check-words">24 hours</div>
-                        </div>
-
-                    </div>
-                    <div class="rowz d-flex align-items-center mb-3 position-relative">
-                        <div class="filter-words d-flex">
-                            <div class="checkbox active d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
-                            </div>
-                            <div class="ms-3 check-words">30</div>
+                            <div class="ms-3 check-words">Dangote refinery</div>
                         </div>
 
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
                             <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox"/>
+                                <input class="checkbox-input" type="checkbox" />
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
+                            </div>
+                            <div class="ms-3 check-words">Nasco </div>
+                        </div>
+
+                    </div>
+                    <div class="rowz d-flex align-items-center mb-3 position-relative">
+                        <div class="filter-words d-flex">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox" />
                                 <div class="checkbox d-flex justify-content-center align-content-center">
                                     <img src="@/assets/images/vectors/tick-white.svg">
                                 </div>
@@ -271,68 +293,107 @@ export default {
                             <div class="ms-3 check-words">60 Days</div>
                         </div>
                     </div>
-                    <div class="rowz d-flex align-items-center mb-3 position-relative ">
+                    <div class="rowz d-flex align-items-center  position-relative ">
                         <div class="filter-words d-flex">
-                            <div class="checkbox d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox" />
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
                             </div>
-                            <div class="ms-3 check-words">BG</div>
+                            <div class="ms-3 check-words">Carbury</div>
                         </div>
                     </div>
 
                     <!-- price -->
-                    <div class="rowz d-flex align-items-center mb-3 mt-4">
-                        <div class="ms-3 check-words-price seller-type">Seller Type</div>
+                    <div class="rowz d-flex align-items-center mb-3">
+                        <div class="ms-3 check-words-price seller-type">Quality</div>
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox" />
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
                             </div>
-                            <div class="ms-3 check-words">Blue Chip</div>
+                            <div class="ms-3 check-words">Hybrid</div>
                         </div>
 
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox active d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox" />
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
                             </div>
-                            <div class="ms-3 check-words">Brown Chip</div>
+                            <div class="ms-3 check-words">Normal</div>
                         </div>
-                        
+
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox active d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox" />
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
                             </div>
-                            <div class="ms-3 check-words">Red Hot</div>
+                            <div class="ms-3 check-words">Organic</div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <!-- row 3 -->
-                          <!-- row 1 -->
-                          <div class="filter-item d-flex flex-column col ">
+                <!-- row 1 -->
+                <div class="filter-item d-flex flex-column row-3 ">
                     <!-- type -->
-                    <div class="rowz d-flex align-items-center mb-4">
-                        <h2>Type</h2>
+                    <div class="rowz d-flex align-items-center">
+                        <h2>Shipping Method</h2>
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox  d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox" />
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
                             </div>
-                            <div class="ms-3 check-words">Fertilizers</div>
+                            <div class="ms-3 check-words">Zowasel</div>
                         </div>
                         <div class="filter-words d-flex ms-4">
-                            <div class="checkbox  active d-flex justify-content-center align-content-center">
-                                <img src="@/assets/images/vectors/tick-white.svg">
+                            <div class="checkbox-container">
+                                <input class="checkbox-input" type="checkbox" />
+                                <div class="checkbox d-flex justify-content-center align-content-center">
+                                    <img src="@/assets/images/vectors/tick-white.svg">
+                                </div>
                             </div>
-                            <div class="ms-3 check-words">Fertilizers</div>
+                            <div class="ms-3 check-words">Self Transport</div>
                         </div>
+
                     </div>
+                    <div class=" mb-4 rowz">
+                        <select class="form-select" aria-label="Default select example">
+                            <option>Select crop center <span>&blacktriangledown;</span>
+                            </option>
+                        </select>
+                    </div>
+                    <div class="rowz d-flex align-items-center mb-4">
+                        <h2>Quality</h2>
+                    </div>
+                    <div class="d-flex mb-4 selct-input">
+                        <select id="kilogram" class="form-select" aria-label="Default select example">
+                            <option>Kilogram <span>&blacktriangledown;</span>
+                            </option>
+                        </select>
+                        <input id="one" type="text" class="form-control" placeholder="1"
+                            aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+                    <button type="button" class="btn  btn-lg mb-4 btn-1">Apply filters</button>
+                    <button type="button" class="btn  btn-lg">Reset filters</button>
+
                 </div>
             </div>
 
@@ -352,13 +413,17 @@ export default {
 @import "@/assets/scss/main.scss";
 
 .filter-header {
-    width: 71%;
+    width: 60%;
     background: #FFFFFF;
 }
 
 .filter-content-wrapper {
+    .filter-header-content {
+        top: 10px;
+    }
+
     h2 {
-        @include textStyles(Poppins, 700, 18px, 24px);
+        @include textStyles(Poppins, 700, 16px, 24px);
         letter-spacing: 0.01em;
         color: #4A4754;
     }
@@ -381,21 +446,39 @@ export default {
         margin-left: 15px;
         gap: 8%;
 
+        .row-1 {
+            width: 35%;
+        }
+
+        .row-2 {
+            width: 25%;
+        }
+
+        .row-3 {
+            width: 40%;
+        }
+
         .filter-item {
+
             h2 {
                 letter-spacing: 0.01em;
                 color: #4A4754;
-                @include textStyles(Poppins, 600, 16px, 22px);
+                @include textStyles(Poppins, 600, 14px, 22px);
             }
 
             .rowz {
                 display: flex !important;
 
-                .checkbox-container{
-                    width: 24px;
-                    height: 24px;
+                .filter-words {
+                    align-items: center;
                 }
-                .checkbox-input{
+
+                .checkbox-container {
+                    width: 18px;
+                    height: 18px;
+                }
+
+                .checkbox-input {
                     position: absolute;
                     opacity: 0;
                     width: 100%;
@@ -413,7 +496,7 @@ export default {
                     }
                 }
 
-                .checkbox-input:checked + .checkbox{
+                .checkbox-input:checked+.checkbox {
                     background: #05B050;
                     border: 1.5px solid #047B38;
 
@@ -425,17 +508,20 @@ export default {
 
 
                 .check-words {
-                    @include textStyles('Maven Pro', 400, 16px, 24px);
+                    @include textStyles('Maven Pro', 400, 14px, 24px);
                     color: #4A4754;
                 }
 
+
+
                 .check-words-price {
-                    @include textStyles(Poppins, 600, 16px, 22px);
+                    @include textStyles(Poppins, 600, 14px, 22px);
                     letter-spacing: 0.01em;
                     color: #4A4754;
                 }
-                .seller-type{
-                    margin-top: 40px;
+
+                .seller-type {
+                    margin-top: 30px;
                 }
 
                 .number-identifier {
@@ -444,14 +530,70 @@ export default {
                     padding: 0px 8px;
                     width: 70px;
                     position: absolute;
-                    right: 0;
+                    right: 0%;
 
                     span {
+                        font-size: 14px;
                         color: #05B050;
                         letter-spacing: 0.04em;
 
                     }
                 }
+
+                .form-select {
+                    background: #F9F9F9 !important;
+                    border: 1px solid #EDEDEE;
+                    border-radius: 4px;
+                    font-family: 'Open Sans';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 19px;
+
+                    color: #4A4754;
+
+                }
+
+
+            }
+
+            .selct-input {
+                border: 1px solid hsl(240, 3%, 93%);
+                border-radius: 4px;
+                align-items: center;
+                padding: 9px 16px;
+
+                select#kilogram {
+                    width: 30%;
+                    font-size: 8px;
+                    border: 0px !important;
+                    height: 20px;
+                }
+
+                #one {
+                    width: 70%;
+                    border-width: 0px !important;
+                    border-left-width: 1px !important;
+                    border-radius: 0px !important;
+                    margin-top: 0px;
+                    height: 20px;
+                }
+
+            }
+
+            button {
+                background: #05B050;
+                box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08), 0px 4px 8px rgba(44, 39, 56, 0.08);
+                border-radius: 4px;
+                color: #FFFFFF;
+                font-size: 14px;
+            }
+
+            #minus-sign {
+                align-self: center;
+                flex-grow: 0;
+                padding: 12px;
+                transform: translateY(15px);
             }
         }
 
@@ -487,13 +629,13 @@ export default {
         }
 
         #circle-1 {
-            left: 22%;
-            top: 8px;
+            left: 23%;
+            top: 0px;
         }
 
         #circle-2 {
-            right: 18%;
-            top: 7px;
+            right: 16%;
+            top: 0px;
         }
     }
 }
