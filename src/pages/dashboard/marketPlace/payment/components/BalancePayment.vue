@@ -86,7 +86,7 @@ export default {
                 @include textStyles(Poppins, 600, 20px, 53px);
                 color: rgba(45, 55, 72, 0.6);
                 text-align: right;
-
+                transform: translateY(-25px);
             }
         }
     }
