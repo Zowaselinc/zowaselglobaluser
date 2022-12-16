@@ -170,10 +170,10 @@ export default {
 @import "@/assets/scss/main.scss";
 
 .pricing-details {
-    margin-block: 44px 8px;
+    margin-block: 30px 8px;
     color: #0A0D13;
     letter-spacing: -0.02em;
-    @include textStyles(Inter, 600, 24px, 28px);
+    @include textStyles(Inter, 600, 18px, 28px);
 }
 
 hr {
@@ -188,7 +188,7 @@ hr {
     position: relative;
     display: flex;
     flex-direction: row;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 
     >div {
         &:last-child:not(.quality-spec) {
@@ -197,12 +197,12 @@ hr {
         }
 
         &:nth-of-type(1) {
-            @include textStyles(Poppins, 800, 18px, 166.67%);
+            @include textStyles(Poppins, 800, 14px, 166.67%);
             color: rgba(45, 55, 72, 0.6);
         }
 
         &:nth-of-type(2) {
-            @include textStyles("Maven Pro", 700, 18px, 147%);
+            @include textStyles("Maven Pro", 700, 14px, 147%);
             color: #696671;
         }
     }
@@ -228,7 +228,7 @@ hr {
     margin-bottom: 40px;
 
     h2 {
-        @include textStyles(Poppins, 600, 24px, 32px);
+        @include textStyles(Poppins, 600, 18px, 32px);
         letter-spacing: 0.01em;
         font-feature-settings: 'liga' off;
         color: #1D1D1D;
@@ -245,12 +245,12 @@ hr {
     padding: 44px 0px 40px 36px;
 
     .delivery-options {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
 
     .circle-outer {
-        width: 28px;
-        height: 28px;
+        width: 20px;
+        height: 20px;
         background: #FFFFFF;
         border: 1px solid #EDEDEE;
         box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.08);
@@ -274,7 +274,7 @@ hr {
 
     .delivery-content {
         margin-left: 20%;
-        @include textStyles(Poppins, 500, 20px, 33px);
+        @include textStyles(Poppins, 500, 16px, 33px);
         color: rgba(45, 55, 72, 0.6);
 
     }
@@ -301,7 +301,7 @@ hr {
             margin-left:  10%;
             margin-top: 10px;
             span{
-                @include textStyles(Poppins, 500, 16px, 27px);
+                @include textStyles(Poppins, 500, 14px, 27px);
                 color: rgba(45, 55, 72, 0.6);
             }
         }

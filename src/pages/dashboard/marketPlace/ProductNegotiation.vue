@@ -53,7 +53,7 @@
                     </tr>
                     <tr>
                         <th>Infestation</th>
-                        <th>Foreign  matter (FM)</th>
+                        <th>Foreign matter (FM)</th>
                         <th>Grain size</th>
                     </tr>
                     <tr>
@@ -61,7 +61,7 @@
                         <td>{{ product.specification.foreign_matter }}%</td>
                         <td>{{ product.specification.grain_size }}</td>
                     </tr>
-     
+
                 </table>
             </div>
             <div class="right" v-if="product">
@@ -147,8 +147,8 @@
                         </div>
                     </div>
 
-
-                    <form id="offer-form" v-if="offerFormVisible">
+                    <!--  -->
+                    <form id="offer-form" class="container" v-if="offerFormVisible">
                         <a href="#" class="close-form" v-on:click="closeForm()"> X </a>
                         <div class="main-form">
                             <div class="form-row">
@@ -204,7 +204,7 @@
                                         id="formGroupExampleInput2" placeholder="%">
                                 </div>
                             </div>
-                            <div class="form-row">
+                            <div class="form-row mb-4">
                                 <div class="form-group form-inputs">
                                     <label for="formGroupExampleInput">Broken Grains</label>
                                     <input type="text" class="form-control" v-model="offerData.broken_grains"
@@ -222,7 +222,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
+                        <div class="form-row mb-3">
                             <button type="button" class="form-send" @click="sendNegotiationOffer()">Send</button>
                         </div>
 
@@ -426,7 +426,7 @@ export default {
     width: 100%;
     background: #F5F5F5;
     display: flex;
-    height : auto;
+    height: auto;
     flex: 1;
     min-height: 0;
     flex-direction: row;
@@ -435,7 +435,7 @@ export default {
 }
 
 .left {
-    width: 40%;
+    width: 45%;
     padding-left: 35px;
     padding-top: 30px;
     display: flex;
@@ -545,7 +545,7 @@ export default {
 }
 
 .right {
-    width: 60%;
+    width: 55%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -659,6 +659,11 @@ export default {
     position: relative;
     min-height: 0px;
     padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+
 }
 
 .typing-zone {
@@ -707,27 +712,31 @@ export default {
             }
 
             .icons {
+
                 width: auto;
                 display: flex;
-                // justify-content:;
-                img{
-                    height: 60%;
+
+                img {
+                    height: 50%;
                 }
             }
         }
 
         button {
-            width: 20%;
+            width: auto;
             background: #05B050;
             box-shadow: 0px 2.58333px 5.16667px rgba(44, 39, 56, 0.08), 0px 5.16667px 10.3333px rgba(44, 39, 56, 0.08);
             border-radius: 6px;
-            height: 60px;
             border: none;
             color: white;
             font-size: 14px;
-            img{
-                width: 18%;
+            padding: 14px;
+
+            img {
+                padding-left: 5px;
+                width: 20%;
             }
+
         }
     }
 
@@ -742,17 +751,19 @@ export default {
 
 
 #offer-form {
-    padding: 30px;
-    width: 90%;
-    margin-left: 5%;
+
+    width: 100%;
     border: 1px solid rgba(48, 189, 110, 0.4);
     position: absolute;
-    bottom: 20px;
     background-color: white;
-
+    padding-inline: 30px;
+    bottom: 20px;
+    .form-group{
+        margin-bottom: 0px !important;
+    }
     .main-form {
         margin-top: 50px;
-        height: 400px;
+        height: 300px;
         overflow-y: scroll;
     }
 
@@ -761,17 +772,18 @@ export default {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-top: 40px;
+        gap: 12px;
+        // margin-top: 40px;
     }
 
     .form-inputs {
-        width: 30%;
+        // width: 30%;
     }
 
     label {
         font-family: Maven Pro;
         font-style: Medium;
-        font-size: 21.33px;
+        font-size: 16px;
         color: #B5B4B9;
     }
 
@@ -847,11 +859,12 @@ export default {
     // justify-content: space-between;
 
 
-    >tr:nth-of-type(1){
+    >tr:nth-of-type(1) {
         margin-top: 30px;
     }
+
     tr {
-       
+
 
         th {
             font-family: 'Maven Pro';
@@ -860,7 +873,8 @@ export default {
             font-size: 14px;
             color: #696671;
         }
-        td{
+
+        td {
             font-size: 12px;
             padding-bottom: 1rem;
         }
@@ -873,7 +887,8 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    img{
+
+    img {
         width: 40%;
     }
 
@@ -881,7 +896,7 @@ export default {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 700;
-        font-size: 34px;
+        font-size: 24px;
         color: #4A4754;
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <!-- Side Bar -->
-    <nav id="sidebarMenu" class="collapse d-md-block">
+    <nav id="sidebarMenu" class="collapse d-md-block collapsed-menu">
         <div id="side-menu" class="list-group list-group-flush">
             <a href="/:type/register" class="nav-item" aria-current="true">
                 <div id="home" class="ripple actives">
@@ -155,7 +155,7 @@ export default {
         },
         logOut() {
             if (this.$store.state.authData.token) {
-                this.$store.dispatch('setAuth',null);
+                this.$store.dispatch('setAuth', null);
                 this.$router.push('/login');
             }
         }
@@ -168,7 +168,21 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/navigation";
+
 #sidebarMenu {
-  overflow-y: scroll;
-  }
+    overflow-y: scroll;
+}
+// .collapsed-menu{
+//     width: 8% !important;
+//     #side-menu {
+//         align-items: center;
+//         .ripple{
+//             padding: 5px 20px;
+//             span, .carret-down{
+//                 display: none;
+//             }
+//         }
+//     }
+// }
+
 </style>

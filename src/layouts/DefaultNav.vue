@@ -13,8 +13,8 @@
 
 <script>
 import TopHeader from "@/layouts/partials/TopHeader.vue";
-import SideBar from  "@/layouts/partials/SideBar.vue";
-import Footer from  "@/layouts/partials/Footer.vue";
+import SideBar from "@/layouts/partials/SideBar.vue";
+import Footer from "@/layouts/partials/Footer.vue";
 export default {
     name: "DefaultNav",
     components: {
@@ -22,8 +22,8 @@ export default {
         SideBar,
         Footer
     },
-    created(){
-        if(!this.$store.state.authData){
+    created() {
+        if (!this.$store.state.authData) {
             window.location.replace('/login');
         }
     },
@@ -34,17 +34,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.big-content{
+.big-content {
     display: flex;
     flex-direction: row;
-    flex : 1;
+    flex: 1;
     min-height: 0;
 }
-.view{
+
+.view {
     height: 100vh;
     display: flex;
     flex-direction: column;
 
 }
-
 </style>

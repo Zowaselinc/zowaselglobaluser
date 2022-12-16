@@ -1,7 +1,7 @@
 <template>
     <DefaultNav>
         <div class="big-container">
-           
+
             <div class="page-header d-flex justify-content-center align-items-center">
                 <h1 v-if="(step == 1)">Transaction Summary</h1>
                 <!-- for waybill details -->
@@ -68,7 +68,7 @@
                             </button>
                             <!-- for corporates view -->
                             <a href="/marketplace/payments"
-                                :class="['btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
+                                :class="['btn', 'coperate-btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button">Proceed to payment
                             </a>
                         </div>
@@ -78,7 +78,8 @@
                 <div class="right-container">
                     <div class="left-container-wrapper">
                         <!-- header tabs -->
-                        <div :class="['right-header', 'g-0', (step != 1 ? 'active-display-none' : 'active-display-block')]">
+                        <div
+                            :class="['right-header', 'g-0', (step != 1 ? 'active-display-none' : 'active-display-block')]">
                             <div :class="['price-details', (activeTab == 'pricingdetails' ? 'active-Tab' : '')]"
                                 @click="changeTab('pricingdetails')">Pricing Details</div>
                             <div :class="['full-spec', (activeTab == 'fullspec' ? 'active-Tab' : '')]"
@@ -94,9 +95,9 @@
                     </div>
                 </div>
             </div>
-            
 
-            
+
+
 
         </div>
 
@@ -126,17 +127,17 @@ export default {
         FullSpecification,
         PurchaseOrder,
         WaybillDetails
-       
+
     },
-     data() {
+    data() {
         return {
             activeTab: "pricingdetails",
             step: 1,
-            wayBillStep : 1,
+            wayBillStep: 1,
         };
     },
-    computed : {
-        wayBill(){
+    computed: {
+        wayBill() {
             return this.$refs.wayBill;
         }
     },
@@ -157,7 +158,7 @@ export default {
             }
             this.step--;
         },
-        updateWaybill(step){
+        updateWaybill(step) {
             this.wayBillStep = step;
         }
 
@@ -175,20 +176,22 @@ export default {
     background: #F5F5F5;
     display: flex;
     flex-direction: column;
-   
+    overflow-y: scroll;
 
-    @include breakpoint-between(md, lg) {
-        width: 60.5%;
-    }
 
-    @include breakpoint-between(lg, xl) {
-        width: 69.5%;
-    }
+    // @include breakpoint-between(md, lg) {
+    //     width: 60.5%;
+    // }
 
-    @include breakpoint-between(xl, xxl) {
-        width: 76%;
-    }
+    // @include breakpoint-between(lg, xl) {
+    //     width: 69.5%;
+    // }
+
+    // @include breakpoint-between(xl, xxl) {
+    //     width: 76%;
+    // }
 }
+
 .active-display-none {
     display: none !important;
 }
@@ -199,11 +202,11 @@ export default {
 
 .page-header {
     width: 100%;
-    height: 87px;
+    padding: 14px 30px;
     background: #262C3F;
 
     h1 {
-        @include textStyles(Poppins, 700, 28.04px, 120%);
+        @include textStyles(Poppins, 700, 24px, 120%);
         color: #FFFFFF;
 
     }
@@ -213,7 +216,9 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
+        h1{
+            font-size: 18px;
+        }
         .arrow-left-img {
             width: 22px;
             height: 18px;
@@ -225,7 +230,7 @@ export default {
             margin-right: 6%;
             text-transform: capitalize;
             color: #FFFFFF;
-            @include textStyles(Poppins, 700, 20px, 28px);
+            @include textStyles(Poppins, 700, 18px, 28px);
         }
     }
 }
@@ -238,7 +243,7 @@ export default {
         width: 50%;
 
         .left-container-wrapper {
-            margin-inline: 13.19% 9.16%;
+            margin-inline: 8%;
             margin-top: 65px;
         }
 
@@ -251,7 +256,7 @@ export default {
                 position: relative;
                 display: flex;
                 flex-direction: row;
-                margin-bottom: 37px;
+                margin-bottom: 20px;
 
                 >div {
 
@@ -261,12 +266,12 @@ export default {
                     }
 
                     &:nth-of-type(1) {
-                        @include textStyles(Poppins, 800, 18px, 33px);
+                        @include textStyles(Poppins, 800, 14px, 33px);
                         color: rgba(45, 55, 72, 0.6);
                     }
 
                     &:nth-of-type(2) {
-                        @include textStyles(Poppins, 500, 18px, 29px);
+                        @include textStyles(Poppins, 500, 14px, 29px);
                         color: #696671;
                     }
                 }
@@ -277,7 +282,7 @@ export default {
         // button group
         .table-btn {
             gap: 25px;
-            margin-bottom: 100px;
+            // margin-bottom: 100px;
 
             button {
                 padding: 15px 20px;
@@ -307,6 +312,10 @@ export default {
             .active-display-block {
                 display: block;
             }
+
+            .coperate-btn {
+                padding: 15px 20px;
+            }
         }
     }
 
@@ -315,7 +324,7 @@ export default {
         width: 50%;
 
         .left-container-wrapper {
-            margin-inline: 13.19% 9.16%;
+            margin-inline: 8%;
             margin-top: 65px;
 
 
@@ -344,19 +353,19 @@ export default {
 
                 .price-details {
                     color: #262C3F;
-                    @include textStyles(Inter, 600, 16px, 19px);
+                    @include textStyles(Inter, 600, 14.5px, 19px);
 
                 }
 
                 .full-spec {
                     color: #262C3F;
-                    @include textStyles(Inter, 600, 16px, 19px);
+                    @include textStyles(Inter, 600, 14.5px, 19px);
 
                 }
 
                 .purchase-order {
                     color: #262C3F;
-                    @include textStyles(Inter, 600, 16px, 19px);
+                    @include textStyles(Inter, 600, 14.5px, 19px);
 
                 }
             }
@@ -364,5 +373,4 @@ export default {
     }
 
 }
-
 </style>

@@ -167,17 +167,17 @@ export default {
     padding: 1% 5% 2% 5%;
    
 
-    @include breakpoint-between(md, lg) {
-        width: 60.5%;
-    }
+    // @include breakpoint-between(md, lg) {
+    //     width: 60.5%;
+    // }
 
-    @include breakpoint-between(lg, xl) {
-        width: 69.5%;
-    }
+    // @include breakpoint-between(lg, xl) {
+    //     width: 69.5%;
+    // }
 
-    @include breakpoint-between(xl, xxl) {
-        width: 76%;
-    }
+    // @include breakpoint-between(xl, xxl) {
+    //     width: 76%;
+    // }
 }
 .welcome-text {
     display: flex;
