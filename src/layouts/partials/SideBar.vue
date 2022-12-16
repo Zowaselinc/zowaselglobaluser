@@ -74,13 +74,13 @@
                 <div class="drop-menu scoring-menu">
                     <div @click='changeDir(" /dashboard/creditscoringpointsystem")'>Credit score point system</div>
                     <div @click='changeDir(" /dashboard/creditscoreanalysis")'>credit score analysis</div>
-                    <div @click='changeDir(" /dashboard/loans")'>Loans</div>
+                    <div @click='changeDir(" /dashboard/loan")'>Loans</div>
                     <div @click='changeDir(" /dashboard/scoreanalysis")'>Score Analysis</div>
                 </div>
 
             </a>
             <!-- no page available -->
-            <a href="javascript:void(0)" class="nav-item">
+            <a href="/dashboard/invoice" class="nav-item">
                 <div class="ripple">
                     <img class="img-fluid" src="@/assets/images/vectors/File.svg" alt="file"><span>Invoice</span>
 
@@ -122,7 +122,7 @@
 
                 </div>
             </a>
-            <a href="javascript:void(0)" class="nav-item">
+            <a href="/dashboard/tickets" class="nav-item">
                 <div class="ripple">
                     <img class="img-fluid" src="@/assets/images/vectors/Info.svg" alt="info"><span>Support</span>
 
