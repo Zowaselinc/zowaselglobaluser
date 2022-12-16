@@ -91,7 +91,7 @@
                         placeholder="Date">
                 </div>
             </div>
-            <button :class="['btn', 'table-btn', 'w-100']" type="button"  @click="proceed()">Proceed to receipt section
+            <button :class="['btn', 'table-btn', 'w-100', 'mb-4']" type="button"  @click="proceed()">Proceed to receipt section
             </button>
         </form>
     </div>
@@ -120,7 +120,7 @@ h1 {
     text-align: center;
     text-transform: capitalize;
     color: #1D1D1D;
-    @include textStyles(Poppins, 700, 20px, 28px);
+    @include textStyles(Poppins, 700, 18px, 28px);
 
 }
 
@@ -134,7 +134,9 @@ form {
     div.margin-btm-lg {
         margin-bottom: 10px;
     }
-
+    label{
+        font-size: 12px;
+    }
     label.margin-btm-sm {
         margin-bottom: 4px;
         color: rgba(45, 55, 72, 0.8);
@@ -142,10 +144,11 @@ form {
 
     input.form-control,
     textarea.form-control {
+        font-size: 12px;
         background-color: #F5F5F5 !important;
 
         &::placeholder {
-            @include textStyles(Poppins, 700, 20px, 28px);
+            @include textStyles(Poppins, 700, 12px, 28px);
         }
     }
 

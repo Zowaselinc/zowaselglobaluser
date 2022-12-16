@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="d-grid table-btn mt-4">
-                        <!-- for buyers view -->
+                        <!-- for corporates view -->
                         <a
                             :class="['btn', 'btn-procceed-waybil']"
                             type="button" @click="changeTab('balancepayment')" v-if="activeTab == 'ordersummary'">Confim Payment
@@ -93,6 +93,7 @@ export default {
     height: auto;
     background: #F5F5F5;
     display: flex;
+    overflow-y: scroll;
     flex-direction: column;
    
 
@@ -111,11 +112,11 @@ export default {
 
 .page-header {
     width: 100%;
-    height: 87px;
+    padding: 14px 30px;
     background: #262C3F;
 
     h1 {
-        @include textStyles(Poppins, 700, 28.04px, 120%);
+        @include textStyles(Poppins, 700, 24px, 120%);
         color: #FFFFFF;
 
     }
@@ -131,7 +132,7 @@ input {
 
     &::placeholder {
         color: #C8C8C8;
-        @include textStyles(Poppins, 700, 28.04px, 120%);
+        @include textStyles(Poppins, 700, 14px, 120%);
     }
 
 }
@@ -144,7 +145,7 @@ input {
         width: 50%;
 
         .left-container-wrapper {
-            margin-inline: 13.19% 9.16%;
+            margin-inline: 8%;
             margin-top: 65px;
         }
 

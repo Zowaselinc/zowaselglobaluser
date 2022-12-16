@@ -78,14 +78,14 @@ export default {
                     })
 
                     window.localStorage.setItem('authToken', response.token);
-                    vm.$router.push('/dashboard/corporate');
+                    vm.$router.push('/dashboard');
                 }
             })
         }
     },
     created() {
         if (this.$store.state.authData) {
-            this.$router.replace('/dashboard/corporate');
+            this.$router.replace('/dashboard');
         }
     }
 }

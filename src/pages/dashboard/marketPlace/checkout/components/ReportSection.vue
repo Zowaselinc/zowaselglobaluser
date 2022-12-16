@@ -92,7 +92,7 @@
         <button :class="['btn', 'table-btn', 'w-100', 'btn-1']" type="button">
             <span >Upload waybill document</span> <img class="ps-2" src="@/assets/images/vectors/cloud.svg" alt="cloud">
         </button>
-        <button :class="['btn', 'table-btn', 'w-100']" type="button">Generate waybill document</button>   
+        <button :class="['btn', 'table-btn', 'w-100', 'mb-4']" type="button">Generate waybill document</button>   
 
     </form>
 </template>
@@ -113,7 +113,7 @@ h1 {
     text-align: center;
     text-transform: capitalize;
     color: #1D1D1D;
-    @include textStyles(Poppins, 700, 20px, 28px);
+    @include textStyles(Poppins, 700, 18px, 28px);
 
 }
 
@@ -127,7 +127,9 @@ form {
     div.margin-btm-lg {
         margin-bottom: 10px;
     }
-
+    label{
+        font-size: 12px;
+    }
     label.margin-btm-sm {
         margin-bottom: 4px;
         color: rgba(45, 55, 72, 0.8);
@@ -135,10 +137,11 @@ form {
 
     input.form-control,
     textarea.form-control {
+        font-size: 12px;
         background-color: #F5F5F5 !important;
 
         &::placeholder {
-            @include textStyles(Poppins, 700, 20px, 28px);
+            @include textStyles(Poppins, 700, 14px, 28px);
         }
     }
 

@@ -43,11 +43,11 @@ export default {
     width: 50%;
 
     .left-container-wrapper {
-        margin-inline: 13.19% 9.16%;
+        margin-inline: 8%;
         margin-top: 65px;
 
         h2 {
-            @include textStyles(Inter, 600, 24px, 28px);
+            @include textStyles(Inter, 600, 20px, 28px);
             letter-spacing: -0.02em;
             color: #0A0D13;
         }
@@ -63,13 +63,13 @@ export default {
 
             th {
                 color: rgba(45, 55, 72, 0.6);
-                @include textStyles(Poppins, 800, 16px, 27px);
+                @include textStyles(Poppins, 800, 14px, 27px);
                 text-align: left;
             }
 
             td {
                 color: #696671;
-                @include textStyles('Maven Pro', 700, 16px, 24px);
+                @include textStyles('Maven Pro', 700, 14px, 24px);
                 text-align: right;
 
             }
@@ -83,7 +83,7 @@ export default {
             }
 
             td {
-                @include textStyles(Poppins, 600, 32px, 53px);
+                @include textStyles(Poppins, 600, 20px, 53px);
                 color: rgba(45, 55, 72, 0.6);
                 text-align: right;
 

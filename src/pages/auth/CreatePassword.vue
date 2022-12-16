@@ -62,7 +62,7 @@
        
         </div>
         <div class="right-content">
-            <img   class="background-img" v-if="type == 'merchant' || type=='buyer'" src="@/assets/images/backgrounds/merchant-background2.png" alt="">
+            <img   class="background-img" v-if="type == 'merchant' || type=='corporate'" src="@/assets/images/backgrounds/merchant-background2.png" alt="">
                 <img   class="background-img" v-if="type=='partner' || type=='agent'" src="@/assets/images/backgrounds/partner-background2.png" alt="">
             <img class="logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
         </div>

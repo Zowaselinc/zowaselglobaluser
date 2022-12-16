@@ -9,9 +9,9 @@
                         <span class="d-block">Merchant</span>
                         <button @click="beginRegistration('merchant')" type="button" class="btn d-block">Select</button>
                     </div>
-                    <div class="buyer">
+                    <div class="corporate">
                         <span class="d-block">Buyer</span>
-                        <button @click="beginRegistration('buyer')" type="button" class="btn d-block">Select</button>
+                        <button @click="beginRegistration('corporate')" type="button" class="btn d-block">Select</button>
                     </div>
                 </div>
                 <div class="login-views-1 d-flex flex-row">
@@ -55,10 +55,10 @@
                 </div>
             </div>
 
-            <!-- buyer -->
-            <div id="buyer" class="user-about user-select-content">
-                <h1 class="about-buyer">About Buyer</h1>
-                <p class="buyer-info">
+            <!-- corporate -->
+            <div id="corporate" class="user-about user-select-content">
+                <h1 class="about-corporate">About Buyer</h1>
+                <p class="corporate-info">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tellus eget magna urna
                     consectetur. Sem feugiat at nulla urna, pharetra tempor, pharetra. Consequat adipiscing
                     turpis nisl quam gravida pellentesque eget pellentesque velit. Quis lorem dis sodales nisi.
@@ -236,8 +236,8 @@ export default {
                 background: url("@/assets/images/backgrounds/merchant.png");
             }
 
-            .buyer {
-                background: url("@/assets/images/backgrounds/buyer.png");
+            .corporate {
+                background: url("@/assets/images/backgrounds/corporate.png");
             }
 
             .partner {
@@ -258,9 +258,9 @@ export default {
         margin-top: 64px;
     }
 
-    // for seleect type: Merchant, buyer
+    // for seleect type: Merchant, corporate
     #merchant,
-    #buyer,
+    #corporate,
     #partner,
     #agent {
         margin-top: 61px;
@@ -277,7 +277,7 @@ export default {
             color: #4A4754;
         }
 
-        .about-buyer {
+        .about-corporate {
             @extend .about-merchant;
             @include textStyles(Poppins, 700, 24px, 140%);
         }
@@ -287,7 +287,7 @@ export default {
             @include textStyles(Poppins, 400, 16px, 140%);
         }
 
-        .buyer-info {
+        .corporate-info {
             margin-top: 35px;
             color: #000000;
             @include textStyles(Poppins, 400, 16px, 140%);

@@ -10,252 +10,70 @@
 
                 <h4>Product Specification</h4>
 
-                <div class="actual-details">
-                    <div class="left-line">
-                        <div class="each-detail">
-                            <h4>Product Category</h4>
-                            <p>{{ product.crop_category.name }}</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Color</h4>
-                            <p>{{ product.specification.color }}</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Moisture</h4>
-                            <p>{{ product.specification.moisture }}%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Grain size</h4>
-                            <p>{{ product.specification.grain_size }}</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Infestation</h4>
-                            <p>{{ product.specification.infestation }}%</p>
-                        </div>
+                <table class="actual-details table container">
+                    <tr>
+                        <th>Product Category</th>
+                        <th>Broken grains</th>
+                        <th>Test weight</th>
+                    </tr>
+                    <tr>
+                        <td>{{ product.category.name }}</td>
+                        <td>{{ product.specification.broken_grains }}%</td>
+                        <td>{{ product.specification.test_weight }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Color</th>
+                        <th>Weevil</th>
+                        <th>Hardness</th>
+                    </tr>
+                    <tr>
+                        <td>{{ product.specification.color }}</td>
+                        <td>{{ product.specification.weevil }}%</td>
+                        <td>{{ product.specification.hardness }}</td>
+                    </tr>
+                    <tr>
+                        <th>Moisture</th>
+                        <th>Damaged kernel</th>
+                        <th>Splits</th>
+                    </tr>
+                    <tr>
+                        <td>{{ product.specification.moisture }}</td>
+                        <td>{{ product.specification.dk }}%</td>
+                        <td>{{ product.specification.splits }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Grain Size</th>
+                        <th>Rotten shriveled</th>
+                        <th>Oil content</th>
+                    </tr>
+                    <tr>
+                        <td>{{ product.specification.grain_size }}</td>
+                        <td>{{ product.specification.dk }}%</td>
+                        <td>{{ product.specification.oil_content }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Infestation</th>
+                        <th>Foreign matter (FM)</th>
+                        <th>Grain size</th>
+                    </tr>
+                    <tr>
+                        <td>{{ product.specification.infestation }}%</td>
+                        <td>{{ product.specification.foreign_matter }}%</td>
+                        <td>{{ product.specification.grain_size }}</td>
+                    </tr>
 
-                    </div>
-                    <div class="right-line">
-                        <div class="each-detail">
-                            <h4>Test Weight</h4>
-                            <p>{{ product.specification.test_weight }}</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Hardness</h4>
-                            <p>{{ product.specification.hardness }}</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Split</h4>
-                            <p>{{ product.specification.splits }}%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Oil Content</h4>
-                            <p>{{ product.specification.oil_content }}%</p>
-                        </div>
-                    </div>
-
-
-
-                    <div class="middle-line">
-
-                        <div class="each-detail">
-                            <h4>Broken Grains</h4>
-                            <p>{{ product.specification.broken_grains }}%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Weevil</h4>
-                            <p>{{ product.specification.weevil }}%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Damaged kernel</h4>
-                            <p>{{ product.specification.dk }}%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Rotten Shriveled</h4>
-                            <p>{{ product.specification.rotten_shriveled }}%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Foreign Matter (FM)</h4>
-                            <p>{{ product.specification.foreign_matter }}%</p>
-                        </div>
-                    </div>
-                </div>
+                </table>
             </div>
             <div class="right" v-if="product">
-                <div class="right-top-section">
-                    <h1>{{ product.user.first_name + " " + product.user.last_name }}</h1>
-                </div>
-                <div class="contents">
-                    <div class="opened-message" v-if="negotiations.length" id="chat-section">
-                        <div v-for="group,index in groupMessages" :key="index">
-                            <p class="centered-text">{{ group.date }}</p>
-                            <template v-for="message,index in group.messages" :key="index">
-                                <div v-if="((message.sender_id == userData.user.id) && message.messagetype == 'text')" class="sent-message">
-                                    <div class="sent-content">
-                                        <p>{{ message.message }}</p>
-                                        <span class="sent-time">{{ message.time }}</span>
-                                    </div>
-                                </div>
-                                <div v-if="((message.receiver_id == userData.user.id) && message.messagetype == 'text')" class="incoming-message">
-                                    <div class="incoming-content">
-                                        <p>{{ message.message}}
-                                        </p>
-                                        <span class="received-time">{{ message.time }}</span>
-                                    </div>
-                                </div>
-                                <div v-if="message.messagetype == 'offer'" :class="(message.receiver_id == userData.user.id) ? 'offer-left' : 'offer-right'">
-                                    <div class="offered">
-                                        <div class="colored">
-                                            <h3>Offer</h3>
-                                        <hr>
-                                        <div class="white-line"></div>
-                                        <div class="each-item">
-                                            <p>Required Item</p>
-                                            <h4>{{parseOffer(message).qty}}kg</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Offer Price</p>
-                                            <h4>{{parseOffer(message).price}}%</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Oil content</p>
-                                            <h4>{{parseOffer(message).oil_content}}%</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Foreign matter</p>
-                                            <h4>{{parseOffer(message).foreign_matter}}%</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Infestation</p>
-                                            <h4>{{parseOffer(message).infestation}}%</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Moisture</p>
-                                            <h4>{{parseOffer(message).moisture}}%</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Weevil</p>
-                                            <h4>{{parseOffer(message).weevil}}%</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Splits</p>
-                                            <h4>{{parseOffer(message).splits}}%</h4>
-                                        </div>
-                                        <button>View Full Specification</button>
-                                        </div>
-                                        <div class="bottom-container" v-if="message.sender_id != userData.user_id">
-                                            <div class="check-buttons">
-                                                <input type="checkbox">
-                                                <label for="">Accept</label>
-                                                <input type="checkbox">
-                                                <label for="">Decline</label>
-                                            </div>
-                                            <div class="timed">
-                                                <p>{{ message.time }}</p>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </template>
-                        </div>
-                    </div>
-
-                    
-                    <form id="offer-form" v-if="offerFormVisible">
-                        <a href="#" class="close-form" v-on:click="closeForm()"> X </a>
-                        <div class="main-form">
-                            <div class="form-row">
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput">Quantity</label>
-                                    <div class="quantity">
-                                        <input type="text" class="form-control amount" v-model="offerData.qty" id="" placeholder="Enter Amount"/>
-                                    </div>
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Price</label>
-                                    <input type="text" class="form-control amount" v-model="offerData.price" id="" placeholder="Enter Amount">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Oil Content</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.oil_content" id="" placeholder="%">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput">Foreign Matter</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.foreign_matter" id="formGroupExampleInput"
-                                        placeholder="%">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Infestation</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.infestation" id="formGroupExampleInput2"
-                                        placeholder="%">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Moisture</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.moisture" id="formGroupExampleInput2"
-                                        placeholder="%">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput">Weevil</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.weevil" id="formGroupExampleInput"
-                                        placeholder="%">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Hardness</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.hardness" id="formGroupExampleInput2"
-                                        placeholder="%">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Splits</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.splits" id="formGroupExampleInput2"
-                                        placeholder="%">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput">Broken Grains</label>
-                                    <input type="text" class="form-control" v-model="offerData.broken_grains" id="formGroupExampleInput" placeholder="">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Rotten Shriveled</label>
-                                    <input type="text" class="form-control" v-model="offerData.rotten_shriveled" id="formGroupExampleInput2" placeholder="">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Damaged Kernel</label>
-                                    <input type="text" class="form-control" v-model="offerData.dk" id="formGroupExampleInput2" placeholder="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <button type="button" class="form-send" @click="sendNegotiationOffer()">Send</button>
-                        </div>
-
-
-                    </form>
-
-                    <div class="chat-image" v-if="!negotiations.length">
-                        <img src="@/assets/images/backgrounds/ChatsCircle.png" alt="">
-                        <h1>Chat or send an offer to negotiate</h1>
-                    </div> 
-
-                </div>
-                <div class="typing-zone">
-                    <p class="typing" v-if="false">Zowasel is typing</p>
-                    <div class="form-content">                        
-                        <div class="input-session">
-                            <input class="no-border" v-model="message" type="text" placeholder="Type your message here">
-                            <div class="icons">
-                                <a href=""><img src="@/assets/images/vectors/attach.svg" alt=""></a>
-                                <a href=""><img src="@/assets/images/vectors/emoji.svg" alt=""></a>
-                                <a href="javascript:void(0)" @click="sendNegotiationMessage()"><img src="@/assets/images/vectors/PaperPlaneTilt.svg" alt=""></a>
-                            </div>
-                        </div>
-                        <button @click="offer()">Send Offer <img src="@/assets/images/vectors/arrow-down.svg"></button>
-                    </div>
-                </div>
+                <ChatView 
+                    :sender="userData.user" 
+                    :recepient="product.user"
+                    :title="product.user.first_name+' '+product.user.last_name"
+                    :messages="negotiations"
+                    :loadMessages="getNegotiation"
+                    :onSendMessage="sendNegotiationMessage"
+                    :onSendOffer="sendNegotiationOffer"
+                />
             </div>
         </div>
     </DefaultNav>
@@ -265,97 +83,21 @@
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue"
 import MarketPlaceService from "@/services/marketplace";
-import DateUtils from "@/utilities/date";
+import ChatView from "./components/ChatView.vue";
 export default {
     name: 'ProductNegotiation',
     components: {
-        DefaultNav
+        DefaultNav,
+        ChatView
     },
     data() {
         return {
-            offerFormVisible:false,
             product: null,
             userData: this.$store.state.user,
             negotiations: [],
-            message : "",
-            offerData : {
-                qty: "",
-                price: "",
-                color: "",
-                moisture: "",
-                foreign_matter: "",
-                broken_grains: "",
-                weevil: "",
-                dk: "",
-                rotten_shriveled: "",
-                test_weight: "",
-                hectoliter: "",
-                hardness: "",
-                splits: "",
-                oil_content: "",
-                infestation: "",
-                grain_size: "",
-                total_defects: "",
-                dockage: "",
-                ash_content: "",
-                acid_ash: "",
-                volatile: "",
-                mold: "",
-                drying_process: "",
-                dead_insect: "",
-                mammalian: "",
-                infested_by_weight: "",
-                curcumin_content: "",
-                extraneous: "",
-                unit: "",
-                liters: ""
-            }
-        }
-    },
-    computed : {
-        groupMessages(){
-            var groups = {};
-            this.negotiations.forEach((item)=>{
-                var timestamp = DateUtils.formatDateFromApi(item.created_at);
-                var timeString;
-                var today= new Date();
-                var yesterday = new Date();
-                yesterday.setDate((new Date()).getDate - 1);
-                var messageDate = new Date(item.created_at);
-                item.time = timestamp.time;
-                item.utcTime = messageDate.getTime();
-                if (today.toDateString() === messageDate.toDateString()) {
-                    timeString = `Today`
-                }else if (yesterday.toDateString() === messageDate.toDateString()) {
-                    timeString = `Yesterday`
-                }else{
-                    timeString = `${timestamp.date}`
-                } 
-
-                groups[timestamp.date] = groups[timestamp.date] ? {
-                    date : timeString,
-                    messages : [ ...groups[timestamp.date].messages , item ]
-                } : { 
-                    date : timeString,
-                    messages : [item]
-                };
-
-                groups[timestamp.date].messages.sort((a,b) => a.utcTime - b.utcTime);
-            });
-
-            return Object.values(groups).sort((a,b) => b.date.localeCompare(a.date));
         }
     },
     methods: {
-        offer() {
-            this.offerFormVisible =true
-        },
-        parseOffer(message){
-            return JSON.parse(message.message);
-        },
-        closeForm() {
-            this.offerFormVisible=false
-        },
         getProduct() {
             MarketPlaceService.getCropById(this.$route.params.id, (response) => {
                 this.product = response.data;
@@ -368,62 +110,56 @@ export default {
                 cropId: this.$route.params.id,
                 userId: this.$store.state.authData.key
             }, (response) => {
-                if(response){
+                if (response) {
                     this.negotiations = response.data;
-                    document.getElementById('chat-section').scrollTop = document.getElementById('chat-section').scrollHeight;
                 }
             })
         },
-        sendNegotiationMessage(){
+        sendNegotiationMessage(message,callback) {
             MarketPlaceService.sendNegotiationMessage({
-                sender_id : this.userData.user.id,
-                receiver_id : this.product.user.id,
-                crop_id : this.product.id,
-                type : this.userData.user.type,
-                message : this.message
-            },(response)=>{
+                sender_id: this.userData.user.id,
+                receiver_id: this.product.user.id,
+                crop_id: this.product.id,
+                type: this.userData.user.type,
+                message: message
+            }, (response) => {
                 this.getNegotiation();
-                this.message = "";
+                callback();
             });
         },
-        sendNegotiationOffer(){
+        sendNegotiationOffer(offer,callback) {
             MarketPlaceService.sendNegotiationOffer({
-                sender_id : this.userData.user.id,
-                receiver_id : this.product.user.id,
-                crop_id : this.product.id,
-                type : this.userData.user.type,
-                message : "offer",
-                ...this.offerData
-            },(response)=>{
+                sender_id: this.userData.user.id,
+                receiver_id: this.product.user.id,
+                crop_id: this.product.id,
+                type: this.userData.user.type,
+                message: "offer",
+                ...offer
+            }, (response) => {
                 this.getNegotiation();
-                this.message = "";
-                this.closeForm();
+                callback()
             });
         },
-        acceptNegotiationOffer(id){
-            MarketPlaceService.acceptNegotiationOffer(id,(response)=>{
+        acceptNegotiationOffer(id) {
+            MarketPlaceService.acceptNegotiationOffer(id, (response) => {
             });
         },
-        declineNegotiationOffer(id){
-            MarketPlaceService.declineNegotiationOffer(id,(response)=>{
+        declineNegotiationOffer(id) {
+            MarketPlaceService.declineNegotiationOffer(id, (response) => {
             });
         },
     },
     mounted() {
         let vm = this;
         this.getProduct();
-        setInterval(()=>{
-            vm.getNegotiation();
-        },5000);
     }
 }
 </script>
     
     
 <style lang="scss" scoped>
-
 .bigger-container {
-    height: 100vh;
+    // height: 100vh;
     overflow-y: hidden;
     display: flex;
     flex-direction: column;
@@ -433,6 +169,7 @@ export default {
     width: 100%;
     background: #F5F5F5;
     display: flex;
+    height: auto;
     flex: 1;
     min-height: 0;
     flex-direction: row;
@@ -441,14 +178,23 @@ export default {
 }
 
 .left {
-    width: 25%;
-    padding-left: 60px;
+    width: 45%;
+    padding-left: 35px;
     padding-top: 30px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     height: 100%;
     overflow-y: hidden;
+
+    h1,
+    h4 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
 
     .search {
         padding: 10px 25px;
@@ -457,6 +203,8 @@ export default {
         border: none !important;
     }
 }
+
+// chat
 
 .top-section {
     display: flex;
@@ -540,7 +288,7 @@ export default {
 }
 
 .right {
-    width: 72%;
+    width: 55%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -549,7 +297,8 @@ export default {
 
 
     .right-top-section {
-        height: 89px;
+        // height: 89px;
+        padding: 14px 30px;
         width: 100%;
         background: #262C3F;
         color: white;
@@ -557,6 +306,10 @@ export default {
         justify-content: center;
         align-items: center;
         z-index: 20;
+
+        h1 {
+            font-size: 24px;
+        }
     }
 
     .centered-text {
@@ -566,7 +319,7 @@ export default {
 
     .opened-message {
         padding: 37px 58px 37px 57px;
-        height:100%;
+        height: 100%;
         position: relative;
         display: flex;
         flex-direction: column-reverse;
@@ -649,12 +402,18 @@ export default {
     position: relative;
     min-height: 0px;
     padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+
 }
 
 .typing-zone {
     width: 100%;
     padding: 0px 58px 20px 57px;
-    .typing{
+
+    .typing {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 400;
@@ -671,9 +430,9 @@ export default {
         align-items: center;
         gap: 10px;
 
-        .input-session{
-            width: 80%;
-            height: 60px;
+        .input-session {
+            width: 70%;
+            // height: 60px;
             background: rgba(249, 249, 249, 0.5);
             border: 1px solid #05B050 !important;
             border-radius: 4px;
@@ -681,33 +440,46 @@ export default {
             align-items: center;
             flex-direction: row;
 
-            .no-border{
+            .no-border {
                 width: 85%;
                 height: 100%;
                 margin: 0;
                 border: none !important;
             }
+
             .no-border:focus,
             .no-border:active,
-            .no-border:focus-visible{
-                 border: none !important;
-                 outline: none;
+            .no-border:focus-visible {
+                border: none !important;
+                outline: none;
             }
 
-            .icons{
-                width: 15%;
+            .icons {
+
+                width: auto;
                 display: flex;
-                justify-content: space-around;
+
+                img {
+                    height: 50%;
+                }
             }
         }
-        button{
-            width: 20%;
+
+        button {
+            width: auto;
             background: #05B050;
             box-shadow: 0px 2.58333px 5.16667px rgba(44, 39, 56, 0.08), 0px 5.16667px 10.3333px rgba(44, 39, 56, 0.08);
             border-radius: 6px;
-            height: 60px;
             border: none;
             color: white;
+            font-size: 14px;
+            padding: 14px;
+
+            img {
+                padding-left: 5px;
+                width: 20%;
+            }
+
         }
     }
 
@@ -722,17 +494,19 @@ export default {
 
 
 #offer-form {
-    padding: 30px;
-    width: 90%;
-    margin-left: 5%;
+
+    width: 100%;
     border: 1px solid rgba(48, 189, 110, 0.4);
     position: absolute;
-    bottom: 20px;
     background-color: white;
-
+    padding-inline: 30px;
+    bottom: 20px;
+    .form-group{
+        margin-bottom: 0px !important;
+    }
     .main-form {
         margin-top: 50px;
-        height: 400px;
+        height: 300px;
         overflow-y: scroll;
     }
 
@@ -741,17 +515,18 @@ export default {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-top: 40px;
+        gap: 12px;
+        // margin-top: 40px;
     }
 
     .form-inputs {
-        width: 30%;
+        // width: 30%;
     }
 
     label {
         font-family: Maven Pro;
         font-style: Medium;
-        font-size: 21.33px;
+        font-size: 16px;
         color: #B5B4B9;
     }
 
@@ -822,19 +597,29 @@ export default {
 
 .actual-details {
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: space-between;
 
-    .each-detail {
+
+    >tr:nth-of-type(1) {
         margin-top: 30px;
+    }
 
-        h4 {
+    tr {
+
+
+        th {
             font-family: 'Maven Pro';
             font-style: normal;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 14px;
             color: #696671;
+        }
+
+        td {
+            font-size: 12px;
+            padding-bottom: 1rem;
         }
     }
 }
@@ -846,39 +631,46 @@ export default {
     justify-content: center;
     align-items: center;
 
+    img {
+        width: 40%;
+    }
+
     h1 {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 700;
-        font-size: 34px;
+        font-size: 24px;
         color: #4A4754;
     }
 }
 
-.offer-left{
-    width : 100%;
+.offer-left {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
 }
-.offer-right{
-    width : 100%;
+
+.offer-right {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
 }
-.offered{
+
+.offered {
     width: 50%;
     gap: 10px;
-    
+
     border-radius: 4px;
-    .colored{
+
+    .colored {
         background: #F9E9E9;
         padding: 16px;
-    gap: 10px;
+        gap: 10px;
     }
 
-    h3{
+    h3 {
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 700;
@@ -887,15 +679,17 @@ export default {
         color: #4A4754;
         margin-bottom: 0px;
     }
-    hr{
+
+    hr {
         color: white;
         height: 3px;
     }
-    .each-item{
+
+    .each-item {
         display: flex;
         justify-content: space-between;
 
-        p{
+        p {
             font-family: 'Maven Pro';
             font-style: normal;
             font-weight: 400;
@@ -903,7 +697,8 @@ export default {
             line-height: 147%;
             color: #4A4754;
         }
-        h4{
+
+        h4 {
             font-family: 'Maven Pro';
             font-style: normal;
             font-weight: 700;
@@ -912,7 +707,8 @@ export default {
             color: #4A4754;
         }
     }
-    button{
+
+    button {
         width: 100%;
         height: 30px;
         background: #696671;
@@ -921,28 +717,30 @@ export default {
         margin-bottom: 45px;
     }
 }
-.bottom-container{
+
+.bottom-container {
     width: 100%;
     display: flex;
     align-items: center;
 
-    .check-buttons{
-    background-color: white;
-    display: flex;
-    width: 50%;
-    justify-content: space-evenly;
-    align-items: center;
-    input{
-        width: 20px;
-        height: 20px;
+    .check-buttons {
+        background-color: white;
+        display: flex;
+        width: 50%;
+        justify-content: space-evenly;
+        align-items: center;
+
+        input {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .timed {
+        display: flex;
+        justify-content: flex-end;
+        width: 50%;
+        align-items: center;
     }
 }
-.timed{
-    display: flex;
-    justify-content: flex-end;
-    width: 50%;
-    align-items: center;
-}
-}
-
 </style>

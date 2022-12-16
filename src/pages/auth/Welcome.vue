@@ -25,7 +25,7 @@
                 this.$router.push(path);
             },
             openDashboard(){
-                if(this.type == "buyer"){
+                if(this.type == "corporate"){
                     this.goTo('/dashboard/corporate');
                     return 0;
                 }
