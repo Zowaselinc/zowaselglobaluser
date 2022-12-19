@@ -175,12 +175,6 @@ export default {
         changeDir(path) {
             window.location.assign(path);
         },
-        logOut() {
-            if (this.$store.state.authData.token) {
-                this.$store.dispatch('setAuth', null);
-                this.$router.push('/login');
-            }
-        }
     },
     mounted() {
         this.accordion();

@@ -23,7 +23,7 @@
     </div>
 
     <!-- for corporates view -->
-    <div class="payment-option-wrapper">
+    <div class="payment-option-wrapper" v-if="isCorporate">
         <!-- payment option header -->
         <h2>Payment Option</h2>
         <div class="payment-option d-flex flex-column">
@@ -64,7 +64,7 @@
         </div>
     </div>
     <!-- buttons -->
-    <div class=" btn-group w-100 gap-4">
+    <div class=" btn-group w-100 gap-4" v-if="isCorporate">
         <a href="" class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Overage
             Policy</a>
         <a href="" class="btn btn-primary" type="button " data-bs-toggle="modal"

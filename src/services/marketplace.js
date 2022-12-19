@@ -12,8 +12,10 @@ const GET_CROP_NEGOTIATIONS_PATH = (cropId,userId) => `crop/${cropId}/negotiatio
 const GET_NEGOTIATIONS_BY_USER_PATH = (userId) =>  `crop/negotiation/${userId}`;
 const SEND_NEGOTIATION_MESSAGE_PATH = () => 'crop/negotiation/add';
 const SEND_NEGOTIATION_OFFER_PATH = () => "crop/negotiation/sendoffer";
-const ACCEPT_NEGOTIATION_OFFER_PATH = () => "/crop/negotiation/accept";
-const DECLINE_NEGOTIATION_OFFER_PATH = () => "/crop/negotiation/decline";
+const ACCEPT_NEGOTIATION_OFFER_PATH = () => "crop/negotiation/accept";
+const DECLINE_NEGOTIATION_OFFER_PATH = () => "crop/negotiation/decline";
+
+const GET_ORDER_PATH = (orderHash) => `order/${orderHash}`;
 
 export default {
 
@@ -105,6 +107,13 @@ export default {
         }).then((response)=>{
             callback(response.data);
         }).catch((error)=>{
+        });
+    },
+    getOrder : function(hash, callback){
+        axios.get(config.BASE_URL + GET_ORDER_PATH(hash)).then((response)=>{
+            callback(response.data);
+        }).catch((error)=>{
+            callback(error.data);
         });
     }
 };

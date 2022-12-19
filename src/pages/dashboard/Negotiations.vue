@@ -97,12 +97,14 @@
                     :recepient="product.user"
                     :title="product.user.id != userData.user_id 
                         ? product.user.first_name+' '+product.user.last_name
-                        : participant(conversationData).first_name + '' + participant(conversationData).last_name
+                        : participant(conversationData).first_name + ' ' + participant(conversationData).last_name
                     "
                     :messages="conversationData.negotiations"
                     :loadMessages="getNegotiation"
                     :onSendMessage="sendNegotiationMessage"
                     :onSendOffer="sendNegotiationOffer"
+                    :onAcceptOffer="acceptNegotiationOffer"
+                    :onDeclineOffer="declineNegotiationOffer"
                 />
                 <div class="right-top-section">
                     <h1 v-if="product.user.id != userData.user_id">{{ product.user.first_name + " " + product.user.last_name }}</h1>
@@ -212,16 +214,30 @@
                         callback();
                     });
                 },
-                acceptNegotiationOffer(id){
-                    MarketPlaceService.acceptNegotiationOffer(id,(response)=>{
+                acceptNegotiationOffer(message) {
+                    MarketPlaceService.acceptNegotiationOffer(message.id, (response) => {
+                        this.$router.push(`/marketplace/transactionsummary/${response.data.order.order_hash}`);
+                    });
+                },
+                declineNegotiationOffer(message) {
+                    MarketPlaceService.declineNegotiationOffer(message.id, (response) => {
+                    });
+                },
+                checkForAcceptedNegotiation(){
+                    var accepted = false;
+                    this.negotiations.forEach((item) => {
+                        if(item.status == "accepted"){
+                            accepted = true;
+                        }
+                    })
+                    return accepted;
+                },
+                handleNegotiation(){
+                    if(this.checkForAcceptedNegotiation()){
+                        //this.$router.push(`/marketplace/transactionsummary/`);
+                    }
+                }
 
-                    });
-                },
-                declineNegotiationOffer(id){
-                    MarketPlaceService.declineNegotiationOffer(id,(response)=>{
-                        
-                    });
-                },
             },
             mounted() {
                 let vm = this;
@@ -257,7 +273,7 @@
     }
     
     .left {
-    width: 45%;
+    width: 40%;
     padding-left: 35px;
     padding-top: 30px;
     display: flex;
@@ -378,7 +394,7 @@
     
 
     .right {
-        width: 55%;
+        width: 60%;
         height: 100%;
         display: flex;
         flex-direction: column;

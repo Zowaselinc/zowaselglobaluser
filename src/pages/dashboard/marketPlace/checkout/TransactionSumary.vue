@@ -1,6 +1,6 @@
 <template>
     <DefaultNav>
-        <div class="big-container">
+        <div class="big-container" v-if="order">
 
             <div class="page-header d-flex justify-content-center align-items-center">
                 <h1 v-if="(step == 1)">Transaction Summary</h1>
@@ -22,7 +22,7 @@
                         <div class="transactin-details d-flex flex-column">
                             <div class="table-rows table-row-first">
                                 <div>Crop Type:</div>
-                                <div>Soya Bean</div>
+                                <div>{{ order.product.subcategory.name }}</div>
                             </div>
                             <div class="table-rows">
                                 <div class="quality-spec">Quality Specs</div>
@@ -33,29 +33,29 @@
                             </div>
                             <div class="table-rows">
                                 <div>Crop Quantity:</div>
-                                <div>500 MT</div>
+                                <div> 500 MT</div>
                             </div>
                             <div class="table-rows">
                                 <div>Delivery Window:</div>
                                 <div>Dec 1 - Dec 31 2022</div>
                             </div>
                             <div class="table-rows">
-                                <div>Buyers Details:</div>
-                                <div>Albert Sam</div>
+                                <div>Buyer Details:</div>
+                                <div>{{ order.buyer.first_name + " " + order.buyer.last_name }}</div>
                             </div>
                             <div class="table-rows">
                                 <div>Accepted Date:</div>
-                                <div>Oct 22 2022</div>
+                                <div> {{ orderDate.toDateString() }}</div>
                             </div>
                             <div class="table-rows">
-                                <div>Sellers Details:</div>
-                                <div>Okechukwu Mbe</div>
+                                <div>Seller Details:</div>
+                                <div>{{ order.product.user.first_name + " " + order.product.user.last_name }}</div>
                             </div>
-                            <div class="table-rows">
+                            <div v-if="false" class="table-rows">
                                 <div>Transaction ID:</div>
                                 <div>2SCM88S</div>
                             </div>
-                            <div id="tlast" class="table-rows tlast">
+                            <div v-if="false" id="tlast" class="table-rows tlast">
                                 <div>Agreement ID:</div>
                                 <div>MVWD83BC38L</div>
                             </div>
@@ -63,18 +63,21 @@
                         <div class="d-grid table-btn">
                             <button class="btn btn-purchase-order" type="button">View purchase order</button>
                             <!-- transaction flow buyers view -->
-                            <button
+                            <button v-if="false"
                                 :class="['btn', 'btn-procceed-waybil']"
                                 type="button" @click="nextStep()">Click to proceed
                             </button>
 
                             <!-- end -->
                             <button
+                                v-if="isMerchant"
                                 :class="['btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button" @click="nextStep()">Proceed to waybill
                             </button>
                             <!-- for corporates view -->
-                            <a href="/marketplace/payments"
+                            <a 
+                                v-if="isCorporate"
+                                href="/marketplace/payments"
                                 :class="['btn', 'coperate-btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button">Proceed to payment
                             </a>
@@ -98,7 +101,7 @@
                         <PricingDetails v-if="(activeTab == 'pricingdetails' && step == 1)"></PricingDetails>
                         <FullSpecification v-if="(activeTab == 'fullspec' && step == 1)"></FullSpecification>
                         <PurchaseOrder v-if="(activeTab == 'purchaseorder' && step == 1)"></PurchaseOrder>
-                        <WaybillDetails ref="wayBill" :updateStep="updateWaybill" v-if="(step == 2)"></WaybillDetails>
+                        <WaybillDetails ref="wayBill" :updateStep="updateWaybill" v-if="(step == 2) && isMerchant"></WaybillDetails>
                     </div>
                 </div>
             </div>
@@ -120,12 +123,13 @@ import FullSpecification from "@/pages/dashboard/marketPlace/checkout/components
 import PurchaseOrder from "@/pages/dashboard/marketPlace/checkout/components/PurchaseOrder.vue";
 import WaybillDetails from '@/pages/dashboard/marketPlace/checkout/components/WaybillDetails.vue';
 import DefaultNav from "@/layouts/DefaultNav.vue";
+import MarketPlaceService from "@/services/marketplace";
 
 export default {
     name: 'CardDetails',
     data() {
         return {
-            userData: this.$store.state.user
+
         }
     },
     components: {
@@ -141,11 +145,18 @@ export default {
             activeTab: "pricingdetails",
             step: 1,
             wayBillStep: 1,
+            order : null
         };
     },
     computed: {
         wayBill() {
             return this.$refs.wayBill;
+        },
+        specification(){
+            return this.order.negotiation ? this.order.negotiation.specification : this.order.product.specification;
+        },
+        orderDate(){
+            return new Date(this.order.created_at);
         }
     },
     methods: {
@@ -167,8 +178,18 @@ export default {
         },
         updateWaybill(step) {
             this.wayBillStep = step;
+        },
+        getOrder(){
+            MarketPlaceService.getOrder(this.$route.params.order,(response)=>{
+                var order = response.data;
+                order.product = JSON.parse(order.product);
+                this.order = order;
+            })
         }
 
+    },
+    mounted(){
+        this.getOrder();
     }
 }
 </script>

@@ -406,6 +406,7 @@ export default {
 
     p {
         margin: 0px;
+        flex:1;
     }
 
 

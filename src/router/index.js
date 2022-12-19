@@ -222,7 +222,7 @@ const routes = [
         component:MarketPlace
     },
     {
-        path: "/marketplace/transactionsumary",
+        path: "/marketplace/transactionsummary/:order",
         name: "Transactionsumary",
         component:TransactionSumary
     },
