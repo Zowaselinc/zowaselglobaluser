@@ -36,7 +36,6 @@ import CardPayment from "@/pages/dashboard/marketPlace/CardPayment.vue";
 import CheckOut from "@/pages/dashboard/marketPlace/CheckOut.vue";
 import Transactions from "@/pages/dashboard/marketPlace/Transactions.vue";
 import MyProducts from "@/pages/dashboard/marketPlace/MyProducts.vue";
-import Confirmed from "@/pages/dashboard/marketPlace/Confirmed.vue";
 import TrackingOrder from "@/pages/dashboard/marketPlace/TrackingOrder.vue";
 import CardDetails from "@/pages/dashboard/marketPlace/CardDetails.vue"
 import Payments from "@/pages/dashboard/marketPlace/payment/Payments.vue";
@@ -50,6 +49,8 @@ import NewTicket from "@/pages/dashboard/NewTicket.vue";
 import CropsSale from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
 import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation.vue"
 import Negotiations from "@/pages/dashboard/Negotiations.vue"
+import Wallet from "@/pages/dashboard/Wallet.vue"
+import FundWallet from "@/pages/dashboard/FundWallet.vue"
 
 
 
@@ -283,11 +284,7 @@ const routes = [
         name: "CardDetails",
         component:CardDetails
     },
-    {
-        path: "/marketplace/confirmed",
-        name: "Confirmed",
-        component:Confirmed
-    },
+
     {
         path: "/marketplace/trackingorder",
         name: "TrackingOrder",
@@ -318,6 +315,17 @@ const routes = [
         name: "NewTicket",
         component:NewTicket
     },
+    {
+        path: "/dashboard/wallet",
+        name: "Wallet",
+        component:Wallet
+    },
+    {
+        path: "/dashboard/fundwallet",
+        name: "FundWallet",
+        component:FundWallet
+    },
+
     
     
 

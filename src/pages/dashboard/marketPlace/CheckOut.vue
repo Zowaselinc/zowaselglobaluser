@@ -80,7 +80,7 @@
                     </div>
                 </div>
 
-                <button class="proceed">Proceed to Payment</button>
+             <a href="/marketplace/card-details" class="proceed">Proceed to Payment</a>
                
                 
             </div>
@@ -194,6 +194,7 @@ export default {
     background: #F5F5F5;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
    
 
     @include breakpoint-between(md, lg) {
@@ -232,6 +233,27 @@ export default {
 
     .left-side{
         width: 70%;
+        
+        .proceed{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%; 
+        margin-top: 45px;
+        background: #05B050;
+        box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08), 0px 4px 8px rgba(44, 39, 56, 0.08);
+        border-radius: 4px;
+        border: none;
+        height: 55px;
+        font-family: 'Maven Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 147%;
+        color: #E6F7EE;
+
+
+    }
         
       .address{
         width: 100%;
@@ -419,22 +441,7 @@ export default {
             }
     }
 
-    .proceed{
-        width: 100%; 
-        margin-top: 45px;
-        background: #05B050;
-        box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08), 0px 4px 8px rgba(44, 39, 56, 0.08);
-        border-radius: 4px;
-        border: none;
-        height: 55px;
-        font-family: 'Maven Pro';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 147%;
-        color: #E6F7EE;
-
-    }
+    
 
     .summaries{
         height: 400px;
