@@ -52,7 +52,7 @@
                     <li class="page-item"><a class="page-link" href="#">4</a></li>
                     <li class="page-item"><a class="page-link" href="#">5</a></li>
                     <li id="carret-icon" class="page-item">
-                        <a id="#carret-icon" class="page-link" href="#" aria-label="Next">
+                        <a id="carret-icon" class="page-link" href="#" aria-label="Next">
                             <span aria-hidden="true">&gt;</span>
                         </a>
                     </li>

@@ -100,7 +100,7 @@ export default {
     }
 }
 .top-text{
-    height: 89px;
+    padding: 14px 30px;
     width: 100%;
     background: #262C3F;
     display: flex;
@@ -110,7 +110,10 @@ export default {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
-    font-size: 40px;
+    
+    h1{
+        font-size: 24px;
+    }
 }
 .big-content{
    padding: 100px 15%;
@@ -124,7 +127,9 @@ export default {
         padding:100px 50px;
         background: #FFFFFF;
         border-radius: 4px;
-
+    h2{
+        font-size: 20px;
+    }
         hr{
             margin-bottom: 40px;
         }

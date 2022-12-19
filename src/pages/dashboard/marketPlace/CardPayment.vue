@@ -154,6 +154,7 @@ export default {
     background: #F5F5F5;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
    
 
     @include breakpoint-between(md, lg) {
@@ -170,7 +171,7 @@ export default {
 }
 
 .top-text{
-    height: 89px;
+    padding: 14px 30px;
     width: 100%;
     background: #262C3F;
     display: flex;
@@ -180,12 +181,12 @@ export default {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 24px;
     margin-bottom: 50px;
 }
 .big-content{
     width: 100%;
-    padding: 50px 95px;
+    padding: 50px 35px;
     background: #F1F1F1;
     display: flex;
     flex-direction: row;
@@ -200,10 +201,11 @@ export default {
         .each-item{
             display: flex;
             justify-content: space-between;
+            gap: 13px;
 
               .image{
-            width: 200px;
-            height: 200px;
+            width: 150px;
+           
             img{
                 width: 100%;
                 height: 100%;
@@ -219,7 +221,7 @@ export default {
             font-family: 'Poppins';
             font-style: normal;
             font-weight: 800;
-            font-size: 16px;
+            font-size: 14px;
             color: #2D2B33;
             margin-bottom: 0px;
         }
@@ -228,7 +230,7 @@ export default {
             font-family: 'Maven Pro';
             font-style: normal;
             font-weight: 500;
-            font-size: 16px;
+            font-size: 14px;
             color: rgba(45, 55, 72, 0.6);
         }
         }
@@ -262,7 +264,8 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 30px;
+        padding-block: 30px;
+        padding-inline: 10px;
         gap: 21px;
         border-radius: 4px;
 
@@ -270,7 +273,7 @@ export default {
                 font-family: 'Poppins';
                 font-style: normal;
                 font-weight: 700;
-                font-size: 20px;
+                font-size: 18px;
                 line-height: 18px;
                 color: #4A4754;
             }
@@ -283,7 +286,7 @@ export default {
                 font-family: 'Maven Pro';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 20px;
+                font-size: 16px;
                 line-height: 166.67%;
                 color: rgba(45, 55, 72, 0.6);
             }
@@ -291,7 +294,7 @@ export default {
                 font-family: 'Poppins';
                 font-style: normal;
                 font-weight: 700;
-                font-size: 20px;
+                font-size: 16px;
                 line-height: 166.67%;
                 color: #96949C;
             }
@@ -299,7 +302,7 @@ export default {
                 font-family: 'Maven Pro';
                 font-style: normal;
                 font-weight: 700;
-                font-size: 20px;
+                font-size: 16px;
                 line-height: 147%;
                 color: #4A4754;
             }

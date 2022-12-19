@@ -18,7 +18,7 @@
                 <!-- row 1 -->
                 <div class="filter-item d-flex flex-column row-1 ">
                     <!-- type -->
-                    <div class="rowz d-flex align-items-center mb-2">
+                    <div class="rowz d-flex align-items-center mb-3">
                         <h2>Product Type</h2>
                     </div>
                     <div class="rowz d-flex align-items-center mb-2 position-relative">
@@ -97,21 +97,21 @@
                     <div class="d-flex mt-2">
                         <div class="col">
                             <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">min</label>
-                            <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="0" min="0">
+                            <input type="number" class="form-control mt-0" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="0" min="0" max="10000">
                         </div>
                         <div id="minus-sign" class="check-words col">-</div>
                         <div class="col">
                             <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Max</label>
-                            <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="10 000">
+                            <input type="number" class="form-control mt-0" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="10 000" min="0" max="10000">
                         </div>
                     </div>
                 </div>
                 <!-- row 2 -->
                 <div class="filter-item d-flex flex-column row-2 ">
                     <!-- type -->
-                    <div class="rowz d-flex align-items-center mb-2">
+                    <div class="rowz d-flex align-items-center mb-4">
                         <h2>Manufacturer</h2>
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
@@ -203,10 +203,10 @@
                     </div>
                 </div>
                 <!-- row 3 -->
-                <!-- row 1 -->
+   
                 <div class="filter-item d-flex flex-column row-3 ">
                     <!-- type -->
-                    <div class="rowz d-flex align-items-center">
+                    <div class="rowz d-flex align-items-center mb-3">
                         <h2>Shipping Method</h2>
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
@@ -248,7 +248,7 @@
                             aria-label="Recipient's username" aria-describedby="basic-addon2">
                     </div>
                     <button type="button" class="btn  btn-lg mb-4 btn-1">Apply filters</button>
-                    <button type="button" class="btn  btn-lg">Reset filters</button>
+                    <button type="button" class="btn  btn-lg mb-4">Reset filters</button>
 
                 </div>
             </div>
