@@ -8,21 +8,11 @@
                     <span>Home</span>
                 </div>
             </a>
-            <a href="javascript:void(0)" class="nav-item">
-                <div class="ripple accordion-header">
+             
+            <a href="/dashboard/wallet" class="nav-item">
+                <div class="ripple">
                     <img class="img-fluid" src="@/assets/images/vectors/Wallet.svg" alt="wallet">
                     <span>Wallet</span>
-                    <img class="arrow-symbol carret-down" src="@/assets/images/vectors/arrowSymbol.svg"
-                        alt="Arrow-Symbol">
-                    <img class="arrow-symbol carretUp" src="@/assets/images/vectors/arrowupsymbol.svg"
-                        alt="Arrow-Symbol">
-                </div>
-                <!-- drop menu -->
-                <div class="drop-menu wallet-menu">
-                    <!-- /dashboard/creditwallet -->
-                    <div @click='changeDir("/dashboard/creditwallet")'>Credit wallet</div>
-                    <!-- /dashboard/widthdrwal -->
-                    <div @click='changeDir(" /dashboard/withdrawal")'>Withdrawal</div>
                 </div>
             </a>
             <a href="/dashboard/messages" class="nav-item">

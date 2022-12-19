@@ -5,10 +5,20 @@
           
             
         <div class="big-content">
-             <h1>Withdraw Wallet</h1>
+             <h1>Fund Wallet</h1>
            <form>
                 
-               
+                <div class="payment-type">
+                    <div class="form-check each-radio form-check-inline">
+                        <input type="radio" name="payment-type" id="">
+                        <label class="form-check-label">Card Payment</label>
+                    </div>
+                    <div class="form-check each-radio form-check-inline">
+                        <input type="radio" name="payment-type" id="">
+                        <label class="form-check-label">Bank Transfer</label>
+                    </div>
+                    
+                </div>
                 <div class="form-group">
                     <label for="">Amount</label>
                     <input type="text" class="form-control" name="company-name" required id="formGroupExampleInput" placeholder="300,000">
@@ -19,18 +29,28 @@
                 </div>
                 
                 <div class="form-group">
-                    
-                        <label for="">Bank</label>
-                       <select name="" id="" class="form-control">
-                            <option value="">Select Bank</option>
-                            <option value="">UBA</option>
-                            <option value="">UBA</option>
-                       </select>
-                 
+                    <div class="row">
+                        <div class="col">
+                            <label for="">Expiration Date</label>
+                           <input type="text" class="form-control" required id="formGroupExampleInput" placeholder="MM/YY">
+                        </div>
+                        <div class="col">
+                            <label for="">CVV</label>
+                            <input type="text" class="form-control" name="rc-number" required placeholder="123">
+                        </div>
+                    </div>
                 </div>
 
 
-                
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="">Pin</label>
+                           <input type="password" class="form-control" required id="formGroupExampleInput" placeholder="pin">
+                        </div>
+                        
+                    </div>
+                </div>
                 <!-- <div class="form-group check-area">
                     <input type="checkbox"   required>
                     <label for="">Save Card Details</label>
@@ -65,7 +85,7 @@
 import DefaultNav from "@/layouts/DefaultNav.vue";
 
 export default {
-    name: 'WithdrawWallet',
+    name: 'FundWallet',
     data() {
         return {
             userData: this.$store.state.user
