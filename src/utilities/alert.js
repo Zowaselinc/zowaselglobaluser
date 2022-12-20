@@ -14,6 +14,10 @@ const Alert = {
             type : "error",
             ...data
         });
+    },
+
+    close : () => {
+        window.appBus.emit('closeAlertBox',{});
     }
 
 

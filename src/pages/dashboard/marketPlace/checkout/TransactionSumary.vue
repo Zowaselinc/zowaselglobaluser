@@ -33,7 +33,7 @@
                             </div>
                             <div class="table-rows">
                                 <div>Crop Quantity:</div>
-                                <div> 500 MT</div>
+                                <div> {{ specification.qty }} MT</div>
                             </div>
                             <div class="table-rows">
                                 <div>Delivery Window:</div>
@@ -61,7 +61,7 @@
                             </div>
                         </div>
                         <div class="d-grid table-btn">
-                            <button class="btn btn-purchase-order" type="button">View purchase order</button>
+                            <button v-if="false" class="btn btn-purchase-order" type="button">View purchase order</button>
                             <!-- transaction flow buyers view -->
                             <button v-if="false"
                                 :class="['btn', 'btn-procceed-waybil']"
@@ -98,9 +98,9 @@
                                 @click="changeTab('purchaseorder')">Purchase Order</div>
                         </div>
                         <!-- pricing Details -->
-                        <PricingDetails v-if="(activeTab == 'pricingdetails' && step == 1)"></PricingDetails>
-                        <FullSpecification v-if="(activeTab == 'fullspec' && step == 1)"></FullSpecification>
-                        <PurchaseOrder v-if="(activeTab == 'purchaseorder' && step == 1)"></PurchaseOrder>
+                        <PricingDetails :order="order" v-if="(activeTab == 'pricingdetails' && step == 1)"></PricingDetails>
+                        <FullSpecification :order="order" v-if="(activeTab == 'fullspec' && step == 1)"></FullSpecification>
+                        <PurchaseOrder :order="order" v-if="(activeTab == 'purchaseorder' && step == 1)"></PurchaseOrder>
                         <WaybillDetails ref="wayBill" :updateStep="updateWaybill" v-if="(step == 2) && isMerchant"></WaybillDetails>
                     </div>
                 </div>
@@ -184,6 +184,7 @@ export default {
                 var order = response.data;
                 order.product = JSON.parse(order.product);
                 this.order = order;
+                console.log(order)
             })
         }
 

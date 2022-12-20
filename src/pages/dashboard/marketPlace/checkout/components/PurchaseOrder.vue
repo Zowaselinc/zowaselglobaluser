@@ -116,7 +116,10 @@
 
 <script>
 export default {
-    name: "PurchaseOrder"
+    name: "PurchaseOrder",
+    props : {
+        order : Object
+    }
 }
 </script>
 

@@ -166,7 +166,13 @@ export default {
         handleNegotiation(){
             var accepted = this.checkForAcceptedNegotiation();
             if(accepted){
-                this.$router.push(`/marketplace/transactionsummary/${accepted.order.order_hash}`);
+                Alert.success({
+                    message : "You have an accepted offer",
+                    onProceed : () => {
+                        Alert.close();
+                        this.$router.push(`/marketplace/transactionsummary/${accepted.order.order_hash}`)
+                    }
+                });
             }
         }
     },

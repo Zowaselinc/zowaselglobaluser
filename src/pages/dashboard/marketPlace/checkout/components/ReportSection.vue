@@ -77,7 +77,7 @@
                     placeholder="Title">
             </div>
         </div>
-        <div class="inputs-group  margin-btm-lg">
+        <div class="inputs-group margin-btm-lg">
             <div class="">
                 <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Date</label>
                 <input type="" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"

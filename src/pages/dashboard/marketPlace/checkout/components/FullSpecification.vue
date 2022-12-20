@@ -116,7 +116,10 @@
 
 <script>
 export default {
-    name: "FullSpecification"
+    name: "FullSpecification",
+    props : {
+        order : Object
+    }
 }
 </script>
 

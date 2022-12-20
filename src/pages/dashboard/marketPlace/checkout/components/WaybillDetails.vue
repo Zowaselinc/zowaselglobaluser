@@ -1,6 +1,6 @@
 <template>
-    <DispatchSection v-if="(step==1)" :proceed="nextStep"/>
-    <ReportSection v-if="(step==2)" :goBack="previousStep"/>
+    <DispatchSection v-if="(step==1)" :proceed="saveDispatch"/>
+    <ReportSection :proceed="saveReceipt" v-if="(step==2)" :goBack="previousStep"/>
 </template>
 
 <script>
@@ -18,10 +18,20 @@ import ReportSection from "@/pages/dashboard/marketPlace/checkout/components/Rep
         },
         data(){
             return {
-                step : 1
+                step : 1,
+                dispatchData : {},
+                receiptData : {}
             };
         },
         methods: {
+            saveDispatch(dispatch){
+                this.dispatchData = dispatch;
+                this.nextStep();
+            },
+            saveReceipt(receipt){
+                this.receiptData = receipt;
+                this.nextStep();
+            },
             nextStep(){
                 this.step++;
                 this.updateStep(this.step);
