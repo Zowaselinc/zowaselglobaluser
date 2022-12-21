@@ -71,7 +71,7 @@
                             <!-- end -->
                             <button
                                 v-if="isMerchant"
-                                :class="['btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
+                                :class="['btn', 'btn-procceed-waybil', 'mb-5', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button" @click="nextStep()">Proceed to waybill
                             </button>
                             <!-- for corporates view -->
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <!-- right -->
-                <div class="right-container">
+                <div class="right-container d-flex justify-content-center">
                     <div class="left-container-wrapper">
                         <!-- header tabs -->
                         <div
@@ -206,19 +206,17 @@ export default {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    @include breakpoint-between(md, lg) {
+        width: 60.5%;
+    }
 
+    @include breakpoint-between(lg, xl) {
+        width: 69.5%;
+    }
 
-    // @include breakpoint-between(md, lg) {
-    //     width: 60.5%;
-    // }
-
-    // @include breakpoint-between(lg, xl) {
-    //     width: 69.5%;
-    // }
-
-    // @include breakpoint-between(xl, xxl) {
-    //     width: 76%;
-    // }
+    @include breakpoint-between(xl, xxl) {
+        width: 76%;
+    }
 }
 
 .active-display-none {
@@ -355,6 +353,7 @@ export default {
         .left-container-wrapper {
             margin-inline: 8%;
             margin-top: 65px;
+            width: 80%;
 
 
             .right-header {

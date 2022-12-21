@@ -29,7 +29,6 @@ import Settings from "@/pages/dashboard/settings/Settings.vue";
 import MarketPlace from "@/pages/dashboard/marketPlace/Market.vue";
 import TransactionSumary from "@/pages/dashboard/marketPlace/checkout/TransactionSumary.vue";
 import OrderTracking from "@/pages/dashboard/marketPlace/ordering/OrderTracking.vue";
-import NewCrop from "@/pages/dashboard/marketPlace/NewCrop.vue";
 import Product from "@/pages/dashboard/marketPlace/ProductPage.vue";
 import ProductDescription from "@/pages/dashboard/marketPlace/ProductDescription.vue";
 import CardPayment from "@/pages/dashboard/marketPlace/CardPayment.vue";
@@ -47,10 +46,9 @@ import Loan from "@/pages/dashboard/Loan.vue";
 import Tickets from "@/pages/dashboard/Tickets.vue";
 import NewTicket from "@/pages/dashboard/NewTicket.vue";
 import CropsSale from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
-import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation.vue"
-import Negotiations from "@/pages/dashboard/Negotiations.vue"
-import Wallet from "@/pages/dashboard/Wallet.vue"
-import FundWallet from "@/pages/dashboard/FundWallet.vue"
+import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation.vue";
+import Negotiations from "@/pages/dashboard/Negotiations.vue";
+import CropWanted from "@/pages/dashboard/CropWanted.vue";
 
 
 
@@ -233,11 +231,6 @@ const routes = [
         component:OrderTracking
     },
     {
-        path: "/marketplace/newcrop",
-        name: "NewCrop",
-        component: NewCrop
-    },
-    {
         path: "/marketplace/product",
         name: "Product",
         path: "/marketplace/cropsale",
@@ -316,17 +309,10 @@ const routes = [
         component:NewTicket
     },
     {
-        path: "/dashboard/wallet",
-        name: "Wallet",
-        component:Wallet
+        path: "/dashboard/cropwanted",
+        name: "CropWanted",
+        component: CropWanted
     },
-    {
-        path: "/dashboard/fundwallet",
-        name: "FundWallet",
-        component:FundWallet
-    },
-
-    
     
 
 ];

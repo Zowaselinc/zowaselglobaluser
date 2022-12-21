@@ -77,6 +77,18 @@
                     placeholder="Title">
             </div>
         </div>
+        <div class="inputs-group  margin-btm-lg">
+            <div class="">
+                <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Signature</label>
+                <input type="file" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Signature">
+            </div>
+            <div class="">
+                <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Signature</label>
+                <input type="file" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Signature">
+            </div>
+        </div>
         <div class="inputs-group margin-btm-lg">
             <div class="">
                 <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Date</label>
@@ -90,9 +102,9 @@
             </div>
         </div>
         <button :class="['btn', 'table-btn', 'w-100', 'btn-1']" type="button">
-            <span >Upload waybill document</span> <img class="ps-2" src="@/assets/images/vectors/cloud.svg" alt="cloud">
+            <span>Upload waybill document</span> <img class="ps-2" src="@/assets/images/vectors/cloud.svg" alt="cloud">
         </button>
-        <button :class="['btn', 'table-btn', 'w-100', 'mb-4']" type="button">Generate waybill document</button>   
+        <button :class="['btn', 'table-btn', 'w-100', 'mb-4']" type="button">Generate waybill document</button>
 
     </form>
 </template>
@@ -100,8 +112,8 @@
 <script>
 export default {
     name: "ReportSection",
-    props:{
-        goBack : Function
+    props: {
+        goBack: Function
     }
 }
 </script>
@@ -122,14 +134,20 @@ form {
         display: flex;
         flex-direction: row;
         gap: 45px;
+
+        >div {
+            width: 100%;
+        }
     }
 
     div.margin-btm-lg {
         margin-bottom: 10px;
     }
-    label{
+
+    label {
         font-size: 12px;
     }
+
     label.margin-btm-sm {
         margin-bottom: 4px;
         color: rgba(45, 55, 72, 0.8);
@@ -154,7 +172,8 @@ form {
         @include textStyles(Inter, 600, 16px, 19px);
         color: #FFFFFF;
     }
-    button.btn-1{
+
+    button.btn-1 {
         background: #262C3F;
     }
 }

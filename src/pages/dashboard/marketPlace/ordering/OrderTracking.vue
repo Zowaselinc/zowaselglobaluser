@@ -1,241 +1,243 @@
 <template>
     <DefaultNav>
         <div class="big-container">
-           
-              
-             <!-- header for oder tracking  -->
-        <div class="page-header d-flex justify-content-center align-items-center">
-            <h1>Order Tracking</h1>
-        </div>
-        <!--body container -->
-        <div class="transaction-sumary-container d-flex flex-row">
-            <!-- left -->
-            <div class="left-container">
-                <div class="left-container-wrapper position-relative">
-                    <h2>Order Number: #2233202</h2>
-                    <!-- progress bar -->
-                    <div class="progress-bar-wrapper d-flex flex-column w-100 position-relative">
-                        <div class="progress progress-outer">
-                            <div class="progress progress-inner" :style="('width : ' + orderProgress + '%')"></div>
-                        </div>
-                        <div class="circle d-flex w-100 position-absolute">
-                            <div class="circle-1 circle-main"><span></span></div>
-                            <div class="circle-2 circle-main"><span></span></div>
-                            <div class="circle-3 circle-main"><span></span></div>
-                            <div class="circle-4 circle-main"><span></span></div>
-                        </div>
-                        <!--levels-->
-                        <div class="progress-level-container d-flex">
-                            <!-- levels -->
-                            <div class=" levels level-1">
-                                <h3>Pickup location</h3>
-                                <p>Naziri farms
-                                    6 Abeokuta street,
-                                    Nassarawa state
-                                </p>
-                            </div>
-                            <div class="levels level-2">
-                                <h3>Confirmed</h3>
-                                <p>
-                                    Naziri farms
-                                    6 Abeokuta street,
-                                    Nassarawa state
-                                </p>
-                            </div>
-                            <div class="levels level-3">
-                                <h3>Shipped </h3>
-                                <p>
-                                    Naziri farms
-                                    6 Abeokuta street,
-                                    Nassarawa state
-                                </p>
-                            </div>
-                            <div class="levels level-2">
-                                <h3>Delivered</h3>
-                                <p>
-                                    Albert Sam 23, Plazy Uyo, Nigeria
-                                </p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- table -->
-                    <h4>Tracking Details</h4>
-                    <table class="table table-borderless">
-                        <thead>
-                            <tr>
-                                <th class="text-left">Date</th>
-                                <th class="text-center">Location</th>
-                                <th class="text-right">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-left">23 october 2022</td>
-                                <td class="text-center">--</td>
-                                <td class="text-right">Ordered</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">23 october 2022</td>
-                                <td class="text-center">--</td>
-                                <td class="text-right">Order Confirmed</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">23 october 2022</td>
-                                <td class="text-center">Zandi Village Plateau</td>
-                                <td class="text-right">Shipped</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <a class="btn payment-status" v-if="(orderProgress != 100)">Payment Status: Pending</a>
-                    <a id="payment-state" class="btn payment-status" v-if="(orderProgress == 100)">Payment Status:
-                        <strong>Completed</strong></a>
-                    <a class="btn payment-status wallet d-inline-block position-absolute"
-                        v-if="(orderProgress == 100)">Go to wallet</a>
-                    <!-- for corporates view -->
-                    <a class="btn payment-status d-block confirm-delivery" v-if="(orderProgress == 100)">Confirm Delivery</a>
-                    <a class="btn payment-status wallet d-block w-100"
-                        v-if="(orderProgress == 100)">Confirm Delivery</a>
 
-                </div>
+            <!-- header for oder tracking  -->
+            <div class="page-header d-flex justify-content-center align-items-center">
+                <h1>Order Tracking</h1>
             </div>
-            <!-- right -->
-            <div class="right-container">
-                <div class="right-container-wrapper">
-                    <h1>Waybill details</h1>
-                    <hr>
-                    <div class="zowasel-receipt">
-                        <div class="receipt-wrapper">
-                            <!-- logo -->
-                            <div class="logo-wrapper">
-                                <img class="img-fluid" src="@/assets/images/logos/zowasel-grey-logo.png"
-                                    alt="zowasel-logo">
+            <!--body container -->
+            <div class="transaction-sumary-container d-flex flex-row">
+                <!-- left -->
+                <div class="left-container">
+                    <div class="left-container-wrapper position-relative">
+                        <h2>Order Number: #2233202</h2>
+                        <!-- progress bar -->
+                        <div class="progress-bar-wrapper d-flex flex-column w-100 position-relative">
+                            <div class="progress progress-outer">
+                                <div class="progress progress-inner" :style="('width : ' + orderProgress + '%')"></div>
                             </div>
-                            <!-- address -->
-                            <address>
-                                <p>69A, Abba Johnson, Adeniyi Jones Av</p>
-                                <p>Ikeja, Lagos, NIGERIA</p>
-                                <p>Waybil Number:</p>
-                            </address>
-                            <div class="form-wrapper">
-                                <!-- grid -->
-                                <div class="container text-center ">
-                                    <div class="row">
-                                        <div class="col row-item-1">DISPATCH SECTION</div>
-                                    </div>
-                                    <div class="row row-main">
-                                        <div class="col col-item-1">FROM:</div>
-                                        <div class="col-6 col-item-2">To:</div>
-                                    </div>
-                                    <div class="row row-main">
-                                        <div class="col-4 col-item-1">DATE:</div>
-                                        <div class="col-4 col-item-2">COSIGNEE:</div>
-                                        <div class="col-4 col-item-2">Truck No./Trailer No:</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general">S/No.</div>
-                                        <div class="col-4 row-item-general">DESCRIPTION</div>
-                                        <div class="col-4 row-item-general">QUANTITY</div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row row-main">
-                                        <div class="col col-item-1">REMARKS:</div>
-                                    </div>
-                                    <div class="row row-main">
-                                        <div class="col col-item-1">Driver's Name:</div>
-                                        <div class="col-6 col-item-2">Seller's Representative:</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 row-item-general">Driving License/Permit #:</div>
-                                        <div class="col-6 row-item-general">Title:</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 row-item-general">Signature and Date:</div>
-                                        <div class="col-6 row-item-general">Signature and Date:</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col row-item-1">DISPATCH SECTION</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general">S/No.</div>
-                                        <div class="col-4 row-item-general">DESCRIPTION</div>
-                                        <div class="col-4 row-item-general">QUANTITY</div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row row-main">
-                                        <div class="col col-item-1">REMARKS:</div>
-                                    </div>
-                                    <div class="row row-main">
-                                        <div class="col-6 col-item-2">Seller's Representative:</div>
-                                        <div class="col col-item-1">Received by:</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 row-item-general">Title:</div>
-                                        <div class="col-6 row-item-general">Title:</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 row-item-general">Signature and Date:</div>
-                                        <div class="col-6 row-item-general">Signature and Date:</div>
-                                    </div>
-                                    <p class="way-bill mt-5 mb-4 container">
-                                        The <strong>way bill</strong> puts the person in charge of the conveyance
-                                        carrying the consignment of
-                                        said amount of goods to the stated destination. It is a mandatory document that
-                                        is generated from zowasel
-                                        portal by registered sellers or transporters who undertake movement of
-                                        commodities and must be presented at point
-                                        of delivery in the corporate.
+                            <div class="circle d-flex w-100 position-absolute">
+                                <div class="circle-1 circle-main"><span></span></div>
+                                <div class="circle-2 circle-main"><span></span></div>
+                                <div class="circle-3 circle-main"><span></span></div>
+                                <div class="circle-4 circle-main"><span></span></div>
+                            </div>
+                            <!--levels-->
+                            <div class="progress-level-container d-flex">
+                                <!-- levels -->
+                                <div class=" levels level-1">
+                                    <h3>Pickup location</h3>
+                                    <p>Naziri farms
+                                        6 Abeokuta street,
+                                        Nassarawa state
                                     </p>
+                                </div>
+                                <div class="levels level-2">
+                                    <h3>Confirmed</h3>
+                                    <p>
+                                        Naziri farms
+                                        6 Abeokuta street,
+                                        Nassarawa state
+                                    </p>
+                                </div>
+                                <div class="levels level-3">
+                                    <h3>Shipped </h3>
+                                    <p>
+                                        Naziri farms
+                                        6 Abeokuta street,
+                                        Nassarawa state
+                                    </p>
+                                </div>
+                                <div class="levels level-2">
+                                    <h3>Delivered</h3>
+                                    <p>
+                                        Albert Sam 23, Plazy Uyo, Nigeria
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- table -->
+                        <h4>Tracking Details</h4>
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Date</th>
+                                    <th class="text-center">Location</th>
+                                    <th class="text-right">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-left">23 october 2022</td>
+                                    <td class="text-center">--</td>
+                                    <td class="text-right">Ordered</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">23 october 2022</td>
+                                    <td class="text-center">--</td>
+                                    <td class="text-right">Order Confirmed</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">23 october 2022</td>
+                                    <td class="text-center">Zandi Village Plateau</td>
+                                    <td class="text-right">Shipped</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a class="btn payment-status" v-if="(orderProgress != 100)">Payment Status: Pending</a>
+                        <a id="payment-state" class="btn payment-status" v-if="(orderProgress == 100)">Payment Status:
+                            <strong>Completed</strong></a>
+                        <a class="btn payment-status wallet d-inline-block position-absolute"
+                            v-if="(orderProgress == 100)">Go to wallet</a>
+                        <!-- for corporates view -->
+                        <a class="btn payment-status d-block confirm-delivery" v-if="(orderProgress == 100)">Confirm
+                            Delivery</a>
+                        <a class="btn payment-status wallet d-block w-100" v-if="(orderProgress == 100)">Confirm
+                            Delivery</a>
+
+                    </div>
+                </div>
+                <!-- right -->
+                <div class="right-container">
+                    <div class="right-container-wrapper">
+                        <h1>Waybill details</h1>
+                        <hr>
+                        <div class="zowasel-receipt">
+                            <div class="receipt-wrapper">
+                                <!-- logo -->
+                                <div class="logo-wrapper">
+                                    <img class="img-fluid" src="@/assets/images/logos/zowasel-grey-logo.png"
+                                        alt="zowasel-logo">
+                                </div>
+                                <!-- address -->
+                                <address>
+                                    <p>69A, Abba Johnson, Adeniyi Jones Av</p>
+                                    <p>Ikeja, Lagos, NIGERIA</p>
+                                    <p>Waybil Number:</p>
+                                </address>
+                                <div class="form-wrapper">
+                                    <!-- grid -->
+                                    <div class="container text-center ">
+                                        <div class="row">
+                                            <div class="col row-item-1">DISPATCH SECTION</div>
+                                        </div>
+                                        <div class="row row-main">
+                                            <div class="col col-item-1">FROM:</div>
+                                            <div class="col-6 col-item-2">To:</div>
+                                        </div>
+                                        <div class="row row-main">
+                                            <div class="col-4 col-item-1">DATE:</div>
+                                            <div class="col-4 col-item-2">COSIGNEE:</div>
+                                            <div class="col-4 col-item-2">Truck No./Trailer No:</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4 row-item-general">S/No.</div>
+                                            <div class="col-4 row-item-general">DESCRIPTION</div>
+                                            <div class="col-4 row-item-general">QUANTITY</div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4 row-item-general"></div>
+                                            <div class="col-4 row-item-general"></div>
+                                            <div class="col-4 row-item-general"></div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4 row-item-general"></div>
+                                            <div class="col-4 row-item-general"></div>
+                                            <div class="col-4 row-item-general"></div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4 row-item-general"></div>
+                                            <div class="col-4 row-item-general"></div>
+                                            <div class="col-4 row-item-general"></div>
+
+                                        </div>
+                                        <div class="row row-main">
+                                            <div class="col col-item-1">REMARKS:</div>
+                                        </div>
+                                        <div class="row row-main">
+                                            <div class="col col-item-1">Driver's Name:</div>
+                                            <div class="col-6 col-item-2">Seller's Representative:</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 row-item-general">Driving License/Permit #:</div>
+                                            <div class="col-6 row-item-general">Title:</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 row-item-general">Signature and Date:</div>
+                                            <div class="col-6 row-item-general">Signature and Date:</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col row-item-1">DISPATCH SECTION</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4 row-item-general">S/No.</div>
+                                            <div class="col-4 row-item-general">DESCRIPTION</div>
+                                            <div class="col-4 row-item-general">QUANTITY</div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4 row-item-general"></div>
+                                            <div class="col-4 row-item-general"></div>
+                                            <div class="col-4 row-item-general"></div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4 row-item-general"></div>
+                                            <div class="col-4 row-item-general"></div>
+                                            <div class="col-4 row-item-general"></div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4 row-item-general"></div>
+                                            <div class="col-4 row-item-general"></div>
+                                            <div class="col-4 row-item-general"></div>
+
+                                        </div>
+                                        <div class="row row-main">
+                                            <div class="col col-item-1">REMARKS:</div>
+                                        </div>
+                                        <div class="row row-main">
+                                            <div class="col-6 col-item-2">Seller's Representative:</div>
+                                            <div class="col col-item-1">Received by:</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 row-item-general">Title:</div>
+                                            <div class="col-6 row-item-general">Title:</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 row-item-general">Signature and Date:</div>
+                                            <div class="col-6 row-item-general">Signature and Date:</div>
+                                        </div>
+                                        <p class="way-bill mt-5 mb-4 container">
+                                            The <strong>way bill</strong> puts the person in charge of the conveyance
+                                            carrying the consignment of
+                                            said amount of goods to the stated destination. It is a mandatory document
+                                            that
+                                            is generated from zowasel
+                                            portal by registered sellers or transporters who undertake movement of
+                                            commodities and must be presented at point
+                                            of delivery in the corporate.
+                                        </p>
+
+                                    </div>
 
                                 </div>
-
+                                <button :class="['btn', 'table-btn', 'w-100', 'btn-1']" type="button">
+                                    Download document
+                                </button>
                             </div>
-                            <button :class="['btn', 'table-btn', 'w-100', 'btn-1']" type="button">
-                                Download document
-                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-            
+
 
         </div>
 
@@ -252,7 +254,7 @@ export default {
     data() {
         return {
             userData: this.$store.state.user,
-             orderProgress: 0
+            orderProgress: 0
 
         }
     },
@@ -283,7 +285,7 @@ export default {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-   
+
 
     @include breakpoint-between(md, lg) {
         width: 60.5%;
@@ -297,6 +299,7 @@ export default {
         width: 76%;
     }
 }
+
 .page-header {
     width: 100%;
     padding: 14px 30px;
@@ -579,5 +582,4 @@ export default {
     }
 
 }
-
 </style>
