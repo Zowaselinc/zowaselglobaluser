@@ -77,7 +77,7 @@
                             <!-- for corporates view -->
                             <a 
                                 v-if="isCorporate"
-                                href="/marketplace/payments"
+                                :href="'/marketplace/payments/'+$route.params.order"
                                 :class="['btn', 'coperate-btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button">Proceed to payment
                             </a>
@@ -179,18 +179,17 @@ export default {
         updateWaybill(step) {
             this.wayBillStep = step;
         },
-        getOrder(){
-            MarketPlaceService.getOrder(this.$route.params.order,(response)=>{
+        getOrder(order){
+            MarketPlaceService.getOrder(order,(response)=>{
                 var order = response.data;
                 order.product = JSON.parse(order.product);
                 this.order = order;
-                console.log(order)
             })
         }
 
     },
     mounted(){
-        this.getOrder();
+        this.getOrder(this.$route.params.order);
     }
 }
 </script>

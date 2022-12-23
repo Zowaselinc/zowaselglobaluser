@@ -291,17 +291,17 @@ const routes = [
         component:TrackingOrder
     },
     {
-        path: "/marketplace/payments",
+        path: "/marketplace/payments/:order",
         name: "Payments",
         component:Payments
     },
     {
-        path: "/marketplace/confirmpayments",
+        path: "/marketplace/confirmpayments/:order",
         name: "Confirm",
         component:Confirm
     },
     {
-        path: "/marketplace/paymentsconfirmed",
+        path: "/marketplace/paymentsconfirmed/:order",
         name: "PaymentsConfirmed",
         component:PaymentsConfirmed
     },

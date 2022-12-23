@@ -9,7 +9,7 @@
         <div class="transaction-sumary-container d-flex flex-row">
             <!-- left -->
             <div class="left-container">
-                <div class="left-container-wrapper">
+                <div class="left-container-wrapper" v-if="false">
                     <!--card transactions details -->
                     <div class="row mb-3">
                         <div class="col">
@@ -46,13 +46,19 @@
                         </a>
                         <a href="/marketplace/confirmpayments"
                             :class="['btn', 'btn-procceed-waybil']"
-                            type="button" v-if="activeTab == 'balancepayment'" >Confim Payment
+                            type="button" v-if="activeTab == 'balancepayment' && false" >Confim Payment
                         </a>
+
+                        <a href="#" 
+                            :class="['btn', 'btn-procceed-waybil']"
+                            type="button" @click="makePayment()" >Confim Payment
+                        </a>
+
                     </div>
                 </div>
             </div>
             <!-- right -->
-            <OrderSummary v-if="(activeTab == 'ordersummary')"></OrderSummary>
+            <OrderSummary :order="order" v-if="(activeTab == 'ordersummary')"></OrderSummary>
             <BalancePayment v-if="(activeTab == 'balancepayment')"></BalancePayment>
         </div>
         </div>
@@ -64,6 +70,9 @@
 import DefaultNav from "@/layouts/DefaultNav.vue"
 import OrderSummary from "./components/OrderSummary.vue";
 import BalancePayment from "./components/BalancePayment.vue";
+import MarketPlaceService from "@/services/marketplace";
+import TransactionService from "@/services/transaction"
+import config from '@/config';
 
 export default {
     name: "Payments",
@@ -74,15 +83,94 @@ export default {
     },
     data() {
         return {
-            activeTab: "balancepayment",
+            activeTab: "ordersummary",
             step: 1,
+            order : null
         };
     },
     computed: {
     },
-    changeTab(tab) {
+    methods : {
+        changeTab(tab) {
             this.activeTab = tab;
+        },
+        makePayment(){
+            var vm = this;
+            var transactionRef = `TRX-${this.generateRandom(20).toUpperCase()}`;
+            FlutterwaveCheckout({
+                public_key: "FLWPUBK_TEST-a1b8a6d0b897f10b7332e3af9f902c70-X",
+                tx_ref: transactionRef,
+                amount: this.order.total,
+                currency: "NGN",
+                payment_options: "card, ussd, transfer",
+                callback: function(payment) {
+                    // Send AJAX verification request to backend
+                    if(payment.status == "successful"){
+                        var txRef = payment.tx_ref;
+                        var txId = payment.transaction_id;
+
+                        TransactionService.verifyTransaction({
+                            transaction_id : txId.toString(),
+                            transaction_ref : txRef,
+                            order : vm.order.order_hash
+                        },(response)=>{
+                            console.log(response);
+                            if(!response.error){
+                                vm.$router.push(`/marketplace/confirmpayments/${vm.order.order_hash}`);
+                            }
+                        });
+                    }
+                },
+                onclose: function(incomplete) {
+                    if (incomplete || window.verified === false) {
+                        console.log();
+                    } else {
+                        console.log();
+                        if (window.verified == true) {
+                            console.log();
+                        } else {
+                            console.log();
+                        }
+                    }
+                },
+                meta: {
+                    order : this.order.hash
+                },
+                customer: {
+                    email: this.userData.user.email,
+                    phone_number: this.userData.user.phone,
+                    name: `${this.userData.user.first_name} ${this.userData.user.last_name}`,
+                },
+                customizations: {
+                    title: this.order.product.title,
+                    description: "Payment for order",
+                    logo : "https://cdn.filestackcontent.com/SrotkZlqT6iXtiA20Q14"
+                },
+            });
+            var detectWindow = setInterval(()=>{
+                var checkout = document.querySelector('iframe[name=checkout]');
+                if(checkout){
+                    document.querySelector('.transaction-sumary-container .left-container').appendChild(checkout);
+                    checkout.style.display = "block";
+                    document.body.style.overflow = "scroll";
+                    clearInterval(detectWindow);
+                }
+            },1000)
+
+        },
+        getOrder(order){
+            MarketPlaceService.getOrder(order,(response)=>{
+                var order = response.data;
+                order.product = JSON.parse(order.product);
+                this.order = order;
+                this.makePayment();
+            })
+        }
     },
+    mounted(){
+        this.getOrder(this.$route.params.order);
+    }
+
 }
 </script>
 
@@ -139,6 +227,7 @@ input {
 
 .transaction-sumary-container {
     width: 100%;
+    flex : 1;
 
     .left-container {
         background: #FFFFFF;
@@ -167,5 +256,17 @@ input {
         }
     }
 
+}
+
+
+</style>
+
+<style>
+
+iframe[name=checkout]{
+    width : 100%;
+    height: 100%;
+    position: relative !important;
+    display: none;
 }
 </style>
