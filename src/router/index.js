@@ -12,7 +12,7 @@ import ResetPassword from "@/pages/auth/ResetPassword.vue";
 import ResetSuccess from "@/pages/auth/ResetSuccess.vue";
 import UserType from "@/pages/auth/UserType.vue";
 import AgentType from "@/pages/auth/AgentType.vue";
-import CorporateDashboard from "@/pages/dashboard/Corporate.vue";
+import DashboardHome from "@/pages/dashboard/DashboardHome.vue";
 import LogisticsDashboard from "@/pages/dashboard/Logistics.vue";
 import FinanceDashboard from "@/pages/dashboard/Finance.vue";
 import DoKyb from "@/pages/dashboard/DoKyb.vue";
@@ -20,33 +20,37 @@ import AccountSettings from "@/pages/dashboard/AccountSettings.vue";
 import Notifications from "@/pages/dashboard/Notifications.vue";
 import Messages from "@/pages/dashboard/Messages.vue";
 import Subscription from "@/pages/dashboard/Subscription.vue";
-import BalancePayment from "@/pages/dashboard/BalancePayment.vue"
+import SubscriptionPayment from "@/pages/dashboard/SubscriptionPayment.vue"
 import RenewalManager from "@/pages/dashboard/RenewalManager.vue";
 import ChanelLog from "@/pages/dashboard/ChanelLog.vue";
 import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
 import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
-import CropMarket from "@/pages/dashboard/CropMarket.vue"; 
 import Settings from "@/pages/dashboard/settings/Settings.vue";
 import MarketPlace from "@/pages/dashboard/marketPlace/Market.vue";
 import TransactionSumary from "@/pages/dashboard/marketPlace/checkout/TransactionSumary.vue";
 import OrderTracking from "@/pages/dashboard/marketPlace/ordering/OrderTracking.vue";
 import NewCrop from "@/pages/dashboard/marketPlace/NewCrop.vue";
 import Product from "@/pages/dashboard/marketPlace/ProductPage.vue";
-import InputMarket from "@/pages/dashboard/marketPlace/InputMarket.vue";
 import ProductDescription from "@/pages/dashboard/marketPlace/ProductDescription.vue";
 import CardPayment from "@/pages/dashboard/marketPlace/CardPayment.vue";
 import CheckOut from "@/pages/dashboard/marketPlace/CheckOut.vue";
 import Transactions from "@/pages/dashboard/marketPlace/Transactions.vue";
 import MyProducts from "@/pages/dashboard/marketPlace/MyProducts.vue";
-import Confirmed from "@/pages/dashboard/marketPlace/Confirmed.vue";
 import TrackingOrder from "@/pages/dashboard/marketPlace/TrackingOrder.vue";
 import CardDetails from "@/pages/dashboard/marketPlace/CardDetails.vue"
 import Payments from "@/pages/dashboard/marketPlace/payment/Payments.vue";
 import Confirm from "@/pages/dashboard/marketPlace/payment/Confirm.vue";
 import PaymentsConfirmed from "@/pages/dashboard/marketPlace/payment/PaymentsConfirmed.vue";
-import CropsSale from "@/pages/dashboard/marketPlace/CropsSale.vue";
+import Invoice from "@/pages/dashboard/Invoice.vue";
+import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
+import Loan from "@/pages/dashboard/Loan.vue";
+import Tickets from "@/pages/dashboard/Tickets.vue";
+import NewTicket from "@/pages/dashboard/NewTicket.vue";
+import CropsSale from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
 import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation.vue"
 import Negotiations from "@/pages/dashboard/Negotiations.vue"
+import Wallet from "@/pages/dashboard/Wallet.vue"
+import FundWallet from "@/pages/dashboard/FundWallet.vue"
 
 
 
@@ -77,7 +81,6 @@ const routes = [
         name:"Welcome",
         component:Welcome,
     },
-
     {
         path: "/verifyemail",
         name:"VerifyEmail",
@@ -86,6 +89,11 @@ const routes = [
     {
         path: "/login",
         name:"WelcomeBack",
+        component:WelcomeBack,
+    },
+    {
+        path: "/",
+        name:"Index",
         component:WelcomeBack,
     },
     {
@@ -119,14 +127,9 @@ const routes = [
         component:UserType,
     },
     {
-        path: "/dashboard/merchant",
-        name: "MerchantDashboard",
-        component:CorporateDashboard,
-    },
-    {
-        path: "/dashboard/corporate",
-        name: "CorporateDashboard",
-        component:CorporateDashboard,
+        path: "/dashboard",
+        name: "DashboardHome",
+        component:DashboardHome,
     },
     {
         path: "/dashboard/logistics",
@@ -169,9 +172,9 @@ const routes = [
         component:Subscription
     },
     {
-        path: "/dashboard/balancepayment",
-        name: "BalancePayment",
-        component:BalancePayment
+        path: "/dashboard/subscriptionpayment",
+        name: "SubscriptionPayment",
+        component:SubscriptionPayment
     },
     {
         path: "/dashboard/renewalmanager",
@@ -194,27 +197,33 @@ const routes = [
         component:Withdrawal
     },
     {
-        path: "/dashboard/inputmarket",
-        name: "InputMarket",
-        component:InputMarket
-    },
-    {
-        path: "/dashboard/cropmarket",
-        name: "CropMarket",
-        component:CropMarket
-    },
-    {
         path: "/dashboard/settings",
         name: "Settings",
         component:Settings
     },
     {
-        path: "/dashboard/marketplace",
+        path: "/dashboard/invoice",
+        name: "Invoice",
+        component:Invoice
+    },
+    {
+        path: "/dashboard/each-invoice",
+        name: "EachInvoice",
+        component:EachInvoice,
+    },
+    {
+        path: "/dashboard/loan",
+        name: "Loan",
+        component:Loan,
+    },
+    {
+
+        path: "/dashboard/marketplace/:market",
         name: "MarketPlace",
         component:MarketPlace
     },
     {
-        path: "/marketplace/transactionsumary",
+        path: "/marketplace/transactionsummary/:order",
         name: "Transactionsumary",
         component:TransactionSumary
     },
@@ -246,11 +255,6 @@ const routes = [
         component:ProductNegotiation
     },
     {
-        path: "/marketplace/inputmarket",
-        name: "Inputmarket",
-        component:InputMarket
-    },
-    {
         path: "/marketplace/product-description",
         name: "ProductDescription",
         component:ProductDescription
@@ -280,31 +284,50 @@ const routes = [
         name: "CardDetails",
         component:CardDetails
     },
-    {
-        path: "/marketplace/confirmed",
-        name: "Confirmed",
-        component:Confirmed
-    },
+
     {
         path: "/marketplace/trackingorder",
         name: "TrackingOrder",
         component:TrackingOrder
     },
     {
-        path: "/marketplace/payments",
+        path: "/marketplace/payments/:order",
         name: "Payments",
         component:Payments
     },
     {
-        path: "/marketplace/confirmpayments",
+        path: "/marketplace/confirmpayments/:order",
         name: "Confirm",
         component:Confirm
     },
     {
-        path: "/marketplace/paymentsconfirmed",
+        path: "/marketplace/paymentsconfirmed/:order",
         name: "PaymentsConfirmed",
         component:PaymentsConfirmed
     },
+    {
+        path: "/dashboard/tickets",
+        name: "Tickets",
+        component:Tickets
+    },
+    {
+        path: "/dashboard/new-ticket",
+        name: "NewTicket",
+        component:NewTicket
+    },
+    {
+        path: "/dashboard/wallet",
+        name: "Wallet",
+        component:Wallet
+    },
+    {
+        path: "/dashboard/fundwallet",
+        name: "FundWallet",
+        component:FundWallet
+    },
+
+    
+    
 
 ];
 

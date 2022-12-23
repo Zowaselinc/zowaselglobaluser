@@ -282,6 +282,7 @@ export default {
     background: #F5F5F5;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
    
 
     @include breakpoint-between(md, lg) {
@@ -298,11 +299,11 @@ export default {
 }
 .page-header {
     width: 100%;
-    height: 87px;
+    padding: 14px 30px;
     background: #262C3F;
 
     h1 {
-        @include textStyles(Poppins, 700, 28.04px, 120%);
+        @include textStyles(Poppins, 700, 24px, 120%);
         color: #FFFFFF;
     }
 
@@ -313,25 +314,25 @@ export default {
 
     .left-container {
         background: #FFFFFF;
-        width: 53%;
+        width: 55%;
 
         .left-container-wrapper {
-            margin-inline: 8% 9.16%;
+            margin-inline: 8%;
             margin-top: 65px;
 
             h2 {
-                @include textStyles(Poppins, 800, 24px, 32px);
+                @include textStyles(Poppins, 800, 20px, 32px);
                 letter-spacing: 0.01em;
                 font-feature-settings: 'liga' off;
                 color: #0A0D13;
-                margin-bottom: 96px;
+                margin-bottom: 60px;
             }
 
             .progress-bar-wrapper {
                 gap: 15px;
 
                 .progress {
-                    height: .5rem;
+                    height: .4rem;
                 }
 
                 .progress-outer {
@@ -346,11 +347,11 @@ export default {
                 .circle {
                     justify-content: space-around;
                     margin-left: 4%;
-                    top: -10px;
+                    top: -8px;
 
                     .circle-main {
-                        width: 27px;
-                        height: 27px;
+                        width: 20px;
+                        height: 20px;
                         background: #E6F7EE;
                         border-radius: 50%;
                         display: flex;
@@ -358,8 +359,8 @@ export default {
                         align-items: center;
 
                         span {
-                            width: 19.29px;
-                            height: 19.29px;
+                            width: 70%;
+                            height: 70%;
                             background: #05B050;
                             border-radius: 50%;
 
@@ -372,13 +373,13 @@ export default {
 
                     .levels {
                         h3 {
-                            @include textStyles(Poppins, 800, 16px, 27px);
+                            @include textStyles(Poppins, 800, 14.5px, 27px);
                             color: rgba(45, 55, 72, 0.6);
                             text-align: center;
                         }
 
                         p {
-                            @include textStyles('Maven Pro', 400, 16px, 24px);
+                            @include textStyles('Maven Pro', 400, 14px, 24px);
                             text-align: center;
                             color: rgba(45, 55, 72, 0.6);
                         }
@@ -387,10 +388,10 @@ export default {
             }
 
             h4 {
-                @include textStyles('Maven Pro', 800, 24px, 32px);
+                @include textStyles('Maven Pro', 800, 18px, 32px);
                 text-align: center;
                 color: #000000;
-                margin: 80px auto 0;
+                margin: 50px auto 0;
                 padding: 7px 10px;
                 border-bottom: 2px solid;
                 width: 205px;
@@ -398,7 +399,7 @@ export default {
             }
 
             table.table-borderless {
-                margin-top: 49px;
+                margin-top: 30px;
 
                 tr {
                     height: 50px;
@@ -406,12 +407,12 @@ export default {
 
                 th {
                     vertical-align: top;
-                    @include textStyles('Maven Pro', 800, 20px, 29px);
+                    @include textStyles('Maven Pro', 800, 15.5px, 29px);
                     color: #696671;
                 }
 
                 td {
-                    @include textStyles('Maven Pro', 600, 16px, 24px);
+                    @include textStyles('Maven Pro', 600, 14.3px, 24px);
                     color: #696671;
                 }
             }
@@ -420,20 +421,20 @@ export default {
                 padding: 12px 17px;
                 height: 48px;
                 border-radius: 7px;
-                margin-top: 100px;
+                margin-top: 50px;
                 background: #FDE296;
                 letter-spacing: 0.01em;
                 font-feature-settings: 'liga' off;
                 color: #0A0D13;
                 text-align: center;
-                @include textStyles('Maven Pro', 600, 18px, 24px);
+                @include textStyles('Maven Pro', 600, 16px, 24px);
             }
 
             a.wallet {
                 color: #FFFFFF;
                 background: #05B050;
                 right: 0;
-                width: 45%;
+                width: 40%;
             }
 
             a.confirm-delivery {
@@ -486,14 +487,14 @@ export default {
     // Right-container
     .right-container {
         background: #F5F5F5;
-        width: 47%;
+        width: 45%;
 
         .right-container-wrapper {
-            margin-inline: 5% 7%;
+            margin-inline: 4%;
             margin-top: 65px;
 
             h1 {
-                @include textStyles(Inter, 600, 24px, 28px);
+                @include textStyles(Inter, 600, 20px, 28px);
                 letter-spacing: -0.02em;
                 color: #0A0D13;
                 margin-bottom: 17px;
@@ -513,19 +514,19 @@ export default {
                     color: rgba(0, 0, 0, 0.849);
 
                     .logo-wrapper {
-                        width: 165px;
+                        width: 100px;
                         margin-left: 25px;
-                        margin-bottom: 20px;
+                        margin-bottom: 15px;
                     }
 
                     address {
                         margin-left: 25px;
-                        margin-bottom: 20px;
+                        margin-bottom: 15px;
 
                         p {
                             margin-bottom: 0px;
                             font-family: Poppins;
-                            font-size: 13px;
+                            font-size: 12px;
                         }
                     }
 
@@ -535,7 +536,7 @@ export default {
                         border: .5px solid rgba(0, 0, 0, 0.18);
 
                         p {
-                            font-size: 14px;
+                            font-size: 13px;
                         }
                     }
 
@@ -548,17 +549,18 @@ export default {
                         .row-item-1 {
                             height: 25px;
                             font-weight: bold;
+                            font-size: 12px;
                         }
 
                         .row-item-general {
                             height: 30px;
-                            font-size: 15px;
+                            font-size: 12.2px;
                             text-align: left;
                         }
 
                         .col-item-1,
                         .col-item-2 {
-                            font-size: 15px;
+                            font-size: 12.2px;
                             text-align: left;
                         }
                     }

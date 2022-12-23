@@ -116,7 +116,10 @@
 
 <script>
 export default {
-    name: "PurchaseOrder"
+    name: "PurchaseOrder",
+    props : {
+        order : Object
+    }
 }
 </script>
 
@@ -128,13 +131,13 @@ export default {
     padding: 30px;
 
     h2 {
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 800;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
     table {
-
+        font-size: 14px;
         #parameters {
             font-weight: 400;
         }

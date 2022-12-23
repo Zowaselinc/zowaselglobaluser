@@ -36,7 +36,7 @@
                         <div class="left-line">
                             <div class="each-detail">
                                 <h4>Product Category</h4>
-                                <p>{{ product.crop_category.name }}</p>
+                                <p>{{ product.category.name }}</p>
                             </div>
                             <div class="each-detail">
                                 <h4>Color</h4>
@@ -157,6 +157,8 @@ export default {
     background: #F5F5F5;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
+
 
 
     @include breakpoint-between(md, lg) {

@@ -1,7 +1,5 @@
 <template>
-    <div class="bigger-container">
-        <TopHeader>              
-        </TopHeader>
+    <DefaultNav>
         <div class="big-container">
             <div class="left" v-if="!product">
                 <div class="top-section">
@@ -39,354 +37,108 @@
 
                 <h4>Product Specification</h4>
 
-                <div class="actual-details">
-                    <div class="left-line">
-                        <div class="each-detail">
-                            <h4>Product Category</h4>
-                            <p>{{ product.crop_category.name }}</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Color</h4>
-                            <p>{{ product.specification.color }}</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Moisture</h4>
-                            <p>{{ product.specification.moisture }}%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Grain size</h4>
-                            <p>{{ product.specification.grain_size }}</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Infestation</h4>
-                            <p>{{ product.specification.infestation }}%</p>
-                        </div>
+                <table class="actual-details table container">
+                    <tr>
+                        <th>Product Category</th>
+                        <th>Broken grains</th>
+                        <th>Test weight</th>
+                    </tr>
+                    <tr>
+                        <td>{{ product.category.name }}</td>
+                        <td>{{ product.specification.broken_grains }}%</td>
+                        <td>{{ product.specification.test_weight }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Color</th>
+                        <th>Weevil</th>
+                        <th>Hardness</th>
+                    </tr>
+                    <tr>
+                        <td>{{ product.specification.color }}</td>
+                        <td>{{ product.specification.weevil }}%</td>
+                        <td>{{ product.specification.hardness }}</td>
+                    </tr>
+                    <tr>
+                        <th>Moisture</th>
+                        <th>Damaged kernel</th>
+                        <th>Splits</th>
+                    </tr>
+                    <tr>
+                        <td>{{ product.specification.moisture }}</td>
+                        <td>{{ product.specification.dk }}%</td>
+                        <td>{{ product.specification.splits }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Grain Size</th>
+                        <th>Rotten shriveled</th>
+                        <th>Oil content</th>
+                    </tr>
+                    <tr>
+                        <td>{{ product.specification.grain_size }}</td>
+                        <td>{{ product.specification.dk }}%</td>
+                        <td>{{ product.specification.oil_content }}%</td>
+                    </tr>
+                    <tr>
+                        <th>Infestation</th>
+                        <th>Foreign matter (FM)</th>
+                        <th>Grain size</th>
+                    </tr>
+                    <tr>
+                        <td>{{ product.specification.infestation }}%</td>
+                        <td>{{ product.specification.foreign_matter }}%</td>
+                        <td>{{ product.specification.grain_size }}</td>
+                    </tr>
 
-                    </div>
-                    <div class="right-line">
-                        <div class="each-detail">
-                            <h4>Test Weight</h4>
-                            <p>{{ product.specification.test_weight }}</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Hardness</h4>
-                            <p>{{ product.specification.hardness }}</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Split</h4>
-                            <p>{{ product.specification.splits }}%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Oil Content</h4>
-                            <p>{{ product.specification.oil_content }}%</p>
-                        </div>
-                    </div>
-
-
-
-                    <div class="middle-line">
-
-                        <div class="each-detail">
-                            <h4>Broken Grains</h4>
-                            <p>{{ product.specification.broken_grains }}%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Weevil</h4>
-                            <p>{{ product.specification.weevil }}%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Damaged kernel</h4>
-                            <p>{{ product.specification.dk }}%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Rotten Shriveled</h4>
-                            <p>{{ product.specification.rotten_shriveled }}%</p>
-                        </div>
-                        <div class="each-detail">
-                            <h4>Foreign Matter (FM)</h4>
-                            <p>{{ product.specification.foreign_matter }}%</p>
-                        </div>
-                    </div>
-                </div>
+                </table>
             </div>
             <div class="right" v-if="product">
+                <ChatView 
+                    :sender="userData.user" 
+                    :recepient="product.user"
+                    :title="product.user.id != userData.user_id 
+                        ? product.user.first_name+' '+product.user.last_name
+                        : participant(conversationData).first_name + ' ' + participant(conversationData).last_name
+                    "
+                    :messages="conversationData.negotiations"
+                    :loadMessages="getNegotiation"
+                    :onSendMessage="sendNegotiationMessage"
+                    :onSendOffer="sendNegotiationOffer"
+                    :onAcceptOffer="acceptNegotiationOffer"
+                    :onDeclineOffer="declineNegotiationOffer"
+                />
                 <div class="right-top-section">
                     <h1 v-if="product.user.id != userData.user_id">{{ product.user.first_name + " " + product.user.last_name }}</h1>
                     <h1 v-else>{{ participant(conversationData).first_name + " " + participant(conversationData).last_name }}</h1>
                 </div>
-                <div class="contents">
-                    <div class="opened-message" v-if="conversationData.negotiations.length" id="chat-section">
-                        <div v-for="group,index in groupMessages" :key="index">
-                            <p class="centered-text">{{ group.date }}</p>
-                            <template v-for="message,index in group.messages" :key="index">
-                                <div v-if="((message.sender_id == userData.user.id) && message.messagetype == 'text')" class="sent-message">
-                                    <div class="sent-content">
-                                        <p>{{ message.message }}</p>
-                                        <span class="sent-time">{{ message.time }}</span>
-                                    </div>
-                                </div>
-                                <div v-if="((message.receiver_id == userData.user.id) && message.messagetype == 'text')" class="incoming-message">
-                                    <div class="incoming-content">
-                                        <p>{{ message.message}}
-                                        </p>
-                                        <span class="received-time">{{ message.time }}</span>
-                                    </div>
-                                </div>
-                                <div v-if="message.messagetype == 'offer'" :class="(message.receiver_id == userData.user.id) ? 'offer-left' : 'offer-right'">
-                                    <div class="offered">
-                                        <div class="colored">
-                                            <h3>Offer</h3>
-                                        <hr>
-                                        <div class="white-line"></div>
-                                        <div class="each-item">
-                                            <p>Required Item</p>
-                                            <h4>{{parseOffer(message).qty}}kg</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Offer Price</p>
-                                            <h4>{{parseOffer(message).price}}%</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Oil content</p>
-                                            <h4>{{parseOffer(message).oil_content}}%</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Foreign matter</p>
-                                            <h4>{{parseOffer(message).foreign_matter}}%</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Infestation</p>
-                                            <h4>{{parseOffer(message).infestation}}%</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Moisture</p>
-                                            <h4>{{parseOffer(message).moisture}}%</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Weevil</p>
-                                            <h4>{{parseOffer(message).weevil}}%</h4>
-                                        </div>
-                                        <div class="each-item">
-                                            <p>Splits</p>
-                                            <h4>{{parseOffer(message).splits}}%</h4>
-                                        </div>
-                                        <button>View Full Specification</button>
-                                        </div>
-                                        <div class="bottom-container" v-if="message.sender_id != userData.user_id">
-                                            <div class="check-buttons">
-                                                <input type="checkbox">
-                                                <label for="">Accept</label>
-                                                <input type="checkbox">
-                                                <label for="">Decline</label>
-                                            </div>
-                                            <div class="timed">
-                                                <p>{{ message.time }}</p>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </template>
-                        </div>
-                    </div>
-
-                    
-                    <form id="offer-form" v-if="offerFormVisible">
-                        <a href="#" class="close-form" v-on:click="closeForm()"> X </a>
-                        <div class="main-form">
-                            <div class="form-row">
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput">Quantity</label>
-                                    <div class="quantity">
-                                        <input type="text" class="form-control amount" v-model="offerData.qty" id="" placeholder="Enter Amount"/>
-                                    </div>
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Price</label>
-                                    <input type="text" class="form-control amount" v-model="offerData.price" id="" placeholder="Enter Amount">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Oil Content</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.oil_content" id="" placeholder="%">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput">Foreign Matter</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.foreign_matter" id="formGroupExampleInput"
-                                        placeholder="%">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Infestation</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.infestation" id="formGroupExampleInput2"
-                                        placeholder="%">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Moisture</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.moisture" id="formGroupExampleInput2"
-                                        placeholder="%">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput">Weevil</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.weevil" id="formGroupExampleInput"
-                                        placeholder="%">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Hardness</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.hardness" id="formGroupExampleInput2"
-                                        placeholder="%">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Splits</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.splits" id="formGroupExampleInput2"
-                                        placeholder="%">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput">Broken Grains</label>
-                                    <input type="text" class="form-control" v-model="offerData.broken_grains" id="formGroupExampleInput" placeholder="">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Rotten Shriveled</label>
-                                    <input type="text" class="form-control" v-model="offerData.rotten_shriveled" id="formGroupExampleInput2" placeholder="">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Damaged Kernel</label>
-                                    <input type="text" class="form-control" v-model="offerData.dk" id="formGroupExampleInput2" placeholder="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <button class="form-send">Send</button>
-                        </div>
-
-
-                    </form>
-
-                    <div class="chat-image" v-if="!conversationData.negotiations.length">
-                        <img src="@/assets/images/backgrounds/ChatsCircle.png" alt="">
-                        <h1>Chat or send an offer to negotiate</h1>
-                    </div> 
-
-                </div>
-                <div class="typing-zone">
-                    <p class="typing" v-if="false">Zowasel is typing</p>
-                    <div class="form-content">                        
-                        <div class="input-session">
-                            <input class="no-border" v-model="message" type="text" placeholder="Type your message here">
-                            <div class="icons">
-                                <a href=""><img src="@/assets/images/vectors/attach.svg" alt=""></a>
-                                <a href=""><img src="@/assets/images/vectors/emoji.svg" alt=""></a>
-                                <a href="javascript:void(0)" @click="sendNegotiationMessage()"><img src="@/assets/images/vectors/PaperPlaneTilt.svg" alt=""></a>
-                            </div>
-                        </div>
-                        <button @click="offer()">Send Offer <img src="@/assets/images/vectors/arrow-down.svg"></button>
-                    </div>
-                </div>
+=
             </div>
         </div>
-    </div>
+    </DefaultNav>
     
     </template>
     
     <script> 
-        import TopHeader from "@/layouts/partials/TopHeader.vue";
+        import DefaultNav from "@/layouts/DefaultNav.vue";
         import MarketPlaceService from "@/services/marketplace";
+        import ChatView from "./marketPlace/components/ChatView.vue";
         import DateUtils from "@/utilities/date";
+
         export default {
             name: 'Negotiations',
             components:{
-                TopHeader,
+                DefaultNav,
+                ChatView
             },
             data(){
                 return {
-                    offerFormVisible:false,
                     product: null,
                     userData: this.$store.state.user,
                     negotiations: [],
-                    message : "",
                     conversations : [],
                     conversationData : {},
-                    offerData : {
-                        qty: "",
-                        price: "",
-                        color: "",
-                        moisture: "",
-                        foreign_matter: "",
-                        broken_grains: "",
-                        weevil: "",
-                        dk: "",
-                        rotten_shriveled: "",
-                        test_weight: "",
-                        hectoliter: "",
-                        hardness: "",
-                        splits: "",
-                        oil_content: "",
-                        infestation: "",
-                        grain_size: "",
-                        total_defects: "",
-                        dockage: "",
-                        ash_content: "",
-                        acid_ash: "",
-                        volatile: "",
-                        mold: "",
-                        drying_process: "",
-                        dead_insect: "",
-                        mammalian: "",
-                        infested_by_weight: "",
-                        curcumin_content: "",
-                        extraneous: "",
-                        unit: "",
-                        liters: ""
-                    }
-                }
-            },
-            computed : {
-                groupMessages(){
-                    var groups = {};
-                    this.conversationData.negotiations.forEach((item)=>{
-                        var timestamp = DateUtils.formatDateFromApi(item.created_at);
-                        var timeString;
-                        var today= new Date();
-                        var yesterday = new Date();
-                        yesterday.setDate((new Date()).getDate - 1);
-                        var messageDate = new Date(item.created_at);
-                        item.time = timestamp.time;
-                        item.utcTime = messageDate.getTime();
-                        if (today.toDateString() === messageDate.toDateString()) {
-                            timeString = `Today`
-                        }else if (yesterday.toDateString() === messageDate.toDateString()) {
-                            timeString = `Yesterday`
-                        }else{
-                            timeString = `${timestamp.date}`
-                        } 
-
-                        groups[timestamp.date] = groups[timestamp.date] ? {
-                            date : timeString,
-                            messages : [ ...groups[timestamp.date].messages , item ]
-                        } : { 
-                            date : timeString,
-                            messages : [item]
-                        };
-
-                        groups[timestamp.date].messages.sort((a,b) => a.utcTime - b.utcTime);
-                    });
-                    return Object.values(groups).sort((a,b) => b.date.localeCompare(a.date));
                 }
             },
             methods:{
-                offer() {
-                    this.offerFormVisible =true
-                },
-                closeForm() {
-                    this.offerFormVisible=false
-                },
-                parseOffer(message){
-                    return JSON.parse(message.message);
-                },
                 participant(conversation){
                     return conversation.initiator.id == this.userData.user_id ? conversation.participant : conversation.initiator;
                 },
@@ -429,7 +181,6 @@
                     }, (response) => {   
                         if(response){
                             this.conversationData.negotiations = response.data;
-                            document.getElementById('chat-section').scrollTop = document.getElementById('chat-section').scrollHeight;
                         }
                     })
                 },
@@ -438,42 +189,55 @@
                         this.conversations = response.data;
                     })
                 },
-                sendNegotiationMessage(){
+                sendNegotiationMessage(message,callback){
                     MarketPlaceService.sendNegotiationMessage({
                         sender_id : this.userData.user.id,
                         receiver_id : this.participant(this.conversationData).id,
                         crop_id : this.product.id,
                         type : this.userData.user.type,
-                        message : this.message
+                        message : message
                     },(response)=>{
                         this.getNegotiation();
-                        this.message = "";
+                        callback();
                     });
                 },
-                sendNegotiationOffer(){
+                sendNegotiationOffer(offer,callback){
                     MarketPlaceService.sendNegotiationOffer({
                         sender_id : this.userData.user.user_id,
                         receiver_id : this.participant(this.conversationData).id,
                         crop_id : this.product.id,
                         type : this.userData.user.type,
                         message : "offer",
-                        ...this.offerData
+                        ...offer
                     },(response)=>{
                         this.getNegotiation();
-                        this.message = "";
-                        this.closeForm();
+                        callback();
                     });
                 },
-                acceptNegotiationOffer(id){
-                    MarketPlaceService.acceptNegotiationOffer(id,(response)=>{
+                acceptNegotiationOffer(message) {
+                    MarketPlaceService.acceptNegotiationOffer(message.id, (response) => {
+                        this.$router.push(`/marketplace/transactionsummary/${response.data.order.order_hash}`);
+                    });
+                },
+                declineNegotiationOffer(message) {
+                    MarketPlaceService.declineNegotiationOffer(message.id, (response) => {
+                    });
+                },
+                checkForAcceptedNegotiation(){
+                    var accepted = false;
+                    this.negotiations.forEach((item) => {
+                        if(item.status == "accepted"){
+                            accepted = true;
+                        }
+                    })
+                    return accepted;
+                },
+                handleNegotiation(){
+                    if(this.checkForAcceptedNegotiation()){
+                        //this.$router.push(`/marketplace/transactionsummary/`);
+                    }
+                }
 
-                    });
-                },
-                declineNegotiationOffer(id){
-                    MarketPlaceService.declineNegotiationOffer(id,(response)=>{
-                        
-                    });
-                },
             },
             mounted() {
                 let vm = this;
@@ -498,6 +262,7 @@
 
     .big-container {
         width: 100%;
+        height : auto;
         background: #F5F5F5;
         display: flex;
         flex: 1;
@@ -508,22 +273,31 @@
     }
     
     .left {
-        width: 25%;
-        padding-left: 60px;
-        padding-top: 30px;
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-        height: 100%;
-        overflow-y: hidden;
-    
-        .search {
-            padding: 10px 25px;
-            background: #FFFFFF;
-            border-radius: 4px;
-            border: none !important;
-        }
+    width: 40%;
+    padding-left: 35px;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: hidden;
+
+    h1,
+    h4 {
+        font-size: 18px;
     }
+
+    p {
+        font-size: 14px;
+    }
+
+    .search {
+        padding: 10px 25px;
+        background: #FFFFFF;
+        border-radius: 4px;
+        border: none !important;
+    }
+}
     
     .top-section {
         display: flex;
@@ -620,7 +394,7 @@
     
 
     .right {
-        width: 72%;
+        width: 60%;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -901,23 +675,33 @@
 
 
     .actual-details {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+    width: 100%;
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: space-between;
 
-        .each-detail {
-            margin-top: 30px;
 
-            h4 {
-                font-family: 'Maven Pro';
-                font-style: normal;
-                font-weight: 700;
-                font-size: 12px;
-                color: #696671;
-            }
+    >tr:nth-of-type(1) {
+        margin-top: 30px;
+    }
+
+    tr {
+
+
+        th {
+            font-family: 'Maven Pro';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            color: #696671;
+        }
+
+        td {
+            font-size: 12px;
+            padding-bottom: 1rem;
         }
     }
+}
 
     .chat-image {
         width: 100%;

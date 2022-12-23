@@ -5,7 +5,6 @@
                 <h2 v-if="userData">Welcome, {{userData.user.first_name}}</h2>
                 <p>Wallet Balance: <span>$5070</span></p>
             </div>
-
             <Cards></Cards>
             <div class="chart">
                 <div class="chart-text">

@@ -1,14 +1,14 @@
 <template>
     <DefaultNav>
-       
+
 
         <div class="big-container">
-             <div class="welcome-text">
-            <h2>My Crops/Inputs</h2>
-            
-        </div>
+            <div class="welcome-text">
+                <h2>My Crops/Inputs</h2>
+
+            </div>
             <div class="contents">
-                <a  href="#" class="each-product">
+                <a href="#" class="each-product">
                     <div class="top-address">
                         <h3>Maize-200-brown</h3>
                         <p>Date: <span>2022-11-16 7:58pm</span></p>
@@ -19,13 +19,13 @@
                     <div class="main-address">
                         <div class="right">
                             <h4>Amount: <span>NGN2,550</span> </h4>
-                             <div class="product-btns">
+                            <div class="product-btns">
                                 <button class="edit">Edit</button>
                                 <button class="delete">Delete</button>
                                 <button class="view">View</button>
                             </div>
-                            
-                        </div>                    
+
+                        </div>
                     </div>
                 </a>
                 <a href="#" class="each-product">
@@ -44,8 +44,8 @@
                                 <button class="delete">Delete</button>
                                 <button class="view">View</button>
                             </div>
-                            
-                        </div>                    
+
+                        </div>
                     </div>
                 </a>
                 <a href="#" class="each-product">
@@ -59,19 +59,19 @@
                     <div class="main-address">
                         <div class="right">
                             <h4>Amount: <span>NGN2,550</span> </h4>
-                             <div class="product-btns">
+                            <div class="product-btns">
                                 <button class="edit">Edit</button>
                                 <button class="delete">Delete</button>
                                 <button class="view">View</button>
                             </div>
-                            
-                        </div>                    
+
+                        </div>
                     </div>
                 </a>
             </div>
 
-           
-            
+
+
         </div>
 
 
@@ -92,7 +92,7 @@ export default {
     },
     components: {
         DefaultNav,
-       
+
     },
 }
 </script>
@@ -107,6 +107,7 @@ export default {
     background: #F5F5F5;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 
     @include breakpoint-between(md, lg) {
         width: 60.5%;
@@ -126,8 +127,8 @@ export default {
     justify-content: center;
     align-items: center;
     background: #262C3F;
-    color:white ;
-    height: 90px;
+    color: white;
+    padding: 14px 30px;
     width: 100%;
 
 
@@ -135,7 +136,7 @@ export default {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 700;
-        font-size: 32px;
+        font-size: 24px;
         color: white;
     }
 
@@ -143,7 +144,7 @@ export default {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 400;
-        font-size: 20px;
+        font-size: 14px;
         color: #4A4754;
     }
 
@@ -151,12 +152,12 @@ export default {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 700;
-        font-size: 30px;
+        font-size: 14px;
         color: #05B050;
     }
 }
 
-.each-product{
+.each-product {
     width: 100%;
     border: 1px solid #dce3e9;
     padding: 20px 50px;
@@ -166,11 +167,11 @@ export default {
     text-decoration: none;
     color: black;
 
-    .product-btns{
+    .product-btns {
         display: flex;
         gap: 15px;
 
-        .edit{
+        .edit {
             background: #FFF8E6;
             border: 1px solid #F59E0B;
             border-radius: 4px;
@@ -181,8 +182,9 @@ export default {
             font-size: 14px;
             color: #F59E0B;
         }
-         .delete{
-           background: #F9E9E9;
+
+        .delete {
+            background: #F9E9E9;
             border: 1px solid #C32021;
             border-radius: 4px;
             padding: 5px 10px;
@@ -192,7 +194,8 @@ export default {
             font-size: 14px;
             color: #C32021;
         }
-        .view{
+
+        .view {
             border: none;
             padding: 5px 10px;
             background: white;
@@ -211,32 +214,50 @@ export default {
 
 
 
-.contents{
-        width: 100%;
-        background-color: white;
-        padding: 38px;
-      }
-       .top-address{
-        align-items: center;
-        gap: 12px;
+.contents {
+    width: 100%;
+    background-color: white;
+    padding: 38px;
+}
 
-        img{
-            width: 20px;
-            height: 20px;
-        }
-        h3{
-            margin-top: 5px;
-            color: #05B050;
-        }
+.top-address {
+    align-items: center;
+    gap: 12px;
 
-    }
-    .main-address{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-       
-
+    img {
+        width: 20px;
+        height: 20px;
     }
 
+    h3 {
+        margin-top: 5px;
+        color: #05B050;
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 15px ;
+        span {
+            font-size: 13.5px;
+        }
+    }
+
+}
+
+.main-address {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h4{
+        font-size: 18px;
+        span{
+            font-size: 16px;
+        }
+    }
+    button{
+        font-size: 14px;
+    }
+
+}
 </style>

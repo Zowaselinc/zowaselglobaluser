@@ -17,7 +17,7 @@
                         <th>Test weight</th>
                     </tr>
                     <tr>
-                        <td>{{ product.crop_category.name }}</td>
+                        <td>{{ product.category.name }}</td>
                         <td>{{ product.specification.broken_grains }}%</td>
                         <td>{{ product.specification.test_weight }}%</td>
                     </tr>
@@ -53,7 +53,7 @@
                     </tr>
                     <tr>
                         <th>Infestation</th>
-                        <th>Foreign  matter (FM)</th>
+                        <th>Foreign matter (FM)</th>
                         <th>Grain size</th>
                     </tr>
                     <tr>
@@ -61,195 +61,21 @@
                         <td>{{ product.specification.foreign_matter }}%</td>
                         <td>{{ product.specification.grain_size }}</td>
                     </tr>
-     
+
                 </table>
             </div>
             <div class="right" v-if="product">
-                <div class="right-top-section">
-                    <h1>{{ product.user.first_name + " " + product.user.last_name }}</h1>
-                </div>
-                <div class="contents">
-                    <div class="opened-message" v-if="negotiations.length" id="chat-section">
-                        <div v-for="group, index in groupMessages" :key="index">
-                            <p class="centered-text">{{ group.date }}</p>
-                            <template v-for="message, index in group.messages" :key="index">
-                                <div v-if="((message.sender_id == userData.user.id) && message.messagetype == 'text')"
-                                    class="sent-message">
-                                    <div class="sent-content">
-                                        <p>{{ message.message }}</p>
-                                        <span class="sent-time">{{ message.time }}</span>
-                                    </div>
-                                </div>
-                                <div v-if="((message.receiver_id == userData.user.id) && message.messagetype == 'text')"
-                                    class="incoming-message">
-                                    <div class="incoming-content">
-                                        <p>{{ message.message }}
-                                        </p>
-                                        <span class="received-time">{{ message.time }}</span>
-                                    </div>
-                                </div>
-                                <div v-if="message.messagetype == 'offer'"
-                                    :class="(message.receiver_id == userData.user.id) ? 'offer-left' : 'offer-right'">
-                                    <div class="offered">
-                                        <div class="colored">
-                                            <h3>Offer</h3>
-                                            <hr>
-                                            <div class="white-line"></div>
-                                            <div class="each-item">
-                                                <p>Required Item</p>
-                                                <h4>{{ parseOffer(message).qty }}kg</h4>
-                                            </div>
-                                            <div class="each-item">
-                                                <p>Offer Price</p>
-                                                <h4>{{ parseOffer(message).price }}%</h4>
-                                            </div>
-                                            <div class="each-item">
-                                                <p>Oil content</p>
-                                                <h4>{{ parseOffer(message).oil_content }}%</h4>
-                                            </div>
-                                            <div class="each-item">
-                                                <p>Foreign matter</p>
-                                                <h4>{{ parseOffer(message).foreign_matter }}%</h4>
-                                            </div>
-                                            <div class="each-item">
-                                                <p>Infestation</p>
-                                                <h4>{{ parseOffer(message).infestation }}%</h4>
-                                            </div>
-                                            <div class="each-item">
-                                                <p>Moisture</p>
-                                                <h4>{{ parseOffer(message).moisture }}%</h4>
-                                            </div>
-                                            <div class="each-item">
-                                                <p>Weevil</p>
-                                                <h4>{{ parseOffer(message).weevil }}%</h4>
-                                            </div>
-                                            <div class="each-item">
-                                                <p>Splits</p>
-                                                <h4>{{ parseOffer(message).splits }}%</h4>
-                                            </div>
-                                            <button>View Full Specification</button>
-                                        </div>
-                                        <div class="bottom-container" v-if="message.sender_id != userData.user_id">
-                                            <div class="check-buttons">
-                                                <input type="checkbox">
-                                                <label for="">Accept</label>
-                                                <input type="checkbox">
-                                                <label for="">Decline</label>
-                                            </div>
-                                            <div class="timed">
-                                                <p>{{ message.time }}</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </template>
-                        </div>
-                    </div>
-
-
-                    <form id="offer-form" v-if="offerFormVisible">
-                        <a href="#" class="close-form" v-on:click="closeForm()"> X </a>
-                        <div class="main-form">
-                            <div class="form-row">
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput">Quantity</label>
-                                    <div class="quantity">
-                                        <input type="text" class="form-control amount" v-model="offerData.qty" id=""
-                                            placeholder="Enter Amount" />
-                                    </div>
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Price</label>
-                                    <input type="text" class="form-control amount" v-model="offerData.price" id=""
-                                        placeholder="Enter Amount">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Oil Content</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.oil_content"
-                                        id="" placeholder="%">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput">Foreign Matter</label>
-                                    <input type="text" class="form-control percentage"
-                                        v-model="offerData.foreign_matter" id="formGroupExampleInput" placeholder="%">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Infestation</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.infestation"
-                                        id="formGroupExampleInput2" placeholder="%">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Moisture</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.moisture"
-                                        id="formGroupExampleInput2" placeholder="%">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput">Weevil</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.weevil"
-                                        id="formGroupExampleInput" placeholder="%">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Hardness</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.hardness"
-                                        id="formGroupExampleInput2" placeholder="%">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Splits</label>
-                                    <input type="text" class="form-control percentage" v-model="offerData.splits"
-                                        id="formGroupExampleInput2" placeholder="%">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput">Broken Grains</label>
-                                    <input type="text" class="form-control" v-model="offerData.broken_grains"
-                                        id="formGroupExampleInput" placeholder="">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Rotten Shriveled</label>
-                                    <input type="text" class="form-control" v-model="offerData.rotten_shriveled"
-                                        id="formGroupExampleInput2" placeholder="">
-                                </div>
-                                <div class="form-group form-inputs">
-                                    <label for="formGroupExampleInput2">Damaged Kernel</label>
-                                    <input type="text" class="form-control" v-model="offerData.dk"
-                                        id="formGroupExampleInput2" placeholder="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <button type="button" class="form-send" @click="sendNegotiationOffer()">Send</button>
-                        </div>
-
-
-                    </form>
-
-                    <div class="chat-image" v-if="!negotiations.length">
-                        <img src="@/assets/images/backgrounds/ChatsCircle.png" alt="">
-                        <h1>Chat or send an offer to negotiate</h1>
-                    </div>
-
-                </div>
-                <div class="typing-zone">
-                    <p class="typing" v-if="false">Zowasel is typing</p>
-                    <div class="form-content">
-                        <div class="input-session">
-                            <input class="no-border" v-model="message" type="text" placeholder="Type your message here">
-                            <div class="icons me-">
-                                <a href=""><img src="@/assets/images/vectors/attach.svg" alt=""></a>
-                                <a href=""><img src="@/assets/images/vectors/emoji.svg" alt=""></a>
-                                <a href="javascript:void(0)" @click="sendNegotiationMessage()"><img
-                                        src="@/assets/images/vectors/PaperPlaneTilt.svg" alt=""></a>
-                            </div>
-                        </div>
-                        <button @click="offer()">Send Offer <img src="@/assets/images/vectors/arrow-down.svg"></button>
-                    </div>
-                </div>
+                <ChatView 
+                    :sender="userData.user" 
+                    :recepient="product.user"
+                    :title="product.user.first_name+' '+product.user.last_name"
+                    :messages="negotiations"
+                    :loadMessages="getNegotiation"
+                    :onSendMessage="sendNegotiationMessage"
+                    :onSendOffer="sendNegotiationOffer"
+                    :onAcceptOffer="acceptNegotiationOffer"
+                    :onDeclineOffer="declineNegotiationOffer"
+                />
             </div>
         </div>
     </DefaultNav>
@@ -257,99 +83,26 @@
 </template>
     
 <script>
+
 import DefaultNav from "@/layouts/DefaultNav.vue"
 import MarketPlaceService from "@/services/marketplace";
-import DateUtils from "@/utilities/date";
+import ChatView from "./components/ChatView.vue";
+import Alert from "@/utilities/alert";
+
 export default {
     name: 'ProductNegotiation',
     components: {
-        DefaultNav
+        DefaultNav,
+        ChatView
     },
     data() {
         return {
-            offerFormVisible: false,
             product: null,
             userData: this.$store.state.user,
             negotiations: [],
-            message: "",
-            offerData: {
-                qty: "",
-                price: "",
-                color: "",
-                moisture: "",
-                foreign_matter: "",
-                broken_grains: "",
-                weevil: "",
-                dk: "",
-                rotten_shriveled: "",
-                test_weight: "",
-                hectoliter: "",
-                hardness: "",
-                splits: "",
-                oil_content: "",
-                infestation: "",
-                grain_size: "",
-                total_defects: "",
-                dockage: "",
-                ash_content: "",
-                acid_ash: "",
-                volatile: "",
-                mold: "",
-                drying_process: "",
-                dead_insect: "",
-                mammalian: "",
-                infested_by_weight: "",
-                curcumin_content: "",
-                extraneous: "",
-                unit: "",
-                liters: ""
-            }
-        }
-    },
-    computed: {
-        groupMessages() {
-            var groups = {};
-            this.negotiations.forEach((item) => {
-                var timestamp = DateUtils.formatDateFromApi(item.created_at);
-                var timeString;
-                var today = new Date();
-                var yesterday = new Date();
-                yesterday.setDate((new Date()).getDate - 1);
-                var messageDate = new Date(item.created_at);
-                item.time = timestamp.time;
-                item.utcTime = messageDate.getTime();
-                if (today.toDateString() === messageDate.toDateString()) {
-                    timeString = `Today`
-                } else if (yesterday.toDateString() === messageDate.toDateString()) {
-                    timeString = `Yesterday`
-                } else {
-                    timeString = `${timestamp.date}`
-                }
-
-                groups[timestamp.date] = groups[timestamp.date] ? {
-                    date: timeString,
-                    messages: [...groups[timestamp.date].messages, item]
-                } : {
-                    date: timeString,
-                    messages: [item]
-                };
-
-                groups[timestamp.date].messages.sort((a, b) => a.utcTime - b.utcTime);
-            });
-
-            return Object.values(groups).sort((a, b) => b.date.localeCompare(a.date));
         }
     },
     methods: {
-        offer() {
-            this.offerFormVisible = true
-        },
-        parseOffer(message) {
-            return JSON.parse(message.message);
-        },
-        closeForm() {
-            this.offerFormVisible = false
-        },
         getProduct() {
             MarketPlaceService.getCropById(this.$route.params.id, (response) => {
                 this.product = response.data;
@@ -364,34 +117,33 @@ export default {
             }, (response) => {
                 if (response) {
                     this.negotiations = response.data;
-                    document.getElementById('chat-section').scrollTop = document.getElementById('chat-section').scrollHeight;
+                    this.handleNegotiation();
                 }
             })
         },
-        sendNegotiationMessage() {
+        sendNegotiationMessage(message,callback) {
             MarketPlaceService.sendNegotiationMessage({
                 sender_id: this.userData.user.id,
                 receiver_id: this.product.user.id,
                 crop_id: this.product.id,
                 type: this.userData.user.type,
-                message: this.message
+                message: message
             }, (response) => {
                 this.getNegotiation();
-                this.message = "";
+                callback();
             });
         },
-        sendNegotiationOffer() {
+        sendNegotiationOffer(offer,callback) {
             MarketPlaceService.sendNegotiationOffer({
                 sender_id: this.userData.user.id,
                 receiver_id: this.product.user.id,
                 crop_id: this.product.id,
                 type: this.userData.user.type,
                 message: "offer",
-                ...this.offerData
+                ...offer
             }, (response) => {
                 this.getNegotiation();
-                this.message = "";
-                this.closeForm();
+                callback()
             });
         },
         acceptNegotiationOffer(id) {
@@ -402,13 +154,31 @@ export default {
             MarketPlaceService.declineNegotiationOffer(id, (response) => {
             });
         },
+        checkForAcceptedNegotiation(){
+            var accepted = false;
+            this.negotiations.forEach((item) => {
+                if(item.status == "accepted"){
+                    accepted = item;
+                }
+            })
+            return accepted;
+        },
+        handleNegotiation(){
+            var accepted = this.checkForAcceptedNegotiation();
+            if(accepted){
+                Alert.success({
+                    message : "You have an accepted offer",
+                    onProceed : () => {
+                        Alert.close();
+                        this.$router.push(`/marketplace/transactionsummary/${accepted.order.order_hash}`)
+                    }
+                });
+            }
+        }
     },
     mounted() {
         let vm = this;
         this.getProduct();
-        setInterval(() => {
-            vm.getNegotiation();
-        }, 5000);
     }
 }
 </script>
@@ -426,7 +196,7 @@ export default {
     width: 100%;
     background: #F5F5F5;
     display: flex;
-    height : auto;
+    height: auto;
     flex: 1;
     min-height: 0;
     flex-direction: row;
@@ -659,6 +429,11 @@ export default {
     position: relative;
     min-height: 0px;
     padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+
 }
 
 .typing-zone {
@@ -707,27 +482,31 @@ export default {
             }
 
             .icons {
+
                 width: auto;
                 display: flex;
-                // justify-content:;
-                img{
-                    height: 60%;
+
+                img {
+                    height: 50%;
                 }
             }
         }
 
         button {
-            width: 20%;
+            width: auto;
             background: #05B050;
             box-shadow: 0px 2.58333px 5.16667px rgba(44, 39, 56, 0.08), 0px 5.16667px 10.3333px rgba(44, 39, 56, 0.08);
             border-radius: 6px;
-            height: 60px;
             border: none;
             color: white;
             font-size: 14px;
-            img{
-                width: 18%;
+            padding: 14px;
+
+            img {
+                padding-left: 5px;
+                width: 20%;
             }
+
         }
     }
 
@@ -742,17 +521,19 @@ export default {
 
 
 #offer-form {
-    padding: 30px;
-    width: 90%;
-    margin-left: 5%;
+
+    width: 100%;
     border: 1px solid rgba(48, 189, 110, 0.4);
     position: absolute;
-    bottom: 20px;
     background-color: white;
-
+    padding-inline: 30px;
+    bottom: 20px;
+    .form-group{
+        margin-bottom: 0px !important;
+    }
     .main-form {
         margin-top: 50px;
-        height: 400px;
+        height: 300px;
         overflow-y: scroll;
     }
 
@@ -761,17 +542,18 @@ export default {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-top: 40px;
+        gap: 12px;
+        // margin-top: 40px;
     }
 
     .form-inputs {
-        width: 30%;
+        // width: 30%;
     }
 
     label {
         font-family: Maven Pro;
         font-style: Medium;
-        font-size: 21.33px;
+        font-size: 16px;
         color: #B5B4B9;
     }
 
@@ -847,11 +629,12 @@ export default {
     // justify-content: space-between;
 
 
-    >tr:nth-of-type(1){
+    >tr:nth-of-type(1) {
         margin-top: 30px;
     }
+
     tr {
-       
+
 
         th {
             font-family: 'Maven Pro';
@@ -860,7 +643,8 @@ export default {
             font-size: 14px;
             color: #696671;
         }
-        td{
+
+        td {
             font-size: 12px;
             padding-bottom: 1rem;
         }
@@ -873,7 +657,8 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    img{
+
+    img {
         width: 40%;
     }
 
@@ -881,7 +666,7 @@ export default {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 700;
-        font-size: 34px;
+        font-size: 24px;
         color: #4A4754;
     }
 }

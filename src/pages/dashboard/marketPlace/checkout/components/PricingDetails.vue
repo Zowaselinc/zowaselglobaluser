@@ -6,42 +6,45 @@
     <div class="pricing-details-wrapper">
         <div class="table-rows table-row-first">
             <div>Accepted Price</div>
-            <div>NGN 5,363,377</div>
+            <div>{{ order.product.currency }} {{ specification.price}}</div>
         </div>
         <div class="table-rows table-row-first">
             <div>Confirmed Quantity</div>
-            <div>500MT</div>
+            <div>{{ specification.qty }} MT</div>
         </div>
-        <div class="table-rows table-row-first">
+        <div v-if="false" class="table-rows table-row-first">
             <div>Delivery Date</div>
             <div>Dec 31 2022</div>
         </div>
         <div class="table-rows mb-0">
             <div>Total Price</div>
-            <div>NGN 1,770,020</div>
+            <div>{{order.product.currency}} {{ specification.price * specification.qty}}</div>
         </div>
     </div>
 
     <!-- for corporates view -->
-    <div class="payment-option-wrapper">
+    <div class="payment-option-wrapper" v-if="isCorporate">
         <!-- payment option header -->
         <h2>Payment Option</h2>
         <div class="payment-option d-flex flex-column">
             <!-- first item -->
-            <div class="delivery-options d-flex">
-                <div class="circle-outer d-flex justify-content-center align-items-center"><span
+            <div class="delivery-options d-flex" v-if="userData.type != 'red-hot'">
+                <div @click="setPayment('after_delivery')" 
+                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'after_delivery' ? 'active' : '']"><span
                         class="circle-inner"></span></div>
                 <div class="delivery-content">24 - 48hrs after delivery</div>
             </div>
             <!-- second item -->
-            <div class="delivery-options d-flex">
-                <div class="circle-outer d-flex justify-content-center align-items-center"><span
+            <div class="delivery-options d-flex" >
+                <div @click="setPayment('full')" 
+                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'full' ? 'active' : '']"><span
                         class="circle-inner"></span></div>
                 <div class="delivery-content">Full payment</div>
             </div>
             <!-- first item -->
-            <div class="delivery-options d-flex">
-                <div class="circle-outer active d-flex justify-content-center align-items-center"><span
+            <div class="delivery-options d-flex" v-if="userData.type != 'red-hot'">
+                <div @click="setPayment('advance')" 
+                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'advance' ? 'active' : '']"><span
                         class="circle-inner"></span></div>
                 <div class="delivery-content">Advance Payment</div>
             </div>
@@ -80,9 +83,8 @@
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Overage
                         Policy</h1>
-                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
-                <div class="modal-body container    ">
+                <div class="modal-body px-3 ">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Habitant morbi justo, ullamcorper urna
                     tristique. Ornare ut mi interdum nunc rutrum cursus aliquet. Posuere vel vel, tristique egestas. Sit
                     eu ac sed urna eleifend egestas praesent quis. Dui egestas gravida amet, vel. Facilisis lorem vel
@@ -124,9 +126,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Rejection Policy</h1>
-                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
-                <div class="modal-body container    ">
+                <div class="modal-body px-3">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Habitant morbi justo, ullamcorper urna
                     tristique. Ornare ut mi interdum nunc rutrum cursus aliquet. Posuere vel vel, tristique egestas. Sit
                     eu ac sed urna eleifend egestas praesent quis. Dui egestas gravida amet, vel. Facilisis lorem vel
@@ -163,6 +164,24 @@
 <script>
 export default {
     name: "PricingDetails",
+    props : {
+        order : Object
+    },
+    data(){
+        return {
+            paymentOption : 'full'
+        };
+    },
+    computed:{
+        specification(){
+            return this.order.negotiation ? this.order.negotiation.specification : this.order.product.specification;
+        },
+    },
+    methods : {
+        setPayment(type){
+            this.paymentOption = type;
+        }
+    }
 }
 </script>
 
@@ -170,10 +189,10 @@ export default {
 @import "@/assets/scss/main.scss";
 
 .pricing-details {
-    margin-block: 44px 8px;
+    margin-block: 30px 8px;
     color: #0A0D13;
     letter-spacing: -0.02em;
-    @include textStyles(Inter, 600, 24px, 28px);
+    @include textStyles(Inter, 600, 18px, 28px);
 }
 
 hr {
@@ -188,7 +207,7 @@ hr {
     position: relative;
     display: flex;
     flex-direction: row;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 
     >div {
         &:last-child:not(.quality-spec) {
@@ -197,12 +216,12 @@ hr {
         }
 
         &:nth-of-type(1) {
-            @include textStyles(Poppins, 800, 18px, 166.67%);
+            @include textStyles(Poppins, 800, 14px, 166.67%);
             color: rgba(45, 55, 72, 0.6);
         }
 
         &:nth-of-type(2) {
-            @include textStyles("Maven Pro", 700, 18px, 147%);
+            @include textStyles("Maven Pro", 700, 14px, 147%);
             color: #696671;
         }
     }
@@ -228,7 +247,7 @@ hr {
     margin-bottom: 40px;
 
     h2 {
-        @include textStyles(Poppins, 600, 24px, 32px);
+        @include textStyles(Poppins, 600, 18px, 32px);
         letter-spacing: 0.01em;
         font-feature-settings: 'liga' off;
         color: #1D1D1D;
@@ -245,12 +264,14 @@ hr {
     padding: 44px 0px 40px 36px;
 
     .delivery-options {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
     }
 
     .circle-outer {
-        width: 28px;
-        height: 28px;
+        width: 20px;
+        height: 20px;
         background: #FFFFFF;
         border: 1px solid #EDEDEE;
         box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.08);
@@ -274,7 +295,7 @@ hr {
 
     .delivery-content {
         margin-left: 20%;
-        @include textStyles(Poppins, 500, 20px, 33px);
+        @include textStyles(Poppins, 500, 16px, 33px);
         color: rgba(45, 55, 72, 0.6);
 
     }
@@ -301,7 +322,7 @@ hr {
             margin-left:  10%;
             margin-top: 10px;
             span{
-                @include textStyles(Poppins, 500, 16px, 27px);
+                @include textStyles(Poppins, 500, 14px, 27px);
                 color: rgba(45, 55, 72, 0.6);
             }
         }
@@ -331,7 +352,7 @@ hr {
     justify-content: center;
 
     h1 {
-        @include textStyles(Inter, 600, 24px, 28px);
+        @include textStyles(Inter, 600, 20px, 28px);
         letter-spacing: -0.02em;
         color: #0A0D13;
         border-bottom: 0px ! important;
@@ -350,7 +371,9 @@ hr {
         border-color: #05B050;
     }
 }
-
+.modal-body{
+    font-size: 14px;
+}
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 690px;

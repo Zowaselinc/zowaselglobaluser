@@ -6,27 +6,17 @@
                 <p>Empowering growers from seed to market</p>
             </div>
         <div class="second-bar">
-
+            <Filter></Filter>
             <div class="input-area" v-if="false">
                 <input type="text" placeholder="Search">
                 <div class="icon">
                     <img src="@/assets/images/vectors/Search.svg" alt="">
                 </div>
             </div>
-
-            <div class="button-area" v-if="userData.user.type == 'merchant'">
-                <a href="#" @click="changeTab('crops-wanted')" :class="[activeTab == 'crops-wanted' ? 'green-btns' : '']">Crops Wanted</a>
-                <a href="#" @click="changeTab('input-market')" :class="[activeTab == 'input-market' ? 'green-btns' : '']">Input Market</a>
-            </div>
-            
-            <div class="button-area" v-else-if="userData.user.type == 'corporate'">
-                <a href="#" @click="changeTab('crops-sale')" :class="[activeTab == 'crops-sale' ? 'green-btns' : '']">Crops for sale</a>
-                <a href="#" @click="changeTab('crops-auction')" :class="[activeTab == 'crops-auction' ? 'green-btns' : '']">Crop Auction</a>
-            </div>
         </div>
 
         <!-- MAIN CONTENT GOES HERE -->
-        <CropsForSale v-if="userData.user.type == 'corporate'" :type="activeTab"></CropsForSale>
+        <CorporateMarket v-if="userData.user.type == 'corporate'" :view="activeView"></CorporateMarket>
         </div>
 
 
@@ -37,24 +27,26 @@
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
 import MarketplaceService from "@/services/marketplace";
-import CropsForSale from "@/pages/dashboard/marketPlace/CropsSale.vue";
+import CorporateMarket from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
+import Filter from "@/pages/dashboard/marketPlace/components/Filter.vue"
 
 export default {
     name: 'Market',
     components: {
         DefaultNav,
-        CropsForSale
+        CorporateMarket,
+        Filter
     },
     data(){
         return {
             categories : [],
             userData : this.$store.state.user,
-            activeTab : ""
+            activeView : ""
         };
     },
     methods:{
         changeTab(tab){
-            this.activeTab = tab;
+            this.activeView = tab;
         },
         checked (){
             var box = document.getElementById('checkbox');
@@ -70,8 +62,7 @@ export default {
         },
     },
     mounted(){
-
-        this.activeTab = this.userData.user.type == "merchant" ? "crops-wanted" : "crops-sale";
+        this.activeView = this.$route.params.market;
         this.getCropCategories();
     }
 
@@ -88,6 +79,7 @@ export default {
     background: #F5F5F5;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
    
 
     @include breakpoint-between(md, lg) {
@@ -127,8 +119,7 @@ export default {
         }
     }
     .second-bar{
-         width: 100%;
-        background-color: white;
+        width: 100%;
         padding: 25px 0px;
         display: flex;
         flex-direction: column;
