@@ -117,20 +117,20 @@
                                 <p>Ikeja, Lagos, NIGERIA</p>
                                 <p>Waybil Number:</p>
                             </address>
-                            <div class="form-wrapper">
+                            <div class="form-wrapper" v-if="order">
                                 <!-- grid -->
                                 <div class="container text-center ">
                                     <div class="row">
                                         <div class="col row-item-1">DISPATCH SECTION</div>
                                     </div>
                                     <div class="row row-main">
-                                        <div class="col col-item-1">FROM:</div>
-                                        <div class="col-6 col-item-2">To:</div>
+                                        <div class="col col-item-1">FROM: {{ waybillDetails.dispatch_section.from }}</div>
+                                        <div class="col-6 col-item-2">To: {{ waybillDetails.dispatch_section.to }}</div>
                                     </div>
                                     <div class="row row-main">
-                                        <div class="col-4 col-item-1">DATE:</div>
-                                        <div class="col-4 col-item-2">COSIGNEE:</div>
-                                        <div class="col-4 col-item-2">Truck No./Trailer No:</div>
+                                        <div class="col-4 col-item-1">DATE: {{ waybillDetails.dispatch_section.date }}</div>
+                                        <div class="col-4 col-item-2">COSIGNEE: {{ waybillDetails.dispatch_section.cosignee }}</div>
+                                        <div class="col-4 col-item-2">Truck No./Trailer No: {{ waybillDetails.dispatch_section.truck_number }}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-4 row-item-general">S/No.</div>
@@ -138,41 +138,33 @@
                                         <div class="col-4 row-item-general">QUANTITY</div>
 
                                     </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
+                                    <div class="row" v-for="item,index in waybillDetails.dispatch_section.items" :key="index">
+                                        <div class="col-4 row-item-general">{{ index + 1 }}</div>
+                                        <div class="col-4 row-item-general"> {{ item.title  }}</div>
+                                        <div class="col-4 row-item-general">{{ item.specification.qty }}</div>
 
                                     </div>
                                     <div class="row row-main">
-                                        <div class="col col-item-1">REMARKS:</div>
+                                        <div class="col col-item-1">REMARKS: {{ waybillDetails.dispatch_section.remarks }}</div>
                                     </div>
                                     <div class="row row-main">
-                                        <div class="col col-item-1">Driver's Name:</div>
-                                        <div class="col-6 col-item-2">Seller's Representative:</div>
+                                        <div class="col col-item-1">Driver's Name: {{ waybillDetails.dispatch_section.drivers_data.drivers_name }}</div>
+                                        <div class="col-6 col-item-2">Seller's Representative: {{ waybillDetails.dispatch_section.sellers_data.sellers_representative }}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 row-item-general">Driving License/Permit #:</div>
-                                        <div class="col-6 row-item-general">Title:</div>
+                                        <div class="col-6 row-item-general">Driving License/Permit #: {{ waybillDetails.dispatch_section.drivers_data.driving_license }}</div>
+                                        <div class="col-6 row-item-general">Title: {{ waybillDetails.dispatch_section.sellers_data.title }}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 row-item-general">Signature and Date:</div>
-                                        <div class="col-6 row-item-general">Signature and Date:</div>
+                                        <div class="col-6 row-item-general">Signature and Date: {{ 
+                                                formatDate(waybillDetails.dispatch_section.drivers_data.date)
+                                            }}</div>
+                                        <div class="col-6 row-item-general">Signature and Date: {{ 
+                                            formatDate(waybillDetails.dispatch_section.sellers_data.date)
+                                        }}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col row-item-1">DISPATCH SECTION</div>
+                                        <div class="col row-item-1">RECEIPT SECTION</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-4 row-item-general">S/No.</div>
@@ -180,38 +172,30 @@
                                         <div class="col-4 row-item-general">QUANTITY</div>
 
                                     </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
+                                    <div class="row" v-for="item,index in waybillDetails.dispatch_section.items" :key="index">
+                                        <div class="col-4 row-item-general">{{ index + 1 }}</div>
+                                        <div class="col-4 row-item-general"> {{ item.title  }}</div>
+                                        <div class="col-4 row-item-general">{{ item.specification.qty }}</div>
 
                                     </div>
                                     <div class="row row-main">
-                                        <div class="col col-item-1">REMARKS:</div>
+                                        <div class="col col-item-1">REMARKS: {{ waybillDetails.receipt_section.remarks }}</div>
                                     </div>
                                     <div class="row row-main">
-                                        <div class="col-6 col-item-2">Seller's Representative:</div>
-                                        <div class="col col-item-1">Received by:</div>
+                                        <div class="col-6 col-item-2">Seller's Representative: {{ waybillDetails.receipt_section.sellers_data.sellers_representative }}</div>
+                                        <div class="col col-item-1">Received by:{{ waybillDetails.receipt_section.recipient_data.received_by }}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 row-item-general">Title:</div>
-                                        <div class="col-6 row-item-general">Title:</div>
+                                        <div class="col-6 row-item-general">Title: {{ waybillDetails.receipt_section.sellers_data.title }}</div>
+                                        <div class="col-6 row-item-general">Title: {{ waybillDetails.receipt_section.recipient_data.title }}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 row-item-general">Signature and Date:</div>
-                                        <div class="col-6 row-item-general">Signature and Date:</div>
+                                        <div class="col-6 row-item-general">Signature and Date: {{ 
+                                            formatDate(waybillDetails.receipt_section.sellers_data.date)
+                                            }}</div>
+                                        <div class="col-6 row-item-general">Signature and Date: {{ 
+                                            formatDate(waybillDetails.receipt_section.recipient_data.date)
+                                        }}</div>
                                     </div>
                                     <p class="way-bill mt-5 mb-4 container">
                                         The <strong>way bill</strong> puts the person in charge of the conveyance
@@ -246,13 +230,15 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
+import MarketPlaceService from "@/services/marketplace";
 
 export default {
     name: 'OrderTracking',
     data() {
         return {
             userData: this.$store.state.user,
-             orderProgress: 0
+            orderProgress: 0,
+            order : null
 
         }
     },
@@ -260,14 +246,32 @@ export default {
         DefaultNav,
     },
     computed: {
-
+        waybillDetails(){
+            return this.order ? JSON.parse(this.order.waybill_details) : null;
+        }
+    },
+    methods:{
+        formatDate(date){
+            var dateObject = (new Date(date));
+            var date = dateObject.getDate() < 10 ? "0"+dateObject.getDate() : dateObject.getDate()
+            var month = dateObject.getMonth()+1 < 10 ? "0"+(dateObject.getMonth()+1) : dateObject.getMonth()+1
+            return `${date}/${month}/${dateObject.getFullYear()}`;
+        },
+        getOrder(order){
+            MarketPlaceService.getOrder(order,(response)=>{
+                var order = response.data;
+                order.products = JSON.parse(order.products);
+                this.order = order;
+            })
+        }
     },
     mounted() {
-        setInterval(() => {
-            if (this.orderProgress < 100) {
-                this.orderProgress++;
-            }
-        }, 100);
+        // setInterval(() => {
+        //     if (this.orderProgress < 100) {
+        //         this.orderProgress++;
+        //     }
+        // }, 100);
+        this.getOrder(this.$route.params.order);
     }
 }
 </script>

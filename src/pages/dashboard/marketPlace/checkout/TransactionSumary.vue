@@ -22,7 +22,7 @@
                         <div class="transactin-details d-flex flex-column">
                             <div class="table-rows table-row-first">
                                 <div>Crop Type:</div>
-                                <div>{{ order.product.subcategory.name }}</div>
+                                <div>{{ order.products[0].subcategory.name }}</div>
                             </div>
                             <div class="table-rows">
                                 <div class="quality-spec">Quality Specs</div>
@@ -49,7 +49,7 @@
                             </div>
                             <div class="table-rows">
                                 <div>Seller Details:</div>
-                                <div>{{ order.product.user.first_name + " " + order.product.user.last_name }}</div>
+                                <div>{{ order.products[0].user.first_name + " " + order.products[0].user.last_name }}</div>
                             </div>
                             <div v-if="false" class="table-rows">
                                 <div>Transaction ID:</div>
@@ -77,7 +77,7 @@
                             <!-- for corporates view -->
                             <a 
                                 v-if="isCorporate"
-                                :href="'/marketplace/payments/'+$route.params.order"
+                                :href="'/dashboard/marketplace/payments/'+$route.params.order"
                                 :class="['btn', 'coperate-btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button">Proceed to payment
                             </a>
@@ -101,7 +101,7 @@
                         <PricingDetails :order="order" v-if="(activeTab == 'pricingdetails' && step == 1)"></PricingDetails>
                         <FullSpecification :order="order" v-if="(activeTab == 'fullspec' && step == 1)"></FullSpecification>
                         <PurchaseOrder :order="order" v-if="(activeTab == 'purchaseorder' && step == 1)"></PurchaseOrder>
-                        <WaybillDetails ref="wayBill" :updateStep="updateWaybill" v-if="(step == 2) && isMerchant"></WaybillDetails>
+                        <WaybillDetails ref="wayBill" :order="order" :updateStep="updateWaybill" v-if="(step == 2) && isMerchant"></WaybillDetails>
                     </div>
                 </div>
             </div>
@@ -153,7 +153,7 @@ export default {
             return this.$refs.wayBill;
         },
         specification(){
-            return this.order.negotiation ? this.order.negotiation.specification : this.order.product.specification;
+            return this.order.negotiation ? this.order.negotiation.specification : this.order.products[0].specification;
         },
         orderDate(){
             return new Date(this.order.created_at);
@@ -182,7 +182,7 @@ export default {
         getOrder(order){
             MarketPlaceService.getOrder(order,(response)=>{
                 var order = response.data;
-                order.product = JSON.parse(order.product);
+                order.products = JSON.parse(order.products);
                 this.order = order;
             })
         }

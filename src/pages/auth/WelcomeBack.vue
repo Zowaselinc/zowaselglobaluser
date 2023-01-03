@@ -71,11 +71,9 @@ export default {
                 if (!response.error) {
                     this.$store.dispatch('setAuth', {
                         token: response.token,
-                        key: response.user.id,
+                        key: response.user.user_id,
                     })
-                    this.$store.dispatch('setUser',{
-                        user : response.user
-                    })
+                    this.$store.dispatch('setUser',response.user)
 
                     window.localStorage.setItem('authToken', response.token);
                     vm.$router.push('/dashboard');

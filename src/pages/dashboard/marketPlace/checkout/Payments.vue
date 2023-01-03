@@ -44,7 +44,7 @@
                             :class="['btn', 'btn-procceed-waybil']"
                             type="button" @click="changeTab('balancepayment')" v-if="activeTab == 'ordersummary'">Confim Payment
                         </a>
-                        <a href="/marketplace/confirmpayments"
+                        <a href="/dashboard/marketplace/confirmpayments"
                             :class="['btn', 'btn-procceed-waybil']"
                             type="button" v-if="activeTab == 'balancepayment' && false" >Confim Payment
                         </a>
@@ -116,7 +116,7 @@ export default {
                         },(response)=>{
                             console.log(response);
                             if(!response.error){
-                                vm.$router.push(`/marketplace/confirmpayments/${vm.order.order_hash}`);
+                                vm.$router.push(`/dashboard/marketplace/confirmpayments/${vm.order.order_hash}`);
                             }
                         });
                     }
@@ -142,7 +142,7 @@ export default {
                     name: `${this.userData.user.first_name} ${this.userData.user.last_name}`,
                 },
                 customizations: {
-                    title: this.order.product.title,
+                    title: this.order.products[0].title,
                     description: "Payment for order",
                     logo : "https://cdn.filestackcontent.com/SrotkZlqT6iXtiA20Q14"
                 },
@@ -161,7 +161,7 @@ export default {
         getOrder(order){
             MarketPlaceService.getOrder(order,(response)=>{
                 var order = response.data;
-                order.product = JSON.parse(order.product);
+                order.products = JSON.parse(order.products);
                 this.order = order;
                 this.makePayment();
             })

@@ -26,6 +26,14 @@ export default {
             }
             return result;
         },
+        placeString(string, defaultValue, data={}){
+            let extra = {
+                prefix : "",
+                suffix : "",
+                ...data
+            };
+            return (string && string != "") ? `${extra.prefix}${string}${extra.suffix}` : defaultValue;
+        },
         logOut() {
             if (this.$store.state.authData.token) {
                 this.$store.dispatch('setAuth', null);
