@@ -309,17 +309,10 @@ const routes = [
         component:NewTicket
     },
     {
-        path: "/dashboard/wallet",
-        name: "Wallet",
-        component:Wallet
+        path: "/dashboard/cropwanted",
+        name: "CropWanted",
+        component: CropWanted
     },
-    {
-        path: "/dashboard/fundwallet",
-        name: "FundWallet",
-        component:FundWallet
-    },
-
-    
     
 
 ];

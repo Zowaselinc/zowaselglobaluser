@@ -23,60 +23,40 @@
                     </div>
                     <div class="rowz d-flex align-items-center mb-2 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">Fertilizers</div>
                         </div>
                         <div class="number-identifier "><span>54688</span></div>
                     </div>
                     <div class="rowz d-flex align-items-center mb-2 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">Herbicides</div>
                         </div>
                         <div class="number-identifier "><span>345890</span></div>
                     </div>
                     <div class="rowz d-flex align-items-center mb-2 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">Fungicides</div>
                         </div>
                         <div class="number-identifier "><span>47953</span></div>
                     </div>
                     <div class="rowz d-flex align-items-center mb-2 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">Insectides</div>
                         </div>
                         <div class="number-identifier "><span>56780</span></div>
                     </div>
                     <div class="rowz d-flex align-items-center mb-2 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">Seeds</div>
                         </div>
                         <div class="number-identifier "><span>234789</span></div>
@@ -92,7 +72,7 @@
                             <div class="progress"></div>
                         </div>
                         <div id="circle-1" class="circlee  circle-1 position-absolute"><span></span></div>
-                        <div id="circle-2" class="circlee   circle-2 position-absolute"><span></span></div>
+                        <div id="circle-2" class="circlee  circle-2 position-absolute"><span></span></div>
                     </div>
                     <div class="d-flex mt-2">
                         <div class="col">
@@ -116,47 +96,31 @@
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">Dangote refinery</div>
                         </div>
 
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">Nasco </div>
                         </div>
 
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">60 Days</div>
                         </div>
                     </div>
                     <div class="rowz d-flex align-items-center  position-relative ">
                         <div class="filter-words d-flex">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">Carbury</div>
                         </div>
                     </div>
@@ -167,43 +131,31 @@
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">Hybrid</div>
                         </div>
 
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">Normal</div>
                         </div>
 
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">Organic</div>
                         </div>
 
                     </div>
                 </div>
                 <!-- row 3 -->
-   
+
                 <div class="filter-item d-flex flex-column row-3 ">
                     <!-- type -->
                     <div class="rowz d-flex align-items-center mb-3">
@@ -211,21 +163,13 @@
                     </div>
                     <div class="rowz d-flex align-items-center mb-3 position-relative">
                         <div class="filter-words d-flex">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">Zowasel</div>
                         </div>
                         <div class="filter-words d-flex ms-4">
-                            <div class="checkbox-container">
-                                <input class="checkbox-input" type="checkbox" />
-                                <div class="checkbox d-flex justify-content-center align-content-center">
-                                    <img src="@/assets/images/vectors/tick-white.svg">
-                                </div>
-                            </div>
+                            <!-- checkbox component -->
+                            <Checkbox></Checkbox>
                             <div class="ms-3 check-words">Self Transport</div>
                         </div>
 
@@ -260,6 +204,7 @@
 </template>
 
 <script>
+import Checkbox from "@/components/Checkbox.vue";
 export default {
     methods: {
         toggleFilter() {
@@ -270,6 +215,9 @@ export default {
                 filterWrapper.classList.toggle('active');
             })
         }
+    },
+    components: {
+        Checkbox
     },
     mounted() {
         this.toggleFilter();
@@ -365,40 +313,6 @@ export default {
                 .filter-words {
                     align-items: center;
                 }
-
-                .checkbox-container {
-                    width: 18px;
-                    height: 18px;
-                }
-
-                .checkbox-input {
-                    position: absolute;
-                    opacity: 0;
-                    width: 100%;
-                    height: 100%;
-                }
-
-                .checkbox {
-                    border: 2px solid #D1D1D1;
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 3px;
-
-                    img {
-                        display: none;
-                    }
-                }
-
-                .checkbox-input:checked+.checkbox {
-                    background: #05B050;
-                    border: 1.5px solid #047B38;
-
-                    img {
-                        display: block !important;
-                        width: 80%;
-                    }
-                }
-
 
                 .check-words {
                     @include textStyles('Maven Pro', 400, 14px, 24px);
