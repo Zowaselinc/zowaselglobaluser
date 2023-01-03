@@ -28,7 +28,7 @@ import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
 import Settings from "@/pages/dashboard/settings/Settings.vue";
 import MarketPlace from "@/pages/dashboard/marketPlace/Market.vue";
 import TransactionSumary from "@/pages/dashboard/marketPlace/checkout/TransactionSumary.vue";
-import OrderTracking from "@/pages/dashboard/marketPlace/ordering/OrderTracking.vue";
+import OrderTracking from "@/pages/dashboard/marketPlace/checkout/OrderTracking.vue";
 import Product from "@/pages/dashboard/marketPlace/ProductPage.vue";
 import ProductDescription from "@/pages/dashboard/marketPlace/ProductDescription.vue";
 import CardPayment from "@/pages/dashboard/marketPlace/CardPayment.vue";
@@ -37,9 +37,9 @@ import Transactions from "@/pages/dashboard/marketPlace/Transactions.vue";
 import MyProducts from "@/pages/dashboard/marketPlace/MyProducts.vue";
 import TrackingOrder from "@/pages/dashboard/marketPlace/TrackingOrder.vue";
 import CardDetails from "@/pages/dashboard/marketPlace/CardDetails.vue"
-import Payments from "@/pages/dashboard/marketPlace/payment/Payments.vue";
-import Confirm from "@/pages/dashboard/marketPlace/payment/Confirm.vue";
-import PaymentsConfirmed from "@/pages/dashboard/marketPlace/payment/PaymentsConfirmed.vue";
+// import Payments from "@/pages/dashboard/marketPlace/checkout/Payments.vue";
+import Confirm from "@/pages/dashboard/marketPlace/checkout/Confirm.vue";
+// import PaymentsConfirmed from "@/pages/dashboard/marketPlace/checkout/PaymentsConfirmed.vue";
 import Invoice from "@/pages/dashboard/Invoice.vue";
 import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
 import Loan from "@/pages/dashboard/Loan.vue";
@@ -283,21 +283,21 @@ const routes = [
         name: "TrackingOrder",
         component:TrackingOrder
     },
-    {
-        path: "/marketplace/payments",
-        name: "Payments",
-        component:Payments
-    },
+    // {
+    //     path: "/marketplace/payments",
+    //     name: "Payments",
+    //     component:Payments
+    // },
     {
         path: "/marketplace/confirmpayments",
         name: "Confirm",
         component:Confirm
     },
-    {
-        path: "/marketplace/paymentsconfirmed",
-        name: "PaymentsConfirmed",
-        component:PaymentsConfirmed
-    },
+    // {
+    //     path: "/marketplace/paymentsconfirmed",
+    //     name: "PaymentsConfirmed",
+    //     component:PaymentsConfirmed
+    // },
     {
         path: "/dashboard/tickets",
         name: "Tickets",
