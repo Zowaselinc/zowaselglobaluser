@@ -8,24 +8,24 @@
                     <div class="w-100 mb-2">
                         <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Crop Description</label>
                         <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                            aria-describedby="emailHelp" placeholder="Crop Description">
+                            aria-describedby="emailHelp" placeholder="Crop Description" v-model="goodsReceiptNote.crop_description">
                     </div>
                     <div class="w-100 mb-2">
                         <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Packaging/Bagging</label>
                         <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                            aria-describedby="emailHelp" placeholder="Packaging/Bagging">
+                            aria-describedby="emailHelp" placeholder="Packaging/Bagging" v-model="goodsReceiptNote.packaging">
                     </div>
                     <div class="w-100 d-flex flex-row gap-3 mb-2">
                         <div class="w-100">
                             <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Number of
                                 Bags</label>
                             <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Number of Bags">
+                                aria-describedby="emailHelp" placeholder="Number of Bags" v-model="goodsReceiptNote.no_of_bags">
                         </div>
                         <div class="w-100">
                             <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Scale Type</label>
                             <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Scale Type">
+                                aria-describedby="emailHelp" placeholder="Scale Type" v-model="goodsReceiptNote.scale_type">
                         </div>
                     </div>
 
@@ -33,47 +33,47 @@
                         <div class="w-100">
                             <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Gross weight</label>
                             <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Gross weight">
+                                aria-describedby="emailHelp" placeholder="Gross weight" v-model="goodsReceiptNote.gross_weight">
                         </div>
                         <div class="w-100">
                             <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Tare Weight</label>
                             <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Tare Weight">
+                                aria-describedby="emailHelp" placeholder="Tare Weight" v-model="goodsReceiptNote.tare_weight">
                         </div>
                     </div>
                     <div class="w-50 mb-2">
                         <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Net Weight</label>
                         <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                            aria-describedby="emailHelp" placeholder="Net Weight">
+                            aria-describedby="emailHelp" placeholder="Net Weight" v-model="goodsReceiptNote.net_weight">
                     </div>
                     <div class="w-100 d-flex flex-row gap-3 mb-2">
                         <div class="w-100">
                             <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Rejected Quantity</label>
                             <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Rejected Quantity">
+                                aria-describedby="emailHelp" placeholder="Rejected Quantity" v-model="goodsReceiptNote.rejected_quantity">
                         </div>
                         <div class="w-100">
                             <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Accepted Quantity</label>
                             <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Accepted Quantity">
+                                aria-describedby="emailHelp" placeholder="Accepted Quantity" v-model="goodsReceiptNote.accepted_quantity">
                         </div>
                     </div>
                     <div class="w-100 d-flex flex-row gap-3 mb-2">
                         <div class="w-100">
                             <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Rate</label>
                             <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Rate">
+                                aria-describedby="emailHelp" placeholder="Rate" v-model="goodsReceiptNote.rate">
                         </div>
                         <div class="w-100">
                             <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Discount </label>
                             <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Discount">
+                                aria-describedby="emailHelp" placeholder="Discount" v-model="goodsReceiptNote.discount">
                         </div>
                     </div>
                     <div class="w-100 mb-4">
                         <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Total Vale</label>
                         <input type="text" class="form-control mt-0" id="exampleInputEmail1"
-                            aria-describedby="emailHelp" placeholder="Total Vale">
+                            aria-describedby="emailHelp" placeholder="Total Vale" v-model="goodsReceiptNote.total_value">
                     </div>
 
 
@@ -81,7 +81,7 @@
                 <button :class="['btn', 'table-btn', 'w-100']" type="button">
                     Attach supporting document
                 </button>
-                <button :class="['btn', 'table-btn', 'w-100']" type="button">
+                <button :class="['btn', 'table-btn', 'w-100']" @click="submitGoodsReceipt()" type="button">
                     Generate Receipt Note
                 </button>
             </div>
@@ -90,8 +90,35 @@
 </template>
 
 <script>
+
 export default {
     name: 'GoodsNotes',
+    props : {
+        saveGoodsReceipt : Function
+    },
+    data(){
+        return {
+            goodsReceiptNote : {
+                crop_description : "",
+                packaging : "",
+                no_of_bags : "",
+                scale_type : "",
+                gross_weight : "",
+                tare_weight : "",
+                net_weight : "",
+                rejected_quantity : "",
+                accepted_quantity : "",
+                rate : "",
+                discount : "",
+                total_value : ""
+            }
+        }
+    },
+    methods:{
+        submitGoodsReceipt(){
+            this.saveGoodsReceipt(this.goodsReceiptNote);
+        }
+    }
 }
 </script>
 

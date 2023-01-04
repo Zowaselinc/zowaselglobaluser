@@ -87,20 +87,22 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a class="btn payment-status" v-if="(orderProgress != 100)">Payment Status: Pending</a>
-                    <a id="payment-state" class="btn payment-status" v-if="(orderProgress == 100)">Payment Status:
-                        <strong>Completed</strong></a>
-                    <a class="btn payment-status wallet d-inline-block position-absolute"
-                        v-if="(orderProgress == 100)">Go to wallet</a>
-                    <!-- for corporates view -->
-                    <a class="btn payment-status d-block confirm-delivery" v-if="(orderProgress == 100)">Confirm Delivery</a>
-                    <a class="btn payment-status wallet d-block w-100"
-                        v-if="(orderProgress == 100)">Confirm Delivery</a>
+                    <template v-if="order">
+                        <a class="btn payment-status" v-if="(orderProgress != 100)">Payment Status: Pending</a>
+                        <a id="payment-state" class="btn payment-status" v-if="(orderProgress == 100)">Payment Status:
+                            <strong>Completed</strong></a>
+                        <a class="btn payment-status wallet d-inline-block position-absolute"
+                            v-if="order.buyer_id != userData.user.id">Go to wallet</a>
+                        <!-- for corporates view -->
+                        <a class="btn payment-status d-block confirm-delivery" v-if="false" >Confirm Delivery</a>
+                        <a class="btn payment-status wallet d-block w-100" @click="goodsReceipt()"  v-if="(orderProgress == 100) || true">Confirm Delivery</a>
+                    </template>
+
 
                 </div>
             </div>
             <!-- right -->
-            <div class="right-container">
+            <div v-if="stage == 'confirm'" class="right-container">
                 <div class="right-container-wrapper">
                     <h1>Waybill details</h1>
                     <hr>
@@ -217,6 +219,9 @@
                     </div>
                 </div>
             </div>
+
+            <GoodsNotes v-if="stage == 'upload-receipt'" :saveGoodsReceipt="saveGoodsReceipt"/>
+            <GoodsReceipt v-if="stage == 'receipt-uploaded'"/>
         </div>
 
             
@@ -231,6 +236,9 @@
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
 import MarketPlaceService from "@/services/marketplace";
+import GoodsNotes from "@/pages/dashboard/marketPlace/checkout/components/GoodsNotes.vue";
+import GoodsReceipt from "@/pages/dashboard/marketPlace/checkout/components/GoodReceipt.vue";
+import OrderService from "@/services/order";
 
 export default {
     name: 'OrderTracking',
@@ -238,12 +246,15 @@ export default {
         return {
             userData: this.$store.state.user,
             orderProgress: 0,
-            order : null
+            order : null,
+            stage : "confirm"
 
         }
     },
     components: {
         DefaultNav,
+        GoodsNotes,
+        GoodsReceipt
     },
     computed: {
         waybillDetails(){
@@ -263,6 +274,20 @@ export default {
                 order.products = JSON.parse(order.products);
                 this.order = order;
             })
+        },
+        goodsReceipt(){
+            this.stage = "upload-receipt"
+        },
+        saveGoodsReceipt(data){
+            let vm = this;
+            OrderService.saveGoodsReceiptNote({
+                order : this.order.order_hash,
+                goodsReceiptNote : data
+            },(response)=>{
+                if(!response.error){
+                    vm.stage = "receipt-uploaded";
+                }
+            });
         }
     },
     mounted() {
