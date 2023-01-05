@@ -37,9 +37,9 @@ import Transactions from "@/pages/dashboard/marketPlace/Transactions.vue";
 import MyProducts from "@/pages/dashboard/marketPlace/MyProducts.vue";
 import TrackingOrder from "@/pages/dashboard/marketPlace/TrackingOrder.vue";
 import CardDetails from "@/pages/dashboard/marketPlace/CardDetails.vue"
-// import Payments from "@/pages/dashboard/marketPlace/checkout/Payments.vue";
+import Payments from "@/pages/dashboard/marketPlace/checkout/Payments.vue";
 import Confirm from "@/pages/dashboard/marketPlace/checkout/Confirm.vue";
-// import PaymentsConfirmed from "@/pages/dashboard/marketPlace/checkout/PaymentsConfirmed.vue";
+import PaymentsConfirmed from "@/pages/dashboard/marketPlace/checkout/PaymentsConfirmed.vue";
 import Invoice from "@/pages/dashboard/Invoice.vue";
 import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
 import Loan from "@/pages/dashboard/Loan.vue";
@@ -49,8 +49,6 @@ import CropsSale from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
 import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation.vue";
 import Negotiations from "@/pages/dashboard/Negotiations.vue";
 import CropWanted from "@/pages/dashboard/CropWanted.vue";
-
-
 
 const routes = [
     {
@@ -283,21 +281,21 @@ const routes = [
         name: "TrackingOrder",
         component:TrackingOrder
     },
-    // {
-    //     path: "/marketplace/payments",
-    //     name: "Payments",
-    //     component:Payments
-    // },
+    {
+        path: "/marketplace/payments",
+        name: "Payments",
+        component:Payments
+    },
     {
         path: "/marketplace/confirmpayments",
         name: "Confirm",
         component:Confirm
     },
-    // {
-    //     path: "/marketplace/paymentsconfirmed",
-    //     name: "PaymentsConfirmed",
-    //     component:PaymentsConfirmed
-    // },
+    {
+        path: "/marketplace/paymentsconfirmed",
+        name: "PaymentsConfirmed",
+        component:PaymentsConfirmed
+    },
     {
         path: "/dashboard/tickets",
         name: "Tickets",
