@@ -22,16 +22,16 @@
                         aria-describedby="emailHelp" placeholder="Seller Information">
                 </div>
                 <div class="">
-                    <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Consignee</label>
-                    <input type="email" v-model="dispatch.consignee" class="form-control mt-0" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" placeholder="Consignee">
+                    <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Cosignee</label>
+                    <input type="email" v-model="dispatch.cosignee" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Cosignee">
                 </div>
             </div>
             <div class="inputs-group  margin-btm-lg">
                 <div class="">
                     <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Truck Number</label>
-                    <input type="" v-model="dispatch.truckNumber" class="form-control mt-0" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" placeholder="Truck Number">
+                    <input type="" v-model="dispatch.truck_number" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Truck Number">
                 </div>
             </div>
             <div class="inputs-group  margin-btm-lg">
@@ -57,49 +57,37 @@
             <div class="inputs-group  margin-btm-lg">
                 <div class="">
                     <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Drivers Name</label>
-                    <input type="" v-model="dispatch.driversName" class="form-control mt-0" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" placeholder="Drivers Name">
+                    <input type="" v-model="dispatch.drivers_data.drivers_name" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Drivers Name">
                 </div>
                 <div class="">
                     <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Sellers Representative</label>
-                    <input type="email" v-model="dispatch.sellersRepresentative" class="form-control mt-0"
-                        id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Sellers Representative">
+                    <input type="email" v-model="dispatch.sellers_data.sellers_representative" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Sellers Representative">
                 </div>
             </div>
             <div class="inputs-group  margin-btm-lg">
                 <div class="">
                     <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Driving License/ Permit
                         Number</label>
-                    <input v-model="dispatch.drivingLicense" type="" class="form-control mt-0" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" placeholder="Driving License/ Permit Number">
+                    <input v-model="dispatch.drivers_data.driving_license" type="" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Driving License/ Permit Number">
                 </div>
                 <div class="">
                     <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Title</label>
-                    <input type="email" v-model="dispatch.title" class="form-control mt-0" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" placeholder="Title">
-                </div>
-            </div>
-            <div class="inputs-group  margin-btm-lg">
-                <div class="">
-                    <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Signature</label>
-                    <input type="file" class="form-control mt-0" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" placeholder="Signature">
-                </div>
-                <div class="">
-                    <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Signature</label>
-                    <input type="file" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Signature">
+                    <input type="email" v-model="dispatch.sellers_data.title" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Title">
                 </div>
             </div>
             <div class="inputs-group  margin-btm-lg">
                 <div class="">
                     <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Date</label>
-                    <input type="" v-model="dispatch.date" class="form-control mt-0" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" placeholder="Date">
+                    <input type="" v-model="dispatch.drivers_data.date" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Date">
                 </div>
                 <div class="">
                     <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Date</label>
-                    <input type="" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    <input type="" v-model="dispatch.sellers_data.date" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
                         placeholder="Date">
                 </div>
             </div>
@@ -121,19 +109,25 @@ export default {
     },
     data() {
         return {
-            dispatch: {
-                from: "",
-                to: "",
-                date: "",
-                consignee: "",
-                truckNumber: "",
-                description: "",
-                quantity: "",
-                remarks: "",
-                driversName: "",
-                sellersRepresentative: "",
-                drivingLicense: "",
-                title: ""
+            dispatch : {
+                from : "",
+                to : "",
+                date : "",
+                cosignee : "",
+                truck_number : "",
+                description : "",
+                quantity : "",
+                remarks : "",
+                drivers_data : {
+                    drivers_name : "",
+                    driving_license : "",
+                    date : (new Date()).toDateString()
+                },
+                sellers_data : {
+                    sellers_representative : "",
+                    title : "",
+                    date : (new Date()).toDateString()
+                },
             },
         }
     },

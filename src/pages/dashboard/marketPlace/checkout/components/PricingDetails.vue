@@ -6,7 +6,7 @@
     <div class="pricing-details-wrapper">
         <div class="table-rows table-row-first">
             <div>Accepted Price</div>
-            <div>{{ order.product.currency }} {{ specification.price}}</div>
+            <div>{{ order.products[0].currency }} {{ specification.price}}</div>
         </div>
         <div class="table-rows table-row-first">
             <div>Confirmed Quantity</div>
@@ -18,7 +18,7 @@
         </div>
         <div class="table-rows mb-0">
             <div>Total Price</div>
-            <div>{{order.product.currency}} {{ specification.price * specification.qty}}</div>
+            <div>{{order.products[0].currency}} {{ specification.price * specification.qty}}</div>
         </div>
     </div>
 
@@ -174,7 +174,7 @@ export default {
     },
     computed:{
         specification(){
-            return this.order.negotiation ? this.order.negotiation.specification : this.order.product.specification;
+            return this.order.negotiation ? this.order.negotiation.specification : this.order.products[0].specification;
         },
     },
     methods : {

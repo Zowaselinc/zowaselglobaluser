@@ -1,6 +1,6 @@
 <template>
     <div class="right-container">
-        <div class="left-container-wrapper">
+        <div class="left-container-wrapper" v-if="order">
             <!-- order summary -->
             <h2>Order Summary</h2>
             <hr>
@@ -13,7 +13,7 @@
                 <tr>
                     <th>Amount
                     </th>
-                    <td>NGN1,770,000</td>
+                    <td>{{ order.currency }} {{ order.total }}</td>
                 </tr>
                 <tr>
                     <th>VAT
@@ -26,7 +26,7 @@
                 <tr>
                     <th>Total Cost
                     </th>
-                    <td>₦ 1,770,020</td>
+                    <td>{{ order.currency }} {{ order.total }}</td>
                 </tr>
             </table>
 
@@ -36,7 +36,10 @@
 
 <script>
 export default {
-    name: "OrderSummary"
+    name: "OrderSummary",
+    props : {
+        order : Object
+    }
 }
 </script>
 

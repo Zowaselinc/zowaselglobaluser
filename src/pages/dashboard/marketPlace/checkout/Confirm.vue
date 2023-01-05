@@ -8,20 +8,19 @@
                 </div>
                 <div class="text-container w-75 mb-5 text-center">
                     <h1>Order Confirmed</h1>
-                    <p class="text-justify">You have successfully registered with Zowasel as a {{type}}. Proceed to your
-                        dashboard to set up account.
+                    <p class="text-justify">Your order has been confirmed and payment received.
                     </p>
                 </div>
                 <div class="d-grid w-75">
-                    <a href="/dashboard/marketplace/:market" :class="['btn', 'btn-goto-marketplace', 'mb-3 ']"
+                    <a href="/dashboard/marketplace/cropsale" :class="['btn', 'btn-goto-marketplace', 'mb-3 ']"
                         type="button">Go to
                         market place
                     </a>
-                    <a href="/marketplace/ordertracking" :class="['btn', 'btn-track', 'mt-2 mb-4']" type="button">Track
+                    <a href="/dashboard/marketplace/ordertracking" :class="['btn', 'btn-track', 'mt-2 mb-4']" type="button">Track
                         order
                     </a>
                     <!-- for buyers view -->
-                    <a href="/marketplace/ordertracking" :class="['btn', 'btn-track', 'mt-2 mb-1']" type="button">Print
+                    <a href="/dashboard/marketplace/ordertracking" :class="['btn', 'btn-track', 'mt-2 mb-1']" type="button">Print
                         reciept
                     </a>
                 </div>

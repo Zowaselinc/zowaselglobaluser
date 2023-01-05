@@ -66,9 +66,19 @@
                                 </div>
                                 <div class="bottom-container" v-if="message.sender_id != sender.id">
                                     <div class="check-buttons">
-                                        <input type="checkbox" :disabled="message.status == 'declined' ? '' : null" @click="acceptOffer(message)">
+                                        <input 
+                                            type="checkbox" 
+                                            :disabled="message.status == 'declined' ? '' : null"  
+                                            @click="acceptOffer(message)"
+                                            :checked="message.status == 'accepted' || message.status == 'closed'? '' : null"
+                                        />
                                         <label for="">Accept</label>
-                                        <input type="checkbox" :disabled="message.status == 'accepted' ? '' : null" @click="declineOffer(message)">
+                                        <input 
+                                            type="checkbox" 
+                                            :disabled="message.status == 'accepted' ? '' : null"
+                                            @click="declineOffer(message)"
+                                            :checked="message.status == 'declined' ? '' : null"
+                                        />
                                         <label for="">Decline</label>
                                     </div>
                                     <div class="timed">

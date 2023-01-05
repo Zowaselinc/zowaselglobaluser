@@ -5,26 +5,26 @@
             <img class="img-fluid collapse-icon" src="@/assets/images/vectors/col.svg" alt="collaspse-icon">
 
             <a href="/dashboard" class="nav-item" aria-current="true">
-                <div id="home" class="ripple active-menu active-item ">
+                <div id="home" :class="['ripple', 'active-menu',' active-item', isRouteActive('/dashboard') ]">
                     <img class="img-fluid" src="@/assets/images/vectors/house.svg" alt="house">
                     <span>Home</span>
                 </div>
             </a>
 
             <a href="/dashboard/wallet" class="nav-item">
-                <div class="ripple active-item">
+                <div :class="['ripple','active-item', isRouteActive('/dashboard/wallet') ]">
                     <img class="img-fluid" src="@/assets/images/vectors/Wallet.svg" alt="wallet">
                     <span>Wallet</span>
                 </div>
             </a>
             <a href="/dashboard/messages" class="nav-item">
-                <div class="ripple active-item">
+                <div :class="['ripple', 'active-item', isRouteActive('/dashboard/messages') ]">
                     <img class="img-fluid" src="@/assets/images/vectors/ChatText.svg"
                         alt="ChatText"><span>Message</span>
                 </div>
             </a>
             <a href="javascript:void(0)" class="nav-item">
-                <div class="ripple accordion-header">
+                <div :class="['ripple', 'accordion-header', isRouteActive('/dashboard/marketplace') ]">
                     <img class="img-fluid" src="@/assets/images/vectors/Storefront.svg"
                         alt="marketplace"><span>Marketplace</span>
                     <img class="arrow-symbol carret-down" src="@/assets/images/vectors/arrowSymbol.svg"
@@ -46,13 +46,13 @@
                 </div>
             </a>
             <a href="/dashboard/negotiations" class="nav-item">
-                <div class="ripple active-menu">
+                <div :class="['ripple', 'active-item', isRouteActive('/dashboard/negotiations') ]">
                     <img class="img-fluid" src="@/assets/images/vectors/ChatText.svg"
                         alt="ChatText"><span>Negotiations</span>
                 </div>
             </a>
             <a href="javascript:void(0)" class="nav-item">
-                <div class="ripple accordion-header">
+                <div :class="['ripple','accordion-header', isRouteActive('/dashboard/credit') ]">
                     <img class=" side-bar-icon img-fluid" src="@/assets/images/vectors/marketPlace.svg"
                         alt="Credit Scoring"><span>Credit
                         Scoring</span>
@@ -72,13 +72,13 @@
             </a>
             <!-- no page available -->
             <a href="/dashboard/invoice" class="nav-item">
-                <div class="ripple active-menu">
+                <div :class="['ripple', 'active-item',  isRouteActive('/dashboard/invoice') ]">
                     <img class="img-fluid" src="@/assets/images/vectors/File.svg" alt="file"><span>Invoice</span>
 
                 </div>
             </a>
             <a href="javascript:void(0)" class="nav-item">
-                <div class="ripple accordion-header">
+                <div :class="['ripple', 'accordion-header' ,isRouteActive('/dashboard/subscription') ]">
                     <img class="img-fluid" src="@/assets/images/vectors/Folder.svg" alt="folder"><span>API &
                         subscription</span>
                     <img class="arrow-symbol carret-down" src="@/assets/images/vectors/arrowSymbol.svg"
@@ -96,7 +96,7 @@
                 </div>
             </a>
             <a href="javascript:void(0)" class="nav-item">
-                <div class="ripple accordion-header">
+                <div :class="['ripple', 'accordion-header' ,isRouteActive('/dashboard/data') ]">
                     <img class="img-fluid" src="@/assets/images/vectors/Data.svg" alt="Data"><span>Data</span>
                     <img class="arrow-symbol carret-down" src="@/assets/images/vectors/arrowSymbol.svg"
                         alt="Arrow-Symbol">
@@ -114,20 +114,20 @@
                 </div>
             </a>
             <a href="/dashboard/tickets" class="nav-item">
-                <div class="ripple active-menu">
+                <div :class="['ripple', 'active-item' ,isRouteActive('/dashboard/support') ]">
                     <img class="img-fluid" src="@/assets/images/vectors/Info.svg" alt="info"><span>Support</span>
 
                 </div>
             </a>
             <a href="/dashboard/settings" class="nav-item">
-                <div class="ripple active-menu">
+                <div :class="['ripple', 'active-item', isRouteActive('/dashboard/settings') ]">
                     <img class="img-fluid" src="@/assets/images/vectors/GearSixBold.svg"
                         alt="settings"><span>Settings</span>
                 </div>
 
             </a>
             <a href="javascript:void(0)" class="nav-item">
-                <div class="ripple active-menu">
+                <div :class="['ripple', 'active-item', isRouteActive('/dashboard/account') ]">
                     <img class="img-fluid" src="@/assets/images/vectors/User.svg" alt="user"><span>My account</span>
 
                 </div>
@@ -182,10 +182,13 @@ export default {
                 });
             });
 
+        },
+        isRouteActive(path){
+            if(path == "/dashboard"){
+                return this.$route.path == path ? "actives" : "";
+            }
+            return this.$route.path.includes(path) ? "actives" : "";
         }
-
-
-
     },
     mounted() {
         this.accordion();

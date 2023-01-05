@@ -6,11 +6,13 @@
 <script>
 import DispatchSection from "@/pages/dashboard/marketPlace/checkout/components/DispatchSection.vue";
 import ReportSection from "@/pages/dashboard/marketPlace/checkout/components/ReportSection.vue";
+import OrderService from "@/services/order";
 
     export default {
         name:'WaybillDetails',
         props:{
-            updateStep : Function
+            updateStep : Function,
+            order : Object
         },
         components: {
             DispatchSection,
@@ -29,7 +31,19 @@ import ReportSection from "@/pages/dashboard/marketPlace/checkout/components/Rep
                 this.nextStep();
             },
             saveReceipt(receipt){
+                let vm = this;
                 this.receiptData = receipt;
+                receipt.items = this.order.products;
+                this.dispatchData.items = this.order.products;
+                OrderService.saveWaybillDetails({
+                    order : this.$route.params.order,
+                    waybillDetails : {
+                        dispatch_section : this.dispatchData,
+                        receipt_section : receipt
+                    }
+                },(response)=>{
+                    vm.$router.push({name : "OrderTracking"});
+                });
                 this.nextStep();
             },
             nextStep(){
@@ -40,6 +54,9 @@ import ReportSection from "@/pages/dashboard/marketPlace/checkout/components/Rep
                 this.step--;
                 this.updateStep(this.step);
             }
+        },
+        mounted(){
+
         }
         
     }
