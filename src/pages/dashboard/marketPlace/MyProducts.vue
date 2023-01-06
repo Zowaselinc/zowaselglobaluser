@@ -7,7 +7,15 @@
                 <h2>My Crops/Inputs</h2>
 
             </div>
+            
             <div class="contents">
+                <div class="headings">
+                    <h2></h2>
+                    <div class="right-btns">
+                        <a href="/dashboard/cropwanted" class="green-link">Add new Product</a>
+                    
+                    </div>
+                </div>  
                 <a href="#" class="each-product">
                     <div class="top-address">
                         <h3>Maize-200-brown</h3>
@@ -259,5 +267,38 @@ export default {
         font-size: 14px;
     }
 
+}
+
+.headings{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    
+    a{
+        text-decoration: none;
+    }
+    .right-btns{
+        display: flex;
+        gap: 20px;
+        
+    }
+    .green-link{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        width: 200px;
+        height: 40px;
+        background: #05B050;
+        border-radius: 5px;
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+    }
+    
+
+    
 }
 </style>

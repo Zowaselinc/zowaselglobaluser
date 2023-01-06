@@ -137,6 +137,7 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 2% 5% 2% 3%;
+    overflow-y: scroll;
 
     @include breakpoint-between(md, lg) {
         width: 60.5%;

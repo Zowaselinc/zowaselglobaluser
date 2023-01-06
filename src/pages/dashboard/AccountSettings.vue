@@ -111,6 +111,7 @@
     display: flex;
     flex-direction: column;
     padding:1% 5% 2% 5%;
+    overflow-y: scroll;
 }
 
 .top-section{

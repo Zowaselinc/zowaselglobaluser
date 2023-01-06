@@ -6,10 +6,7 @@
                     <a href="/dashboard/tickets"><img src="@/assets/images/vectors/arrowleft.png" alt=""></a>
                     <h2>New Ticket</h2>
                 </div>
-                <div class="right-btns">
-                    <a href="" class="green-link">New Ticket</a>
-                   
-                </div>
+                
             </div>  
             
             <form action="">

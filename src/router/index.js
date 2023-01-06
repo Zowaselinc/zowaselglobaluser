@@ -51,6 +51,9 @@ import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation
 import Negotiations from "@/pages/dashboard/Negotiations.vue"
 import Wallet from "@/pages/dashboard/Wallet.vue"
 import FundWallet from "@/pages/dashboard/FundWallet.vue"
+import Sales from "@/pages/dashboard/Sales.vue"
+import MyOrders from "@/pages/dashboard/MyOrders.vue"
+import CreditScoring from "@/pages/dashboard/CreditScoring.vue"
 
 
 
@@ -270,7 +273,7 @@ const routes = [
         component:CheckOut
     },
     {
-        path: "/marketplace/transactions",
+        path: "/dashboard/transactions",
         name: "Transactions",
         component:Transactions
     },
@@ -324,6 +327,21 @@ const routes = [
         path: "/dashboard/fundwallet",
         name: "FundWallet",
         component:FundWallet
+    },
+    {
+        path: "/dashboard/sales",
+        name: "Sales",
+        component:Sales
+    },
+    {
+        path: "/dashboard/myorders",
+        name: "MyOrders",
+        component:MyOrders
+    },
+    {
+        path: "/dashboard/creditscoring",
+        name: "CreditScoring",
+        component:CreditScoring
     },
 
     

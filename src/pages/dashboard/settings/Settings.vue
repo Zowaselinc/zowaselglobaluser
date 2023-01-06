@@ -54,6 +54,7 @@ export default {
 
 .big-container {
     @include big-container-all;
+    overflow-y: scroll;
 
     h1 {
         @include textStyles(Poppins, 700, 24px, 132%);

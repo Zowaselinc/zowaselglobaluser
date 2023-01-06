@@ -118,6 +118,33 @@
 
                 </div>
             </a>
+            <a href="/dashboard/transactions" class="nav-item">
+                <div class="ripple">
+                    <img class="img-fluid" src="@/assets/images/vectors/transactions.svg" alt="info"><span>Transactions</span>
+
+                </div>
+            </a>
+
+            <a href="/marketplace/myproducts" class="nav-item">
+                <div class="ripple">
+                    <img class="img-fluid" src="@/assets/images/vectors/product.svg" alt="info"><span>My Products</span>
+
+                </div>
+            </a>
+            <a href="/dashboard/sales" class="nav-item">
+                <div class="ripple">
+                    <img class="img-fluid" src="@/assets/images/vectors/sales.svg" alt="info"><span>My Sales</span>
+
+                </div>
+            </a>
+
+            <a href="/dashboard/myorders" class="nav-item">
+                <div class="ripple">
+                    <img class="img-fluid" src="@/assets/images/vectors/orders.svg" alt="info"><span>My Orders</span>
+
+                </div>
+            </a>
+
             <a href="/dashboard/settings" class="nav-item">
                 <div class="ripple">
                     <img class="img-fluid" src="@/assets/images/vectors/GearSixBold.svg"
