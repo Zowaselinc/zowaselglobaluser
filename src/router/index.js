@@ -263,11 +263,7 @@ const routes = [
         component:CheckOut
     },
     {
-<<<<<<< HEAD
         path: "/dashboard/transactions",
-=======
-        path: "/dashboard/marketplace/transactions",
->>>>>>> b4f8e113e4ea48d4429b4f88d61cc2f0d7416253
         name: "Transactions",
         component:Transactions
     },
@@ -322,7 +318,6 @@ const routes = [
         name: "CropWanted",
         component: CropWanted
     },
-<<<<<<< HEAD
     {
         path: "/dashboard/fundwallet",
         name: "FundWallet",
@@ -345,8 +340,6 @@ const routes = [
     },
 
     
-=======
->>>>>>> b4f8e113e4ea48d4429b4f88d61cc2f0d7416253
     
 
 ];
