@@ -6,42 +6,45 @@
     <div class="pricing-details-wrapper">
         <div class="table-rows table-row-first">
             <div>Accepted Price</div>
-            <div>NGN 5,363,377</div>
+            <div>{{ order.products[0].currency }} {{ specification.price}}</div>
         </div>
         <div class="table-rows table-row-first">
             <div>Confirmed Quantity</div>
-            <div>500MT</div>
+            <div>{{ specification.qty }} MT</div>
         </div>
-        <div class="table-rows table-row-first">
+        <div v-if="false" class="table-rows table-row-first">
             <div>Delivery Date</div>
             <div>Dec 31 2022</div>
         </div>
         <div class="table-rows mb-0">
             <div>Total Price</div>
-            <div>NGN 1,770,020</div>
+            <div>{{order.products[0].currency}} {{ specification.price * specification.qty}}</div>
         </div>
     </div>
 
     <!-- for corporates view -->
-    <div class="payment-option-wrapper">
+    <div class="payment-option-wrapper" v-if="isCorporate">
         <!-- payment option header -->
         <h2>Payment Option</h2>
         <div class="payment-option d-flex flex-column">
             <!-- first item -->
-            <div class="delivery-options d-flex">
-                <div class="circle-outer d-flex justify-content-center align-items-center"><span
+            <div class="delivery-options d-flex" v-if="userData.type != 'red-hot'">
+                <div @click="setPayment('after_delivery')" 
+                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'after_delivery' ? 'active' : '']"><span
                         class="circle-inner"></span></div>
                 <div class="delivery-content">24 - 48hrs after delivery</div>
             </div>
             <!-- second item -->
-            <div class="delivery-options d-flex">
-                <div class="circle-outer d-flex justify-content-center align-items-center"><span
+            <div class="delivery-options d-flex" >
+                <div @click="setPayment('full')" 
+                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'full' ? 'active' : '']"><span
                         class="circle-inner"></span></div>
                 <div class="delivery-content">Full payment</div>
             </div>
             <!-- first item -->
-            <div class="delivery-options d-flex">
-                <div class="circle-outer active d-flex justify-content-center align-items-center"><span
+            <div class="delivery-options d-flex" v-if="userData.type != 'red-hot'">
+                <div @click="setPayment('advance')" 
+                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'advance' ? 'active' : '']"><span
                         class="circle-inner"></span></div>
                 <div class="delivery-content">Advance Payment</div>
             </div>
@@ -161,6 +164,24 @@
 <script>
 export default {
     name: "PricingDetails",
+    props : {
+        order : Object
+    },
+    data(){
+        return {
+            paymentOption : 'full'
+        };
+    },
+    computed:{
+        specification(){
+            return this.order.negotiation ? this.order.negotiation.specification : this.order.products[0].specification;
+        },
+    },
+    methods : {
+        setPayment(type){
+            this.paymentOption = type;
+        }
+    }
 }
 </script>
 
@@ -244,6 +265,8 @@ hr {
 
     .delivery-options {
         margin-bottom: 30px;
+        display: flex;
+        align-items: center;
     }
 
     .circle-outer {

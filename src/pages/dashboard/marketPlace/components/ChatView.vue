@@ -66,9 +66,19 @@
                                 </div>
                                 <div class="bottom-container" v-if="message.sender_id != sender.id">
                                     <div class="check-buttons">
-                                        <input type="checkbox">
+                                        <input 
+                                            type="checkbox" 
+                                            :disabled="message.status == 'declined' ? '' : null"  
+                                            @click="acceptOffer(message)"
+                                            :checked="message.status == 'accepted' || message.status == 'closed'? '' : null"
+                                        />
                                         <label for="">Accept</label>
-                                        <input type="checkbox">
+                                        <input 
+                                            type="checkbox" 
+                                            :disabled="message.status == 'accepted' ? '' : null"
+                                            @click="declineOffer(message)"
+                                            :checked="message.status == 'declined' ? '' : null"
+                                        />
                                         <label for="">Decline</label>
                                     </div>
                                     <div class="timed">
@@ -205,7 +215,9 @@ export default {
         messages : Object,
         loadMessages : Function,
         onSendMessage : Function,
-        onSendOffer : Function
+        onSendOffer : Function,
+        onAcceptOffer : Function,
+        onDeclineOffer : Function
     },
     computed: {
         groupMessages() {
@@ -300,10 +312,20 @@ export default {
                     this.message = "";
                 });
             }
+        },
+        acceptOffer(offer){
+            this.onAcceptOffer(offer);
+        },
+        declineOffer(offer){
+            this.onDeclineOffer(offer);
         }
     },
     mounted(){
+        let vm = this;
         this.loadMessages();
+        setInterval(()=>{
+            vm.loadMessages();
+        },5000);
     }
 
 
@@ -759,6 +781,7 @@ export default {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     .check-buttons {
         background-color: white;
@@ -770,14 +793,23 @@ export default {
         input {
             width: 20px;
             height: 20px;
+            margin-right: 3px;
+        }
+
+        label:nth-child(2){
+            margin-right: 10px;
         }
     }
 
     .timed {
         display: flex;
         justify-content: flex-end;
-        width: 50%;
+        // width: 50%;
         align-items: center;
+
+        p{
+            margin: 0px;
+        }
     }
 }
 </style>

@@ -73,6 +73,8 @@
                     :loadMessages="getNegotiation"
                     :onSendMessage="sendNegotiationMessage"
                     :onSendOffer="sendNegotiationOffer"
+                    :onAcceptOffer="acceptNegotiationOffer"
+                    :onDeclineOffer="declineNegotiationOffer"
                 />
             </div>
         </div>
@@ -81,9 +83,12 @@
 </template>
     
 <script>
+
 import DefaultNav from "@/layouts/DefaultNav.vue"
 import MarketPlaceService from "@/services/marketplace";
 import ChatView from "./components/ChatView.vue";
+import Alert from "@/utilities/alert";
+
 export default {
     name: 'ProductNegotiation',
     components: {
@@ -95,6 +100,7 @@ export default {
             product: null,
             userData: this.$store.state.user,
             negotiations: [],
+            closed : false,
         }
     },
     methods: {
@@ -112,6 +118,7 @@ export default {
             }, (response) => {
                 if (response) {
                     this.negotiations = response.data;
+                    this.handleNegotiation();
                 }
             })
         },
@@ -148,6 +155,28 @@ export default {
             MarketPlaceService.declineNegotiationOffer(id, (response) => {
             });
         },
+        checkForAcceptedNegotiation(){
+            var accepted = false;
+            this.negotiations.forEach((item) => {
+                if(item.status == "accepted"){
+                    accepted = item;
+                }
+            })
+            return accepted;
+        },
+        handleNegotiation(){
+            var accepted = this.checkForAcceptedNegotiation();
+            if(accepted && !this.closed){
+                Alert.success({
+                    message : "You have an accepted offer",
+                    onProceed : () => {
+                        Alert.close();
+                        this.$router.push(`/dashboard/marketplace/transactionsummary/${accepted.order.order_hash}`)
+                    }
+                });
+                this.closed = true;
+            }
+        }
     },
     mounted() {
         let vm = this;
@@ -178,7 +207,7 @@ export default {
 }
 
 .left {
-    width: 45%;
+    width: 40%;
     padding-left: 35px;
     padding-top: 30px;
     display: flex;
@@ -288,7 +317,7 @@ export default {
 }
 
 .right {
-    width: 55%;
+    width: 60%;
     height: 100%;
     display: flex;
     flex-direction: column;

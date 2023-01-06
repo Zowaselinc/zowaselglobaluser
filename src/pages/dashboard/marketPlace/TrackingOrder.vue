@@ -102,6 +102,7 @@ export default {
     background: #F5F5F5;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
    
 
     @include breakpoint-between(md, lg) {
@@ -117,7 +118,7 @@ export default {
     }
 }
 .top-text{
-    height: 89px;
+    padding: 14px 30px;
     width: 100%;
     background: #262C3F;
     display: flex;
@@ -127,7 +128,9 @@ export default {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
-    font-size: 40px;
+    h1{
+        font-size: 24px;
+    }
 }
 .big-content{
    padding: 100px 0px;
@@ -196,7 +199,7 @@ export default {
                         }
 
                         p {
-                            @include textStyles('Maven Pro', 400, 16px, 24px);
+                            @include textStyles('Maven Pro', 400, 14px, 24px);
                             text-align: center;
                             color: rgba(45, 55, 72, 0.6);
                         }

@@ -218,42 +218,42 @@
                 </div>
                 <div class="big-contents">
                     <div class="small-contents">
-                        <a href="/marketplace/product-description" class="each-product">
+                        <a href="/dashboard/marketplace/product-description" class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
                             <h3>Product Title</h3>
                             <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
                             <h3>NGN103,373,281</h3>
                         </a>
-                        <a href="/marketplace/product-description" class="each-product">
+                        <a href="/dashboard/marketplace/product-description" class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
                             <h3>Product Title</h3>
                             <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
                             <h3>NGN103,373,281</h3>
                         </a>
-                        <a href="/marketplace/product-description" class="each-product">
+                        <a href="/dashboard/marketplace/product-description" class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
                             <h3>Product Title</h3>
                             <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
                             <h3>NGN103,373,281</h3>
                         </a>
-                        <a href="/marketplace/product-description" class="each-product">
+                        <a href="/dashboard/marketplace/product-description" class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
                             <h3>Product Title</h3>
                             <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
                             <h3>NGN103,373,281</h3>
                         </a>
-                        <a href="/marketplace/product-description" class="each-product">
+                        <a href="/dashboard/marketplace/product-description" class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
                             <h3>Product Title</h3>
                             <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
                             <h3>NGN103,373,281</h3>
                         </a>
-                        <a href="/marketplace/product-description" class="each-product">
+                        <a href="/dashboard/marketplace/product-description" class="each-product">
                             <p class="badge">-36%</p>
                             <img src="@/assets/images/backgrounds/seed.png" alt="">
                             <h3>Product Title</h3>

@@ -88,11 +88,5 @@ export default {
         border : 0;
         padding: 11.1212px 33.3637px;
     }
-
-    // // toggle Class on Email button
-    // #my-profile {
-    //     padding: 11.1212px 33.3637px;
-    //     background: #FFFFFF;
-    // }
 }
 </style>

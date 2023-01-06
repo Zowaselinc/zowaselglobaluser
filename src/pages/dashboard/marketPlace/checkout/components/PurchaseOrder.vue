@@ -5,105 +5,101 @@
             <thead>
                 <tr>
                     <th>Parameters</th>
-                    <th><span id="parameters" class="d-block">Specifiaction</span>(Dropdown Menu)</th>
+                    <th><span id="parameters" class="d-block">Specification</span>(Dropdown Menu)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Color</td>
                     <td>
-                        <div>White</div>
-                        <div>Red</div>
+                        <div>{{ placeString(specification.color,"-")  }}</div>
+                        <!-- <div>Red</div>
                         <div>Yellow</div>
                         <div>Cream</div>
-                        <div>Brown</div>
+                        <div>Brown</div> -->
                     </td>
                 </tr>
                 <tr>
                     <td>Moisture</td>
-                    <td>0%-20%</td>
+                    <td>{{ placeString(specification.moisture, "-", {suffix : "%"})  }}</td>
                 </tr>
                 <tr>
                     <td>Foreign Matter (FM)</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.foreign_matter,"-",{suffix : "%"})  }}</td>
                 </tr>
                 <tr>
                     <td>Broken Grains</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.broken_grains,"-",{suffix : "%"}) }}</td>
                 </tr>
                 <tr>
                     <td>Weevil</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.weevil,"-",{suffix : "%"}) }}</td>
                 </tr>
                 <tr>
                     <td>Damaged Kernel(DK)</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.dk,"-",{suffix : "%"}) }}</td>
                 </tr>
                 <tr>
                     <td>rotten/Shriveled</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.rotten_shriveled, "-", {suffix : "%"}) }}</td>
                 </tr>
                 <tr>
                     <td>Test weight</td>
-                    <td>KG Or MT</td>
+                    <td>{{ placeString(specification.unit, "-") }}</td>
                 </tr>
                 <tr>
                     <td>Hardness</td>
-                    <td>Hard or Soft</td>
+                    <td>{{ placeString(specification.hardness,"-",{suffix : "%"}) }}</td>
                 </tr>
                 <tr>
                     <td>Splits</td>
-                    <td>0%-25%</td>
+                    <td>{{ placeString(specification.splits,"-",{suffix : "%"}) }}</td>
                 </tr>
                 <tr>
                     <td>Oil Content</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.oil_content,"-",{suffix : "%"}) }}</td>
                 </tr>
                 <tr>
                     <td>Infestation</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.infestation,"-",{suffix : "%"}) }}</td>
                 </tr>
                 <tr>
                     <td>Grain Size</td>
                     <td>
-                        <div>Whole grain</div>
-                        <div>Half grain</div>
-                        <div>Long grain</div>
-                        <div>Medium grain</div>
-                        <div>Short grain</div>
+                        <div>{{ placeString(specification.grain_size,"-") }}</div>
                     </td>
                 </tr>
                 <tr>
                     <td>Hectoliter Test Weight</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.hectoliter,"-",{suffix : "%"}) }}</td>
                 </tr>
                 <tr>
                     <td>Total Defects</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.total_defects,"-",{suffix : "%"})}}</td>
                 </tr>
                 <tr>
                     <td>Dockage</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.dockage,"-",{suffix : "%"})}}</td>
                 </tr>
                 <tr>
                     <td>Ash Content</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.ash_content,"-",{suffix : "%"}) }}</td>
                 </tr>
                 <tr>
                     <td>Acid Insoluble ash</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.acid_ash,"-",{suffix : "%"}) }}</td>
                 </tr>
                 <tr>
                     <td>Volatile</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.volatile,"-",{suffix : "%"}) }}</td>
                 </tr>
                 <tr>
                     <td>Mold % By Weigh</td>
-                    <td>0%-10%</td>
+                    <td>{{ placeString(specification.mold,"-",{suffix : "%"}) }}</td>
                 </tr>
                 <tr>
                     <td>Drying Process</td>
-                    <td>Air dried or Fresh</td>
+                    <td>{{ placeString(specification.drying_process,"-") }}</td>
                 </tr>
             </tbody>
         </table>
@@ -116,7 +112,15 @@
 
 <script>
 export default {
-    name: "PurchaseOrder"
+    name: "PurchaseOrder",
+    props : {
+        order : Object
+    },
+    computed:{
+        specification(){
+            return this.order.negotiation ? this.order.negotiation.specification : this.order.products[0].specification;
+        },
+    }
 }
 </script>
 

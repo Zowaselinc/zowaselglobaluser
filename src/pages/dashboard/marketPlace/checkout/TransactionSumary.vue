@@ -1,6 +1,6 @@
 <template>
     <DefaultNav>
-        <div class="big-container">
+        <div class="big-container" v-if="order">
 
             <div class="page-header d-flex justify-content-center align-items-center">
                 <h1 v-if="(step == 1)">Transaction Summary</h1>
@@ -22,7 +22,7 @@
                         <div class="transactin-details d-flex flex-column">
                             <div class="table-rows table-row-first">
                                 <div>Crop Type:</div>
-                                <div>Soya Bean</div>
+                                <div>{{ order.products[0].subcategory.name }}</div>
                             </div>
                             <div class="table-rows">
                                 <div class="quality-spec">Quality Specs</div>
@@ -33,48 +33,51 @@
                             </div>
                             <div class="table-rows">
                                 <div>Crop Quantity:</div>
-                                <div>500 MT</div>
+                                <div> {{ specification.qty }} MT</div>
                             </div>
                             <div class="table-rows">
                                 <div>Delivery Window:</div>
                                 <div>Dec 1 - Dec 31 2022</div>
                             </div>
                             <div class="table-rows">
-                                <div>Buyers Details:</div>
-                                <div>Albert Sam</div>
+                                <div>Buyer Details:</div>
+                                <div>{{ order.buyer.first_name + " " + order.buyer.last_name }}</div>
                             </div>
                             <div class="table-rows">
                                 <div>Accepted Date:</div>
-                                <div>Oct 22 2022</div>
+                                <div> {{ orderDate.toDateString() }}</div>
                             </div>
                             <div class="table-rows">
-                                <div>Sellers Details:</div>
-                                <div>Okechukwu Mbe</div>
+                                <div>Seller Details:</div>
+                                <div>{{ order.products[0].user.first_name + " " + order.products[0].user.last_name }}</div>
                             </div>
-                            <div class="table-rows">
+                            <div v-if="false" class="table-rows">
                                 <div>Transaction ID:</div>
                                 <div>2SCM88S</div>
                             </div>
-                            <div id="tlast" class="table-rows tlast">
+                            <div v-if="false" id="tlast" class="table-rows tlast">
                                 <div>Agreement ID:</div>
                                 <div>MVWD83BC38L</div>
                             </div>
                         </div>
                         <div class="d-grid table-btn">
-                            <button class="btn btn-purchase-order" type="button">View purchase order</button>
+                            <button v-if="false" class="btn btn-purchase-order" type="button">View purchase order</button>
                             <!-- transaction flow buyers view -->
-                            <button
+                            <button v-if="false"
                                 :class="['btn', 'btn-procceed-waybil']"
                                 type="button" @click="nextStep()">Click to proceed
                             </button>
 
                             <!-- end -->
                             <button
-                                :class="['btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
+                                v-if="isMerchant"
+                                :class="['btn', 'btn-procceed-waybil', 'mb-5', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button" @click="nextStep()">Proceed to waybill
                             </button>
                             <!-- for corporates view -->
-                            <a href="/marketplace/payments"
+                            <a 
+                                v-if="isCorporate"
+                                :href="'/dashboard/marketplace/payments/'+$route.params.order"
                                 :class="['btn', 'coperate-btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button">Proceed to payment
                             </a>
@@ -82,7 +85,7 @@
                     </div>
                 </div>
                 <!-- right -->
-                <div class="right-container">
+                <div class="right-container d-flex justify-content-center">
                     <div class="left-container-wrapper">
                         <!-- header tabs -->
                         <div
@@ -95,10 +98,10 @@
                                 @click="changeTab('purchaseorder')">Purchase Order</div>
                         </div>
                         <!-- pricing Details -->
-                        <PricingDetails v-if="(activeTab == 'pricingdetails' && step == 1)"></PricingDetails>
-                        <FullSpecification v-if="(activeTab == 'fullspec' && step == 1)"></FullSpecification>
-                        <PurchaseOrder v-if="(activeTab == 'purchaseorder' && step == 1)"></PurchaseOrder>
-                        <WaybillDetails ref="wayBill" :updateStep="updateWaybill" v-if="(step == 2)"></WaybillDetails>
+                        <PricingDetails :order="order" v-if="(activeTab == 'pricingdetails' && step == 1)"></PricingDetails>
+                        <FullSpecification :order="order" v-if="(activeTab == 'fullspec' && step == 1)"></FullSpecification>
+                        <PurchaseOrder :order="order" v-if="(activeTab == 'purchaseorder' && step == 1)"></PurchaseOrder>
+                        <WaybillDetails ref="wayBill" :order="order" :updateStep="updateWaybill" v-if="(step == 2) && isMerchant"></WaybillDetails>
                     </div>
                 </div>
             </div>
@@ -120,12 +123,13 @@ import FullSpecification from "@/pages/dashboard/marketPlace/checkout/components
 import PurchaseOrder from "@/pages/dashboard/marketPlace/checkout/components/PurchaseOrder.vue";
 import WaybillDetails from '@/pages/dashboard/marketPlace/checkout/components/WaybillDetails.vue';
 import DefaultNav from "@/layouts/DefaultNav.vue";
+import MarketPlaceService from "@/services/marketplace";
 
 export default {
     name: 'CardDetails',
     data() {
         return {
-            userData: this.$store.state.user
+
         }
     },
     components: {
@@ -141,11 +145,18 @@ export default {
             activeTab: "pricingdetails",
             step: 1,
             wayBillStep: 1,
+            order : null
         };
     },
     computed: {
         wayBill() {
             return this.$refs.wayBill;
+        },
+        specification(){
+            return this.order.negotiation ? this.order.negotiation.specification : this.order.products[0].specification;
+        },
+        orderDate(){
+            return new Date(this.order.created_at);
         }
     },
     methods: {
@@ -167,8 +178,18 @@ export default {
         },
         updateWaybill(step) {
             this.wayBillStep = step;
+        },
+        getOrder(order){
+            MarketPlaceService.getOrder(order,(response)=>{
+                var order = response.data;
+                order.products = JSON.parse(order.products);
+                this.order = order;
+            })
         }
 
+    },
+    mounted(){
+        this.getOrder(this.$route.params.order);
     }
 }
 </script>
@@ -184,19 +205,17 @@ export default {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    @include breakpoint-between(md, lg) {
+        width: 60.5%;
+    }
 
+    @include breakpoint-between(lg, xl) {
+        width: 69.5%;
+    }
 
-    // @include breakpoint-between(md, lg) {
-    //     width: 60.5%;
-    // }
-
-    // @include breakpoint-between(lg, xl) {
-    //     width: 69.5%;
-    // }
-
-    // @include breakpoint-between(xl, xxl) {
-    //     width: 76%;
-    // }
+    @include breakpoint-between(xl, xxl) {
+        width: 76%;
+    }
 }
 
 .active-display-none {
@@ -333,6 +352,7 @@ export default {
         .left-container-wrapper {
             margin-inline: 8%;
             margin-top: 65px;
+            width: 80%;
 
 
             .right-header {

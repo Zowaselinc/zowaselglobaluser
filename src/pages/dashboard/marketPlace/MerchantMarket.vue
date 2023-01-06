@@ -10,23 +10,39 @@
                     </select>
                 </div>
             </div>
-            <template v-if="view == 'cropsale'">
+            <template v-if="view == 'cropwanted'">
                 <a href="#" @click="$router.push({ name: 'CropDetails', params: { id: crop.id } })"
-                    v-for="crop, index in sales.rows" :key="index" class="each-item">
+                    v-for="crop, index in wanted.rows" :key="index" class="each-item">
                     <p>{{ crop.title }}</p>
                     <p><b>{{ crop.category.name }}</b></p>
                     <p>{{ crop.currency }} {{ crop.specification.price }}/{{ crop.packaging }}</p>
                     <p>{{ crop.user.first_name }}</p>
                 </a>
             </template>
-            <template v-if="view == 'cropauction'">
-                <a href="#" @click="$router.push({ name: 'CropDetails', params: { id: crop.id } })"
+            
+            <template v-if="view == 'inputs'">
+                <div class="big-contents">
+                    <div class="small-contents">
+                        <a  
+                            href="/dashboard/marketplace/product-description" class="each-product"
+                            v-for="input,index in inputs"
+                            :key="index"
+                        >
+                            <p class="badge">-36%</p>
+                            <img :src="input.images[0]" alt="">
+                            <h3>Product Title</h3>
+                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>{{ input.currency }}{{ input.price }}</h3>
+                        </a>               
+                    </div>
+                </div>
+                <!-- <a href="#" @click="$router.push({ name: 'CropDetails', params: { id: crop.id } })"
                     v-for="crop, index in auctions.rows" :key="index" class="each-item">
                     <p>{{ crop.title }}</p>
                     <p><b>{{ crop.category.name }}</b></p>
                     <p>{{ crop.currency }} {{ crop.specification.price }}/{{ crop.packaging }}</p>
                     <p>{{ crop.user.first_name }}</p>
-                </a>
+                </a> -->
             </template>
 
             <div class="tags mb-2">
@@ -65,7 +81,7 @@
 <script>
 import MarketplaceService from "@/services/marketplace";
 export default {
-    name: 'CorporateMarket',
+    name: 'MerchantMarket',
     props: {
         view: String
     },
@@ -74,8 +90,8 @@ export default {
     data() {
         return {
             categories: [],
-            sales: {},
-            auctions: {},
+            wanted: {},
+            inputs: {},
             filters: {
                 type: "",
                 kg: ""
@@ -95,22 +111,24 @@ export default {
                 this.categories = response.data;
             });
         },
-        getCropsForSale() {
-            MarketplaceService.getCropsForSale((response) => {
-                this.sales = response.data;
+        getCropsWanted() {
+            MarketplaceService.getCropsWanted((response) => {
+                this.wanted = response.data;
             })
         },
-        getCropsForAuction() {
-            MarketplaceService.getCropsForAuction((response) => {
-                this.auctions = response.data;
+        getInputs() {
+            MarketplaceService.getInputs((response) => {
+                for(var i = 0;i < response.data.length; i++){
+                    response.data[i].images = JSON.parse(response.data[i].images);
+                }
+                this.inputs = response.data;
             })
         },
     },
     mounted() {
         this.getCropCategories();
-        this.getCropsForSale();
-        this.getCropsForAuction();
-
+        this.getCropsWanted();
+        this.getInputs();
     }
 }
 </script>
@@ -357,7 +375,53 @@ export default {
 .btns-down {
     margin-top: 100px;
 }
+.big-contents{
+        margin-top: 30px;
+    }
+    .small-contents{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+        flex-wrap: wrap;
 
+        .each-product{
+            background-color: white;
+            padding: 10px;
+            width: 260px;
+            position: relative;
+            text-decoration: none;
+
+            h3{
+                margin-top: 16px;
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 18px;
+                color: #4A4754;
+            }
+            p{
+                font-family: 'Maven Pro';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 12px;
+                color: #4A4754;
+            }
+            .badge{
+                position: absolute;
+                top: 24px;
+                left: 22px;
+                background: #FAB900;
+                border-radius: 4px;
+                color: white;
+                font-family: 'Maven Pro';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 12px;
+                line-height: 130%;
+            }
+        }
+    }
 .right {
     width: 90%;
     justify-self: center;

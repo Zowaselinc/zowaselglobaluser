@@ -13,6 +13,10 @@ export default {
             config.BASE_URL + GET_USER_PATH(id),
         ).then((response)=>{
         callback(response.data)
+        }).catch((error)=>{
+            if(error.statuse = 403){
+                callback({ error : true })
+            }
         })
     }
 };

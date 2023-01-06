@@ -97,12 +97,14 @@
                     :recepient="product.user"
                     :title="product.user.id != userData.user_id 
                         ? product.user.first_name+' '+product.user.last_name
-                        : participant(conversationData).first_name + '' + participant(conversationData).last_name
+                        : participant(conversationData).first_name + ' ' + participant(conversationData).last_name
                     "
                     :messages="conversationData.negotiations"
                     :loadMessages="getNegotiation"
                     :onSendMessage="sendNegotiationMessage"
                     :onSendOffer="sendNegotiationOffer"
+                    :onAcceptOffer="acceptNegotiationOffer"
+                    :onDeclineOffer="declineNegotiationOffer"
                 />
                 <div class="right-top-section">
                     <h1 v-if="product.user.id != userData.user_id">{{ product.user.first_name + " " + product.user.last_name }}</h1>
@@ -179,6 +181,7 @@
                     }, (response) => {   
                         if(response){
                             this.conversationData.negotiations = response.data;
+                            this.handleNegotiation();
                         }
                     })
                 },
@@ -212,16 +215,31 @@
                         callback();
                     });
                 },
-                acceptNegotiationOffer(id){
-                    MarketPlaceService.acceptNegotiationOffer(id,(response)=>{
+                acceptNegotiationOffer(message) {
+                    MarketPlaceService.acceptNegotiationOffer(message.id, (response) => {
+                        this.$router.push(`/dashboard/marketplace/transactionsummary/${response.data.order.order_hash}`);
+                    });
+                },
+                declineNegotiationOffer(message) {
+                    MarketPlaceService.declineNegotiationOffer(message.id, (response) => {
+                    });
+                },
+                checkForAcceptedNegotiation(){
+                    var accepted = false;
+                    this.conversationData.negotiations.forEach((item) => {
+                        if(item.status == "accepted"){
+                            accepted = item;
+                        }
+                    })
+                    return accepted;
+                },
+                handleNegotiation(){
+                    var accepted = this.checkForAcceptedNegotiation()
+                    if(accepted){
+                        this.$router.push(`/dashboard/marketplace/transactionsummary/${accepted.order.order_hash}`)
+                    }
+                }
 
-                    });
-                },
-                declineNegotiationOffer(id){
-                    MarketPlaceService.declineNegotiationOffer(id,(response)=>{
-                        
-                    });
-                },
             },
             mounted() {
                 let vm = this;
@@ -257,14 +275,15 @@
     }
     
     .left {
-    width: 45%;
-    padding-left: 35px;
-    padding-top: 30px;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    height: 100%;
-    overflow-y: hidden;
+        width: 40%;
+        padding-left: 35px;
+        padding-top: 30px;
+        padding-bottom : 10px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        height: 100%;
+        overflow-y: hidden;
 
     h1,
     h4 {
@@ -310,7 +329,7 @@
         background: #FFFFFF;
         border-radius: 4px;
         margin-top: 20px;
-        height: 600px;
+        flex :1;
         overflow-y: scroll;
     
     
@@ -378,7 +397,7 @@
     
 
     .right {
-        width: 55%;
+        width: 60%;
         height: 100%;
         display: flex;
         flex-direction: column;
