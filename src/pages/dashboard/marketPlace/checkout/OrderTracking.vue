@@ -259,7 +259,10 @@ export default {
     computed: {
         waybillDetails(){
             return this.order ? JSON.parse(this.order.waybill_details) : null;
-        }
+        },
+        // trackingDetails(){
+        //     return this.order ? JSON.parse(this.order.tracking_details) : null,
+        // }
     },
     methods:{
         formatDate(date){
@@ -273,6 +276,7 @@ export default {
                 var order = response.data;
                 order.products = JSON.parse(order.products);
                 this.order = order;
+                console.log(order)
             })
         },
         goodsReceipt(){

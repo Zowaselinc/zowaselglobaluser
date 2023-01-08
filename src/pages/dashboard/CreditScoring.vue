@@ -11,7 +11,7 @@
                 </div>
                 <div class="col">
                     <div class="card carded">
-                        <p>Age</p>/
+                        <p>Age</p>  
                         <p class="input-p">594,094</p>
                     </div>
                 </div>
@@ -34,8 +34,6 @@
                     </div>
                 </div>
             </div>
-
-        
             
 
         </div>
