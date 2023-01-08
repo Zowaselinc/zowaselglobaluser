@@ -32,7 +32,7 @@ import OrderTracking from "@/pages/dashboard/marketPlace/checkout/OrderTracking.
 import NewCrop from "@/pages/dashboard/CropWanted.vue";
 import Product from "@/pages/dashboard/marketPlace/ProductPage.vue";
 import ProductDescription from "@/pages/dashboard/marketPlace/ProductDescription.vue";
-import CardPayment from "@/pages/dashboard/marketPlace/CardPayment.vue";
+import CardPayment from "@/pages/dashboard/marketPlace/Cart.vue";
 import CheckOut from "@/pages/dashboard/marketPlace/CheckOut.vue";
 import Transactions from "@/pages/dashboard/marketPlace/Transactions.vue";
 import MyProducts from "@/pages/dashboard/marketPlace/MyProducts.vue";
@@ -244,12 +244,12 @@ const routes = [
         component:ProductNegotiation
     },
     {
-        path: "/dashboard/marketplace/product-description",
+        path: "/dashboard/marketplace/product/:id",
         name: "ProductDescription",
         component:ProductDescription
     },
     {
-        path: "/dashboard/marketplace/cardpayment",
+        path: "/dashboard/marketplace/cart",
         name: "CardPayment",
         component:CardPayment
     },

@@ -1,8 +1,6 @@
 <template>
     <DefaultNav>
         <div class="big-container">
-            <Filter></Filter>
-
             <div class="welcome-text">
                 <h2 v-if="userData">Welcome, {{userData.user.first_name}}</h2>
                 <p>Wallet Balance: <span>$5070</span></p>
@@ -136,7 +134,6 @@
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
 import Cards from "./components/Cards.vue";
-import Filter from "@/pages/dashboard/marketPlace/components/Filter.vue"
 export default {
     name: 'CorporateDashboard',
     data() {
@@ -147,7 +144,6 @@ export default {
     components: {
         DefaultNav,
         Cards,
-        Filter
     },
 }
 </script>

@@ -169,6 +169,7 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
+import MarketplaceService from "@/services/marketplace";
 
 export default {
     name: 'CheckOut',

@@ -24,14 +24,14 @@
                 <div class="big-contents">
                     <div class="small-contents">
                         <a  
-                            href="/dashboard/marketplace/product-description" class="each-product"
+                            :href="'/dashboard/marketplace/product/'+input.id" class="each-product"
                             v-for="input,index in inputs"
                             :key="index"
                         >
                             <p class="badge">-36%</p>
                             <img :src="input.images[0]" alt="">
-                            <h3>Product Title</h3>
-                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
+                            <h3>{{ input.title }} </h3>
+                            <p> {{ input.description }} </p>
                             <h3>{{ input.currency }}{{ input.price }}</h3>
                         </a>               
                     </div>

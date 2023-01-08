@@ -4,17 +4,33 @@
             <h1>Settings</h1>
             <!-- buttons group -->
             <div class="bntn-group d-flex flex-row">
-                <button :class="['btn btn-1',(activeTab == 'profile' ? 'active-tab' : '')]" type="button" @click="switchTab('profile')">My Profile</button>
-                <button :class="['btn btn-1',(activeTab == 'notification' ? 'active-tab' : '')]" type="button" @click="switchTab('notification')"
-                    >Notifications Settings</button>
-                <button :class="['btn btn-1',(activeTab == 'emailSubcription' ? 'active-tab' : '')]"  type="button" @click="switchTab('emailSubcription')">Email Subscriptions</button>
+                <button 
+                    :class="['btn btn-1', (activeTab == 'profile' ? 'active-tab' : '')]" 
+                    type="button"
+                    @click="switchTab('profile')"
+                >My Profile
+                </button>
+                <button 
+                    :class="['btn btn-1', (activeTab == 'notification' ? 'active-tab' : '')]" 
+                    type="button"
+                    @click="switchTab('notification')"
+                >
+                    Notifications Settings
+                </button>
+                <button 
+                    :class="['btn btn-1', (activeTab == 'emailSubcription' ? 'active-tab' : '')]" 
+                    type="button"
+                    @click="switchTab('emailSubcription')"
+                >
+                    Email Subscriptions
+                </button>
             </div>
             <!-- Profile -->
-            <Profile v-if = "activeTab =='profile'"></Profile>
+            <Profile v-if="activeTab == 'profile'" />
             <!-- notification body -->
             <NotificationSettings v-if="activeTab == 'notification'" />
             <!-- email notification -->
-            <EmailSubcription v-if = "activeTab == 'emailSubcription'"></EmailSubcription>
+            <EmailSubcription v-if="activeTab == 'emailSubcription'" />
         </div>
     </DefaultNav>
 </template>
@@ -38,14 +54,15 @@ export default {
             activeTab: "notification"
         };
     },
+    mounted() {
+
+    },
     methods: {
         switchTab(tab) {
             this.activeTab = tab;
         },
     },
-    mounted() {
 
-    }
 }
 </script>
 
@@ -81,10 +98,10 @@ export default {
 
 
 
-    button.btn-1.active-tab{
+    button.btn-1.active-tab {
         background: #05B050;
         color: #FFFFFF;
-        border : 0;
+        border: 0;
         padding: 11.1212px 33.3637px;
     }
 }
