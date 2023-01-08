@@ -52,6 +52,7 @@
 
 <script>
 import AuthService from "@/services/auth";
+import Alert from "@/utilities/alert"
 export default {
     name: 'WelcomeBack',
     components: {
@@ -79,6 +80,11 @@ export default {
 
                     window.localStorage.setItem('authToken', response.token);
                     vm.$router.push('/dashboard');
+                }else{
+                    console.log(response.message);
+                    Alert.error({
+                        message : response.message
+                    })
                 }
             })
         }

@@ -109,7 +109,7 @@
                 <hr id="hr-cropwanted">
                 <div id="btn-group" class="btn-group gap-3 mb-4">
                     <a href="" class="btn btn-primary active" aria-current="page">Back</a>
-                    <a href="" class="btn btn-primary">Next</a>
+                    <a href="javascript:void(0)" class="btn btn-primary" @click="createCrop()">Next</a>
                 </div>
             </div>
         </div>
@@ -122,6 +122,7 @@ import Quill from "quill";
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.bubble.css";
 import "quill/dist/quill.snow.css";
+import MarketPlaceService from "@/services/marketplace";
 
 export default {
     name: 'CropWanted',
@@ -138,6 +139,19 @@ export default {
     data() {
         return {
             editor: null,
+            cropData : {
+                category : "dsfdsf",
+                sub_category : "sdsf",
+                mositure_content : "dsfdsf",
+                foreign_matter : "dfs",
+                test_weight : "sdfdsf",
+                currency : "sdfdsf",
+                country : "sf",
+                state : "sdfsddf",
+                warehouse_address : "sdfsf",
+                zip_code : "sdf",
+                description : "sdfdsf"
+            }
         };
     },
     mounted() {
@@ -165,12 +179,17 @@ export default {
         });
     },
     methods: {
-        update: function update() {
+        update() {
             this.$emit(
                 "update:modelValue",
                 this.editor.getText() ? this.editor.root.innerHTML : ""
             );
         },
+        createCrop(){
+            MarketPlaceService.createCropWanted(this.cropData, (response)=>{
+                console.log(response);
+            })
+        }
     },
 };
 

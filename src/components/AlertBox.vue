@@ -1,5 +1,5 @@
 <template>
-    <Modal title="Success" :modalKey="modalKey" :customStyles="customStyles" :hasPrimaryButton="hasButton"
+    <Modal title="Success" :modalKey="modalKey" :customStyles="customStyles" :hasPrimaryButton="hasButton || alert?.primary"
         primaryButtonTitle="Continue" :primaryButtonAction="alert?.onProceed ?? closeModal" buttonLayoutType="2">
 
         <template v-if="alert" v-slot:modal-body>
@@ -26,7 +26,7 @@ export default {
     props: {
         hasButton: {
             type: Boolean,
-            default: true
+            default: false
         },
     },
     components: {

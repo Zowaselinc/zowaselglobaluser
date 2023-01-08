@@ -6,95 +6,41 @@
             <h1>Cart</h1> 
         </div>
         <div class="big-content">
-            <div class="left-side">
-               <div class="each-item">
-                    <div class="image">
-                        <img src="@/assets/images/backgrounds/okro-small.png" alt="">
+            <div v-if="cart.length > 0" class="left-side">
+                <template v-for="item,index in cart" :key="index">
+                    <div class="each-item">
+                            <div class="image">
+                                <img :src="parse(item.input.images)[0]" alt="">
+                            </div>
+                            <div class="first">
+                                <h4>Item:</h4>
+                                <h4>Seller: </h4>
+                                <h4>Unit Cost:</h4>
+                            </div>
+                            <div class="second">
+                                <p>{{ item.input.title }}</p>
+                                <p>Naziri Farms</p>
+                                <p>{{ item.input.currency }} {{ (item.input.price).toLocaleString() }}</p>
+                            </div>
+                            <div class="third">
+                                <h4>Quantity</h4>
+                                <h4>Sub Total:</h4>
+                            </div>
+                            <div class="fourth">
+                                <div class="btnss">
+                                    <p class="p-btn" @click="decrement(index)">-</p>
+                                    <p>{{ item.quantity }}</p>
+                                    <p class="p-btn" @click="increment(index)">+</p>
+                                </div>
+                                <p>{{ item.input.currency }} {{ (item.quantity * item.price).toLocaleString() }}</p>
+                                <button class="remove-btn" @click="removeCartItem(item)">Remove</button>
+                            </div>
                     </div>
-                    <div class="first">
-                        <h4>Item:</h4>
-                        <h4>Seller: </h4>
-                        <h4>Unit Cost:</h4>
-                    </div>
-                    <div class="second">
-                        <p>Coconut Fertilizer</p>
-                        <p>Naziri Farms</p>
-                        <p>NGN240,450</p>
-                    </div>
-                    <div class="third">
-                        <h4>Quantity</h4>
-                        <h4>Sub Total:</h4>
-                    </div>
-                    <div class="fourth">
-                        <div class="btnss">
-                            <p class="p-btn">-</p>
-                            <p>3</p>
-                            <p class="p-btn">+</p>
-                        </div>
-                        <p>NGN743,875</p>
-                        <button class="remove-btn">Remove</button>
-                    </div>
-               </div>
-               <hr>
-                <div class="each-item">
-                    <div class="image">
-                        <img src="@/assets/images/backgrounds/okro-small.png" alt="">
-                    </div>
-                    <div class="first">
-                        <h4>Item:</h4>
-                        <h4>Seller: </h4>
-                        <h4>Unit Cost:</h4>
-                    </div>
-                    <div class="second">
-                        <p>Coconut Fertilizer</p>
-                        <p>Naziri Farms</p>
-                        <p>NGN240,450</p>
-                    </div>
-                    <div class="third">
-                        <h4>Quantity</h4>
-                        <h4>Sub Total:</h4>
-                    </div>
-                    <div class="fourth">
-                        <div class="btnss">
-                            <p class="p-btn">-</p>
-                            <p>3</p>
-                            <p class="p-btn">+</p>
-                        </div>
-                        <p>NGN743,875</p>
-                        <button class="remove-btn">Remove</button>
-                    </div>
-               </div>
-               <hr>
-                <div class="each-item">
-                    <div class="image">
-                        <img src="@/assets/images/backgrounds/okro-small.png" alt="">
-                    </div>
-                    <div class="first">
-                        <h4>Item:</h4>
-                        <h4>Seller: </h4>
-                        <h4>Unit Cost:</h4>
-                    </div>
-                    <div class="second">
-                        <p>Coconut Fertilizer</p>
-                        <p>Naziri Farms</p>
-                        <p>NGN240,450</p>
-                    </div>
-                    <div class="third">
-                        <h4>Quantity</h4>
-                        <h4>Sub Total:</h4>
-                    </div>
-                    <div class="fourth">
-                        <div class="btnss">
-                            <p class="p-btn">-</p>
-                            <p>3</p>
-                            <p class="p-btn">+</p>
-                        </div>
-                        <p>NGN743,875</p>
-                        <button class="remove-btn">Remove</button>
-                    </div>
-               </div>
-               
-                
+                    <hr>
+                </template>
+            </div>
+            <div v-else class="left-side">
+                <h5> No items in your cart</h5>
             </div>
             <div class="right-side">
 
@@ -103,15 +49,15 @@
                 <div class="each-summary">
     
                     <p>Items in Cart</p>
-                    <p>3</p>
+                    <p>{{ cart.length }}</p>
                 </div>
                 <div class="line"></div>
                 <div class="each-summary">
     
                     <p class="total">Total</p>
-                    <p class="price">NGN2,156,875</p>
+                    <p class="price"> NGN {{ cartTotal.toLocaleString() }}</p>
                 </div>
-                <button>Proceed to Checkout</button>
+                <button :disabled="cart.length > 0 ? null : ''" @click="this.$router.push('/dashboard/marketplace/checkout')">Proceed to Checkout</button>
             </div>
 
         </div>
@@ -129,18 +75,78 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
+import MarketplaceService from "@/services/marketplace";
+import Alert from "@/utilities/alert";
 
 export default {
     name: 'CardPayment',
     data() {
         return {
-            userData: this.$store.state.user
+            userData: this.$store.state.user,
+            cart : []
+        }
+    },
+    computed:{
+        cartTotal(){
+            var total=0;
+            this.cart.forEach(item => {
+                total += (eval(item.price) * eval(item.quantity));
+            });
+            return total;
+        }
+    },
+    methods:{
+        increment(index){
+            var item = this.cart[index];
+            if(eval(item.input.stock) > eval(item.quantity)){
+                this.cart[index].quantity = eval(this.cart[index].quantity) + 1;
+                MarketplaceService.addToCart({
+                    input_id : item.input_id,
+                    user_id : item.user_id,
+                    quantity : eval(item.quantity)
+                },(response)=>{
+                });
+            }
+
+        },
+        decrement(index){
+            var item = this.cart[index];
+            if(eval(item.quantity) > 1){
+                this.cart[index].quantity = eval(this.cart[index].quantity) - 1;
+                MarketplaceService.addToCart({
+                    input_id : item.input_id,
+                    user_id : item.user_id,
+                    quantity : eval(item.quantity)
+                },(response)=>{
+                });
+            }
+        },
+        getCartItems(){
+            MarketplaceService.getCartItems(this.userData.user_id, (response)=>{
+                this.cart = response.data
+            });
+        },
+        removeCartItem(item){
+            MarketplaceService.deleteCartItem(item.id,(response)=>{
+                if(response.error == false){
+                    this.getCartItems();
+                    Alert.success({
+                        message : "Item Deleted Successfully"
+                    });
+                }
+            })
+        },
+        parse(data){
+            return JSON.parse(data);
         }
     },
     components: {
         DefaultNav,
        
     },
+    mounted(){
+        this.getCartItems();
+    }
 }
 </script>
 
@@ -327,6 +333,10 @@ export default {
                 font-weight: 700;
                 font-size: 16px;
                 color: #E6F7EE;
+            }
+
+            button:disabled{
+                background-color: #989898;
             }
     }
 

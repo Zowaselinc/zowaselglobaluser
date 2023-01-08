@@ -1,13 +1,19 @@
 <template>
   <router-view />
-
+  <AlertBox />
 </template>
 
 <script>
+
 import UserService from "@/services/user";
 import axios from 'axios';
+import AlertBox from "@/components/AlertBox.vue";
+
 export default {
   name: 'App',
+  components:{
+    AlertBox
+  },
   data() {
     return {
       userData: null

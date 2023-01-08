@@ -169,6 +169,7 @@ export default {
             if(accepted && !this.closed){
                 Alert.success({
                     message : "You have an accepted offer",
+                    primary : true,
                     onProceed : () => {
                         Alert.close();
                         this.$router.push(`/dashboard/marketplace/transactionsummary/${accepted.order.order_hash}`)

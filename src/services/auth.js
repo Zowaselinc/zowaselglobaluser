@@ -21,7 +21,7 @@ export default {
         ).then((response)=>{
             callback(response.data);
         }).catch((error)=>{
-
+            callback(error.response.data)
         });
     },
 

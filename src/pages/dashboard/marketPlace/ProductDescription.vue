@@ -5,20 +5,17 @@
             
              <div class="big-content">
             <div class="image-area">
-                <div class="image-container">
-                     <img src="@/assets/images/backgrounds/okro-2.png" alt="">
-                     <div class="small-images">
-                        <img src="@/assets/images/backgrounds/okro-2.png" alt="">
-                        <img src="@/assets/images/backgrounds/okro-2.png" alt="">
-                        <img src="@/assets/images/backgrounds/okro-2.png" alt="">
-                        <img src="@/assets/images/backgrounds/okro-2.png" alt="">
-                        <img src="@/assets/images/backgrounds/okro-2.png" alt="">
-                        <img src="@/assets/images/backgrounds/okro-2.png" alt="">
+                <div class="image-container" v-if="product && product.images.length">
+                     <img :src="product.images[0]" alt="">
+                     <div class="small-images" v-if="(product.images.length > 1)">
+                        <img 
+                            v-for="image,index in product.images.slice(1)" 
+                            :key="index" :src="image" alt=""/>
                      </div>
                 </div>
-                <div class="text-area">
-                   <h1>Coconut Fertilizer</h1>
-                   <p class="price">NGN240,450</p>
+                <div class="text-area" v-if="product">
+                   <h1>{{ product.title }}</h1>
+                   <p class="price">{{ product.currency }}{{ product.price }}</p>
                    <p class="farmer">Naziri Farms</p>
                    <p class="verified"><img src="@/assets/images/vectors/verified.svg" alt=""> Verified Merchant</p>
                    <div class="ratings">
@@ -37,38 +34,23 @@
                    <div class="quantity">
                         <p>Quantity</p>
                         <div class="quantity-btns">
-                            <button>-</button>
-                            <p>1</p>
-                            <button>+</button>
+                            <button @click="decrement()">-</button>
+                            <p>{{ quantity }}</p>
+                            <button @click="increment()">+</button>
                         </div>
                    </div>
                    <h3 class="ships">Shipping: <span>NGN3050.01</span></h3>
                    <h3 class="ships">Estimated Delivery <span>to Abeoukuta on</span> 23rd November</h3>
                    <div class="buttonss">
                         <a  href="#" class="buy">Buy now</a>
-                        <a href="#" class="cart">Add to Cart</a>
+                        <a href="javascript:void(0)" class="cart" @click="addToCart()">Add to Cart</a>
                    </div>
                    
                 </div>
             </div>
             <hr>
             <h3>Description</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec sagittis nunc, imperdiet volutpat 
-                magnis bibendum. Ultrices lorem amet pharetra interdum lorem ornare eu. Tellus semper aenean 
-                mauris facilisi placerat sapien urna velit. Duis faucibus convallis posuere neque neque adipiscing 
-                quis egestas nulla. Viverra senectus nisl quis urna, enim id dolor pulvinar. Aliquam mi, dui pellentesque ut. 
-                Sit egestas arcu nunc lacus, ipsum odio montes, pellentesque eget. In ac est sapien orci magna nisi, volutpat et cras. 
-                Fermentum egestas at volutpat donec faucibus et.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nec sagittis nunc, 
-                imperdiet volutpat magnis bibendum. Ultrices lorem amet pharetra interdum lorem ornare eu. Tellus semper aenean mauris facilisi 
-                placerat sapien urna velit. Duis faucibus convallis posuere neque neque adipiscing quis egestas nulla. Viverra senectus nisl quis urna, 
-                enim id dolor pulvinar. Aliquam mi, dui pellentesque ut.
-                Sit egestas arcu nunc lacus, ipsum odio montes, pellentesque eget. 
-                In ac est sapien orci magna nisi, volutpat et cras. Fermentum egestas at volutpat
-                 donec faucibus et.Sit egestas arcu nunc lacus, ipsum odio montes, pellentesque eget. 
-                 In ac est sapien orci magna nisi, volutpat et cras. Fermentum egestas at volutpat donec faucibus et. 
-                 Sit egestas arcu nunc lacus, ipsum odio montes, pellentesque eget. In ac est sapien orci magna nisi, volutpat et cras.
-                  Fermentum egestas at volutpat donec faucibus et. Sit egestas arcu nunc lacus, ipsum odio montes, pellentesque
-            </p>
+            <p>{{ product ? product.description : "" }}</p>
             <div class="guide">
                 <a href="#">Input Application Guide.pdf</a>
                 <button>Download</button>
@@ -125,124 +107,8 @@
                             porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
                         </p>
                     </div>
-                     <div class="each-review">
-                        <div class="head-review">
-                            <div class="lefts">
-                               
-                                <div class="title">
-                                     <div class="img-contain">
-                                        <img src="@/assets/images/vectors/avatar.svg" alt="">
-                                    </div>
-                                    <div class="texts">
-                                        <h4>Pamela Njoku</h4>
-                                        <p>05 Nov 2022</p>
-                                    </div>
-                                    
-                                </div>
-                                
-                            </div>
-                            <div class="stars">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                            </div>
-                            
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, 
-                            purus sit amet luctus venenatis, lectus magna fringilla urna, 
-                            porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
-                        </p>
-                    </div>
-                     <div class="each-review">
-                        <div class="head-review">
-                            <div class="lefts">
-                               
-                                <div class="title">
-                                     <div class="img-contain">
-                                        <img src="@/assets/images/vectors/avatar.svg" alt="">
-                                    </div>
-                                    <div class="texts">
-                                        <h4>Pamela Njoku</h4>
-                                        <p>05 Nov 2022</p>
-                                    </div>
-                                    
-                                </div>
-                                
-                            </div>
-                            <div class="stars">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                            </div>
-                            
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, 
-                            purus sit amet luctus venenatis, lectus magna fringilla urna, 
-                            porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
-                        </p>
-                    </div>
                 </div>
                 <div class="right-reviews">
-                     <div class="each-review">
-                        <div class="head-review">
-                            <div class="lefts">
-                               
-                                <div class="title">
-                                     <div class="img-contain">
-                                        <img src="@/assets/images/vectors/avatar.svg" alt="">
-                                    </div>
-                                    <div class="texts">
-                                        <h4>Pamela Njoku</h4>
-                                        <p>05 Nov 2022</p>
-                                    </div>
-                                    
-                                </div>
-                                
-                            </div>
-                            <div class="stars">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                            </div>
-                            
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, 
-                            purus sit amet luctus venenatis, lectus magna fringilla urna, 
-                            porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
-                        </p>
-                    </div>
-                     <div class="each-review">
-                        <div class="head-review">
-                            <div class="lefts">
-                               
-                                <div class="title">
-                                     <div class="img-contain">
-                                        <img src="@/assets/images/vectors/avatar.svg" alt="">
-                                    </div>
-                                    <div class="texts">
-                                        <h4>Pamela Njoku</h4>
-                                        <p>05 Nov 2022</p>
-                                    </div>
-                                    
-                                </div>
-                                
-                            </div>
-                            <div class="stars">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                            </div>
-                            
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, 
-                            purus sit amet luctus venenatis, lectus magna fringilla urna, 
-                            porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
-                        </p>
-                    </div>
                      <div class="each-review">
                         <div class="head-review">
                             <div class="lefts">
@@ -389,18 +255,60 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
+import MarketPlaceService from "@/services/marketplace";
+import Alert from "@/utilities/alert";
 
 export default {
     name: 'Products',
     data() {
         return {
-            userData: this.$store.state.user
+            userData: this.$store.state.user,
+            product: null,
+            quantity : 1
+        }
+    },
+    methods:{
+        increment(){
+            if(this.quantity < this.product.stock){
+                this.quantity++;
+            }
+        },
+        decrement(){
+            if(this.quantity > 1){
+                this.quantity--;
+            }
+        },
+        getProduct() {
+            MarketPlaceService.getInputById(this.$route.params.id, (response) => {
+                this.product = response.data;
+                this.product.images = JSON.parse(this.product.images);
+            })
+        },
+        addToCart(){
+            MarketPlaceService.addToCart({
+                user_id : this.userData.user_id,
+                input_id : this.$route.params.id,
+                quantity : this.quantity,
+            },(response)=>{
+                if(response.error == false){
+                    Alert.success({
+                        message : "Added to cart",
+                        primary : true,
+                        onProceed : ()=>{
+                            this.$router.push('/dashboard/marketplace/cart');
+                        }
+                    });
+                }
+            })
         }
     },
     components: {
         DefaultNav,
        
     },
+    mounted(){
+        this.getProduct();
+    }
 }
 </script>
 
@@ -504,9 +412,20 @@ export default {
                 font-size: 18px;
                 gap: 20px;
                 color: #000000;
+
+                p{
+                    margin : 0px;
+                }
+
                 .quantity-btns{
                     display: flex;
                     gap: 10px;
+                    align-items: center;
+
+                    p{
+                        margin : 0px;
+                    }
+
                     button{
                         width: 20px;
                         height: 20px;
