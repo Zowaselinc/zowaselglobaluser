@@ -34,7 +34,7 @@
                                         <p>Delivered</p>
                                     </div>
                                 </td>
-                                <td><a href="" class="view">View</a></td>
+                                <td><a href="/dashboard/marketplace/updateshipping" class="view">View</a></td>
                             </tr>
                             <tr>
                                  <td>23, Jan, 2023</td>
@@ -48,7 +48,7 @@
                                         <p>Delivered</p>
                                     </div>
                                 </td>
-                                <td><a href="" class="view">View</a></td>
+                                <td><a href="/dashboard/marketplace/updateshipping" class="view">View</a></td>
                             </tr>
                             <tr>
                                  <td>23, Jan, 2023</td>
@@ -62,7 +62,7 @@
                                         <p>Delivered</p>
                                     </div>
                                 </td>
-                                <td><a href="" class="view">View</a></td>
+                                <td><a href="/dashboard/marketplace/updateshipping" class="view">View</a></td>
                             </tr>
                             
                             <tr>
@@ -77,7 +77,7 @@
                                         <p>In transit</p>
                                     </div>
                                 </td>
-                                <td><a href="" class="view">View</a></td>
+                                <td><a href="/dashboard/marketplace/updateshipping" class="view">View</a></td>
                             </tr>
                             <tr>
                                  <td>23, Jan, 2023</td>
@@ -91,7 +91,7 @@
                                         <p>In transit</p>
                                     </div>
                                 </td>
-                                <td><a href="" class="view">View</a></td>
+                                <td><a href="/dashboard/marketplace/updateshipping" class="view">View</a></td>
                             </tr>
                             <tr>
                                  <td>23, Jan, 2023</td>
@@ -105,7 +105,7 @@
                                         <p>Delivered</p>
                                     </div>
                                 </td>
-                                <td><a href="" class="view">View</a></td>
+                                <td><a href="/dashboard/marketplace/updateshipping" class="view">View</a></td>
                             </tr>
                             
                            

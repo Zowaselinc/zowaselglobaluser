@@ -54,6 +54,7 @@ import Sales from "@/pages/dashboard/Sales.vue"
 import MyOrders from "@/pages/dashboard/MyOrders.vue"
 import CreditScoring from "@/pages/dashboard/CreditScoring.vue"
 import AddNewCrop from "@/pages/dashboard/marketPlace/AddNewCrop.vue";
+import UpdateShipping from "@/pages/dashboard/UpdateShipping.vue";
 
 const routes = [
     {
@@ -338,6 +339,11 @@ const routes = [
         path: "/dashboard/creditscoring",
         name: "CreditScoring",
         component:CreditScoring
+    },
+    {
+        path: "/dashboard/marketplace/updateshipping",
+        name: "UpdateShipping",
+        component:UpdateShipping
     },
 
     
