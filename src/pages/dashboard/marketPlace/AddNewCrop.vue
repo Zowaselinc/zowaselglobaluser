@@ -9,11 +9,13 @@
                 <QualityProduct v-if="NextState == 'quality_product'"></QualityProduct>
                 <CropSpecification v-if="NextState == 'crop_specification'"></CropSpecification>
                 <div id="btn-group" class="btn-group gap-3 my-4">
-                    <button type="button" class="btn btn-primary active" aria-current="page"  @click="previouStep()">Back</button>
+                    <button type="button" class="btn btn-primary active" aria-current="page"
+                        v-if="NextState != 'crop_details'">Back</button>
                     <button type="button" :class="['btn', 'btn-primary']" v-on:click="changeTab('quality_product')"
-                        v-if="NextState != 'crop_specification'">Next</button>
-                    <button type="button" :class="['btn', 'btn-primary']"
-                        v-if="NextState == 'crop_specification'">save</button>
+                        v-if="NextState != 'crop_specification'">Next
+                    </button>
+                    <button type="button" :class="['btn', 'btn-primary']" v-if="NextState == 'crop_specification'">save
+                    </button>
                 </div>
             </div>
         </div>
@@ -112,5 +114,4 @@ export default {
         }
     }
 }
-
 </style>
