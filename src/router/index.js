@@ -53,7 +53,7 @@ import FundWallet from "@/pages/dashboard/FundWallet.vue"
 import Sales from "@/pages/dashboard/Sales.vue"
 import MyOrders from "@/pages/dashboard/MyOrders.vue"
 import CreditScoring from "@/pages/dashboard/CreditScoring.vue"
-import CropWanted from "@/pages/dashboard/CropWanted.vue";
+import AddNewCrop from "@/pages/dashboard/marketPlace/AddNewCrop.vue";
 
 const routes = [
     {
@@ -310,9 +310,9 @@ const routes = [
         component:NewTicket
     },
     {
-        path: "/dashboard/cropwanted",
-        name: "CropWanted",
-        component: CropWanted
+        path: "/marketplace/newcrop",
+        name: "AddNewcrop",
+        component: AddNewCrop
     },
     {
         path: "/dashboard/fundwallet",
