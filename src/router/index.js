@@ -29,7 +29,6 @@ import Settings from "@/pages/dashboard/settings/Settings.vue";
 import MarketPlace from "@/pages/dashboard/marketPlace/Market.vue";
 import TransactionSumary from "@/pages/dashboard/marketPlace/checkout/TransactionSumary.vue";
 import OrderTracking from "@/pages/dashboard/marketPlace/checkout/OrderTracking.vue";
-import NewCrop from "@/pages/dashboard/CropWanted.vue";
 import Product from "@/pages/dashboard/marketPlace/ProductPage.vue";
 import ProductDescription from "@/pages/dashboard/marketPlace/ProductDescription.vue";
 import CardPayment from "@/pages/dashboard/marketPlace/Cart.vue";
@@ -50,10 +49,11 @@ import CropsSale from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
 import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation.vue"
 import Negotiations from "@/pages/dashboard/Negotiations.vue"
 import Wallet from "@/pages/dashboard/Wallet.vue"
-import FundWallet from "@/pages/dashboard/FundWallet.vue";
+import FundWallet from "@/pages/dashboard/FundWallet.vue"
+import Sales from "@/pages/dashboard/Sales.vue"
+import MyOrders from "@/pages/dashboard/MyOrders.vue"
+import CreditScoring from "@/pages/dashboard/CreditScoring.vue"
 import CropWanted from "@/pages/dashboard/CropWanted.vue";
-
-
 
 const routes = [
     {
@@ -259,7 +259,7 @@ const routes = [
         component:CheckOut
     },
     {
-        path: "/dashboard/marketplace/transactions",
+        path: "/dashboard/transactions",
         name: "Transactions",
         component:Transactions
     },
@@ -278,6 +278,11 @@ const routes = [
         path: "/dashboard/marketplace/trackingorder",
         name: "TrackingOrder",
         component:TrackingOrder
+    },
+    {
+        path: "/marketplace/payments",
+        name: "Payments",
+        component:Payments
     },
     {
         path: "/dashboard/marketplace/payments/:order",
@@ -309,6 +314,33 @@ const routes = [
         name: "CropWanted",
         component: CropWanted
     },
+    {
+        path: "/dashboard/fundwallet",
+        name: "FundWallet",
+        component:FundWallet
+    },
+    {
+        path: "/dashboard/wallet",
+        name: "Wallet",
+        component:Wallet
+    },
+    {
+        path: "/dashboard/sales",
+        name: "Sales",
+        component:Sales
+    },
+    {
+        path: "/dashboard/myorders",
+        name: "MyOrders",
+        component:MyOrders
+    },
+    {
+        path: "/dashboard/creditscoring",
+        name: "CreditScoring",
+        component:CreditScoring
+    },
+
+    
     
 
 ];

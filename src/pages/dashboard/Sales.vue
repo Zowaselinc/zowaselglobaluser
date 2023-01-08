@@ -5,133 +5,111 @@
              <div class="row table-area">
                 <div class="col-12 big-table">
                     <div class="theading">
-                        <h4>Transactions</h4>
-                        <p>See all Transactions</p>
+                        <h4>My Sales</h4>
+                        <p>See all Orders</p>
                     </div>
                     <table class="table table-borderless">
                         <thead>
-                            <th>Transaction ID</th>
+                            <th>Date</th>
+                            <th>Order ID</th>
+                            <th>Products</th>
                             <th>Amount</th>
-                            <th>Method</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                            <th>DATE</th>
+                            <th>Payment Status</th>
+                            <th>Shipping Status</th>
+                            <th>Action</th>
+                           
                             <th></th>
                         </thead>
 
                         <tbody>
                             <tr>
-                                <td>#546262645621</td>
-                                <td>NGN23,990</td>
-                                <td>Flutterwave</td>
-                                <td>Product</td>
+                                 <td>23, Jan, 2023</td>
+                                <td>#34427633</td>
+                                <td>Green Peas</td>
+                                <td>NGN32,765</td>
+                                <td>Paid full</td>
                                 <td scope="row">
                                     <div class="colored-green">
                                         <div class="green-dot"></div>
-                                        <p>Completed</p>
+                                        <p>Delivered</p>
                                     </div>
                                 </td>
-                                <td>21 Oct, 2022</td>
-                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+                                <td><a href="" class="view">View</a></td>
                             </tr>
                             <tr>
-                                <td>#546262645621</td>
-                                <td>NGN23,990</td>
-                                <td>Flutterwave</td>
-                                <td>Product</td>
+                                 <td>23, Jan, 2023</td>
+                                <td>#34427633</td>
+                                <td>Green Peas</td>
+                                <td>NGN32,765</td>
+                                <td>Paid full</td>
                                 <td scope="row">
                                     <div class="colored-green">
                                         <div class="green-dot"></div>
-                                        <p>Completed</p>
+                                        <p>Delivered</p>
                                     </div>
                                 </td>
-                                <td>21 Oct, 2022</td>
-                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+                                <td><a href="" class="view">View</a></td>
                             </tr>
                             <tr>
-                                <td>#546262645621</td>
-                                <td>NGN23,990</td>
-                                <td>Flutterwave</td>
-                                <td>Product</td>
-                                <td scope="row">
-                                    <div class="colored-yellow">
-                                        <div class="yellow-dot"></div>
-                                        <p>Pending</p>
-                                    </div>
-                                </td>
-                                <td>21 Oct, 2022</td>
-                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
-                            </tr>
-                             <tr>
-                                <td>#546262645621</td>
-                                <td>NGN23,990</td>
-                                <td>Flutterwave</td>
-                                <td>Product</td>
+                                 <td>23, Jan, 2023</td>
+                                <td>#34427633</td>
+                                <td>Green Peas</td>
+                                <td>NGN32,765</td>
+                                <td>Paid full</td>
                                 <td scope="row">
                                     <div class="colored-green">
                                         <div class="green-dot"></div>
-                                        <p>Completed</p>
+                                        <p>Delivered</p>
                                     </div>
                                 </td>
-                                <td>21 Oct, 2022</td>
-                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+                                <td><a href="" class="view">View</a></td>
+                            </tr>
+                            
+                            <tr>
+                                 <td>23, Jan, 2023</td>
+                                <td>#34427633</td>
+                                <td>Green Peas</td>
+                                <td>NGN32,765</td>
+                                <td>Half payment</td>
+                                <td scope="row">
+                                    <div class="colored-yellow">
+                                        <div class="yellow-dot"></div>
+                                        <p>In transit</p>
+                                    </div>
+                                </td>
+                                <td><a href="" class="view">View</a></td>
                             </tr>
                             <tr>
-                                <td>#546262645621</td>
-                                <td>NGN23,990</td>
-                                <td>Bank Payment</td>
-                                <td>Product</td>
+                                 <td>23, Jan, 2023</td>
+                                <td>#34427633</td>
+                                <td>Green Peas</td>
+                                <td>NGN32,765</td>
+                                <td>Half payment</td>
+                                <td scope="row">
+                                    <div class="colored-yellow">
+                                        <div class="yellow-dot"></div>
+                                        <p>In transit</p>
+                                    </div>
+                                </td>
+                                <td><a href="" class="view">View</a></td>
+                            </tr>
+                            <tr>
+                                 <td>23, Jan, 2023</td>
+                                <td>#34427633</td>
+                                <td>Green Peas</td>
+                                <td>NGN32,765</td>
+                                <td>Paid full</td>
                                 <td scope="row">
                                     <div class="colored-green">
                                         <div class="green-dot"></div>
-                                        <p>Completed</p>
+                                        <p>Delivered</p>
                                     </div>
                                 </td>
-                                <td>21 Oct, 2022</td>
-                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
+                                <td><a href="" class="view">View</a></td>
                             </tr>
-                            <tr>
-                                <td>#546262645621</td>
-                                <td>NGN23,990</td>
-                                <td>Flutterwave</td>
-                                <td>Product</td>
-                                <td scope="row">
-                                    <div class="colored-yellow">
-                                        <div class="yellow-dot"></div>
-                                        <p>Pending</p>
-                                    </div>
-                                </td>
-                                <td>21 Oct, 2022</td>
-                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
-                            </tr>
-                             <tr>
-                                <td>#546262645621</td>
-                                <td>NGN23,990</td>
-                                <td>Flutterwave</td>
-                                <td>Product</td>
-                                <td scope="row">
-                                    <div class="colored-yellow">
-                                        <div class="yellow-dot"></div>
-                                        <p>Pending</p>
-                                    </div>
-                                </td>
-                                <td>21 Oct, 2022</td>
-                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
-                            </tr>
-                             <tr>
-                                <td>#546262645621</td>
-                                <td>NGN23,990</td>
-                                <td>Bank Payment</td>
-                                <td>Product</td>
-                                <td scope="row">
-                                    <div class="colored-yellow">
-                                        <div class="yellow-dot"></div>
-                                        <p>Pending</p>
-                                    </div>
-                                </td>
-                                <td>21 Oct, 2022</td>
-                                <td><img src="@/assets/images/vectors/verticalDots.svg"></td>
-                            </tr>
+                            
+                           
+                         
                           
                           
                         </tbody>
@@ -155,7 +133,7 @@
 import DefaultNav from "@/layouts/DefaultNav.vue";
 
 export default {
-    name: 'Transactions',
+    name: 'Sales',
     data() {
         return {
             userData: this.$store.state.user
@@ -309,5 +287,19 @@ export default {
     }
 }
 
+.view {
+            border: none;
+            padding: 5px 10px;
+            background: white;
+            box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08), 0px 4px 8px rgba(44, 39, 56, 0.08);
+            border-radius: 4px;
+            font-family: 'Maven Pro';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 147%;
+            color: #05B050;
+            border: 1px solid #05B050;
+        }
 
 </style>

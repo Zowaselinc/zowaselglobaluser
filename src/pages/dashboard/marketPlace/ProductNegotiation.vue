@@ -549,9 +549,9 @@ export default {
         // margin-top: 40px;
     }
 
-    .form-inputs {
-        // width: 30%;
-    }
+    // .form-inputs {
+    //     // width: 30%;
+    // }
 
     label {
         font-family: Maven Pro;

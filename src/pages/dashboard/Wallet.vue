@@ -260,6 +260,7 @@
     padding:2% 5% 2% 3%;
     gap: 30px;
     overflow-y: scroll;
+    padding-bottom: 40px;
    
 }
 
