@@ -6,7 +6,7 @@
             <div class="filter-header-content d-flex position-relative align-items-center">
                 <h2 class="filter-header-text-h1">Filter by</h2>
                 <div id="carret-icon" class="filter-header-icon d-flex justify-content-center align-items-center"
-                    @click="toggleFilter()">
+                    v-on:click="toggleFilter">
                     <span>&#94;</span>
                 </div>
             </div>
@@ -14,7 +14,7 @@
 
             <!-- main Content -->
 
-            <div id="main-filter-content" class="filter-main-container d-flex pe-5">
+            <div id="main-filter-content" class="filter-main-container d-flex pe-5" v-if="filter">
                 <!-- row 1 -->
                 <div class="filter-item d-flex flex-column row-1 ">
                     <!-- type -->
@@ -66,25 +66,24 @@
                     <div class="rowz d-flex align-items-center mb-2 mt-3">
                         <div class="ms-3 check-words-price">Price</div>
                     </div>
-                    <!-- progress bar -->
-                    <div class="position-relative">
-                        <div class="ms-3 progress-bar mt-2 position-relative">
-                            <div class="progress"></div>
-                        </div>
-                        <div id="circle-1" class="circlee  circle-1 position-absolute"><span></span></div>
-                        <div id="circle-2" class="circlee  circle-2 position-absolute"><span></span></div>
+                    <!-- range -->
+                    <div
+                        class="customRange-conatiner d-flex flex-row justify-content-center align-items-center position-relative">
+                        <input type="range" class="form-range fromSlider" id="customRange1" v-model="min" min="0"
+                            :max="max">
+                        <input type="range" class="form-range toSlider" id="customRange2" v-model="max" :min="min" max="100000">
                     </div>
-                    <div class="d-flex mt-2">
-                        <div class="col">
-                            <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">min</label>
-                            <input type="number" class="form-control mt-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="0" min="0" max="10000">
+
+                    <div class="mt-2 d-flex flex-row justify-content-between align-items-center">
+                        <div class="form_control_container">
+                            <div class="form_control_container__time">Min</div>
+                            <input class="form_control_container__time__input" type="number" id="fromInput" value="10"
+                                min="0" max="100" />
                         </div>
-                        <div id="minus-sign" class="check-words col">-</div>
-                        <div class="col">
-                            <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Max</label>
-                            <input type="number" class="form-control mt-0" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="10 000" min="0" max="10000">
+                        <div class="form_control_container">
+                            <div class="form_control_container__time">Max</div>
+                            <input class="form_control_container__time__input" type="number" id="toInput" value="40"
+                                min="0" max="100" />
                         </div>
                     </div>
                 </div>
@@ -206,22 +205,21 @@
 <script>
 import Checkbox from "@/components/Checkbox.vue";
 export default {
+    data() {
+        return {
+            filter: true,
+            min : 0,
+            max : 100000
+        }
+    },
     methods: {
         toggleFilter() {
-            const filterWrapper = document.getElementById('filter-wrapper');
-            const filterIcon = document.getElementById('carret-icon');
-
-            filterIcon.addEventListener('click', () => {
-                filterWrapper.classList.toggle('active');
-            })
+            this.filter = !this.filter;
         }
     },
     components: {
         Checkbox
     },
-    mounted() {
-        this.toggleFilter();
-    }
 }
 
 </script>
@@ -266,8 +264,8 @@ export default {
     }
 
     .filter-header-icon {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
         background: #05B050;
         border-radius: 50%;
         position: absolute;
@@ -275,7 +273,6 @@ export default {
 
         span {
             color: #ffffff;
-            width: 63%;
             transform: rotate(180deg);
             padding-top: 4px;
             font-size: 25px;
@@ -397,54 +394,70 @@ export default {
                 font-size: 14px;
             }
 
-            #minus-sign {
-                align-self: center;
-                flex-grow: 0;
-                padding: 12px;
-                transform: translateY(15px);
-            }
+            // #minus-sign {
+            //     align-self: center;
+            //     flex-grow: 0;
+            //     padding: 12px;
+            //     transform: translateY(15px);
+            // }
         }
 
-        .progress-bar {
-            background: #EDEDEE;
-            border-radius: 5.34111px;
-            height: 2.67px;
-
-            .progress {
-                background: #05B050;
-                border-radius: 5.34111px;
-                width: 60%;
-                margin-left: 20%;
-            }
-
-        }
-
-        .circlee {
-            width: 18.69px;
-            height: 18.69px;
-            background: #E6F7EE;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            span {
-                width: 13.35px;
-                height: 13.35px;
-                border-radius: 50%;
-                background: #05B050 !important;
-            }
-        }
-
-        #circle-1 {
-            left: 23%;
-            top: 0px;
-        }
-
-        #circle-2 {
-            right: 16%;
-            top: 0px;
-        }
     }
+
+    #customRange1,
+    #customRange2 {
+        border: none !important;
+        padding: 0 !important;
+        -webkit-appearance: none;
+        appearance: none;
+
+    }
+
+    .form-range::-moz-range-thumb {
+        background-color: #05B050;
+
+    }
+
+    .form-range::-webkit-range-thumb {
+        background-color: #05B050;
+
+    }
+
+    .form-range.fromSlider::-moz-range-track {
+        height: 0rem;
+    }
+
+    .form_control_container__time,
+    input[type="number"] {
+        font-size: 14px;
+        color: #8a8383;
+    }
+
+    input[type="number"].form_control_container__time__input {
+        width: 70px;
+        height: 30px;
+        border: none;
+    }
+
+    .form-range {
+        width: 100%;
+    }
+
+    .fromSlider {
+        height: 0;
+        z-index: 1;
+    }
+
+    .fromSlider::-webkit-slider-thumb:hover,
+    .toSlider::-webkit-slider-thumb:hover{
+        z-index : 1;
+    }
+    input[type="range"]{
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        position: absolute;     
+    }
+    // 
 }
 </style>
