@@ -6,7 +6,7 @@
     <div class="pricing-details-wrapper">
         <div class="table-rows table-row-first">
             <div>Accepted Price</div>
-            <div>{{ order.products[0].currency }} {{ specification.price}}</div>
+            <div>{{ order.products[0].currency }} {{ specification.price }}</div>
         </div>
         <div class="table-rows table-row-first">
             <div>Confirmed Quantity</div>
@@ -18,7 +18,7 @@
         </div>
         <div class="table-rows mb-0">
             <div>Total Price</div>
-            <div>{{order.products[0].currency}} {{ specification.price * specification.qty}}</div>
+            <div>{{ order.products[0].currency }} {{ specification.price * specification.qty }}</div>
         </div>
     </div>
 
@@ -29,28 +29,27 @@
         <div class="payment-option d-flex flex-column">
             <!-- first item -->
             <div class="delivery-options d-flex" v-if="userData.type != 'red-hot'">
-                <div @click="setPayment('after_delivery')" 
-                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'after_delivery' ? 'active' : '']"><span
-                        class="circle-inner"></span></div>
+                <div @click="setPayment('after_delivery')"
+                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'after_delivery' ? 'active' : '']">
+                    <span class="circle-inner"></span></div>
                 <div class="delivery-content">24 - 48hrs after delivery</div>
             </div>
             <!-- second item -->
-            <div class="delivery-options d-flex" >
-                <div @click="setPayment('full')" 
-                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'full' ? 'active' : '']"><span
-                        class="circle-inner"></span></div>
+            <div class="delivery-options d-flex">
+                <div @click="setPayment('full')"
+                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'full' ? 'active' : '']">
+                    <span class="circle-inner"></span></div>
                 <div class="delivery-content">Full payment</div>
             </div>
             <!-- first item -->
             <div class="delivery-options d-flex" v-if="userData.type != 'red-hot'">
-                <div @click="setPayment('advance')" 
-                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'advance' ? 'active' : '']"><span
-                        class="circle-inner"></span></div>
+                <div @click="setPayment('advance')"
+                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'advance' ? 'active' : '']">
+                    <span class="circle-inner"></span></div>
                 <div class="delivery-content">Advance Payment</div>
             </div>
             <div class="progress-bar-wrapper position-relative d-flex flex-column">
-                <div class="progress progress-bar"></div>
-                <div class="point-circle"><span class="inner-point-circle"></span></div>
+                <input type="range" class="form-range fromSlider" id="customRange1">
                 <div class="vertical-rule d-flex">
                     <span></span>
                     <span></span>
@@ -164,21 +163,21 @@
 <script>
 export default {
     name: "PricingDetails",
-    props : {
-        order : Object
+    props: {
+        order: Object
     },
-    data(){
+    data() {
         return {
-            paymentOption : 'full'
+            paymentOption: 'full'
         };
     },
-    computed:{
-        specification(){
+    computed: {
+        specification() {
             return this.order.negotiation ? this.order.negotiation.specification : this.order.products[0].specification;
         },
     },
-    methods : {
-        setPayment(type){
+    methods: {
+        setPayment(type) {
             this.paymentOption = type;
         }
     }
@@ -301,15 +300,17 @@ hr {
     }
 
     .progress-bar-wrapper {
-        .progress {
-            height: 3px !important;
-            background: #FCD66B;
-            border-radius: 5.34111px;
+        .form-range::-moz-range-thumb {
+            background: #FCD66B !important;
         }
+        input{
+            border-radius: 0 !important;
 
+        }
         .vertical-rule {
-            margin-left:  11%;
+            margin-left: 11%;
             column-gap: 24%;
+
             span {
                 margin-top: 5px;
                 width: 15px;
@@ -317,16 +318,19 @@ hr {
                 transform: rotate(90deg);
             }
         }
-        .progress-rating{
+
+        .progress-rating {
             column-gap: 20%;
-            margin-left:  10%;
+            margin-left: 10%;
             margin-top: 10px;
-            span{
+
+            span {
                 @include textStyles(Poppins, 500, 14px, 27px);
                 color: rgba(45, 55, 72, 0.6);
             }
         }
-        .point-circle{
+
+        .point-circle {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -337,7 +341,8 @@ hr {
             background: #FFF8E6;
             bottom: 36px;
             left: 10.53%;
-            .inner-point-circle{
+
+            .inner-point-circle {
                 width: 70%;
                 height: 70%;
                 border-radius: 50%;
@@ -371,9 +376,11 @@ hr {
         border-color: #05B050;
     }
 }
-.modal-body{
+
+.modal-body {
     font-size: 14px;
 }
+
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 690px;

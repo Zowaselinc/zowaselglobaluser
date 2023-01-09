@@ -2,42 +2,131 @@
     <DefaultNav>
         <div class="big-container">
            
-            <div class="row">
+            <div class="row  big-contents">
                 <div class="col">
                     <div class="card carded ">
-                        <p>Gender</p>
-                        <p class="total-p">594,094</p>
+                        <h2>Gender</h2>
+                        <div class="texts">
+                            <p>Weight: 4</p>
+                            <p>14.8/100</p>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card carded">
-                        <p>Age</p>/
-                        <p class="input-p">594,094</p>
+                    <div class="card carded ">
+                        <h2>Age</h2>
+                        <div class="texts">
+                            <p>Weight: 4</p>
+                            <p>14.8/100</p>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card carded">
-                        <p>Crops Sold</p>
-                        <p class="sold-p">594,094</p>
+                    <div class="card carded ">
+                        <h2>Gender</h2>
+                        <div class="texts">
+                            <p>Weight: 4</p>
+                            <p>14.8/100</p>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card carded">
-                        <p>Pending Offers</p>
-                        <p class="offers-p">594,094</p>
+                    <div class="card carded ">
+                        <h2>Gender</h2>
+                        <div class="texts">
+                            <p>Weight: 4</p>
+                            <p>14.8/100</p>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card carded">
-                        <p>Pending Invoices</p>
-                        <p class="invoices-p">594,094</p>
+                    <div class="card carded ">
+                        <h2>Gender</h2>
+                        <div class="texts">
+                            <p>Weight: 4</p>
+                            <p>14.8/100</p>
+                        </div>
+                        
                     </div>
                 </div>
-            </div>
 
-        
-            
+                <div class="col">
+                    <div class="card carded ">
+                        <h2>Gender</h2>
+                        <div class="texts">
+                            <p>Weight: 4</p>
+                            <p>14.8/100</p>
+                        </div>
+                        
+                    </div>
 
+                </div>
+                <div class="col">
+                    <div class="card carded ">
+                        <h2>Gender</h2>
+                        <div class="texts">
+                            <p>Weight: 4</p>
+                            <p>14.8/100</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card carded ">
+                        <h2>Gender</h2>
+                        <div class="texts">
+                            <p>Weight: 4</p>
+                            <p>14.8/100</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card carded ">
+                        <h2>Gender</h2>
+                        <div class="texts">
+                            <p>Weight: 4</p>
+                            <p>14.8/100</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card carded ">
+                        <h2>Gender</h2>
+                        <div class="texts">
+                            <p>Weight: 4</p>
+                            <p>14.8/100</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card carded ">
+                        <h2>Gender</h2>
+                        <div class="texts">
+                            <p>Weight: 4</p>
+                            <p>14.8/100</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card carded ">
+                        <h2>Gender</h2>
+                        <div class="texts">
+                            <p>Weight: 4</p>
+                            <p>14.8/100</p>
+                        </div>
+                        
+                    </div>
+                </div>
+        </div>
         </div>
 
 
@@ -91,13 +180,14 @@ export default {
 }
 
 .carded {
+   width: 235px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     padding: 18px 20px 15px;
-    gap: 10px;
-    border: none;
+    margin-top: 20px;
+    border-left:1px solid #05B050;
 
     p {
         font-family: 'Maven Pro';
@@ -146,6 +236,17 @@ export default {
         font-size: 24px;
         color: #FBC52B;
     }
+}
+.texts{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.big-contents{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: left;
 }
 
 </style>

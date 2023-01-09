@@ -126,7 +126,7 @@
                 </div>
             </a>
 
-            <a href="/marketplace/myproducts" class="nav-item">
+            <a href="/dashboard/marketplace/myproducts" class="nav-item">
                 <div class="ripple">
                     <img class="img-fluid" src="@/assets/images/vectors/product.svg" alt="info"><span>My Products</span>
 
