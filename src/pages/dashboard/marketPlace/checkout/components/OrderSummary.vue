@@ -28,6 +28,11 @@
                     </th>
                     <td>{{ order.currency }} {{ order.total }}</td>
                 </tr>
+                <tr>
+                    <th>Partial Payment
+                    </th>
+                    <td>{{ order.currency }} {{ paymentPercent/100 * order.total }}</td>
+                </tr>
             </table>
 
         </div>
@@ -39,6 +44,11 @@ export default {
     name: "OrderSummary",
     props : {
         order : Object
+    },
+    computed:{
+        paymentPercent(){
+            return window.localStorage.paymentPercent && window.localStorage.paymentPercent!='null' ? eval(window.localStorage.paymentPercent) : null;
+        }
     }
 }
 </script>

@@ -48,19 +48,29 @@
                     <span class="circle-inner"></span></div>
                 <div class="delivery-content">Advance Payment</div>
             </div>
-            <div class="progress-bar-wrapper position-relative d-flex flex-column">
-                <input type="range" class="form-range fromSlider" id="customRange1">
+            <div class="progress-bar-wrapper position-relative d-flex flex-column"  v-if="userData.type != 'red-hot' && paymentOption == 'advance'">
+                <input type="range" class="form-range fromSlider" @change="setPaymentPercent($event.target.value)" id="customRange1">
                 <div class="vertical-rule d-flex">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <div class="justify-content-center d-flex full-width position-relative">
+                        <div class="justify-content-center d-flex half-width position-absolute" style="left:0px;">
+                            <span></span>
+                        </div>
+                        <span></span>
+                        <div class="justify-content-center d-flex half-width position-absolute" style="right:0px;">
+                            <span></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="progress-rating d-flex">
-                    <span>25%</span>
-                    <span>50%</span>
-                    <span>75%</span>
-                    <span>100%</span>
+                    <div class="justify-content-center d-flex full-width position-relative">
+                        <div class="justify-content-center d-flex half-width position-absolute" style="left:0px;">
+                            <span>25%</span>
+                        </div>
+                        <span>50%</span>
+                        <div class="justify-content-center d-flex half-width position-absolute" style="right:0px;">
+                            <span>75%</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -164,7 +174,9 @@
 export default {
     name: "PricingDetails",
     props: {
-        order: Object
+        order: Object,
+        setPaymentMode : Function,
+        setPaymentPercent : Function
     },
     data() {
         return {
@@ -179,7 +191,10 @@ export default {
     methods: {
         setPayment(type) {
             this.paymentOption = type;
+            this.setPaymentMode(type);
         }
+    },
+    mounted(){
     }
 }
 </script>
@@ -308,7 +323,6 @@ hr {
 
         }
         .vertical-rule {
-            margin-left: 11%;
             column-gap: 24%;
 
             span {
@@ -321,13 +335,21 @@ hr {
 
         .progress-rating {
             column-gap: 20%;
-            margin-left: 10%;
             margin-top: 10px;
+            position: relative;
 
             span {
                 @include textStyles(Poppins, 500, 14px, 27px);
                 color: rgba(45, 55, 72, 0.6);
             }
+        }
+
+        .full-width{
+            width : 100%;
+        }
+
+        .half-width{
+            width : 50%;
         }
 
         .point-circle {

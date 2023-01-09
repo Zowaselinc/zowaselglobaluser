@@ -218,7 +218,7 @@
                 },
                 acceptNegotiationOffer(message) {
                     MarketPlaceService.acceptNegotiationOffer(message.id, (response) => {
-                        this.$router.push(`/dashboard/marketplace/transactionsummary/${response.data.order.order_hash}`);
+                        this.$router.push(`/dashboard/marketplace/order/${response.data.order.order_hash}`);
                     });
                 },
                 declineNegotiationOffer(message) {
@@ -238,7 +238,7 @@
                     var accepted = this.checkForAcceptedNegotiation()
                     if(accepted){
                         window.clearInterval(this.interval);
-                        this.$router.push(`/dashboard/marketplace/transactionsummary/${accepted.order.order_hash}`)
+                        this.$router.push(`/dashboard/marketplace/order/${accepted.order.order_hash}`)
                     }
                 }
 

@@ -172,7 +172,7 @@ export default {
                     primary : true,
                     onProceed : () => {
                         Alert.close();
-                        this.$router.push(`/dashboard/marketplace/transactionsummary/${accepted.order.order_hash}`)
+                        this.$router.push(`/dashboard/marketplace/order/${accepted.order.order_hash}`)
                     }
                 });
                 this.closed = true;
