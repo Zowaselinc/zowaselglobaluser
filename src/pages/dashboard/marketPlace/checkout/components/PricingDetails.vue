@@ -49,8 +49,8 @@
                 <div class="delivery-content">Advance Payment</div>
             </div>
             <div class="progress-bar-wrapper position-relative d-flex flex-column">
-                <input type="range" class="form-range fromSlider" id="customRange1">
-                <div class="vertical-rule d-flex">
+                <input type="range" class="form-range fromSlider" id="customRange1" value="100" min="0" max="100">
+                <div class="vertical-rule d-flex position-relative">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -304,24 +304,37 @@ hr {
             background: #FCD66B !important;
         }
         input{
-            border-radius: 0 !important;
+            border: 0 !important;
 
         }
         .vertical-rule {
-            margin-left: 11%;
-            column-gap: 24%;
+            // margin-left: 25%;
+            // column-gap: 25%;
 
             span {
-                margin-top: 5px;
+                position: absolute;
+                margin-top: 0px;
                 width: 15px;
                 border: 1px solid #FCD66B;
                 transform: rotate(90deg);
+                &:nth-of-type(1){
+                    left: 26%;
+                }
+                &:nth-of-type(2){
+                    left: 48%;
+                }
+                &:nth-of-type(3){
+                    left: 70%;
+                }
+                &:nth-of-type(4){
+                    left: 92%;
+                }
             }
         }
 
         .progress-rating {
-            column-gap: 20%;
-            margin-left: 10%;
+            column-gap: 19%;
+            margin-left: 25%;
             margin-top: 10px;
 
             span {
