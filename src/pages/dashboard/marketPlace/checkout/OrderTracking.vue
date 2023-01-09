@@ -267,6 +267,9 @@ export default {
                 order.products = JSON.parse(order.products);
                 this.order = order;
                 setTimeout(()=>{
+                    if(!order.waybill_details){
+                        vm.$router.replace(`/dashboard/marketplace/order/${order.order_hash}`);
+                    }
                     vm.calculateOrderProgress();
                 },500);
             })
