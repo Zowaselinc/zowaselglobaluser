@@ -54,7 +54,7 @@
                     </div>
                 </form>
                 <div class="last-text">
-                    <p id="" class="text-center">Do you already have an account? <a href="#" class="login-text">Login</a></p> 
+                    <p id="" class="text-center">Do you already have an account? <a href="/login" class="login-text">Login</a></p> 
                 </div>
             </div>
             <div class="right-content">
