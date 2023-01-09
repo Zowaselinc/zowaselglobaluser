@@ -48,29 +48,17 @@
                     <span class="circle-inner"></span></div>
                 <div class="delivery-content">Advance Payment</div>
             </div>
-            <div class="progress-bar-wrapper position-relative d-flex flex-column"  v-if="userData.type != 'red-hot' && paymentOption == 'advance'">
-                <input type="range" class="form-range fromSlider" @change="setPaymentPercent($event.target.value)" id="customRange1">
-                <div class="vertical-rule d-flex">
-                    <div class="justify-content-center d-flex full-width position-relative">
-                        <div class="justify-content-center d-flex half-width position-absolute" style="left:0px;">
-                            <span></span>
-                        </div>
-                        <span></span>
-                        <div class="justify-content-center d-flex half-width position-absolute" style="right:0px;">
-                            <span></span>
-                        </div>
-                    </div>
+            <div class="progress-bar-wrapper position-relative d-flex flex-column" v-if="userData.type != 'red-hot' && paymentOption == 'advance'">
+                <input type="range" class="form-range fromSlider" @change="setPaymentPercent($event.target.value)" id="customRange1" value="0" min="0" max="100">
+                <div class="vertical-rule d-flex position-relative">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
                 <div class="progress-rating d-flex">
-                    <div class="justify-content-center d-flex full-width position-relative">
-                        <div class="justify-content-center d-flex half-width position-absolute" style="left:0px;">
-                            <span>25%</span>
-                        </div>
-                        <span>50%</span>
-                        <div class="justify-content-center d-flex half-width position-absolute" style="right:0px;">
-                            <span>75%</span>
-                        </div>
-                    </div>
+                    <span>25%</span>
+                    <span>50%</span>
+                    <span>75%</span>
                 </div>
             </div>
         </div>
@@ -319,22 +307,40 @@ hr {
             background: #FCD66B !important;
         }
         input{
-            border-radius: 0 !important;
+            border: 0 !important;
+
+        }
+        %progress_bar_position{
+            span{
+                position: absolute;     
+                &:nth-of-type(1){
+                    left: 25.5%;
+                }
+                &:nth-of-type(2){
+                    left: 48.5%;
+                }
+                &:nth-of-type(3){
+                    left: 71%;
+                }
+                &:nth-of-type(4){
+                    left: 94%;
+                }
+            }
 
         }
         .vertical-rule {
-            column-gap: 24%;
-
+            @extend %progress_bar_position;
             span {
-                margin-top: 5px;
+                margin-top: 0px;
                 width: 15px;
                 border: 1px solid #FCD66B;
                 transform: rotate(90deg);
+                
             }
         }
 
         .progress-rating {
-            column-gap: 20%;
+            @extend %progress_bar_position;
             margin-top: 10px;
             position: relative;
 
