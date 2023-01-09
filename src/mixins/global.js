@@ -11,6 +11,13 @@ export default {
         },
         isCorporate(){
             return this.userData.user.type == "corporate";
+        },
+        isSeller(){
+            // Assuming that order data is available
+            return this.order.products[0].user_id == this.userData.user_id;
+        },
+        isBuyer(){
+            return this.order.buyer_id == this.userData.user_id;
         }
     },
     methods:{

@@ -70,16 +70,28 @@
 
                             <!-- end -->
                             <button
-                                v-if="isMerchant"
+                                v-if="isSeller && !order.waybill_details"
                                 :class="['btn', 'btn-procceed-waybil', 'mb-5', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button" @click="nextStep()">Proceed to waybill
                             </button>
+                            <button
+                                v-if="isSeller && order.waybill_details"
+                                :class="['btn', 'btn-procceed-waybil', 'mb-5', (step == 2 ? 'active-display-none' : 'active-display-block')]"
+                                type="button" @click="$router.push({name : 'OrderTracking',params : { order : order.order_hash}})">View waybill details
+                            </button>
                             <!-- for corporates view -->
                             <a 
-                                v-if="isCorporate"
+                                v-if="isBuyer && order.payment_status == 'UNPAID'"
                                 :href="'/dashboard/marketplace/payments/'+$route.params.order"
                                 :class="['btn', 'coperate-btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button">Proceed to payment
+                            </a>
+                            <a 
+                                v-if="isBuyer && order.payment_status != 'UNPAID'"
+                                href="javascript:void(0)"
+                                @click="$router.push({name : 'OrderTracking',params : { order : order.order_hash}})"
+                                :class="['btn', 'coperate-btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
+                                type="button">Track Order
                             </a>
                         </div>
                     </div>

@@ -11,17 +11,20 @@
         <div class="transaction-sumary-container d-flex flex-row">
             <!-- left -->
             <div class="left-container">
-                <div class="left-container-wrapper position-relative">
-                    <h2>Order Number: #2233202</h2>
+                <div class="left-container-wrapper position-relative" v-if="order">
+                    <h2>Order Number: #{{ order.order_hash }}</h2>
                     <!-- progress bar -->
-                    <div class="progress-bar-wrapper d-flex flex-column w-100 position-relative">
+                    <div class="progress-bar-wrapper d-flex flex-column w-100 position-relative" v-if="trackingDetails">
                         <div class="progress progress-outer">
                             <div class="progress progress-inner" :style="('width : ' + orderProgress + '%')"></div>
                         </div>
                         <div class="circle d-flex w-100 position-absolute">
                             <div class="circle-1 circle-main"><span></span></div>
-                            <div class="circle-2 circle-main"><span></span></div>
-                            <div class="circle-3 circle-main"><span></span></div>
+                            <div 
+                                class="circle-2 circle-main"
+                                v-for="tracking,index in trackingDetails.transit"
+                                :key="index"
+                            ><span></span></div>
                             <div class="circle-4 circle-main"><span></span></div>
                         </div>
                         <!--levels-->
@@ -29,31 +32,20 @@
                             <!-- levels -->
                             <div class=" levels level-1">
                                 <h3>Pickup location</h3>
-                                <p>Naziri farms
-                                    6 Abeokuta street,
-                                    Nassarawa state
-                                </p>
+                                <p>{{  trackingDetails.pickup_location }}</p>
                             </div>
-                            <div class="levels level-2">
-                                <h3>Confirmed</h3>
-                                <p>
-                                    Naziri farms
-                                    6 Abeokuta street,
-                                    Nassarawa state
-                                </p>
+                            <div 
+                                class="levels level-2"
+                                v-for="tracking,index in trackingDetails.transit"
+                                :key="index"
+                            >
+                                <h3>{{ tracking.status }}</h3>
+                                <p>{{ tracking.location }}</p>
                             </div>
                             <div class="levels level-3">
-                                <h3>Shipped </h3>
-                                <p>
-                                    Naziri farms
-                                    6 Abeokuta street,
-                                    Nassarawa state
-                                </p>
-                            </div>
-                            <div class="levels level-2">
                                 <h3>Delivered</h3>
                                 <p>
-                                    Albert Sam 23, Plazy Uyo, Nigeria
+                                    {{ trackingDetails.delivery_location }}
                                 </p>
                             </div>
                         </div>
@@ -61,7 +53,7 @@
 
                     <!-- table -->
                     <h4>Tracking Details</h4>
-                    <table class="table table-borderless">
+                    <table class="table table-borderless" v-if="trackingDetails">
                         <thead>
                             <tr>
                                 <th class="text-left">Date</th>
@@ -70,35 +62,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-left">23 october 2022</td>
-                                <td class="text-center">--</td>
-                                <td class="text-right">Ordered</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">23 october 2022</td>
-                                <td class="text-center">--</td>
-                                <td class="text-right">Order Confirmed</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">23 october 2022</td>
-                                <td class="text-center">Zandi Village Plateau</td>
-                                <td class="text-right">Shipped</td>
+                            <tr 
+                                v-for="tracking,index in trackingDetails.transit"
+                                :key="index"
+                            >
+                                <td class="text-left">{{ tracking.date }}</td>
+                                <td class="text-center">{{ tracking.location }}</td>
+                                <td class="text-right">{{ tracking.status }}</td>
                             </tr>
                         </tbody>
                     </table>
                     <template v-if="order">
-                        <a class="btn payment-status" v-if="(orderProgress != 100)">Payment Status: Pending</a>
+                        <a class="btn payment-status" v-if="(orderProgress != 100)">Payment Status: {{ 
+                            order.payment_status == "UNPAID" ? "Pending" :
+                            (order.payment_status == "PARTIALLY_PAID" ? "Partial" : "Paid")
+                             }}</a>
                         <a id="payment-state" class="btn payment-status" v-if="(orderProgress == 100)">Payment Status:
                             <strong>Completed</strong></a>
                         <a class="btn payment-status wallet d-inline-block position-absolute"
-                            v-if="order.buyer_id != userData.user.id">Go to wallet</a>
+                            v-if="isSeller">Go to wallet</a>
                         <!-- for corporates view -->
-                        <a class="btn payment-status d-block confirm-delivery" v-if="false" >Confirm Delivery</a>
-                        <a class="btn payment-status wallet d-block w-100" @click="goodsReceipt()"  v-if="(orderProgress == 100) || true">Confirm Delivery</a>
+                        <a class="btn payment-status d-block confirm-delivery" v-if="isBuyer && false" >Confirm Delivery</a>
+                        <a class="btn payment-status wallet d-block w-100" @click="goodsReceipt()" v-if="isBuyer">Confirm Delivery</a>
+                        <a class="btn payment-status wallet d-block w-100" v-if="isSeller">Update Tracking</a>
+
                     </template>
-
-
                 </div>
             </div>
             <!-- right -->
@@ -259,6 +247,9 @@ export default {
     computed: {
         waybillDetails(){
             return this.order ? JSON.parse(this.order.waybill_details) : null;
+        },
+        trackingDetails(){
+            return this.order ? JSON.parse(this.order.tracking_details) : null;
         }
     },
     methods:{
@@ -269,14 +260,28 @@ export default {
             return `${date}/${month}/${dateObject.getFullYear()}`;
         },
         getOrder(order){
+            let vm = this;
             MarketPlaceService.getOrder(order,(response)=>{
                 var order = response.data;
                 order.products = JSON.parse(order.products);
                 this.order = order;
+                setTimeout(()=>{
+                    vm.calculateOrderProgress();
+                },500);
             })
         },
         goodsReceipt(){
             this.stage = "upload-receipt"
+        },
+        calculateOrderProgress(){
+            if(this.trackingDetails.delivered){
+                this.orderProgress = 100;
+                return 0;
+            }
+            var transitElements = document.querySelectorAll('.circle .circle-main');
+            var lastTransitElement = transitElements[ transitElements.length - 2];
+            var totalProgressLength = document.querySelector('.circle').offsetWidth;
+            this.orderProgress = lastTransitElement.offsetLeft/totalProgressLength * 100;
         },
         saveGoodsReceipt(data){
             let vm = this;
@@ -375,7 +380,7 @@ export default {
 
                 .circle {
                     justify-content: space-around;
-                    margin-left: 4%;
+                    // margin-left: 4%;
                     top: -8px;
 
                     .circle-main {
@@ -398,7 +403,8 @@ export default {
                 }
 
                 .progress-level-container {
-                    gap: 15px;
+                    display: flex;
+                    justify-content: space-between;
 
                     .levels {
                         h3 {
