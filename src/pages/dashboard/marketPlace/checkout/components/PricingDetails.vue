@@ -49,7 +49,7 @@
                 <div class="delivery-content">Advance Payment</div>
             </div>
             <div class="progress-bar-wrapper position-relative d-flex flex-column">
-                <input type="range" class="form-range fromSlider" id="customRange1" value="100" min="0" max="100">
+                <input type="range" class="form-range fromSlider" id="customRange1" value="0" min="0" max="100">
                 <div class="vertical-rule d-flex position-relative">
                     <span></span>
                     <span></span>
@@ -307,34 +307,37 @@ hr {
             border: 0 !important;
 
         }
-        .vertical-rule {
-            // margin-left: 25%;
-            // column-gap: 25%;
+        %progress_bar_position{
+            span{
+                position: absolute;     
+                &:nth-of-type(1){
+                    left: 25.5%;
+                }
+                &:nth-of-type(2){
+                    left: 48.5%;
+                }
+                &:nth-of-type(3){
+                    left: 71%;
+                }
+                &:nth-of-type(4){
+                    left: 94%;
+                }
+            }
 
+        }
+        .vertical-rule {
+            @extend %progress_bar_position;
             span {
-                position: absolute;
                 margin-top: 0px;
                 width: 15px;
                 border: 1px solid #FCD66B;
                 transform: rotate(90deg);
-                &:nth-of-type(1){
-                    left: 26%;
-                }
-                &:nth-of-type(2){
-                    left: 48%;
-                }
-                &:nth-of-type(3){
-                    left: 70%;
-                }
-                &:nth-of-type(4){
-                    left: 92%;
-                }
+                
             }
         }
 
         .progress-rating {
-            column-gap: 19%;
-            margin-left: 25%;
+            @extend %progress_bar_position;
             margin-top: 10px;
 
             span {

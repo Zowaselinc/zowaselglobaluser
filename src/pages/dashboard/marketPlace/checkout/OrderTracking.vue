@@ -354,7 +354,7 @@ export default {
 
     .left-container {
         background: #FFFFFF;
-        width: 55%;
+        width: 50%;
 
         .left-container-wrapper {
             margin-inline: 8%;
@@ -529,7 +529,7 @@ export default {
     // Right-container
     .right-container {
         background: #F5F5F5;
-        width: 45%;
+        width:50%;
 
         .right-container-wrapper {
             margin-inline: 4%;
