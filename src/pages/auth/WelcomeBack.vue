@@ -40,7 +40,7 @@
                                 </div>
                             </form>
                             <p class="text-center mt-4">Don’t have an account?
-                                <a class="sign-up" data-toggle="tab" href="#signup">Sign Up</a>
+                                <a class="sign-up" data-toggle="tab" href="/getstarted">Sign Up</a>
                             </p>
                         </div>
                     </div>
