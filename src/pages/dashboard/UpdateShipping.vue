@@ -13,7 +13,7 @@
               <div class="row table-area">
                 <div class="col-12 big-table">
                     <div class="theading">
-                        <h4>My Sales</h4>
+                        <h4>Tracking Details</h4>
                     </div>
                     <table class="table table-borderless">
                         <thead>
@@ -26,16 +26,20 @@
                             <th></th>
                         </thead>
 
-                        <tbody>
-                            <tr>
-                                 <td>23, Jan, 2023</td>
-                                <td>#34427633</td>
-                                <td>Green Peas</td>
-                                <td>Owerri</td>
+                        <tbody v-if="trackingDetails">
+                            <tr
+                                v-for="tracking,index in trackingDetails.transit"
+                                :key="index"
+                            >
+                                 <td>{{ tracking.date }}</td>
+                                <td>#{{ order.order_hash }}</td>
+                                <td>{{ order.products[0].title }}</td>
+                                <td>{{ tracking.location }}</td>
                                 <td scope="row">
-                                    <div class="colored-green">
-                                        <div class="green-dot"></div>
-                                        <p>Delivered</p>
+                                    <div :class="['colored-green',
+                                        tracking.status == 'Held' ? 'red' : 'orange',
+                                    ]">
+                                        <p>{{  tracking.status  }}</p>
                                     </div>
                                 </td>
                                 
@@ -55,12 +59,14 @@
             
             <form action="">
                 <h4 class="up-date">Update Shipping Information</h4>
-                <input type="date" placeholder="date">
-                <input type="text" value="" placeholder="location">
-                <select name="" id="">
-                    <option value="">Update Status</option>
-                    <option value="">Ordered</option>
-                    <option value="">Pending</option>
+                <input type="date" v-model="tracking.date" placeholder="date">
+                <input type="text" v-model="tracking.location" placeholder="location">
+                <select name="status" v-model="tracking.status" id="">
+                    <option value="">Select Status</option>
+                    <option value="Shipped">Shipped</option>
+                    <option value="Transit">Transit</option>
+                    <option value="Arrived">Arrived</option>
+                    <option value="Held">Held</option>
                 </select>
                 <!-- <textarea name="" id="" cols="50" rows="10"></textarea> -->
                 <div class="form-btns">
@@ -68,7 +74,7 @@
                         <input type="file" hidden>
                         <button class="attach-btn">Attach a File <img src="@/assets/images/vectors/Paperclip.svg" alt=""></button>
                     </div> -->
-                    <button class="green-link">Update</button>
+                    <button class="green-link" type="button" @click="updateTracking()">Update</button>
                     
                 </div>
             </form>
@@ -87,10 +93,82 @@
 
 <script> 
     import DefaultNav from "@/layouts/DefaultNav.vue";
+    import MarketPlaceService from "@/services/marketplace";
+    import OrderService from "@/services/order";
+import Alert from "@/utilities/alert";
     export default {
         name: 'UpdateShipping',
         components:{
             DefaultNav,
+        },
+        data(){
+            return {
+                userData: this.$store.state.user,
+                order : null,
+                tracking: {
+                    date : "",
+                    location : "",
+                    status : ""                    
+                }
+            };
+        },
+        computed: {
+            waybillDetails(){
+                return this.order ? JSON.parse(this.order.waybill_details) : null;
+            },
+            trackingDetails(){
+                return this.order ? JSON.parse(this.order.tracking_details) : null;
+            }
+        },
+        methods:{
+            getOrder(order){
+                let vm = this;
+                MarketPlaceService.getOrder(order,(response)=>{
+                    var order = response.data;
+                    order.products = JSON.parse(order.products);
+                    this.order = order;
+                })
+            },
+            removeTrackingData(index){
+                let vm = this;
+                var trackingData = this.trackingDetails;
+                trackingData.transit.splice(index,0);
+                OrderService.saveTrackingDetails({
+                    order : this.$route.params.order,
+                    trackingDetails : trackingData
+                },(response)=>{
+                    if(!response.error){
+                        Alert.success({
+                            message : "Tracking data deleted"
+                        });
+                        vm.getOrder(this.$route.params.order);
+                    }
+                });
+            },
+            updateTracking(){
+                let vm = this;
+                var trackingData = this.trackingDetails;
+                trackingData.transit.push({
+                    date : this.tracking.date,
+                    location : this.tracking.location,
+                    status : this.tracking.status
+                });
+                OrderService.saveTrackingDetails({
+                    order : this.$route.params.order,
+                    trackingDetails : trackingData
+                },(response)=>{
+                    if(!response.error){
+                        Alert.success({
+                            message : "Tracking data saved"
+                        });
+                        vm.getOrder(this.$route.params.order);
+                        vm.tracking = { date : "", location : "", status : "" };
+                    }
+                });
+            }
+        },
+        mounted(){
+            this.getOrder(this.$route.params.order);
         }
     }
 </script>
@@ -246,9 +324,29 @@
     }
 
     p {
-        color: #05B050;
         margin-top: 15px;
         margin-left: 5px;
+    }
+}
+
+.green{
+    background: #E6F7EE;
+    p{
+       color: #05B050;;
+    }
+}
+
+.orange{
+    background: #fff1db;
+    p{
+       color: #f4980e;
+    }
+}
+
+.red{
+    background: #fbdada;
+    p{
+       color: #f71c1c;
     }
 }
 

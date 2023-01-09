@@ -341,7 +341,7 @@ const routes = [
         component:CreditScoring
     },
     {
-        path: "/dashboard/marketplace/updateshipping",
+        path: "/dashboard/marketplace/:order/updateshipping",
         name: "UpdateShipping",
         component:UpdateShipping
     },
