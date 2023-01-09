@@ -136,6 +136,7 @@
                     negotiations: [],
                     conversations : [],
                     conversationData : {},
+                    interval : null,
                 }
             },
             methods:{
@@ -236,6 +237,7 @@
                 handleNegotiation(){
                     var accepted = this.checkForAcceptedNegotiation()
                     if(accepted){
+                        window.clearInterval(this.interval);
                         this.$router.push(`/dashboard/marketplace/transactionsummary/${accepted.order.order_hash}`)
                     }
                 }
@@ -244,11 +246,6 @@
             mounted() {
                 let vm = this;
                 this.getConversations();
-                setInterval(()=>{
-                    if(vm.product){
-                        vm.getNegotiation();
-                    }
-                },5000);
             }
         }
     </script>

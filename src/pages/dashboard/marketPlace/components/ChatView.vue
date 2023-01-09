@@ -323,9 +323,12 @@ export default {
     mounted(){
         let vm = this;
         this.loadMessages();
-        setInterval(()=>{
+        this.interval = setInterval(()=>{
             vm.loadMessages();
         },5000);
+    },
+    beforeUnmount(){
+        clearInterval(this.interval);
     }
 
 

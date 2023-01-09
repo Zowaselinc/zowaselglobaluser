@@ -12,7 +12,7 @@
                 <div class="headings">
                     <h2></h2>
                     <div class="right-btns">
-                        <a href="/dashboard/cropwanted" class="green-link">Add new Product</a>
+                        <a href="/marketplace/newcrop" class="green-link">Add new Product</a>
                     
                     </div>
                 </div>  
