@@ -3,7 +3,7 @@
         <!-- header -->
         <div class="big-container">
             <div class="page-header d-flex justify-content-center align-items-center">
-            <h1>Payment</h1>
+            <h1>{{ order ? order.payment_status == "UNPAID" ? "Payment" : "Balance Payment" : "" }} </h1>
         </div>
         <!--body container -->
         <div class="transaction-sumary-container d-flex flex-row">
@@ -44,7 +44,7 @@
                             :class="['btn', 'btn-procceed-waybil']"
                             type="button" @click="changeTab('balancepayment')" v-if="activeTab == 'ordersummary'">Confim Payment
                         </a>
-                        <a href="/marketplace/confirmpayments"
+                        <a href="/dashboard/marketplace/confirmpayments"
                             :class="['btn', 'btn-procceed-waybil']"
                             type="button" v-if="activeTab == 'balancepayment' && false" >Confim Payment
                         </a>
@@ -59,7 +59,7 @@
             </div>
             <!-- right -->
             <OrderSummary :order="order" v-if="(activeTab == 'ordersummary')"></OrderSummary>
-            <BalancePayment v-if="(activeTab == 'balancepayment')"></BalancePayment>
+            <BalancePayment :order="order" v-if="(activeTab == 'balancepayment')"></BalancePayment>
         </div>
         </div>
         
@@ -89,6 +89,9 @@ export default {
         };
     },
     computed: {
+        paymentPercent(){
+            return window.localStorage.paymentPercent && window.localStorage.paymentPercent!='null' ? eval(window.localStorage.paymentPercent) : null;
+        }
     },
     methods : {
         changeTab(tab) {
@@ -97,11 +100,17 @@ export default {
         makePayment(){
             var vm = this;
             var transactionRef = `TRX-${this.generateRandom(20).toUpperCase()}`;
+            if(this.order.payment_status == "UNPAID" && this.paymentPercent){
+                var amountToPay = this.order.total * eval(this.paymentPercent) / 100;
+            }
+            if(this.order.payment_status == "PARTIALLY_PAID"){
+                var amountToPay = this.order.amount_due
+            }
             FlutterwaveCheckout({
                 public_key: "FLWPUBK_TEST-a1b8a6d0b897f10b7332e3af9f902c70-X",
                 tx_ref: transactionRef,
-                amount: this.order.total,
-                currency: "NGN",
+                amount: amountToPay,
+                currency: this.order.currency,
                 payment_options: "card, ussd, transfer",
                 callback: function(payment) {
                     // Send AJAX verification request to backend
@@ -112,11 +121,11 @@ export default {
                         TransactionService.verifyTransaction({
                             transaction_id : txId.toString(),
                             transaction_ref : txRef,
-                            order : vm.order.order_hash
+                            order : vm.order.order_hash,
+                            ...(vm.paymentPercent || vm.order.payment_status == "PARTIALLY_PAID" ? {partial : true} : {})
                         },(response)=>{
-                            console.log(response);
                             if(!response.error){
-                                vm.$router.push(`/marketplace/confirmpayments/${vm.order.order_hash}`);
+                                vm.$router.push(`/dashboard/marketplace/confirmpayments/${vm.order.order_hash}`);
                             }
                         });
                     }
@@ -142,7 +151,7 @@ export default {
                     name: `${this.userData.user.first_name} ${this.userData.user.last_name}`,
                 },
                 customizations: {
-                    title: this.order.product.title,
+                    title: this.order.products[0].title,
                     description: "Payment for order",
                     logo : "https://cdn.filestackcontent.com/SrotkZlqT6iXtiA20Q14"
                 },
@@ -161,8 +170,11 @@ export default {
         getOrder(order){
             MarketPlaceService.getOrder(order,(response)=>{
                 var order = response.data;
-                order.product = JSON.parse(order.product);
+                order.products = JSON.parse(order.products);
                 this.order = order;
+                if(order.payment_status == "PARTIALLY_PAID"){
+                    this.changeTab('balancepayment');
+                }
                 this.makePayment();
             })
         }

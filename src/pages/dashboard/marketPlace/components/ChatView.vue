@@ -66,9 +66,19 @@
                                 </div>
                                 <div class="bottom-container" v-if="message.sender_id != sender.id">
                                     <div class="check-buttons">
-                                        <input type="checkbox" :disabled="message.status == 'declined' ? '' : null" @click="acceptOffer(message)">
+                                        <input 
+                                            type="checkbox" 
+                                            :disabled="message.status == 'declined' ? '' : null"  
+                                            @click="acceptOffer(message)"
+                                            :checked="message.status == 'accepted' || message.status == 'closed'? '' : null"
+                                        />
                                         <label for="">Accept</label>
-                                        <input type="checkbox" :disabled="message.status == 'accepted' ? '' : null" @click="declineOffer(message)">
+                                        <input 
+                                            type="checkbox" 
+                                            :disabled="message.status == 'accepted' ? '' : null"
+                                            @click="declineOffer(message)"
+                                            :checked="message.status == 'declined' ? '' : null"
+                                        />
                                         <label for="">Decline</label>
                                     </div>
                                     <div class="timed">
@@ -87,11 +97,15 @@
                 <a href="#" class="close-form" v-on:click="closeForm()"> X </a>
                 <div class="main-form">
                     <div class="form-row">
-                        <div class="form-group form-inputs">
+                        <div class="form-group form-inputs got-it">
                             <label for="formGroupExampleInput">Quantity</label>
                             <div class="quantity">
-                                <input type="text" class="form-control amount" v-model="offerData.qty" id=""
-                                    placeholder="Enter Amount" />
+                                <select class="form-control" name="" id="">
+                                    <option value="">kg</option>
+                                    <option value="">bags</option>
+                                </select>
+                                <input type="text" class="form-control " v-model="offerData.qty" id=""
+                                    placeholder="Enter quantity" />
                             </div>
                         </div>
                         <div class="form-group form-inputs">
@@ -309,9 +323,12 @@ export default {
     mounted(){
         let vm = this;
         this.loadMessages();
-        setInterval(()=>{
+        this.interval = setInterval(()=>{
             vm.loadMessages();
         },5000);
+    },
+    beforeUnmount(){
+        clearInterval(this.interval);
     }
 
 
@@ -554,9 +571,9 @@ export default {
         // margin-top: 40px;
     }
 
-    .form-inputs {
-        // width: 30%;
-    }
+    // .form-inputs {
+    //     // width: 30%;
+    // }
 
     label {
         font-family: Maven Pro;
@@ -589,11 +606,12 @@ export default {
         justify-content: center;
         align-items: center;
     }
+    .got-it{
+        width: 38%;
+    }
 
     select {
-        height: 50px;
         border: 1px solid #dde6ef;
-        margin-bottom: 10px;
         box-shadow: none;
         border-radius: 0;
         background: #fbfdff;
@@ -604,6 +622,14 @@ export default {
 
     .quantity {
         display: flex;
+        width: 100%;
+
+        input{
+            width: 50% !important;
+        }
+        select{
+            width: 50% !important;
+        }
     }
 
     .percentage::placeholder {

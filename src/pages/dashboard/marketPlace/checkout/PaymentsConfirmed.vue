@@ -11,7 +11,7 @@
                 </p>
             </div>
             <div class="d-grid w-75">
-                <a href="/marketplace" :class="['btn', 'btn-goto-marketplace', 'mb-3 ']"
+                <a href="/dashboard/marketplace" :class="['btn', 'btn-goto-marketplace', 'mb-3 ']"
                     type="button">Go to
                     market place
                 </a>

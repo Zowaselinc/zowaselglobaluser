@@ -8,12 +8,12 @@
                 <tr>
                     <th>Product Cost
                     </th>
-                    <td>₦ 1,770,000</td>
+                    <td>{{ order.currency }} {{ order.total.toLocaleString() }}</td>
                 </tr>
                 <tr>
                     <th>Advance Paid
                     </th>
-                    <td>₦ 442,500</td>
+                    <td>{{ order.currency }} {{ order.amount_paid.toLocaleString() }}</td>
                 </tr>
             </table>
             <hr>
@@ -21,7 +21,7 @@
                 <tr>
                     <th>Amount Due
                     </th>
-                    <td>₦ 1,327,500</td>
+                    <td>{{ order.currency }} {{ order.amount_due.toLocaleString() }}</td>
                 </tr>
             </table>
 
@@ -31,7 +31,10 @@
 
 <script>
 export default {
-    name: "BalancePayment"
+    name: "BalancePayment",
+    props: {
+        order : Object
+    },
 }
 </script>
 

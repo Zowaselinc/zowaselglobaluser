@@ -5,6 +5,7 @@
                 <h2 v-if="userData">Welcome, {{userData.user.first_name}}</h2>
                 <p>Wallet Balance: <span>$5070</span></p>
             </div>
+            <!-- imported the card components -->
             <Cards></Cards>
             <div class="chart">
                 <div class="chart-text">
@@ -127,9 +128,6 @@
             </div>
 
         </div>
-
-
-
     </DefaultNav>
 </template>
 
@@ -161,6 +159,7 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 1% 5% 2% 5%;
+    overflow-y: scroll;
 
     @include breakpoint-between(md, lg) {
         width: 60.5%;
@@ -187,7 +186,7 @@ export default {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 700;
-        font-size: 32px;
+        font-size: 24px;
         color: #4A4754;
     }
 
@@ -195,7 +194,7 @@ export default {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 400;
-        font-size: 20px;
+        font-size: 16px;
         color: #4A4754;
     }
 
@@ -203,7 +202,7 @@ export default {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 700;
-        font-size: 30px;
+        font-size: 16px;
         color: #05B050;
     }
 }

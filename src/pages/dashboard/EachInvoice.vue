@@ -116,6 +116,7 @@
     display: flex;
     flex-direction: column;
     padding:2% 5% 2% 3%;
+    overflow-y: scroll;
     h2{
         font-family: 'Poppins';
         font-style: normal;

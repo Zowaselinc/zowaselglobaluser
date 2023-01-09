@@ -16,11 +16,11 @@
                         type="button">Go to
                         market place
                     </a>
-                    <a href="/marketplace/ordertracking" :class="['btn', 'btn-track', 'mt-2 mb-4']" type="button">Track
+                    <a :href="'/dashboard/marketplace/'+$route.params.order+'/tracking'" :class="['btn', 'btn-track', 'mt-2 mb-4']" type="button">Track
                         order
                     </a>
                     <!-- for buyers view -->
-                    <a href="/marketplace/ordertracking" :class="['btn', 'btn-track', 'mt-2 mb-1']" type="button">Print
+                    <a href="#" :class="['btn', 'btn-track', 'mt-2 mb-1']" type="button">Print
                         reciept
                     </a>
                 </div>

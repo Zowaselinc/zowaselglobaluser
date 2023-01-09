@@ -6,7 +6,7 @@
     <div class="pricing-details-wrapper">
         <div class="table-rows table-row-first">
             <div>Accepted Price</div>
-            <div>{{ order.product.currency }} {{ specification.price}}</div>
+            <div>{{ order.products[0].currency }} {{ specification.price }}</div>
         </div>
         <div class="table-rows table-row-first">
             <div>Confirmed Quantity</div>
@@ -18,41 +18,39 @@
         </div>
         <div class="table-rows mb-0">
             <div>Total Price</div>
-            <div>{{order.product.currency}} {{ specification.price * specification.qty}}</div>
+            <div>{{ order.products[0].currency }} {{ specification.price * specification.qty }}</div>
         </div>
     </div>
 
     <!-- for corporates view -->
-    <div class="payment-option-wrapper" v-if="isCorporate">
+    <div class="payment-option-wrapper" v-if="isBuyer && order.payment_status != 'PAID'" >
         <!-- payment option header -->
         <h2>Payment Option</h2>
         <div class="payment-option d-flex flex-column">
             <!-- first item -->
             <div class="delivery-options d-flex" v-if="userData.type != 'red-hot'">
-                <div @click="setPayment('after_delivery')" 
-                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'after_delivery' ? 'active' : '']"><span
-                        class="circle-inner"></span></div>
+                <div @click="setPayment('after_delivery')"
+                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'after_delivery' ? 'active' : '']">
+                    <span class="circle-inner"></span></div>
                 <div class="delivery-content">24 - 48hrs after delivery</div>
             </div>
             <!-- second item -->
-            <div class="delivery-options d-flex" >
-                <div @click="setPayment('full')" 
-                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'full' ? 'active' : '']"><span
-                        class="circle-inner"></span></div>
+            <div class="delivery-options d-flex">
+                <div @click="setPayment('full')"
+                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'full' ? 'active' : '']">
+                    <span class="circle-inner"></span></div>
                 <div class="delivery-content">Full payment</div>
             </div>
             <!-- first item -->
             <div class="delivery-options d-flex" v-if="userData.type != 'red-hot'">
-                <div @click="setPayment('advance')" 
-                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'advance' ? 'active' : '']"><span
-                        class="circle-inner"></span></div>
+                <div @click="setPayment('advance')"
+                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'advance' ? 'active' : '']">
+                    <span class="circle-inner"></span></div>
                 <div class="delivery-content">Advance Payment</div>
             </div>
-            <div class="progress-bar-wrapper position-relative d-flex flex-column">
-                <div class="progress progress-bar"></div>
-                <div class="point-circle"><span class="inner-point-circle"></span></div>
-                <div class="vertical-rule d-flex">
-                    <span></span>
+            <div class="progress-bar-wrapper position-relative d-flex flex-column" v-if="userData.type != 'red-hot' && paymentOption == 'advance'">
+                <input type="range" class="form-range fromSlider" @change="setPaymentPercent($event.target.value)" id="customRange1" value="0" min="0" max="100">
+                <div class="vertical-rule d-flex position-relative">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -61,7 +59,6 @@
                     <span>25%</span>
                     <span>50%</span>
                     <span>75%</span>
-                    <span>100%</span>
                 </div>
             </div>
         </div>
@@ -164,23 +161,28 @@
 <script>
 export default {
     name: "PricingDetails",
-    props : {
-        order : Object
+    props: {
+        order: Object,
+        setPaymentMode : Function,
+        setPaymentPercent : Function
     },
-    data(){
+    data() {
         return {
-            paymentOption : 'full'
+            paymentOption: 'full'
         };
     },
-    computed:{
-        specification(){
-            return this.order.negotiation ? this.order.negotiation.specification : this.order.product.specification;
+    computed: {
+        specification() {
+            return this.order.negotiation ? this.order.negotiation.specification : this.order.products[0].specification;
         },
     },
-    methods : {
-        setPayment(type){
+    methods: {
+        setPayment(type) {
             this.paymentOption = type;
+            this.setPaymentMode(type);
         }
+    },
+    mounted(){
     }
 }
 </script>
@@ -301,32 +303,62 @@ hr {
     }
 
     .progress-bar-wrapper {
-        .progress {
-            height: 3px !important;
-            background: #FCD66B;
-            border-radius: 5.34111px;
+        .form-range::-moz-range-thumb {
+            background: #FCD66B !important;
         }
+        input{
+            border: 0 !important;
 
+        }
+        %progress_bar_position{
+            span{
+                position: absolute;     
+                &:nth-of-type(1){
+                    left: 25.5%;
+                }
+                &:nth-of-type(2){
+                    left: 48.5%;
+                }
+                &:nth-of-type(3){
+                    left: 71%;
+                }
+                &:nth-of-type(4){
+                    left: 94%;
+                }
+            }
+
+        }
         .vertical-rule {
-            margin-left:  11%;
-            column-gap: 24%;
+            @extend %progress_bar_position;
             span {
-                margin-top: 5px;
+                margin-top: 0px;
                 width: 15px;
                 border: 1px solid #FCD66B;
                 transform: rotate(90deg);
+                
             }
         }
-        .progress-rating{
-            column-gap: 20%;
-            margin-left:  10%;
+
+        .progress-rating {
+            @extend %progress_bar_position;
             margin-top: 10px;
-            span{
+            position: relative;
+
+            span {
                 @include textStyles(Poppins, 500, 14px, 27px);
                 color: rgba(45, 55, 72, 0.6);
             }
         }
-        .point-circle{
+
+        .full-width{
+            width : 100%;
+        }
+
+        .half-width{
+            width : 50%;
+        }
+
+        .point-circle {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -337,7 +369,8 @@ hr {
             background: #FFF8E6;
             bottom: 36px;
             left: 10.53%;
-            .inner-point-circle{
+
+            .inner-point-circle {
                 width: 70%;
                 height: 70%;
                 border-radius: 50%;
@@ -371,9 +404,11 @@ hr {
         border-color: #05B050;
     }
 }
-.modal-body{
+
+.modal-body {
     font-size: 14px;
 }
+
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 690px;

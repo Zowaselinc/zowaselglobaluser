@@ -17,6 +17,7 @@
 
         <!-- MAIN CONTENT GOES HERE -->
         <CorporateMarket v-if="userData.user.type == 'corporate'" :view="activeView"></CorporateMarket>
+        <MerchantMarket v-if="userData.user.type == 'merchant'" :view="activeView"></MerchantMarket>
         </div>
 
 
@@ -28,13 +29,15 @@
 import DefaultNav from "@/layouts/DefaultNav.vue";
 import MarketplaceService from "@/services/marketplace";
 import CorporateMarket from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
-import Filter from "@/pages/dashboard/marketPlace/components/Filter.vue"
+import Filter from "@/pages/dashboard/marketPlace/components/Filter.vue";
+import MerchantMarket from "@/pages/dashboard/marketPlace/MerchantMarket.vue";
 
 export default {
     name: 'Market',
     components: {
         DefaultNav,
         CorporateMarket,
+        MerchantMarket,
         Filter
     },
     data(){

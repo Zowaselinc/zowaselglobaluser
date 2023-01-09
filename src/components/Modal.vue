@@ -118,7 +118,7 @@ import { thisExpression } from '@babel/types';
     max-width: none;
 }
 .modal-content{
-    padding: 28px;
+    padding: 20px;
     max-width: 50%;
     background: #FFFFFF;
     box-shadow: 0px 2px 4px rgba(7, 4, 146, 0.1), 0px 24px 60px rgba(34, 47, 81, 0.05), 0px 12px 24px rgba(30, 42, 72, 0.05);

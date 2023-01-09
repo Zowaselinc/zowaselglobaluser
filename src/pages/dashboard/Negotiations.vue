@@ -136,6 +136,7 @@
                     negotiations: [],
                     conversations : [],
                     conversationData : {},
+                    interval : null,
                 }
             },
             methods:{
@@ -181,6 +182,7 @@
                     }, (response) => {   
                         if(response){
                             this.conversationData.negotiations = response.data;
+                            this.handleNegotiation();
                         }
                     })
                 },
@@ -216,7 +218,7 @@
                 },
                 acceptNegotiationOffer(message) {
                     MarketPlaceService.acceptNegotiationOffer(message.id, (response) => {
-                        this.$router.push(`/marketplace/transactionsummary/${response.data.order.order_hash}`);
+                        this.$router.push(`/dashboard/marketplace/order/${response.data.order.order_hash}`);
                     });
                 },
                 declineNegotiationOffer(message) {
@@ -225,16 +227,18 @@
                 },
                 checkForAcceptedNegotiation(){
                     var accepted = false;
-                    this.negotiations.forEach((item) => {
+                    this.conversationData.negotiations.forEach((item) => {
                         if(item.status == "accepted"){
-                            accepted = true;
+                            accepted = item;
                         }
                     })
                     return accepted;
                 },
                 handleNegotiation(){
-                    if(this.checkForAcceptedNegotiation()){
-                        //this.$router.push(`/marketplace/transactionsummary/`);
+                    var accepted = this.checkForAcceptedNegotiation()
+                    if(accepted){
+                        window.clearInterval(this.interval);
+                        this.$router.push(`/dashboard/marketplace/order/${accepted.order.order_hash}`)
                     }
                 }
 
@@ -242,11 +246,6 @@
             mounted() {
                 let vm = this;
                 this.getConversations();
-                setInterval(()=>{
-                    if(vm.product){
-                        vm.getNegotiation();
-                    }
-                },5000);
             }
         }
     </script>
@@ -273,14 +272,15 @@
     }
     
     .left {
-    width: 40%;
-    padding-left: 35px;
-    padding-top: 30px;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    height: 100%;
-    overflow-y: hidden;
+        width: 40%;
+        padding-left: 35px;
+        padding-top: 30px;
+        padding-bottom : 10px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        height: 100%;
+        overflow-y: hidden;
 
     h1,
     h4 {
@@ -326,7 +326,7 @@
         background: #FFFFFF;
         border-radius: 4px;
         margin-top: 20px;
-        height: 600px;
+        flex :1;
         overflow-y: scroll;
     
     

@@ -9,22 +9,19 @@
     </div>
 
     <Footer />
-    <AlertBox />
 </template>
 
 <script>
 import TopHeader from "@/layouts/partials/TopHeader.vue";
 import SideBar from "@/layouts/partials/SideBar.vue";
 import Footer from "@/layouts/partials/Footer.vue";
-import AlertBox from "@/components/AlertBox.vue";
 
 export default {
     name: "DefaultNav",
     components: {
         TopHeader,
         SideBar,
-        Footer,
-        AlertBox
+        Footer
     },
     created() {
         if (!this.$store.state.authData) {

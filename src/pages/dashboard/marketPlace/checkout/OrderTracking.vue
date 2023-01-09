@@ -11,17 +11,20 @@
         <div class="transaction-sumary-container d-flex flex-row">
             <!-- left -->
             <div class="left-container">
-                <div class="left-container-wrapper position-relative">
-                    <h2>Order Number: #2233202</h2>
+                <div class="left-container-wrapper position-relative" v-if="order">
+                    <h2>Order Number: #{{ order.order_hash }}</h2>
                     <!-- progress bar -->
-                    <div class="progress-bar-wrapper d-flex flex-column w-100 position-relative">
+                    <div class="progress-bar-wrapper d-flex flex-column w-100 position-relative" v-if="trackingDetails">
                         <div class="progress progress-outer">
                             <div class="progress progress-inner" :style="('width : ' + orderProgress + '%')"></div>
                         </div>
                         <div class="circle d-flex w-100 position-absolute">
                             <div class="circle-1 circle-main"><span></span></div>
-                            <div class="circle-2 circle-main"><span></span></div>
-                            <div class="circle-3 circle-main"><span></span></div>
+                            <div 
+                                class="circle-2 circle-main"
+                                v-for="tracking,index in trackingDetails.transit"
+                                :key="index"
+                            ><span></span></div>
                             <div class="circle-4 circle-main"><span></span></div>
                         </div>
                         <!--levels-->
@@ -29,31 +32,20 @@
                             <!-- levels -->
                             <div class=" levels level-1">
                                 <h3>Pickup location</h3>
-                                <p>Naziri farms
-                                    6 Abeokuta street,
-                                    Nassarawa state
-                                </p>
+                                <p>{{  trackingDetails.pickup_location }}</p>
                             </div>
-                            <div class="levels level-2">
-                                <h3>Confirmed</h3>
-                                <p>
-                                    Naziri farms
-                                    6 Abeokuta street,
-                                    Nassarawa state
-                                </p>
+                            <div 
+                                class="levels level-2"
+                                v-for="tracking,index in trackingDetails.transit"
+                                :key="index"
+                            >
+                                <h3>{{ tracking.status }}</h3>
+                                <p>{{ tracking.location }}</p>
                             </div>
                             <div class="levels level-3">
-                                <h3>Shipped </h3>
-                                <p>
-                                    Naziri farms
-                                    6 Abeokuta street,
-                                    Nassarawa state
-                                </p>
-                            </div>
-                            <div class="levels level-2">
                                 <h3>Delivered</h3>
                                 <p>
-                                    Albert Sam 23, Plazy Uyo, Nigeria
+                                    {{ trackingDetails.delivery_location }}
                                 </p>
                             </div>
                         </div>
@@ -61,7 +53,7 @@
 
                     <!-- table -->
                     <h4>Tracking Details</h4>
-                    <table class="table table-borderless">
+                    <table class="table table-borderless" v-if="trackingDetails">
                         <thead>
                             <tr>
                                 <th class="text-left">Date</th>
@@ -70,37 +62,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-left">23 october 2022</td>
-                                <td class="text-center">--</td>
-                                <td class="text-right">Ordered</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">23 october 2022</td>
-                                <td class="text-center">--</td>
-                                <td class="text-right">Order Confirmed</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">23 october 2022</td>
-                                <td class="text-center">Zandi Village Plateau</td>
-                                <td class="text-right">Shipped</td>
+                            <tr 
+                                v-for="tracking,index in trackingDetails.transit"
+                                :key="index"
+                            >
+                                <td class="text-left">{{ tracking.date }}</td>
+                                <td class="text-center">{{ tracking.location }}</td>
+                                <td class="text-right">{{ tracking.status }}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <a class="btn payment-status" v-if="(orderProgress != 100)">Payment Status: Pending</a>
-                    <a id="payment-state" class="btn payment-status" v-if="(orderProgress == 100)">Payment Status:
-                        <strong>Completed</strong></a>
-                    <a class="btn payment-status wallet d-inline-block position-absolute"
-                        v-if="(orderProgress == 100)">Go to wallet</a>
-                    <!-- for corporates view -->
-                    <a class="btn payment-status d-block confirm-delivery" v-if="(orderProgress == 100)">Confirm Delivery</a>
-                    <a class="btn payment-status wallet d-block w-100"
-                        v-if="(orderProgress == 100)">Confirm Delivery</a>
+                    <template v-if="order">
+                        <a class="btn payment-status" v-if="(orderProgress != 100)">Payment Status: {{ 
+                            order.payment_status == "UNPAID" ? "Pending" :
+                            (order.payment_status == "PARTIALLY_PAID" ? "Partial" : "Paid")
+                             }}</a>
+                        <a id="payment-state" class="btn payment-status" v-if="(orderProgress == 100)">Payment Status:
+                            <strong>Completed</strong></a>
+                        <a class="btn payment-status wallet d-inline-block position-absolute"
+                            v-if="isSeller">Go to wallet</a>
+                        <!-- for corporates view -->
+                        <a class="btn payment-status d-block confirm-delivery" v-if="isBuyer && false" >Confirm Delivery</a>
+                        <a class="btn payment-status wallet d-block w-100" @click="goodsReceipt()" v-if="isBuyer">Confirm Delivery</a>
+                        <a class="btn payment-status wallet d-block w-100" v-if="order.payment_status == 'PARTIALLY_PAID'">Complete Payment</a>
+                        <a class="btn payment-status wallet d-block w-100" @click="updateShipping()" v-if="isSeller">Update Tracking</a>
 
+                    </template>
                 </div>
             </div>
             <!-- right -->
-            <div class="right-container">
+            <div v-if="stage == 'confirm'" class="right-container">
                 <div class="right-container-wrapper">
                     <h1>Waybill details</h1>
                     <hr>
@@ -117,20 +108,20 @@
                                 <p>Ikeja, Lagos, NIGERIA</p>
                                 <p>Waybil Number:</p>
                             </address>
-                            <div class="form-wrapper">
+                            <div class="form-wrapper" v-if="order">
                                 <!-- grid -->
                                 <div class="container text-center ">
                                     <div class="row">
                                         <div class="col row-item-1">DISPATCH SECTION</div>
                                     </div>
                                     <div class="row row-main">
-                                        <div class="col col-item-1">FROM:</div>
-                                        <div class="col-6 col-item-2">To:</div>
+                                        <div class="col col-item-1">FROM: {{ waybillDetails.dispatch_section.from }}</div>
+                                        <div class="col-6 col-item-2">To: {{ waybillDetails.dispatch_section.to }}</div>
                                     </div>
                                     <div class="row row-main">
-                                        <div class="col-4 col-item-1">DATE:</div>
-                                        <div class="col-4 col-item-2">COSIGNEE:</div>
-                                        <div class="col-4 col-item-2">Truck No./Trailer No:</div>
+                                        <div class="col-4 col-item-1">DATE: {{ waybillDetails.dispatch_section.date }}</div>
+                                        <div class="col-4 col-item-2">COSIGNEE: {{ waybillDetails.dispatch_section.cosignee }}</div>
+                                        <div class="col-4 col-item-2">Truck No./Trailer No: {{ waybillDetails.dispatch_section.truck_number }}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-4 row-item-general">S/No.</div>
@@ -138,41 +129,33 @@
                                         <div class="col-4 row-item-general">QUANTITY</div>
 
                                     </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
+                                    <div class="row" v-for="item,index in waybillDetails.dispatch_section.items" :key="index">
+                                        <div class="col-4 row-item-general">{{ index + 1 }}</div>
+                                        <div class="col-4 row-item-general"> {{ item.title  }}</div>
+                                        <div class="col-4 row-item-general">{{ item.specification.qty }}</div>
 
                                     </div>
                                     <div class="row row-main">
-                                        <div class="col col-item-1">REMARKS:</div>
+                                        <div class="col col-item-1">REMARKS: {{ waybillDetails.dispatch_section.remarks }}</div>
                                     </div>
                                     <div class="row row-main">
-                                        <div class="col col-item-1">Driver's Name:</div>
-                                        <div class="col-6 col-item-2">Seller's Representative:</div>
+                                        <div class="col col-item-1">Driver's Name: {{ waybillDetails.dispatch_section.drivers_data.drivers_name }}</div>
+                                        <div class="col-6 col-item-2">Seller's Representative: {{ waybillDetails.dispatch_section.sellers_data.sellers_representative }}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 row-item-general">Driving License/Permit #:</div>
-                                        <div class="col-6 row-item-general">Title:</div>
+                                        <div class="col-6 row-item-general">Driving License/Permit #: {{ waybillDetails.dispatch_section.drivers_data.driving_license }}</div>
+                                        <div class="col-6 row-item-general">Title: {{ waybillDetails.dispatch_section.sellers_data.title }}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 row-item-general">Signature and Date:</div>
-                                        <div class="col-6 row-item-general">Signature and Date:</div>
+                                        <div class="col-6 row-item-general">Signature and Date: {{ 
+                                                formatDate(waybillDetails.dispatch_section.drivers_data.date)
+                                            }}</div>
+                                        <div class="col-6 row-item-general">Signature and Date: {{ 
+                                            formatDate(waybillDetails.dispatch_section.sellers_data.date)
+                                        }}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col row-item-1">DISPATCH SECTION</div>
+                                        <div class="col row-item-1">RECEIPT SECTION</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-4 row-item-general">S/No.</div>
@@ -180,38 +163,30 @@
                                         <div class="col-4 row-item-general">QUANTITY</div>
 
                                     </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
-                                        <div class="col-4 row-item-general"></div>
+                                    <div class="row" v-for="item,index in waybillDetails.dispatch_section.items" :key="index">
+                                        <div class="col-4 row-item-general">{{ index + 1 }}</div>
+                                        <div class="col-4 row-item-general"> {{ item.title  }}</div>
+                                        <div class="col-4 row-item-general">{{ item.specification.qty }}</div>
 
                                     </div>
                                     <div class="row row-main">
-                                        <div class="col col-item-1">REMARKS:</div>
+                                        <div class="col col-item-1">REMARKS: {{ waybillDetails.receipt_section.remarks }}</div>
                                     </div>
                                     <div class="row row-main">
-                                        <div class="col-6 col-item-2">Seller's Representative:</div>
-                                        <div class="col col-item-1">Received by:</div>
+                                        <div class="col-6 col-item-2">Seller's Representative: {{ waybillDetails.receipt_section.sellers_data.sellers_representative }}</div>
+                                        <div class="col col-item-1">Received by:{{ waybillDetails.receipt_section.recipient_data.received_by }}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 row-item-general">Title:</div>
-                                        <div class="col-6 row-item-general">Title:</div>
+                                        <div class="col-6 row-item-general">Title: {{ waybillDetails.receipt_section.sellers_data.title }}</div>
+                                        <div class="col-6 row-item-general">Title: {{ waybillDetails.receipt_section.recipient_data.title }}</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-6 row-item-general">Signature and Date:</div>
-                                        <div class="col-6 row-item-general">Signature and Date:</div>
+                                        <div class="col-6 row-item-general">Signature and Date: {{ 
+                                            formatDate(waybillDetails.receipt_section.sellers_data.date)
+                                            }}</div>
+                                        <div class="col-6 row-item-general">Signature and Date: {{ 
+                                            formatDate(waybillDetails.receipt_section.recipient_data.date)
+                                        }}</div>
                                     </div>
                                     <p class="way-bill mt-5 mb-4 container">
                                         The <strong>way bill</strong> puts the person in charge of the conveyance
@@ -233,6 +208,9 @@
                     </div>
                 </div>
             </div>
+
+            <GoodsNotes v-if="stage == 'upload-receipt'" :saveGoodsReceipt="saveGoodsReceipt"/>
+            <GoodsReceipt v-if="stage == 'receipt-uploaded'"/>
         </div>
 
             
@@ -246,28 +224,91 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
+import MarketPlaceService from "@/services/marketplace";
+import GoodsNotes from "@/pages/dashboard/marketPlace/checkout/components/GoodsNotes.vue";
+import GoodsReceipt from "@/pages/dashboard/marketPlace/checkout/components/GoodReceipt.vue";
+import OrderService from "@/services/order";
 
 export default {
     name: 'OrderTracking',
     data() {
         return {
             userData: this.$store.state.user,
-             orderProgress: 0
+            orderProgress: 0,
+            order : null,
+            stage : "confirm"
 
         }
     },
     components: {
         DefaultNav,
+        GoodsNotes,
+        GoodsReceipt
     },
     computed: {
-
+        waybillDetails(){
+            return this.order ? JSON.parse(this.order.waybill_details) : null;
+        },
+        trackingDetails(){
+            return this.order ? JSON.parse(this.order.tracking_details) : null;
+        }
+    },
+    methods:{
+        formatDate(date){
+            var dateObject = (new Date(date));
+            var date = dateObject.getDate() < 10 ? "0"+dateObject.getDate() : dateObject.getDate()
+            var month = dateObject.getMonth()+1 < 10 ? "0"+(dateObject.getMonth()+1) : dateObject.getMonth()+1
+            return `${date}/${month}/${dateObject.getFullYear()}`;
+        },
+        getOrder(order){
+            let vm = this;
+            MarketPlaceService.getOrder(order,(response)=>{
+                var order = response.data;
+                order.products = JSON.parse(order.products);
+                this.order = order;
+                setTimeout(()=>{
+                    vm.calculateOrderProgress();
+                },500);
+            })
+        },
+        goodsReceipt(){
+            this.stage = "upload-receipt"
+        },
+        calculateOrderProgress(){
+            if(this.trackingDetails.delivered){
+                this.orderProgress = 100;
+                return 0;
+            }
+            var transitElements = document.querySelectorAll('.circle .circle-main');
+            var lastTransitElement = transitElements[ transitElements.length - 2];
+            var totalProgressLength = document.querySelector('.circle').offsetWidth;
+            this.orderProgress = lastTransitElement.offsetLeft/totalProgressLength * 100;
+        },
+        saveGoodsReceipt(data){
+            let vm = this;
+            OrderService.saveGoodsReceiptNote({
+                order : this.order.order_hash,
+                goodsReceiptNote : data
+            },(response)=>{
+                if(!response.error){
+                    vm.stage = "receipt-uploaded";
+                }
+            });
+        },
+        updateShipping(){
+            this.$router.push({
+                name : "UpdateShipping",
+                params : {order : this.$route.params.order}
+            });
+        }
     },
     mounted() {
-        setInterval(() => {
-            if (this.orderProgress < 100) {
-                this.orderProgress++;
-            }
-        }, 100);
+        // setInterval(() => {
+        //     if (this.orderProgress < 100) {
+        //         this.orderProgress++;
+        //     }
+        // }, 100);
+        this.getOrder(this.$route.params.order);
     }
 }
 </script>
@@ -314,7 +355,7 @@ export default {
 
     .left-container {
         background: #FFFFFF;
-        width: 55%;
+        width: 50%;
 
         .left-container-wrapper {
             margin-inline: 8%;
@@ -346,7 +387,7 @@ export default {
 
                 .circle {
                     justify-content: space-around;
-                    margin-left: 4%;
+                    // margin-left: 4%;
                     top: -8px;
 
                     .circle-main {
@@ -369,9 +410,11 @@ export default {
                 }
 
                 .progress-level-container {
-                    gap: 15px;
+                    display: flex;
+                    justify-content: space-around;
 
                     .levels {
+                        width: 15%;
                         h3 {
                             @include textStyles(Poppins, 800, 14.5px, 27px);
                             color: rgba(45, 55, 72, 0.6);
@@ -487,7 +530,7 @@ export default {
     // Right-container
     .right-container {
         background: #F5F5F5;
-        width: 45%;
+        width:50%;
 
         .right-container-wrapper {
             margin-inline: 4%;

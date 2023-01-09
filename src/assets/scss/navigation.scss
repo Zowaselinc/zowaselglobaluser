@@ -7,12 +7,14 @@ hr {
     top: 89px;
     z-index: 1000;
 }
+
 // overide boostrap styles for input
 input {
     padding: 0 !important;
     margin-top: 0px;
     border: 0 !important;
 }
+
 // top navigation
 nav {
     width: 100%;
@@ -70,28 +72,35 @@ nav {
     width: 20%;
     z-index: 600;
     color: #ffffff;
+    transition: width, .25s;
     background: linear-gradient(180deg, #29333f 0%, #1c2131 100%);
+
     @include breakpoint-between(md, lg) {
         width: 39.5%;
     }
+
     @include breakpoint-between(lg, xl) {
         width: 30.5%;
     }
+
     @include breakpoint-between(xl, xxl) {
         width: 24%;
     }
- 
+
 
     #side-menu {
         a.nav-item {
             margin-bottom: 4px;
+
             .drop-menu {
                 @include textStyles("Maven Pro", 400, 14px, 147%);
                 color: #ffffff;
                 margin-left: 18%;
                 display: none;
+
                 div {
                     padding: 9px 15px;
+
                     &:hover {
                         background: rgba(0, 0, 0, 0.27);
                         border-radius: 4px;
@@ -99,28 +108,34 @@ nav {
                 }
             }
         }
+
         // toggle
         a.nav-item.active {
             .drop-menu {
                 display: block;
             }
         }
+
         a span {
             margin-left: 18px;
             @include textStyles("Maven Pro", 400, 14px, 116%);
         }
     }
+
+    #home {
+        background: #05b050 !important;
+    }
+
     .ripple {
         position: relative;
         padding: 12px 25px;
         border-radius: 4px;
+
         &:hover {
             background: rgba(0, 0, 0, 0.27);
             border-radius: 4px;
         }
-        &.actives {
-            background: #05b050;
-        }
+
         img.arrow-symbol {
             float: right;
             margin: 0;
@@ -130,17 +145,21 @@ nav {
             -ms-transform: translateY(-50%);
             transform: translateY(-50%);
         }
+
         img.carretUp {
             display: none;
         }
     }
+
     // toggle
     a.nav-item.active {
         .ripple {
             border-radius: 4px;
+
             img.carret-down {
                 display: none;
             }
+
             img.carretUp {
                 display: block;
             }
@@ -190,12 +209,13 @@ footer {
             border-radius: 2px;
             height: inherit;
 
-            > img {
+            >img {
                 height: 50%;
             }
         }
     }
 }
+
 // footer info
 
 .footer-info {
@@ -211,9 +231,10 @@ footer {
             width: 161px;
         }
 
-        > div {
+        >div {
             padding-bottom: 20px;
         }
+
         .address {
             width: max-content;
         }
@@ -227,6 +248,7 @@ footer {
             p {
                 padding: 0 !important;
             }
+
             p {
                 margin-bottom: 0;
             }
@@ -239,24 +261,28 @@ footer {
         color: #f1f1f1;
     }
 
-    div ~ div > * {
+    div~div>* {
         padding-bottom: 20px;
     }
 
     .gadget {
-        > h2 {
+        >h2 {
             padding-bottom: 10px;
         }
+
         gap: 10px;
+
         .app-store-container {
             padding: 11px 85px 14px 16px;
             border: 0.7px solid rgba(255, 255, 255, 0.1);
             border-radius: 5px;
         }
+
         .store-box {
             padding: 0;
             gap: 14px;
-            > div:nth-of-type(2) {
+
+            >div:nth-of-type(2) {
                 gap: 5px;
 
                 div {
@@ -264,14 +290,17 @@ footer {
                 }
             }
         }
-        .apple > div {
+
+        .apple>div {
             padding: 0;
         }
     }
 }
+
 .copyright-container {
     margin-inline: 10.13% 11.5%;
 }
+
 .copyright {
     padding-block: 22px;
     width: 100%;
@@ -285,6 +314,7 @@ footer {
         letter-spacing: 0.04em;
         color: #b5b4b9;
     }
+
     .social-media {
         gap: 25px;
         right: 0%;

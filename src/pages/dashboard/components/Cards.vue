@@ -61,7 +61,7 @@ export default {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 700;
-        font-size: 24px;
+        font-size: 20px;
         color: #4A4754;
     }
 
@@ -69,7 +69,7 @@ export default {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 700;
-        font-size: 24px;
+        font-size: 20px;
         color: #05B050;
     }
 
@@ -77,7 +77,7 @@ export default {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 700;
-        font-size: 24px;
+        font-size: 20px;
         color: #3498DB;
     }
 
@@ -85,7 +85,7 @@ export default {
         font-family: 'Maven Pro';
         font-style: normal;
         font-weight: 700;
-        font-size: 24px;
+        font-size: 20px;
         color: #CD4647;
     }
 

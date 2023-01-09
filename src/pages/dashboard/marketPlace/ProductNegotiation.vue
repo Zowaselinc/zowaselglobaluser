@@ -100,6 +100,7 @@ export default {
             product: null,
             userData: this.$store.state.user,
             negotiations: [],
+            closed : false,
         }
     },
     methods: {
@@ -165,14 +166,16 @@ export default {
         },
         handleNegotiation(){
             var accepted = this.checkForAcceptedNegotiation();
-            if(accepted){
+            if(accepted && !this.closed){
                 Alert.success({
                     message : "You have an accepted offer",
+                    primary : true,
                     onProceed : () => {
                         Alert.close();
-                        this.$router.push(`/marketplace/transactionsummary/${accepted.order.order_hash}`)
+                        this.$router.push(`/dashboard/marketplace/order/${accepted.order.order_hash}`)
                     }
                 });
+                this.closed = true;
             }
         }
     },
@@ -546,9 +549,9 @@ export default {
         // margin-top: 40px;
     }
 
-    .form-inputs {
-        // width: 30%;
-    }
+    // .form-inputs {
+    //     // width: 30%;
+    // }
 
     label {
         font-family: Maven Pro;

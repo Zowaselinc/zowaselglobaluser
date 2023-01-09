@@ -3,7 +3,7 @@
         <div class="big-container" v-if="order">
 
             <div class="page-header d-flex justify-content-center align-items-center">
-                <h1 v-if="(step == 1)">Transaction Summary</h1>
+                <h1 v-if="(step == 1)">Order Summary</h1>
                 <!-- for waybill details -->
                 <div :class="['waybills', 'w-100']" v-if="(step == 2)">
                     <a class="arrow-left-img " @click="previouStep()">
@@ -22,7 +22,7 @@
                         <div class="transactin-details d-flex flex-column">
                             <div class="table-rows table-row-first">
                                 <div>Crop Type:</div>
-                                <div>{{ order.product.subcategory.name }}</div>
+                                <div>{{ order.products[0].subcategory.name }}</div>
                             </div>
                             <div class="table-rows">
                                 <div class="quality-spec">Quality Specs</div>
@@ -49,7 +49,7 @@
                             </div>
                             <div class="table-rows">
                                 <div>Seller Details:</div>
-                                <div>{{ order.product.user.first_name + " " + order.product.user.last_name }}</div>
+                                <div>{{ order.products[0].user.first_name + " " + order.products[0].user.last_name }}</div>
                             </div>
                             <div v-if="false" class="table-rows">
                                 <div>Transaction ID:</div>
@@ -70,22 +70,47 @@
 
                             <!-- end -->
                             <button
-                                v-if="isMerchant"
-                                :class="['btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
+                                v-if="isSeller && !order.waybill_details"
+                                :class="['btn', 'btn-procceed-waybil', 'mb-5', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button" @click="nextStep()">Proceed to waybill
+                            </button>
+                            <button
+                                v-if="isSeller && order.waybill_details"
+                                :class="['btn', 'btn-procceed-waybil', 'mb-5', (step == 2 ? 'active-display-none' : 'active-display-block')]"
+                                type="button" @click="$router.push({name : 'OrderTracking',params : { order : order.order_hash}})">View waybill details
                             </button>
                             <!-- for corporates view -->
                             <a 
-                                v-if="isCorporate"
-                                :href="'/marketplace/payments/'+$route.params.order"
+                                v-if="isBuyer && order.payment_status == 'UNPAID' && payment != 'after_delivery'"
+                                :href="'/dashboard/marketplace/payments/'+$route.params.order"
                                 :class="['btn', 'coperate-btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button">Proceed to payment
+                            </a>
+
+                            <a 
+                                v-if="isBuyer && order.payment_status == 'UNPAID' && payment == 'after_delivery'"
+                                :href="'/dashboard/marketplace/'+$route.params.order+'/tracking'"
+                                :class="['btn', 'coperate-btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
+                                type="button">Proceed
+                            </a>
+                            <a 
+                                v-if="isBuyer && order.payment_status != 'UNPAID' && order.waybill_details"
+                                href="javascript:void(0)"
+                                @click="$router.push({name : 'OrderTracking',params : { order : order.order_hash}})"
+                                :class="['btn', 'coperate-btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
+                                type="button">Track Order
+                            </a>
+                            <a 
+                                v-if="isBuyer && order.amount_due && order.amount_due != 0"
+                                :href="'/dashboard/marketplace/payments/'+$route.params.order"
+                                :class="['btn', 'coperate-btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
+                                type="button"> Complete Payment
                             </a>
                         </div>
                     </div>
                 </div>
                 <!-- right -->
-                <div class="right-container">
+                <div class="right-container d-flex justify-content-center">
                     <div class="left-container-wrapper">
                         <!-- header tabs -->
                         <div
@@ -98,10 +123,10 @@
                                 @click="changeTab('purchaseorder')">Purchase Order</div>
                         </div>
                         <!-- pricing Details -->
-                        <PricingDetails :order="order" v-if="(activeTab == 'pricingdetails' && step == 1)"></PricingDetails>
+                        <PricingDetails :order="order" v-if="(activeTab == 'pricingdetails' && step == 1)" :setPaymentMode="setPayment" :setPaymentPercent="setPaymentPercent"></PricingDetails>
                         <FullSpecification :order="order" v-if="(activeTab == 'fullspec' && step == 1)"></FullSpecification>
                         <PurchaseOrder :order="order" v-if="(activeTab == 'purchaseorder' && step == 1)"></PurchaseOrder>
-                        <WaybillDetails ref="wayBill" :updateStep="updateWaybill" v-if="(step == 2) && isMerchant"></WaybillDetails>
+                        <WaybillDetails ref="wayBill" :order="order" :updateStep="updateWaybill" v-if="(step == 2) && isMerchant"></WaybillDetails>
                     </div>
                 </div>
             </div>
@@ -124,6 +149,7 @@ import PurchaseOrder from "@/pages/dashboard/marketPlace/checkout/components/Pur
 import WaybillDetails from '@/pages/dashboard/marketPlace/checkout/components/WaybillDetails.vue';
 import DefaultNav from "@/layouts/DefaultNav.vue";
 import MarketPlaceService from "@/services/marketplace";
+import { windowWhen } from "rxjs";
 
 export default {
     name: 'CardDetails',
@@ -145,7 +171,9 @@ export default {
             activeTab: "pricingdetails",
             step: 1,
             wayBillStep: 1,
-            order : null
+            order : null,
+            payment : "",
+            paymentPercent : null
         };
     },
     computed: {
@@ -153,7 +181,7 @@ export default {
             return this.$refs.wayBill;
         },
         specification(){
-            return this.order.negotiation ? this.order.negotiation.specification : this.order.product.specification;
+            return this.order.negotiation ? this.order.negotiation.specification : this.order.products[0].specification;
         },
         orderDate(){
             return new Date(this.order.created_at);
@@ -179,10 +207,24 @@ export default {
         updateWaybill(step) {
             this.wayBillStep = step;
         },
+        setPayment(type){
+            this.payment = type;
+            if(this.payment != "advance"){
+                this.paymentPercent = null;
+                window.localStorage.setItem('paymentPercent' , 'null');
+            }else{
+                this.paymentPercent = 50;
+                window.localStorage.setItem('paymentPercent' , 50);
+            }
+        },
+        setPaymentPercent(percent){
+            this.paymentPercent = percent;
+            window.localStorage.setItem('paymentPercent' , percent);
+        },
         getOrder(order){
             MarketPlaceService.getOrder(order,(response)=>{
                 var order = response.data;
-                order.product = JSON.parse(order.product);
+                order.products = JSON.parse(order.products);
                 this.order = order;
             })
         }
@@ -190,6 +232,7 @@ export default {
     },
     mounted(){
         this.getOrder(this.$route.params.order);
+        window.localStorage.setItem('paymentPercent' , 'null');
     }
 }
 </script>
@@ -205,19 +248,17 @@ export default {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    @include breakpoint-between(md, lg) {
+        width: 60.5%;
+    }
 
+    @include breakpoint-between(lg, xl) {
+        width: 69.5%;
+    }
 
-    // @include breakpoint-between(md, lg) {
-    //     width: 60.5%;
-    // }
-
-    // @include breakpoint-between(lg, xl) {
-    //     width: 69.5%;
-    // }
-
-    // @include breakpoint-between(xl, xxl) {
-    //     width: 76%;
-    // }
+    @include breakpoint-between(xl, xxl) {
+        width: 76%;
+    }
 }
 
 .active-display-none {
@@ -354,6 +395,7 @@ export default {
         .left-container-wrapper {
             margin-inline: 8%;
             margin-top: 65px;
+            width: 80%;
 
 
             .right-header {
