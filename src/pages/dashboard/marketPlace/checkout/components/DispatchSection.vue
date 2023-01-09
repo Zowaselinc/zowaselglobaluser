@@ -35,18 +35,6 @@
                 </div>
             </div>
             <div class="inputs-group  margin-btm-lg">
-                <div class="">
-                    <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Description</label>
-                    <input type="" v-model="dispatch.description" class="form-control mt-0" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" placeholder="Description">
-                </div>
-                <div class="">
-                    <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Quantity</label>
-                    <input v-model="dispatch.quantity" type="email" class="form-control mt-0" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" placeholder="Quantity">
-                </div>
-            </div>
-            <div class="inputs-group  margin-btm-lg">
                 <div class="w-100">
                     <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Remarks</label>
                     <textarea type="" v-model="dispatch.remarks" class="form-control mt-0" id="exampleInputEmail1"
