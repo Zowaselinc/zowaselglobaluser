@@ -28,7 +28,7 @@
                     </th>
                     <td>{{ order.currency }} {{ order.total }}</td>
                 </tr>
-                <tr>
+                <tr v-if="paymentPercent">
                     <th>Partial Payment
                     </th>
                     <td>{{ order.currency }} {{ paymentPercent/100 * order.total }}</td>

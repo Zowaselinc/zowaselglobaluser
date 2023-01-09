@@ -172,7 +172,7 @@ export default {
             step: 1,
             wayBillStep: 1,
             order : null,
-            payment : "",
+            payment : "full",
             paymentPercent : null
         };
     },

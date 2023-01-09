@@ -100,6 +100,7 @@ export default {
         makePayment(){
             var vm = this;
             var transactionRef = `TRX-${this.generateRandom(20).toUpperCase()}`;
+            var amountToPay = this.order.total;
             if(this.order.payment_status == "UNPAID" && this.paymentPercent){
                 var amountToPay = this.order.total * eval(this.paymentPercent) / 100;
             }
