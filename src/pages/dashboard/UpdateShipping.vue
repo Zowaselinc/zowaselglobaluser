@@ -22,6 +22,7 @@
                             <th>Product</th>
                             <th>Location</th>
                             <th>Shipping Status</th>
+                            <th>Action</th>
                            
                             <th></th>
                         </thead>
@@ -38,6 +39,7 @@
                                         <p>Delivered</p>
                                     </div>
                                 </td>
+                                <td><button class="delete">Delete</button></td>
                                 
                             </tr>
                        
@@ -279,4 +281,15 @@
 .up-date{
     margin-top: 40px;
 }
+.delete {
+            background: #F9E9E9;
+            border: 1px solid #C32021;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-family: 'Maven Pro';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            color: #C32021;
+        }
 </style>
