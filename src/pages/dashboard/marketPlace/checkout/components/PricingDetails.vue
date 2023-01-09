@@ -23,7 +23,7 @@
     </div>
 
     <!-- for corporates view -->
-    <div class="payment-option-wrapper" v-if="isCorporate">
+    <div class="payment-option-wrapper" v-if="isBuyer && order.payment_status != 'PAID'" >
         <!-- payment option header -->
         <h2>Payment Option</h2>
         <div class="payment-option d-flex flex-column">

@@ -3,7 +3,7 @@
         <div class="big-container">    
             <div class="headings">
                 <div class="left-btns">
-                    <a href="/dashboard/sales"><img src="@/assets/images/vectors/arrowleft.png" alt=""></a>
+                    <a href="javascript:void(0)" @click="$router.back()"><img src="@/assets/images/vectors/arrowleft.png" alt=""></a>
                     <h2>Update Shipping</h2>
                 </div>
                 
@@ -43,7 +43,7 @@
                                         <p>{{  tracking.status  }}</p>
                                     </div>
                                 </td>
-                                <td><button class="delete">Delete</button></td>
+                                <td><button class="delete" @click="removeTrackingData(index)">Delete</button></td>
                                 
                             </tr>
                        
@@ -134,7 +134,7 @@ import Alert from "@/utilities/alert";
             removeTrackingData(index){
                 let vm = this;
                 var trackingData = this.trackingDetails;
-                trackingData.transit.splice(index,0);
+                trackingData.transit.splice(index,1);
                 OrderService.saveTrackingDetails({
                     order : this.$route.params.order,
                     trackingDetails : trackingData

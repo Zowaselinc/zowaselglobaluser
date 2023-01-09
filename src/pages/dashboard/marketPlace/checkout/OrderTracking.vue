@@ -410,9 +410,10 @@ export default {
 
                 .progress-level-container {
                     display: flex;
-                    justify-content: space-between;
+                    justify-content: space-around;
 
                     .levels {
+                        width: 15%;
                         h3 {
                             @include textStyles(Poppins, 800, 14.5px, 27px);
                             color: rgba(45, 55, 72, 0.6);
