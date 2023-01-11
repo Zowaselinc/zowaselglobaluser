@@ -2,18 +2,6 @@
     <h1 class=" mb-4">Receipt Section</h1>
     <form>
         <div class="inputs-group  margin-btm-lg">
-            <div class="">
-                <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Description</label>
-                <input type="" v-model="receipt.description" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Description">
-            </div>
-            <div class="">
-                <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Quantity</label>
-                <input v-model="receipt.quantity" type="email" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Quantity">
-            </div>
-        </div>
-        <div class="inputs-group  margin-btm-lg">
             <div class="w-100">
                 <label for="exampleInputEmail1" class="form-label margin-btm-sm mt-0">Remarks</label>
                 <textarea v-model="receipt.remarks" type="" class="form-control mt-0" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -87,8 +75,6 @@ export default {
     data(){
         return {
             receipt : {
-                description : "",
-                quantity: "",
                 remarks : "",
                 sellers_data : {
                     sellers_representative : "",
