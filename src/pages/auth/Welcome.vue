@@ -25,15 +25,15 @@
                 this.$router.push(path);
             },
             openDashboard(){
-                if(this.type == "corporate"){
-                    this.goTo('/dashboard/corporate');
-                    return 0;
-                }
-                if(this.type == "partner"){
-                    this.goTo('/dashboard/logistics');
-                    return 0;
-                }
-                this.goTo('/dashboard/merchant');
+                // if(this.type == "corporate"){
+                //     this.goTo('/dashboard/corporate');
+                //     return 0;
+                // }
+                // if(this.type == "partner"){
+                //     this.goTo('/dashboard/logistics');
+                //     return 0;
+                // }
+                this.goTo('/dashboard');
 
             }
         }
