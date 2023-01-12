@@ -198,15 +198,15 @@ export default {
     overflow-y: scroll;
 
     @include breakpoint-between(md, lg) {
-        width: 60.5%;
+        min-width: 60.5%;
     }
 
     @include breakpoint-between(lg, xl) {
-        width: 69.5%;
+        min-width: 69.5%;
     }
 
     @include breakpoint-between(xl, xxl) {
-        width: 76%;
+        min-width: 76%;
     }
 }
 
