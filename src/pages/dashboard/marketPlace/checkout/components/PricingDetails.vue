@@ -48,10 +48,9 @@
                     <span class="circle-inner"></span></div>
                 <div class="delivery-content">Advance Payment</div>
             </div>
-            <div class="progress-bar-wrapper position-relative d-flex flex-column">
-                <input type="range" class="form-range fromSlider" id="customRange1">
-                <div class="vertical-rule d-flex">
-                    <span></span>
+            <div class="progress-bar-wrapper position-relative d-flex flex-column" v-if="userData.type != 'red-hot' && paymentOption == 'advance'">
+                <input type="range" class="form-range fromSlider" @change="setPaymentPercent($event.target.value)" id="customRange1" value="0" min="0" max="100">
+                <div class="vertical-rule d-flex position-relative">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -60,7 +59,6 @@
                     <span>25%</span>
                     <span>50%</span>
                     <span>75%</span>
-                    <span>100%</span>
                 </div>
             </div>
         </div>
@@ -164,7 +162,9 @@
 export default {
     name: "PricingDetails",
     props: {
-        order: Object
+        order: Object,
+        setPaymentMode : Function,
+        setPaymentPercent : Function
     },
     data() {
         return {
@@ -179,7 +179,10 @@ export default {
     methods: {
         setPayment(type) {
             this.paymentOption = type;
+            this.setPaymentMode(type);
         }
+    },
+    mounted(){
     }
 }
 </script>
@@ -304,30 +307,55 @@ hr {
             background: #FCD66B !important;
         }
         input{
-            border-radius: 0 !important;
+            border: 0 !important;
+
+        }
+        %progress_bar_position{
+            span{
+                position: absolute;     
+                &:nth-of-type(1){
+                    left: 25.5%;
+                }
+                &:nth-of-type(2){
+                    left: 48.5%;
+                }
+                &:nth-of-type(3){
+                    left: 71%;
+                }
+                &:nth-of-type(4){
+                    left: 94%;
+                }
+            }
 
         }
         .vertical-rule {
-            margin-left: 11%;
-            column-gap: 24%;
-
+            @extend %progress_bar_position;
             span {
-                margin-top: 5px;
+                margin-top: 0px;
                 width: 15px;
                 border: 1px solid #FCD66B;
                 transform: rotate(90deg);
+                
             }
         }
 
         .progress-rating {
-            column-gap: 20%;
-            margin-left: 10%;
+            @extend %progress_bar_position;
             margin-top: 10px;
+            position: relative;
 
             span {
                 @include textStyles(Poppins, 500, 14px, 27px);
                 color: rgba(45, 55, 72, 0.6);
             }
+        }
+
+        .full-width{
+            width : 100%;
+        }
+
+        .half-width{
+            width : 50%;
         }
 
         .point-circle {

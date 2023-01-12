@@ -84,6 +84,7 @@
                         <!-- for corporates view -->
                         <a class="btn payment-status d-block confirm-delivery" v-if="isBuyer && false" >Confirm Delivery</a>
                         <a class="btn payment-status wallet d-block w-100" @click="goodsReceipt()" v-if="isBuyer">Confirm Delivery</a>
+                        <a class="btn payment-status wallet d-block w-100" v-if="order.payment_status == 'PARTIALLY_PAID'">Complete Payment</a>
                         <a class="btn payment-status wallet d-block w-100" @click="updateShipping()" v-if="isSeller">Update Tracking</a>
 
                     </template>
@@ -266,6 +267,9 @@ export default {
                 order.products = JSON.parse(order.products);
                 this.order = order;
                 setTimeout(()=>{
+                    if(!order.waybill_details){
+                        vm.$router.replace(`/dashboard/marketplace/order/${order.order_hash}`);
+                    }
                     vm.calculateOrderProgress();
                 },500);
             })
@@ -354,7 +358,7 @@ export default {
 
     .left-container {
         background: #FFFFFF;
-        width: 55%;
+        width: 50%;
 
         .left-container-wrapper {
             margin-inline: 8%;
@@ -529,7 +533,7 @@ export default {
     // Right-container
     .right-container {
         background: #F5F5F5;
-        width: 45%;
+        width:50%;
 
         .right-container-wrapper {
             margin-inline: 4%;

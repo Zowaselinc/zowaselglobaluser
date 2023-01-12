@@ -27,7 +27,7 @@ import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
 import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
 import Settings from "@/pages/dashboard/settings/Settings.vue";
 import MarketPlace from "@/pages/dashboard/marketPlace/Market.vue";
-import TransactionSumary from "@/pages/dashboard/marketPlace/checkout/TransactionSumary.vue";
+import OrderSummary from "@/pages/dashboard/marketPlace/checkout/OrderSumary.vue";
 import OrderTracking from "@/pages/dashboard/marketPlace/checkout/OrderTracking.vue";
 import Product from "@/pages/dashboard/marketPlace/ProductPage.vue";
 import ProductDescription from "@/pages/dashboard/marketPlace/ProductDescription.vue";
@@ -225,9 +225,9 @@ const routes = [
         component:MarketPlace
     },
     {
-        path: "/dashboard/marketplace/transactionsummary/:order",
+        path: "/dashboard/marketplace/order/:order",
         name: "Transactionsumary",
-        component:TransactionSumary
+        component:OrderSummary
     },
     {
         path: "/dashboard/marketplace/:order/tracking",

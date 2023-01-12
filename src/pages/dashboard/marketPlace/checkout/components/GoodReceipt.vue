@@ -160,6 +160,7 @@ export default {
 
 
 .right-container-wrapper {
+    width: 50%;
     margin-inline: 4%;
     margin-top: 65px;
 
