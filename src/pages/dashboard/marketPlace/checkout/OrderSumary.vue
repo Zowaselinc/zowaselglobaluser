@@ -97,7 +97,7 @@
                                 v-if="isBuyer && order.payment_status != 'UNPAID' && order.waybill_details"
                                 href="javascript:void(0)"
                                 @click="$router.push({name : 'OrderTracking',params : { order : order.order_hash}})"
-                                :class="['btn', 'coperate-btn', 'btn-procceed-waybil', (step == 2 ? 'active-display-none' : 'active-display-block')]"
+                                :class="['btn', 'coperate-btn', 'btn-procceed-waybil', 'mb-4', (step == 2 ? 'active-display-none' : 'active-display-block')]"
                                 type="button">Track Order
                             </a>
                             <a 
@@ -249,15 +249,15 @@ export default {
     flex-direction: column;
     overflow-y: scroll;
     @include breakpoint-between(md, lg) {
-        width: 60.5%;
+        min-width: 60.5%;
     }
 
     @include breakpoint-between(lg, xl) {
-        width: 69.5%;
+        min-width: 69.5%;
     }
 
     @include breakpoint-between(xl, xxl) {
-        width: 76%;
+        min-width: 76%;
     }
 }
 

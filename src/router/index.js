@@ -55,6 +55,11 @@ import MyOrders from "@/pages/dashboard/MyOrders.vue"
 import CreditScoring from "@/pages/dashboard/CreditScoring.vue"
 import AddNewCrop from "@/pages/dashboard/marketPlace/AddNewCrop.vue";
 import UpdateShipping from "@/pages/dashboard/UpdateShipping.vue";
+import AddCropSale from "@/pages/dashboard/marketPlace/AddCropSale.vue";
+import CropAuction from "@/pages/dashboard/marketPlace/CropAuction.vue";
+
+
+
 
 const routes = [
     {
@@ -314,6 +319,16 @@ const routes = [
         path: "/marketplace/newcrop",
         name: "AddNewcrop",
         component: AddNewCrop
+    },
+    {
+        path: "/marketplace/newsale",
+        name: "AddCropSale",
+        component: AddCropSale
+    },
+    {
+        path: "/marketplace/cropauction",
+        name: "CropAuction",
+        component: CropAuction
     },
     {
         path: "/dashboard/fundwallet",

@@ -207,7 +207,7 @@ import Checkbox from "@/components/Checkbox.vue";
 export default {
     data() {
         return {
-            filter: true,
+            filter: false,
             min : 0,
             max : 100000
         }

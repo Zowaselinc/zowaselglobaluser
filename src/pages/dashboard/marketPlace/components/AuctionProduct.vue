@@ -6,33 +6,35 @@
                 <div class="crop_details">Quantity and Pricing</div>
                 <div class="w-100 mb-3">
                     <label for="formGroupExampleInput" class="form-label mb-0">Crop quantity</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer"
-                        v-model="newCropData.quantity">
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
                 </div>
                 <div class="w-100 mb-3">
                     <label for="formGroupExampleInput" class="form-label mb-0">Amount/offer</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer"
-                        v-model="newCropData.amount">
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
                 </div>
                 <div class="crop_details mb-3 mt-5">Delivery Details</div>
-            
                 <div class="w-100 mb-3">
-                    <label for="formGroupExampleInput" class="form-label mb-0">Delivery window</label>
-                    <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Type your answer"
-                        v-model="newCropData.delivery_date">
+                    <label for="formGroupExampleInput" class="form-label mb-0">Delivery date</label>
+                    <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
                 </div>
                 <div class="w-100 mb-3">
-                    <label for="exampleInputEmail1" class="form-label mb-0">Country</label>
-                    <select class="form-select" aria-label="Default select example" required
-                        v-model="newCropData.country">
-                        <option :value="country.country" v-for="(country, index) in countries" :key="index">{{country.country}}</option>
+                    <label for="formGroupExampleInput" class="form-label mb-0">PO expiry date</label>
+                    <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
+                </div>
+                <div class="w-100 mb-3">
+                    <label for="formGroupExampleInput" class="form-label mb-0">Delivery window</label>
+                    <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
+                </div>
+                <div class="w-100 mb-3">
+                    <label for="exampleInputEmail1" class="form-label mb-0">Delivery method</label>
+                    <select class="form-select" aria-label="Default select example" required>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">State</label>
-                    <select class="form-select" aria-label="Default select example" required
-                        v-model="newCropData.state">
-                        <option v-for="(state, index) in selectStateByCountry" :key="index">{{ state }}</option>
+                    <select class="form-select" aria-label="Default select example" required>
+                        <option selected>Select Category</option>
                     </select>
                 </div>
 
@@ -46,22 +48,49 @@
                     <div class="dropzone" id="my-dropzone">
                         <img src="@/assets/images/vectors/Image.svg" alt="image">
                         <div id="file-input">
-                            <input type="file" ref="input" id="hidden_input" @change="uploadFile"> 
+                            <input id="hidden_input" type="file">
                             <span @click="openFileDialog()">click to browse</span>
                         </div>
 
                     </div>
 
                 </div>
+                <div class="dropzone_conatiner d-flex flex-row gap-3 mb-4">
+                    <div class="drop_zone_1 w-50">
+                        <div class="dropzone zone" id="my-dropzone">
+                            <img src="@/assets/images/vectors/Image.svg" alt="image">
+                            <div id="file-input">
+                                <input id="hidden_input" type="file">
+                                <span @click="openFileDialog()">click to browse</span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="drop_zone_1 w-50">
+                        <div class="dropzone zone" id="my-dropzone">
+                            <img src="@/assets/images/vectors/Image.svg" alt="image">
+                            <div id="file-input">
+                                <input id="hidden_input" type="file">
+                                <span @click="openFileDialog()">click to browse</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
                 <div class="w-100 ">
                     <label for="formGroupExampleInput" class="form-label mb-0">Enter video URL</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer"
-                        v-model="newCropData.video_url">
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
+                </div>
+                <div class="w-100 mb-3">
+                    <label for="exampleInputEmail1" class="form-label mb-0">Country</label>
+                    <select class="form-select" aria-label="Default select example" required>
+                        <option selected>Select Category</option>
+                    </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Zip code/postal</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer"
-                        v-model="newCropData.zip_code">
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
                 </div>
             </form>
         </div>
@@ -69,52 +98,14 @@
 </template>
 
 <script>
-import MarketPlaceService from "@/services/marketplace";
-import countriesObject from "@/data/countries";
-
 export default {
-    name: 'QualityProduct',
-    data() {
-        return {
-            newCropData: {
-                quantity: '',
-                amount: '',
-                delivery_window: '',
-                state: '',
-                product_image: '',
-                video_url: '',
-                country: "",
-                zip_code: ''
-            },
-            countries: countriesObject.countries,
-        }
-    },
-    computed: {
-        selectStateByCountry: function(){
-            // console.log(this.countries)
-            return this.countries && this.newCropData.country != ""
-                ? (this.countries.filter(item => item.country == this.newCropData.country))[0].states 
-                : [];
-        }
-    },
+    name: 'AuctionProduct',
     methods: {
         openFileDialog() {
             document.getElementById("hidden_input").click();
-        },
-        addNewCrop() {
-            MarketPlaceService.getNewCrops(this.newCropData, (response) => {
-                console.log(response);
-            })
-        },
-        uploadFile() {
-            let input = this.$refs.input
-            let file = input.files[0]
-            let formData = new FormData()
-            formData.append('file', file)
-            this.productImage = formData;
-        } ,
-    
-    },
+        }
+
+    }
 
 };
 </script>
