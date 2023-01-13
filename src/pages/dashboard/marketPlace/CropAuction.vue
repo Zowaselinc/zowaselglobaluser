@@ -3,11 +3,11 @@
         <div class="big-container">
             <div class="big-content">
                 <!-- header -->
-                <h1>New Crop Wanted</h1>
+                <h1>New Crop For Sale</h1>
                 <!-- Crop Details Components -->
-                <CropDetails v-if="NextState == 'crop_details' || step == 1"></CropDetails>
-                <QualityProduct v-if="NextState == 'quality_product' && step == 2"></QualityProduct>
-                <CropSpecification v-if="step == 3"></CropSpecification>
+                <AuctionDetails v-if="NextState == 'crop_details' || step == 1"></AuctionDetails>
+                <AuctionProduct v-if="NextState == 'quality_product' && step == 2"></AuctionProduct>
+                <AuctionSpecification v-if="step == 3"></AuctionSpecification>
                 <div id="btn-group" class="btn-group gap-3 my-4">
                     <button type="button" class="btn btn-primary active" aria-current="page" v-if="step != 1"
                         v-on:click="previouStep()">Back</button>
@@ -24,16 +24,17 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
-import CropDetails from "@/pages/dashboard/marketPlace/components/CropDetails.vue";
-import QualityProduct from "@/pages/dashboard/marketPlace/components/QualityProduct.vue";
-import CropSpecification from "@/pages/dashboard/marketPlace/components/CropSpecification.vue";
+import AuctionDetails from "@/pages/dashboard/marketPlace/components/AuctionDetails.vue";
+import AuctionProduct from "@/pages/dashboard/marketPlace/components/AuctionProduct.vue";
+import AuctionSpecification from "@/pages/dashboard/marketPlace/components/AuctionSpecification.vue";
+
 export default {
-    name: 'AddNewcrop',
+    name: 'CropAuction',
     components: {
         DefaultNav,
-        CropDetails,
-        QualityProduct,
-        CropSpecification,
+        AuctionDetails,
+        AuctionProduct,
+        AuctionSpecification,
     },
     data() {
         return {
@@ -50,8 +51,7 @@ export default {
         previouStep() {
             this.step--;
         },
-        
-    },
+    }
 }
 </script>
 
