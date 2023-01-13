@@ -23,6 +23,7 @@
               <form action="">
                 <div class="top-form">
                   <select class="form-select" name="" id="" v-model="newCropData.country">
+                    <option value="">Select country</option>
                     <option
                       :value="country.country"
                       v-for="(country, index) in countries"
@@ -32,6 +33,7 @@
                     </option>
                   </select>
                   <select name="" id="" v-model="newCropData.state">
+                    <option value="">Select state</option>
                     <option
                       v-for="(state, index) in selectStateByCountry"
                       :key="index"
@@ -221,7 +223,6 @@ export default {
   },
   computed: {
     selectStateByCountry: function () {
-      // console.log(this.countries)
       return this.countries && this.newCropData.country != ""
         ? this.countries.filter(
             (item) => item.country == this.newCropData.country
