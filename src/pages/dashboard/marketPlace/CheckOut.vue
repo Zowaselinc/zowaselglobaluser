@@ -80,7 +80,7 @@
                         </div>
                     </div>
 
-                    <button class="proceed">Proceed to Payment</button>
+                    <button class="proceed" type="button" @click="proceedToPay()">Proceed to Payment</button>
 
 
                 </div>
@@ -176,6 +176,11 @@ export default {
     data() {
         return {
             userData: this.$store.state.user
+        }
+    },
+    methods:{
+        proceedToPay(){
+            this.$router.push({ name : "CheckoutPayment"});
         }
     },
     components: {

@@ -75,7 +75,6 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
-import MarketplaceService from "@/services/marketplace";
 import Alert from "@/utilities/alert";
 
 export default {
@@ -87,13 +86,6 @@ export default {
         }
     },
     computed:{
-        cartTotal(){
-            var total=0;
-            this.cart.forEach(item => {
-                total += (eval(item.price) * eval(item.quantity));
-            });
-            return total;
-        }
     },
     methods:{
         increment(index){
@@ -120,11 +112,6 @@ export default {
                 },(response)=>{
                 });
             }
-        },
-        getCartItems(){
-            MarketplaceService.getCartItems(this.userData.user_id, (response)=>{
-                this.cart = response.data
-            });
         },
         removeCartItem(item){
             MarketplaceService.deleteCartItem(item.id,(response)=>{

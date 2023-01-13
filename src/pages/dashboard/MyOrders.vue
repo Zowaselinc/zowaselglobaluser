@@ -6,7 +6,6 @@
                 <div class="col-12 big-table">
                     <div class="theading">
                         <h4>My Orders</h4>
-                        <p>See all Orders</p>
                     </div>
                     <table class="table table-borderless">
                         <thead>
@@ -24,7 +23,7 @@
                                 <td>{{order.order_hash}}</td>
                                 <td>{{order.total}}</td>
                                 <td>{{order.payment_status}}</td>
-                                <td scope="row" v-if="jsonStuff(order).delivered">
+                                <td scope="row" v-if="decodeTrackingData(order).delivered">
                                     <div class="colored-green">
                                         <div class="green-dot"></div>
                                         <p>Delivered</p>
@@ -36,7 +35,7 @@
                                         <p>In transit</p>
                                     </div>
                                 </td>
-                                <td><a href="" class="view">View</a></td>
+                                <td><a href="javascript:void(0)" @click="openOrder(order)" class="view">View</a></td>
 
                                 
                             </tr>
@@ -98,14 +97,14 @@ export default {
 
                 })
             },
-            jsonStuff(eachOrder){
-                if(eachOrder.tracking_details){
-                    return JSON.parse(eachOrder.tracking_details)
-                }else{
-                    return {};
-                }
-                
+            decodeTrackingData(order){
+                return order.tracking_details 
+                    ? JSON.parse(order.tracking_details)
+                    : {} 
             },
+            openOrder(order){
+                this.$router.push({name : "OrderSummary", params : {order : order.order_hash}});
+            }
             
     },
      mounted(){

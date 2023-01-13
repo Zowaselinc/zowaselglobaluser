@@ -1,10 +1,11 @@
-
+import Cart from "./cart"
 export default {
     data(){
         return {
             userData: this.$store.state.user
         };
     },
+    mixins : [Cart],
     computed:{
         isMerchant(){
             return this.userData.user.type == "merchant";

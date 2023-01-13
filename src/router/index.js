@@ -36,7 +36,7 @@ import CheckOut from "@/pages/dashboard/marketPlace/CheckOut.vue";
 import Transactions from "@/pages/dashboard/marketPlace/Transactions.vue";
 import MyProducts from "@/pages/dashboard/marketPlace/MyProducts.vue";
 import TrackingOrder from "@/pages/dashboard/marketPlace/TrackingOrder.vue";
-import CardDetails from "@/pages/dashboard/marketPlace/CardDetails.vue"
+import CheckoutPayment from "@/pages/dashboard/marketPlace/PaymentPage.vue"
 import Payments from "@/pages/dashboard/marketPlace/checkout/Payments.vue";
 import Confirm from "@/pages/dashboard/marketPlace/checkout/Confirm.vue";
 import PaymentsConfirmed from "@/pages/dashboard/marketPlace/checkout/PaymentsConfirmed.vue";
@@ -226,7 +226,7 @@ const routes = [
     },
     {
         path: "/dashboard/marketplace/order/:order",
-        name: "Transactionsumary",
+        name: "OrderSummary",
         component:OrderSummary
     },
     {
@@ -270,9 +270,9 @@ const routes = [
         component:MyProducts
     },
     {
-        path: "/dashboard/marketplace/card-details",
-        name: "CardDetails",
-        component:CardDetails
+        path: "/dashboard/marketplace/checkout/payment",
+        name: "CheckoutPayment",
+        component:CheckoutPayment
     },
 
     {
