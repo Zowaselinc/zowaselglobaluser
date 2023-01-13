@@ -6,13 +6,12 @@
                 <div class="col-12 big-table">
                     <div class="theading">
                         <h4>My Sales</h4>
-                        <p>See all Orders</p>
+                        <p>See all Sales</p>
                     </div>
                     <table class="table table-borderless">
                         <thead>
                             <th>Date</th>
                             <th>Order ID</th>
-                            <th>Products</th>
                             <th>Amount</th>
                             <th>Payment Status</th>
                             <th>Shipping Status</th>
@@ -22,56 +21,18 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                 <td>23, Jan, 2023</td>
-                                <td>#34427633</td>
-                                <td>Green Peas</td>
-                                <td>NGN32,765</td>
-                                <td>Paid full</td>
-                                <td scope="row">
+                            <tr v-for="sale in sales" :key="sale.id">
+                                 <td>{{sale.created_at}}</td>
+                                <td>{{sale.order_hash}}</td>
+                                <td>{{sale.total}}</td>
+                                <td>{{sale.payment_status}}</td>
+                                <td scope="row" v-if="jsonStuff(sale).delivered">
                                     <div class="colored-green">
                                         <div class="green-dot"></div>
                                         <p>Delivered</p>
                                     </div>
                                 </td>
-                                <td><a href="/dashboard/marketplace/updateshipping" class="view">View</a></td>
-                            </tr>
-                            <tr>
-                                 <td>23, Jan, 2023</td>
-                                <td>#34427633</td>
-                                <td>Green Peas</td>
-                                <td>NGN32,765</td>
-                                <td>Paid full</td>
-                                <td scope="row">
-                                    <div class="colored-green">
-                                        <div class="green-dot"></div>
-                                        <p>Delivered</p>
-                                    </div>
-                                </td>
-                                <td><a href="/dashboard/marketplace/updateshipping" class="view">View</a></td>
-                            </tr>
-                            <tr>
-                                 <td>23, Jan, 2023</td>
-                                <td>#34427633</td>
-                                <td>Green Peas</td>
-                                <td>NGN32,765</td>
-                                <td>Paid full</td>
-                                <td scope="row">
-                                    <div class="colored-green">
-                                        <div class="green-dot"></div>
-                                        <p>Delivered</p>
-                                    </div>
-                                </td>
-                                <td><a href="/dashboard/marketplace/updateshipping" class="view">View</a></td>
-                            </tr>
-                            
-                            <tr>
-                                 <td>23, Jan, 2023</td>
-                                <td>#34427633</td>
-                                <td>Green Peas</td>
-                                <td>NGN32,765</td>
-                                <td>Half payment</td>
-                                <td scope="row">
+                                <td scope="row" v-else>
                                     <div class="colored-yellow">
                                         <div class="yellow-dot"></div>
                                         <p>In transit</p>
@@ -79,35 +40,10 @@
                                 </td>
                                 <td><a href="/dashboard/marketplace/updateshipping" class="view">View</a></td>
                             </tr>
-                            <tr>
-                                 <td>23, Jan, 2023</td>
-                                <td>#34427633</td>
-                                <td>Green Peas</td>
-                                <td>NGN32,765</td>
-                                <td>Half payment</td>
-                                <td scope="row">
-                                    <div class="colored-yellow">
-                                        <div class="yellow-dot"></div>
-                                        <p>In transit</p>
-                                    </div>
-                                </td>
-                                <td><a href="/dashboard/marketplace/updateshipping" class="view">View</a></td>
-                            </tr>
-                            <tr>
-                                 <td>23, Jan, 2023</td>
-                                <td>#34427633</td>
-                                <td>Green Peas</td>
-                                <td>NGN32,765</td>
-                                <td>Paid full</td>
-                                <td scope="row">
-                                    <div class="colored-green">
-                                        <div class="green-dot"></div>
-                                        <p>Delivered</p>
-                                    </div>
-                                </td>
-                                <td><a href="/dashboard/marketplace/updateshipping" class="view">View</a></td>
-                            </tr>
                             
+                            
+                            
+                        
                            
                          
                           
@@ -131,14 +67,43 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
+import MarketPlaceService from "@/services/marketplace"
 
 export default {
     name: 'Sales',
     data() {
         return {
-            userData: this.$store.state.user
+            userData: this.$store.state.user,
+            sales:[],
+        
         }
     },
+
+    methods:{
+          getSales(sales){
+                MarketPlaceService.getSales(this.userData.user_id,(response)=>{
+                    if(response && response.error== false){
+                        this.sales=response.data;
+                    }
+                    console.log(this.sales)
+
+                })
+            },
+
+             jsonStuff(eachSale){
+                if(eachSale.tracking_details){
+                    return JSON.parse(eachSale.tracking_details)
+                }else{
+                    return {};
+                }
+                
+            },
+            
+    },
+    mounted(){
+        this.getSales()
+        },
+
     components: {
         DefaultNav,
        

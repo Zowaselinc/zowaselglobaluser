@@ -17,6 +17,8 @@ const GET_ORDER_PATH = (orderHash) => `order/${orderHash}`;
 const ADD_TO_CART_PATH = () => `input/cart/add`;
 const GET_CART_ITEMS_PATH = (id) => `input/cart/${id}`;
 const DELTE_CART_ITEM_PATH = (id) => `input/cart/delete/${id}`;
+const GET_ORDERS_PATH  = (id) => `users/${id}/orders`;
+const GET_SALES_PATH  = (id) => `users/${id}/sales`;
 
 export default {
 
@@ -104,6 +106,20 @@ export default {
             callback(response.data);
         }).catch((error)=>{
             callback(error.data);
+        });
+    },
+    getOrders: function(id,callback){
+        axios.get(config.BASE_URL + GET_ORDERS_PATH(id)).then((response)=>{
+            callback(response.data);
+        }).catch((error)=>{
+            callback(error.data)
+        });
+    },
+    getSales: function(id,callback){
+        axios.get(config.BASE_URL + GET_SALES_PATH(id)).then((response)=>{
+            callback(response.data);
+        }).catch((error)=>{
+            callback(error.data)
         });
     },
 
