@@ -163,7 +163,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div>#000
           </div>
           <div class="red-side">
             <div class="items">
