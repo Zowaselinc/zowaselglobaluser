@@ -23,6 +23,7 @@
               <form action="">
                 <div class="top-form">
                   <select class="form-select" name="" id="" v-model="newCropData.country">
+                    <option value="">Select country</option>
                     <option
                       :value="country.country"
                       v-for="(country, index) in countries"
@@ -32,6 +33,7 @@
                     </option>
                   </select>
                   <select name="" id="" v-model="newCropData.state">
+                    <option value="">Select state</option>
                     <option
                       v-for="(state, index) in selectStateByCountry"
                       :key="index"
@@ -111,9 +113,8 @@
             </div>
           </div>
 
-          <a href="/dashboard/marketplace/card-details" class="proceed"
-            >Proceed to Payment</a
-          >
+            <button class="proceed" type="button" @click="proceedToPay()">Proceed to Payment</button>
+
         </div>
         <div class="right-side">
           <h3>Order Summary</h3>
@@ -216,10 +217,12 @@ export default {
         button_text.innerHTML = "Change Address";
       }
     },
+    proceedToPay(){
+            this.$router.push({ name : "CheckoutPayment"});
+    },
   },
   computed: {
     selectStateByCountry: function () {
-      // console.log(this.countries)
       return this.countries && this.newCropData.country != ""
         ? this.countries.filter(
             (item) => item.country == this.newCropData.country

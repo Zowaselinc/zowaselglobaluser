@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import MarketPlaceService from "@/services/marketplace";
+// import MarketPlaceService from "@/services/marketplace";
 import countriesObject from "@/data/countries";
 
 export default {
@@ -107,11 +107,11 @@ export default {
             })
         },
         uploadFile() {
-            let input = this.$refs.input
-            let file = input.files[0]
-            let formData = new FormData()
-            formData.append('file', file)
-            this.productImage = formData;
+            let input = document.querySelector("#hidden_input");
+            let file = input.files;
+            // let formData = new FormData()
+            // formData.append('file', file)
+            this.newCropData.product_image = file;
         } ,
     
     },

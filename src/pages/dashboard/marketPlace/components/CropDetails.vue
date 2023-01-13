@@ -17,7 +17,8 @@
                     <label for="exampleInputEmail1" class="form-label mb-0">Product sub category</label>
                     <select class="form-select" aria-label="Default select example" required
                         v-model="cropData.subCategory">
-                        <option :value="subCategory.id" v-for="subCategory in subCategoryByCategory" v-bind:key="subCategory.id">
+                        <option :value="subCategory.id" v-for="subCategory in subCategoryByCategory"
+                            v-bind:key="subCategory.id">
                             {{ subCategory.name }}</option>
                     </select>
                 </div>
@@ -70,6 +71,7 @@
                     </select>
                 </div>
             </form>
+
         </div>
 
     </div>
@@ -99,10 +101,15 @@ export default {
             cropData: {
                 category: '',
                 subCategory: '',
+                color : "",
+                foreign_matter : "",
+                moisture_content : "",
+                test_weight : "",
+                content: ''
             },
             colors: ["red", "green", "blue"],
             currencies: ['USD', 'EUR', 'GBP', 'NGN'],
-            content: ''
+
         };
     },
     computed: {
@@ -132,7 +139,7 @@ export default {
         },
 
         handleContentChange() {
-            this.content = this.editor.root.innerHTML
+            this.cropData.content = this.editor.root.innerHTML
         },
 
     },
