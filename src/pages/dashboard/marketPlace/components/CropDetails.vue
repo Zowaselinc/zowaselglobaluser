@@ -72,14 +72,6 @@
                 </div>
             </form>
 
-            <slot v-bind:dataFromChild="{
-                ...categories, 
-                ...subCategories,
-                ...cropData, 
-                ...colors,
-                ...currencies, 
-                ...content
-            }"></slot>
         </div>
 
     </div>
@@ -104,16 +96,20 @@ export default {
     data() {
         return {
             editor: null,
-            otherData: {},
             categories: [],
             subCategories: [],
             cropData: {
                 category: '',
                 subCategory: '',
+                color : "",
+                foreign_matter : "",
+                moisture_content : "",
+                test_weight : "",
+                content: ''
             },
             colors: ["red", "green", "blue"],
             currencies: ['USD', 'EUR', 'GBP', 'NGN'],
-            content: ''
+
         };
     },
     computed: {
@@ -143,7 +139,7 @@ export default {
         },
 
         handleContentChange() {
-            this.content = this.editor.root.innerHTML
+            this.cropData.content = this.editor.root.innerHTML
         },
 
     },

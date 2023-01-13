@@ -5,16 +5,14 @@
                 <!-- header -->
                 <h1>New Crop Wanted</h1>
                 <!-- Crop Details Components -->
-                <CropDetails v-if="NextState == 'crop_details' || step == 1" v-bind:dataFromChild="crop_details">
-                </CropDetails>
-                <QualityProduct v-if="NextState == 'quality_product' && step == 2"
-                    v-bind:dataFromChild="quality_product"></QualityProduct>
-                <CropSpecification v-if="step == 3" v-bind:dataFromChild="crop_specification"></CropSpecification>
+                <CropDetails ref="CD" v-if="step == 1" ></CropDetails>
+                <QualityProduct ref="QP" v-if="step == 2"></QualityProduct>
+                <CropSpecification ref="CS" v-if="step == 3"></CropSpecification>
                 <div id="btn-group" class="btn-group gap-3 my-4">
                     <button type="button" class="btn btn-primary active" aria-current="page" v-if="step != 1"
                         v-on:click="previouStep()">Back</button>
                     <button type="button" :id="['next_btn']" :class="['btn', 'btn-primary']"
-                        v-on:click="changeTab('quality_product')" v-if="step != 3">Next
+                        v-on:click="changeTab()" v-if="step != 3">Next
                     </button>
                     <button type="button" :class="['btn', 'btn-primary']" v-if="step == 3" @click="saveData()">save
                     </button>
@@ -29,6 +27,9 @@ import DefaultNav from "@/layouts/DefaultNav.vue";
 import CropDetails from "@/pages/dashboard/marketPlace/components/CropDetails.vue";
 import QualityProduct from "@/pages/dashboard/marketPlace/components/QualityProduct.vue";
 import CropSpecification from "@/pages/dashboard/marketPlace/components/CropSpecification.vue";
+import MarketPlaceService from "@/services/marketplace";
+
+
 export default {
     name: 'AddNewcrop',
     components: {
@@ -39,7 +40,6 @@ export default {
     },
     data() {
         return {
-            NextState: 'crop_details',
             step: 1,
             crop_details: {},
             quality_product: {},
@@ -47,8 +47,13 @@ export default {
         }
     },
     methods: {
-        changeTab(tab) {
-            this.NextState = tab;
+        changeTab() {
+            if(this.step == 1){
+                this.crop_details = this.$refs.CD.cropData;
+            }
+            if(this.step == 2){
+                this.quality_product = this.$refs.QP.newCropData;
+            }
             this.step++;
         },
 
@@ -61,7 +66,7 @@ export default {
             const addData = {
                 ...this.crop_details,
                 ...this.quality_product,
-                ...this.crop_specification
+                ...this.$refs.CS.cropSpecificationData
             }
             // send data to the end-poit
             await MarketPlaceService.getNewCrops(addData, (response) => {
