@@ -8,61 +8,61 @@
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Broken grains</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Weevil</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Hardness</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Oil Content</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Grain Size</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Total Defects</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Ash Content</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option> 
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">volatile</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Drying Process</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Curcumin Content</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
             </form>
@@ -73,61 +73,61 @@
                 <div class="w-100 mb-3 m_top">
                     <label for="exampleInputEmail1" class="form-label mb-0">Rotten/Shriveled</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Damaged kernel(DK)</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Splits</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Infestation</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Hectolter Teat Weight</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Acid Insoluable Ash</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Mold % By Weight</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Whole Dead Insects</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Insect Defiled/Infested, By Weight</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Extraneous, % By Weight</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select</option>
                     </select>
                 </div>
             </form>
@@ -136,9 +136,8 @@
 </template>
 
 <script>
-import MarketPlaceService from "@/services/marketplace";
 export default {
-    name: 'CropSpecification',
+    name: 'SellerSpecification',
 
 };
 </script>

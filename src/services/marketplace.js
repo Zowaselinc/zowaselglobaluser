@@ -17,95 +17,100 @@ const GET_ORDER_PATH = (orderHash) => `order/${orderHash}`;
 const ADD_TO_CART_PATH = () => `input/cart/add`;
 const GET_CART_ITEMS_PATH = (id) => `input/cart/${id}`;
 const DELTE_CART_ITEM_PATH = (id) => `input/cart/delete/${id}`;
+const GET_SUB_CATEGORIES_PATH = () => "subcategory/getall";
+const GET_ADD_NEW_CROP__PATH = () => "crop/wanted/add";
 
 export default {
 
-    getCropCategories : function(callback){
-        axios.get(config.BASE_URL + GET_CROP_CATEGORIES_PATH()).then((response)=>{
+    getCropCategories: function (callback) {
+        axios.get(config.BASE_URL + GET_CROP_CATEGORIES_PATH()).then((response) => {
             callback(response.data);
-        }).catch((error)=>{
-        });
+        }).catch((error) => {});
     },
 
-    getInputCategories : function(callback){
-        axios.get(config.BASE_URL + GET_INPUT_CATEGORIES_PATH()).then((response)=>{
+    getInputCategories: function (callback) {
+        axios.get(config.BASE_URL + GET_INPUT_CATEGORIES_PATH()).then((response) => {
             callback(response.data);
-        }).catch((error)=>{
-        });
+        }).catch((error) => {});
     },
-    getCropsForSale : function(callback){
-        axios.get(config.BASE_URL + GET_CROPS_SALE_PATH()).then((response)=>{
+    getCropsForSale: function (callback) {
+        axios.get(config.BASE_URL + GET_CROPS_SALE_PATH()).then((response) => {
             callback(response.data);
-        }).catch((error)=>{
-        });
+        }).catch((error) => {});
     },
-    getCropsWanted : function(callback){
-        axios.get(config.BASE_URL + GET_CROPS_WANTED_PATH()).then((response)=>{
+    getCropsWanted: function (callback) {
+        axios.get(config.BASE_URL + GET_CROPS_WANTED_PATH()).then((response) => {
             callback(response.data);
-        }).catch((error)=>{
-        });
+        }).catch((error) => {});
     },
-    getCropsForAuction : function(callback){
-        axios.get(config.BASE_URL + GET_CROPS_AUCTION_PATH()).then((response)=>{
+    getCropsForAuction: function (callback) {
+        axios.get(config.BASE_URL + GET_CROPS_AUCTION_PATH()).then((response) => {
             callback(response.data);
-        }).catch((error)=>{
-        });
+        }).catch((error) => {});
     },
-    getCropById : function(id,callback){
-        axios.get(config.BASE_URL + GET_CROP_PATH(id)).then((response)=>{
+    getCropById: function (id, callback) {
+        axios.get(config.BASE_URL + GET_CROP_PATH(id)).then((response) => {
             callback(response.data);
-        }).catch((error)=>{
-        });
+        }).catch((error) => {});
     },
-    getInputs : function(callback){
-        axios.get(config.BASE_URL + GET_INPUTS_PATH()).then((response)=>{
+    getInputs: function (callback) {
+        axios.get(config.BASE_URL + GET_INPUTS_PATH()).then((response) => {
             callback(response.data);
-        }).catch((error)=>{
-        });
+        }).catch((error) => {});
     },
-    getInputById : function(id,callback){
-        axios.get(config.BASE_URL + GET_INPUT_PATH(id)).then((response)=>{
+    getInputById: function (id, callback) {
+        axios.get(config.BASE_URL + GET_INPUT_PATH(id)).then((response) => {
             callback(response.data);
-        }).catch((error)=>{
-        });
+        }).catch((error) => {});
     },
-    getOrder : function(hash, callback){
-        axios.get(config.BASE_URL + GET_ORDER_PATH(hash)).then((response)=>{
+    getOrder: function (hash, callback) {
+        axios.get(config.BASE_URL + GET_ORDER_PATH(hash)).then((response) => {
             callback(response.data);
-        }).catch((error)=>{
+        }).catch((error) => {
             callback(error.data);
         });
     },
-    createCropWanted :function(cropData, callback){
-        axios.post( config.BASE_URL + CREATE_CROP_WANTED_PATH() , cropData ).then((response) => {
+    createCropWanted: function (cropData, callback) {
+        axios.post(config.BASE_URL + CREATE_CROP_WANTED_PATH(), cropData).then((response) => {
             callback(response.data);
-        }).catch((error)=>{
+        }).catch((error) => {
             callback(error.data);
         });
     },
 
-    addToCart : function(data,callback){
-        axios.post( config.BASE_URL + ADD_TO_CART_PATH() , data ).then((response) => {
+    addToCart: function (data, callback) {
+        axios.post(config.BASE_URL + ADD_TO_CART_PATH(), data).then((response) => {
             callback(response.data);
-        }).catch((error)=>{
+        }).catch((error) => {
             callback(error.data);
         });
     },
 
-    getCartItems : function(id,callback){
-        axios.get(config.BASE_URL + GET_CART_ITEMS_PATH(id)).then((response)=>{
+    getCartItems: function (id, callback) {
+        axios.get(config.BASE_URL + GET_CART_ITEMS_PATH(id)).then((response) => {
             callback(response.data);
-        }).catch((error)=>{
+        }).catch((error) => {
             callback(error.data);
         });
     },
-    deleteCartItem : function(id,callback){
-        axios.delete(config.BASE_URL + DELTE_CART_ITEM_PATH(id)).then((response)=>{
+    deleteCartItem: function (id, callback) {
+        axios.delete(config.BASE_URL + DELTE_CART_ITEM_PATH(id)).then((response) => {
             callback(response.data);
-        }).catch((error)=>{
+        }).catch((error) => {
             callback(error.data);
         });
     },
-
+    getSubCategories: function (callback) {
+        axios.get(config.BASE_URL + GET_SUB_CATEGORIES_PATH()).then((response) => {
+            callback(response.data);
+        }).catch((error) => {});
+    },
+    getNewCrops: function(NewCropData, callback){
+        axios.post(config.BASE_URL +  GET_ADD_NEW_CROP__PATH(), NewCropData).then((response) => {
+            callback(response.data);
+        }).catch((error) => {
+            callback(error.data);
+        });
+    },
     ...NegotiationService
 };

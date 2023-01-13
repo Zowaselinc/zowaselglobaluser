@@ -26,122 +26,123 @@
                                 <th>Buyers Name</th>
                                 <td>Sam Sam</td>
                             </tr>
+                            <tr>
+                                <th>Warehouse</th>
+                                <td>DA88</td>
+                            </tr>
+                            <tr>
+                                <th>crop Season</th>
+                                <td>.</td>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <td>11/11/23</td>
+                            </tr>
                         </table>
                     </div>
 
                 </div>
+                <div class="vendor_details d-flex flex-row mb-4">
+                    <table class="table">
+                        <tr>
+                                <th>Vendor Name</th>
+                                <td>Tare Weight</td>
+                            </tr>
+                            <tr>
+                                <th>Commodity Type</th>
+                                <td>Net Weight</td>
+                            </tr>
+                            <tr>
+                                <th>crop Origin</th>
+                                <td>Mobile Telephone</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>Rate</td>
+                            </tr>
+                        </table>
+                        <table class="table">
+                            <tr>
+                                <th>Waybill No.</th>
+                                <td>0000000</td>
+                            </tr>
+                            <tr>
+                                <th>LPO Number</th>
+                                <td>99998</td>
+                            </tr>
+                            <tr>
+                                <th>Vehicle Number</th>
+                                <td>9999</td>
+                            </tr>
+                            <tr>
+                                <th>Truck Type</th>
+                                <td></td>
+                            </tr>
+                        </table>
+                </div>
                 <div class="form-wrapper">
                     <!-- grid -->
-                    <div class="container text-center ">
-                        <div class="row">
-                            <div class="col row-item-1">DISPATCH SECTION</div>
-                        </div>
-                        <div class="row row-main">
-                            <div class="col col-item-1">FROM:</div>
-                            <div class="col-6 col-item-2">To:</div>
-                        </div>
-                        <div class="row row-main">
-                            <div class="col-4 col-item-1">DATE:</div>
-                            <div class="col-4 col-item-2">COSIGNEE:</div>
-                            <div class="col-4 col-item-2">Truck No./Trailer No:</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4 row-item-general">S/No.</div>
-                            <div class="col-4 row-item-general">DESCRIPTION</div>
-                            <div class="col-4 row-item-general">QUANTITY</div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-4 row-item-general"></div>
-                            <div class="col-4 row-item-general"></div>
-                            <div class="col-4 row-item-general"></div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-4 row-item-general"></div>
-                            <div class="col-4 row-item-general"></div>
-                            <div class="col-4 row-item-general"></div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-4 row-item-general"></div>
-                            <div class="col-4 row-item-general"></div>
-                            <div class="col-4 row-item-general"></div>
-
-                        </div>
-                        <div class="row row-main">
-                            <div class="col col-item-1">REMARKS:</div>
-                        </div>
-                        <div class="row row-main">
-                            <div class="col col-item-1">Driver's Name:</div>
-                            <div class="col-6 col-item-2">Seller's Representative:</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 row-item-general">Driving License/Permit #:</div>
-                            <div class="col-6 row-item-general">Title:</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 row-item-general">Signature and Date:</div>
-                            <div class="col-6 row-item-general">Signature and Date:</div>
-                        </div>
-                        <div class="row">
-                            <div class="col row-item-1">DISPATCH SECTION</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4 row-item-general">S/No.</div>
-                            <div class="col-4 row-item-general">DESCRIPTION</div>
-                            <div class="col-4 row-item-general">QUANTITY</div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-4 row-item-general"></div>
-                            <div class="col-4 row-item-general"></div>
-                            <div class="col-4 row-item-general"></div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-4 row-item-general"></div>
-                            <div class="col-4 row-item-general"></div>
-                            <div class="col-4 row-item-general"></div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-4 row-item-general"></div>
-                            <div class="col-4 row-item-general"></div>
-                            <div class="col-4 row-item-general"></div>
-
-                        </div>
-                        <div class="row row-main">
-                            <div class="col col-item-1">REMARKS:</div>
-                        </div>
-                        <div class="row row-main">
-                            <div class="col-6 col-item-2">Seller's Representative:</div>
-                            <div class="col col-item-1">Received by:</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 row-item-general">Title:</div>
-                            <div class="col-6 row-item-general">Title:</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 row-item-general">Signature and Date:</div>
-                            <div class="col-6 row-item-general">Signature and Date:</div>
-                        </div>
-                        <p class="way-bill mt-5 mb-4 container">
-                            The <strong>way bill</strong> puts the person in charge of the conveyance
-                            carrying the consignment of
-                            said amount of goods to the stated destination. It is a mandatory document
-                            that
-                            is generated from zowasel
-                            portal by registered sellers or transporters who undertake movement of
-                            commodities and must be presented at point
-                            of delivery in the corporate.
-                        </p>
-
-                    </div>
-
+                    <table class="table table-bordered">
+                        <tr>
+                                <th>Crop Description</th>
+                                <td>Crop Description</td>
+                            </tr>
+                            <tr>
+                                <th>Packaging/Bagging</th>
+                                <td>Packaging/Bagging</td>
+                            </tr>
+                            <tr>
+                                <th>Number of Bags</th>
+                                <td>Number of Bags</td>
+                            </tr>
+                            <tr>
+                                <th>Scale Type</th>
+                                <td>Scale Type</td>
+                            </tr>
+                            <tr>
+                                <th>Gross Weight</th>
+                                <td>Gross Weight</td>
+                            </tr>
+                            <tr>
+                                <th>Tare Weight</th>
+                                <td>Tare Weight</td>
+                            </tr>
+                            <tr>
+                                <th>Net Weight</th>
+                                <td>Net Weight</td>
+                            </tr>
+                            <tr>
+                                <th>Rejected Quantity</th>
+                                <td>Rejected Quantity</td>
+                            </tr>
+                            <tr>
+                                <th>Accepted Quantity</th>
+                                <td>Accepted Quantity</td>
+                            </tr>
+                            <tr>
+                                <th>Rate</th>
+                                <td>Rate</td>
+                            </tr>
+                            <tr>
+                                <th>Discount</th>
+                                <td>Discount</td>
+                            </tr>
+                            <tr>
+                                <th>Total Value</th>
+                                <td>Total Value</td>
+                            </tr>
+                            <tr>
+                                <th>Validation Parameters</th>
+                                <td>
+                                    Moisture Content(Mc), Foreign Matter(FM), Broken Kernel (BK),
+                                    Bulk Density(BD), Free Fatty Acid(FFA),DOBI, Refractive index,
+                                    Colour,  Mouldy Beans (CB), Immature Seeds(IS), Weather Damage (WD)
+                                </td>
+                            </tr>
+                        </table>
                 </div>
                 <button :class="['btn', 'table-btn', 'w-100', 'btn-1']" type="button">
-                    Download document
+                    Upload Goods Receipt
                 </button>
             </div>
         </div>
@@ -187,77 +188,71 @@ export default {
             .company-details {
                 display: flex;
                 flex-direction: row;
-                h4{
-                    font-size: 12px;
-                }
-                table{
-                    th, td{
-                        font-size:12px;
-                    }
-                }
-            }
+                justify-content: space-between;
 
-            .logo-wrapper {
-                width: 100px;
-                margin-left: 25px;
-                margin-bottom: 15px;
-            }
-
-            address {
-          
-                margin-bottom: 15px;
-
-                p {
-                    margin-bottom: 0px;
-                    font-family: Poppins;
-                    font-size: 12px;
-                }
-            }
-
-            .form-wrapper,
-
-            .row {
-                border: .5px solid rgba(0, 0, 0, 0.18);
-
-                p {
+                h4 {
                     font-size: 13px;
                 }
-            }
 
-            .row {
-                div {
-                    border: .6px solid rgba(0, 0, 0, 0.18);
-                    height: 50px;
+                .table> :not(caption)>*>* {
+                    padding: .2rem .5rem;
+                    border-bottom-width: 0px;
+                }
+                    table {
+                        tr {
+                            border-style: none !important;
+                        }
+
+                        th,
+                        td {
+                            font-size: 13px;
+
+                        }
+                    }
+
+                    .logo-wrapper {
+                        width: 100px;
+                        margin-bottom: 10px;
+                    }
+
+                    address {
+
+                        margin-bottom: 15px;
+
+                        p {
+                            margin-bottom: 0px;
+                            font-family: Poppins;
+                            font-size: 13px;
+                        }
+                    }
+
+                    .wrapper-two {
+                        h4 {
+                            font-size: 16px;
+                        }
+                    }
                 }
 
-                .row-item-1 {
-                    height: 25px;
-                    font-weight: bold;
-                    font-size: 12px;
+                .vendor_details{
+                    background: #F5F5F5;
+                    justify-content: space-between;
+                    font-size: 13px;
+                    .table> :not(caption)>*>* {
+                    border-bottom-width: 0px;
                 }
-
-                .row-item-general {
-                    height: 30px;
-                    font-size: 12.2px;
-                    text-align: left;
                 }
-
-                .col-item-1,
-                .col-item-2 {
-                    font-size: 12.2px;
-                    text-align: left;
+                .form-wrapper table tr{
+                    font-size: 13px;
                 }
-            }
-
-            button.table-btn {
-                margin-top: 33px;
-                padding: 15px 20px;
-                background: #262C3F;
-                border-radius: 5px;
-                @include textStyles(Inter, 600, 16px, 19px);
-                color: #FFFFFF;
+                button.table-btn {
+                    margin-top: 33px;
+                    padding: 15px 20px;
+                    background: #262C3F;
+                    border-radius: 5px;
+                    @include textStyles(Inter, 600, 16px, 19px);
+                    color: #FFFFFF;
+                }
             }
         }
     }
-}
 </style>
