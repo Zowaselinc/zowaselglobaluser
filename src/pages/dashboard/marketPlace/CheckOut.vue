@@ -8,22 +8,60 @@
             </div>
             <div class="big-content">
                 <div class="left-side">
-                    <div class="address">
+                    <div class="address" >
                         <div class="top-address">
                             <img src="@/assets/images/vectors/ticked.png" alt="">
                             <h3>Delivery Address</h3>
                         </div>
                         <hr>
-                        <div class="main-address">
+                        <div class="main-address" v-if="show_address">
                             <div class="names">
                                 <h4>Sampolaen Farms</h4>
                                 <p>4517 Washington Ave. Manchester, Kentucky 39495</p>
                             </div>
-                            <button>Change Address</button>
-
                         </div>
+
+
+                        <div class="change-form" v-else id="change-address-form" >
+                        <form action="">
+                             <div class="top-form">
+                                <select name="" id="" v-model="newCropData.country">
+                                    <option :value="country.country" v-for="(country, index) in countries" :key="index">{{country.country}}</option>
+                                </select>
+                                <select name="" id="" v-model="newCropData.state">
+                                    <option v-for="(state, index) in selectStateByCountry" :key="index">{{ state }}</option>
+                                </select>
+                            </div>
+
+
+
+                           
+
+
+
+
+
+                            <div class="bottom-form">
+                                <input type="text" placeholder="City">
+                                <input type="text" placeholder="Zip code">
+                                <input type="text" placeholder="street">
+                            </div>
+                        </form>
+                            
+                        </div>
+                        <button id="toggle-button" @click="toggle_btn()">Change Address</button>
+
+                        
+                        
+
                     </div>
-                    <div class="delivery-method">
+
+
+
+
+
+
+                    <div class="delivery-method" v-if="false">
                         <div class="top-address">
                             <img src="@/assets/images/vectors/ticked.png" alt="">
                             <h3>Delivery Method</h3>
@@ -61,10 +99,10 @@
                         </div>
 
                     </div>
-                    <div class="payment-method">
+                    <div class="payment-method" v-if="false">
                         <div class="each-line">
                             <img src="@/assets/images/vectors/ticked.png" alt="">
-                            <h4>Pick-up Station</h4>
+                            <h4>Payment Method</h4>
                         </div>
                         <hr>
                         <div class="input-line">
@@ -80,7 +118,7 @@
                         </div>
                     </div>
 
-                    <button class="proceed">Proceed to Payment</button>
+                    <a href="/dashboard/marketplace/card-details" class="proceed">Proceed to Payment</a>
 
 
                 </div>
@@ -170,18 +208,31 @@
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
 import MarketplaceService from "@/services/marketplace";
+import countriesObject from "@/data/countries";
 
 export default {
     name: 'CheckOut',
     data() {
         return {
-            userData: this.$store.state.user
+            userData: this.$store.state.user,
+            show_address: true
         }
     },
     components: {
         DefaultNav,
 
     },
+    methods: {
+        toggle_btn(){
+            this.show_address = !this.show_address;
+            const button_text = document.getElementById('toggle-button')
+            if(this.show_address == false){
+                button_text.innerHTML="Save"
+            }else{
+                button_text.innerHTML="Change Address"
+            }
+        }
+    }
 }
 </script>
 
@@ -458,22 +509,7 @@ export default {
         }
     }
 
-    .proceed {
-        width: 100%;
-        margin-top: 45px;
-        background: #05B050;
-        box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08), 0px 4px 8px rgba(44, 39, 56, 0.08);
-        border-radius: 4px;
-        border: none;
-        height: 55px;
-        font-family: 'Maven Pro';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 147%;
-        color: #E6F7EE;
-
-    }
+    
 
     .summaries {
         height: 400px;
@@ -554,4 +590,45 @@ export default {
         }
     }
 }
+.proceed{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 45px;
+        background: #05B050;
+        box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08), 0px 4px 8px rgba(44, 39, 56, 0.08);
+        border-radius: 4px;
+        border: none;
+        height: 55px;
+        font-family: 'Maven Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 147%;
+        color: #E6F7EE;
+
+    }
+    .top-form{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        select{
+            width: 100%;
+            background-color: white;
+        }
+    }
+    .bottom-form{
+        width: 60%;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        input{
+            width: 45%;
+        }
+    }
 </style>
