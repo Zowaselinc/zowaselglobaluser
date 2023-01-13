@@ -20,7 +20,7 @@
                     <img v-for="image,index in product.images.slice(1)" :key="index" :src="image" alt="">
                 </div> -->
                     <div class="right">
-                        <a href="#" class="fulfil">Fulfil/Accept Offer</a>
+                        <a href="javascript:void()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="fulfil">Fulfil/Accept Offer</a>
                         <a href="#" class="negotiate"
                             @click="$router.push({ name: 'CropNegotiation', params: { id: product.id } })">Negotiate</a>
                     </div>
@@ -114,8 +114,25 @@
 
         </div>
 
+ 
 
-
+<!-- Modal -->
+<div class="modal  fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Quantity</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="modal-input" placeholder="Input Quantity">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="fulfil">Proceed</button>
+      </div>
+    </div>
+  </div>
+</div>
     </DefaultNav>
 </template>
 
@@ -256,24 +273,7 @@ export default {
         flex-direction: column;
         gap: 10px;
 
-        .fulfil {
-            background: #05B050;
-            box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08), 0px 4px 8px rgba(44, 39, 56, 0.08);
-            border-radius: 4px;
-            height: 50px;
-            width: 250px;
-            border: none;
-            font-family: 'Maven Pro';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 16px;
-            color: #E6F7EE;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-
-        }
+        
 
         .negotiate {
             background: white;
@@ -375,5 +375,26 @@ export default {
         width: 350px;
         height: 350px;
     }
+}
+.fulfil {
+            background: #05B050;
+            box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08), 0px 4px 8px rgba(44, 39, 56, 0.08);
+            border-radius: 4px;
+            height: 50px;
+            width: 250px;
+            border: none;
+            font-family: 'Maven Pro';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            color: #E6F7EE;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+
+        }
+.modal-input{
+    width: 100%;
 }
 </style>

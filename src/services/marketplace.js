@@ -17,8 +17,13 @@ const GET_ORDER_PATH = (orderHash) => `order/${orderHash}`;
 const ADD_TO_CART_PATH = () => `input/cart/add`;
 const GET_CART_ITEMS_PATH = (id) => `input/cart/${id}`;
 const DELTE_CART_ITEM_PATH = (id) => `input/cart/delete/${id}`;
+<<<<<<< HEAD
 const GET_SUB_CATEGORIES_PATH = () => "subcategory/getall";
 const GET_ADD_NEW_CROP__PATH = () => "crop/wanted/add";
+=======
+const GET_ORDERS_PATH  = (id) => `users/${id}/orders`;
+const GET_SALES_PATH  = (id) => `users/${id}/sales`;
+>>>>>>> 57fdd28e92261abcdca03e2ba22adbe47ab3678f
 
 export default {
 
@@ -112,5 +117,23 @@ export default {
             callback(error.data);
         });
     },
+<<<<<<< HEAD
+=======
+    getOrders: function(id,callback){
+        axios.get(config.BASE_URL + GET_ORDERS_PATH(id)).then((response)=>{
+            callback(response.data);
+        }).catch((error)=>{
+            callback(error.data)
+        });
+    },
+    getSales: function(id,callback){
+        axios.get(config.BASE_URL + GET_SALES_PATH(id)).then((response)=>{
+            callback(response.data);
+        }).catch((error)=>{
+            callback(error.data)
+        });
+    },
+
+>>>>>>> 57fdd28e92261abcdca03e2ba22adbe47ab3678f
     ...NegotiationService
 };
