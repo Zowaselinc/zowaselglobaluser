@@ -64,12 +64,13 @@
                         v-model="newCropData.zip_code">
                 </div>
             </form>
+            <slot v-bind:dataFromChild="{...newCropData, ...countries}"></slot>
         </div>
     </div>
 </template>
 
 <script>
-import MarketPlaceService from "@/services/marketplace";
+// import MarketPlaceService from "@/services/marketplace";
 import countriesObject from "@/data/countries";
 
 export default {
@@ -107,7 +108,7 @@ export default {
             })
         },
         uploadFile() {
-            let input = this.$refs.input
+            let input = document.querySelector("#hidden_input").value
             let file = input.files[0]
             let formData = new FormData()
             formData.append('file', file)
