@@ -3,11 +3,11 @@
         <div class="big-container">
             <div class="big-content">
                 <!-- header -->
-                <h1>New Crop Wanted</h1>
+                <h1>New Crop For Sale</h1>
                 <!-- Crop Details Components -->
-                <CropDetails v-if="NextState == 'crop_details' || step == 1"></CropDetails>
-                <QualityProduct v-if="NextState == 'quality_product' && step == 2"></QualityProduct>
-                <CropSpecification v-if="step == 3"></CropSpecification>
+                <SellerCropDetails v-if="NextState == 'crop_details' || step == 1"></SellerCropDetails>
+                <SellerQualityProduct v-if="NextState == 'quality_product' && step == 2"></SellerQualityProduct>
+                <SellerSpecification v-if="step == 3"></SellerSpecification>
                 <div id="btn-group" class="btn-group gap-3 my-4">
                     <button type="button" class="btn btn-primary active" aria-current="page" v-if="step != 1"
                         v-on:click="previouStep()">Back</button>
@@ -24,16 +24,17 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
-import CropDetails from "@/pages/dashboard/marketPlace/components/CropDetails.vue";
-import QualityProduct from "@/pages/dashboard/marketPlace/components/QualityProduct.vue";
-import CropSpecification from "@/pages/dashboard/marketPlace/components/CropSpecification.vue";
+import SellerCropDetails from "@/pages/dashboard/marketPlace/components/SellerCropDetails.vue";
+import SellerQualityProduct from "@/pages/dashboard/marketPlace/components/SellerQualityProduct.vue";
+import SellerSpecification from "@/pages/dashboard/marketPlace/components/SellerSpecification.vue";
+
 export default {
-    name: 'AddNewcrop',
+    name: 'AddCropSale',
     components: {
         DefaultNav,
-        CropDetails,
-        QualityProduct,
-        CropSpecification,
+        SellerCropDetails,
+        SellerQualityProduct,
+        SellerSpecification,
     },
     data() {
         return {
@@ -50,8 +51,7 @@ export default {
         previouStep() {
             this.step--;
         },
-        
-    },
+    }
 }
 </script>
 

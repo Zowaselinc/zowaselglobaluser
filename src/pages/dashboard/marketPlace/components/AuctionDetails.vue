@@ -1,3 +1,4 @@
+
 <template>
     <div class="main_container">
         <!-- new crop  wanted form-->
@@ -6,45 +7,38 @@
                 <div class="crop_details">Crop Details</div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Crop Category</label>
-                    <select class="form-select" aria-label="Default select example" required
-                        v-model="cropData.category">
-                        <option :value="category.id" v-for="category in categories" v-bind:key="category.id">{{
-                            category.name
-                        }}</option>
+                    <select class="form-select" aria-label="Default select example" required>
+                        <option selected>Select Category</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Product sub category</label>
-                    <select class="form-select" aria-label="Default select example" required
-                        v-model="cropData.subCategory">
-                        <option :value="subCategory.id" v-for="subCategory in subCategoryByCategory" v-bind:key="subCategory.id">
-                            {{ subCategory.name }}</option>
+                    <select class="form-select" aria-label="Default select example" required>
+                        <option selected>Select Category</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Product Color</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="color in colors" :key="color">{{ color }}</option>
+                        <option selected>Select Category</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Moisture content (MC)</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select Category</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Forieign Matter (FM)</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                        <option selected>Select Category</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Test weight</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option value="kg">KG</option>
-                        <option value="mt">MT</option>
-
+                        <option selected>Select Category</option>
                     </select>
                 </div>
                 <!-- editor ends -->
@@ -57,7 +51,7 @@
                 <div class="d-flex flex-row mb-3 gap-4 m_top">
                     <div class="w-100 editor-wrapper">
                         <!-- using quill editor tool-->
-                        <div ref="editor" @text-change="handleContentChange"></div>
+                        <div ref="editor"></div>
                     </div>
 
                 </div>
@@ -65,8 +59,7 @@
                 <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Currency</label>
                     <select class="form-select" aria-label="Default select example" required>
-                        <option v-for="currency in currencies" :key="currency">{{ currency }}</option>
-
+                        <option selected>Select Category</option>
                     </select>
                 </div>
             </form>
@@ -80,11 +73,8 @@ import Quill from "quill";
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.bubble.css";
 import "quill/dist/quill.snow.css";
-import MarketPlaceService from "@/services/marketplace";
-
-
 export default {
-    name: 'CropDetails',
+    name: 'AuctionDetails',
     props: {
         modelValue: {
             type: String,
@@ -94,47 +84,7 @@ export default {
     data() {
         return {
             editor: null,
-            categories: [],
-            subCategories: [],
-            cropData: {
-                category: '',
-                subCategory: '',
-            },
-            colors: ["red", "green", "blue"],
-            currencies: ['USD', 'EUR', 'GBP', 'NGN'],
-            content: ''
         };
-    },
-    computed: {
-        subCategoryByCategory() {
-            return this.subCategories.filter((item) => item.category_id == this.cropData.category)
-        },
-    },
-    methods: {
-        update: function update() {
-            this.$emit(
-                "update:modelValue",
-                this.editor.getText() ? this.editor.root.innerHTML : ""
-
-            );
-        },
-        getCategory() {
-            MarketPlaceService.getCropCategories((response) => {
-                console.log(response);
-                this.categories = response.data;
-            })
-        },
-        getSubCategory() {
-            MarketPlaceService.getSubCategories((response) => {
-                console.log(response);
-                this.subCategories = response.data;
-            })
-        },
-
-        handleContentChange() {
-            this.content = this.editor.root.innerHTML
-        },
-
     },
     mounted() {
         var _this = this;
@@ -157,14 +107,17 @@ export default {
         });
         this.editor.root.innerHTML = this.modelValue;
         this.editor.on("text-change", function () {
-            _this.handleContentChange();
             return _this.update();
         });
-        this.getCategory();
-        this.getSubCategory();
-
     },
-
+    methods: {
+        update: function update() {
+            this.$emit(
+                "update:modelValue",
+                this.editor.getText() ? this.editor.root.innerHTML : ""
+            );
+        },
+    },
 };
 </script>
 
