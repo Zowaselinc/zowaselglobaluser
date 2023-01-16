@@ -65,6 +65,18 @@
                         <option v-for="item in 100" :key="item">{{ item }}%</option>
                     </select>
                 </div>
+                <div class="w-100 mb-3">
+                    <label for="exampleInputEmail1" class="form-label mb-0">Moisture</label>
+                    <select  v-model="cropSpecificationData.moisture" class="form-select" aria-label="Default select example" required>
+                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                    </select>
+                </div>
+                <div class="w-100 mb-3">
+                    <label for="exampleInputEmail1" class="form-label mb-0">Foreign Matter</label>
+                    <select  v-model="cropSpecificationData.foreign_matter" class="form-select" aria-label="Default select example" required>
+                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                    </select>
+                </div>
             </form>
 
             <div class="vertical-line"></div>
@@ -130,8 +142,20 @@
                         <option v-for="item in 100" :key="item">{{ item }}%</option>
                     </select>
                 </div>
+                <div class="w-100 mb-3">
+                    <label for="exampleInputEmail1" class="form-label mb-0">Dockage</label>
+                    <select  v-model="cropSpecificationData.dockage" class="form-select" aria-label="Default select example" required>
+                        <option v-for="item in 100" :key="item">{{ item }}%</option>
+                    </select>
+                </div>
+                <div class="w-100 mb-3">
+                    <label for="exampleInputEmail1" class="form-label mb-0">Unit</label>
+                    <select  v-model="cropSpecificationData.unit" class="form-select" aria-label="Default select example" required>
+                        <option value="kg">KG</option>
+                        <option value="kg">MT</option>
+                    </select>
+                </div>
             </form>
-            <slot v-bind:dataFromChild="{...cropSpecificationData}"></slot>
         </div>
     </div>
 </template>
@@ -162,6 +186,10 @@ export default {
                 dead_insects: '',
                 insect_defiled: '',
                 extraneous: '',
+                moisture: '',
+                foreign_matter: '',
+                dockage: '',
+                unit: '',
             }
         }
     }

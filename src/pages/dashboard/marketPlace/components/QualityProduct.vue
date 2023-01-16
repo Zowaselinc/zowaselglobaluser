@@ -15,7 +15,7 @@
                         v-model="newCropData.amount">
                 </div>
                 <div class="crop_details mb-3 mt-5">Delivery Details</div>
-            
+
                 <div class="w-100 mb-3">
                     <label for="formGroupExampleInput" class="form-label mb-0">Delivery window</label>
                     <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Type your answer"
@@ -25,7 +25,8 @@
                     <label for="exampleInputEmail1" class="form-label mb-0">Country</label>
                     <select class="form-select" aria-label="Default select example" required
                         v-model="newCropData.country">
-                        <option :value="country.country" v-for="(country, index) in countries" :key="index">{{country.country}}</option>
+                        <option :value="country.country" v-for="(country, index) in countries" :key="index">
+                            {{ country.country }}</option>
                     </select>
                 </div>
                 <div class="w-100 mb-3">
@@ -35,7 +36,14 @@
                         <option v-for="(state, index) in selectStateByCountry" :key="index">{{ state }}</option>
                     </select>
                 </div>
-
+                <div class="w-100 mb-3">
+                    <label for="exampleInputEmail1" class="form-label mb-0">Negotiabl?</label>
+                    <select class="form-select" aria-label="Default select example" required
+                        v-model="newCropData.is_negotiable">
+                        <option value="kg">Yes</option>
+                        <option value="mt">No</option>
+                    </select>
+                </div>
             </form>
             <div class="vertical-line"></div>
             <!-- form two -->
@@ -46,8 +54,8 @@
                     <div class="dropzone" id="my-dropzone">
                         <img src="@/assets/images/vectors/Image.svg" alt="image">
                         <div id="file-input">
-                            <input type="file" ref="input" id="hidden_input" @change="uploadFile"> 
-                            <span @click="openFileDialog()">click to browse</span>
+                            <input type="file" ref="input" id="hidden_input" @change="uploadFile">
+                            <span id="file_name" @click="openFileDialog()">click to browse</span>
                         </div>
 
                     </div>
@@ -63,13 +71,13 @@
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer"
                         v-model="newCropData.zip_code">
                 </div>
+
             </form>
         </div>
     </div>
 </template>
 
 <script>
-// import MarketPlaceService from "@/services/marketplace";
 import countriesObject from "@/data/countries";
 
 export default {
@@ -84,16 +92,17 @@ export default {
                 product_image: '',
                 video_url: '',
                 country: "",
-                zip_code: ''
+                zip_code: '',
+                is_negotiable: '',
             },
             countries: countriesObject.countries,
         }
     },
     computed: {
-        selectStateByCountry: function(){
+        selectStateByCountry: function () {
             // console.log(this.countries)
             return this.countries && this.newCropData.country != ""
-                ? (this.countries.filter(item => item.country == this.newCropData.country))[0].states 
+                ? (this.countries.filter(item => item.country == this.newCropData.country))[0].states
                 : [];
         }
     },
@@ -101,19 +110,19 @@ export default {
         openFileDialog() {
             document.getElementById("hidden_input").click();
         },
-        addNewCrop() {
-            MarketPlaceService.getNewCrops(this.newCropData, (response) => {
-                console.log(response);
-            })
-        },
         uploadFile() {
+            // Select the input element
             let input = document.querySelector("#hidden_input");
-            let file = input.files;
-            // let formData = new FormData()
-            // formData.append('file', file)
+            let file = input.files[0];
+            // Get the name of the file
+            let fileName = file.name;
+            // Update the innerHTML of the span with the selected file name
+            document.getElementById("file_name").innerHTML = fileName;
+            // Store the file in the data object
             this.newCropData.product_image = file;
-        } ,
-    
+        }
+
+
     },
 
 };

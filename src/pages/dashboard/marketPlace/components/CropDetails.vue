@@ -5,6 +5,16 @@
             <form>
                 <div class="crop_details">Crop Details</div>
                 <div class="w-100 mb-3">
+                    <label for="formGroupExampleInput" class="form-label mb-0">Title</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer"
+                        v-model="cropData.title">
+                </div>
+                <div class="w-100 mb-3">
+                    <label for="formGroupExampleInput" class="form-label mb-0">Crop Type</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer"
+                        v-model="cropData.type">
+                </div>
+                <div class="w-100 mb-3">
                     <label for="exampleInputEmail1" class="form-label mb-0">Crop Category</label>
                     <select class="form-select" aria-label="Default select example" required
                         v-model="cropData.category">
@@ -40,14 +50,6 @@
                         <option v-for="item in 100" :key="item">{{ item }}%</option>
                     </select>
                 </div>
-                <div class="w-100 mb-3">
-                    <label for="exampleInputEmail1" class="form-label mb-0">Test weight</label>
-                    <select class="form-select" aria-label="Default select example" required>
-                        <option value="kg">KG</option>
-                        <option value="mt">MT</option>
-
-                    </select>
-                </div>
                 <!-- editor ends -->
             </form>
             <div class="vertical-line"></div>
@@ -70,6 +72,14 @@
 
                     </select>
                 </div>
+                <div class="w-100 mb-3">
+                    <label for="exampleInputEmail1" class="form-label mb-0">Test weight</label>
+                    <select class="form-select" aria-label="Default select example" required>
+                        <option value="kg">KG</option>
+                        <option value="mt">MT</option>
+
+                    </select>
+                </div>
             </form>
 
         </div>
@@ -83,7 +93,6 @@ import "quill/dist/quill.core.css";
 import "quill/dist/quill.bubble.css";
 import "quill/dist/quill.snow.css";
 import MarketPlaceService from "@/services/marketplace";
-
 
 export default {
     name: 'CropDetails',
@@ -105,7 +114,10 @@ export default {
                 foreign_matter : "",
                 moisture_content : "",
                 test_weight : "",
-                content: ''
+                content: '',
+                type: '',
+                title: '',
+
             },
             colors: ["red", "green", "blue"],
             currencies: ['USD', 'EUR', 'GBP', 'NGN'],
@@ -199,7 +211,7 @@ form {
     width: 100%;
     padding-bottom: 2rem;
 
-    select {
+    select,input {
         font-size: 14px;
         color: #000000;
 

@@ -39,6 +39,12 @@
                         </div>
                         <div class="active-item" @click='changeDir("/dashboard/marketplace/cropauction")'>Crops for
                             auction</div>
+                        <div class="active-item" @click='changeDir("/marketplace/newcrop")'>Add New Crop</div>
+                        <div class="active-item" @click='changeDir("/marketplace/newsale")'>Add Crop For Sale</div>
+                        <div class="active-item" @click='changeDir("/marketplace/cropauction")'>Add Crop For Auction
+                        </div>
+
+
                     </template>
                     <template v-if="userData.user.type == 'merchant'">
                         <div class="active-item" @click='changeDir("/dashboard/marketplace/cropwanted")'>Crops Wanted
@@ -203,7 +209,7 @@ export default {
             const sideMenu = document.getElementById('sidebarMenu');
             sideMenu.addEventListener('click', (event) => {
                 if (event.target.classList.contains('collapse-icon')) {
-                    sideMenu.classList.toggle('collapsed-menu');    
+                    sideMenu.classList.toggle('collapsed-menu');
                 } else if (event.target.classList.contains('accordion-header')) {
                     if (sideMenu.classList.contains('collapsed-menu')) {
                         sideMenu.classList.remove('collapsed-menu');
@@ -230,6 +236,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/navigation";
+
 .collapse-icon {
     position: absolute;
     width: 30px;

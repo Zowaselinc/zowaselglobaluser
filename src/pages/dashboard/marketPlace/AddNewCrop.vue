@@ -5,14 +5,14 @@
                 <!-- header -->
                 <h1>New Crop Wanted</h1>
                 <!-- Crop Details Components -->
-                <CropDetails ref="CD" v-if="step == 1" ></CropDetails>
+                <CropDetails ref="CD" v-if="step == 1"></CropDetails>
                 <QualityProduct ref="QP" v-if="step == 2"></QualityProduct>
                 <CropSpecification ref="CS" v-if="step == 3"></CropSpecification>
                 <div id="btn-group" class="btn-group gap-3 my-4">
                     <button type="button" class="btn btn-primary active" aria-current="page" v-if="step != 1"
                         v-on:click="previouStep()">Back</button>
-                    <button type="button" :id="['next_btn']" :class="['btn', 'btn-primary']"
-                        v-on:click="changeTab()" v-if="step != 3">Next
+                    <button type="button" :id="['next_btn']" :class="['btn', 'btn-primary']" v-on:click="changeTab()"
+                        v-if="step != 3">Next
                     </button>
                     <button type="button" :class="['btn', 'btn-primary']" v-if="step == 3" @click="saveData()">save
                     </button>
@@ -43,15 +43,15 @@ export default {
             step: 1,
             crop_details: {},
             quality_product: {},
-            crop_specification: {},
+            crop_specification: {}
         }
     },
     methods: {
         changeTab() {
-            if(this.step == 1){
+            if (this.step == 1) {
                 this.crop_details = this.$refs.CD.cropData;
             }
-            if(this.step == 2){
+            if (this.step == 2) {
                 this.quality_product = this.$refs.QP.newCropData;
             }
             this.step++;
@@ -60,7 +60,6 @@ export default {
         previouStep() {
             this.step--;
         },
-
         async saveData() {
             // combine data from child components
             const addData = {
@@ -68,11 +67,37 @@ export default {
                 ...this.quality_product,
                 ...this.$refs.CS.cropSpecificationData
             }
-            // send data to the end-poit
-            await MarketPlaceService.getNewCrops(addData, (response) => {
-                console.log(response);
-            })
-        },
+            // send data to the endpoint
+            try {
+                MarketPlaceService.getNewCrops(addData, response => {
+                    if (response.status === 201) {
+                        this.$router.push('/marketplace/newcrop');
+                    } else {
+                        console.log(response.statusText);
+                    }
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+
+        // async saveData() {
+        //     // combine data from child components
+        //     const addData = {
+        //         ...this.crop_details,
+        //         ...this.quality_product,
+        //         ...this.$refs.CS.cropSpecificationData
+        //     }
+        //     // send data to the end-poit
+        //     MarketPlaceService.getNewCrops(addData, (response) => {
+        //         console.log(response);
+        //         if(response.error == false){
+        //             this.$router.push('/marketplace/newcrop')
+
+        //         }
+        //     })
+        // },
 
     },
 }

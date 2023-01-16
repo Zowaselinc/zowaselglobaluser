@@ -107,13 +107,37 @@ export default {
             callback(response.data);
         }).catch((error) => {});
     },
-    getNewCrops: function(NewCropData, callback){
-        axios.post(config.BASE_URL +  GET_ADD_NEW_CROP__PATH(), NewCropData).then((response) => {
-            callback(response.data);
-        }).catch((error) => {
-            callback(error.data);
+    // getNewCrops: function(NewCropData, callback){
+    //     axios.post(config.BASE_URL +  GET_ADD_NEW_CROP__PATH(), NewCropData).then((response) => {
+    //         callback(response.data);
+    //     }).catch((error) => {
+    //         callback(error.data);
+    //     });
+    // },
+    getNewCrops: function(NewCropData, callback) {
+        axios.post(config.BASE_URL + GET_ADD_NEW_CROP__PATH(), NewCropData)
+        .then(response => {
+            if (response.status === 200 && callback) {
+                callback(response.data);
+            } else if (response.status === 201) {
+                console.log("New crop added successfully");
+            } else {
+                console.log(response.statusText);
+            }
+        }).catch(error => {
+            8
+            if (error.response) {
+                if (callback) {
+                    callback(error.response.data);
+                } else {
+                    console.error(error.response.data);
+                }
+            } else {
+                console.error(error);
+            }
         });
     },
+    
     getOrders: function(id,callback){
         axios.get(config.BASE_URL + GET_ORDERS_PATH(id)).then((response)=>{
             callback(response.data);
