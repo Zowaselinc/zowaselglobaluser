@@ -1,103 +1,113 @@
 <template>
-<AuthSharedLayout>
+  <AuthSharedLayout>
     <div class="big-container">
-        <img class="mobile-logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
-        <div class="left-content">
+      <img
+        class="mobile-logo"
+        src="@/assets/images/logos/zowasel-logo.png"
+        alt=""
+      />
+      <div class="left-content">
         <h1 class="text-center">Create Password</h1>
-         <p id="emailHelp" class="form-text text-muted text-center">Set-up a unique password to login to your account with</p>
-        
-         <form>
-            
-            
-            
-            <div class="form-group">
-                <label for="">Password</label>
-                <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Create Password">
-            </div>
-            <div class="form-group">
-                <label for="">Confirm Password</label>
-                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Confirm Password">
-            </div>
-            <div class="lines">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
+        <p id="emailHelp" class="form-text text-muted text-center">
+          Set-up a unique password to login to your account with
+        </p>
 
-            <div class="required">
-                <div class="each-required">
-                    <img src="@/assets/images/vectors/tick-right.svg" alt="">
-                    <p>contains numbers</p>
-                </div>
-                <div class="each-required">
-                    <img src="@/assets/images/vectors/tick-wrong.svg" alt="">
-                    <p>contains numbers</p>
-                </div>
-                <div class="each-required">
-                    <img src="@/assets/images/vectors/tick-right.svg" alt="">
-                    <p>contains numbers</p>
-                </div>
-                <div class="each-required">
-                    <img src="@/assets/images/vectors/tick-wrong.svg" alt="">
-                    <p>contains numbers</p>
-                </div>
-                <div class="each-required">
-                    <img src="@/assets/images/vectors/tick-wrong.svg" alt="">
-                    <p>contains numbers</p>
-                </div>
+        <form>
+          <div class="form-group">
+            <label for="">Password</label>
+            <input
+              id="formGroupExampleInput"
+              type="password"
+              class="form-control"
+              placeholder="Create Password"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Confirm Password</label>
+            <input
+              id="formGroupExampleInput2"
+              type="password"
+              class="form-control"
+              placeholder="Confirm Password"
+            />
+          </div>
+          <div class="lines">
+            <div class="line" />
+            <div class="line" />
+            <div class="line" />
+            <div class="line" />
+          </div>
+
+          <div class="required">
+            <div class="each-required">
+              <img src="@/assets/images/vectors/tick-right.svg" alt="" />
+              <p>contains numbers</p>
             </div>
-            
-           
-            <div class="form-group">
-                <router-link type="button" to="/merchant/welcome" class="btn green-btn btn-lg btn-block">Complete Registration</router-link>
+            <div class="each-required">
+              <img src="@/assets/images/vectors/tick-wrong.svg" alt="" />
+              <p>contains numbers</p>
             </div>
-            
+            <div class="each-required">
+              <img src="@/assets/images/vectors/tick-right.svg" alt="" />
+              <p>contains numbers</p>
+            </div>
+            <div class="each-required">
+              <img src="@/assets/images/vectors/tick-wrong.svg" alt="" />
+              <p>contains numbers</p>
+            </div>
+            <div class="each-required">
+              <img src="@/assets/images/vectors/tick-wrong.svg" alt="" />
+              <p>contains numbers</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <router-link
+              type="button"
+              to="/merchant/welcome"
+              class="btn green-btn btn-lg btn-block"
+            >
+              Complete Registration
+            </router-link>
+          </div>
         </form>
-       
-        </div>
-        <div class="right-content">
-            <img class="background-img" src="@/assets/images/backgrounds/partner-background2.png" alt="">
-            <img class="logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
-        </div>
+      </div>
+      <div class="right-content">
+        <img
+          class="background-img"
+          src="@/assets/images/backgrounds/partner-background2.png"
+          alt=""
+        />
+        <img class="logo" src="@/assets/images/logos/zowasel-logo.png" alt="" />
+      </div>
     </div>
-    </AuthSharedLayout>
+  </AuthSharedLayout>
 </template>
 
 <script>
 import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
-    export default {
-        name:'PartnerCreatePassword',
-        components: {
-            AuthSharedLayout
-        }
-    }
- 
+export default {
+  name: "PartnerCreatePassword",
+  components: {
+    AuthSharedLayout,
+  },
+};
 </script>
 
-<style  scoped>
+<style scoped>
+.required {
+  margin-bottom: 20px;
+}
+.each-required {
+  margin-top: 10px;
+}
+.each-required p {
+  display: inline;
+  margin-left: 10px;
+}
 
-    .required{
-        margin-bottom: 20px;
-    }
-    .each-required{
-        margin-top: 10px;
-
-    }
-    .each-required p{
-        display: inline;
-        margin-left: 10px;
-      
-    }
- 
-
- 
-   
-  
-
-    .check-p{
-        margin-top: -5px;
-        margin-left: 10px;
-    }
-   
+.check-p {
+  margin-top: -5px;
+  margin-left: 10px;
+}
 </style>
