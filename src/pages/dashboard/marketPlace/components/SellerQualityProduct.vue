@@ -1,112 +1,168 @@
 <template>
-    <div class="main_container">
-        <!-- new crop  wanted form-->
-        <div class="crop-wanted-section d-flex flex-row gap-4">
-            <form>
-                <div class="crop_details">Quantity and Pricing</div>
-                <div class="w-100 mb-3">
-                    <label for="formGroupExampleInput" class="form-label mb-0">Crop quantity</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
-                </div>
-                <div class="w-100 mb-3">
-                    <label for="formGroupExampleInput" class="form-label mb-0">Amount/offer</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
-                </div>
-                <div class="crop_details mb-3 mt-5">Delivery Details</div>
-                <div class="w-100 mb-3">
-                    <label for="formGroupExampleInput" class="form-label mb-0">Delivery date</label>
-                    <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
-                </div>
-                <div class="w-100 mb-3">
-                    <label for="formGroupExampleInput" class="form-label mb-0">PO expiry date</label>
-                    <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
-                </div>
-                <div class="w-100 mb-3">
-                    <label for="formGroupExampleInput" class="form-label mb-0">Delivery window</label>
-                    <input type="date" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
-                </div>
-                <div class="w-100 mb-3">
-                    <label for="exampleInputEmail1" class="form-label mb-0">Delivery method</label>
-                    <select class="form-select" aria-label="Default select example" required>
-                        <option selected>Select</option>
-                    </select>
-                </div>
-                <div class="w-100 mb-3">
-                    <label for="exampleInputEmail1" class="form-label mb-0">State</label>
-                    <select class="form-select" aria-label="Default select example" required>
-                        <option selected>Select Category</option>
-                    </select>
-                </div>
-
-            </form>
-            <div class="vertical-line"></div>
-            <!-- form two -->
-            <form>
-
-                <div class="crop_details">Product image</div>
-                <div class="dropzone_conatiner my-4">
-                    <div class="dropzone" id="my-dropzone">
-                        <img src="@/assets/images/vectors/Image.svg" alt="image">
-                        <div id="file-input">
-                            <input id="hidden_input" type="file">
-                            <span @click="openFileDialog()">click to browse</span>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="dropzone_conatiner d-flex flex-row gap-3 mb-4">
-                    <div class="drop_zone_1 w-50">
-                        <div class="dropzone zone" id="my-dropzone">
-                            <img src="@/assets/images/vectors/Image.svg" alt="image">
-                            <div id="file-input">
-                                <input id="hidden_input" type="file">
-                                <span @click="openFileDialog()">click to browse</span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="drop_zone_1 w-50">
-                        <div class="dropzone zone" id="my-dropzone">
-                            <img src="@/assets/images/vectors/Image.svg" alt="image">
-                            <div id="file-input">
-                                <input id="hidden_input" type="file">
-                                <span @click="openFileDialog()">click to browse</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                <div class="w-100 ">
-                    <label for="formGroupExampleInput" class="form-label mb-0">Enter video URL</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
-                </div>
-                <div class="w-100 mb-3">
-                    <label for="exampleInputEmail1" class="form-label mb-0">Country</label>
-                    <select class="form-select" aria-label="Default select example" required>
-                        <option selected>Select Category</option>
-                    </select>
-                </div>
-                <div class="w-100 mb-3">
-                    <label for="exampleInputEmail1" class="form-label mb-0">Zip code/postal</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type your answer">
-                </div>
-            </form>
+  <div class="main_container">
+    <!-- new crop  wanted form-->
+    <div class="crop-wanted-section d-flex flex-row gap-4">
+      <form>
+        <div class="crop_details">Quantity and Pricing</div>
+        <div class="w-100 mb-3">
+          <label for="formGroupExampleInput" class="form-label mb-0"
+            >Crop quantity</label
+          >
+          <input
+            id="formGroupExampleInput"
+            type="text"
+            class="form-control"
+            placeholder="Type your answer"
+          />
         </div>
+        <div class="w-100 mb-3">
+          <label for="formGroupExampleInput" class="form-label mb-0"
+            >Amount/offer</label
+          >
+          <input
+            id="formGroupExampleInput"
+            type="text"
+            class="form-control"
+            placeholder="Type your answer"
+          />
+        </div>
+        <div class="crop_details mb-3 mt-5">Delivery Details</div>
+        <div class="w-100 mb-3">
+          <label for="formGroupExampleInput" class="form-label mb-0"
+            >Delivery date</label
+          >
+          <input
+            id="formGroupExampleInput"
+            type="date"
+            class="form-control"
+            placeholder="Type your answer"
+          />
+        </div>
+        <div class="w-100 mb-3">
+          <label for="formGroupExampleInput" class="form-label mb-0"
+            >PO expiry date</label
+          >
+          <input
+            id="formGroupExampleInput"
+            type="date"
+            class="form-control"
+            placeholder="Type your answer"
+          />
+        </div>
+        <div class="w-100 mb-3">
+          <label for="formGroupExampleInput" class="form-label mb-0"
+            >Delivery window</label
+          >
+          <input
+            id="formGroupExampleInput"
+            type="date"
+            class="form-control"
+            placeholder="Type your answer"
+          />
+        </div>
+        <div class="w-100 mb-3">
+          <label for="exampleInputEmail1" class="form-label mb-0"
+            >Delivery method</label
+          >
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            required
+          >
+            <option selected>Select</option>
+          </select>
+        </div>
+        <div class="w-100 mb-3">
+          <label for="exampleInputEmail1" class="form-label mb-0">State</label>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            required
+          >
+            <option selected>Select Category</option>
+          </select>
+        </div>
+      </form>
+      <div class="vertical-line" />
+      <!-- form two -->
+      <form>
+        <div class="crop_details">Product image</div>
+        <div class="dropzone_conatiner my-4">
+          <div id="my-dropzone" class="dropzone">
+            <img src="@/assets/images/vectors/Image.svg" alt="image" />
+            <div id="file-input">
+              <input id="hidden_input" type="file" />
+              <span @click="openFileDialog()">click to browse</span>
+            </div>
+          </div>
+        </div>
+        <div class="dropzone_conatiner d-flex flex-row gap-3 mb-4">
+          <div class="drop_zone_1 w-50">
+            <div id="my-dropzone" class="dropzone zone">
+              <img src="@/assets/images/vectors/Image.svg" alt="image" />
+              <div id="file-input">
+                <input id="hidden_input" type="file" />
+                <span @click="openFileDialog()">click to browse</span>
+              </div>
+            </div>
+          </div>
+          <div class="drop_zone_1 w-50">
+            <div id="my-dropzone" class="dropzone zone">
+              <img src="@/assets/images/vectors/Image.svg" alt="image" />
+              <div id="file-input">
+                <input id="hidden_input" type="file" />
+                <span @click="openFileDialog()">click to browse</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-100">
+          <label for="formGroupExampleInput" class="form-label mb-0"
+            >Enter video URL</label
+          >
+          <input
+            id="formGroupExampleInput"
+            type="text"
+            class="form-control"
+            placeholder="Type your answer"
+          />
+        </div>
+        <div class="w-100 mb-3">
+          <label for="exampleInputEmail1" class="form-label mb-0"
+            >Country</label
+          >
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            required
+          >
+            <option selected>Select Category</option>
+          </select>
+        </div>
+        <div class="w-100 mb-3">
+          <label for="exampleInputEmail1" class="form-label mb-0"
+            >Zip code/postal</label
+          >
+          <input
+            id="formGroupExampleInput"
+            type="text"
+            class="form-control"
+            placeholder="Type your answer"
+          />
+        </div>
+      </form>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'SellerQualityProduct',
-    methods: {
-        openFileDialog() {
-            document.getElementById("hidden_input").click();
-        }
-
-    }
-
+  name: "SellerQualityProduct",
+  methods: {
+    openFileDialog() {
+      document.getElementById("hidden_input").click();
+    },
+  },
 };
 </script>
 
@@ -114,92 +170,92 @@ export default {
 @import "@/assets/scss/main.scss";
 
 #hidden_input {
-    display: none;
+  display: none;
 }
 
 .crop-wanted-section {
-    background: #FFFFFF;
-    border-radius: 4px;
-    padding: 4%;
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 4%;
 }
 
 form {
-    .crop_details {
-        @include textStyles(inherit, 700, 16px, 24px);
-        letter-spacing: 0.01em;
-        color: #4A4754;
-        margin-bottom: 1rem;
+  .crop_details {
+    @include textStyles(inherit, 700, 16px, 24px);
+    letter-spacing: 0.01em;
+    color: #4a4754;
+    margin-bottom: 1rem;
+  }
+
+  .m_top {
+    margin-top: 3.4rem;
+  }
+
+  width: 100%;
+  padding-bottom: 2rem;
+
+  select,
+  input {
+    font-size: 14px;
+    color: #000000;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:focus-visible {
+      border-color: #05b050 !important;
+      box-shadow: 0 0 !important;
     }
 
-    .m_top {
-        margin-top: 3.4rem;
+    &::placeholder {
+      @include textStyles("Maven Pro", 700, 14px, 24px);
+      color: #000000;
     }
+  }
 
-    width: 100%;
-    padding-bottom: 2rem;
-
-    select,
-    input {
-        font-size: 14px;
-        color: #000000;
-
-        &:hover,
-        &:active,
-        &:focus,
-        &:focus-visible {
-            border-color: #05b050 !important;
-            box-shadow: 0 0 !important;
-        }
-
-        &::placeholder {
-            @include textStyles('Maven Pro', 700, 14px, 24px);
-            color: #000000;
-        }
-    }
-
-    label {
-        font-size: 14px;
-        font-weight: 900;
-        color: rgba(45, 55, 72, 0.8);
-    }
+  label {
+    font-size: 14px;
+    font-weight: 900;
+    color: rgba(45, 55, 72, 0.8);
+  }
 }
 
 div.vertical-line {
-    width: 2px;
-    padding: 1px;
-    background: #F5F5F5;
+  width: 2px;
+  padding: 1px;
+  background: #f5f5f5;
 }
 
 // using drop-zone
 .dropzone {
-    width: 100%;
-    height: 300px;
-    border: 2px dashed #ccc;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Maven Pro';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 147%;
-    color: #4A4754;
-    padding-inline: 10px;
+  width: 100%;
+  height: 300px;
+  border: 2px dashed #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Maven Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 147%;
+  color: #4a4754;
+  padding-inline: 10px;
 
-    span {
-        font-weight: 700;
-        color: #05b050;
-        cursor: pointer;
-    }
+  span {
+    font-weight: 700;
+    color: #05b050;
+    cursor: pointer;
+  }
 }
 
 .zone {
-    height: 150px;
-    font-size: 12px;
+  height: 150px;
+  font-size: 12px;
 }
 
 #hidden_input {
-    display: none;
+  display: none;
 }
 </style>
