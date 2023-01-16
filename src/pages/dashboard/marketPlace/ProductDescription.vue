@@ -1,256 +1,287 @@
 <template>
-    <DefaultNav>
-        <div class="big-container">
-                    
-            
-             <div class="big-content">
-            <div class="image-area">
-                <div class="image-container" v-if="product && product.images.length">
-                     <img :src="product.images[0]" alt="">
-                     <div class="small-images" v-if="(product.images.length > 1)">
-                        <img 
-                            v-for="image,index in product.images.slice(1)" 
-                            :key="index" :src="image" alt=""/>
-                     </div>
-                </div>
-                <div class="text-area" v-if="product">
-                   <h1>{{ product.title }}</h1>
-                   <p class="price">{{ product.currency }}{{ product.price }}</p>
-                   <p class="farmer">Naziri Farms</p>
-                   <p class="verified"><img src="@/assets/images/vectors/verified.svg" alt=""> Verified Merchant</p>
-                   <div class="ratings">
-                    <img src="@/assets/images/vectors/star.svg" alt="">
-                    <img src="@/assets/images/vectors/star.svg" alt="">
-                    <img src="@/assets/images/vectors/star.svg" alt="">
-                    <img src="@/assets/images/vectors/star.svg" alt="">
-                    <img src="@/assets/images/vectors/star.svg" alt="">
-                    <span>4.2</span>
-                   </div>
-                   <div class="review">
-                    <span>800 reviews</span>
-                    <span class="order">  3800 orders</span>
-                   </div>
+  <DefaultNav>
+    <div class="big-container">
+      <div class="big-content">
+        <div class="image-area">
+          <div v-if="product && product.images.length" class="image-container">
+            <img :src="product.images[0]" alt="" />
+            <div v-if="product.images.length > 1" class="small-images">
+              <img
+                v-for="(image, index) in product.images.slice(1)"
+                :key="index"
+                :src="image"
+                alt=""
+              />
+            </div>
+          </div>
+          <div v-if="product" class="text-area">
+            <h1>{{ product.title }}</h1>
+            <p class="price">{{ product.currency }}{{ product.price }}</p>
+            <p class="farmer">Naziri Farms</p>
+            <p class="verified">
+              <img src="@/assets/images/vectors/verified.svg" alt="" /> Verified
+              Merchant
+            </p>
+            <div class="ratings">
+              <img src="@/assets/images/vectors/star.svg" alt="" />
+              <img src="@/assets/images/vectors/star.svg" alt="" />
+              <img src="@/assets/images/vectors/star.svg" alt="" />
+              <img src="@/assets/images/vectors/star.svg" alt="" />
+              <img src="@/assets/images/vectors/star.svg" alt="" />
+              <span>4.2</span>
+            </div>
+            <div class="review">
+              <span>800 reviews</span>
+              <span class="order"> 3800 orders</span>
+            </div>
 
-                   <div class="quantity">
-                        <p>Quantity</p>
-                        <div class="quantity-btns">
-                            <button @click="decrement()">-</button>
-                            <p>{{ quantity }}</p>
-                            <button @click="increment()">+</button>
-                        </div>
-                   </div>
-                   <h3 class="ships">Shipping: <span>NGN3050.01</span></h3>
-                   <h3 class="ships">Estimated Delivery <span>to Abeoukuta on</span> 23rd November</h3>
-                   <div class="buttonss">
-                        <a  href="#" class="buy">Buy now</a>
-                        <a href="javascript:void(0)" class="cart" @click="addToCart()">Add to Cart</a>
-                   </div>
-                   
-                </div>
+            <div class="quantity">
+              <p>Quantity</p>
+              <div class="quantity-btns">
+                <button @click="decrement()">-</button>
+                <p>{{ quantity }}</p>
+                <button @click="increment()">+</button>
+              </div>
             </div>
-            <hr>
-            <h3>Description</h3>
-            <p>{{ product ? product.description : "" }}</p>
-            <div class="guide">
-                <a href="#">Input Application Guide.pdf</a>
-                <button>Download</button>
+            <h3 class="ships">Shipping: <span>NGN3050.01</span></h3>
+            <h3 class="ships">
+              Estimated Delivery <span>to Abeoukuta on</span> 23rd November
+            </h3>
+            <div class="buttonss">
+              <a href="#" class="buy">Buy now</a>
+              <a href="javascript:void(0)" class="cart" @click="addToCart()"
+                >Add to Cart</a
+              >
             </div>
-            <hr>
-            <h3>Specification</h3>
-            <div class="specification">
-                <div class="left-detail">
-                    <h4>Type: <span>NPK</span></h4>
-                    <h4>Other Names: <span>Quick-acting compound fertilizer</span></h4>
-                    <h4>Application: <span>Plant Food</span></h4>
-                    <h4>Classification: <span>Compound Fertilizer</span></h4>
-                    <h4>Weight: <span>10kg</span></h4>
-                </div>
-                <div class="right-detail">
-                    <h4>State: <span>Granular</span></h4>
-                    <h4>MF: <span>N-P2O5-K2O</span></h4>
-                    <h4>Model Number: <span>Complex</span></h4>
-                    <h4>EINECS No.: <span>215-236-1</span></h4>
-                    <h4>CAS No.: <span>1314-56-3</span></h4>
-                    
-                </div>
-            </div>
-            <hr>
-            <h3>Reviews</h3>
-            <div class="reviews">
-                <div class="left-reviews">
-                    <div class="each-review">
-                        <div class="head-review">
-                            <div class="lefts">
-                               
-                                <div class="title">
-                                     <div class="img-contain">
-                                        <img src="@/assets/images/vectors/avatar.svg" alt="">
-                                    </div>
-                                    <div class="texts">
-                                        <h4>Pamela Njoku</h4>
-                                        <p>05 Nov 2022</p>
-                                    </div>
-                                    
-                                </div>
-                                
-                            </div>
-                            <div class="stars">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                            </div>
-                            
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, 
-                            purus sit amet luctus venenatis, lectus magna fringilla urna, 
-                            porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
-                        </p>
-                    </div>
-                </div>
-                <div class="right-reviews">
-                     <div class="each-review">
-                        <div class="head-review">
-                            <div class="lefts">
-                               
-                                <div class="title">
-                                     <div class="img-contain">
-                                        <img src="@/assets/images/vectors/avatar.svg" alt="">
-                                    </div>
-                                    <div class="texts">
-                                        <h4>Pamela Njoku</h4>
-                                        <p>05 Nov 2022</p>
-                                    </div>
-                                    
-                                </div>
-                                
-                            </div>
-                            <div class="stars">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                                <img src="@/assets/images/vectors/star.svg" alt="">
-                            </div>
-                            
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, 
-                            purus sit amet luctus venenatis, lectus magna fringilla urna, 
-                            porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            
+          </div>
         </div>
-        <div class="other-products">
-                <div class="others">
-                    <h1>other products from this Merchant</h1>
-                    <a href="">Go to Merchant's store</a>
-                </div>
-
-                 <div class="small-contents">
-                        <div class="each-product">
-                            <p class="badge">-36%</p>
-                            <img src="@/assets/images/backgrounds/seed.png" alt="">
-                            <h3>Product Title</h3>
-                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
-                            <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
-                            <p class="badge">-36%</p>
-                            <img src="@/assets/images/backgrounds/seed.png" alt="">
-                            <h3>Product Title</h3>
-                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
-                            <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
-                            <p class="badge">-36%</p>
-                            <img src="@/assets/images/backgrounds/seed.png" alt="">
-                            <h3>Product Title</h3>
-                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
-                            <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
-                            <p class="badge">-36%</p>
-                            <img src="@/assets/images/backgrounds/seed.png" alt="">
-                            <h3>Product Title</h3>
-                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
-                            <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
-                            <p class="badge">-36%</p>
-                            <img src="@/assets/images/backgrounds/seed.png" alt="">
-                            <h3>Product Title</h3>
-                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
-                            <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
-                            <p class="badge">-36%</p>
-                            <img src="@/assets/images/backgrounds/seed.png" alt="">
-                            <h3>Product Title</h3>
-                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
-                            <h3>NGN103,373,281</h3>
-                        </div>                    
+        <hr />
+        <h3>Description</h3>
+        <p>{{ product ? product.description : "" }}</p>
+        <div class="guide">
+          <a href="#">Input Application Guide.pdf</a>
+          <button>Download</button>
+        </div>
+        <hr />
+        <h3>Specification</h3>
+        <div class="specification">
+          <div class="left-detail">
+            <h4>Type: <span>NPK</span></h4>
+            <h4>Other Names: <span>Quick-acting compound fertilizer</span></h4>
+            <h4>Application: <span>Plant Food</span></h4>
+            <h4>Classification: <span>Compound Fertilizer</span></h4>
+            <h4>Weight: <span>10kg</span></h4>
+          </div>
+          <div class="right-detail">
+            <h4>State: <span>Granular</span></h4>
+            <h4>MF: <span>N-P2O5-K2O</span></h4>
+            <h4>Model Number: <span>Complex</span></h4>
+            <h4>EINECS No.: <span>215-236-1</span></h4>
+            <h4>CAS No.: <span>1314-56-3</span></h4>
+          </div>
+        </div>
+        <hr />
+        <h3>Reviews</h3>
+        <div class="reviews">
+          <div class="left-reviews">
+            <div class="each-review">
+              <div class="head-review">
+                <div class="lefts">
+                  <div class="title">
+                    <div class="img-contain">
+                      <img src="@/assets/images/vectors/avatar.svg" alt="" />
                     </div>
-            </div>
-            <div class="may-also">
-                <div class="others">
-                    <h1>You May Also Want</h1>
-                </div>
-
-                 <div class="small-contents">
-                        <div class="each-product">
-                            <p class="badge">-36%</p>
-                            <img src="@/assets/images/backgrounds/seed.png" alt="">
-                            <h3>Product Title</h3>
-                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
-                            <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
-                            <p class="badge">-36%</p>
-                            <img src="@/assets/images/backgrounds/seed.png" alt="">
-                            <h3>Product Title</h3>
-                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
-                            <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
-                            <p class="badge">-36%</p>
-                            <img src="@/assets/images/backgrounds/seed.png" alt="">
-                            <h3>Product Title</h3>
-                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
-                            <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
-                            <p class="badge">-36%</p>
-                            <img src="@/assets/images/backgrounds/seed.png" alt="">
-                            <h3>Product Title</h3>
-                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
-                            <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
-                            <p class="badge">-36%</p>
-                            <img src="@/assets/images/backgrounds/seed.png" alt="">
-                            <h3>Product Title</h3>
-                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
-                            <h3>NGN103,373,281</h3>
-                        </div>
-                        <div class="each-product">
-                            <p class="badge">-36%</p>
-                            <img src="@/assets/images/backgrounds/seed.png" alt="">
-                            <h3>Product Title</h3>
-                            <p>Lorem ipsum dolor sit amet, <br> consectetur adipiscing elit. Faucibus... </p>
-                            <h3>NGN103,373,281</h3>
-                        </div>                    
+                    <div class="texts">
+                      <h4>Pamela Njoku</h4>
+                      <p>05 Nov 2022</p>
                     </div>
+                  </div>
+                </div>
+                <div class="stars">
+                  <img src="@/assets/images/vectors/star.svg" alt="" />
+                  <img src="@/assets/images/vectors/star.svg" alt="" />
+                  <img src="@/assets/images/vectors/star.svg" alt="" />
+                  <img src="@/assets/images/vectors/star.svg" alt="" />
+                </div>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
+                aliquam, purus sit amet luctus venenatis, lectus magna fringilla
+                urna, porttitor rhoncus dolor purus non enim praesent elementum
+                facilisis leo, vel
+              </p>
             </div>
-            
-
+          </div>
+          <div class="right-reviews">
+            <div class="each-review">
+              <div class="head-review">
+                <div class="lefts">
+                  <div class="title">
+                    <div class="img-contain">
+                      <img src="@/assets/images/vectors/avatar.svg" alt="" />
+                    </div>
+                    <div class="texts">
+                      <h4>Pamela Njoku</h4>
+                      <p>05 Nov 2022</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="stars">
+                  <img src="@/assets/images/vectors/star.svg" alt="" />
+                  <img src="@/assets/images/vectors/star.svg" alt="" />
+                  <img src="@/assets/images/vectors/star.svg" alt="" />
+                  <img src="@/assets/images/vectors/star.svg" alt="" />
+                </div>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
+                aliquam, purus sit amet luctus venenatis, lectus magna fringilla
+                urna, porttitor rhoncus dolor purus non enim praesent elementum
+                facilisis leo, vel
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="other-products">
+        <div class="others">
+          <h1>other products from this Merchant</h1>
+          <a href="">Go to Merchant's store</a>
         </div>
 
+        <div class="small-contents">
+          <div class="each-product">
+            <p class="badge">-36%</p>
+            <img src="@/assets/images/backgrounds/seed.png" alt="" />
+            <h3>Product Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, <br />
+              consectetur adipiscing elit. Faucibus...
+            </p>
+            <h3>NGN103,373,281</h3>
+          </div>
+          <div class="each-product">
+            <p class="badge">-36%</p>
+            <img src="@/assets/images/backgrounds/seed.png" alt="" />
+            <h3>Product Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, <br />
+              consectetur adipiscing elit. Faucibus...
+            </p>
+            <h3>NGN103,373,281</h3>
+          </div>
+          <div class="each-product">
+            <p class="badge">-36%</p>
+            <img src="@/assets/images/backgrounds/seed.png" alt="" />
+            <h3>Product Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, <br />
+              consectetur adipiscing elit. Faucibus...
+            </p>
+            <h3>NGN103,373,281</h3>
+          </div>
+          <div class="each-product">
+            <p class="badge">-36%</p>
+            <img src="@/assets/images/backgrounds/seed.png" alt="" />
+            <h3>Product Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, <br />
+              consectetur adipiscing elit. Faucibus...
+            </p>
+            <h3>NGN103,373,281</h3>
+          </div>
+          <div class="each-product">
+            <p class="badge">-36%</p>
+            <img src="@/assets/images/backgrounds/seed.png" alt="" />
+            <h3>Product Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, <br />
+              consectetur adipiscing elit. Faucibus...
+            </p>
+            <h3>NGN103,373,281</h3>
+          </div>
+          <div class="each-product">
+            <p class="badge">-36%</p>
+            <img src="@/assets/images/backgrounds/seed.png" alt="" />
+            <h3>Product Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, <br />
+              consectetur adipiscing elit. Faucibus...
+            </p>
+            <h3>NGN103,373,281</h3>
+          </div>
+        </div>
+      </div>
+      <div class="may-also">
+        <div class="others">
+          <h1>You May Also Want</h1>
+        </div>
 
-
-    </DefaultNav>
+        <div class="small-contents">
+          <div class="each-product">
+            <p class="badge">-36%</p>
+            <img src="@/assets/images/backgrounds/seed.png" alt="" />
+            <h3>Product Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, <br />
+              consectetur adipiscing elit. Faucibus...
+            </p>
+            <h3>NGN103,373,281</h3>
+          </div>
+          <div class="each-product">
+            <p class="badge">-36%</p>
+            <img src="@/assets/images/backgrounds/seed.png" alt="" />
+            <h3>Product Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, <br />
+              consectetur adipiscing elit. Faucibus...
+            </p>
+            <h3>NGN103,373,281</h3>
+          </div>
+          <div class="each-product">
+            <p class="badge">-36%</p>
+            <img src="@/assets/images/backgrounds/seed.png" alt="" />
+            <h3>Product Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, <br />
+              consectetur adipiscing elit. Faucibus...
+            </p>
+            <h3>NGN103,373,281</h3>
+          </div>
+          <div class="each-product">
+            <p class="badge">-36%</p>
+            <img src="@/assets/images/backgrounds/seed.png" alt="" />
+            <h3>Product Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, <br />
+              consectetur adipiscing elit. Faucibus...
+            </p>
+            <h3>NGN103,373,281</h3>
+          </div>
+          <div class="each-product">
+            <p class="badge">-36%</p>
+            <img src="@/assets/images/backgrounds/seed.png" alt="" />
+            <h3>Product Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, <br />
+              consectetur adipiscing elit. Faucibus...
+            </p>
+            <h3>NGN103,373,281</h3>
+          </div>
+          <div class="each-product">
+            <p class="badge">-36%</p>
+            <img src="@/assets/images/backgrounds/seed.png" alt="" />
+            <h3>Product Title</h3>
+            <p>
+              Lorem ipsum dolor sit amet, <br />
+              consectetur adipiscing elit. Faucibus...
+            </p>
+            <h3>NGN103,373,281</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </DefaultNav>
 </template>
 
 <script>
@@ -259,449 +290,446 @@ import MarketPlaceService from "@/services/marketplace";
 import Alert from "@/utilities/alert";
 
 export default {
-    name: 'Products',
-    data() {
-        return {
-            userData: this.$store.state.user,
-            product: null,
-            quantity : 1
+  name: "Products",
+  components: {
+    DefaultNav,
+  },
+  data() {
+    return {
+      userData: this.$store.state.user,
+      product: null,
+      quantity: 1,
+    };
+  },
+  mounted() {
+    this.getProduct();
+  },
+  methods: {
+    increment() {
+      if (this.quantity < this.product.stock) {
+        this.quantity++;
+      }
+    },
+    decrement() {
+      if (this.quantity > 1) {
+        this.quantity--;
+      }
+    },
+    getProduct() {
+      MarketPlaceService.getInputById(this.$route.params.id, (response) => {
+        this.product = response.data;
+        this.product.images = JSON.parse(this.product.images);
+      });
+    },
+    addToCart() {
+      MarketPlaceService.addToCart(
+        {
+          user_id: this.userData.user_id,
+          input_id: this.$route.params.id,
+          quantity: this.quantity,
+        },
+        (response) => {
+          if (response.error == false) {
+            Alert.success({
+              message: "Added to cart",
+              primary: true,
+              onProceed: () => {
+                this.$router.push("/dashboard/marketplace/cart");
+              },
+            });
+          }
         }
+      );
     },
-    methods:{
-        increment(){
-            if(this.quantity < this.product.stock){
-                this.quantity++;
-            }
-        },
-        decrement(){
-            if(this.quantity > 1){
-                this.quantity--;
-            }
-        },
-        getProduct() {
-            MarketPlaceService.getInputById(this.$route.params.id, (response) => {
-                this.product = response.data;
-                this.product.images = JSON.parse(this.product.images);
-            })
-        },
-        addToCart(){
-            MarketPlaceService.addToCart({
-                user_id : this.userData.user_id,
-                input_id : this.$route.params.id,
-                quantity : this.quantity,
-            },(response)=>{
-                if(response.error == false){
-                    Alert.success({
-                        message : "Added to cart",
-                        primary : true,
-                        onProceed : ()=>{
-                            this.$router.push('/dashboard/marketplace/cart');
-                        }
-                    });
-                }
-            })
-        }
-    },
-    components: {
-        DefaultNav,
-       
-    },
-    mounted(){
-        this.getProduct();
-    }
-}
+  },
+};
 </script>
-
 
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
 
 .big-container {
-    width: 100%;
-    height: auto;
-    background: #F5F5F5;
-    display: flex;
-    flex-direction: column;
-   overflow-y: scroll;
+  width: 100%;
+  height: auto;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
 
-    @include breakpoint-between(md, lg) {
-        width: 60.5%;
-    }
+  @include breakpoint-between(md, lg) {
+    width: 60.5%;
+  }
 
-    @include breakpoint-between(lg, xl) {
-        width: 69.5%;
-    }
+  @include breakpoint-between(lg, xl) {
+    width: 69.5%;
+  }
 
-    @include breakpoint-between(xl, xxl) {
-        width: 76%;
-    }
+  @include breakpoint-between(xl, xxl) {
+    width: 76%;
+  }
 }
-.big-content{
+.big-content {
+  width: 100%;
+  padding: 90px;
+  .image-area {
     width: 100%;
-    padding: 90px;
-    .image-area{
-        width: 100%;
     display: flex;
     flex-direction: row;
     gap: 30px;
 
-        .image-container{
-            width: 50%;
-            img{
-                width: 100%;
-            }
-            .small-images{
-                width: 100%;
-                display: flex;
-                flex-direction: row;
-                gap: 20px;
-                overflow-x: scroll;
-                margin-top: 25px;
-                img{
-                    width: 150px;
-                }
-            }
-        }
-        .text-area{
-            width: 50%;
-            padding-left: 50px;
-            h1{
-                font-family: 'Poppins';
-                font-style: normal;
-                font-weight: 700;
-                font-size: 48px;
-                color: #4A4754;
-                margin-bottom: 19px;
-            }
-            .price{
-                font-family: 'Maven Pro';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 34px;
-                color: #14110C;
-            }
-            .farmer{
-                font-family: 'Maven Pro';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 24px;
-                color: #14110C;
-            }
-            .verified{
-                font-family: 'Maven Pro';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 19.375px;
-                color: #4A4754;
-            }
-            .ratings{
-                width: 250px;
-                display: flex;
-                flex-direction: row;
-                gap: 10px;
-            }
-            .order{
-                margin-left: 20px;
-            }
-            .quantity{
-                display: flex;
-                margin-top: 120px;
-                font-family: 'Maven Pro';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 18px;
-                gap: 20px;
-                color: #000000;
-
-                p{
-                    margin : 0px;
-                }
-
-                .quantity-btns{
-                    display: flex;
-                    gap: 10px;
-                    align-items: center;
-
-                    p{
-                        margin : 0px;
-                    }
-
-                    button{
-                        width: 20px;
-                        height: 20px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        border-radius: 50%;
-                        border: none ;
-                    }
-                }
-            }
-            .ships{
-                font-family: 'Maven Pro';
-                font-style: normal;
-                font-weight: 700;
-                font-size: 18px;
-                text-transform: capitalize;
-                color: #4A4754;
-                margin-top: 20px;
-
-                span{
-                    font-family: 'Maven Pro';
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 18px;
-                    color: #4A4754;
-                }
-            }
-            .buttonss{
-                margin-top: 70px;
-                display: flex;
-                flex-direction: column;
-                gap: 30px;
-
-                .buy{
-                    height: 55px;
-                    border: none;
-                    background: #05B050;
-                    box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08), 0px 4px 8px rgba(44, 39, 56, 0.08);
-                    border-radius: 4px;
-                    font-family: 'Maven Pro';
-                    font-style: normal;
-                    font-weight: 700;
-                    font-size: 16px;
-                    line-height: 147%;
-                    color: #E6F7EE;
-                    text-decoration: none;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-                }
-                .cart{
-                        height: 55px;
-                        border: none;
-                        background: white;
-                        box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08), 0px 4px 8px rgba(44, 39, 56, 0.08);
-                        border-radius: 4px;
-                        font-family: 'Maven Pro';
-                        font-style: normal;
-                        font-weight: 700;
-                        font-size: 16px;
-                        line-height: 147%;
-                        color: #05B050;
-                        border: 1px solid #05B050;
-                        text-decoration: none;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-            }
-            hr{
-                margin-bottom: 50px;
-                margin-top: 50px;
-            }
-        }
-    }
-    hr{
-                margin-bottom: 50px;
-                margin-top: 50px;
-            }
-            .guide{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-top: 40px;
-                margin-bottom: 40px;
-                a{
-                    color: #05B050;
-                }
-                button{
-                    background: #F9E9E9;
-                    border: 1.50427px solid #C32021;
-                    border-radius: 6.01709px;
-                    font-family: 'Maven Pro';
-                    font-style: normal;
-                    font-weight: 700;
-                    font-size: 21.0598px;
-                    color: #C32021;
-                    height: 51px;
-                    width: 200px;
-                }
-            }
-            .specification{
-                display: flex;
-                width: 100%;
-
-                .left-detail{
-                    width: 50%;
-                }
-                .right-detail{
-                        width: 50%;
-                }
-                h4{
-                    font-family: 'Maven Pro';
-                    font-style: normal;
-                    font-weight: 600;
-                    font-size: 16px;
-                    line-height: 116%;
-                    color: #696671;
-                    margin-top: 20px;
-                    span{
-                        margin-left: 20px;
-                        font-family: 'Maven Pro';
-                        font-style: normal;
-                        font-weight: 400;
-                        font-size: 16px;
-                        line-height: 116%;
-                        color: #696671;
-                    }
-                }
-
-
-            }
-    .reviews{
+    .image-container {
+      width: 50%;
+      img {
+        width: 100%;
+      }
+      .small-images {
         width: 100%;
         display: flex;
         flex-direction: row;
-        margin-top: 20px;
-        gap: 100px;
-        .left-reviews{
-            width: 50%;
+        gap: 20px;
+        overflow-x: scroll;
+        margin-top: 25px;
+        img {
+          width: 150px;
         }
-        .right-reviews{
-            width: 50%;
-        }
-
+      }
     }
-    .each-review{
-        margin-top: 50px;
-        h4{
-            font-family: 'Maven Pro';
-            font-style: normal;
-            font-weight: 600;
-            font-size: 16px;
-            color: #191D23;
-            margin-bottom: 0px;
-        }
-    }
-    .texts p{
-        font-family: 'Maven Pro';
+    .text-area {
+      width: 50%;
+      padding-left: 50px;
+      h1 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 48px;
+        color: #4a4754;
+        margin-bottom: 19px;
+      }
+      .price {
+        font-family: "Maven Pro";
         font-style: normal;
         font-weight: 400;
-        font-size: 10px;
-        line-height: 12px;
-        color: #64748B;
-    }
-    .head-review{
+        font-size: 34px;
+        color: #14110c;
+      }
+      .farmer {
+        font-family: "Maven Pro";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        color: #14110c;
+      }
+      .verified {
+        font-family: "Maven Pro";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 19.375px;
+        color: #4a4754;
+      }
+      .ratings {
+        width: 250px;
         display: flex;
-        justify-content: space-between;
-        .stars{
+        flex-direction: row;
+        gap: 10px;
+      }
+      .order {
+        margin-left: 20px;
+      }
+      .quantity {
+        display: flex;
+        margin-top: 120px;
+        font-family: "Maven Pro";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        gap: 20px;
+        color: #000000;
+
+        p {
+          margin: 0px;
+        }
+
+        .quantity-btns {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+
+          p {
+            margin: 0px;
+          }
+
+          button {
+            width: 20px;
+            height: 20px;
             display: flex;
-            gap:10px;
-
-            img{
-                width: 20px;
-                height: 20px;
-            }
-        }
-    }
-    .title{
-        display: flex;
-    }
-    .img-contain{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        img{
+            justify-content: center;
+            align-items: center;
             border-radius: 50%;
+            border: none;
+          }
         }
-    }
+      }
+      .ships {
+        font-family: "Maven Pro";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        text-transform: capitalize;
+        color: #4a4754;
+        margin-top: 20px;
 
-
-.other-products{
-    margin-top: 50px;
-    padding-top: 50px;
-    padding: 100px 90px;
-    background: #F6F6F6;
-}
-.may-also{
-    padding-top: 50px;
-    padding: 100px 90px;
-    background: #FFFBEF;
-}
-.others{
-    display: flex;
-    justify-content: space-between;
-
-    a{
-        background: #05B050;
-        box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08), 0px 4px 8px rgba(44, 39, 56, 0.08);
-        border-radius: 4px;
+        span {
+          font-family: "Maven Pro";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 18px;
+          color: #4a4754;
+        }
+      }
+      .buttonss {
+        margin-top: 70px;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0px 20px;
-        color: white;
-        text-decoration: none;
-        font-family: 'Maven Pro';
+        flex-direction: column;
+        gap: 30px;
+
+        .buy {
+          height: 55px;
+          border: none;
+          background: #05b050;
+          box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08),
+            0px 4px 8px rgba(44, 39, 56, 0.08);
+          border-radius: 4px;
+          font-family: "Maven Pro";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 147%;
+          color: #e6f7ee;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      .cart {
+        height: 55px;
+        border: none;
+        background: white;
+        box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08),
+          0px 4px 8px rgba(44, 39, 56, 0.08);
+        border-radius: 4px;
+        font-family: "Maven Pro";
         font-style: normal;
         font-weight: 700;
         font-size: 16px;
         line-height: 147%;
-        color: #E6F7EE;
-
-        
-    }
-    h1{
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 800;
-        font-size: 34px;
-        color: #22262A;
-    }
-}
-.small-contents{
-        margin-top: 20px;
+        color: #05b050;
+        border: 1px solid #05b050;
+        text-decoration: none;
         display: flex;
-        flex-direction: row;
-        gap: 32px;
-        flex-wrap: wrap;
-
-        .each-product{
-            padding: 10px;
-            width: 260px;
-            position: relative;
-
-            h3{
-                margin-top: 16px;
-                font-family: 'Poppins';
-                font-style: normal;
-                font-weight: 700;
-                font-size: 18px;
-                color: #4A4754;
-            }
-            p{
-                font-family: 'Maven Pro';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 12px;
-                color: #4A4754;
-            }
-            .badge{
-                position: absolute;
-                top: 24px;
-                left: 22px;
-                background: #FAB900;
-                border-radius: 4px;
-                color: white;
-                font-family: 'Maven Pro';
-                font-style: normal;
-                font-weight: 700;
-                font-size: 12px;
-                line-height: 130%;
-            }
-        }
+        align-items: center;
+        justify-content: center;
+      }
     }
+    hr {
+      margin-bottom: 50px;
+      margin-top: 50px;
+    }
+  }
+}
+hr {
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+.guide {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  a {
+    color: #05b050;
+  }
+  button {
+    background: #f9e9e9;
+    border: 1.50427px solid #c32021;
+    border-radius: 6.01709px;
+    font-family: "Maven Pro";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21.0598px;
+    color: #c32021;
+    height: 51px;
+    width: 200px;
+  }
+}
+.specification {
+  display: flex;
+  width: 100%;
 
+  .left-detail {
+    width: 50%;
+  }
+  .right-detail {
+    width: 50%;
+  }
+  h4 {
+    font-family: "Maven Pro";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 116%;
+    color: #696671;
+    margin-top: 20px;
+    span {
+      margin-left: 20px;
+      font-family: "Maven Pro";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 116%;
+      color: #696671;
+    }
+  }
+}
+.reviews {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  gap: 100px;
+  .left-reviews {
+    width: 50%;
+  }
+  .right-reviews {
+    width: 50%;
+  }
+}
+.each-review {
+  margin-top: 50px;
+  h4 {
+    font-family: "Maven Pro";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #191d23;
+    margin-bottom: 0px;
+  }
+}
+.texts p {
+  font-family: "Maven Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #64748b;
+}
+.head-review {
+  display: flex;
+  justify-content: space-between;
+  .stars {
+    display: flex;
+    gap: 10px;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+.title {
+  display: flex;
+}
+.img-contain {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  img {
+    border-radius: 50%;
+  }
+}
+
+.other-products {
+  margin-top: 50px;
+  padding-top: 50px;
+  padding: 100px 90px;
+  background: #f6f6f6;
+}
+.may-also {
+  padding-top: 50px;
+  padding: 100px 90px;
+  background: #fffbef;
+}
+.others {
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    background: #05b050;
+    box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08),
+      0px 4px 8px rgba(44, 39, 56, 0.08);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 20px;
+    color: white;
+    text-decoration: none;
+    font-family: "Maven Pro";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 147%;
+    color: #e6f7ee;
+  }
+  h1 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 800;
+    font-size: 34px;
+    color: #22262a;
+  }
+}
+.small-contents {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  flex-wrap: wrap;
+
+  .each-product {
+    padding: 10px;
+    width: 260px;
+    position: relative;
+
+    h3 {
+      margin-top: 16px;
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      color: #4a4754;
+    }
+    p {
+      font-family: "Maven Pro";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      color: #4a4754;
+    }
+    .badge {
+      position: absolute;
+      top: 24px;
+      left: 22px;
+      background: #fab900;
+      border-radius: 4px;
+      color: white;
+      font-family: "Maven Pro";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 130%;
+    }
+  }
+}
 </style>

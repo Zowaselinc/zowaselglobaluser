@@ -12,27 +12,32 @@
               <h3>Delivery Address</h3>
             </div>
             <hr />
-            <div class="main-address" v-if="show_address">
+            <div v-if="show_address" class="main-address">
               <div class="names">
                 <h4>Sampolaen Farms</h4>
                 <p>4517 Washington Ave. Manchester, Kentucky 39495</p>
               </div>
             </div>
 
-            <div class="change-form" v-else id="change-address-form">
+            <div v-else id="change-address-form" class="change-form">
               <form action="">
                 <div class="top-form">
-                  <select class="form-select" name="" id="" v-model="newCropData.country">
+                  <select
+                    id=""
+                    v-model="newCropData.country"
+                    class="form-select"
+                    name=""
+                  >
                     <option value="">Select country</option>
                     <option
-                      :value="country.country"
                       v-for="(country, index) in countries"
                       :key="index"
+                      :value="country.country"
                     >
                       {{ country.country }}
                     </option>
                   </select>
-                  <select name="" id="" v-model="newCropData.state">
+                  <select id="" v-model="newCropData.state" name="">
                     <option value="">Select state</option>
                     <option
                       v-for="(state, index) in selectStateByCountry"
@@ -50,12 +55,12 @@
                 </div>
               </form>
             </div>
-            <button class="toggle-btn" id="toggle-button" @click="toggle_btn()">
+            <button id="toggle-button" class="toggle-btn" @click="toggle_btn()">
               Change Address
             </button>
           </div>
 
-          <div class="delivery-method" v-if="false">
+          <div v-if="false" class="delivery-method">
             <div class="top-address">
               <img src="@/assets/images/vectors/ticked.png" alt="" />
               <h3>Delivery Method</h3>
@@ -89,13 +94,13 @@
                     Will be delivered between 20 August, 2022 to 28 August, 2022
                   </p>
                 </div>
-                <select name="" id="">
+                <select id="" name="">
                   <option value="">Select Pick up station</option>
                 </select>
               </div>
             </div>
           </div>
-          <div class="payment-method" v-if="false">
+          <div v-if="false" class="payment-method">
             <div class="each-line">
               <img src="@/assets/images/vectors/ticked.png" alt="" />
               <h4>Payment Method</h4>
@@ -113,12 +118,13 @@
             </div>
           </div>
 
-            <button class="proceed" type="button" @click="proceedToPay()">Proceed to Payment</button>
-
+          <button class="proceed" type="button" @click="proceedToPay()">
+            Proceed to Payment
+          </button>
         </div>
         <div class="right-side">
           <h3>Order Summary</h3>
-          <div class="line"></div>
+          <div class="line" />
           <div class="summaries">
             <div class="each-item">
               <img src="@/assets/images/backgrounds/okro-small.png" alt="" />
@@ -193,6 +199,9 @@ import countriesObject from "@/data/countries";
 
 export default {
   name: "CheckOut",
+  components: {
+    DefaultNav,
+  },
   data() {
     return {
       userData: this.$store.state.user,
@@ -204,8 +213,14 @@ export default {
       countries: countriesObject.countries,
     };
   },
-  components: {
-    DefaultNav,
+  computed: {
+    selectStateByCountry: function () {
+      return this.countries && this.newCropData.country != ""
+        ? this.countries.filter(
+            (item) => item.country == this.newCropData.country
+          )[0].states
+        : [];
+    },
   },
   methods: {
     toggle_btn() {
@@ -217,22 +232,12 @@ export default {
         button_text.innerHTML = "Change Address";
       }
     },
-    proceedToPay(){
-            this.$router.push({ name : "CheckoutPayment"});
-    },
-  },
-  computed: {
-    selectStateByCountry: function () {
-      return this.countries && this.newCropData.country != ""
-        ? this.countries.filter(
-            (item) => item.country == this.newCropData.country
-          )[0].states
-        : [];
+    proceedToPay() {
+      this.$router.push({ name: "CheckoutPayment" });
     },
   },
 };
 </script>
-
 
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
@@ -639,8 +644,7 @@ input {
     color: #000000;
   }
 }
-option{
-    color: #D9D9D9;
+option {
+  color: #d9d9d9;
 }
-
 </style>

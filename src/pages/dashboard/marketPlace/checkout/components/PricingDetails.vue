@@ -1,418 +1,505 @@
 <template>
-    <!-- body -->
-    <div class="pricing-details">Pricing Details</div>
-    <hr>
-    <!-- pricing details contents -->
-    <div class="pricing-details-wrapper">
-        <div class="table-rows table-row-first">
-            <div>Accepted Price</div>
-            <div>{{ order.products[0].currency }} {{ specification.price }}</div>
-        </div>
-        <div class="table-rows table-row-first">
-            <div>Confirmed Quantity</div>
-            <div>{{ specification.qty }} MT</div>
-        </div>
-        <div v-if="false" class="table-rows table-row-first">
-            <div>Delivery Date</div>
-            <div>Dec 31 2022</div>
-        </div>
-        <div class="table-rows mb-0">
-            <div>Total Price</div>
-            <div>{{ order.products[0].currency }} {{ specification.price * specification.qty }}</div>
-        </div>
+  <!-- body -->
+  <div class="pricing-details">Pricing Details</div>
+  <hr />
+  <!-- pricing details contents -->
+  <div class="pricing-details-wrapper">
+    <div class="table-rows table-row-first">
+      <div>Accepted Price</div>
+      <div>{{ order.products[0].currency }} {{ specification.price }}</div>
     </div>
+    <div class="table-rows table-row-first">
+      <div>Confirmed Quantity</div>
+      <div>{{ specification.qty }} MT</div>
+    </div>
+    <div v-if="false" class="table-rows table-row-first">
+      <div>Delivery Date</div>
+      <div>Dec 31 2022</div>
+    </div>
+    <div class="table-rows mb-0">
+      <div>Total Price</div>
+      <div>
+        {{ order.products[0].currency }}
+        {{ specification.price * specification.qty }}
+      </div>
+    </div>
+  </div>
 
-    <!-- for corporates view -->
-    <div class="payment-option-wrapper" v-if="isBuyer && order.payment_status != 'PAID'" >
-        <!-- payment option header -->
-        <h2>Payment Option</h2>
-        <div class="payment-option d-flex flex-column">
-            <!-- first item -->
-            <div class="delivery-options d-flex" v-if="userData.type != 'red-hot'">
-                <div @click="setPayment('after_delivery')"
-                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'after_delivery' ? 'active' : '']">
-                    <span class="circle-inner"></span></div>
-                <div class="delivery-content">24 - 48hrs after delivery</div>
-            </div>
-            <!-- second item -->
-            <div class="delivery-options d-flex">
-                <div @click="setPayment('full')"
-                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'full' ? 'active' : '']">
-                    <span class="circle-inner"></span></div>
-                <div class="delivery-content">Full payment</div>
-            </div>
-            <!-- first item -->
-            <div class="delivery-options d-flex" v-if="userData.type != 'red-hot'">
-                <div @click="setPayment('advance')"
-                    :class="['circle-outer d-flex justify-content-center align-items-center', paymentOption == 'advance' ? 'active' : '']">
-                    <span class="circle-inner"></span></div>
-                <div class="delivery-content">Advance Payment</div>
-            </div>
-            <div class="progress-bar-wrapper position-relative d-flex flex-column" v-if="userData.type != 'red-hot' && paymentOption == 'advance'">
-                <input type="range" class="form-range fromSlider" @change="setPaymentPercent($event.target.value)" id="customRange1" value="0" min="0" max="100">
-                <div class="vertical-rule d-flex position-relative">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="progress-rating d-flex">
-                    <span>25%</span>
-                    <span>50%</span>
-                    <span>75%</span>
-                </div>
-            </div>
+  <!-- for corporates view -->
+  <div
+    v-if="isBuyer && order.payment_status != 'PAID'"
+    class="payment-option-wrapper"
+  >
+    <!-- payment option header -->
+    <h2>Payment Option</h2>
+    <div class="payment-option d-flex flex-column">
+      <!-- first item -->
+      <div v-if="userData.type != 'red-hot'" class="delivery-options d-flex">
+        <div
+          :class="[
+            'circle-outer d-flex justify-content-center align-items-center',
+            paymentOption == 'after_delivery' ? 'active' : '',
+          ]"
+          @click="setPayment('after_delivery')"
+        >
+          <span class="circle-inner" />
         </div>
-    </div>
-    <!-- buttons -->
-    <div class=" btn-group w-100 gap-4">
-        <a href="" class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Overage
-            Policy</a>
-        <a href="" class="btn btn-primary" type="button " data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop1">Rejection Policy</a>
-    </div>
-    <!-- Overage Policy Modals -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Overage
-                        Policy</h1>
-                </div>
-                <div class="modal-body px-3 ">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Habitant morbi justo, ullamcorper urna
-                    tristique. Ornare ut mi interdum nunc rutrum cursus aliquet. Posuere vel vel, tristique egestas. Sit
-                    eu ac sed urna eleifend egestas praesent quis. Dui egestas gravida amet, vel. Facilisis lorem vel
-                    posuere et. Ut purus at egestas adipiscing donec commodo, rutrum et justo. Imperdiet amet, diam
-                    pellentesque nulla a. Et nunc elit ipsum, suspendisse eget. Aliquam placerat erat sem tellus risus
-                    euismod odio non. Massa faucibus arcu faucibus neque egestas. Urna tellus sed nec mauris congue
-                    risus, at.
-                    Id consequat diam sed etiam. Integer blandit pharetra ut consequat nunc est. Sit etiam id neque
-                    pharetra feugiat blandit convallis in vitae. Non lacus adipiscing faucibus tempor. Facilisi egestas
-                    venenatis mattis rhoncus sagittis habitasse morbi lectus consectetur. Ultricies id varius dui
-                    euismod ut. Volutpat accumsan, nec, tortor, tincidunt. Leo risus ipsum eget adipiscing. Aliquam nisl
-                    morbi faucibus vulputate tempor elit libero facilisi sit. At odio morbi nam tellus enim, viverra
-                    elit, nisi. Nulla placerat enim tincidunt tortor cursus at nunc amet. Nisi in nam tellus id
-                    dignissim massa tortor cursus.
-                    Tortor eget purus tellus sollicitudin vulputate. Scelerisque et neque elit urna. Leo, proin
-                    habitasse scelerisque nibh elementum morbi. Sem amet, et pulvinar felis consequat quis eget sed.
-                    Tellus tempus id orci vitae. Non nascetur purus faucibus tellus enim arcu. Amet, elementum tortor
-                    diam auctor et faucibus tempor sagittis, venenatis. Ridiculus mattis tellus mollis in tortor. Est
-                    dictum condimentum lectus mollis libero. Sit ut vitae mauris varius eget. Molestie viverra aliquet
-                    est egestas elit orci, aenean. Pellentesque eros, varius et massa. Risus eget a risus, sed non eget
-                    interdum risus. Elementum risus ut nibh gravida libero. Justo, ornare laoreet urna turpis id in.
-                    Scelerisque et pretium, consectetur euismod lorem dui molestie amet quis. In enim sed commodo nec
-                    aliquam. Pulvinar nunc nunc, ipsum arcu. Nibh sed est duis molestie id. Faucibus magna orci,
-                    pulvinar maecenas scelerisque volutpat id. Libero id tortor, proin mauris tincidunt habitant.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
-                </div>
-            </div>
+        <div class="delivery-content">24 - 48hrs after delivery</div>
+      </div>
+      <!-- second item -->
+      <div class="delivery-options d-flex">
+        <div
+          :class="[
+            'circle-outer d-flex justify-content-center align-items-center',
+            paymentOption == 'full' ? 'active' : '',
+          ]"
+          @click="setPayment('full')"
+        >
+          <span class="circle-inner" />
         </div>
-    </div>
-
-    <!-- Overage Rejection policy -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Rejection Policy</h1>
-                </div>
-                <div class="modal-body px-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Habitant morbi justo, ullamcorper urna
-                    tristique. Ornare ut mi interdum nunc rutrum cursus aliquet. Posuere vel vel, tristique egestas. Sit
-                    eu ac sed urna eleifend egestas praesent quis. Dui egestas gravida amet, vel. Facilisis lorem vel
-                    posuere et. Ut purus at egestas adipiscing donec commodo, rutrum et justo. Imperdiet amet, diam
-                    pellentesque nulla a. Et nunc elit ipsum, suspendisse eget. Aliquam placerat erat sem tellus risus
-                    euismod odio non. Massa faucibus arcu faucibus neque egestas. Urna tellus sed nec mauris congue
-                    risus, at.
-                    Id consequat diam sed etiam. Integer blandit pharetra ut consequat nunc est. Sit etiam id neque
-                    pharetra feugiat blandit convallis in vitae. Non lacus adipiscing faucibus tempor. Facilisi egestas
-                    venenatis mattis rhoncus sagittis habitasse morbi lectus consectetur. Ultricies id varius dui
-                    euismod ut. Volutpat accumsan, nec, tortor, tincidunt. Leo risus ipsum eget adipiscing. Aliquam nisl
-                    morbi faucibus vulputate tempor elit libero facilisi sit. At odio morbi nam tellus enim, viverra
-                    elit, nisi. Nulla placerat enim tincidunt tortor cursus at nunc amet. Nisi in nam tellus id
-                    dignissim massa tortor cursus.
-                    Tortor eget purus tellus sollicitudin vulputate. Scelerisque et neque elit urna. Leo, proin
-                    habitasse scelerisque nibh elementum morbi. Sem amet, et pulvinar felis consequat quis eget sed.
-                    Tellus tempus id orci vitae. Non nascetur purus faucibus tellus enim arcu. Amet, elementum tortor
-                    diam auctor et faucibus tempor sagittis, venenatis. Ridiculus mattis tellus mollis in tortor. Est
-                    dictum condimentum lectus mollis libero. Sit ut vitae mauris varius eget. Molestie viverra aliquet
-                    est egestas elit orci, aenean. Pellentesque eros, varius et massa. Risus eget a risus, sed non eget
-                    interdum risus. Elementum risus ut nibh gravida libero. Justo, ornare laoreet urna turpis id in.
-                    Scelerisque et pretium, consectetur euismod lorem dui molestie amet quis. In enim sed commodo nec
-                    aliquam. Pulvinar nunc nunc, ipsum arcu. Nibh sed est duis molestie id. Faucibus magna orci,
-                    pulvinar maecenas scelerisque volutpat id. Libero id tortor, proin mauris tincidunt habitant.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
-                </div>
-            </div>
+        <div class="delivery-content">Full payment</div>
+      </div>
+      <!-- first item -->
+      <div v-if="userData.type != 'red-hot'" class="delivery-options d-flex">
+        <div
+          :class="[
+            'circle-outer d-flex justify-content-center align-items-center',
+            paymentOption == 'advance' ? 'active' : '',
+          ]"
+          @click="setPayment('advance')"
+        >
+          <span class="circle-inner" />
         </div>
+        <div class="delivery-content">Advance Payment</div>
+      </div>
+      <div
+        v-if="userData.type != 'red-hot' && paymentOption == 'advance'"
+        class="progress-bar-wrapper position-relative d-flex flex-column"
+      >
+        <input
+          id="customRange1"
+          type="range"
+          class="form-range fromSlider"
+          value="0"
+          min="0"
+          max="100"
+          @change="setPaymentPercent($event.target.value)"
+        />
+        <div class="vertical-rule d-flex position-relative">
+          <span />
+          <span />
+          <span />
+        </div>
+        <div class="progress-rating d-flex">
+          <span>25%</span>
+          <span>50%</span>
+          <span>75%</span>
+        </div>
+      </div>
     </div>
+  </div>
+  <!-- buttons -->
+  <div class="btn-group w-100 gap-4">
+    <a
+      href=""
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+      >Overage Policy</a
+    >
+    <a
+      href=""
+      class="btn btn-primary"
+      type="button "
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop1"
+      >Rejection Policy</a
+    >
+  </div>
+  <!-- Overage Policy Modals -->
+
+  <!-- Modal -->
+  <div
+    id="staticBackdrop"
+    class="modal fade"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 id="staticBackdropLabel" class="modal-title fs-5">
+            Overage Policy
+          </h1>
+        </div>
+        <div class="modal-body px-3">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Habitant
+          morbi justo, ullamcorper urna tristique. Ornare ut mi interdum nunc
+          rutrum cursus aliquet. Posuere vel vel, tristique egestas. Sit eu ac
+          sed urna eleifend egestas praesent quis. Dui egestas gravida amet,
+          vel. Facilisis lorem vel posuere et. Ut purus at egestas adipiscing
+          donec commodo, rutrum et justo. Imperdiet amet, diam pellentesque
+          nulla a. Et nunc elit ipsum, suspendisse eget. Aliquam placerat erat
+          sem tellus risus euismod odio non. Massa faucibus arcu faucibus neque
+          egestas. Urna tellus sed nec mauris congue risus, at. Id consequat
+          diam sed etiam. Integer blandit pharetra ut consequat nunc est. Sit
+          etiam id neque pharetra feugiat blandit convallis in vitae. Non lacus
+          adipiscing faucibus tempor. Facilisi egestas venenatis mattis rhoncus
+          sagittis habitasse morbi lectus consectetur. Ultricies id varius dui
+          euismod ut. Volutpat accumsan, nec, tortor, tincidunt. Leo risus ipsum
+          eget adipiscing. Aliquam nisl morbi faucibus vulputate tempor elit
+          libero facilisi sit. At odio morbi nam tellus enim, viverra elit,
+          nisi. Nulla placerat enim tincidunt tortor cursus at nunc amet. Nisi
+          in nam tellus id dignissim massa tortor cursus. Tortor eget purus
+          tellus sollicitudin vulputate. Scelerisque et neque elit urna. Leo,
+          proin habitasse scelerisque nibh elementum morbi. Sem amet, et
+          pulvinar felis consequat quis eget sed. Tellus tempus id orci vitae.
+          Non nascetur purus faucibus tellus enim arcu. Amet, elementum tortor
+          diam auctor et faucibus tempor sagittis, venenatis. Ridiculus mattis
+          tellus mollis in tortor. Est dictum condimentum lectus mollis libero.
+          Sit ut vitae mauris varius eget. Molestie viverra aliquet est egestas
+          elit orci, aenean. Pellentesque eros, varius et massa. Risus eget a
+          risus, sed non eget interdum risus. Elementum risus ut nibh gravida
+          libero. Justo, ornare laoreet urna turpis id in. Scelerisque et
+          pretium, consectetur euismod lorem dui molestie amet quis. In enim sed
+          commodo nec aliquam. Pulvinar nunc nunc, ipsum arcu. Nibh sed est duis
+          molestie id. Faucibus magna orci, pulvinar maecenas scelerisque
+          volutpat id. Libero id tortor, proin mauris tincidunt habitant.
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Back
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overage Rejection policy -->
+
+  <!-- Modal -->
+  <div
+    id="staticBackdrop1"
+    class="modal fade"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 id="staticBackdropLabel" class="modal-title fs-5">
+            Rejection Policy
+          </h1>
+        </div>
+        <div class="modal-body px-3">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Habitant
+          morbi justo, ullamcorper urna tristique. Ornare ut mi interdum nunc
+          rutrum cursus aliquet. Posuere vel vel, tristique egestas. Sit eu ac
+          sed urna eleifend egestas praesent quis. Dui egestas gravida amet,
+          vel. Facilisis lorem vel posuere et. Ut purus at egestas adipiscing
+          donec commodo, rutrum et justo. Imperdiet amet, diam pellentesque
+          nulla a. Et nunc elit ipsum, suspendisse eget. Aliquam placerat erat
+          sem tellus risus euismod odio non. Massa faucibus arcu faucibus neque
+          egestas. Urna tellus sed nec mauris congue risus, at. Id consequat
+          diam sed etiam. Integer blandit pharetra ut consequat nunc est. Sit
+          etiam id neque pharetra feugiat blandit convallis in vitae. Non lacus
+          adipiscing faucibus tempor. Facilisi egestas venenatis mattis rhoncus
+          sagittis habitasse morbi lectus consectetur. Ultricies id varius dui
+          euismod ut. Volutpat accumsan, nec, tortor, tincidunt. Leo risus ipsum
+          eget adipiscing. Aliquam nisl morbi faucibus vulputate tempor elit
+          libero facilisi sit. At odio morbi nam tellus enim, viverra elit,
+          nisi. Nulla placerat enim tincidunt tortor cursus at nunc amet. Nisi
+          in nam tellus id dignissim massa tortor cursus. Tortor eget purus
+          tellus sollicitudin vulputate. Scelerisque et neque elit urna. Leo,
+          proin habitasse scelerisque nibh elementum morbi. Sem amet, et
+          pulvinar felis consequat quis eget sed. Tellus tempus id orci vitae.
+          Non nascetur purus faucibus tellus enim arcu. Amet, elementum tortor
+          diam auctor et faucibus tempor sagittis, venenatis. Ridiculus mattis
+          tellus mollis in tortor. Est dictum condimentum lectus mollis libero.
+          Sit ut vitae mauris varius eget. Molestie viverra aliquet est egestas
+          elit orci, aenean. Pellentesque eros, varius et massa. Risus eget a
+          risus, sed non eget interdum risus. Elementum risus ut nibh gravida
+          libero. Justo, ornare laoreet urna turpis id in. Scelerisque et
+          pretium, consectetur euismod lorem dui molestie amet quis. In enim sed
+          commodo nec aliquam. Pulvinar nunc nunc, ipsum arcu. Nibh sed est duis
+          molestie id. Faucibus magna orci, pulvinar maecenas scelerisque
+          volutpat id. Libero id tortor, proin mauris tincidunt habitant.
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Back
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "PricingDetails",
-    props: {
-        order: Object,
-        setPaymentMode : Function,
-        setPaymentPercent : Function
+  name: "PricingDetails",
+  props: {
+    order: Object,
+    setPaymentMode: Function,
+    setPaymentPercent: Function,
+  },
+  data() {
+    return {
+      paymentOption: "full",
+    };
+  },
+  computed: {
+    specification() {
+      return this.order.negotiation
+        ? this.order.negotiation.specification
+        : this.order.products[0].specification;
     },
-    data() {
-        return {
-            paymentOption: 'full'
-        };
+  },
+  mounted() {},
+  methods: {
+    setPayment(type) {
+      this.paymentOption = type;
+      this.setPaymentMode(type);
     },
-    computed: {
-        specification() {
-            return this.order.negotiation ? this.order.negotiation.specification : this.order.products[0].specification;
-        },
-    },
-    methods: {
-        setPayment(type) {
-            this.paymentOption = type;
-            this.setPaymentMode(type);
-        }
-    },
-    mounted(){
-    }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
 
 .pricing-details {
-    margin-block: 30px 8px;
-    color: #0A0D13;
-    letter-spacing: -0.02em;
-    @include textStyles(Inter, 600, 18px, 28px);
+  margin-block: 30px 8px;
+  color: #0a0d13;
+  letter-spacing: -0.02em;
+  @include textStyles(Inter, 600, 18px, 28px);
 }
 
 hr {
-    border: 1px solid #ACACAC;
+  border: 1px solid #acacac;
 }
 
 .pricing-details-wrapper {
-    margin-block: 29px 57px;
+  margin-block: 29px 57px;
 }
 
 .table-rows {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
 
-    >div {
-        &:last-child:not(.quality-spec) {
-            position: absolute;
-            right: 0;
-        }
-
-        &:nth-of-type(1) {
-            @include textStyles(Poppins, 800, 14px, 166.67%);
-            color: rgba(45, 55, 72, 0.6);
-        }
-
-        &:nth-of-type(2) {
-            @include textStyles("Maven Pro", 700, 14px, 147%);
-            color: #696671;
-        }
+  > div {
+    &:last-child:not(.quality-spec) {
+      position: absolute;
+      right: 0;
     }
 
+    &:nth-of-type(1) {
+      @include textStyles(Poppins, 800, 14px, 166.67%);
+      color: rgba(45, 55, 72, 0.6);
+    }
+
+    &:nth-of-type(2) {
+      @include textStyles("Maven Pro", 700, 14px, 147%);
+      color: #696671;
+    }
+  }
 }
 
 .btn-group {
-    a {
-        border: none;
-        width: 274px;
-        height: 47px;
-        padding: 10px;
-        background: #2D3748;
-        margin-bottom: 80px;
-        color: #FFFFFF;
-        @include textStyles(Poppins, 600, 16px, 27px);
-
-    }
+  a {
+    border: none;
+    width: 274px;
+    height: 47px;
+    padding: 10px;
+    background: #2d3748;
+    margin-bottom: 80px;
+    color: #ffffff;
+    @include textStyles(Poppins, 600, 16px, 27px);
+  }
 }
 
 // for corporates view
 .payment-option-wrapper {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 
-    h2 {
-        @include textStyles(Poppins, 600, 18px, 32px);
-        letter-spacing: 0.01em;
-        font-feature-settings: 'liga' off;
-        color: #1D1D1D;
-        margin-bottom: 23px;
-        text-align: center;
-
-    }
+  h2 {
+    @include textStyles(Poppins, 600, 18px, 32px);
+    letter-spacing: 0.01em;
+    font-feature-settings: "liga" off;
+    color: #1d1d1d;
+    margin-bottom: 23px;
+    text-align: center;
+  }
 }
 
 .payment-option {
-    width: 100%;
-    background: #FFFFFF;
-    border-radius: 4px;
-    padding: 44px 0px 40px 36px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 44px 0px 40px 36px;
 
-    .delivery-options {
-        margin-bottom: 30px;
-        display: flex;
-        align-items: center;
+  .delivery-options {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+  }
+
+  .circle-outer {
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border: 1px solid #ededee;
+    box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.08);
+    border-radius: 100%;
+
+    span.circle-inner {
+      width: 65%;
+      height: 65%;
+      border-radius: 100%;
     }
+  }
 
-    .circle-outer {
-        width: 20px;
-        height: 20px;
-        background: #FFFFFF;
-        border: 1px solid #EDEDEE;
-        box-shadow: 0px 4px 8px rgba(44, 39, 56, 0.08);
-        border-radius: 100%;
+  // toggle
+  .active {
+    border: 2px solid #05b050;
 
-        span.circle-inner {
-            width: 65%;
-            height: 65%;
-            border-radius: 100%;
+    span.circle-inner {
+      background: #05b050;
+    }
+  }
+
+  .delivery-content {
+    margin-left: 20%;
+    @include textStyles(Poppins, 500, 16px, 33px);
+    color: rgba(45, 55, 72, 0.6);
+  }
+
+  .progress-bar-wrapper {
+    .form-range::-moz-range-thumb {
+      background: #fcd66b !important;
+    }
+    input {
+      border: 0 !important;
+    }
+    %progress_bar_position {
+      span {
+        position: absolute;
+        &:nth-of-type(1) {
+          left: 25.5%;
         }
-    }
-
-    // toggle
-    .active {
-        border: 2px solid #05B050;
-
-        span.circle-inner {
-            background: #05B050;
+        &:nth-of-type(2) {
+          left: 48.5%;
         }
+        &:nth-of-type(3) {
+          left: 71%;
+        }
+        &:nth-of-type(4) {
+          left: 94%;
+        }
+      }
+    }
+    .vertical-rule {
+      @extend %progress_bar_position;
+      span {
+        margin-top: 0px;
+        width: 15px;
+        border: 1px solid #fcd66b;
+        transform: rotate(90deg);
+      }
     }
 
-    .delivery-content {
-        margin-left: 20%;
-        @include textStyles(Poppins, 500, 16px, 33px);
+    .progress-rating {
+      @extend %progress_bar_position;
+      margin-top: 10px;
+      position: relative;
+
+      span {
+        @include textStyles(Poppins, 500, 14px, 27px);
         color: rgba(45, 55, 72, 0.6);
-
+      }
     }
 
-    .progress-bar-wrapper {
-        .form-range::-moz-range-thumb {
-            background: #FCD66B !important;
-        }
-        input{
-            border: 0 !important;
-
-        }
-        %progress_bar_position{
-            span{
-                position: absolute;     
-                &:nth-of-type(1){
-                    left: 25.5%;
-                }
-                &:nth-of-type(2){
-                    left: 48.5%;
-                }
-                &:nth-of-type(3){
-                    left: 71%;
-                }
-                &:nth-of-type(4){
-                    left: 94%;
-                }
-            }
-
-        }
-        .vertical-rule {
-            @extend %progress_bar_position;
-            span {
-                margin-top: 0px;
-                width: 15px;
-                border: 1px solid #FCD66B;
-                transform: rotate(90deg);
-                
-            }
-        }
-
-        .progress-rating {
-            @extend %progress_bar_position;
-            margin-top: 10px;
-            position: relative;
-
-            span {
-                @include textStyles(Poppins, 500, 14px, 27px);
-                color: rgba(45, 55, 72, 0.6);
-            }
-        }
-
-        .full-width{
-            width : 100%;
-        }
-
-        .half-width{
-            width : 50%;
-        }
-
-        .point-circle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 18.69px;
-            height: 18.69px;
-            border-radius: 50%;
-            position: absolute;
-            background: #FFF8E6;
-            bottom: 36px;
-            left: 10.53%;
-
-            .inner-point-circle {
-                width: 70%;
-                height: 70%;
-                border-radius: 50%;
-                background: #FCD66B;
-            }
-        }
+    .full-width {
+      width: 100%;
     }
+
+    .half-width {
+      width: 50%;
+    }
+
+    .point-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18.69px;
+      height: 18.69px;
+      border-radius: 50%;
+      position: absolute;
+      background: #fff8e6;
+      bottom: 36px;
+      left: 10.53%;
+
+      .inner-point-circle {
+        width: 70%;
+        height: 70%;
+        border-radius: 50%;
+        background: #fcd66b;
+      }
+    }
+  }
 }
 
-// modals 
+// modals
 .modal-header {
-    justify-content: center;
+  justify-content: center;
 
-    h1 {
-        @include textStyles(Inter, 600, 20px, 28px);
-        letter-spacing: -0.02em;
-        color: #0A0D13;
-        border-bottom: 0px ! important;
-    }
+  h1 {
+    @include textStyles(Inter, 600, 20px, 28px);
+    letter-spacing: -0.02em;
+    color: #0a0d13;
+    border-bottom: 0px !important;
+  }
 }
 
 .modal-footer {
-    justify-content: center;
-    border-top: 0 ! important;
+  justify-content: center;
+  border-top: 0 !important;
 
-    button {
-        background: #05B050;
-        box-shadow: 0px 2.58333px 5.16667px rgba(44, 39, 56, 0.08), 0px 5.16667px 10.3333px rgba(44, 39, 56, 0.08);
-        border-radius: 5.16667px;
-        width: 100px;
-        border-color: #05B050;
-    }
+  button {
+    background: #05b050;
+    box-shadow: 0px 2.58333px 5.16667px rgba(44, 39, 56, 0.08),
+      0px 5.16667px 10.3333px rgba(44, 39, 56, 0.08);
+    border-radius: 5.16667px;
+    width: 100px;
+    border-color: #05b050;
+  }
 }
 
 .modal-body {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 @media (min-width: 576px) {
-    .modal-dialog {
-        max-width: 690px;
-        margin: 1.75rem auto;
-    }
+  .modal-dialog {
+    max-width: 690px;
+    margin: 1.75rem auto;
+  }
 }
 </style>

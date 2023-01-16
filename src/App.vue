@@ -4,42 +4,41 @@
 </template>
 
 <script>
-
 import UserService from "@/services/user";
-import axios from 'axios';
+import axios from "axios";
 import AlertBox from "@/components/AlertBox.vue";
 
 export default {
-  name: 'App',
-  components:{
-    AlertBox
+  name: "App",
+  components: {
+    AlertBox,
   },
   data() {
     return {
-      userData: null
-    }
+      userData: null,
+    };
   },
   mounted() {
     var tokenValue = this.$store.state.authData;
     if (tokenValue && tokenValue != null) {
       axios.defaults.headers.common = {
         authorization: tokenValue.token,
-      }
+      };
     } else {
       axios.defaults.headers.common = {};
     }
-    if(this.$store.state.authData){
+    if (this.$store.state.authData) {
       UserService.getUser(this.$store.state.authData.key, (response) => {
-      if (!response.error) {
-        this.$store.dispatch('setUser', response.data)
-        this.userData = this.$store.state.user;
-      }else{
-        this.logOut();
-      }
-    })
+        if (!response.error) {
+          this.$store.dispatch("setUser", response.data);
+          this.userData = this.$store.state.user;
+        } else {
+          this.logOut();
+        }
+      });
     }
   },
-}
+};
 </script>
 
 <style>

@@ -1,72 +1,103 @@
 <template>
-    <AuthSharedLayout>
-        <div class="big-container">
-            <img class="mobile-logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
-            <div class="left-content">
-                
-                <h1 class="text-center">Create an Account</h1>
-                <p id="emailHelp" class="form-text text-muted text-center">Get connected with your network of vetted growers</p>
-                <div class="lines">
-                    <div class="line"></div>
-                    <p>OR</p>
-                    <div class="line"></div>
-                </div>
-                <form>
-                    
-                    
-                    
-                    <div class="form-group">
-                        <label for="">First Name</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your first name">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Last Name</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter your last name">
-                    </div>
-                    <div class="form-group">
-                    <div class="row">
-                        <div class="col">
-                            <label for="">Email Address</label>
-                            <input type="text" class="form-control" placeholder="Enter email address">
-                        </div>
-                        <div class="col">
-                            <label for="">Phone Number</label>
-                            <input type="text" class="form-control" placeholder="Enter phone number">
-                        </div>
-                    
-                    </div>
-                    </div>
-                    <div class="form-group checking">
-                        <input type="checkbox">
-                        <p class="check-p">I confirm that I have read and accepted the privacy policy</p>
-                    </div>
-                    <div class="form-group">
-                        <router-link to="/merchant/companydetails" type="button" class="btn  btn-lg btn-block green-btn">Continue</router-link>
-                    </div>
-                </form>
-                <div class="last-text">
-                    <p id="emailHelp" class="form-text text-muted text-center">Do you already have an account?</p> <router-link class="link" to="/welcomeback">Login</router-link>
-                </div>
-            </div>
-            <div class="right-content">
-                <img class="background-img" src="@/assets/images/backgrounds/partner-background2.png" alt="">
-                <img class="logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
-            </div>
+  <AuthSharedLayout>
+    <div class="big-container">
+      <img
+        class="mobile-logo"
+        src="@/assets/images/logos/zowasel-logo.png"
+        alt=""
+      />
+      <div class="left-content">
+        <h1 class="text-center">Create an Account</h1>
+        <p id="emailHelp" class="form-text text-muted text-center">
+          Get connected with your network of vetted growers
+        </p>
+        <div class="lines">
+          <div class="line" />
+          <p>OR</p>
+          <div class="line" />
         </div>
-    </AuthSharedLayout>
+        <form>
+          <div class="form-group">
+            <label for="">First Name</label>
+            <input
+              id="formGroupExampleInput"
+              type="text"
+              class="form-control"
+              placeholder="Enter your first name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Last Name</label>
+            <input
+              id="formGroupExampleInput2"
+              type="text"
+              class="form-control"
+              placeholder="Enter your last name"
+            />
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col">
+                <label for="">Email Address</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter email address"
+                />
+              </div>
+              <div class="col">
+                <label for="">Phone Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter phone number"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-group checking">
+            <input type="checkbox" />
+            <p class="check-p">
+              I confirm that I have read and accepted the privacy policy
+            </p>
+          </div>
+          <div class="form-group">
+            <router-link
+              to="/merchant/companydetails"
+              type="button"
+              class="btn btn-lg btn-block green-btn"
+            >
+              Continue
+            </router-link>
+          </div>
+        </form>
+        <div class="last-text">
+          <p id="emailHelp" class="form-text text-muted text-center">
+            Do you already have an account?
+          </p>
+          <router-link class="link" to="/welcomeback"> Login </router-link>
+        </div>
+      </div>
+      <div class="right-content">
+        <img
+          class="background-img"
+          src="@/assets/images/backgrounds/partner-background2.png"
+          alt=""
+        />
+        <img class="logo" src="@/assets/images/logos/zowasel-logo.png" alt="" />
+      </div>
+    </div>
+  </AuthSharedLayout>
 </template>
 
 <script>
-    import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
-    export default {
-        name:'PartnerSignUp',
-        components: {
-            AuthSharedLayout
-        }
-    }
+import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
+export default {
+  name: "PartnerSignUp",
+  components: {
+    AuthSharedLayout,
+  },
+};
 </script>
 
-<style lang="scss" scoped>    
-    
-
-</style>
+<style lang="scss" scoped></style>
