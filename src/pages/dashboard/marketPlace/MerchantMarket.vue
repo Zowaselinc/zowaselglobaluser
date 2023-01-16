@@ -26,7 +26,7 @@
           </p>
           <p>
             {{ crop.currency }} {{ crop.specification.price }}/{{
-              crop.packaging
+              crop.specification.test_weight.toUpperCase()
             }}
           </p>
           <p>{{ crop.user.first_name }}</p>
