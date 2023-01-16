@@ -13,7 +13,7 @@
             <h1>{{ product.title }}</h1>
             <p class="price">
               {{ product.currency }}{{ product.specification.price }}/{{
-                product.packaging
+                product.specification.test_weight.toUpperCase()
               }}
             </p>
             <p class="farmer">
