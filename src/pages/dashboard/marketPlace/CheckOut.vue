@@ -15,14 +15,15 @@
             <div class="main-address" v-if="show_address">
               <div class="names">
                 <h4>Sampolaen Farms</h4>
-                <p>4517 Washington Ave. Manchester, Kentucky 39495</p>
+                <p>{{newAddress.house }} <span>{{newAddress.city}},</span>  {{newAddress.zipCode}} {{newAddress.state }} {{newAddress.country}} </p>
               </div>
             </div>
 
             <div class="change-form" v-else id="change-address-form">
               <form action="">
                 <div class="top-form">
-                  <select class="form-select" name="" id="" v-model="newCropData.country">
+                  <input type="text" placeholder="House Address" v-model="newAddress.house" />
+                  <select class="form-select" name="" id="" v-model="newAddress.country">
                     <option value="">Select country</option>
                     <option
                       :value="country.country"
@@ -32,7 +33,7 @@
                       {{ country.country }}
                     </option>
                   </select>
-                  <select name="" id="" v-model="newCropData.state">
+                  <select name="" id="" v-model="newAddress.state">
                     <option value="">Select state</option>
                     <option
                       v-for="(state, index) in selectStateByCountry"
@@ -44,9 +45,9 @@
                 </div>
 
                 <div class="bottom-form">
-                  <input type="text" placeholder="City" />
-                  <input type="text" placeholder="Zip code" />
-                  <input type="text" placeholder="street" />
+                  <input type="text" placeholder="City" v-model="newAddress.city" />
+                  <input type="text" placeholder="Zip code" v-model="newAddress.zipCode" />
+                  
                 </div>
               </form>
             </div>
@@ -119,65 +120,38 @@
         <div class="right-side">
           <h3>Order Summary</h3>
           <div class="line"></div>
-          <div class="summaries">
+          <div class="summaries" v-if="cart.length>0">
+          <div class="contain" v-for="item,index in cart" :key="index">
             <div class="each-item">
-              <img src="@/assets/images/backgrounds/okro-small.png" alt="" />
+               <img :src="parse(item.input.images)[0]" alt="">
               <div class="each-detail">
-                <h4>Coconut Fertilizer</h4>
-                <p>Seller- <span>Naziri Farms</span></p>
+                <h4>{{ item.input.title }}</h4>
+                <!-- <p>Seller- <span>Naziri Farms</span></p> -->
                 <div class="qty">
                   <h4>Qty</h4>
                   <div class="btnss">
-                    <p class="p-btn">-</p>
-                    <p>3</p>
-                    <p class="p-btn">+</p>
+                    <a href="javascript:void(0)" class="p-btn" @click="decrement(index)">-</a>
+                    <p>{{ item.quantity }}</p>
+                    <a href="javascript:void(0)" class="p-btn" @click="increment(index)">+</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="each-item">
-              <img src="@/assets/images/backgrounds/okro-small.png" alt="" />
-              <div class="each-detail">
-                <h4>Coconut Fertilizer</h4>
-                <p>Seller- <span>Naziri Farms</span></p>
-                <div class="qty">
-                  <h4>Qty</h4>
-                  <div class="btnss">
-                    <p class="p-btn">-</p>
-                    <p>3</p>
-                    <p class="p-btn">+</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="each-item">
-              <img src="@/assets/images/backgrounds/okro-small.png" alt="" />
-              <div class="each-detail">
-                <h4>Coconut Fertilizer</h4>
-                <p>Seller- <span>Naziri Farms</span></p>
-                <div class="qty">
-                  <h4>Qty</h4>
-                  <div class="btnss">
-                    <p class="p-btn">-</p>
-                    <p>3</p>
-                    <p class="p-btn">+</p>
-                  </div>
-                </div>
-              </div>
-            </div>#000
+          </div>
+            
           </div>
           <div class="red-side">
             <div class="items">
               <p>Cart Sub-total</p>
-              <h4>NGN410,000</h4>
+              <h4>NGN {{ cartTotal.toLocaleString() }}</h4>
             </div>
             <div class="items">
-              <p>Delivery Fee</p>
-              <h4>NGN3,400</h4>
+              <!-- <p>Delivery Fee</p>
+              <h4>NGN3,400</h4> -->
             </div>
             <div class="items">
               <p>Total</p>
-              <h4>NGN413,400</h4>
+              <h4>NGN {{ cartTotal.toLocaleString() }}</h4>
             </div>
           </div>
         </div>
@@ -188,7 +162,7 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
-// import MarketplaceService from "@/services/marketplace";
+import MarketplaceService from "@/services/marketplace";
 import countriesObject from "@/data/countries";
 
 export default {
@@ -197,10 +171,14 @@ export default {
     return {
       userData: this.$store.state.user,
       show_address: true,
-      newCropData: {
+      newAddress: {
         state: "",
         country: "",
+        house:"",
       },
+      cart:[],
+
+     
       countries: countriesObject.countries,
     };
   },
@@ -220,16 +198,50 @@ export default {
     proceedToPay(){
             this.$router.push({ name : "CheckoutPayment"});
     },
+
+    increment(index){
+            var item = this.cart[index];
+            if(eval(item.input.stock) > eval(item.quantity)){
+                this.cart[index].quantity = eval(this.cart[index].quantity) + 1;
+                MarketplaceService.addToCart({
+                    input_id : item.input_id,
+                    user_id : item.user_id,
+                    quantity : eval(item.quantity)
+                },(response)=>{
+                });
+
+                console.log(this.cart)
+            }
+
+        },
+        decrement(index){
+            var item = this.cart[index];
+            if(eval(item.quantity) > 1){
+                this.cart[index].quantity = eval(this.cart[index].quantity) - 1;
+                MarketplaceService.addToCart({
+                    input_id : item.input_id,
+                    user_id : item.user_id,
+                    quantity : eval(item.quantity)
+                },(response)=>{
+                });
+            }
+        },
+        parse(data){
+            return JSON.parse(data);
+        }
   },
   computed: {
     selectStateByCountry: function () {
-      return this.countries && this.newCropData.country != ""
+      return this.countries && this.newAddress.country != ""
         ? this.countries.filter(
-            (item) => item.country == this.newCropData.country
+            (item) => item.country == this.newAddress.country
           )[0].states
         : [];
     },
   },
+  mounted(){
+        this.getCartItems();
+    }
 };
 </script>
 
@@ -535,6 +547,8 @@ export default {
     height: 20px;
     background: #ededee;
     border-radius: 50%;
+    color: black;
+    text-decoration: none;
   }
 }
 

@@ -48,6 +48,14 @@
 
                 </div>
             </a>
+
+            <a href="/dashboard/marketplace/myproducts" class="nav-item">
+                <div class="ripple">
+                    <img class="img-fluid" src="@/assets/images/vectors/product.svg" alt="info"><span>My Products</span>
+
+                </div>
+            </a>
+            
             <a href="/dashboard/negotiations" class="nav-item">
                 <div :class="['ripple', 'active-item', isRouteActive('/dashboard/negotiations')]">
                     <img class="img-fluid" src="@/assets/images/vectors/ChatText.svg"
@@ -132,12 +140,7 @@
                 </div>
             </a>
 
-            <a href="/dashboard/marketplace/myproducts" class="nav-item">
-                <div class="ripple">
-                    <img class="img-fluid" src="@/assets/images/vectors/product.svg" alt="info"><span>My Products</span>
-
-                </div>
-            </a>
+            
             <a href="/dashboard/sales" class="nav-item">
                 <div class="ripple">
                     <img class="img-fluid" src="@/assets/images/vectors/sales.svg" alt="info"><span>My Sales</span>

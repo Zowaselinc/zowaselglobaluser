@@ -19,7 +19,9 @@
                             </div>
                             <div class="second">
                                 <p>{{ item.input.title }}</p>
-                                <p>Naziri Farms</p>
+
+
+                                <!-- <p>Naziri Farms</p>  this should be fixed--> 
                                 <p>{{ item.input.currency }} {{ (item.input.price).toLocaleString() }}</p>
                             </div>
                             <div class="third">
@@ -76,6 +78,7 @@
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
 import Alert from "@/utilities/alert";
+import MarketplaceService from "@/services/marketplace"
 
 export default {
     name: 'CardPayment',
@@ -98,6 +101,8 @@ export default {
                     quantity : eval(item.quantity)
                 },(response)=>{
                 });
+
+                
             }
 
         },
