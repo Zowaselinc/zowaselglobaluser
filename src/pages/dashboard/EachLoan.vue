@@ -2,54 +2,19 @@
   <DefaultNav>
     <div class="big-container">
       <div class="headings">
-        <h2>Loans</h2>
+        <h2>Joachim Intergrated farms</h2>
         <div class="right-btns">
-          <a href="" class="white-link">Add a Farmer</a>
-          <a href="" class="green-link">Batch Upload</a>
-          <a href="" class="red-link">Sent Invoice</a>
+          <a href="" class="green-link">Edit</a>
         </div>
       </div>
+      <div class="headings">
+        <p>Credit Score</p>
+        <h3 class="red-text">73%</h3>
+      </div>
 
-      <input type="text" placeholder="search" />
-
-      <div class="row date-region">
-        <div class="col">
-          <select
-            id=""
-            v-model="delivery_details.country"
-            class="form-select"
-            name="country"
-          >
-            <option value="">Select country</option>
-            <option
-              v-for="(country, index) in countries"
-              :key="index"
-              :value="country.country"
-            >
-              {{ country.country }}
-            </option>
-          </select>
-        </div>
-        <div class="col">
-          <select
-            id=""
-            v-model="delivery_details.state"
-            name="state"
-            class="form-select"
-          >
-            <option value="">Select state</option>
-            <option v-for="(state, index) in selectStateByCountry" :key="index">
-              {{ state }}
-            </option>
-          </select>
-        </div>
-        <div class="col">
-          <select id="" class="form-select" name="">
-            <option value="">30-100</option>
-            <option value="">100-200</option>
-            <option value="">200-500</option>
-          </select>
-        </div>
+      <div class="loan-details">
+        <div class="left-details"></div>
+        <div class="right-details"></div>
       </div>
 
       <div class="active-subscriptions">
@@ -75,7 +40,7 @@
               </tr>
             </a>
 
-            <a href="/dashboard/each-loan">
+            <a href="dashboard/each-loan">
               <tr>
                 <td>Niji Farms</td>
                 <td>Nigeria</td>
@@ -102,7 +67,7 @@
               </tr>
             </a>
 
-            <a href="/dashboard/each-loan">
+            <a href="dashboard/each-loan">
               <tr>
                 <td>Niji Farms</td>
                 <td>Nigeria</td>
@@ -129,7 +94,7 @@
               </tr>
             </a>
 
-            <a href="/dashboard/each-loan">
+            <a href="dashboard/each-loan">
               <tr>
                 <td>Niji Farms</td>
                 <td>Nigeria</td>
@@ -156,7 +121,7 @@
               </tr>
             </a>
 
-            <a href="/dashboard/each-loan">
+            <a href="dashboard/each-loan">
               <tr>
                 <td>Niji Farms</td>
                 <td>Nigeria</td>
@@ -183,7 +148,7 @@
               </tr>
             </a>
 
-            <a href="/dashboard/each-loan">
+            <a href="dashboard/each-loan">
               <tr>
                 <td>Niji Farms</td>
                 <td>Nigeria</td>
@@ -210,7 +175,7 @@
               </tr>
             </a>
 
-            <a href="/dashboard/each-loan">
+            <a href="dashboard/each-loan">
               <tr>
                 <td>Niji Farms</td>
                 <td>Nigeria</td>
@@ -237,7 +202,7 @@
               </tr>
             </a>
 
-            <a href="/dashboard/each-loan">
+            <a href="dashboard/each-loan">
               <tr>
                 <td>Niji Farms</td>
                 <td>Nigeria</td>
@@ -262,35 +227,10 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
-import countriesObject from "@/data/countries";
 export default {
-  name: "Invoice",
+  name: "EachLoan",
   components: {
     DefaultNav,
-  },
-  data() {
-    return {
-      userData: this.$store.state.user,
-      show_address: true,
-      delivery_details: {
-        state: "",
-        country: "",
-        house: "",
-        city: "",
-      },
-      cart: [],
-
-      countries: countriesObject.countries,
-    };
-  },
-  computed: {
-    selectStateByCountry: function () {
-      return this.countries && this.delivery_details.country != ""
-        ? this.countries.filter(
-            (item) => item.country == this.delivery_details.country
-          )[0].states
-        : [];
-    },
   },
 };
 </script>
@@ -315,7 +255,6 @@ export default {
 .active-subscriptions {
   background-color: white;
   padding: 24px 35px;
-  margin-top: 40px;
 }
 
 /* The slider */
@@ -496,5 +435,12 @@ export default {
 }
 .date-region {
   margin-top: 30px;
+}
+.red-text {
+  font-family: "Maven Pro";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  color: #cd4647;
 }
 </style>
