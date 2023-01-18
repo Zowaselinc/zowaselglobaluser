@@ -22,7 +22,7 @@ const GET_SUB_CATEGORIES_PATH = () => "subcategory/getall";
 const GET_ADD_NEW_CROP__PATH = () => "crop/wanted/add";
 const GET_ORDERS_PATH = (id) => `users/${id}/orders`;
 const GET_SALES_PATH = (id) => `users/${id}/sales`;
-const ADD_CROP_INPUT_PATH = () => `inut/add/`;
+const ADD_CROP_INPUT_PATH = () => `input/add/`;
 
 export default {
   getCropCategories: function (callback) {
