@@ -179,9 +179,21 @@
           >
             Score Analysis
           </div> -->
+
+          <div
+            class="active-menu"
+            @click="changeDir(' /dashboard/croptraceability')"
+          >
+            Crop Traceability
+          </div>
+          <div
+            class="active-menu"
+            @click="changeDir(' /dashboard/sustainability')"
+          >
+            Sustainability
+          </div>
         </div>
       </a>
-
       <a href="javascript:void(0)" class="nav-item">
         <div
           :class="[
