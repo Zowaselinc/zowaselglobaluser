@@ -180,7 +180,7 @@ export default {
         callback(error.data);
       });
   },
-  getNewInput: function (NewInputData, callback) {
+  saveInput: function (NewInputData, callback) {
     axios
       .post(config.BASE_URL + ADD_CROP_INPUT_PATH(), NewInputData)
       .then((response) => {

@@ -4,7 +4,7 @@
       <div class="big-content">
         <!-- header -->
         <h1>Add new input</h1>
-        <form>
+        <form @subnit.prevent="saveData()">
           <div class="crop-wanted-section d-flex flex-row gap-4">
             <div class="form">
               <div class="crop_details">Input Details</div>
@@ -254,13 +254,7 @@
               </div>
             </div>
           </div>
-          <button
-            type="submit"
-            :class="['btn', 'btn-primary', 'my-4']"
-            @click="saveData()"
-          >
-            save
-          </button>
+          <button :class="['btn', 'btn-primary', 'my-4']">save</button>
         </form>
       </div>
     </div>
@@ -367,7 +361,7 @@ export default {
 
     async saveData() {
       // send data to the end-poit
-      await MarketPlaceService.getNewInput(this.inputData, (response) => {
+      await MarketPlaceService.saveInput(this.inputData, (response) => {
         if (response && response.error == false) {
           Alert.success({
             message: "Crop added successfully",
