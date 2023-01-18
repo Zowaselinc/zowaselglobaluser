@@ -162,25 +162,24 @@
         <div class="drop-menu scoring-menu">
           <div
             class="active-menu"
-            @click="changeDir(' /dashboard/creditscoring')"
+            @click="changeDir(' /dashboard/creditscoringpointsystem')"
           >
-            Credit score point system
+            Score point system
           </div>
           <div
             class="active-menu"
-            @click="changeDir(' /dashboard/creditscoreanalysis')"
+            @click="changeDir(' /dashboard/creditscoring')"
           >
             credit score analysis
           </div>
-          <div class="active-menu" @click="changeDir(' /dashboard/loan')">
-            Loans
-          </div>
-          <div
+
+          <!-- <div
             class="active-menu"
             @click="changeDir(' /dashboard/scoreanalysis')"
           >
             Score Analysis
-          </div>
+          </div> -->
+
           <div
             class="active-menu"
             @click="changeDir(' /dashboard/croptraceability')"
@@ -195,7 +194,6 @@
           </div>
         </div>
       </a>
-
       <a href="javascript:void(0)" class="nav-item">
         <div
           :class="[
@@ -225,7 +223,7 @@
           <div class="active-menu" @click="changeDir(' /dashboard/loans')">
             Farmers
           </div>
-          <div
+          <!-- <div
             class="active-menu"
             @click="changeDir(' /dashboard/creditscoreanalysis')"
           >
@@ -239,7 +237,7 @@
             @click="changeDir(' /dashboard/scoreanalysis')"
           >
             Loans History
-          </div>
+          </div> -->
         </div>
       </a>
 
@@ -331,10 +329,10 @@
             Kyf
           </div>
 
-          <div class="active-menu">Farmer Data</div>
+          <!-- <div class="active-menu">Farmer Data</div>
           <div class="active-menu">Market report</div>
           <div class="active-menu">Crop data stats</div>
-          <div class="active-menu">Seed data</div>
+          <div class="active-menu">Seed data</div> -->
         </div>
       </a>
       <a href="/dashboard/tickets" class="nav-item">

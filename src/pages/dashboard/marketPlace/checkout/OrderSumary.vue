@@ -277,9 +277,6 @@ export default {
     WaybillDetails,
   },
   data() {
-    return {};
-  },
-  data() {
     return {
       activeTab: "pricingdetails",
       step: 1,

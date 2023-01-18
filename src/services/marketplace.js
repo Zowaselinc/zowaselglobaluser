@@ -190,9 +190,11 @@ export default {
         callback(error.data);
       });
   },
-  saveDeliveryAddress: function (callback) {
+  saveDeliveryAddress: function (delivery_details, callback) {
     axios
-      .post(config.BASE_URL + ADD_DELIVERY_ADDRESS())
+      .post(config.BASE_URL + ADD_DELIVERY_ADDRESS(), {
+        delivery_details: delivery_details,
+      })
       .then((response) => {
         callback(response.data);
       })
