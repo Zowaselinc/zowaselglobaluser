@@ -22,7 +22,7 @@
           <select
             v-model="cropData.category_id"
             class="form-select"
-            aria-label="Default select example"
+            aria-label="Default seglect example"
             required
           >
             <option
