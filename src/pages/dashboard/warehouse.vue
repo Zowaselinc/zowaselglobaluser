@@ -4,17 +4,21 @@
       <div class="headings">
         <h2>Crop Traceability</h2>
         <div class="right-btns">
-          <a href="/dashboard/cropquality" class="green-link">Next</a>
+          <a href="/dashboard/shipment" class="green-link">Next</a>
         </div>
       </div>
       <div class="d-flex text-center small-font">
-        <div class="col yellow-link">Crop Information</div>
+        <a href="/dashboard/croptraceability" class="col green-link">
+          Crop Information
+        </a>
         <span class="pt-2 mx-1">-</span>
-        <div class="col form-control small-font">Crop quality</div>
+        <a href="/dashboard/cropquality" class="col green-link">Crop quality</a>
         <span class="pt-2 mx-1">-</span>
-        <div class="col form-control small-font">Input Information</div>
+        <a href="/dashboard/inputinformation" class="col green-link"
+          >Input Information</a
+        >
         <span class="pt-2 mx-1">-</span>
-        <div class="col form-control small-font">Warehouse</div>
+        <div class="col yellow-link">Warehouse</div>
         <span class="pt-2 mx-1">-</span>
         <div class="col form-control small-font">Shipment</div>
         <span class="pt-2 mx-1">-</span>
@@ -23,87 +27,39 @@
 
       <form class="mt-3">
         <div>
-          <label for="">Crop type</label>
+          <label for="">Fertilizers</label>
           <select id="inputState" class="form-control">
             <option selected>Choose...</option>
             <option>...</option>
           </select>
         </div>
         <div>
-          <label for="">Sourcing Location</label>
+          <label for="">Herbicides</label>
           <select id="inputState" class="form-control">
             <option selected>Choose...</option>
             <option>...</option>
           </select>
         </div>
         <div>
-          <label for="">
-            Crop origin (location where crop is cultivated & harvested)
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Enter your answer"
-          />
-        </div>
-        <div class="row">
-          <div class="col">
-            <label for="">Crop Quality</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="col">
-            <label for="">Crop Variety</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
+          <label for="">Fungicides</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
         </div>
         <div>
-          <label for=""> Number of female farmers to men </label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Enter your answer"
-          />
+          <label for="">Insecticides</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
         </div>
-        <div class="row">
-          <div class="col">
-            <label for="">Corporative name</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter your answer"
-            />
-          </div>
-          <div class="col">
-            <label for="">Number of farmer group</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter your answer"
-            />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <label for="">Farmer name</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter your answer"
-            />
-          </div>
-          <div class="col">
-            <label for="">Gender</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
+        <div>
+          <label for="">Seeds</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
         </div>
       </form>
     </div>
@@ -156,7 +112,6 @@ form {
 }
 
 /* The slider */
-
 .sub-history {
   margin-top: 50px;
   width: 100%;
@@ -191,7 +146,7 @@ form {
     justify-content: center;
     align-items: center;
     color: white;
-    width: 180px;
+    width: 145px;
     height: 40px;
     background: #05b050;
     border-radius: 5px;
@@ -200,6 +155,18 @@ form {
     letter-spacing: 0.02em;
   }
 }
+.green-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 145px;
+  height: 40px;
+  background: #05b050;
+  border-radius: 5px;
+  letter-spacing: 0.02em;
+}
 .yellow-link {
   display: flex;
   flex-direction: column;
@@ -207,11 +174,14 @@ form {
   align-items: center;
   display: flex;
   color: white;
-  width: 180px;
+  width: 145px;
   height: 40px;
   background: #fab900 !important;
   border-radius: 5px;
   letter-spacing: 0.02em;
+}
+a {
+  text-decoration: none;
 }
 .small-font {
   font-size: 11px !important;

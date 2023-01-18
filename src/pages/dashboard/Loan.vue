@@ -2,295 +2,115 @@
   <DefaultNav>
     <div class="big-container">
       <div class="headings">
-        <h2>Loans</h2>
+        <h2>Loan Application Form</h2>
         <div class="right-btns">
-          <a href="" class="white-link">Add a Farmer</a>
-          <a href="" class="green-link">Batch Upload</a>
-          <a href="" class="red-link">Sent Invoice</a>
+          <a href="" class="green-link">Apply</a>
         </div>
       </div>
 
-      <input type="text" placeholder="search" />
-
-      <div class="row date-region">
-        <div class="col">
-          <select
-            id=""
-            v-model="delivery_details.country"
-            class="form-select"
-            name="country"
-          >
-            <option value="">Select country</option>
-            <option
-              v-for="(country, index) in countries"
-              :key="index"
-              :value="country.country"
-            >
-              {{ country.country }}
-            </option>
-          </select>
+      <form>
+        <div class="row">
+          <div class="col">
+            <label for="">Gender</label>
+            <input type="text" class="form-control" placeholder="First name" />
+          </div>
+          <div class="col">
+            <label for="">Age</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
         </div>
-        <div class="col">
-          <select
-            id=""
-            v-model="delivery_details.state"
-            name="state"
-            class="form-select"
-          >
-            <option value="">Select state</option>
-            <option v-for="(state, index) in selectStateByCountry" :key="index">
-              {{ state }}
-            </option>
-          </select>
+        <div class="row">
+          <div class="col">
+            <label for="">Gender</label>
+            <input type="text" class="form-control" placeholder="First name" />
+          </div>
+          <div class="col">
+            <label for="">Age</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
         </div>
-        <div class="col">
-          <select id="" class="form-select" name="">
-            <option value="">30-100</option>
-            <option value="">100-200</option>
-            <option value="">200-500</option>
-          </select>
+        <div class="row">
+          <div class="col">
+            <label for="">Gender</label>
+            <input type="text" class="form-control" placeholder="First name" />
+          </div>
+          <div class="col">
+            <label for="">Age</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
         </div>
-      </div>
-
-      <div class="active-subscriptions">
-        <table class="table-borderless sub-history">
-          <tbody class="scrollable">
-            <tr>
-              <td class="theader">NAME</td>
-              <td class="theader">COUNTRY</td>
-              <td class="theader">STATE</td>
-              <td class="theader">ADDRESS</td>
-              <td class="theader">SIZE</td>
-              <td class="theader">PHONE</td>
-            </tr>
-            <hr />
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Sayed Farms Ltd</td>
-                <td>Nigeria</td>
-                <td>Ondo</td>
-                <td>1901 Thornridge Cir.</td>
-                <td>30 - 100</td>
-                <td>09077653323</td>
-              </tr>
-            </a>
-
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Niji Farms</td>
-                <td>Nigeria</td>
-                <td>Lagos</td>
-                <td>Ajegunle</td>
-                <td>200-500</td>
-                <td>081088644434</td>
-                <!-- <td>
-                  <div class="active">
-                    <div class="active-dot" />
-                    <p>Active</p>
-                  </div>
-                </td> -->
-              </tr>
-            </a>
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Sayed Farms Ltd</td>
-                <td>Nigeria</td>
-                <td>Ondo</td>
-                <td>1901 Thornridge Cir.</td>
-                <td>30 - 100</td>
-                <td>09077653323</td>
-              </tr>
-            </a>
-
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Niji Farms</td>
-                <td>Nigeria</td>
-                <td>Lagos</td>
-                <td>Ajegunle</td>
-                <td>200-500</td>
-                <td>081088644434</td>
-                <!-- <td>
-                  <div class="active">
-                    <div class="active-dot" />
-                    <p>Active</p>
-                  </div>
-                </td> -->
-              </tr>
-            </a>
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Sayed Farms Ltd</td>
-                <td>Nigeria</td>
-                <td>Ondo</td>
-                <td>1901 Thornridge Cir.</td>
-                <td>30 - 100</td>
-                <td>09077653323</td>
-              </tr>
-            </a>
-
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Niji Farms</td>
-                <td>Nigeria</td>
-                <td>Lagos</td>
-                <td>Ajegunle</td>
-                <td>200-500</td>
-                <td>081088644434</td>
-                <!-- <td>
-                  <div class="active">
-                    <div class="active-dot" />
-                    <p>Active</p>
-                  </div>
-                </td> -->
-              </tr>
-            </a>
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Sayed Farms Ltd</td>
-                <td>Nigeria</td>
-                <td>Ondo</td>
-                <td>1901 Thornridge Cir.</td>
-                <td>30 - 100</td>
-                <td>09077653323</td>
-              </tr>
-            </a>
-
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Niji Farms</td>
-                <td>Nigeria</td>
-                <td>Lagos</td>
-                <td>Ajegunle</td>
-                <td>200-500</td>
-                <td>081088644434</td>
-                <!-- <td>
-                  <div class="active">
-                    <div class="active-dot" />
-                    <p>Active</p>
-                  </div>
-                </td> -->
-              </tr>
-            </a>
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Sayed Farms Ltd</td>
-                <td>Nigeria</td>
-                <td>Ondo</td>
-                <td>1901 Thornridge Cir.</td>
-                <td>30 - 100</td>
-                <td>09077653323</td>
-              </tr>
-            </a>
-
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Niji Farms</td>
-                <td>Nigeria</td>
-                <td>Lagos</td>
-                <td>Ajegunle</td>
-                <td>200-500</td>
-                <td>081088644434</td>
-                <!-- <td>
-                  <div class="active">
-                    <div class="active-dot" />
-                    <p>Active</p>
-                  </div>
-                </td> -->
-              </tr>
-            </a>
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Sayed Farms Ltd</td>
-                <td>Nigeria</td>
-                <td>Ondo</td>
-                <td>1901 Thornridge Cir.</td>
-                <td>30 - 100</td>
-                <td>09077653323</td>
-              </tr>
-            </a>
-
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Niji Farms</td>
-                <td>Nigeria</td>
-                <td>Lagos</td>
-                <td>Ajegunle</td>
-                <td>200-500</td>
-                <td>081088644434</td>
-                <!-- <td>
-                  <div class="active">
-                    <div class="active-dot" />
-                    <p>Active</p>
-                  </div>
-                </td> -->
-              </tr>
-            </a>
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Sayed Farms Ltd</td>
-                <td>Nigeria</td>
-                <td>Ondo</td>
-                <td>1901 Thornridge Cir</td>
-                <td>30 - 100</td>
-                <td>09077653323</td>
-              </tr>
-            </a>
-
-            <a href="/dashboard/each-loan">
-              <tr>
-                <td>Niji Farms</td>
-                <td>Nigeria</td>
-                <td>Lagos</td>
-                <td>Ajegunle</td>
-                <td>200-500</td>
-                <td>081088644434</td>
-                <!-- <td>
-                  <div class="active">
-                    <div class="active-dot" />
-                    <p>Active</p>
-                  </div>
-                </td> -->
-              </tr>
-            </a>
-          </tbody>
-        </table>
-      </div>
+        <div class="row">
+          <div class="col">
+            <label for="">Gender</label>
+            <input type="text" class="form-control" placeholder="First name" />
+          </div>
+          <div class="col">
+            <label for="">Age</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="">Gender</label>
+            <input type="text" class="form-control" placeholder="First name" />
+          </div>
+          <div class="col">
+            <label for="">Age</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="">Gender</label>
+            <input type="text" class="form-control" placeholder="First name" />
+          </div>
+          <div class="col">
+            <label for="">Age</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="">Gender</label>
+            <input type="text" class="form-control" placeholder="First name" />
+          </div>
+          <div class="col">
+            <label for="">Age</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+        </div>
+      </form>
     </div>
   </DefaultNav>
 </template>
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
-import countriesObject from "@/data/countries";
 export default {
-  name: "Invoice",
+  name: "Loan",
   components: {
     DefaultNav,
-  },
-  data() {
-    return {
-      userData: this.$store.state.user,
-      show_address: true,
-      delivery_details: {
-        state: "",
-        country: "",
-        house: "",
-        city: "",
-      },
-      cart: [],
-
-      countries: countriesObject.countries,
-    };
-  },
-  computed: {
-    selectStateByCountry: function () {
-      return this.countries && this.delivery_details.country != ""
-        ? this.countries.filter(
-            (item) => item.country == this.delivery_details.country
-          )[0].states
-        : [];
-    },
   },
 };
 </script>
@@ -303,7 +123,6 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 2% 5% 2% 3%;
-  overflow-y: scroll;
   h2 {
     font-family: "Poppins";
     font-style: normal;
@@ -314,8 +133,17 @@ export default {
 }
 .active-subscriptions {
   background-color: white;
-  padding: 24px 35px;
+  padding: 24px 65px;
   margin-top: 40px;
+
+  h2 {
+    font-family: "Maven Pro";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    color: #696671;
+  }
 }
 
 /* The slider */
@@ -334,103 +162,6 @@ export default {
     font-weight: 700;
     font-size: 14px;
     color: #4a4754;
-  }
-
-  tr {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20px 9px;
-    height: 66px;
-  }
-  td {
-    flex: 1;
-    font-family: "Maven Pro";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    color: #4a4754;
-  }
-  .active {
-    width: 100px;
-    height: 26px;
-    background: #dcfce7;
-    border-radius: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .active-dot {
-      width: 7.52px;
-      height: 8px;
-      background: #047b38;
-      border-radius: 50%;
-    }
-    p {
-      margin-top: 15px;
-      margin-left: 8px;
-      font-family: "Maven Pro";
-      font-style: normal;
-      font-weight: 600;
-      font-size: 12px;
-      color: #047b38;
-    }
-  }
-  .expired {
-    width: 100px;
-    height: 26px;
-    background: #fff8e6;
-    border-radius: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .expired-dot {
-      width: 7.52px;
-      height: 8px;
-      background: #fab900;
-      border-radius: 50%;
-    }
-    p {
-      margin-top: 15px;
-      margin-left: 8px;
-      font-family: "Maven Pro";
-      font-style: normal;
-      font-weight: 600;
-      font-size: 12px;
-      color: #fab900;
-    }
-  }
-  .cancelled {
-    width: 100px;
-    height: 26px;
-    background: rgba(252, 220, 220, 0.93);
-    border-radius: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .cancelled-dot {
-      width: 7.52px;
-      height: 8px;
-      background: #c52222;
-      border-radius: 50%;
-    }
-    p {
-      margin-top: 15px;
-      margin-left: 8px;
-      font-family: "Maven Pro";
-      font-style: normal;
-      font-weight: 600;
-      font-size: 12px;
-      color: #6b0303;
-    }
-  }
-  a {
-    text-decoration: none;
-  }
-  a:hover td {
-    color: #05b050 !important;
   }
 }
 .headings {
@@ -454,47 +185,10 @@ export default {
     width: 180px;
     height: 40px;
     background: #05b050;
+    border-radius: 5px;
     font-weight: 700;
     font-size: 16px;
     letter-spacing: 0.02em;
-    border-radius: 4px;
   }
-  .white-link {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 180px;
-    height: 40px;
-    background: #ffffff;
-    font-family: "Maven Pro";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 0.02em;
-    color: #05b050;
-    border: 2px solid #05b050;
-    border-radius: 4px;
-  }
-  .red-link {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    width: 180px;
-    height: 40px;
-    background: #cd4647;
-    box-shadow: 0px 2px 4px rgba(44, 39, 56, 0.08),
-      0px 4px 8px rgba(44, 39, 56, 0.08);
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: 0.02em;
-    border-radius: 4px;
-  }
-}
-.date-region {
-  margin-top: 30px;
 }
 </style>

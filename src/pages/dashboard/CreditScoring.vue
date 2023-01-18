@@ -1,17 +1,9 @@
 <template>
   <DefaultNav>
     <div class="big-container">
-      <div class="headings">
-        <h2>Credit Score Point System</h2>
-        <!-- <div class="right-btns">
-          <a href="" class="white-link">Add a Farmer</a>
-          <a href="" class="green-link">Batch Upload</a>
-          <a href="" class="red-link">Sent Invoice</a>
-        </div> -->
-      </div>
       <div class="row big-contents">
         <div class="col">
-          <div class="card carded green-card">
+          <div class="card carded">
             <h2>Gender</h2>
             <div class="texts">
               <p>Weight: 4</p>
@@ -20,17 +12,17 @@
           </div>
         </div>
         <div class="col">
-          <div class="card carded blue-card">
+          <div class="card carded">
             <h2>Age</h2>
             <div class="texts">
-              <p>Weight: 1</p>
-              <p>3.7/100</p>
+              <p>Weight: 4</p>
+              <p>14.8/100</p>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="card carded red-card">
-            <h2>Owns a bank account</h2>
+          <div class="card carded">
+            <h2>Gender</h2>
             <div class="texts">
               <p>Weight: 4</p>
               <p>14.8/100</p>
@@ -38,8 +30,82 @@
           </div>
         </div>
         <div class="col">
-          <div class="card carded yellow-card">
-            <h2>Number of Farm Lands</h2>
+          <div class="card carded">
+            <h2>Gender</h2>
+            <div class="texts">
+              <p>Weight: 4</p>
+              <p>14.8/100</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card carded">
+            <h2>Gender</h2>
+            <div class="texts">
+              <p>Weight: 4</p>
+              <p>14.8/100</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card carded">
+            <h2>Gender</h2>
+            <div class="texts">
+              <p>Weight: 4</p>
+              <p>14.8/100</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card carded">
+            <h2>Gender</h2>
+            <div class="texts">
+              <p>Weight: 4</p>
+              <p>14.8/100</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card carded">
+            <h2>Gender</h2>
+            <div class="texts">
+              <p>Weight: 4</p>
+              <p>14.8/100</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card carded">
+            <h2>Gender</h2>
+            <div class="texts">
+              <p>Weight: 4</p>
+              <p>14.8/100</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card carded">
+            <h2>Gender</h2>
+            <div class="texts">
+              <p>Weight: 4</p>
+              <p>14.8/100</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card carded">
+            <h2>Gender</h2>
+            <div class="texts">
+              <p>Weight: 4</p>
+              <p>14.8/100</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card carded">
+            <h2>Gender</h2>
             <div class="texts">
               <p>Weight: 4</p>
               <p>14.8/100</p>
@@ -47,136 +113,6 @@
           </div>
         </div>
       </div>
-
-      <div class="row big-contents">
-        <div class="col">
-          <div class="card carded blue-card">
-            <h2>Number of Employees</h2>
-            <div class="texts">
-              <p>Weight: 4</p>
-              <p>14.8/100</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card carded red-card">
-            <h2>Farm Size</h2>
-            <div class="texts">
-              <p>Weight: 4</p>
-              <p>14.8/100</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card carded yellow-card">
-            <h2>Farm Address</h2>
-            <div class="texts">
-              <p>Weight: 4</p>
-              <p>14.8/100</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card carded green-card">
-            <h2>Age ofarm</h2>
-            <div class="texts">
-              <p>Weight: 4</p>
-              <p>14.8/100</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="big-contents row">
-        <div class="col">
-          <div class="card carded red-card">
-            <h2>Crop Type</h2>
-            <div class="texts">
-              <p>Weight: 4</p>
-              <p>14.8/100</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card carded yellow-card">
-            <h2>Farm ownership status</h2>
-            <div class="texts">
-              <p>Weight: 4</p>
-              <p>14.8/100</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card carded blue-card">
-            <h2>Number of crops grown</h2>
-            <div class="texts">
-              <p>Weight: 4</p>
-              <p>14.8/100</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card carded yellow-card">
-            <h2>Cropping Practice</h2>
-            <div class="texts">
-              <p>Weight: 4</p>
-              <p>14.8/100</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="big-contents row">
-        <div class="col">
-          <div class="card carded green-card">
-            <h2>Machinery Status</h2>
-            <div class="texts">
-              <p>Weight: 4</p>
-              <p>14.8/100</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card carded blue-card">
-            <h2>Monthly Revenue</h2>
-            <div class="texts">
-              <p>Weight: 1</p>
-              <p>14.8/100</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card carded red-card">
-            <h2>Cooporate Membership</h2>
-            <div class="texts">
-              <p>Weight: 4</p>
-              <p>14.8/100</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card carded red-card">
-            <h2>Inspection Status</h2>
-            <div class="texts">
-              <p>Weight: 4</p>
-              <p>14.8/100</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- <div class="rating-section">
-        <h3>Credit Score Rating</h3>
-        <hr />
-
-        <div class="first-row">
-          <div class="score">
-            <div class="top-text">
-              <div class="dot"></div>
-              <h2>Score A</h2>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </DefaultNav>
 </template>
@@ -223,14 +159,14 @@ export default {
 }
 
 .carded {
-  width: 100%;
+  width: 235px;
   display: flex;
-  height: 120px;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   padding: 18px 20px 15px;
-  margin-top: 28px;
+  margin-top: 20px;
+  border-left: 1px solid #05b050;
 
   p {
     font-family: "Maven Pro";
@@ -240,27 +176,45 @@ export default {
     color: #96949c;
   }
 
-  h2 {
-    font-family: "Poppins";
+  .total-p {
+    font-family: "Maven Pro";
     font-style: normal;
     font-weight: 700;
-    font-size: 14px;
-    line-height: 147%;
-    text-transform: capitalize;
+    font-size: 24px;
     color: #4a4754;
   }
-}
-.yellow-card {
-  border-left: 2px solid #fde296;
-}
-.green-card {
-  border-left: 2px solid #99dfb7;
-}
-.blue-card {
-  border-left: 2px solid #96c0ff;
-}
-.red-card {
-  border-left: 2px solid #e6a4a4;
+
+  .input-p {
+    font-family: "Maven Pro";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    color: #05b050;
+  }
+
+  .sold-p {
+    font-family: "Maven Pro";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    color: #3498db;
+  }
+
+  .offers-p {
+    font-family: "Maven Pro";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    color: #cd4647;
+  }
+
+  .invoices-p {
+    font-family: "Maven Pro";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    color: #fbc52b;
+  }
 }
 .texts {
   width: 100%;
@@ -270,16 +224,7 @@ export default {
 .big-contents {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: left;
   align-items: left;
-  gap: 30px;
-}
-.rating-section {
-  padding: 30px 62px;
-  background-color: white;
-  margin-top: 50px;
-}
-.headings {
-  margin-top: 40px;
 }
 </style>
