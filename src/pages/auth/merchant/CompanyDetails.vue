@@ -1,112 +1,141 @@
 <template>
-<AuthSharedLayout>
+  <AuthSharedLayout>
     <div class="big-container">
-        <img class="mobile-logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
-        <div class="left-content">
-            <h1 class="text-center">Company Details</h1>
-            <p id="emailHelp" class="form-text text-muted text-center">Enter your company Details</p>
-            <div class="lines">
-                <div class="line"></div>
-                <p>OR</p>
-                <div class="line"></div>
-            </div>
-            <form>
-                
-                
-                
-                <div class="form-group">
-                    <label for="">Company Name</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter your company name">
-                </div>
-                <div class="form-group">
-                    <label for="">Company Details</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter your company details">
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col">
-                            <label for="">State</label>
-                            <select class="form-control form-control-lg">
-                                <option>Select State</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label for="">RC Number</label>
-                            <input type="text" class="form-control" placeholder="Enter company RC number">
-                        </div>
-                        
-                    
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col">
-                            <label for="">Company Email</label>
-                            <input type="email" class="form-control" placeholder="Enter company email">
-                        </div>
-                        <div class="col">
-                            <label for="">Company Phone Number</label>
-                            <input type="text" class="form-control" placeholder="Enter company phone number">
-                        </div>
-                        
-                    
-                    </div>
-                </div>
-                <div class="buttons">
-                    <div class="form-group">
-                        <router-link to="/merchant/verifyaccount" type="button" class="btn  btn-lg green-btn btn-block">Continue</router-link>
-                    </div>
-                    <div class="form-group">
-                        <router-link to="/merchant/verifyaccount" class="btn skip btn-lg btn-block">Skip this step</router-link>
-                    </div>
-                </div>
-            
-                
-            </form>
-        
+      <img
+        class="mobile-logo"
+        src="@/assets/images/logos/zowasel-logo.png"
+        alt=""
+      />
+      <div class="left-content">
+        <h1 class="text-center">Company Details</h1>
+        <p id="emailHelp" class="form-text text-muted text-center">
+          Enter your company Details
+        </p>
+        <div class="lines">
+          <div class="line" />
+          <p>OR</p>
+          <div class="line" />
         </div>
-        <div class="right-content">
-                <img class="background-img" src="@/assets/images/backgrounds/merchant-background2.png" alt="">
-                <img class="logo" src="@/assets/images/logos/zowasel-logo.png" alt="">
+        <form>
+          <div class="form-group">
+            <label for="">Company Name</label>
+            <input
+              id="formGroupExampleInput"
+              type="text"
+              class="form-control"
+              placeholder="Enter your company name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Company Details</label>
+            <input
+              id="formGroupExampleInput2"
+              type="text"
+              class="form-control"
+              placeholder="Enter your company details"
+            />
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col">
+                <label for="">State</label>
+                <select class="form-control form-control-lg">
+                  <option>Select State</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="">RC Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter company RC number"
+                />
+              </div>
             </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col">
+                <label for="">Company Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter company email"
+                />
+              </div>
+              <div class="col">
+                <label for="">Company Phone Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter company phone number"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="buttons">
+            <div class="form-group">
+              <router-link
+                to="/merchant/verifyaccount"
+                type="button"
+                class="btn btn-lg green-btn btn-block"
+              >
+                Continue
+              </router-link>
+            </div>
+            <div class="form-group">
+              <router-link
+                to="/merchant/verifyaccount"
+                class="btn skip btn-lg btn-block"
+              >
+                Skip this step
+              </router-link>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="right-content">
+        <img
+          class="background-img"
+          src="@/assets/images/backgrounds/merchant-background2.png"
+          alt=""
+        />
+        <img class="logo" src="@/assets/images/logos/zowasel-logo.png" alt="" />
+      </div>
     </div>
-    </AuthSharedLayout>
+  </AuthSharedLayout>
 </template>
 
 <script>
 import AuthSharedLayout from "@/layouts/shared/AuthSharedLayout.vue";
-    export default {
-        name:'MerchantCompanyDetails',
-        components: {
-            AuthSharedLayout
-        }
-    }
-  
+export default {
+  name: "MerchantCompanyDetails",
+  components: {
+    AuthSharedLayout,
+  },
+};
 </script>
 
-<style lang="scss"  scoped>
+<style lang="scss" scoped>
+.checking {
+  display: flex;
+  margin-top: 60px;
+}
+.buttons {
+  margin-top: 50px;
+}
 
-    .checking{
-        display: flex;
-        margin-top: 60px;
-     
-    }
-    .buttons{
-        margin-top: 50px;
-    }
- 
-    .skip{
-        background: #2D3748;
-        width: 100%;
-        color: white;
+.skip {
+  background: #2d3748;
+  width: 100%;
+  color: white;
+}
 
-    }
-       
-    .check-p{
-        margin-top: -5px;
-        margin-left: 10px;
-    }
-    .last-text{
-        margin-top: 50px;
-    }
+.check-p {
+  margin-top: -5px;
+  margin-left: 10px;
+}
+.last-text {
+  margin-top: 50px;
+}
 </style>

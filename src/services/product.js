@@ -1,8 +1,6 @@
 var obj = {
-    name: 'peters',
-    buyerFullName(){
-
-    }
+  name: "peters",
+  buyerFullName() {},
 };
 
-obj.name
+obj.name;

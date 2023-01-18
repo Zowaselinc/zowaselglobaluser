@@ -12,28 +12,43 @@
               <h3>Delivery Address</h3>
             </div>
             <hr />
-            <div class="main-address" v-if="show_address">
+            <div v-if="show_address" class="main-address">
               <div class="names">
                 <h4>Sampolaen Farms</h4>
-                <p>{{newAddress.house }} <span>{{newAddress.city}},</span>  {{newAddress.zipCode}} {{newAddress.state }} {{newAddress.country}} </p>
+                <p>
+                  {{ delivery_details.house }}
+                  <span>{{ delivery_details.city }},</span>
+                  {{ delivery_details.zipCode }} {{ delivery_details.state }}
+                  {{ delivery_details.country }}
+                </p>
               </div>
             </div>
 
-            <div class="change-form" v-else id="change-address-form">
-              <form action="">
+            <div v-else id="change-address-form" class="change-form">
+              <form id="address-form" action="javascript:void(0)">
                 <div class="top-form">
-                  <input type="text" placeholder="House Address" v-model="newAddress.house" />
-                  <select class="form-select" name="" id="" v-model="newAddress.country">
+                  <input
+                    v-model="delivery_details.house"
+                    type="text"
+                    name="house-Address"
+                    placeholder="House Address"
+                  />
+                  <select
+                    id=""
+                    v-model="delivery_details.country"
+                    class="form-select"
+                    name="country"
+                  >
                     <option value="">Select country</option>
                     <option
-                      :value="country.country"
                       v-for="(country, index) in countries"
                       :key="index"
+                      :value="country.country"
                     >
                       {{ country.country }}
                     </option>
                   </select>
-                  <select name="" id="" v-model="newAddress.state">
+                  <select id="" v-model="delivery_details.state" name="state">
                     <option value="">Select state</option>
                     <option
                       v-for="(state, index) in selectStateByCountry"
@@ -45,18 +60,27 @@
                 </div>
 
                 <div class="bottom-form">
-                  <input type="text" placeholder="City" v-model="newAddress.city" />
-                  <input type="text" placeholder="Zip code" v-model="newAddress.zipCode" />
-                  
+                  <input
+                    v-model="delivery_details.city"
+                    type="text"
+                    name="city"
+                    placeholder="City"
+                  />
+                  <input
+                    v-model="delivery_details.zipCode"
+                    type="text"
+                    name="zip-code"
+                    placeholder="Zip code"
+                  />
                 </div>
               </form>
             </div>
-            <button class="toggle-btn" id="toggle-button" @click="toggle_btn()">
+            <button id="toggle-button" class="toggle-btn" @click="toggle_btn()">
               Change Address
             </button>
           </div>
 
-          <div class="delivery-method" v-if="false">
+          <div v-if="false" class="delivery-method">
             <div class="top-address">
               <img src="@/assets/images/vectors/ticked.png" alt="" />
               <h3>Delivery Method</h3>
@@ -90,13 +114,13 @@
                     Will be delivered between 20 August, 2022 to 28 August, 2022
                   </p>
                 </div>
-                <select name="" id="">
+                <select id="" name="">
                   <option value="">Select Pick up station</option>
                 </select>
               </div>
             </div>
           </div>
-          <div class="payment-method" v-if="false">
+          <div v-if="false" class="payment-method">
             <div class="each-line">
               <img src="@/assets/images/vectors/ticked.png" alt="" />
               <h4>Payment Method</h4>
@@ -113,45 +137,58 @@
               </div>
             </div>
           </div>
-
-            <button class="proceed" type="button" @click="proceedToPay()">Proceed to Payment</button>
-
+          <!-- button -->
+          <button class="proceed" type="button" @click="proceedToPay()">
+            Proceed to Payment
+          </button>
         </div>
         <div class="right-side">
           <h3>Order Summary</h3>
           <div class="line"></div>
-          <div class="summaries" v-if="cart.length>0">
-          <div class="contain" v-for="item,index in cart" :key="index">
-            <div class="each-item">
-               <img :src="parse(item.input.images)[0]" alt="">
-              <div class="each-detail">
-                <h4>{{ item.input.title }}</h4>
-                <!-- <p>Seller- <span>Naziri Farms</span></p> -->
-                <div class="qty">
-                  <h4>Qty</h4>
-                  <div class="btnss">
-                    <a href="javascript:void(0)" class="p-btn" @click="decrement(index)">-</a>
-                    <p>{{ item.quantity }}</p>
-                    <a href="javascript:void(0)" class="p-btn" @click="increment(index)">+</a>
+          <div v-if="cart.length > 0" class="summaries">
+            <div v-for="(item, index) in cart" :key="index" class="contain">
+              <div class="line" />
+              <div class="summaries">
+                <div class="each-item">
+                  <img :src="parse(item.input.images)[0]" alt="" />
+                  <div class="each-detail">
+                    <h4>{{ item.input.title }}</h4>
+                    <!-- <p>Seller- <span>Naziri Farms</span></p> -->
+                    <div class="qty">
+                      <h4>Qty</h4>
+                      <div class="btnss">
+                        <a
+                          href="javascript:void(0)"
+                          class="p-btn"
+                          @click="decrement(index)"
+                          >-</a
+                        >
+                        <p>{{ item.quantity }}</p>
+                        <a
+                          href="javascript:void(0)"
+                          class="p-btn"
+                          @click="increment(index)"
+                          >+</a
+                        >
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-            
-          </div>
-          <div class="red-side">
-            <div class="items">
-              <p>Cart Sub-total</p>
-              <h4>NGN {{ cartTotal.toLocaleString() }}</h4>
-            </div>
-            <div class="items">
-              <!-- <p>Delivery Fee</p>
+            <div class="red-side">
+              <div class="items">
+                <p>Cart Sub-total</p>
+                <h4>NGN {{ cartTotal.toLocaleString() }}</h4>
+              </div>
+              <div class="items">
+                <!-- <p>Delivery Fee</p>
               <h4>NGN3,400</h4> -->
-            </div>
-            <div class="items">
-              <p>Total</p>
-              <h4>NGN {{ cartTotal.toLocaleString() }}</h4>
+              </div>
+              <div class="items">
+                <p>Total</p>
+                <h4>NGN {{ cartTotal.toLocaleString() }}</h4>
+              </div>
             </div>
           </div>
         </div>
@@ -167,24 +204,37 @@ import countriesObject from "@/data/countries";
 
 export default {
   name: "CheckOut",
+  components: {
+    DefaultNav,
+  },
   data() {
     return {
       userData: this.$store.state.user,
       show_address: true,
-      newAddress: {
+      delivery_details: {
         state: "",
         country: "",
-        house:"",
+        house: "",
+        city: "",
       },
-      cart:[],
+      cart: [],
 
-     
       countries: countriesObject.countries,
     };
   },
-  components: {
-    DefaultNav,
+  computed: {
+    selectStateByCountry: function () {
+      return this.countries && this.delivery_details.country != ""
+        ? this.countries.filter(
+            (item) => item.country == this.delivery_details.country
+          )[0].states
+        : [];
+    },
   },
+  mounted() {
+    this.getCartItems();
+  },
+
   methods: {
     toggle_btn() {
       this.show_address = !this.show_address;
@@ -195,56 +245,75 @@ export default {
         button_text.innerHTML = "Change Address";
       }
     },
-    proceedToPay(){
-            this.$router.push({ name : "CheckoutPayment"});
-    },
 
-    increment(index){
-            var item = this.cart[index];
-            if(eval(item.input.stock) > eval(item.quantity)){
-                this.cart[index].quantity = eval(this.cart[index].quantity) + 1;
-                MarketplaceService.addToCart({
-                    input_id : item.input_id,
-                    user_id : item.user_id,
-                    quantity : eval(item.quantity)
-                },(response)=>{
-                });
+    async proceedToPay() {
+      // var form = new FormData(document.querySelector("#address-form"));
 
-                console.log(this.cart)
-            }
+      //   var saveAddress = {
+      //     houseAddress: form.get("house-address"),
+      //     country: form.get("country"),
+      //     state: form.get("state"),
+      //     phone: form.get("city"),
+      //     phone: form.get("zip-code"),
+      //   };
 
-        },
-        decrement(index){
-            var item = this.cart[index];
-            if(eval(item.quantity) > 1){
-                this.cart[index].quantity = eval(this.cart[index].quantity) - 1;
-                MarketplaceService.addToCart({
-                    input_id : item.input_id,
-                    user_id : item.user_id,
-                    quantity : eval(item.quantity)
-                },(response)=>{
-                });
-            }
-        },
-        parse(data){
-            return JSON.parse(data);
+      // window.localStorage.setItem("saveAddress", JSON.stringify(saveAddress));
+
+      //  MarketplaceService.saveDeliveryAddress(saveAddress, (response) => {
+      //     if (response && response.error == false) {
+      //       setTimeout((this.$router.push({ name : "CheckoutPayment"})), 2000)
+
+      //     }
+      //   });
+
+      // send data to end-point
+      await MarketplaceService.saveDeliveryAddress(
+        this.delivery_details,
+        (response) => {
+          if (response && response.error == false) {
+            // setTimeout((this.$router.push({ name : "CheckoutPayment"})), 2000)
+            alert("hello");
+          }
         }
-  },
-  computed: {
-    selectStateByCountry: function () {
-      return this.countries && this.newAddress.country != ""
-        ? this.countries.filter(
-            (item) => item.country == this.newAddress.country
-          )[0].states
-        : [];
+      );
+    },
+
+    increment(index) {
+      var item = this.cart[index];
+      if (eval(item.input.stock) > eval(item.quantity)) {
+        this.cart[index].quantity = eval(this.cart[index].quantity) + 1;
+        MarketplaceService.addToCart(
+          {
+            input_id: item.input_id,
+            user_id: item.user_id,
+            quantity: eval(item.quantity),
+          },
+          (response) => {}
+        );
+
+        console.log(this.cart);
+      }
+    },
+    decrement(index) {
+      var item = this.cart[index];
+      if (eval(item.quantity) > 1) {
+        this.cart[index].quantity = eval(this.cart[index].quantity) - 1;
+        MarketplaceService.addToCart(
+          {
+            input_id: item.input_id,
+            user_id: item.user_id,
+            quantity: eval(item.quantity),
+          },
+          (response) => {}
+        );
+      }
+    },
+    parse(data) {
+      return JSON.parse(data);
     },
   },
-  mounted(){
-        this.getCartItems();
-    }
 };
 </script>
-
 
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
@@ -653,8 +722,7 @@ input {
     color: #000000;
   }
 }
-option{
-    color: #D9D9D9;
+option {
+  color: #d9d9d9;
 }
-
 </style>
