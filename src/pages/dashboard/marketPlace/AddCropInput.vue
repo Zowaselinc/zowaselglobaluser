@@ -41,7 +41,7 @@
                   >Title</label
                 >
                 <input
-                  type="number"
+                  type="text"
                   class="form-control"
                   required
                   placeholder="type your answer"
@@ -127,6 +127,32 @@
                   required
                   placeholder="type your answer"
                   v-model="inputData.video_url"
+                />
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Manufacture Date</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  required
+                  placeholder="type your answer"
+                  v-model="inputData.manufacturer_date"
+                />
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Expiry Date</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  required
+                  placeholder="type your answer"
+                  v-model="inputData.expiry_date"
                 />
               </div>
             </div>
@@ -216,19 +242,6 @@
               <!-- input -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Manufacture Date</label
-                >
-                <input
-                  type="data"
-                  class="form-control"
-                  required
-                  placeholder="type your answer"
-                  v-model="inputData.manufacturer_date"
-                />
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
                   >Delivery Method</label
                 >
                 <input
@@ -237,19 +250,6 @@
                   required
                   placeholder="type your answer"
                   v-model="inputData.delivery_method"
-                />
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Expiry Date</label
-                >
-                <input
-                  type="date"
-                  class="form-control"
-                  required
-                  placeholder="type your answer"
-                  v-model="inputData.expiry_date"
                 />
               </div>
             </div>
@@ -343,8 +343,6 @@ export default {
       _this.handleContentChange();
       return _this.update();
     });
-    this.getCategory();
-    this.getSubCategory();
   },
   computed: {
     selectStateByCountry: function () {
@@ -374,9 +372,9 @@ export default {
           Alert.success({
             message: "Crop added successfully",
           });
-          setTimeout(() => {
-            window.location.reload();
-          }, 2000);
+          // setTimeout(() => {
+          //   window.location.reload();
+          // }, 2000);
         }
       });
     },

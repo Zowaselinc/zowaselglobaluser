@@ -313,7 +313,6 @@
             alt="Arrow-Symbol"
           />
         </div>
-        ............................
         <!-- drop menu -->
         <div class="drop-menu data-menu">
           <div class="active-menu" @click="changeDir('/dashboard/kkf')">
