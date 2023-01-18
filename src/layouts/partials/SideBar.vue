@@ -93,6 +93,12 @@
             >
               Crops for auction
             </div>
+            <div
+              class="active-item"
+              @click="changeDir('/marketplace/addinput')"
+            >
+              Add New Input
+            </div>
           </template>
           <template v-if="userData.user.type == 'merchant'">
             <div
@@ -106,6 +112,9 @@
               @click="changeDir('/dashboard/marketplace/inputs')"
             >
               Input Market
+            </div>
+            <div class="active-item" @click="changeDir('/marketplace/newcrop')">
+              Add New Crop
             </div>
           </template>
         </div>
@@ -304,9 +313,12 @@
             alt="Arrow-Symbol"
           />
         </div>
-
         <!-- drop menu -->
         <div class="drop-menu data-menu">
+          <div class="active-menu" @click="changeDir('/dashboard/kyf')">
+            Kyf
+          </div>
+
           <div class="active-menu">Farmer Data</div>
           <div class="active-menu">Market report</div>
           <div class="active-menu">Crop data stats</div>
@@ -397,6 +409,7 @@
           /><span>My account</span>
         </div>
       </a>
+
       <a href="javascript:void(0)" class="nav-item" @click="logOut()">
         <div class="ripple active-menu">
           <img

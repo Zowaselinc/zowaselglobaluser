@@ -2,13 +2,18 @@
   <div class="main_container">
     <!-- new crop  wanted form-->
     <div class="crop-wanted-section d-flex flex-row gap-4">
-      <form>
+      <div class="form">
         <div class="crop_details">Crop Details</div>
         <div class="w-100 mb-3">
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Crop Title</label
           >
-          <input v-model="cropData.title" type="text" class="form-control" />
+          <input
+            v-model="cropData.title"
+            type="text"
+            class="form-control"
+            required
+          />
         </div>
         <div class="w-100 mb-3">
           <label for="exampleInputEmail1" class="form-label mb-0"
@@ -17,7 +22,7 @@
           <select
             v-model="cropData.category_id"
             class="form-select"
-            aria-label="Default select example"
+            aria-label="Default seglect example"
             required
           >
             <option
@@ -121,11 +126,10 @@
             <option value="0">No</option>
           </select>
         </div>
-        <!-- editor ends -->
-      </form>
+      </div>
       <div class="vertical-line" />
       <!-- form two -->
-      <form>
+      <div class="form">
         <!-- Editor -->
         <div class="crop_details">Quality description</div>
         <div class="d-flex flex-row mb-3 gap-4 m_top">
@@ -154,7 +158,7 @@
             </option>
           </select>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </template>
@@ -265,7 +269,7 @@ export default {
   padding: 4%;
 }
 
-form {
+.form {
   .crop_details {
     @include textStyles("Maven Pro", 700, 16px, 24px);
     letter-spacing: 0.01em;
@@ -280,7 +284,8 @@ form {
   width: 100%;
   padding-bottom: 2rem;
 
-  select {
+  select,
+  input {
     font-size: 14px;
     color: #000000;
 

@@ -22,6 +22,7 @@ const GET_SUB_CATEGORIES_PATH = () => "subcategory/getall";
 const GET_ADD_NEW_CROP__PATH = () => "crop/wanted/add";
 const GET_ORDERS_PATH = (id) => `users/${id}/orders`;
 const GET_SALES_PATH = (id) => `users/${id}/sales`;
+const ADD_CROP_INPUT_PATH = () => `inut/add/`;
 
 export default {
   getCropCategories: function (callback) {
@@ -172,6 +173,16 @@ export default {
   getSales: function (id, callback) {
     axios
       .get(config.BASE_URL + GET_SALES_PATH(id))
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.data);
+      });
+  },
+  getNewInput: function (NewInputData, callback) {
+    axios
+      .post(config.BASE_URL + ADD_CROP_INPUT_PATH(), NewInputData)
       .then((response) => {
         callback(response.data);
       })

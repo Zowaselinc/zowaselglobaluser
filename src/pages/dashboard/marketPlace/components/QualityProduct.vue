@@ -2,7 +2,7 @@
   <div class="main_container">
     <!-- new crop  wanted form-->
     <div class="crop-wanted-section d-flex flex-row gap-4">
-      <form>
+      <div class="form">
         <div class="crop_details">Quantity and Pricing</div>
         <div class="w-100 mb-3">
           <label for="formGroupExampleInput" class="form-label mb-0"
@@ -11,9 +11,10 @@
           <input
             id="formGroupExampleInput"
             v-model="newCropData.qty"
-            type="text"
+            type="number"
             class="form-control"
             placeholder="Type your answer"
+            required
           />
         </div>
         <div class="w-100 mb-3">
@@ -23,9 +24,10 @@
           <input
             id="formGroupExampleInput"
             v-model="newCropData.price"
-            type="text"
+            type="number"
             class="form-control"
             placeholder="Type your answer"
+            required
           />
         </div>
         <div class="crop_details mb-3 mt-5">Delivery Details</div>
@@ -42,6 +44,7 @@
                 type="date"
                 class="form-control"
                 placeholder="Type your answer"
+                required
               />
             </div>
 
@@ -52,6 +55,7 @@
                 type="date"
                 class="form-control"
                 placeholder="Type your answer"
+                required
               />
             </div>
           </div>
@@ -88,34 +92,36 @@
             </option>
           </select>
         </div>
-        <div class="w-100 mb-3">
-          <label for="formGroupExampleInput" class="form-label mb-0"
-            >Delivery Address</label
-          >
-          <input
-            v-model="newCropData.address"
-            type="text"
-            class="form-control"
-            placeholder=""
-          />
-        </div>
-      </form>
+      </div>
       <div class="vertical-line" />
       <!-- form two -->
-      <form>
+      <div class="form">
         <div class="crop_details">Product image</div>
         <div class="dropzone_conatiner my-4">
           <div id="my-dropzone" class="dropzone">
-            <img src="@/assets/images/vectors/Image.svg" alt="image" />
+            <img id="preview-selected-image" class="img-fluid mb-2" />
+            <img
+              src="@/assets/images/vectors/Image.svg"
+              alt="image"
+              id="image_icon"
+            />
             <div id="file-input">
               <input
                 id="hidden_input"
                 ref="input"
                 type="file"
                 multiple
+                accept="image/*"
                 @change="uploadFile"
+                required
               />
-              <span @click="openFileDialog()">click to browse</span>
+              <span
+                id="file_name"
+                @click="openFileDialog()"
+                v-if="fileName == ''"
+                >click to browse</span
+              >
+              <span v-else>{{ fileName }}</span>
             </div>
           </div>
         </div>
@@ -129,6 +135,7 @@
             type="text"
             class="form-control"
             placeholder="Type your answer"
+            required
           />
         </div>
         <div class="w-100 mb-3">
@@ -138,18 +145,30 @@
           <input
             id="formGroupExampleInput"
             v-model="newCropData.zip"
-            type="text"
+            type="number"
             class="form-control"
             placeholder="Type your answer"
+            required
           />
         </div>
-      </form>
+        <div class="w-100 mb-3">
+          <label for="formGroupExampleInput" class="form-label mb-0"
+            >Delivery Address</label
+          >
+          <input
+            v-model="newCropData.address"
+            type="text"
+            class="form-control"
+            placeholder=""
+            required
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-// import MarketPlaceService from "@/services/marketplace";
 import countriesObject from "@/data/countries";
 
 export default {
@@ -157,17 +176,18 @@ export default {
   data() {
     return {
       newCropData: {
-        quantity: "10",
-        price: "30",
+        quantity: "",
+        price: "",
         delivery_window: { from: "", to: "" },
-        address: "sdfdsf",
+        address: "",
         state: "",
         files: "",
-        video: "sdf",
+        video: "",
         country: "",
-        zip: "232",
+        zip: "",
       },
       countries: countriesObject.countries,
+      fileName: "",
     };
   },
   computed: {
@@ -190,11 +210,29 @@ export default {
       });
     },
     uploadFile() {
-      let input = document.querySelector("#hidden_input");
-      let file = input.files;
-      // let formData = new FormData()
-      // formData.append('file', file)
+      const input = document.querySelector("#hidden_input");
+      const file = input.files;
       this.newCropData.files = file;
+
+      // get the file name
+      this.fileName = file[0].name;
+
+      // preview the image
+
+      // if at least one image is selected proceed to display the image
+      if (file[0]) {
+        // get the image path
+        const imageSrc = URL.createObjectURL(file[0]);
+        // select the image preview element
+        const imagePreviewElement = document.querySelector(
+          "#preview-selected-image"
+        );
+        // assign the path to the image preview element
+        imagePreviewElement.src = imageSrc;
+        imagePreviewElement.style.display = "block";
+        // hide sibling img element
+        document.getElementById("image_icon").style.display = "none";
+      }
     },
   },
 };
@@ -213,7 +251,7 @@ export default {
   padding: 4%;
 }
 
-form {
+.form {
   .crop_details {
     @include textStyles(inherit, 700, 16px, 24px);
     letter-spacing: 0.01em;
@@ -263,7 +301,7 @@ div.vertical-line {
 // using drop-zone
 .dropzone {
   width: 100%;
-  height: 300px;
+  min-height: 250px;
   border: 2px dashed #ccc;
   display: flex;
   flex-direction: column;
@@ -275,12 +313,15 @@ div.vertical-line {
   font-size: 15px;
   line-height: 147%;
   color: #4a4754;
-  padding-inline: 10px;
+  padding: 10px 10px 15px 10px;
 
   span {
     font-weight: 700;
     color: #05b050;
     cursor: pointer;
+    + span {
+      font-size: 14px;
+    }
   }
 }
 

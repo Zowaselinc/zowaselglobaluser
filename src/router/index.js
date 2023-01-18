@@ -58,6 +58,8 @@ import AddNewCrop from "@/pages/dashboard/marketPlace/AddNewCrop.vue";
 import UpdateShipping from "@/pages/dashboard/UpdateShipping.vue";
 import AddCropSale from "@/pages/dashboard/marketPlace/AddCropSale.vue";
 import CropAuction from "@/pages/dashboard/marketPlace/CropAuction.vue";
+import AddCropInput from "@/pages/dashboard/marketPlace/AddCropInput.vue";
+import Kyf from "@/pages/dashboard/kyf/Kyf.vue";
 
 const routes = [
   {
@@ -356,6 +358,16 @@ const routes = [
     path: "/dashboard/marketplace/:order/updateshipping",
     name: "UpdateShipping",
     component: UpdateShipping,
+  },
+  {
+    path: "/marketplace/addinput",
+    name: "AddCropInput",
+    component: AddCropInput,
+  },
+  {
+    path: "/dashboard/kyf",
+    name: "Kyf",
+    component: Kyf,
   },
   {
     path: "/dashboard/each-loan",
