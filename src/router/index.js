@@ -43,6 +43,7 @@ import PaymentsConfirmed from "@/pages/dashboard/marketPlace/checkout/PaymentsCo
 import Invoice from "@/pages/dashboard/Invoice.vue";
 import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
 import Loan from "@/pages/dashboard/Loan.vue";
+import EachLoan from "@/pages/dashboard/EachLoan.vue";
 import Tickets from "@/pages/dashboard/Tickets.vue";
 import NewTicket from "@/pages/dashboard/NewTicket.vue";
 import CropsSale from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
@@ -57,6 +58,8 @@ import AddNewCrop from "@/pages/dashboard/marketPlace/AddNewCrop.vue";
 import UpdateShipping from "@/pages/dashboard/UpdateShipping.vue";
 import AddCropSale from "@/pages/dashboard/marketPlace/AddCropSale.vue";
 import CropAuction from "@/pages/dashboard/marketPlace/CropAuction.vue";
+import AddCropInput from "@/pages/dashboard/marketPlace/AddCropInput.vue";
+import Kyf from "@/pages/dashboard/kyf/Kyf.vue";
 
 const routes = [
   {
@@ -216,7 +219,7 @@ const routes = [
     component: EachInvoice,
   },
   {
-    path: "/dashboard/loan",
+    path: "/dashboard/loans",
     name: "Loan",
     component: Loan,
   },
@@ -355,6 +358,19 @@ const routes = [
     path: "/dashboard/marketplace/:order/updateshipping",
     name: "UpdateShipping",
     component: UpdateShipping,
+  },
+  {
+    path: "/marketplace/addinput",
+    name: "AddCropInput",
+    component: AddCropInput,
+  },
+  {
+    path: "/dashboard/kyf",
+    name: "Kyf",
+    component: Kyf,
+    path: "/dashboard/each-loan",
+    name: "EachLoan",
+    component: EachLoan,
   },
 ];
 

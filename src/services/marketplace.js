@@ -1,5 +1,5 @@
-import axios from "axios";
 import config from "@/config";
+import axios from "axios";
 
 import NegotiationService from "@/services/negotiation";
 
@@ -12,6 +12,7 @@ const GET_INPUT_PATH = (id) => `input/${id}`;
 const GET_CROPS_AUCTION_PATH = () => "crop/getbycropauction";
 const GET_CROP_PATH = (id) => `crop/getbyid/${id}`;
 const CREATE_CROP_WANTED_PATH = () => `testpost`;
+const ADD_DELIVERY_ADDRESS = () => `order/cart/create`;
 
 const GET_ORDER_PATH = (orderHash) => `order/${orderHash}`;
 const ADD_TO_CART_PATH = () => `input/cart/add`;
@@ -21,6 +22,7 @@ const GET_SUB_CATEGORIES_PATH = () => "subcategory/getall";
 const GET_ADD_NEW_CROP__PATH = () => "crop/wanted/add";
 const GET_ORDERS_PATH = (id) => `users/${id}/orders`;
 const GET_SALES_PATH = (id) => `users/${id}/sales`;
+const ADD_CROP_INPUT_PATH = () => `inut/add/`;
 
 export default {
   getCropCategories: function (callback) {
@@ -171,6 +173,26 @@ export default {
   getSales: function (id, callback) {
     axios
       .get(config.BASE_URL + GET_SALES_PATH(id))
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.data);
+      });
+  },
+  getNewInput: function (NewInputData, callback) {
+    axios
+      .post(config.BASE_URL + ADD_CROP_INPUT_PATH(), NewInputData)
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.data);
+      });
+  },
+  saveDeliveryAddress: function (callback) {
+    axios
+      .post(config.BASE_URL + ADD_DELIVERY_ADDRESS())
       .then((response) => {
         callback(response.data);
       })

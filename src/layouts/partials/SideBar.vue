@@ -93,6 +93,12 @@
             >
               Crops for auction
             </div>
+            <div
+              class="active-item"
+              @click="changeDir('/marketplace/addinput')"
+            >
+              Add New Input
+            </div>
           </template>
           <template v-if="userData.user.type == 'merchant'">
             <div
@@ -106,6 +112,9 @@
               @click="changeDir('/dashboard/marketplace/inputs')"
             >
               Input Market
+            </div>
+            <div class="active-item" @click="changeDir('/marketplace/newcrop')">
+              Add New Crop
             </div>
           </template>
         </div>
@@ -174,6 +183,54 @@
           </div>
         </div>
       </a>
+
+      <a href="javascript:void(0)" class="nav-item">
+        <div
+          :class="[
+            'ripple',
+            'accordion-header',
+            isRouteActive('/dashboard/credit'),
+          ]"
+        >
+          <img
+            class="side-bar-icon img-fluid"
+            src="@/assets/images/vectors/marketPlace.svg"
+            alt="Credit Scoring"
+          /><span>Loans</span>
+          <img
+            class="arrow-symbol carret-down"
+            src="@/assets/images/vectors/arrowSymbol.svg"
+            alt="Arrow-Symbol"
+          />
+          <img
+            class="arrow-symbol carretUp"
+            src="@/assets/images/vectors/arrowupsymbol.svg"
+            alt="Arrow-Symbol"
+          />
+        </div>
+        <!-- drop menu -->
+        <div class="drop-menu scoring-menu">
+          <div class="active-menu" @click="changeDir(' /dashboard/loans')">
+            Farmers
+          </div>
+          <div
+            class="active-menu"
+            @click="changeDir(' /dashboard/creditscoreanalysis')"
+          >
+            Loan Types
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/loan')">
+            Grant Loans
+          </div>
+          <div
+            class="active-menu"
+            @click="changeDir(' /dashboard/scoreanalysis')"
+          >
+            Loans History
+          </div>
+        </div>
+      </a>
+
       <!-- no page available -->
       <a href="/dashboard/invoice" class="nav-item">
         <div
@@ -347,6 +404,17 @@
             src="@/assets/images/vectors/User.svg"
             alt="user"
           /><span>My account</span>
+        </div>
+      </a>
+      <a href="/dashboard/kyf" class="nav-item">
+        <div
+          :class="['ripple', 'active-item', isRouteActive('/dashboard/kyf')]"
+        >
+          <img
+            class="img-fluid"
+            src="@/assets/images/vectors/ChatText.svg"
+            alt="ChatText"
+          /><span>Kyf</span>
         </div>
       </a>
       <a href="javascript:void(0)" class="nav-item" @click="logOut()">
