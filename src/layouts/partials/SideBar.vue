@@ -329,10 +329,10 @@
             Kyf
           </div>
 
-          <div class="active-menu">Farmer Data</div>
+          <!-- <div class="active-menu">Farmer Data</div>
           <div class="active-menu">Market report</div>
           <div class="active-menu">Crop data stats</div>
-          <div class="active-menu">Seed data</div>
+          <div class="active-menu">Seed data</div> -->
         </div>
       </a>
       <a href="/dashboard/tickets" class="nav-item">
