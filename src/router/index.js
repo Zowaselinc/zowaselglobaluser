@@ -368,6 +368,8 @@ const routes = [
     path: "/dashboard/kyf",
     name: "Kyf",
     component: Kyf,
+  },
+  {
     path: "/dashboard/each-loan",
     name: "EachLoan",
     component: EachLoan,

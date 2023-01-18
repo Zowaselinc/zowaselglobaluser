@@ -313,9 +313,13 @@
             alt="Arrow-Symbol"
           />
         </div>
-
+        ............................
         <!-- drop menu -->
         <div class="drop-menu data-menu">
+          <div class="active-menu" @click="changeDir('/dashboard/kkf')">
+            Kyf
+          </div>
+
           <div class="active-menu">Farmer Data</div>
           <div class="active-menu">Market report</div>
           <div class="active-menu">Crop data stats</div>
@@ -406,17 +410,7 @@
           /><span>My account</span>
         </div>
       </a>
-      <a href="/dashboard/kyf" class="nav-item">
-        <div
-          :class="['ripple', 'active-item', isRouteActive('/dashboard/kyf')]"
-        >
-          <img
-            class="img-fluid"
-            src="@/assets/images/vectors/ChatText.svg"
-            alt="ChatText"
-          /><span>Kyf</span>
-        </div>
-      </a>
+
       <a href="javascript:void(0)" class="nav-item" @click="logOut()">
         <div class="ripple active-menu">
           <img
