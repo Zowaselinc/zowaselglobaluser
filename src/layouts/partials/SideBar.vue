@@ -153,7 +153,7 @@
         <div class="drop-menu scoring-menu">
           <div
             class="active-menu"
-            @click="changeDir(' /dashboard/creditscoringpointsystem')"
+            @click="changeDir(' /dashboard/creditscoring')"
           >
             Credit score point system
           </div>

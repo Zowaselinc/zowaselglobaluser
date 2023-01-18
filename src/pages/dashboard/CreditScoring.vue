@@ -1,6 +1,14 @@
 <template>
   <DefaultNav>
     <div class="big-container">
+      <div class="headings">
+        <h2>Credit Score Point System</h2>
+        <!-- <div class="right-btns">
+          <a href="" class="white-link">Add a Farmer</a>
+          <a href="" class="green-link">Batch Upload</a>
+          <a href="" class="red-link">Sent Invoice</a>
+        </div> -->
+      </div>
       <div class="row big-contents">
         <div class="col">
           <div class="card carded green-card">
@@ -156,7 +164,7 @@
         </div>
       </div>
 
-      <div class="rating-section">
+      <!-- <div class="rating-section">
         <h3>Credit Score Rating</h3>
         <hr />
 
@@ -168,7 +176,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </DefaultNav>
 </template>
@@ -270,5 +278,8 @@ export default {
   padding: 30px 62px;
   background-color: white;
   margin-top: 50px;
+}
+.headings {
+  margin-top: 40px;
 }
 </style>

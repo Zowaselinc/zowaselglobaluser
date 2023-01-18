@@ -13,7 +13,12 @@
       </div>
 
       <div class="loan-details">
-        <div class="left-details"></div>
+        <div class="left-details">
+          <div class="each-detail">
+            <h4>First Name</h4>
+            <p>Sarah</p>
+          </div>
+        </div>
         <div class="right-details"></div>
       </div>
 
@@ -255,6 +260,7 @@ export default {
 .active-subscriptions {
   background-color: white;
   padding: 24px 35px;
+  margin-top: 40px;
 }
 
 /* The slider */
@@ -442,5 +448,22 @@ export default {
   font-weight: 700;
   font-size: 30px;
   color: #cd4647;
+}
+.loan-details {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 35px;
+}
+.left-details {
+  width: 50%;
+  border-right: 1px solid #4a4754;
+  padding-right: 30px;
+
+  .each-detail {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 </style>
