@@ -43,6 +43,8 @@ import PaymentsConfirmed from "@/pages/dashboard/marketPlace/checkout/PaymentsCo
 import Invoice from "@/pages/dashboard/Invoice.vue";
 import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
 import Loan from "@/pages/dashboard/Loan.vue";
+import CropTraceability from "@/pages/dashboard/Croptraceability.vue";
+import Sustainability from "@/pages/dashboard/Sustainability.vue";
 import Tickets from "@/pages/dashboard/Tickets.vue";
 import NewTicket from "@/pages/dashboard/NewTicket.vue";
 import CropsSale from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
@@ -219,6 +221,16 @@ const routes = [
     path: "/dashboard/loan",
     name: "Loan",
     component: Loan,
+  },
+  {
+    path: "/dashboard/croptraceability",
+    name: "Croptraceability",
+    component: CropTraceability,
+  },
+  {
+    path: "/dashboard/sustainability",
+    name: "sustainability",
+    component: Sustainability,
   },
   {
     path: "/dashboard/marketplace/:market",

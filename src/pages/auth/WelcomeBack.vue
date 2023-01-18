@@ -94,6 +94,7 @@ export default {
           password: vm.password,
         },
         (response) => {
+          console.log(response);
           if (!response.error) {
             this.$store.dispatch("setAuth", {
               token: response.token,
@@ -104,7 +105,6 @@ export default {
             window.localStorage.setItem("authToken", response.token);
             vm.$router.push("/dashboard");
           } else {
-            console.log(response.message);
             Alert.error({
               message: response.message,
             });
