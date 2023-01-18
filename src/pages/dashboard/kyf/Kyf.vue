@@ -16,11 +16,21 @@
               </a>
               <h1>Add new farmer</h1>
             </div>
-            <!-- button -->
+            <!--next button -->
             <button
               type="submit"
               :class="['btn', 'btn-primary', 'my-4']"
               @click="saveData()"
+              v-if="activeTab != 'kin'"
+            >
+              Next
+            </button>
+            <!--save button -->
+            <button
+              type="submit"
+              :class="['btn', 'btn-primary', 'my-4']"
+              @click="saveData()"
+              v-if="activeTab == 'kin'"
             >
               save
             </button>
@@ -31,6 +41,7 @@
             <button
               type="submit"
               :class="['btn', 'btn-primary', 'my-4', 'col', 'first']"
+              @click="changeTab('farmer_details')"
             >
               Farmer Details
             </button>
@@ -38,6 +49,7 @@
             <button
               type="submit"
               :class="['btn', 'btn-primary', 'my-4', 'col', 'second']"
+              @click="changeTab('company_details')"
             >
               Company Details
             </button>
@@ -45,6 +57,7 @@
             <button
               type="submit"
               :class="['btn', 'btn-primary', 'my-4', 'col', 'third']"
+              @click="changeTab('kin')"
             >
               Next of Kin
             </button>
@@ -52,132 +65,12 @@
         </div>
 
         <!-- main form content -->
-
-        <div class="crop-wanted-section d-flex flex-row gap-4">
-          <div class="form">
-            <div class="crop_details"></div>
-            <div class="d-flex gap-3">
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >First Name</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  required
-                  placeholder="Enter your first name"
-                />
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Surname</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  required
-                  placeholder="Enter your first surname"
-                />
-              </div>
-            </div>
-            <div class="d-flex gap-3">
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Middle Name</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  required
-                  placeholder="Enter your Middle name"
-                />
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Date of birth</label
-                >
-                <input
-                  type="date"
-                  class="form-control"
-                  required
-                  placeholder="Enter your first surname"
-                />
-              </div>
-            </div>
-            <div class="d-flex gap-3">
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Telephone</label
-                >
-                <input
-                  type="tel"
-                  class="form-control"
-                  required
-                  placeholder="Enter your Phone number"
-                />
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Email address</label
-                >
-                <input
-                  type="email"
-                  class="form-control"
-                  required
-                  placeholder="Enter your email address"
-                />
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Gender</label
-                >
-                <select
-                  class="form-select"
-                  aria-label="Default select example"
-                  required
-                >
-                  <option value="male" selected></option>
-                  <option value="female" selected></option>
-                </select>
-              </div>
-            </div>
-            <div class="d-flex gap-3">
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Marital status</label
-                >
-                <select
-                  class="form-select"
-                  aria-label="Default select example"
-                  required
-                >
-                  <option value="married" selected></option>
-                  <option value="single" selected></option>
-                </select>
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >language</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  required
-                  placeholder="Enter your language"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- farmer details -->
+        <FarmerDetails v-if="activeTab == 'farmer_details'"></FarmerDetails>
+        <!-- compony details components -->
+        <CompanyDetails v-if="activeTab == 'company_details'"></CompanyDetails>
+        <!-- compony Next of kin components -->
+        <Kin v-if="activeTab == 'kin'"></Kin>
       </div>
     </div>
   </DefaultNav>
@@ -186,10 +79,30 @@
 <script>
 //   sidebar
 import DefaultNav from "@/layouts/DefaultNav.vue";
+// import farmerDetails component
+import FarmerDetails from "./components/FarmerDetails.vue";
+// import CompanyDetails component
+import CompanyDetails from "./components/CompanyDetails.vue";
+// import Next of Kin component
+import Kin from "./components/Kin.vue";
+
 export default {
   name: "Kyf",
   components: {
     DefaultNav,
+    FarmerDetails,
+    CompanyDetails,
+    Kin,
+  },
+  data() {
+    return {
+      activeTab: "kin",
+    };
+  },
+  methods: {
+    changeTab(tab) {
+      this.activeTab = tab;
+    },
   },
 };
 </script>
@@ -220,8 +133,6 @@ export default {
 .big-content {
   padding: 0px 2.5rem;
   background: #f5f5f5;
-}
-.header_wrapper {
 }
 .top_level_header {
   margin-block: 3rem 2rem;
@@ -276,48 +187,6 @@ export default {
   }
   #second_line {
     border-color: #b5b4b9;
-  }
-}
-
-.crop-wanted-section {
-  background: #ffffff;
-  border-radius: 4px;
-  padding: 4%;
-}
-
-.form {
-  .crop_details {
-    @include textStyles("Maven Pro", 700, 16px, 24px);
-    letter-spacing: 0.01em;
-    color: #4a4754;
-    margin-bottom: 1rem;
-  }
-
-  .m_top {
-    margin-top: 3.4rem;
-  }
-
-  width: 100%;
-  padding-bottom: 2rem;
-
-  select,
-  input {
-    font-size: 14px;
-    color: #000000;
-
-    &:hover,
-    &:active,
-    &:focus,
-    &:focus-visible {
-      border-color: #05b050 !important;
-      box-shadow: 0 0 !important;
-    }
-  }
-
-  label {
-    font-size: 14px;
-    font-weight: 900;
-    color: rgba(45, 55, 72, 0.8);
   }
 }
 </style>

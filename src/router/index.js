@@ -43,6 +43,8 @@ import PaymentsConfirmed from "@/pages/dashboard/marketPlace/checkout/PaymentsCo
 import Invoice from "@/pages/dashboard/Invoice.vue";
 import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
 import Loan from "@/pages/dashboard/Loan.vue";
+import CropTraceability from "@/pages/dashboard/Croptraceability.vue";
+import Sustainability from "@/pages/dashboard/Sustainability.vue";
 import EachLoan from "@/pages/dashboard/EachLoan.vue";
 import Tickets from "@/pages/dashboard/Tickets.vue";
 import NewTicket from "@/pages/dashboard/NewTicket.vue";
@@ -54,6 +56,7 @@ import FundWallet from "@/pages/dashboard/FundWallet.vue";
 import Sales from "@/pages/dashboard/Sales.vue";
 import MyOrders from "@/pages/dashboard/MyOrders.vue";
 import CreditScoring from "@/pages/dashboard/CreditScoring.vue";
+import CreditScoringPointSystem from "@/pages/dashboard/CreditScoringPointSystem.vue";
 import AddNewCrop from "@/pages/dashboard/marketPlace/AddNewCrop.vue";
 import UpdateShipping from "@/pages/dashboard/UpdateShipping.vue";
 import AddCropSale from "@/pages/dashboard/marketPlace/AddCropSale.vue";
@@ -224,6 +227,16 @@ const routes = [
     component: Loan,
   },
   {
+    path: "/dashboard/croptraceability",
+    name: "Croptraceability",
+    component: CropTraceability,
+  },
+  {
+    path: "/dashboard/sustainability",
+    name: "sustainability",
+    component: Sustainability,
+  },
+  {
     path: "/dashboard/marketplace/:market",
     name: "MarketPlace",
     component: MarketPlace,
@@ -353,6 +366,11 @@ const routes = [
     path: "/dashboard/creditscoring",
     name: "CreditScoring",
     component: CreditScoring,
+  },
+  {
+    path: "/dashboard/creditscoringpointsystem",
+    name: "CreditScoringPointSystem",
+    component: CreditScoringPointSystem,
   },
   {
     path: "/dashboard/marketplace/:order/updateshipping",

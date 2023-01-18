@@ -22,7 +22,7 @@ const GET_SUB_CATEGORIES_PATH = () => "subcategory/getall";
 const GET_ADD_NEW_CROP__PATH = () => "crop/wanted/add";
 const GET_ORDERS_PATH = (id) => `users/${id}/orders`;
 const GET_SALES_PATH = (id) => `users/${id}/sales`;
-const ADD_CROP_INPUT_PATH = () => `inut/add/`;
+const ADD_CROP_INPUT_PATH = () => `input/add/`;
 
 export default {
   getCropCategories: function (callback) {
@@ -180,7 +180,7 @@ export default {
         callback(error.data);
       });
   },
-  getNewInput: function (NewInputData, callback) {
+  saveInput: function (NewInputData, callback) {
     axios
       .post(config.BASE_URL + ADD_CROP_INPUT_PATH(), NewInputData)
       .then((response) => {
@@ -190,9 +190,11 @@ export default {
         callback(error.data);
       });
   },
-  saveDeliveryAddress: function (callback) {
+  saveDeliveryAddress: function (delivery_details, callback) {
     axios
-      .post(config.BASE_URL + ADD_DELIVERY_ADDRESS())
+      .post(config.BASE_URL + ADD_DELIVERY_ADDRESS(), {
+        delivery_details: delivery_details,
+      })
       .then((response) => {
         callback(response.data);
       })

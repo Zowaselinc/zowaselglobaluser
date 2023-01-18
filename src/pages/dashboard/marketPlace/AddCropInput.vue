@@ -4,7 +4,7 @@
       <div class="big-content">
         <!-- header -->
         <h1>Add new input</h1>
-        <form>
+        <form @submit.prevent="saveData()">
           <div class="crop-wanted-section d-flex flex-row gap-4">
             <div class="form">
               <div class="crop_details">Input Details</div>
@@ -15,11 +15,11 @@
                   >Input category</label
                 >
                 <input
+                  v-model="inputData.category_id"
                   type="text"
                   class="form-control"
                   required
                   placeholder="type your answer"
-                  v-model="inputData.category_id"
                 />
               </div>
               <!-- input -->
@@ -28,11 +28,11 @@
                   >Price</label
                 >
                 <input
+                  v-model="inputData.price"
                   type="number"
                   class="form-control"
                   required
                   placeholder="type your answer"
-                  v-model="inputData.price"
                 />
               </div>
               <!-- input -->
@@ -41,11 +41,11 @@
                   >Title</label
                 >
                 <input
-                  type="number"
+                  v-model="inputData.title"
+                  type="text"
                   class="form-control"
                   required
                   placeholder="type your answer"
-                  v-model="inputData.title"
                 />
               </div>
               <!-- input -->
@@ -54,11 +54,11 @@
                   >Crop Focus</label
                 >
                 <input
+                  v-model="inputData.crop_focus"
                   type="text"
                   class="form-control"
                   required
                   placeholder="type your answer"
-                  v-model="inputData.crop_focus"
                 />
               </div>
               <!-- input -->
@@ -67,11 +67,11 @@
                   >KG(5-50)</label
                 >
                 <input
+                  v-model="inputData.kg"
                   type="number"
                   class="form-control"
                   required
                   placeholder="type your answer"
-                  v-model="inputData.kg"
                 />
               </div>
               <!-- input -->
@@ -84,19 +84,19 @@
                   <div class="col">
                     <input
                       id="formGroupExampleInput"
+                      v-model="inputData.delivery_window.from"
                       type="date"
                       class="form-control"
                       required
-                      v-model="inputData.delivery_window.from"
                     />
                   </div>
 
                   <div class="col">
                     <input
                       id="formGroupExampleInput"
+                      v-model="inputData.delivery_window.to"
                       type="date"
                       class="form-control"
-                      v-model="inputData.delivery_window.to"
                       required
                     />
                   </div>
@@ -109,25 +109,85 @@
                   >Input Application</label
                 >
                 <textarea
+                  v-model="inputData.usage_instruction"
                   type="text"
                   class="form-control"
                   required
                   placeholder="type your answer"
-                  v-model="inputData.usage_instruction"
                 ></textarea>
               </div>
               <!-- input -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Video URL</label
+                  >Video</label
                 >
                 <input
+                  v-model="inputData.video"
                   type="text"
                   class="form-control"
                   required
                   placeholder="type your answer"
-                  v-model="inputData.video_url"
                 />
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Manufacture Date</label
+                >
+                <input
+                  v-model="inputData.manufacture_date"
+                  type="date"
+                  class="form-control"
+                  required
+                  placeholder="type your answer"
+                />
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Manufacture Name</label
+                >
+                <input
+                  v-model="inputData.manufacture_name"
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="type your answer"
+                />
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Expiry Date</label
+                >
+                <input
+                  v-model="inputData.expiry_date"
+                  type="date"
+                  class="form-control"
+                  required
+                  placeholder="type your answer"
+                />
+              </div>
+              <!-- input -->
+
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Manufacture country</label
+                >
+                <select
+                  v-model="inputData.manufacture_country"
+                  class="form-select"
+                  aria-label="Default select example"
+                  required
+                >
+                  <option
+                    v-for="(country, index) in countries"
+                    :key="index"
+                    :value="country.country"
+                  >
+                    {{ country.country }}
+                  </option>
+                </select>
               </div>
             </div>
             <div class="vertical-line" />
@@ -139,11 +199,11 @@
                   >Input sub-category</label
                 >
                 <input
+                  v-model="inputData.subcategory_id"
                   type="text"
                   class="form-control"
                   required
                   placeholder="type your answer"
-                  v-model="inputData.subcategory_id"
                 />
               </div>
               <!-- input -->
@@ -152,11 +212,24 @@
                   >Packaging</label
                 >
                 <input
+                  v-model="inputData.packaging"
                   type="text"
                   class="form-control"
                   required
                   placeholder="type your answer"
-                  v-model="inputData.packaging"
+                />
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Delivery Method</label
+                >
+                <input
+                  v-model="inputData.delivery_method"
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="type your answer"
                 />
               </div>
               <!-- input -->
@@ -165,11 +238,11 @@
                   >Liters(1-50)</label
                 >
                 <input
+                  v-model="inputData.liters"
                   type="number"
                   class="form-control"
                   required
                   placeholder="type your answer"
-                  v-model="inputData.litres"
                 />
               </div>
               <!-- Editor -->
@@ -200,67 +273,49 @@
                   </option>
                 </select>
               </div>
+
               <!-- input -->
+
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Manufacturer Name</label
+                  >Country</label
                 >
-                <input
-                  type="text"
-                  class="form-control"
+                <select
+                  v-model="inputData.country"
+                  class="form-select"
+                  aria-label="Default select example"
                   required
-                  placeholder="type your answer"
-                  v-model="inputData.manufacturer_name"
-                />
+                >
+                  <option
+                    v-for="(country, index) in countries"
+                    :key="index"
+                    :value="country.country"
+                  >
+                    {{ country.country }}
+                  </option>
+                </select>
               </div>
-              <!-- input -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Manufacture Date</label
+                  >State</label
                 >
-                <input
-                  type="data"
-                  class="form-control"
+                <select
+                  v-model="inputData.state"
+                  class="form-select"
+                  aria-label="Default select example"
                   required
-                  placeholder="type your answer"
-                  v-model="inputData.manufacturer_date"
-                />
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Delivery Method</label
                 >
-                <input
-                  type="text"
-                  class="form-control"
-                  required
-                  placeholder="type your answer"
-                  v-model="inputData.delivery_method"
-                />
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Expiry Date</label
-                >
-                <input
-                  type="date"
-                  class="form-control"
-                  required
-                  placeholder="type your answer"
-                  v-model="inputData.expiry_date"
-                />
+                  <option
+                    v-for="(state, index) in selectStateByCountry"
+                    :key="index"
+                  >
+                    {{ state }}
+                  </option>
+                </select>
               </div>
             </div>
           </div>
-          <button
-            type="submit"
-            :class="['btn', 'btn-primary', 'my-4']"
-            @click="saveData()"
-          >
-            save
-          </button>
+          <button :class="['btn', 'btn-primary', 'my-4']">save</button>
         </form>
       </div>
     </div>
@@ -283,14 +338,14 @@ import countriesObject from "@/data/countries";
 
 export default {
   name: "AddCropInput",
+  components: {
+    DefaultNav,
+  },
   props: {
     modelValue: {
       type: String,
       default: "",
     },
-  },
-  components: {
-    DefaultNav,
   },
   data() {
     return {
@@ -304,20 +359,31 @@ export default {
         usage_instruction: "",
         subcategory_id: "",
         packaging: "",
-        litres: "",
+        liters: "",
         description: "",
         currency: "",
-        manufacturer_name: "",
-        manufacturer_date: "",
+        manufacture_name: "",
+        manufacture_date: "",
         delivery_method: "",
         expiry_date: "",
         state: "",
         country: "",
-        video_url: "",
+        video: "",
+        manufacture_country: "",
       },
       currencies: ["USD", "EUR", "GBP", "NGN"],
       countries: countriesObject.countries,
     };
+  },
+  computed: {
+    selectStateByCountry: function () {
+      // console.log(this.countries)
+      return this.countries && this.inputData.country != ""
+        ? this.countries.filter(
+            (item) => item.country == this.inputData.country
+          )[0].states
+        : [];
+    },
   },
   mounted() {
     var _this = this;
@@ -343,18 +409,6 @@ export default {
       _this.handleContentChange();
       return _this.update();
     });
-    this.getCategory();
-    this.getSubCategory();
-  },
-  computed: {
-    selectStateByCountry: function () {
-      // console.log(this.countries)
-      return this.countries && this.inputData.country != ""
-        ? this.countries.filter(
-            (item) => item.country == this.inputData.country
-          )[0].states
-        : [];
-    },
   },
   methods: {
     update: function update() {
@@ -369,7 +423,7 @@ export default {
 
     async saveData() {
       // send data to the end-poit
-      await MarketPlaceService.getNewInput(this.inputData, (response) => {
+      await MarketPlaceService.saveInput(this.inputData, (response) => {
         if (response && response.error == false) {
           Alert.success({
             message: "Crop added successfully",
