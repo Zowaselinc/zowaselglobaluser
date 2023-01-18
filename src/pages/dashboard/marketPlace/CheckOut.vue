@@ -234,6 +234,70 @@ export default {
     },
     proceedToPay() {
       this.$router.push({ name: "CheckoutPayment" });
+
+    async proceedToPay() {
+      // var form = new FormData(document.querySelector("#address-form"));
+
+      //   var saveAddress = {
+      //     houseAddress: form.get("house-address"),
+      //     country: form.get("country"),
+      //     state: form.get("state"),
+      //     phone: form.get("city"),
+      //     phone: form.get("zip-code"),
+      //   };
+
+      // window.localStorage.setItem("saveAddress", JSON.stringify(saveAddress));
+
+      //  MarketplaceService.saveDeliveryAddress(saveAddress, (response) => {
+      //     if (response && response.error == false) {
+      //       setTimeout((this.$router.push({ name : "CheckoutPayment"})), 2000)
+
+      //     }
+      //   });
+
+      // send data to end-point
+      await MarketplaceService.saveDeliveryAddress(
+        this.delivery_details,
+        (response) => {
+          if (response && response.error == false) {
+            setTimeout(this.$router.push({ name: "CheckoutPayment" }), 1000);
+          }
+        }
+      );
+    },
+
+    increment(index) {
+      var item = this.cart[index];
+      if (eval(item.input.stock) > eval(item.quantity)) {
+        this.cart[index].quantity = eval(this.cart[index].quantity) + 1;
+        MarketplaceService.addToCart(
+          {
+            input_id: item.input_id,
+            user_id: item.user_id,
+            quantity: eval(item.quantity),
+          },
+          (response) => {}
+        );
+
+        console.log(this.cart);
+      }
+    },
+    decrement(index) {
+      var item = this.cart[index];
+      if (eval(item.quantity) > 1) {
+        this.cart[index].quantity = eval(this.cart[index].quantity) - 1;
+        MarketplaceService.addToCart(
+          {
+            input_id: item.input_id,
+            user_id: item.user_id,
+            quantity: eval(item.quantity),
+          },
+          (response) => {}
+        );
+      }
+    },
+    parse(data) {
+      return JSON.parse(data);
     },
   },
 };

@@ -105,6 +105,8 @@ export default {
           },
           (response) => {}
         );
+
+        console.log(this.cart);
       }
     },
     decrement(index) {

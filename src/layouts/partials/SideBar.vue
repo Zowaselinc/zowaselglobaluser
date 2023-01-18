@@ -155,23 +155,22 @@
             class="active-menu"
             @click="changeDir(' /dashboard/creditscoringpointsystem')"
           >
-            Credit score point system
+            Score point system
           </div>
           <div
             class="active-menu"
-            @click="changeDir(' /dashboard/creditscoreanalysis')"
+            @click="changeDir(' /dashboard/creditscoring')"
           >
             credit score analysis
           </div>
-          <div class="active-menu" @click="changeDir(' /dashboard/loan')">
-            Loans
-          </div>
-          <div
+
+          <!-- <div
             class="active-menu"
             @click="changeDir(' /dashboard/scoreanalysis')"
           >
             Score Analysis
-          </div>
+          </div> -->
+
           <div
             class="active-menu"
             @click="changeDir(' /dashboard/croptraceability')"
@@ -186,6 +185,53 @@
           </div>
         </div>
       </a>
+      <a href="javascript:void(0)" class="nav-item">
+        <div
+          :class="[
+            'ripple',
+            'accordion-header',
+            isRouteActive('/dashboard/credit'),
+          ]"
+        >
+          <img
+            class="side-bar-icon img-fluid"
+            src="@/assets/images/vectors/marketPlace.svg"
+            alt="Credit Scoring"
+          /><span>Loans</span>
+          <img
+            class="arrow-symbol carret-down"
+            src="@/assets/images/vectors/arrowSymbol.svg"
+            alt="Arrow-Symbol"
+          />
+          <img
+            class="arrow-symbol carretUp"
+            src="@/assets/images/vectors/arrowupsymbol.svg"
+            alt="Arrow-Symbol"
+          />
+        </div>
+        <!-- drop menu -->
+        <div class="drop-menu scoring-menu">
+          <div class="active-menu" @click="changeDir(' /dashboard/loans')">
+            Farmers
+          </div>
+          <!-- <div
+            class="active-menu"
+            @click="changeDir(' /dashboard/creditscoreanalysis')"
+          >
+            Loan Types
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/loan')">
+            Grant Loans
+          </div>
+          <div
+            class="active-menu"
+            @click="changeDir(' /dashboard/scoreanalysis')"
+          >
+            Loans History
+          </div> -->
+        </div>
+      </a>
+
       <!-- no page available -->
       <a href="/dashboard/invoice" class="nav-item">
         <div
@@ -271,10 +317,10 @@
 
         <!-- drop menu -->
         <div class="drop-menu data-menu">
-          <div class="active-menu">Farmer Data</div>
+          <!-- <div class="active-menu">Farmer Data</div>
           <div class="active-menu">Market report</div>
           <div class="active-menu">Crop data stats</div>
-          <div class="active-menu">Seed data</div>
+          <div class="active-menu">Seed data</div> -->
         </div>
       </a>
       <a href="/dashboard/tickets" class="nav-item">
