@@ -271,7 +271,7 @@ export default {
         this.delivery_details,
         (response) => {
           if (response && response.error == false) {
-            // setTimeout((this.$router.push({ name : "CheckoutPayment"})), 2000)
+            setTimeout(this.$router.push({ name: "CheckoutPayment" }), 2000);
             alert("hello");
           }
         }

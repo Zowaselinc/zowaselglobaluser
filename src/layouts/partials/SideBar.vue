@@ -162,7 +162,7 @@
         <div class="drop-menu scoring-menu">
           <div
             class="active-menu"
-            @click="changeDir(' /dashboard/creditscoringpointsystem')"
+            @click="changeDir(' /dashboard/creditscoring')"
           >
             Credit score point system
           </div>
@@ -315,7 +315,7 @@
         </div>
         <!-- drop menu -->
         <div class="drop-menu data-menu">
-          <div class="active-menu" @click="changeDir('/dashboard/kkf')">
+          <div class="active-menu" @click="changeDir('/dashboard/kyf')">
             Kyf
           </div>
 
