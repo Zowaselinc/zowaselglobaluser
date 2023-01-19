@@ -1,7 +1,6 @@
 <template>
   <div class="crop-wanted-section d-flex flex-row gap-4">
     <div class="form">
-      <div class="crop_details">Farmer details</div>
       <div class="d-flex gap-3">
         <!-- input -->
         <div class="w-100 mb-3">

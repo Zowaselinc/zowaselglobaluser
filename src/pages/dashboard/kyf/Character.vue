@@ -7,35 +7,27 @@
           <!-- top level header -->
           <div class="d-flex flex-row top_level_header">
             <div class="left_header d-flex flex-row gap-4 my-4">
-              <a class="left_arrow" v-if="editKyf">
+              <a class="left_arrow">
                 <img
                   src="@/assets/images/vectors/arrowleft.png"
                   alt="left-arrow"
                   class="img-fluid"
                 />
               </a>
-              <h1>Add new farmer</h1>
+              <h1>Character</h1>
             </div>
             <!--next button -->
-            <button
-              type="submit"
-              :class="['btn', 'btn-primary', 'my-4']"
-              v-if="editKyf"
-            >
+            <button type="submit" :class="['btn', 'btn-primary', 'my-4']">
               Next
             </button>
             <!--save button -->
-            <button
-              type="submit"
-              :class="['btn', 'btn-primary', 'my-4']"
-              v-if="activeTab == 'kin'"
-            >
+            <button type="submit" :class="['btn', 'btn-primary', 'my-4']">
               save
             </button>
           </div>
           <!-- lower level header -->
 
-          <div class="lower_level-header d-flex gap-2" v-if="!editKyf">
+          <div class="lower_level-header d-flex gap-2">
             <button
               type="submit"
               :class="[
@@ -46,9 +38,8 @@
                 'first',
                 activeTab == 'farmer_details' ? 'tab_color' : '',
               ]"
-              @click="changeTab('farmer_details')"
             >
-              Farmer Details
+              Credit history
             </button>
             <span class="horizontal_line"></span>
             <button
@@ -61,9 +52,8 @@
                 'second',
                 activeTab == 'company_details' ? 'tab_color' : '',
               ]"
-              @click="changeTab('company_details')"
             >
-              Company Details
+              Productivity viability
             </button>
             <span id="secon_line" class="horizontal_line second"></span>
             <button
@@ -76,26 +66,33 @@
                 'third',
                 activeTab == 'kin' ? 'tab_color' : '',
               ]"
-              @click="changeTab('kin')"
             >
-              Next of Kin
+              Agronomy
             </button>
-          </div>
-
-          <!-- Editing screen header -->
-          <div class="editkyf mb-4" v-if="editKyf">
-            Changes to any field would automatically log the administrator out
-            of all signed in devices.
+            <span id="secon_line" class="horizontal_line second"></span>
+            <button
+              type="submit"
+              :class="[
+                'btn',
+                'btn-primary',
+                'my-4',
+                'col',
+                'third',
+                activeTab == 'kin' ? 'tab_color' : '',
+              ]"
+            >
+              Psychometrics
+            </button>
           </div>
         </div>
 
         <!-- main form content -->
-        <!-- farmer details -->
-        <FarmerDetails v-if="activeTab == 'farmer_details'"></FarmerDetails>
+        <!-- CreditHistory -->
+        <CreditHistory v-if="activeTab == 'credit_history'"></CreditHistory>
         <!-- compony details components -->
-        <CompanyDetails v-if="activeTab == 'company_details'"></CompanyDetails>
+        <!-- <CompanyDetails v-if="activeTab == 'company_details'"></CompanyDetails> -->
         <!-- compony Next of kin components -->
-        <Kin v-if="activeTab == 'kin'"></Kin>
+        <!-- <Kin v-if="activeTab == 'kin'"></Kin> -->
       </div>
     </div>
   </DefaultNav>
@@ -104,37 +101,25 @@
 <script>
 //   sidebar
 import DefaultNav from "@/layouts/DefaultNav.vue";
-// import farmerDetails component
-import FarmerDetails from "./components/FarmerDetails.vue";
+// import Credit history component
+import CreditHistory from "./components/CreditHistory.vue";
 // import CompanyDetails component
-import CompanyDetails from "./components/CompanyDetails.vue";
+// import CompanyDetails from "./components/CompanyDetails.vue";
 // import Next of Kin component
-import Kin from "./components/Kin.vue";
+// import Kin from "./components/Kin.vue";
 
 export default {
-  name: "Kyf",
+  name: "Character",
   components: {
     DefaultNav,
-    FarmerDetails,
-    CompanyDetails,
-    Kin,
+    CreditHistory,
+    // CompanyDetails,
+    // Kin,
   },
   data() {
     return {
-      activeTab: "farmer_details",
+      activeTab: "credit_history",
     };
-  },
-  computed: {
-    editKyf() {
-      if (this.$route.fullPath == "/dashboard/kyf/edit") {
-        return true;
-      }
-      return false;
-    },
-  },
-
-  mounted() {
-    console.log(this.$route);
   },
   methods: {
     changeTab(tab) {
@@ -226,19 +211,5 @@ button:focus {
   #second_line {
     border-color: #b5b4b9;
   }
-}
-// editkyf
-.editkyf {
-  width: 100%;
-  background: #cd4647;
-  box-shadow: 0px 12px 24px rgba(44, 39, 56, 0.04),
-    0px 24px 48px rgba(44, 39, 56, 0.08);
-  border-radius: 4px;
-  @include textStyles("Maven Pro", 400, 16px, 24px);
-  color: #ffffff;
-
-  mix-blend-mode: normal;
-  opacity: 0.86;
-  padding: 10px 0px 10px 50px;
 }
 </style>
