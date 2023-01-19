@@ -93,12 +93,6 @@
             >
               Crops for auction
             </div>
-            <div
-              class="active-item"
-              @click="changeDir('/marketplace/addinput')"
-            >
-              Add New Input
-            </div>
           </template>
           <template v-if="userData.user.type == 'merchant'">
             <div
@@ -112,9 +106,6 @@
               @click="changeDir('/dashboard/marketplace/inputs')"
             >
               Input Market
-            </div>
-            <div class="active-item" @click="changeDir('/marketplace/newcrop')">
-              Add New Crop
             </div>
           </template>
         </div>
@@ -162,25 +153,24 @@
         <div class="drop-menu scoring-menu">
           <div
             class="active-menu"
-            @click="changeDir(' /dashboard/creditscoring')"
+            @click="changeDir(' /dashboard/creditscoringpointsystem')"
           >
-            Credit score point system
+            Score point system
           </div>
           <div
             class="active-menu"
-            @click="changeDir(' /dashboard/creditscoreanalysis')"
+            @click="changeDir(' /dashboard/creditscoring')"
           >
             credit score analysis
           </div>
-          <div class="active-menu" @click="changeDir(' /dashboard/loan')">
-            Loans
-          </div>
-          <div
+
+          <!-- <div
             class="active-menu"
             @click="changeDir(' /dashboard/scoreanalysis')"
           >
             Score Analysis
-          </div>
+          </div> -->
+
           <div
             class="active-menu"
             @click="changeDir(' /dashboard/croptraceability')"
@@ -195,7 +185,6 @@
           </div>
         </div>
       </a>
-
       <a href="javascript:void(0)" class="nav-item">
         <div
           :class="[
@@ -225,7 +214,7 @@
           <div class="active-menu" @click="changeDir(' /dashboard/loans')">
             Farmers
           </div>
-          <div
+          <!-- <div
             class="active-menu"
             @click="changeDir(' /dashboard/creditscoreanalysis')"
           >
@@ -239,7 +228,7 @@
             @click="changeDir(' /dashboard/scoreanalysis')"
           >
             Loans History
-          </div>
+          </div> -->
         </div>
       </a>
 
@@ -325,12 +314,9 @@
             alt="Arrow-Symbol"
           />
         </div>
+
         <!-- drop menu -->
         <div class="drop-menu data-menu">
-          <div class="active-menu" @click="changeDir('/dashboard/kyf')">
-            Kyf
-          </div>
-
           <!-- <div class="active-menu">Farmer Data</div>
           <div class="active-menu">Market report</div>
           <div class="active-menu">Crop data stats</div>
@@ -421,7 +407,6 @@
           /><span>My account</span>
         </div>
       </a>
-
       <a href="javascript:void(0)" class="nav-item" @click="logOut()">
         <div class="ripple active-menu">
           <img

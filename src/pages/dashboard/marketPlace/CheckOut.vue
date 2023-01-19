@@ -15,29 +15,18 @@
             <div v-if="show_address" class="main-address">
               <div class="names">
                 <h4>Sampolaen Farms</h4>
-                <p>
-                  {{ delivery_details.house }}
-                  <span>{{ delivery_details.city }},</span>
-                  {{ delivery_details.zipCode }} {{ delivery_details.state }}
-                  {{ delivery_details.country }}
-                </p>
+                <p>4517 Washington Ave. Manchester, Kentucky 39495</p>
               </div>
             </div>
 
             <div v-else id="change-address-form" class="change-form">
-              <form id="address-form" action="javascript:void(0)">
+              <form action="">
                 <div class="top-form">
-                  <input
-                    v-model="delivery_details.house"
-                    type="text"
-                    name="house-Address"
-                    placeholder="House Address"
-                  />
                   <select
                     id=""
-                    v-model="delivery_details.country"
+                    v-model="newCropData.country"
                     class="form-select"
-                    name="country"
+                    name=""
                   >
                     <option value="">Select country</option>
                     <option
@@ -48,7 +37,7 @@
                       {{ country.country }}
                     </option>
                   </select>
-                  <select id="" v-model="delivery_details.state" name="state">
+                  <select id="" v-model="newCropData.state" name="">
                     <option value="">Select state</option>
                     <option
                       v-for="(state, index) in selectStateByCountry"
@@ -60,18 +49,9 @@
                 </div>
 
                 <div class="bottom-form">
-                  <input
-                    v-model="delivery_details.city"
-                    type="text"
-                    name="city"
-                    placeholder="City"
-                  />
-                  <input
-                    v-model="delivery_details.zipCode"
-                    type="text"
-                    name="zip-code"
-                    placeholder="Zip code"
-                  />
+                  <input type="text" placeholder="City" />
+                  <input type="text" placeholder="Zip code" />
+                  <input type="text" placeholder="street" />
                 </div>
               </form>
             </div>
@@ -137,58 +117,73 @@
               </div>
             </div>
           </div>
-          <!-- button -->
+
           <button class="proceed" type="button" @click="proceedToPay()">
             Proceed to Payment
           </button>
         </div>
         <div class="right-side">
           <h3>Order Summary</h3>
-          <div class="line"></div>
-          <div v-if="cart.length > 0" class="summaries">
-            <div v-for="(item, index) in cart" :key="index" class="contain">
-              <div class="line" />
-              <div class="summaries">
-                <div class="each-item">
-                  <img :src="parse(item.input.images)[0]" alt="" />
-                  <div class="each-detail">
-                    <h4>{{ item.input.title }}</h4>
-                    <!-- <p>Seller- <span>Naziri Farms</span></p> -->
-                    <div class="qty">
-                      <h4>Qty</h4>
-                      <div class="btnss">
-                        <a
-                          href="javascript:void(0)"
-                          class="p-btn"
-                          @click="decrement(index)"
-                          >-</a
-                        >
-                        <p>{{ item.quantity }}</p>
-                        <a
-                          href="javascript:void(0)"
-                          class="p-btn"
-                          @click="increment(index)"
-                          >+</a
-                        >
-                      </div>
-                    </div>
+          <div class="line" />
+          <div class="summaries">
+            <div class="each-item">
+              <img src="@/assets/images/backgrounds/okro-small.png" alt="" />
+              <div class="each-detail">
+                <h4>Coconut Fertilizer</h4>
+                <p>Seller- <span>Naziri Farms</span></p>
+                <div class="qty">
+                  <h4>Qty</h4>
+                  <div class="btnss">
+                    <p class="p-btn">-</p>
+                    <p>3</p>
+                    <p class="p-btn">+</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="red-side">
-              <div class="items">
-                <p>Cart Sub-total</p>
-                <h4>NGN {{ cartTotal.toLocaleString() }}</h4>
+            <div class="each-item">
+              <img src="@/assets/images/backgrounds/okro-small.png" alt="" />
+              <div class="each-detail">
+                <h4>Coconut Fertilizer</h4>
+                <p>Seller- <span>Naziri Farms</span></p>
+                <div class="qty">
+                  <h4>Qty</h4>
+                  <div class="btnss">
+                    <p class="p-btn">-</p>
+                    <p>3</p>
+                    <p class="p-btn">+</p>
+                  </div>
+                </div>
               </div>
-              <div class="items">
-                <!-- <p>Delivery Fee</p>
-              <h4>NGN3,400</h4> -->
+            </div>
+            <div class="each-item">
+              <img src="@/assets/images/backgrounds/okro-small.png" alt="" />
+              <div class="each-detail">
+                <h4>Coconut Fertilizer</h4>
+                <p>Seller- <span>Naziri Farms</span></p>
+                <div class="qty">
+                  <h4>Qty</h4>
+                  <div class="btnss">
+                    <p class="p-btn">-</p>
+                    <p>3</p>
+                    <p class="p-btn">+</p>
+                  </div>
+                </div>
               </div>
-              <div class="items">
-                <p>Total</p>
-                <h4>NGN {{ cartTotal.toLocaleString() }}</h4>
-              </div>
+            </div>
+          </div>
+          <div class="red-side">
+            <div class="items">
+              <p>Cart Sub-total</p>
+              <h4>NGN410,000</h4>
+            </div>
+            <div class="items">
+              <p>Delivery Fee</p>
+              <h4>NGN3,400</h4>
+            </div>
+            <div class="items">
+              <p>Total</p>
+              <h4>NGN413,400</h4>
             </div>
           </div>
         </div>
@@ -199,7 +194,7 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
-import MarketplaceService from "@/services/marketplace";
+// import MarketplaceService from "@/services/marketplace";
 import countriesObject from "@/data/countries";
 
 export default {
@@ -211,30 +206,22 @@ export default {
     return {
       userData: this.$store.state.user,
       show_address: true,
-      delivery_details: {
+      newCropData: {
         state: "",
         country: "",
-        house: "",
-        city: "",
       },
-      cart: [],
-
       countries: countriesObject.countries,
     };
   },
   computed: {
     selectStateByCountry: function () {
-      return this.countries && this.delivery_details.country != ""
+      return this.countries && this.newCropData.country != ""
         ? this.countries.filter(
-            (item) => item.country == this.delivery_details.country
+            (item) => item.country == this.newCropData.country
           )[0].states
         : [];
     },
   },
-  mounted() {
-    this.getCartItems();
-  },
-
   methods: {
     toggle_btn() {
       this.show_address = !this.show_address;
@@ -245,6 +232,8 @@ export default {
         button_text.innerHTML = "Change Address";
       }
     },
+    proceedToPay() {
+      this.$router.push({ name: "CheckoutPayment" });
 
     async proceedToPay() {
       // var form = new FormData(document.querySelector("#address-form"));
@@ -271,8 +260,7 @@ export default {
         this.delivery_details,
         (response) => {
           if (response && response.error == false) {
-            setTimeout(this.$router.push({ name: "CheckoutPayment" }), 2000);
-            alert("hello");
+            setTimeout(this.$router.push({ name: "CheckoutPayment" }), 1000);
           }
         }
       );
@@ -616,8 +604,6 @@ export default {
     height: 20px;
     background: #ededee;
     border-radius: 50%;
-    color: black;
-    text-decoration: none;
   }
 }
 

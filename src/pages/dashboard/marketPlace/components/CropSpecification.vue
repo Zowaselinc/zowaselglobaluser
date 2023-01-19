@@ -2,7 +2,7 @@
   <div class="main_container">
     <!-- new crop  wanted form-->
     <div class="crop-wanted-section d-flex flex-row gap-4">
-      <div class="form">
+      <form>
         <div class="crop_details">Crop Specification</div>
 
         <div class="w-100 mb-3">
@@ -110,7 +110,7 @@
         </div>
         <div class="w-100 mb-3">
           <label for="exampleInputEmail1" class="form-label mb-0"
-            >Volatile</label
+            >volatile</label
           >
           <select
             v-model="cropSpecificationData.volatile"
@@ -183,11 +183,11 @@
             </option>
           </select>
         </div>
-      </div>
+      </form>
 
       <div class="vertical-line" />
       <!-- form two -->
-      <div class="form">
+      <form>
         <div class="w-100 mb-3 m_top">
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Rotten/Shriveled</label
@@ -351,7 +351,8 @@
             </option>
           </select>
         </div>
-      </div>
+      </form>
+      <slot :data-from-child="{ ...cropSpecificationData }" />
     </div>
   </div>
 </template>
@@ -362,29 +363,29 @@ export default {
   data() {
     return {
       cropSpecificationData: {
-        broken_grains: "",
-        weevil: "",
-        hardness: "",
-        oil_content: "",
-        grain_size: "",
-        total_defects: "",
-        ash_content: "",
-        volatile: "",
-        drying_process: "",
-        curcumin_content: "",
-        rotten_shriveled: "",
-        dk: "",
-        splits: "",
-        infestation: "",
-        hectoliter: "",
-        acid_ash: "",
-        mold: "",
-        dead_insect: "",
-        mammalian: "",
-        infested_by_weight: "",
-        extraneous: "",
-        dockage: "",
-        moisture: "",
+        broken_grains: "1",
+        weevil: "1",
+        hardness: "1",
+        oil_content: "1",
+        grain_size: "1",
+        total_defects: "1",
+        ash_content: "1",
+        volatile: "1",
+        drying_process: "1",
+        curcumin_content: "1",
+        rotten_shriveled: "1",
+        dk: "1",
+        splits: "1",
+        infestation: "1",
+        hectoliter: "1",
+        acid_ash: "1",
+        mold: "1",
+        dead_insect: "1",
+        mammalian: "1",
+        infested_by_weight: "1",
+        extraneous: "1",
+        dockage: "1",
+        moisture: "1",
       },
     };
   },
@@ -400,7 +401,7 @@ export default {
   padding: 4%;
 }
 
-.form {
+form {
   .crop_details {
     @include textStyles("Maven Pro", 700, 16px, 24px);
     letter-spacing: 0.01em;
@@ -415,8 +416,7 @@ export default {
   width: 100%;
   padding-bottom: 2rem;
 
-  select,
-  input {
+  select {
     font-size: 14px;
     color: #000000;
 

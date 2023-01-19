@@ -1,5 +1,5 @@
-import config from "@/config";
 import axios from "axios";
+import config from "@/config";
 
 import NegotiationService from "@/services/negotiation";
 
@@ -12,7 +12,6 @@ const GET_INPUT_PATH = (id) => `input/${id}`;
 const GET_CROPS_AUCTION_PATH = () => "crop/getbycropauction";
 const GET_CROP_PATH = (id) => `crop/getbyid/${id}`;
 const CREATE_CROP_WANTED_PATH = () => `testpost`;
-const ADD_DELIVERY_ADDRESS = () => `order/cart/create`;
 
 const GET_ORDER_PATH = (orderHash) => `order/${orderHash}`;
 const ADD_TO_CART_PATH = () => `input/cart/add`;
@@ -190,9 +189,11 @@ export default {
         callback(error.data);
       });
   },
-  saveDeliveryAddress: function (callback) {
+  saveDeliveryAddress: function (delivery_details, callback) {
     axios
-      .post(config.BASE_URL + ADD_DELIVERY_ADDRESS())
+      .post(config.BASE_URL + ADD_DELIVERY_ADDRESS(), {
+        delivery_details: delivery_details,
+      })
       .then((response) => {
         callback(response.data);
       })

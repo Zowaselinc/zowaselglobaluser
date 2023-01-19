@@ -42,10 +42,14 @@ import Confirm from "@/pages/dashboard/marketPlace/checkout/Confirm.vue";
 import PaymentsConfirmed from "@/pages/dashboard/marketPlace/checkout/PaymentsConfirmed.vue";
 import Invoice from "@/pages/dashboard/Invoice.vue";
 import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
+import EachLoan from "@/pages/dashboard/EachLoan.vue";
 import Loan from "@/pages/dashboard/Loan.vue";
 import CropTraceability from "@/pages/dashboard/Croptraceability.vue";
+import CropQuality from "@/pages/dashboard/Cropquality.vue";
+import Inputinformation from "@/pages/dashboard/Inputinformation.vue";
+import Warehouse from "@/pages/dashboard/warehouse.vue";
 import Sustainability from "@/pages/dashboard/Sustainability.vue";
-import EachLoan from "@/pages/dashboard/EachLoan.vue";
+import Care from "@/pages/dashboard/Care.vue";
 import Tickets from "@/pages/dashboard/Tickets.vue";
 import NewTicket from "@/pages/dashboard/NewTicket.vue";
 import CropsSale from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
@@ -56,13 +60,17 @@ import FundWallet from "@/pages/dashboard/FundWallet.vue";
 import Sales from "@/pages/dashboard/Sales.vue";
 import MyOrders from "@/pages/dashboard/MyOrders.vue";
 import CreditScoring from "@/pages/dashboard/CreditScoring.vue";
+import CreditScoringPointSystem from "@/pages/dashboard/CreditScoringPointSystem.vue";
 import AddNewCrop from "@/pages/dashboard/marketPlace/AddNewCrop.vue";
 import UpdateShipping from "@/pages/dashboard/UpdateShipping.vue";
 import AddCropSale from "@/pages/dashboard/marketPlace/AddCropSale.vue";
 import CropAuction from "@/pages/dashboard/marketPlace/CropAuction.vue";
+<<<<<<< HEAD
 import AddCropInput from "@/pages/dashboard/marketPlace/AddCropInput.vue";
 import Kyf from "@/pages/dashboard/kyf/Kyf.vue";
 import Character from "@/pages/dashboard/kyf/Character.vue";
+=======
+>>>>>>> ad9dfd62e7625a6a533c95e56a61f3a92d1e9930
 
 const routes = [
   {
@@ -222,9 +230,14 @@ const routes = [
     component: EachInvoice,
   },
   {
-    path: "/dashboard/loans",
+    path: "/dashboard/loan",
     name: "Loan",
     component: Loan,
+  },
+  {
+    path: "/dashboard/cropquality",
+    name: "Cropquality",
+    component: CropQuality,
   },
   {
     path: "/dashboard/croptraceability",
@@ -232,9 +245,24 @@ const routes = [
     component: CropTraceability,
   },
   {
+    path: "/dashboard/Inputinformation",
+    name: "Inputinformation",
+    component: Inputinformation,
+  },
+  {
+    path: "/dashboard/warehouse",
+    name: "Warehouse",
+    component: Warehouse,
+  },
+  {
     path: "/dashboard/sustainability",
     name: "sustainability",
     component: Sustainability,
+  },
+  {
+    path: "/dashboard/care",
+    name: "Care",
+    component: Care,
   },
   {
     path: "/dashboard/marketplace/:market",
@@ -366,6 +394,11 @@ const routes = [
     path: "/dashboard/creditscoring",
     name: "CreditScoring",
     component: CreditScoring,
+  },
+  {
+    path: "/dashboard/creditscoringpointsystem",
+    name: "CreditScoringPointSystem",
+    component: CreditScoringPointSystem,
   },
   {
     path: "/dashboard/marketplace/:order/updateshipping",
