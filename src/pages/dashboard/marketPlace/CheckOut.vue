@@ -232,8 +232,6 @@ export default {
         button_text.innerHTML = "Change Address";
       }
     },
-    proceedToPay() {
-      this.$router.push({ name: "CheckoutPayment" });
 
     async proceedToPay() {
       // var form = new FormData(document.querySelector("#address-form"));

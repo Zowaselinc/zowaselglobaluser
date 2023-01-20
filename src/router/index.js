@@ -42,7 +42,7 @@ import Confirm from "@/pages/dashboard/marketPlace/checkout/Confirm.vue";
 import PaymentsConfirmed from "@/pages/dashboard/marketPlace/checkout/PaymentsConfirmed.vue";
 import Invoice from "@/pages/dashboard/Invoice.vue";
 import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
-import EachLoan from "@/pages/dashboard/EachLoan.vue";
+// import EachLoan from "@/pages/dashboard/EachLoan.vue";
 import Loan from "@/pages/dashboard/Loan.vue";
 import CropTraceability from "@/pages/dashboard/Croptraceability.vue";
 import CropQuality from "@/pages/dashboard/Cropquality.vue";
@@ -65,13 +65,10 @@ import AddNewCrop from "@/pages/dashboard/marketPlace/AddNewCrop.vue";
 import UpdateShipping from "@/pages/dashboard/UpdateShipping.vue";
 import AddCropSale from "@/pages/dashboard/marketPlace/AddCropSale.vue";
 import CropAuction from "@/pages/dashboard/marketPlace/CropAuction.vue";
-<<<<<<< HEAD
 import AddCropInput from "@/pages/dashboard/marketPlace/AddCropInput.vue";
 import Kyf from "@/pages/dashboard/kyf/Kyf.vue";
 import Character from "@/pages/dashboard/kyf/Character.vue";
-=======
->>>>>>> ad9dfd62e7625a6a533c95e56a61f3a92d1e9930
-
+// glpat-PUYeho9Asr1wpN9nofVc
 const routes = [
   {
     path: "/:type/register",
@@ -420,11 +417,11 @@ const routes = [
     name: "EditKyf",
     component: Kyf,
   },
-  {
-    path: "/dashboard/each-loan",
-    name: "EachLoan",
-    component: EachLoan,
-  },
+  // {
+  //   path: "/dashboard/each-loan",
+  //   name: "EachLoan",
+  //   component: EachLoan,
+  // },
   {
     path: "/dashboard/character",
     name: "Character",
