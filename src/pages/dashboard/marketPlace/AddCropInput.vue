@@ -14,6 +14,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Input category</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.category_id"
                   type="text"
@@ -27,6 +28,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Price</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.price"
                   type="number"
@@ -40,6 +42,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Title</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.title"
                   type="text"
@@ -53,6 +56,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Crop Focus</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.crop_focus"
                   type="text"
@@ -66,6 +70,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >KG(5-50)</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.kg"
                   type="number"
@@ -80,6 +85,7 @@
                 <label for="formGroupExampleInput" class="form-label mb-0"
                   >Delivery window</label
                 >
+                <span id="required">*</span>
                 <div class="form-row">
                   <div class="col">
                     <input
@@ -108,6 +114,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Input Application</label
                 >
+                <span id="required">*</span>
                 <textarea
                   v-model="inputData.usage_instruction"
                   type="text"
@@ -121,6 +128,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Video</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.video"
                   type="text"
@@ -134,6 +142,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Manufacture Date</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.manufacture_date"
                   type="date"
@@ -147,6 +156,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Manufacture Name</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.manufacture_name"
                   type="text"
@@ -160,6 +170,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Expiry Date</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.expiry_date"
                   type="date"
@@ -174,6 +185,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Manufacture country</label
                 >
+                <span id="required">*</span>
                 <select
                   v-model="inputData.manufacture_country"
                   class="form-select"
@@ -198,6 +210,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Input sub-category</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.subcategory_id"
                   type="text"
@@ -211,6 +224,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Packaging</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.packaging"
                   type="text"
@@ -224,6 +238,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Delivery Method</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.delivery_method"
                   type="text"
@@ -237,6 +252,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Liters(1-50)</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.liters"
                   type="number"
@@ -258,6 +274,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Currency</label
                 >
+                <span id="required">*</span>
                 <select
                   v-model="inputData.currency"
                   class="form-select"
@@ -280,6 +297,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Country</label
                 >
+                <span id="required">*</span>
                 <select
                   v-model="inputData.country"
                   class="form-select"
@@ -299,6 +317,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >State</label
                 >
+                <span id="required">*</span>
                 <select
                   v-model="inputData.state"
                   class="form-select"
@@ -312,6 +331,37 @@
                     {{ state }}
                   </option>
                 </select>
+              </div>
+              <div class="crop_details">Product image</div>
+              <div class="dropzone_conatiner my-4">
+                <div id="my-dropzone" class="dropzone">
+                  <img id="preview-selected-image" class="img-fluid mb-2" />
+                  <img
+                    src="@/assets/images/vectors/Image.svg"
+                    alt="image"
+                    id="image_icon"
+                  />
+                  <div id="file-input">
+                    <input
+                      id="hidden_input"
+                      ref="input"
+                      type="file"
+                      multiple
+                      accept="image/*"
+                      @change="uploadFile"
+                      required
+                    />
+
+                    <span
+                      id="file_name"
+                      v-if="fileName == ''"
+                      @click="openFileDialog()"
+                      >click to browse</span
+                    >
+
+                    <span v-else>{{ fileName }}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -420,7 +470,9 @@ export default {
     handleContentChange() {
       this.inputData.description = this.editor.root.innerHTML;
     },
-
+    openFileDialog() {
+      document.getElementById("hidden_input").click();
+    },
     async saveData() {
       // send data to the end-poit
       await MarketPlaceService.saveInput(this.inputData, (response) => {
@@ -433,6 +485,31 @@ export default {
           }, 2000);
         }
       });
+    },
+    uploadFile() {
+      const input = document.querySelector("#hidden_input");
+      const file = input.files;
+      this.newCropData.files = file;
+
+      // get the file name
+      this.fileName = file[0].name;
+
+      // preview the image
+
+      // if at least one image is selected proceed to display the image
+      if (file[0]) {
+        // get the image path
+        const imageSrc = URL.createObjectURL(file[0]);
+        // select the image preview element
+        const imagePreviewElement = document.querySelector(
+          "#preview-selected-image"
+        );
+        // assign the path to the image preview element
+        imagePreviewElement.src = imageSrc;
+        imagePreviewElement.style.display = "block";
+        // hide sibling img element
+        document.getElementById("image_icon").style.display = "none";
+      }
     },
   },
 };
@@ -541,5 +618,49 @@ div.vertical-line {
   .ql-container {
     min-height: 35vh;
   }
+}
+
+// using drop-zone
+.dropzone {
+  width: 100%;
+  min-height: 250px;
+  border: 2px dashed #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Maven Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 147%;
+  color: #4a4754;
+  padding: 10px 10px 15px 10px;
+
+  span {
+    font-weight: 700;
+    color: #05b050;
+    cursor: pointer;
+
+    + span {
+      font-size: 14px;
+    }
+  }
+}
+
+#required {
+  color: red;
+  font-family: "Maven Pro";
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.zone {
+  height: 150px;
+  font-size: 12px;
+}
+
+#hidden_input {
+  display: none;
 }
 </style>

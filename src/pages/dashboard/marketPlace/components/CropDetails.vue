@@ -6,8 +6,9 @@
         <div class="crop_details">Crop Details</div>
         <div class="w-100 mb-3">
           <label for="exampleInputEmail1" class="form-label mb-0"
-            >Crop Title</label
-          >
+            >Crop Title
+          </label>
+          <span id="required">*</span>
           <input
             v-model="cropData.title"
             type="text"
@@ -19,6 +20,7 @@
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Crop Category</label
           >
+          <span id="required">*</span>
           <select
             v-model="cropData.category_id"
             class="form-select"
@@ -38,6 +40,7 @@
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Product sub category</label
           >
+          <span id="required">*</span>
           <select
             v-model="cropData.subcategory_id"
             class="form-select"
@@ -57,6 +60,7 @@
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Product Color</label
           >
+          <span id="required">*</span>
           <select
             v-model="cropData.color"
             class="form-select"
@@ -72,6 +76,7 @@
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Moisture content (MC)</label
           >
+          <span id="required">*</span>
           <select
             v-model="cropData.moisture_content"
             class="form-select"
@@ -87,6 +92,7 @@
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Forieign Matter (FM)</label
           >
+          <span id="required">*</span>
           <select
             v-model="cropData.foreign_matter"
             class="form-select"
@@ -102,6 +108,7 @@
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Test weight</label
           >
+          <span id="required">*</span>
           <select
             v-model="cropData.test_weight"
             class="form-select"
@@ -116,6 +123,7 @@
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Negotiable</label
           >
+          <span id="required">*</span>
           <select
             v-model="cropData.is_negotiable"
             class="form-select"
@@ -143,6 +151,7 @@
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Currency</label
           >
+          <span id="required">*</span>
           <select
             v-model="cropData.currency"
             class="form-select"
@@ -302,6 +311,12 @@ export default {
     font-size: 14px;
     font-weight: 900;
     color: rgba(45, 55, 72, 0.8);
+  }
+  #required {
+    color: red;
+    font-family: "Maven Pro";
+    font-weight: bolder;
+    font-size: 20px;
   }
 }
 

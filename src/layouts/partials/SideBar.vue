@@ -81,17 +81,8 @@
         <!-- drop menu -->
         <div class="drop-menu marketplace-menu">
           <template v-if="userData.user.type == 'corporate'">
-            <div
-              class="active-item"
-              @click="changeDir('/dashboard/marketplace/cropsale')"
-            >
-              Crops for Sale
-            </div>
-            <div
-              class="active-item"
-              @click="changeDir('/dashboard/marketplace/cropauction')"
-            >
-              Crops for auction
+            <div class="active-item" @click="changeDir('/marketplace/newcrop')">
+              Add New Crop
             </div>
             <div
               class="active-item"
@@ -113,8 +104,17 @@
             >
               Input Market
             </div>
-            <div class="active-item" @click="changeDir('/marketplace/newcrop')">
-              Add New Crop
+            <div
+              class="active-item"
+              @click="changeDir('/dashboard/marketplace/cropsale')"
+            >
+              Crops for Sale
+            </div>
+            <div
+              class="active-item"
+              @click="changeDir('/dashboard/marketplace/cropauction')"
+            >
+              Crops for auction
             </div>
           </template>
         </div>
@@ -360,13 +360,57 @@
         </div>
       </a>
 
-      <a href="/dashboard/marketplace/myproducts" class="nav-item">
-        <div class="ripple">
+      <a href="javascript:void(0)" class="nav-item">
+        <div
+          :class="[
+            'ripple',
+            'accordion-header',
+            isRouteActive('/dashboard/marketplace'),
+          ]"
+        >
           <img
             class="img-fluid"
             src="@/assets/images/vectors/product.svg"
             alt="info"
-          /><span>My Products</span>
+          /><span>My Product</span>
+          <img
+            class="arrow-symbol carret-down"
+            src="@/assets/images/vectors/arrowSymbol.svg"
+            alt="Arrow-Symbol"
+          />
+          <img
+            class="arrow-symbol carretUp"
+            src="@/assets/images/vectors/arrowupsymbol.svg"
+            alt="Arrow-Symbol"
+          />
+        </div>
+        <!-- drop menu -->
+        <div class="drop-menu marketplace-menu">
+          <template v-if="userData.user.type == 'corporate'">
+            <div
+              class="active-item"
+              @click="changeDir('/dashboard/marketplace/myproducts')"
+            >
+              My Product
+            </div>
+            <div class="active-item" @click="changeDir('/marketplace/newcrop')">
+              Add New Crop
+            </div>
+            <div
+              class="active-item"
+              @click="changeDir('/marketplace/addinput')"
+            >
+              Add New Input
+            </div>
+          </template>
+          <template v-if="userData.user.type == 'merchant'">
+            <div
+              class="active-item"
+              @click="changeDir('/dashboard/marketplace/myproducts')"
+            >
+              My Product
+            </div>
+          </template>
         </div>
       </a>
       <a href="/dashboard/sales" class="nav-item">
@@ -434,7 +478,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "SideBar",
   data() {
@@ -529,7 +572,6 @@ export default {
     }
   }
 }
-
 // toggling the active menus by changing background color
 .active-menu {
   &:active {
