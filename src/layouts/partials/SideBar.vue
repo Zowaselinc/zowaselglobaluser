@@ -108,6 +108,28 @@
               Crops for auction
             </div>
           </template>
+          <template v-if="userData.user.type == 'corporate'">
+            <div
+              class="active-item"
+              @click="changeDir('/dashboard/marketplace/myproducts')"
+            >
+              My Crops/Inputs
+            </div>
+          </template>
+          <template v-if="userData.user.type == 'merchant'">
+            <div
+              class="active-item"
+              @click="changeDir('/dashboard/marketplace/myproducts')"
+            >
+              My Crops
+            </div>
+          </template>
+          <div class="active-item" @click="changeDir('/dashboard/sales')">
+            My Sales
+          </div>
+          <div class="active-item" @click="changeDir('/dashboard/myorders')">
+            My Orders
+          </div>
         </div>
       </a>
       <a href="/dashboard/negotiations" class="nav-item">
@@ -348,79 +370,6 @@
             src="@/assets/images/vectors/transactions.svg"
             alt="info"
           /><span>Transactions</span>
-        </div>
-      </a>
-
-      <a href="javascript:void(0)" class="nav-item">
-        <div
-          :class="[
-            'ripple',
-            'accordion-header',
-            isRouteActive('/dashboard/marketplace'),
-          ]"
-        >
-          <img
-            class="img-fluid"
-            src="@/assets/images/vectors/product.svg"
-            alt="info"
-          /><span>My Product</span>
-          <img
-            class="arrow-symbol carret-down"
-            src="@/assets/images/vectors/arrowSymbol.svg"
-            alt="Arrow-Symbol"
-          />
-          <img
-            class="arrow-symbol carretUp"
-            src="@/assets/images/vectors/arrowupsymbol.svg"
-            alt="Arrow-Symbol"
-          />
-        </div>
-        <!-- drop menu -->
-        <div class="drop-menu marketplace-menu">
-          <template v-if="userData.user.type == 'corporate'">
-            <div
-              class="active-item"
-              @click="changeDir('/dashboard/marketplace/myproducts')"
-            >
-              My Product
-            </div>
-            <div class="active-item" @click="changeDir('/marketplace/newcrop')">
-              Add New Crop
-            </div>
-            <div
-              class="active-item"
-              @click="changeDir('/marketplace/addinput')"
-            >
-              Add New Input
-            </div>
-          </template>
-          <template v-if="userData.user.type == 'merchant'">
-            <div
-              class="active-item"
-              @click="changeDir('/dashboard/marketplace/myproducts')"
-            >
-              My Product
-            </div>
-          </template>
-        </div>
-      </a>
-      <a href="/dashboard/sales" class="nav-item">
-        <div class="ripple">
-          <img
-            class="img-fluid"
-            src="@/assets/images/vectors/sales.svg"
-            alt="info"
-          /><span>My Sales</span>
-        </div>
-      </a>
-
-      <a href="/dashboard/myorders" class="nav-item">
-        <div class="ripple">
-          <img
-            class="img-fluid"
-            src="@/assets/images/vectors/orders.svg"
-            alt="info"
-          /><span>My Orders</span>
         </div>
       </a>
 

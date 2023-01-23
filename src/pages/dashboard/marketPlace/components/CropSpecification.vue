@@ -14,8 +14,6 @@
           <select
             v-model="cropSpecificationData.broken_grains"
             class="form-select"
-            aria-label="Default select example"
-            required
           >
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
@@ -25,12 +23,7 @@
         <div class="w-100 mb-3">
           <label for="exampleInputEmail1" class="form-label mb-0">Weevil</label>
           <span id="required">-optional</span>
-          <select
-            v-model="cropSpecificationData.weevil"
-            class="form-select"
-            aria-label="Default select example"
-            required
-          >
+          <select v-model="cropSpecificationData.weevil" class="form-select">
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
             </option>
@@ -41,12 +34,7 @@
             >Hardness</label
           >
           <span id="required">-optional</span>
-          <select
-            v-model="cropSpecificationData.hardness"
-            class="form-select"
-            aria-label="Default select example"
-            required
-          >
+          <select v-model="cropSpecificationData.hardness" class="form-select">
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
             </option>
@@ -60,8 +48,6 @@
           <select
             v-model="cropSpecificationData.oil_content"
             class="form-select"
-            aria-label="Default select example"
-            required
           >
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
@@ -76,8 +62,6 @@
           <select
             v-model="cropSpecificationData.grain_size"
             class="form-select"
-            aria-label="Default select example"
-            required
           >
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
@@ -92,8 +76,6 @@
           <select
             v-model="cropSpecificationData.total_defects"
             class="form-select"
-            aria-label="Default select example"
-            required
           >
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
@@ -108,8 +90,6 @@
           <select
             v-model="cropSpecificationData.ash_content"
             class="form-select"
-            aria-label="Default select example"
-            required
           >
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
@@ -121,12 +101,7 @@
             >Volatile</label
           >
           <span id="required">-optional</span>
-          <select
-            v-model="cropSpecificationData.volatile"
-            class="form-select"
-            aria-label="Default select example"
-            required
-          >
+          <select v-model="cropSpecificationData.volatile" class="form-select">
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
             </option>
@@ -140,8 +115,6 @@
           <select
             v-model="cropSpecificationData.drying_process"
             class="form-select"
-            aria-label="Default select example"
-            required
           >
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
@@ -156,8 +129,6 @@
           <select
             v-model="cropSpecificationData.curcumin_content"
             class="form-select"
-            aria-label="Default select example"
-            required
           >
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
@@ -169,12 +140,7 @@
             >Dockage</label
           >
           <span id="required">-optional</span>
-          <select
-            v-model="cropSpecificationData.dockage"
-            class="form-select"
-            aria-label="Default select example"
-            required
-          >
+          <select v-model="cropSpecificationData.dockage" class="form-select">
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
             </option>
@@ -185,12 +151,7 @@
             >Moisture</label
           >
           <span id="required">-optional</span>
-          <select
-            v-model="cropSpecificationData.moisture"
-            class="form-select"
-            aria-label="Default select example"
-            required
-          >
+          <select v-model="cropSpecificationData.moisture" class="form-select">
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
             </option>
@@ -209,8 +170,6 @@
           <select
             v-model="cropSpecificationData.rotten_shriveled"
             class="form-select"
-            aria-label="Default select example"
-            required
           >
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
@@ -222,12 +181,7 @@
             >Damaged kernel(DK)</label
           >
           <span id="required">-optional</span>
-          <select
-            v-model="cropSpecificationData.dk"
-            class="form-select"
-            aria-label="Default select example"
-            required
-          >
+          <select v-model="cropSpecificationData.dk" class="form-select">
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
             </option>
@@ -236,12 +190,7 @@
         <div class="w-100 mb-3">
           <label for="exampleInputEmail1" class="form-label mb-0">Splits</label>
           <span id="required">-optional</span>
-          <select
-            v-model="cropSpecificationData.splits"
-            class="form-select"
-            aria-label="Default select example"
-            required
-          >
+          <select v-model="cropSpecificationData.splits" class="form-select">
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
             </option>
@@ -255,8 +204,6 @@
           <select
             v-model="cropSpecificationData.infestation"
             class="form-select"
-            aria-label="Default select example"
-            required
           >
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
@@ -271,8 +218,6 @@
           <select
             v-model="cropSpecificationData.hectoliter"
             class="form-select"
-            aria-label="Default select example"
-            required
           >
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
@@ -284,12 +229,7 @@
             >Acid Insoluable Ash</label
           >
           <span id="required">-optional</span>
-          <select
-            v-model="cropSpecificationData.acid_ash"
-            class="form-select"
-            aria-label="Default select example"
-            required
-          >
+          <select v-model="cropSpecificationData.acid_ash" class="form-select">
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
             </option>
@@ -300,12 +240,7 @@
             >Mold % By Weight</label
           >
           <span id="required">-optional</span>
-          <select
-            v-model="cropSpecificationData.mold"
-            class="form-select"
-            aria-label="Default select example"
-            required
-          >
+          <select v-model="cropSpecificationData.mold" class="form-select">
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
             </option>
@@ -319,8 +254,6 @@
           <select
             v-model="cropSpecificationData.dead_insect"
             class="form-select"
-            aria-label="Default select example"
-            required
           >
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
@@ -335,8 +268,6 @@
           <select
             v-model="cropSpecificationData.infested_by_weight"
             class="form-select"
-            aria-label="Default select example"
-            required
           >
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
@@ -351,8 +282,6 @@
           <select
             v-model="cropSpecificationData.extraneous"
             class="form-select"
-            aria-label="Default select example"
-            required
           >
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
@@ -364,12 +293,7 @@
             >Mammalian</label
           >
           <span id="required">-optional</span>
-          <select
-            v-model="cropSpecificationData.mammalian"
-            class="form-select"
-            aria-label="Default select example"
-            required
-          >
+          <select v-model="cropSpecificationData.mammalian" class="form-select">
             <option v-for="item in 100" :key="item" :value="item">
               {{ item }}%
             </option>

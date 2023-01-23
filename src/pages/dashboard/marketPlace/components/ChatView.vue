@@ -121,12 +121,11 @@
             <div class="form-group form-inputs got-it">
               <label for="formGroupExampleInput">Quantity</label>
               <div class="quantity">
-                <select id="" class="form-control" name="">
+                <select class="form-control" name="">
                   <option value="">kg</option>
                   <option value="">bags</option>
                 </select>
                 <input
-                  id=""
                   v-model="offerData.qty"
                   type="text"
                   class="form-control"
@@ -137,7 +136,6 @@
             <div class="form-group form-inputs">
               <label for="formGroupExampleInput2">Price</label>
               <input
-                id=""
                 v-model="offerData.price"
                 type="text"
                 class="form-control amount"
@@ -147,7 +145,6 @@
             <div class="form-group form-inputs">
               <label for="formGroupExampleInput2">Oil Content</label>
               <input
-                id=""
                 v-model="offerData.oil_content"
                 type="text"
                 class="form-control percentage"
@@ -302,6 +299,7 @@ export default {
   props: {
     sender: Object,
     recepient: Object,
+    product: Object,
     title: String,
     messages: Object,
     loadMessages: Function,
@@ -318,33 +316,31 @@ export default {
         qty: "",
         price: "",
         color: "",
-        moisture: "",
-        foreign_matter: "",
-        broken_grains: "",
-        weevil: "",
-        dk: "",
-        rotten_shriveled: "",
-        test_weight: "",
-        hectoliter: "",
-        hardness: "",
-        splits: "",
-        oil_content: "",
-        infestation: "",
-        grain_size: "",
-        total_defects: "",
-        dockage: "",
-        ash_content: "",
-        acid_ash: "",
-        volatile: "",
-        mold: "",
-        drying_process: "",
-        dead_insect: "",
-        mammalian: "",
-        infested_by_weight: "",
-        curcumin_content: "",
-        extraneous: "",
-        unit: "",
-        liters: "",
+        moisture: this.product.specification.moisture,
+        foreign_matter: this.product.specification.foreign_matter,
+        broken_grains: this.product.specification.broken_grains,
+        weevil: this.product.specification.weevil,
+        dk: this.product.specification.dk,
+        rotten_shriveled: this.product.specification.rotten_shriveled,
+        test_weight: this.product.specification.test_weight,
+        hectoliter: this.product.specification.hectoliter,
+        hardness: this.product.specification.hardness,
+        splits: this.product.specification.splits,
+        oil_content: this.product.specification.oil_content,
+        infestation: this.product.specification.infestation,
+        grain_size: this.product.specification.grain_size,
+        total_defects: this.product.specification.total_defects,
+        dockage: this.product.specification.dockage,
+        ash_content: this.product.specification.ash_content,
+        acid_ash: this.product.specification.acid_ash,
+        volatile: this.product.specification.volatile,
+        mold: this.product.specification.mold,
+        drying_process: this.product.specification.drying_process,
+        dead_insect: this.product.specification.dead_insect,
+        mammalian: this.product.specification.mammalian,
+        infested_by_weight: this.product.specification.infested_by_weight,
+        curcumin_content: this.product.specification.curcumin_content,
+        extraneous: this.product.specification.extraneous,
       },
     };
   },
@@ -405,6 +401,7 @@ export default {
       this.offerFormVisible = false;
     },
     sendMessage(type) {
+      let vm = this;
       if (type == "message") {
         this.onSendMessage(this.message, () => {
           this.message = "";
@@ -413,6 +410,7 @@ export default {
       if (type == "offer") {
         this.onSendOffer(this.offerData, () => {
           this.message = "";
+          vm.closeForm();
         });
       }
     },
