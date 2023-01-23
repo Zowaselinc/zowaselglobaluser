@@ -192,7 +192,21 @@
           >
             Score Analysis
           </div> -->
-
+          <div class="active-menu" @click="changeDir(' /dashboard/character')">
+            Character
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/capital')">
+            Capital
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/collateral')">
+            Collateral
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/capacity')">
+            Capacity
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/conditions')">
+            Conditions
+          </div>
           <div
             class="active-menu"
             @click="changeDir(' /dashboard/croptraceability')"

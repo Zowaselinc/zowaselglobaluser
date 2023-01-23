@@ -12,18 +12,27 @@ import VerifyEmail from "@/pages/auth/VerifyEmail.vue";
 import Welcome from "@/pages/auth/Welcome.vue";
 import WelcomeBack from "@/pages/auth/WelcomeBack.vue";
 import AccountSettings from "@/pages/dashboard/AccountSettings.vue";
+import Capital from "@/pages/dashboard/Capital.vue";
+import Care from "@/pages/dashboard/Care.vue";
 import ChanelLog from "@/pages/dashboard/ChanelLog.vue";
+import Collateral from "@/pages/dashboard/Collateral.vue";
+import Conditions from "@/pages/dashboard/Conditions.vue";
 import CreditScoring from "@/pages/dashboard/CreditScoring.vue";
 import CreditScoringPointSystem from "@/pages/dashboard/CreditScoringPointSystem.vue";
 import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
+import CropQuality from "@/pages/dashboard/Cropquality.vue";
 import CropTraceability from "@/pages/dashboard/Croptraceability.vue";
 import DashboardHome from "@/pages/dashboard/DashboardHome.vue";
 import DoKyb from "@/pages/dashboard/DoKyb.vue";
 import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
 import EachLoan from "@/pages/dashboard/EachLoan.vue";
 import FinanceDashboard from "@/pages/dashboard/Finance.vue";
+import Foodsafety from "@/pages/dashboard/Foodsafety.vue";
 import FundWallet from "@/pages/dashboard/FundWallet.vue";
+import Inputinformation from "@/pages/dashboard/Inputinformation.vue";
 import Invoice from "@/pages/dashboard/Invoice.vue";
+import Capacity from "@/pages/dashboard/kyf/Capacity.vue";
+import Character from "@/pages/dashboard/kyf/Character.vue";
 import Kyf from "@/pages/dashboard/kyf/Kyf.vue";
 import Loan from "@/pages/dashboard/Loan.vue";
 import LoanHistory from "@/pages/dashboard/LoanHistory.vue";
@@ -52,15 +61,19 @@ import MyOrders from "@/pages/dashboard/MyOrders.vue";
 import Negotiations from "@/pages/dashboard/Negotiations.vue";
 import NewTicket from "@/pages/dashboard/NewTicket.vue";
 import Notifications from "@/pages/dashboard/Notifications.vue";
+import Plant from "@/pages/dashboard/Plant.vue";
+import Recommendation from "@/pages/dashboard/Recommendation.vue";
 import RenewalManager from "@/pages/dashboard/RenewalManager.vue";
 import Sales from "@/pages/dashboard/Sales.vue";
 import Settings from "@/pages/dashboard/settings/Settings.vue";
+import Shipment from "@/pages/dashboard/Shipment.vue";
 import Subscription from "@/pages/dashboard/Subscription.vue";
 import SubscriptionPayment from "@/pages/dashboard/SubscriptionPayment.vue";
 import Sustainability from "@/pages/dashboard/Sustainability.vue";
 import Tickets from "@/pages/dashboard/Tickets.vue";
 import UpdateShipping from "@/pages/dashboard/UpdateShipping.vue";
 import Wallet from "@/pages/dashboard/Wallet.vue";
+import Warehouse from "@/pages/dashboard/warehouse.vue";
 import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -227,9 +240,69 @@ const routes = [
     component: Loan,
   },
   {
+    path: "/dashboard/cropquality",
+    name: "Cropquality",
+    component: CropQuality,
+  },
+  {
     path: "/dashboard/croptraceability",
     name: "Croptraceability",
     component: CropTraceability,
+  },
+  {
+    path: "/dashboard/Inputinformation",
+    name: "Inputinformation",
+    component: Inputinformation,
+  },
+  {
+    path: "/dashboard/warehouse",
+    name: "Warehouse",
+    component: Warehouse,
+  },
+  {
+    path: "/dashboard/shipment",
+    name: "Shipment",
+    component: Shipment,
+  },
+  {
+    path: "/dashboard/recommendation",
+    name: "Recommendation",
+    component: Recommendation,
+  },
+  {
+    path: "/dashboard/care",
+    name: "Care",
+    component: Care,
+  },
+  {
+    path: "/dashboard/plant",
+    name: "Plant",
+    component: Plant,
+  },
+  {
+    path: "/dashboard/foodsafety",
+    name: "Foodsafety",
+    component: Foodsafety,
+  },
+  {
+    path: "/dashboard/capital",
+    name: "Capital",
+    component: Capital,
+  },
+  {
+    path: "/dashboard/collateral",
+    name: "Collateral",
+    component: Collateral,
+  },
+  {
+    path: "/dashboard/conditions",
+    name: "Conditions",
+    component: Conditions,
+  },
+  {
+    path: "/dashboard/capacity",
+    name: "Capacity",
+    component: Capacity,
   },
   {
     path: "/dashboard/sustainability",
@@ -397,6 +470,11 @@ const routes = [
     path: "/dashboard/loanhistory",
     name: "LoanHistory",
     component: LoanHistory,
+  },
+  {
+    path: "/dashboard/character",
+    name: "Character",
+    component: Character,
   },
 ];
 
