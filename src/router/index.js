@@ -75,6 +75,7 @@ import AddCropSale from "@/pages/dashboard/marketPlace/AddCropSale.vue";
 import CropAuction from "@/pages/dashboard/marketPlace/CropAuction.vue";
 import AddCropInput from "@/pages/dashboard/marketPlace/AddCropInput.vue";
 import Kyf from "@/pages/dashboard/kyf/Kyf.vue";
+import Character from "@/pages/dashboard/kyf/Character.vue";
 
 const routes = [
   {
@@ -463,6 +464,11 @@ const routes = [
     path: "/dashboard/each-loan",
     name: "EachLoan",
     component: EachLoan,
+  },
+  {
+    path: "/dashboard/character",
+    name: "Character",
+    component: Character,
   },
 ];
 
