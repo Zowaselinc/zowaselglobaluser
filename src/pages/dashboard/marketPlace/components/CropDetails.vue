@@ -6,18 +6,6 @@
         <div class="crop_details">Crop Details</div>
         <div class="w-100 mb-3">
           <label for="exampleInputEmail1" class="form-label mb-0"
-            >Crop Title
-          </label>
-          <span id="required">*</span>
-          <input
-            v-model="cropData.title"
-            type="text"
-            class="form-control"
-            required
-          />
-        </div>
-        <div class="w-100 mb-3">
-          <label for="exampleInputEmail1" class="form-label mb-0"
             >Crop Category</label
           >
           <span id="required">*</span>
@@ -193,7 +181,6 @@ export default {
       categories: [],
       subCategories: [],
       cropData: {
-        title: "",
         category_id: "",
         subcategory_id: "",
         color: "",
@@ -205,7 +192,7 @@ export default {
         description: "",
       },
       colors: ["red", "green", "blue"],
-      currencies: ["USD", "EUR", "GBP", "NGN"],
+      currencies: ["NGN"],
     };
   },
   computed: {

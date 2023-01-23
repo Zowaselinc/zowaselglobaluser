@@ -10,7 +10,9 @@
             </div> -->
         <div v-if="product" class="topic">
           <div class="left">
-            <h1>{{ product.title }}</h1>
+            <h1>
+              {{ product.subcategory.name }} - {{ product.specification.color }}
+            </h1>
             <p class="price">
               {{ product.currency }}{{ product.specification.price }}/{{
                 product.specification.test_weight.toUpperCase()

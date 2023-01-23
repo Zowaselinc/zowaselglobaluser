@@ -20,7 +20,7 @@
             $router.push({ name: 'CropDetails', params: { id: crop.id } })
           "
         >
-          <p>{{ crop.title }}</p>
+          <p>{{ crop.subcategory.name }} - {{ crop.specification.color }}</p>
           <p>
             <b>{{ crop.category.name }}</b>
           </p>
@@ -42,7 +42,7 @@
             $router.push({ name: 'CropDetails', params: { id: crop.id } })
           "
         >
-          <p>{{ crop.title }}</p>
+          <p>{{ crop.subcategory.name }} - {{ crop.specification.color }}</p>
           <p>
             <b>{{ crop.category.name }}</b>
           </p>

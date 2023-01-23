@@ -20,7 +20,7 @@
             $router.push({ name: 'CropDetails', params: { id: crop.id } })
           "
         >
-          <p>{{ crop.title }}</p>
+          <p>{{ crop.subcategory.name }} - {{ crop.specification.color }}</p>
           <p>
             <b>{{ crop.category.name }}</b>
           </p>
@@ -149,6 +149,7 @@ export default {
     },
     getCropsWanted() {
       MarketplaceService.getCropsWanted((response) => {
+        console.log(response.data);
         this.wanted = response.data;
       });
     },
