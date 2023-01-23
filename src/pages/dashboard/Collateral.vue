@@ -2,43 +2,81 @@
   <DefaultNav>
     <div class="big-container">
       <div class="headings">
-        <h2>Crop Traceability</h2>
+        <h2>Collateral</h2>
         <div class="right-btns">
-          <a href="" class="green-link">Next</a>
+          <a href="" class="green-link">Save</a>
         </div>
-      </div>
-      <div class="d-flex text-center small-font">
-        <div class="col yellow-link">Crop Information</div>
-        <span class="pt-2 mx-1">-</span>
-        <div class="col form-control small-font">Crop quality</div>
-        <span class="pt-2 mx-1">-</span>
-        <div class="col form-control small-font">Input Information</div>
-        <span class="pt-2 mx-1">-</span>
-        <div class="col form-control small-font">Warehouse</div>
-        <span class="pt-2 mx-1">-</span>
-        <div class="col form-control small-font">Shipment</div>
-        <span class="pt-2 mx-1">-</span>
-        <div class="col form-control small-font">Recommendation</div>
       </div>
 
-      <form class="mt-3">
-        <div>
-          <label for="">Crop type</label>
-          <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
+      <form class="mt-4">
+        <div class="mb-4">
+          <label for="">How many farmlands do you have? </label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter your answer"
+          />
         </div>
-        <div>
-          <label for="">Sourcing Location</label>
-          <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
+        <div class="row mb-4">
+          <div class="col">
+            <label for=""
+              >Are you the owner of your farms or a caretaker?</label
+            >
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for=""
+              >If Caretaker, what is the name of the farm owner?</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter your answer"
+            />
+          </div>
         </div>
-        <div>
-          <label for="">
-            Crop origin (location where crop is cultivated & harvested)
+        <div class="mb-4">
+          <label for="">Farm owner's Phone Number </label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter your answer"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="">What is your relationship with them? </label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter your answer"
+          />
+        </div>
+        <div class="row mb-4">
+          <div class="col">
+            <label for=""
+              >If Inherited, from whom did you inherit the farmland?</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter your answer"
+            />
+          </div>
+          <div class="col">
+            <label for="">What is the size of your farm(s)?</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter your answer"
+            />
+          </div>
+        </div>
+        <div class="mb-4">
+          <label for=""
+            >Where is your farm(s) located? (Take coordinates of farm)
           </label>
           <input
             type="text"
@@ -46,64 +84,32 @@
             placeholder="Enter your answer"
           />
         </div>
-        <div class="row">
-          <div class="col">
-            <label for="">Crop Quality</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="col">
-            <label for="">Crop Variety</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <label for=""> Number of female farmers to men </label>
+        <div class="mb-4">
+          <label for="">Farm Location/Address </label>
           <input
             type="text"
             class="form-control"
             placeholder="Enter your answer"
           />
         </div>
-        <div class="row">
-          <div class="col">
-            <label for="">Corporative name</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter your answer"
-            />
-          </div>
-          <div class="col">
-            <label for="">Number of farmer group</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter your answer"
-            />
-          </div>
+        <div class="mb-4">
+          <label for=""
+            >Apart from crop cultivation, do you keep animals?
+          </label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
         </div>
-        <div class="row">
-          <div class="col">
-            <label for="">Farmer name</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter your answer"
-            />
-          </div>
-          <div class="col">
-            <label for="">Gender</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
+        <div class="mb-4">
+          <label for="">
+            If Yes, what do your animals eat and where do they live?
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter your answer"
+          />
         </div>
       </form>
     </div>
@@ -121,10 +127,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-form {
-  overflow-y: auto;
-  overflow-x: hidden;
-}
 .big-container {
   width: 100%;
   height: auto;
@@ -132,6 +134,7 @@ form {
   display: flex;
   flex-direction: column;
   padding: 2% 5% 2% 3%;
+  overflow-y: scroll;
   h2 {
     font-family: "Poppins";
     font-style: normal;
@@ -156,7 +159,6 @@ form {
 }
 
 /* The slider */
-
 .sub-history {
   margin-top: 50px;
   width: 100%;
@@ -191,7 +193,7 @@ form {
     justify-content: center;
     align-items: center;
     color: white;
-    width: 180px;
+    width: 145px;
     height: 40px;
     background: #05b050;
     border-radius: 5px;
@@ -200,6 +202,18 @@ form {
     letter-spacing: 0.02em;
   }
 }
+.green-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 145px;
+  height: 40px;
+  background: #05b050;
+  border-radius: 5px;
+  letter-spacing: 0.02em;
+}
 .yellow-link {
   display: flex;
   flex-direction: column;
@@ -207,11 +221,14 @@ form {
   align-items: center;
   display: flex;
   color: white;
-  width: 180px;
+  width: 145px;
   height: 40px;
   background: #fab900 !important;
   border-radius: 5px;
   letter-spacing: 0.02em;
+}
+a {
+  text-decoration: none;
 }
 .small-font {
   font-size: 11px !important;

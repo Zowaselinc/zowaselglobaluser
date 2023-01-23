@@ -4,32 +4,56 @@
       <div class="headings">
         <h2>Sustainability</h2>
         <div class="right-btns">
-          <a href="/dashboard/plant" class="green-link">Next</a>
+          <a href="" class="green-link">Save</a>
         </div>
       </div>
       <div class="d-flex text-center small-font">
-        <a href="sustainability" class="col green-link">Living</a>
+        <a href="/dashboard/sustainability" class="col green-link">Living</a>
         <span class="pt-2 mx-3">-</span>
-        <div class="col yellow-link">Care</div>
+        <a href="/dashboard/care" class="col green-link">Care</a>
         <span class="pt-2 mx-3">-</span>
-        <div class="col form-control small-font">Plant</div>
+        <a href="plant" class="col green-link">Plant</a>
         <span class="pt-2 mx-3">-</span>
-        <div class="col form-control small-font">Food safety and quality</div>
+        <div class="col yellow-link">Food safety and quality</div>
       </div>
 
       <form class="mt-4">
-        <div>
-          <label for="">Where is the health centare located?</label>
-          <textarea
-            class="form-control"
-            rows="6"
-            placeholder="Enter text"
-          ></textarea>
+        <div class="mt-4">
+          <label for="">Do you ferment your Cocoa Beans?</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
         </div>
         <div class="mt-4">
-          <label for=""
-            >How many healthcare centres are in the community?</label
-          >
+          <label for="">If yes, how many days? </label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter your answer"
+          />
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <label for="">If No, why? </label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter your answer"
+            />
+          </div>
+          <div class="col">
+            <label for=""
+              >What quantity of broken cocoa beans do you get after harvest?
+            </label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+        </div>
+        <div class="mt-4">
+          <label for=""> What do you do with them?</label>
           <select class="form-select" aria-label="Default select example">
             <option selected>Choose...</option>
             <option>...</option>
@@ -38,40 +62,32 @@
         <div class="row mt-4">
           <div class="col">
             <label for=""
-              >What is the distance from your house to the community health
-              center?
+              >What quanity of unripe/rotten oil palm FFB do you get after
+              haverst?
             </label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter your answer"
-            />
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
           </div>
           <div class="col">
-            <label for="">Are they functional?</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter your answer"
-            />
+            <label for="">What do you do with them?</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
           </div>
         </div>
-        <div class="row mt-4">
+        <div class="row mb-3">
           <div class="col">
-            <label for=""
-              >Can you afford medical care for members of your household?
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter your answer"
-            />
+            <label for="">Where do you store your cocoa after harvest? </label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
           </div>
           <div class="col">
-            <label for=""
-              >What is the distance from your farm to the health center?
-              Specify</label
-            >
+            <label for="">Where do you store your FFB after harvest?</label>
             <select class="form-select" aria-label="Default select example">
               <option selected>Choose...</option>
               <option>...</option>
@@ -80,7 +96,8 @@
         </div>
         <div class="mt-4">
           <label for="">
-            In the event of Injuries at the farm, what do you do?
+            What pre-emergence and post emergence herbicide do you use in your
+            farmland? Name:
           </label>
           <textarea
             class="form-control"
@@ -88,68 +105,19 @@
             placeholder="Enter text"
           ></textarea>
         </div>
-        <div class="row mb-3">
-          <div class="col">
-            <label for="">Do you have access to a First aid box? </label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="col">
-            <label for="">Are they functional?</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-        </div>
         <div class="mt-4">
           <label for=""
-            >When was the last time you checked your blood pressure and blood
-            sugar level?</label
+            >Where do you store your fertilizers, pesticides, fungicides and
+            herbicides?</label
           >
           <select class="form-select" aria-label="Default select example">
             <option selected>Choose...</option>
             <option>...</option>
           </select>
         </div>
-        <div class="mt-4">
-          <label for=""
-            >How many children from 5-18years in your household are in
-            school?</label
-          >
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div class="mt-4">
-          <label for="">What level of education are they?</label>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
         <div class="row mb-3">
           <div class="col">
-            <label for="">How many schools are there in the community?</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="col">
-            <label for="">Are they functional?</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <label for="">What is your highest level of education </label>
+            <label for="">Where do you buy your agro chemicals from?</label>
             <select class="form-select" aria-label="Default select example">
               <option selected>Choose...</option>
               <option>...</option>
@@ -157,8 +125,7 @@
           </div>
           <div class="col">
             <label for=""
-              >If studying presently, are you studying full-time or
-              part-time?</label
+              >What do you use to harvest your Oil Palm bunches?</label
             >
             <select class="form-select" aria-label="Default select example">
               <option selected>Choose...</option>
@@ -166,20 +133,25 @@
             </select>
           </div>
         </div>
-        <div class="mt-4">
-          <label for="">Where did you study?</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Enter your answer"
-          />
-        </div>
-        <div class="mt-4">
-          <label for="">Do you have alternative sources of income?</label>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
+        <div class="row mb-3">
+          <div class="col">
+            <label for=""
+              >What do you wear when applying agro chemicals?
+            </label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for=""
+              >How do you dispose off the chemical containers?</label
+            >
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
         </div>
       </form>
     </div>

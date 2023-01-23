@@ -106,7 +106,7 @@
         </div>
         <div class="mt-4">
           <label for="">Estimated time to travel to delivery location </label>
-          <select id="inputState" class="form-control">
+          <select class="form-select" aria-label="Default select example">
             <option selected>Choose...</option>
             <option>...</option>
           </select>
@@ -134,7 +134,7 @@
             >Estimated number of Police, Soldiers, Customs, VIO, NDLEA, and FRSC
             checkpoints encountered
           </label>
-          <select id="inputState" class="form-control">
+          <select class="form-select" aria-label="Default select example">
             <option selected>Choose...</option>
             <option>...</option>
           </select>
@@ -186,7 +186,7 @@
           </div>
           <div class="col">
             <label for="">Quality check</label>
-            <select id="inputState" class="form-control">
+            <select class="form-select" aria-label="Default select example">
               <option selected>Choose...</option>
               <option>...</option>
             </select>

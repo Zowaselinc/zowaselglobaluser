@@ -76,6 +76,7 @@
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
 import Alert from "@/utilities/alert";
+import MarketplaceService from "@/services/marketplace";
 
 export default {
   name: "CardPayment",

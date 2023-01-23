@@ -42,14 +42,22 @@ import Confirm from "@/pages/dashboard/marketPlace/checkout/Confirm.vue";
 import PaymentsConfirmed from "@/pages/dashboard/marketPlace/checkout/PaymentsConfirmed.vue";
 import Invoice from "@/pages/dashboard/Invoice.vue";
 import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
-// import EachLoan from "@/pages/dashboard/EachLoan.vue";
 import Loan from "@/pages/dashboard/Loan.vue";
 import CropTraceability from "@/pages/dashboard/Croptraceability.vue";
 import CropQuality from "@/pages/dashboard/Cropquality.vue";
 import Inputinformation from "@/pages/dashboard/Inputinformation.vue";
 import Warehouse from "@/pages/dashboard/warehouse.vue";
+import Shipment from "@/pages/dashboard/Shipment.vue";
+import Recommendation from "@/pages/dashboard/Recommendation.vue";
 import Sustainability from "@/pages/dashboard/Sustainability.vue";
 import Care from "@/pages/dashboard/Care.vue";
+import Plant from "@/pages/dashboard/Plant.vue";
+import Foodsafety from "@/pages/dashboard/Foodsafety.vue";
+import Capital from "@/pages/dashboard/Capital.vue";
+import Collateral from "@/pages/dashboard/Collateral.vue";
+import Conditions from "@/pages/dashboard/Conditions.vue";
+import Capacity from "@/pages/dashboard/kyf/Capacity.vue";
+import EachLoan from "@/pages/dashboard/EachLoan.vue";
 import Tickets from "@/pages/dashboard/Tickets.vue";
 import NewTicket from "@/pages/dashboard/NewTicket.vue";
 import CropsSale from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
@@ -67,8 +75,7 @@ import AddCropSale from "@/pages/dashboard/marketPlace/AddCropSale.vue";
 import CropAuction from "@/pages/dashboard/marketPlace/CropAuction.vue";
 import AddCropInput from "@/pages/dashboard/marketPlace/AddCropInput.vue";
 import Kyf from "@/pages/dashboard/kyf/Kyf.vue";
-import Character from "@/pages/dashboard/kyf/Character.vue";
-// glpat-PUYeho9Asr1wpN9nofVc
+
 const routes = [
   {
     path: "/:type/register",
@@ -227,7 +234,7 @@ const routes = [
     component: EachInvoice,
   },
   {
-    path: "/dashboard/loan",
+    path: "/dashboard/loans",
     name: "Loan",
     component: Loan,
   },
@@ -252,14 +259,54 @@ const routes = [
     component: Warehouse,
   },
   {
-    path: "/dashboard/sustainability",
-    name: "sustainability",
-    component: Sustainability,
+    path: "/dashboard/shipment",
+    name: "Shipment",
+    component: Shipment,
+  },
+  {
+    path: "/dashboard/recommendation",
+    name: "Recommendation",
+    component: Recommendation,
   },
   {
     path: "/dashboard/care",
     name: "Care",
     component: Care,
+  },
+  {
+    path: "/dashboard/plant",
+    name: "Plant",
+    component: Plant,
+  },
+  {
+    path: "/dashboard/foodsafety",
+    name: "Foodsafety",
+    component: Foodsafety,
+  },
+  {
+    path: "/dashboard/capital",
+    name: "Capital",
+    component: Capital,
+  },
+  {
+    path: "/dashboard/collateral",
+    name: "Collateral",
+    component: Collateral,
+  },
+  {
+    path: "/dashboard/conditions",
+    name: "Conditions",
+    component: Conditions,
+  },
+  {
+    path: "/dashboard/capacity",
+    name: "Capacity",
+    component: Capacity,
+  },
+  {
+    path: "/dashboard/sustainability",
+    name: "sustainability",
+    component: Sustainability,
   },
   {
     path: "/dashboard/marketplace/:market",
@@ -413,19 +460,9 @@ const routes = [
     component: Kyf,
   },
   {
-    path: "/dashboard/kyf/edit",
-    name: "EditKyf",
-    component: Kyf,
-  },
-  // {
-  //   path: "/dashboard/each-loan",
-  //   name: "EachLoan",
-  //   component: EachLoan,
-  // },
-  {
-    path: "/dashboard/character",
-    name: "Character",
-    component: Character,
+    path: "/dashboard/each-loan",
+    name: "EachLoan",
+    component: EachLoan,
   },
 ];
 

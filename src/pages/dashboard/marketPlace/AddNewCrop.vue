@@ -4,38 +4,38 @@
       <div class="big-content">
         <!-- header -->
         <h1>New Crop Wanted</h1>
-        <!-- Crop Details Components -->
-        <CropDetails v-if="step == 1" ref="CD" />
-        <QualityProduct v-if="step == 2" ref="QP" />
-        <CropSpecification v-if="step == 3" ref="CS" />
-        <div id="btn-group" class="btn-group gap-3 my-4">
-          <button
-            v-if="step != 1"
-            type="button"
-            class="btn btn-primary active"
-            aria-current="page"
-            @click="previouStep()"
-          >
-            Back
-          </button>
-          <button
-            v-if="step != 3"
-            :id="['next_btn']"
-            type="button"
-            :class="['btn', 'btn-primary']"
-            @click="changeTab()"
-          >
-            Next
-          </button>
-          <button
-            v-if="step == 3"
-            type="button"
-            :class="['btn', 'btn-primary']"
-            @click="saveData()"
-          >
-            save
-          </button>
-        </div>
+        <form action="" @submit.prevent="step == 3 ? saveData() : changeTab()">
+          <!-- Crop Details Components -->
+          <CropDetails v-if="step == 1" ref="CD" />
+          <QualityProduct v-if="step == 2" ref="QP" />
+          <CropSpecification v-if="step == 3" ref="CS" />
+          <div id="btn-group" class="btn-group gap-3 my-4">
+            <button
+              v-if="step != 1"
+              type="button"
+              class="btn btn-primary active"
+              aria-current="page"
+              @click="previouStep()"
+            >
+              Back
+            </button>
+            <button
+              v-if="step != 3"
+              :id="['next_btn']"
+              :class="['btn', 'btn-primary']"
+              type="submit"
+            >
+              Next
+            </button>
+            <button
+              v-if="step == 3"
+              type="submit"
+              :class="['btn', 'btn-primary']"
+            >
+              save
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </DefaultNav>
@@ -46,8 +46,9 @@ import DefaultNav from "@/layouts/DefaultNav.vue";
 import CropDetails from "@/pages/dashboard/marketPlace/components/CropDetails.vue";
 import QualityProduct from "@/pages/dashboard/marketPlace/components/QualityProduct.vue";
 import CropSpecification from "@/pages/dashboard/marketPlace/components/CropSpecification.vue";
-import MarketPlaceService from "@/services/marketplace";
 import Alert from "@/utilities/alert";
+// importing the marketplace service
+import MarketPlaceService from "@/services/marketplace";
 
 export default {
   name: "AddNewcrop",

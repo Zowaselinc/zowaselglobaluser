@@ -2,61 +2,25 @@
   <DefaultNav>
     <div class="big-container">
       <div class="headings">
-        <h2>Crop Traceability</h2>
+        <h2>Condtions</h2>
         <div class="right-btns">
-          <a href="/dashboard/shipment" class="green-link">Next</a>
+          <a href="" class="green-link">Save</a>
         </div>
-      </div>
-      <div class="d-flex text-center small-font">
-        <a href="/dashboard/croptraceability" class="col green-link">
-          Crop Information
-        </a>
-        <span class="pt-2 mx-1">-</span>
-        <a href="/dashboard/cropquality" class="col green-link">Crop quality</a>
-        <span class="pt-2 mx-1">-</span>
-        <a href="/dashboard/inputinformation" class="col green-link"
-          >Input Information</a
-        >
-        <span class="pt-2 mx-1">-</span>
-        <div class="col yellow-link">Warehouse</div>
-        <span class="pt-2 mx-1">-</span>
-        <div class="col form-control small-font">Shipment</div>
-        <span class="pt-2 mx-1">-</span>
-        <div class="col form-control small-font">Recommendation</div>
       </div>
 
-      <form class="mt-3">
-        <div>
-          <label for="">Fertilizers</label>
-          <select id="inputState" class="form-control">
+      <form class="mb-4">
+        <div class="mt-4">
+          <label for="">
+            If Yes, what do your animals eat and where do they live?
+          </label>
+          <select class="form-select" aria-label="Default select example">
             <option selected>Choose...</option>
             <option>...</option>
           </select>
         </div>
-        <div>
-          <label for="">Herbicides</label>
-          <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div>
-          <label for="">Fungicides</label>
-          <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div>
-          <label for="">Insecticides</label>
-          <select id="inputState" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
-        </div>
-        <div>
-          <label for="">Seeds</label>
-          <select id="inputState" class="form-control">
+        <div class="mt-4">
+          <label for=""> Zowasel Marketplace registered seller </label>
+          <select class="form-select" aria-label="Default select example">
             <option selected>Choose...</option>
             <option>...</option>
           </select>
@@ -69,7 +33,7 @@
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
 export default {
-  name: "Croptraceability",
+  name: "Conditions",
   components: {
     DefaultNav,
   },
@@ -77,10 +41,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-form {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
 .big-container {
   width: 100%;
   height: auto;
@@ -88,6 +48,7 @@ form {
   display: flex;
   flex-direction: column;
   padding: 2% 5% 2% 3%;
+  overflow-y: scroll;
   h2 {
     font-family: "Poppins";
     font-style: normal;

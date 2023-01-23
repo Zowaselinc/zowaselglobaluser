@@ -81,17 +81,14 @@
         <!-- drop menu -->
         <div class="drop-menu marketplace-menu">
           <template v-if="userData.user.type == 'corporate'">
-            <div
-              class="active-item"
-              @click="changeDir('/dashboard/marketplace/cropsale')"
-            >
-              Crops for Sale
+            <div class="active-item" @click="changeDir('/marketplace/newcrop')">
+              Add New Crop
             </div>
             <div
               class="active-item"
-              @click="changeDir('/dashboard/marketplace/cropauction')"
+              @click="changeDir('/marketplace/addinput')"
             >
-              Crops for auction
+              Add New Input
             </div>
           </template>
           <template v-if="userData.user.type == 'merchant'">
@@ -106,6 +103,18 @@
               @click="changeDir('/dashboard/marketplace/inputs')"
             >
               Input Market
+            </div>
+            <div
+              class="active-item"
+              @click="changeDir('/dashboard/marketplace/cropsale')"
+            >
+              Crops for Sale
+            </div>
+            <div
+              class="active-item"
+              @click="changeDir('/dashboard/marketplace/cropauction')"
+            >
+              Crops for auction
             </div>
           </template>
         </div>
@@ -170,16 +179,30 @@
           >
             Score Analysis
           </div> -->
-
+          <div class="active-menu" @click="changeDir(' /dashboard/character')">
+            Character
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/capital')">
+            Capital
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/collateral')">
+            Collateral
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/capacity')">
+            Capacity
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/conditions')">
+            Conditions
+          </div>
           <div
             class="active-menu"
-            @click="changeDir(' /dashboard/croptraceability')"
+            @click="changeDir('/dashboard/croptraceability')"
           >
             Crop Traceability
           </div>
           <div
             class="active-menu"
-            @click="changeDir(' /dashboard/sustainability')"
+            @click="changeDir('/dashboard/sustainability')"
           >
             Sustainability
           </div>
@@ -314,9 +337,12 @@
             alt="Arrow-Symbol"
           />
         </div>
-
         <!-- drop menu -->
         <div class="drop-menu data-menu">
+          <div class="active-menu" @click="changeDir('/dashboard/kyf')">
+            Kyf
+          </div>
+
           <!-- <div class="active-menu">Farmer Data</div>
           <div class="active-menu">Market report</div>
           <div class="active-menu">Crop data stats</div>
@@ -348,13 +374,57 @@
         </div>
       </a>
 
-      <a href="/dashboard/marketplace/myproducts" class="nav-item">
-        <div class="ripple">
+      <a href="javascript:void(0)" class="nav-item">
+        <div
+          :class="[
+            'ripple',
+            'accordion-header',
+            isRouteActive('/dashboard/marketplace'),
+          ]"
+        >
           <img
             class="img-fluid"
             src="@/assets/images/vectors/product.svg"
             alt="info"
-          /><span>My Products</span>
+          /><span>My Product</span>
+          <img
+            class="arrow-symbol carret-down"
+            src="@/assets/images/vectors/arrowSymbol.svg"
+            alt="Arrow-Symbol"
+          />
+          <img
+            class="arrow-symbol carretUp"
+            src="@/assets/images/vectors/arrowupsymbol.svg"
+            alt="Arrow-Symbol"
+          />
+        </div>
+        <!-- drop menu -->
+        <div class="drop-menu marketplace-menu">
+          <template v-if="userData.user.type == 'corporate'">
+            <div
+              class="active-item"
+              @click="changeDir('/dashboard/marketplace/myproducts')"
+            >
+              My Product
+            </div>
+            <div class="active-item" @click="changeDir('/marketplace/newcrop')">
+              Add New Crop
+            </div>
+            <div
+              class="active-item"
+              @click="changeDir('/marketplace/addinput')"
+            >
+              Add New Input
+            </div>
+          </template>
+          <template v-if="userData.user.type == 'merchant'">
+            <div
+              class="active-item"
+              @click="changeDir('/dashboard/marketplace/myproducts')"
+            >
+              My Product
+            </div>
+          </template>
         </div>
       </a>
       <a href="/dashboard/sales" class="nav-item">
@@ -407,6 +477,7 @@
           /><span>My account</span>
         </div>
       </a>
+
       <a href="javascript:void(0)" class="nav-item" @click="logOut()">
         <div class="ripple active-menu">
           <img
@@ -421,7 +492,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "SideBar",
   data() {
@@ -516,7 +586,6 @@ export default {
     }
   }
 }
-
 // toggling the active menus by changing background color
 .active-menu {
   &:active {
