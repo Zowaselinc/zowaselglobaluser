@@ -1,4 +1,4 @@
 export default {
-  BASE_URL: "https://e978-102-90-49-238.eu.ngrok.io/api/",
+  BASE_URL: "https://6efa-102-91-4-75.eu.ngrok.io/api/",
   MAIN_URL: "http://localhost:8080/",
 };

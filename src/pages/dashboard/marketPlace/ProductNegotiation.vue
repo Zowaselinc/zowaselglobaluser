@@ -77,6 +77,7 @@
           :recepient="product.user"
           :title="product.user.first_name + ' ' + product.user.last_name"
           :messages="negotiations"
+          :product="product"
           :load-messages="getNegotiation"
           :on-send-message="sendNegotiationMessage"
           :on-send-offer="sendNegotiationOffer"

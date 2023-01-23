@@ -8,6 +8,7 @@
           <label for="formGroupExampleInput" class="form-label mb-0"
             >Crop quantity</label
           >
+          <span id="required">*</span>
           <input
             id="formGroupExampleInput"
             v-model="newCropData.qty"
@@ -21,6 +22,7 @@
           <label for="formGroupExampleInput" class="form-label mb-0"
             >Amount/offer</label
           >
+          <span id="required">*</span>
           <input
             id="formGroupExampleInput"
             v-model="newCropData.price"
@@ -36,6 +38,7 @@
           <label for="formGroupExampleInput" class="form-label mb-0"
             >Delivery window</label
           >
+          <span id="required">*</span>
           <div class="form-row">
             <div class="col">
               <input
@@ -64,6 +67,7 @@
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Country</label
           >
+          <span id="required">*</span>
           <select
             v-model="newCropData.country"
             class="form-select"
@@ -81,6 +85,7 @@
         </div>
         <div class="w-100 mb-3">
           <label for="exampleInputEmail1" class="form-label mb-0">State</label>
+          <span id="required">*</span>
           <select
             v-model="newCropData.state"
             class="form-select"
@@ -115,12 +120,14 @@
                 @change="uploadFile"
                 required
               />
-              <span
+              <div
                 id="file_name"
-                @click="openFileDialog()"
                 v-if="fileName == ''"
-                >click to browse</span
+                @click="openFileDialog()"
               >
+                <span>click to browse</span>
+                <span id="required">*</span>
+              </div>
               <span v-else>{{ fileName }}</span>
             </div>
           </div>
@@ -129,6 +136,7 @@
           <label for="formGroupExampleInput" class="form-label mb-0"
             >Enter video URL</label
           >
+          <span id="required">*</span>
           <input
             id="formGroupExampleInput"
             v-model="newCropData.video"
@@ -142,6 +150,7 @@
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Zip code/postal</label
           >
+          <span id="required">*</span>
           <input
             id="formGroupExampleInput"
             v-model="newCropData.zip"
@@ -153,10 +162,11 @@
         </div>
         <div class="w-100 mb-3">
           <label for="formGroupExampleInput" class="form-label mb-0"
-            >Delivery Address</label
+            >Warehouse Address</label
           >
+          <span id="required">*</span>
           <input
-            v-model="newCropData.address"
+            v-model="newCropData.warehouse_address"
             type="text"
             class="form-control"
             placeholder=""
@@ -179,7 +189,7 @@ export default {
         quantity: "",
         price: "",
         delivery_window: { from: "", to: "" },
-        address: "",
+        warehouse_address: "",
         state: "",
         files: "",
         video: "",
@@ -324,7 +334,12 @@ div.vertical-line {
     }
   }
 }
-
+#required {
+  color: red;
+  font-family: "Maven Pro";
+  font-weight: bolder;
+  font-size: 20px;
+}
 .zone {
   height: 150px;
   font-size: 12px;
