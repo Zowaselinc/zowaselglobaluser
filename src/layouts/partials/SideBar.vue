@@ -39,7 +39,7 @@
           <span>Wallet</span>
         </div>
       </a>
-      <a href="/dashboard/messages" class="nav-item">
+      <!-- <a href="/dashboard/messages" class="nav-item">
         <div
           :class="[
             'ripple',
@@ -53,7 +53,7 @@
             alt="ChatText"
           /><span>Message</span>
         </div>
-      </a>
+      </a> -->
       <a href="javascript:void(0)" class="nav-item">
         <div
           :class="[
