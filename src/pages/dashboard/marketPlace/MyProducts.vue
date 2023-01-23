@@ -14,7 +14,7 @@
             >
           </div>
         </div>
-        <div v-for="product in products" :key="product.id" class="contents">
+        <!-- <div v-for="product in products" :key="product.id" class="contents">
           <a href="#" class="each-product">
             <div>
               <h3>{{ product.rows.title }}</h3>
@@ -33,44 +33,45 @@
               </div>
             </div>
           </a>
+        </div> -->
+        <div class="contents">
+          <a href="#" class="each-product">
+            <div class="top-address">
+              <h3>Maize-200-brown</h3>
+              <p>Date: <span>2022-11-16 7:58pm</span></p>
+              <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
+              <p>Status <span>Active</span></p>
+            </div>
+            <div class="main-address">
+              <div class="right">
+                <h4>Amount: <span>NGN2,550</span></h4>
+                <div class="product-btns">
+                  <button class="edit">Edit</button>
+                  <button class="delete">Delete</button>
+                  <button class="view">View</button>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="each-product">
+            <div class="top-address">
+              <h3>Maize-200-brown</h3>
+              <p>Date: <span>2022-11-16 7:58pm</span></p>
+              <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
+              <p>Status <span>Active</span></p>
+            </div>
+            <div class="main-address">
+              <div class="right">
+                <h4>Amount: <span>NGN2,550</span></h4>
+                <div class="product-btns">
+                  <button class="edit">Edit</button>
+                  <button class="delete">Delete</button>
+                  <button class="view">View</button>
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
-
-        <a href="#" class="each-product">
-          <div class="top-address">
-            <h3>Maize-200-brown</h3>
-            <p>Date: <span>2022-11-16 7:58pm</span></p>
-            <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
-            <p>Status <span>Active</span></p>
-          </div>
-          <div class="main-address">
-            <div class="right">
-              <h4>Amount: <span>NGN2,550</span></h4>
-              <div class="product-btns">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
-                <button class="view">View</button>
-              </div>
-            </div>
-          </div>
-        </a>
-        <a href="#" class="each-product">
-          <div class="top-address">
-            <h3>Maize-200-brown</h3>
-            <p>Date: <span>2022-11-16 7:58pm</span></p>
-            <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
-            <p>Status <span>Active</span></p>
-          </div>
-          <div class="main-address">
-            <div class="right">
-              <h4>Amount: <span>NGN2,550</span></h4>
-              <div class="product-btns">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
-                <button class="view">View</button>
-              </div>
-            </div>
-          </div>
-        </a>
       </div>
     </div>
   </DefaultNav>
