@@ -1,68 +1,68 @@
-import { createWebHistory, createRouter } from "vue-router";
-import SignUp from "@/pages/auth/SignUp.vue";
-import CompanyDetails from "@/pages/auth/CompanyDetails.vue";
-import VerifyAccount from "@/pages/auth/VerifyAccount.vue";
-import CreatePassword from "@/pages/auth/CreatePassword.vue";
-import Welcome from "@/pages/auth/Welcome.vue";
-import VerifyEmail from "@/pages/auth/VerifyEmail.vue";
-import WelcomeBack from "@/pages/auth/WelcomeBack.vue";
-import ForgotPassword from "@/pages/auth/ForgotPassword.vue";
+import AgentType from "@/pages/auth/AgentType.vue";
 import CheckEmail from "@/pages/auth/CheckEmail.vue";
+import CompanyDetails from "@/pages/auth/CompanyDetails.vue";
+import CreatePassword from "@/pages/auth/CreatePassword.vue";
+import ForgotPassword from "@/pages/auth/ForgotPassword.vue";
 import ResetPassword from "@/pages/auth/ResetPassword.vue";
 import ResetSuccess from "@/pages/auth/ResetSuccess.vue";
+import SignUp from "@/pages/auth/SignUp.vue";
 import UserType from "@/pages/auth/UserType.vue";
-import AgentType from "@/pages/auth/AgentType.vue";
-import DashboardHome from "@/pages/dashboard/DashboardHome.vue";
-import LogisticsDashboard from "@/pages/dashboard/Logistics.vue";
-import FinanceDashboard from "@/pages/dashboard/Finance.vue";
-import DoKyb from "@/pages/dashboard/DoKyb.vue";
+import VerifyAccount from "@/pages/auth/VerifyAccount.vue";
+import VerifyEmail from "@/pages/auth/VerifyEmail.vue";
+import Welcome from "@/pages/auth/Welcome.vue";
+import WelcomeBack from "@/pages/auth/WelcomeBack.vue";
 import AccountSettings from "@/pages/dashboard/AccountSettings.vue";
-import Notifications from "@/pages/dashboard/Notifications.vue";
-import Messages from "@/pages/dashboard/Messages.vue";
-import Subscription from "@/pages/dashboard/Subscription.vue";
-import SubscriptionPayment from "@/pages/dashboard/SubscriptionPayment.vue";
-import RenewalManager from "@/pages/dashboard/RenewalManager.vue";
 import ChanelLog from "@/pages/dashboard/ChanelLog.vue";
-import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
-import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
-import Settings from "@/pages/dashboard/settings/Settings.vue";
-import MarketPlace from "@/pages/dashboard/marketPlace/Market.vue";
-import OrderSummary from "@/pages/dashboard/marketPlace/checkout/OrderSumary.vue";
-import OrderTracking from "@/pages/dashboard/marketPlace/checkout/OrderTracking.vue";
-import Product from "@/pages/dashboard/marketPlace/ProductPage.vue";
-import ProductDescription from "@/pages/dashboard/marketPlace/ProductDescription.vue";
-import CardPayment from "@/pages/dashboard/marketPlace/Cart.vue";
-import CheckOut from "@/pages/dashboard/marketPlace/CheckOut.vue";
-import Transactions from "@/pages/dashboard/marketPlace/Transactions.vue";
-import MyProducts from "@/pages/dashboard/marketPlace/MyProducts.vue";
-import TrackingOrder from "@/pages/dashboard/marketPlace/TrackingOrder.vue";
-import CheckoutPayment from "@/pages/dashboard/marketPlace/PaymentPage.vue";
-import Payments from "@/pages/dashboard/marketPlace/checkout/Payments.vue";
-import Confirm from "@/pages/dashboard/marketPlace/checkout/Confirm.vue";
-import PaymentsConfirmed from "@/pages/dashboard/marketPlace/checkout/PaymentsConfirmed.vue";
-import Invoice from "@/pages/dashboard/Invoice.vue";
-import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
-import Loan from "@/pages/dashboard/Loan.vue";
-import CropTraceability from "@/pages/dashboard/Croptraceability.vue";
-import Sustainability from "@/pages/dashboard/Sustainability.vue";
-import EachLoan from "@/pages/dashboard/EachLoan.vue";
-import Tickets from "@/pages/dashboard/Tickets.vue";
-import NewTicket from "@/pages/dashboard/NewTicket.vue";
-import CropsSale from "@/pages/dashboard/marketPlace/CorporateMarket.vue";
-import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation.vue";
-import Negotiations from "@/pages/dashboard/Negotiations.vue";
-import Wallet from "@/pages/dashboard/Wallet.vue";
-import FundWallet from "@/pages/dashboard/FundWallet.vue";
-import Sales from "@/pages/dashboard/Sales.vue";
-import MyOrders from "@/pages/dashboard/MyOrders.vue";
 import CreditScoring from "@/pages/dashboard/CreditScoring.vue";
 import CreditScoringPointSystem from "@/pages/dashboard/CreditScoringPointSystem.vue";
-import AddNewCrop from "@/pages/dashboard/marketPlace/AddNewCrop.vue";
-import UpdateShipping from "@/pages/dashboard/UpdateShipping.vue";
-import AddCropSale from "@/pages/dashboard/marketPlace/AddCropSale.vue";
-import CropAuction from "@/pages/dashboard/marketPlace/CropAuction.vue";
-import AddCropInput from "@/pages/dashboard/marketPlace/AddCropInput.vue";
+import CreditWallet from "@/pages/dashboard/CreditWallet.vue";
+import CropTraceability from "@/pages/dashboard/Croptraceability.vue";
+import DashboardHome from "@/pages/dashboard/DashboardHome.vue";
+import DoKyb from "@/pages/dashboard/DoKyb.vue";
+import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
+import EachLoan from "@/pages/dashboard/EachLoan.vue";
+import FinanceDashboard from "@/pages/dashboard/Finance.vue";
+import FundWallet from "@/pages/dashboard/FundWallet.vue";
+import Invoice from "@/pages/dashboard/Invoice.vue";
 import Kyf from "@/pages/dashboard/kyf/Kyf.vue";
+import Loan from "@/pages/dashboard/Loan.vue";
+import LoanHistory from "@/pages/dashboard/LoanHistory.vue";
+import LogisticsDashboard from "@/pages/dashboard/Logistics.vue";
+import AddCropInput from "@/pages/dashboard/marketPlace/AddCropInput.vue";
+import AddCropSale from "@/pages/dashboard/marketPlace/AddCropSale.vue";
+import AddNewCrop from "@/pages/dashboard/marketPlace/AddNewCrop.vue";
+import CardPayment from "@/pages/dashboard/marketPlace/Cart.vue";
+import CheckOut from "@/pages/dashboard/marketPlace/CheckOut.vue";
+import Confirm from "@/pages/dashboard/marketPlace/checkout/Confirm.vue";
+import OrderSummary from "@/pages/dashboard/marketPlace/checkout/OrderSumary.vue";
+import OrderTracking from "@/pages/dashboard/marketPlace/checkout/OrderTracking.vue";
+import Payments from "@/pages/dashboard/marketPlace/checkout/Payments.vue";
+import PaymentsConfirmed from "@/pages/dashboard/marketPlace/checkout/PaymentsConfirmed.vue";
+import CropAuction from "@/pages/dashboard/marketPlace/CropAuction.vue";
+import MarketPlace from "@/pages/dashboard/marketPlace/Market.vue";
+import MyProducts from "@/pages/dashboard/marketPlace/MyProducts.vue";
+import CheckoutPayment from "@/pages/dashboard/marketPlace/PaymentPage.vue";
+import ProductDescription from "@/pages/dashboard/marketPlace/ProductDescription.vue";
+import ProductNegotiation from "@/pages/dashboard/marketPlace/ProductNegotiation.vue";
+import Product from "@/pages/dashboard/marketPlace/ProductPage.vue";
+import TrackingOrder from "@/pages/dashboard/marketPlace/TrackingOrder.vue";
+import Transactions from "@/pages/dashboard/marketPlace/Transactions.vue";
+import Messages from "@/pages/dashboard/Messages.vue";
+import MyOrders from "@/pages/dashboard/MyOrders.vue";
+import Negotiations from "@/pages/dashboard/Negotiations.vue";
+import NewTicket from "@/pages/dashboard/NewTicket.vue";
+import Notifications from "@/pages/dashboard/Notifications.vue";
+import RenewalManager from "@/pages/dashboard/RenewalManager.vue";
+import Sales from "@/pages/dashboard/Sales.vue";
+import Settings from "@/pages/dashboard/settings/Settings.vue";
+import Subscription from "@/pages/dashboard/Subscription.vue";
+import SubscriptionPayment from "@/pages/dashboard/SubscriptionPayment.vue";
+import Sustainability from "@/pages/dashboard/Sustainability.vue";
+import Tickets from "@/pages/dashboard/Tickets.vue";
+import UpdateShipping from "@/pages/dashboard/UpdateShipping.vue";
+import Wallet from "@/pages/dashboard/Wallet.vue";
+import Withdrawal from "@/pages/dashboard/Withdrawal.vue";
+import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
@@ -391,6 +391,12 @@ const routes = [
     path: "/dashboard/each-loan",
     name: "EachLoan",
     component: EachLoan,
+  },
+
+  {
+    path: "/dashboard/loanhistory",
+    name: "LoanHistory",
+    component: LoanHistory,
   },
 ];
 

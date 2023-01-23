@@ -3,159 +3,31 @@
     <div class="big-container">
       <div class="headings">
         <div class="left-side">
-          <a href="/dashboard/loans"
+          <a href="/dashboard/each-loan"
             ><img src="@/assets/images/vectors/arrowleft.png" alt=""
           /></a>
-          <h2>Joachim Intergrated farms</h2>
+          <h2>Loan History</h2>
         </div>
-        <div class="right-btns">
-          <a href="" class="green-link">Edit</a>
-        </div>
-      </div>
-      <div class="headings">
-        <p>Credit Score</p>
-        <h3 class="red-text">73%</h3>
       </div>
 
-      <div class="loan-details">
-        <div class="left-details">
-          <div class="each-detail">
-            <h4>First Name</h4>
-            <p>Sarah</p>
-          </div>
-          <div class="each-detail">
-            <h4>Surname</h4>
-            <p>Okon</p>
-          </div>
-          <div class="each-detail">
-            <h4>Middle Name</h4>
-            <p>Oliver</p>
-          </div>
-          <div class="each-detail">
-            <h4>Telephone</h4>
-            <p>08077248826</p>
-          </div>
-          <div class="each-detail">
-            <h4>Age</h4>
-            <p>26</p>
-          </div>
-          <div class="each-detail">
-            <h4>Gender</h4>
-            <p>Female</p>
-          </div>
-          <div class="each-detail">
-            <h4>Language</h4>
-            <p>Yoruba</p>
-          </div>
-          <div class="each-detail">
-            <h4>Marital Status</h4>
-            <p>Single</p>
-          </div>
-          <div class="each-detail">
-            <h4>Bank Name</h4>
-            <p>Access</p>
-          </div>
-          <div class="each-detail">
-            <h4>Account Number</h4>
-            <p>0176654222</p>
-          </div>
-          <div class="each-detail">
-            <h4>BVN</h4>
-            <p>9388393033393</p>
-          </div>
-          <div class="each-detail">
-            <h4>Means of Identification</h4>
-            <p>National ID card</p>
-          </div>
-          <div class="each-detail">
-            <h4>Issue Date</h4>
-            <p>2nd May 2022</p>
-          </div>
-          <div class="each-detail">
-            <h4>Expiry Date</h4>
-            <p>23 Dec 2025</p>
-          </div>
-          <div class="each-detail">
-            <h4>NIN</h4>
-            <p>2233220176654222</p>
-          </div>
-          <div class="each-detail">
-            <h4>Permanent Address</h4>
-            <p>No 29 Goya street Taraba</p>
-          </div>
-          <div class="each-detail">
-            <h4>Nearest Land Mark</h4>
-            <p>Shuna LLC</p>
-          </div>
+      <div class="row date-region">
+        <div class="col">
+          <select class="form-select">
+            <option value="">Loan Type</option>
+            <option></option>
+          </select>
         </div>
-        <div class="right-details">
-          <div class="each-detail">
-            <h4>State of origin</h4>
-            <p>Akwa Ibom</p>
-          </div>
-          <div class="each-detail">
-            <h4>In a Farmers group?</h4>
-            <p>Yes</p>
-          </div>
-          <div class="each-detail">
-            <h4>Reason for not being in one</h4>
-            <p>None</p>
-          </div>
-          <div class="each-detail">
-            <h4>Farmer Group/ Cooperative Name</h4>
-            <p>Lalaloops Inc</p>
-          </div>
-          <div class="each-detail">
-            <h4>Number of Members</h4>
-            <p>84</p>
-          </div>
-          <h3>Next of Kin</h3>
-          <div class="each-detail">
-            <h4>First Name</h4>
-            <p>Salisu</p>
-          </div>
-          <div class="each-detail">
-            <h4>Surname</h4>
-            <p>Gibbs</p>
-          </div>
-          <div class="each-detail">
-            <h4>Middle Name</h4>
-            <p>Rambo</p>
-          </div>
-          <div class="each-detail">
-            <h4>Relationship with Next of kin</h4>
-            <p>Cousin</p>
-          </div>
-          <div class="each-detail">
-            <h4>Occupation</h4>
-            <p>Farmer</p>
-          </div>
-          <div class="each-detail">
-            <h4>Telephone</h4>
-            <p>08123876635</p>
-          </div>
-          <div class="each-detail">
-            <h4>Permanent Address</h4>
-            <p>No 29 Gada Biu</p>
-          </div>
-          <div class="each-detail">
-            <h4>Nearest Land Mark</h4>
-            <p>A town Hall, Different</p>
-          </div>
-          <div class="each-detail">
-            <h4>NIN</h4>
-            <p>2233220176654222</p>
-          </div>
-          <div class="each-detail">
-            <h4>Permanent Address</h4>
-            <p>No 29 Goya street Taraba</p>
-          </div>
+        <div class="col">
+          <select class="form-select">
+            <option value="">Status</option>
+            <option></option>
+          </select>
+        </div>
+        <div class="col">
+          <input type="date" class="form-control" />
         </div>
       </div>
-      <div class="headings2">
-        <h3>Loan History</h3>
-        <a href="/dashboard/loanhistory">See all Transaction History</a>
-      </div>
+
       <div class="active-subscriptions">
         <table class="table-borderless sub-history">
           <tbody class="scrollable">
@@ -294,7 +166,7 @@
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
 export default {
-  name: "EachLoan",
+  name: "LoanHistory",
   components: {
     DefaultNav,
   },
@@ -457,6 +329,7 @@ export default {
 }
 .date-region {
   margin-top: 30px;
+  margin-bottom: 30px;
 }
 .red-text {
   font-family: "Maven Pro";
