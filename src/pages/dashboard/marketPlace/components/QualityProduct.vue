@@ -162,11 +162,11 @@
         </div>
         <div class="w-100 mb-3">
           <label for="formGroupExampleInput" class="form-label mb-0"
-            >Delivery Address</label
+            >Warehouse Address</label
           >
           <span id="required">*</span>
           <input
-            v-model="newCropData.address"
+            v-model="newCropData.warehouse_address"
             type="text"
             class="form-control"
             placeholder=""
@@ -189,7 +189,7 @@ export default {
         quantity: "",
         price: "",
         delivery_window: { from: "", to: "" },
-        address: "",
+        warehouse_address: "",
         state: "",
         files: "",
         video: "",

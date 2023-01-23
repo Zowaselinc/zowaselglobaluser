@@ -80,17 +80,6 @@
         </div>
         <!-- drop menu -->
         <div class="drop-menu marketplace-menu">
-          <template v-if="userData.user.type == 'corporate'">
-            <div class="active-item" @click="changeDir('/marketplace/newcrop')">
-              Add New Crop
-            </div>
-            <div
-              class="active-item"
-              @click="changeDir('/marketplace/addinput')"
-            >
-              Add New Input
-            </div>
-          </template>
           <template v-if="userData.user.type == 'merchant'">
             <div
               class="active-item"
@@ -104,6 +93,8 @@
             >
               Input Market
             </div>
+          </template>
+          <template v-if="userData.user.type == 'corporate'">
             <div
               class="active-item"
               @click="changeDir('/dashboard/marketplace/cropsale')"
