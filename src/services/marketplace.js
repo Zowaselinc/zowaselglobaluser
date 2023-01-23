@@ -23,6 +23,7 @@ const GET_ADD_NEW_CROP__PATH = () => "crop/wanted/add";
 const GET_ORDERS_PATH = (id) => `users/${id}/orders`;
 const GET_SALES_PATH = (id) => `users/${id}/sales`;
 const ADD_CROP_INPUT_PATH = () => `input/add/`;
+const GET_PRODUCTS_PATH = (id) => `users/${id}/crops`;
 
 export default {
   getCropCategories: function (callback) {
@@ -195,6 +196,16 @@ export default {
       .post(config.BASE_URL + ADD_DELIVERY_ADDRESS(), {
         delivery_details: delivery_details,
       })
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.data);
+      });
+  },
+  getProducts: function (id, callback) {
+    axios
+      .get(config.BASE_URL + GET_PRODUCTS_PATH(id))
       .then((response) => {
         callback(response.data);
       })
