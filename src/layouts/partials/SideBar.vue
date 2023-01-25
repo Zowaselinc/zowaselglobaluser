@@ -39,7 +39,7 @@
           <span>Wallet</span>
         </div>
       </a>
-      <a href="/dashboard/messages" class="nav-item">
+      <!-- <a href="/dashboard/messages" class="nav-item">
         <div
           :class="[
             'ripple',
@@ -53,7 +53,7 @@
             alt="ChatText"
           /><span>Message</span>
         </div>
-      </a>
+      </a> -->
       <a href="javascript:void(0)" class="nav-item">
         <div
           :class="[
@@ -192,7 +192,21 @@
           >
             Score Analysis
           </div> -->
-
+          <div class="active-menu" @click="changeDir(' /dashboard/character')">
+            Character
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/capital')">
+            Capital
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/collateral')">
+            Collateral
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/capacity')">
+            Capacity
+          </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/conditions')">
+            Conditions
+          </div>
           <div
             class="active-menu"
             @click="changeDir(' /dashboard/croptraceability')"

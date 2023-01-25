@@ -25,60 +25,64 @@
             </template>
           </div>
         </div>
-        <a href="#" class="each-product">
-          <div class="top-address">
-            <h3>Maize-200-brown</h3>
-            <p>Date: <span>2022-11-16 7:58pm</span></p>
-            <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
-            <p>Status <span>Active</span></p>
-          </div>
-          <div class="main-address">
-            <div class="right">
-              <h4>Amount: <span>NGN2,550</span></h4>
-              <div class="product-btns">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
-                <button class="view">View</button>
+        <!-- <div v-for="product in products" :key="product.id" class="contents">
+          <a href="#" class="each-product">
+            <div>
+              <h3>{{ product.rows.title }}</h3>
+              <p>Date: <span>2022-11-16 7:58pm</span></p>
+              <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
+              <p>Status <span>Active</span></p>
+            </div>
+            <div class="main-address">
+              <div class="right">
+                <h4>Amount: <span>NGN2,550</span></h4>
+                <div class="product-btns">
+                  <button class="edit">Edit</button>
+                  <button class="delete">Delete</button>
+                  <button class="view">View</button>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
-        <a href="#" class="each-product">
-          <div class="top-address">
-            <h3>Maize-200-brown</h3>
-            <p>Date: <span>2022-11-16 7:58pm</span></p>
-            <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
-            <p>Status <span>Active</span></p>
-          </div>
-          <div class="main-address">
-            <div class="right">
-              <h4>Amount: <span>NGN2,550</span></h4>
-              <div class="product-btns">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
-                <button class="view">View</button>
+          </a>
+        </div> -->
+        <div class="contents">
+          <a href="#" class="each-product">
+            <div class="top-address">
+              <h3>Maize-200-brown</h3>
+              <p>Date: <span>2022-11-16 7:58pm</span></p>
+              <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
+              <p>Status <span>Active</span></p>
+            </div>
+            <div class="main-address">
+              <div class="right">
+                <h4>Amount: <span>NGN2,550</span></h4>
+                <div class="product-btns">
+                  <button class="edit">Edit</button>
+                  <button class="delete">Delete</button>
+                  <button class="view">View</button>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
-        <a href="#" class="each-product">
-          <div class="top-address">
-            <h3>Maize-200-brown</h3>
-            <p>Date: <span>2022-11-16 7:58pm</span></p>
-            <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
-            <p>Status <span>Active</span></p>
-          </div>
-          <div class="main-address">
-            <div class="right">
-              <h4>Amount: <span>NGN2,550</span></h4>
-              <div class="product-btns">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
-                <button class="view">View</button>
+          </a>
+          <a href="#" class="each-product">
+            <div class="top-address">
+              <h3>Maize-200-brown</h3>
+              <p>Date: <span>2022-11-16 7:58pm</span></p>
+              <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
+              <p>Status <span>Active</span></p>
+            </div>
+            <div class="main-address">
+              <div class="right">
+                <h4>Amount: <span>NGN2,550</span></h4>
+                <div class="product-btns">
+                  <button class="edit">Edit</button>
+                  <button class="delete">Delete</button>
+                  <button class="view">View</button>
+                </div>
               </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
     </div>
   </DefaultNav>
@@ -86,6 +90,7 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
+import MarketPlaceService from "@/services/marketplace";
 
 export default {
   name: "MyProducts",
@@ -95,7 +100,21 @@ export default {
   data() {
     return {
       userData: this.$store.state.user,
+      products: [],
     };
+  },
+  mounted() {
+    this.getProducts();
+  },
+  methods: {
+    getProducts(product) {
+      MarketPlaceService.getProducts(this.userData.user_id, (response) => {
+        if (response && response.error == false) {
+          this.products = response.data;
+          console.log(this.products[0].rows.title);
+        }
+      });
+    },
   },
 };
 </script>

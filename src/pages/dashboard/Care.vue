@@ -4,13 +4,13 @@
       <div class="headings">
         <h2>Sustainability</h2>
         <div class="right-btns">
-          <a href="/dashboard/care" class="green-link">Next</a>
+          <a href="/dashboard/plant" class="green-link">Next</a>
         </div>
       </div>
       <div class="d-flex text-center small-font">
-        <div class="col yellow-link">Living</div>
+        <a href="sustainability" class="col green-link">Living</a>
         <span class="pt-2 mx-3">-</span>
-        <div class="col form-control small-font">Care</div>
+        <div class="col yellow-link">Care</div>
         <span class="pt-2 mx-3">-</span>
         <div class="col form-control small-font">Plant</div>
         <span class="pt-2 mx-3">-</span>
@@ -19,103 +19,69 @@
 
       <form class="mt-4">
         <div>
+          <label for="">Where is the health centare located?</label>
+          <textarea
+            class="form-control"
+            rows="6"
+            placeholder="Enter text"
+          ></textarea>
+        </div>
+        <div class="mt-4">
           <label for=""
-            >What is the ownership status of the house that you live in?</label
+            >How many healthcare centres are in the community?</label
           >
           <select class="form-select" aria-label="Default select example">
             <option selected>Choose...</option>
             <option>...</option>
           </select>
         </div>
-        <div class="mt-4">
-          <label for=""
-            >do you or your family own any other houses other than this that you
-            are living in?</label
-          >
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
+        <div class="row mt-4">
+          <div class="col">
+            <label for=""
+              >What is the distance from your house to the community health
+              center?
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter your answer"
+            />
+          </div>
+          <div class="col">
+            <label for="">Are they functional?</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter your answer"
+            />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col">
+            <label for=""
+              >Can you afford medical care for members of your household?
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter your answer"
+            />
+          </div>
+          <div class="col">
+            <label for=""
+              >What is the distance from your farm to the health center?
+              Specify</label
+            >
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
         </div>
         <div class="mt-4">
           <label for="">
-            If a caretaker or inherited, what is your relationship with the
-            owner?
+            In the event of Injuries at the farm, what do you do?
           </label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Enter your answer"
-          />
-        </div>
-        <div class="row mt-4">
-          <div class="col">
-            <label for=""
-              >How many people are currently living in your household eats from
-              the same pot?
-            </label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="col">
-            <label for="">How many adult males in your household?</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col">
-            <label for=""
-              >How many children above the age of 16 live in your household?
-            </label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="col">
-            <label for="">How many adult females in your household?</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <label for=""
-            >Which of the following people, if any, currently live with you in
-            your household?</label
-          >
-          <div class="col-md-4">
-            <input type="checkbox" class="me-3" />
-            <label for=""> My partner/spouse</label>
-          </div>
-          <div class="col-md-4">
-            <input type="checkbox" class="me-3" />
-            <label for=""> My parents</label>
-          </div>
-          <div class="col-md-4">
-            <input type="checkbox" class="me-3" />
-            <label for=""> My neices/nephews</label>
-          </div>
-          <div class="col-md-4">
-            <input type="checkbox" class="me-3" />
-            <label for=""> My children</label>
-          </div>
-          <div class="col-md-4">
-            <input type="checkbox" class="me-3" />
-            <label for=""> My grandchildren</label>
-          </div>
-        </div>
-        <div class="mt-4">
-          <label for=""
-            >Compared to the general standard of living in Nigeria, how would
-            you describe your standard of living?</label
-          >
           <textarea
             class="form-control"
             rows="6"
@@ -124,30 +90,14 @@
         </div>
         <div class="row mb-3">
           <div class="col">
-            <label for="">What is your main cooking method at home? </label>
+            <label for="">Do you have access to a First aid box? </label>
             <select class="form-select" aria-label="Default select example">
               <option selected>Choose...</option>
               <option>...</option>
             </select>
           </div>
           <div class="col">
-            <label for="">What is your main cooking method at home?</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col">
-            <label for="">Do you have electricity where you live? </label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="col">
-            <label for="">What type of toilet do you have in your home?</label>
+            <label for="">Are they functional?</label>
             <select class="form-select" aria-label="Default select example">
               <option selected>Choose...</option>
               <option>...</option>
@@ -156,8 +106,26 @@
         </div>
         <div class="mt-4">
           <label for=""
-            >How do you pay for your Government power line usage?</label
+            >When was the last time you checked your blood pressure and blood
+            sugar level?</label
           >
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="mt-4">
+          <label for=""
+            >How many children from 5-18years in your household are in
+            school?</label
+          >
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="mt-4">
+          <label for="">What level of education are they?</label>
           <select class="form-select" aria-label="Default select example">
             <option selected>Choose...</option>
             <option>...</option>
@@ -165,16 +133,14 @@
         </div>
         <div class="row mb-3">
           <div class="col">
-            <label for="">Are you a member of any cooperative? </label>
+            <label for="">How many schools are there in the community?</label>
             <select class="form-select" aria-label="Default select example">
               <option selected>Choose...</option>
               <option>...</option>
             </select>
           </div>
           <div class="col">
-            <label for=""
-              >Name of Cooperative Society, Association, or Cluster</label
-            >
+            <label for="">Are they functional?</label>
             <select class="form-select" aria-label="Default select example">
               <option selected>Choose...</option>
               <option>...</option>
@@ -183,7 +149,7 @@
         </div>
         <div class="row mb-3">
           <div class="col">
-            <label for="">Position in cooperative society. </label>
+            <label for="">What is your highest level of education </label>
             <select class="form-select" aria-label="Default select example">
               <option selected>Choose...</option>
               <option>...</option>
@@ -191,7 +157,8 @@
           </div>
           <div class="col">
             <label for=""
-              >Have you accessed any input/loan from the cooperative?</label
+              >If studying presently, are you studying full-time or
+              part-time?</label
             >
             <select class="form-select" aria-label="Default select example">
               <option selected>Choose...</option>
@@ -200,12 +167,19 @@
           </div>
         </div>
         <div class="mt-4">
-          <label for="">If yes, what input?</label>
+          <label for="">Where did you study?</label>
           <input
             type="text"
             class="form-control"
             placeholder="Enter your answer"
           />
+        </div>
+        <div class="mt-4">
+          <label for="">Do you have alternative sources of income?</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
         </div>
       </form>
     </div>
@@ -290,7 +264,7 @@ export default {
     justify-content: center;
     align-items: center;
     color: white;
-    width: 180px;
+    width: 145px;
     height: 40px;
     background: #05b050;
     border-radius: 5px;
@@ -299,6 +273,18 @@ export default {
     letter-spacing: 0.02em;
   }
 }
+.green-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 145px;
+  height: 40px;
+  background: #05b050;
+  border-radius: 5px;
+  letter-spacing: 0.02em;
+}
 .yellow-link {
   display: flex;
   flex-direction: column;
@@ -306,11 +292,14 @@ export default {
   align-items: center;
   display: flex;
   color: white;
-  width: 180px;
+  width: 145px;
   height: 40px;
   background: #fab900 !important;
   border-radius: 5px;
   letter-spacing: 0.02em;
+}
+a {
+  text-decoration: none;
 }
 .small-font {
   font-size: 11px !important;

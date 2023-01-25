@@ -14,16 +14,13 @@
                   class="img-fluid"
                 />
               </a>
-              <h1>Character</h1>
+              <h1>Capacity</h1>
             </div>
             <div>
               <!--save button -->
               <!--next button -->
               <button type="submit" :class="['btn', 'btn-primary', 'my-4']">
                 Next
-              </button>
-              <button type="submit" :class="['btn', 'btn-primary', 'my-4']">
-                save
               </button>
             </div>
           </div>
@@ -37,12 +34,11 @@
                 'my-4',
                 'col',
                 'first',
-                activeTab == 'credit_history' ? 'tab_color' : '',
+                activeTab == 'farm_capacity' ? 'tab_color' : '',
               ]"
               type="button"
-              @click="switchTab('credit_history')"
             >
-              Credit history
+              Farm capacity
             </button>
             <span class="horizontal_line"></span>
             <button
@@ -52,12 +48,11 @@
                 'my-4',
                 'col',
                 'second',
-                activeTab == 'productivity_viability' ? 'tab_color' : '',
+                activeTab == 'farm_practice' ? 'tab_color' : '',
               ]"
               type="button"
-              @click="switchTab('productivity_viability')"
             >
-              Productivity viability
+              Farm practice
             </button>
             <span id="secon_line" class="horizontal_line second"></span>
             <button
@@ -67,10 +62,10 @@
                 'my-4',
                 'col',
                 'third',
-                activeTab == 'agronomy' ? 'tab_color' : '',
+                activeTab == 'mechanization' ? 'tab_color' : '',
               ]"
             >
-              Agronomy
+              Mechanization
             </button>
             <span id="secon_line" class="horizontal_line second"></span>
             <button
@@ -81,40 +76,35 @@
                 'my-4',
                 'col',
                 'third',
-                activeTab == 'psychometrics' ? 'tab_color' : '',
+                activeTab == 'cultivation' ? 'tab_color' : '',
               ]"
             >
-              Psychometrics
+              Cultivation
+            </button>
+            <span id="secon_line" class="horizontal_line second"></span>
+            <button
+              type="submit"
+              :class="[
+                'btn',
+                'btn-primary',
+                'my-4',
+                'col',
+                'third',
+                activeTab == 'harvest' ? 'tab_color' : '',
+              ]"
+            >
+              Harvest
             </button>
           </div>
         </div>
 
         <!-- main form content -->
-        <!-- CreditHistory -->
-        <CreditHistory v-if="activeTab == 'credit_history'"></CreditHistory>
-        <!-- productivity viability -->
-        <ProductivityViability
-          v-if="activeTab == 'productivity_viability'"
-        ></ProductivityViability>
-        <!-- agronomy -->
-        <Agronomy v-if="activeTab == 'agronomy'"></Agronomy>
-        <!-- psychometrics -->
-        <Psychometrics v-if="activeTab == 'psychometrics'"></Psychometrics>
-        <!-- under verify psychometrics -->
-        <VerifyCharacterCode
-          v-if="activeTab == 'verify-character-code'"
-        ></VerifyCharacterCode>
-        <SuccessLuck v-if="activeTab == 'success-luck'"></SuccessLuck>
-        <EopCosts v-if="activeTab == 'eop-costs'"></EopCosts>
-        <PercentageSteal
-          v-if="activeTab == 'percentage-steal'"
-        ></PercentageSteal>
-        <SaveEnough v-if="activeTab == 'save-enough'"></SaveEnough>
-        <Lazy v-if="activeTab == 'lazy'"></Lazy>
-        <!-- compony details components -->
-        <!-- <CompanyDetails v-if="activeTab == 'company_details'"></CompanyDetails> -->
-        <!-- compony Next of kin components -->
-        <!-- <Kin v-if="activeTab == 'kin'"></Kin> -->
+        <!-- farm capacity -->
+        <FarmCapacity v-if="activeTab == 'farm_capacity'"></FarmCapacity>
+        <!-- farm practice -->
+        <FarmPractice v-if="activeTab == 'farm_practice'"></FarmPractice>
+        <!-- Mechanization -->
+        <Mechanization v-if="activeTab == 'mechanization'"></Mechanization>
       </div>
     </div>
   </DefaultNav>
@@ -124,41 +114,21 @@
 //   sidebar
 import DefaultNav from "@/layouts/DefaultNav.vue";
 // import Credit history component
-import CreditHistory from "./components/CreditHistory.vue";
-import ProductivityViability from "./components/ProductivityViability.vue";
-import Agronomy from "./components/Agronomy.vue";
-import Psychometrics from "./components/Psychometrics.vue";
-import VerifyCharacterCode from "./components/psychometrics/VerifyCharacterCode.vue";
-import SuccessLuck from "./components/psychometrics/SuccessLuck.vue";
-import EopCosts from "./components/psychometrics/EopCosts.vue";
-import PercentageSteal from "./components/psychometrics/PercentageSteal.vue";
-import SaveEnough from "./components/psychometrics/SaveEnough.vue";
-import Lazy from "./components/psychometrics/Lazy.vue";
-// import CompanyDetails component
-// import CompanyDetails from "./components/CompanyDetails.vue";
-// import Next of Kin component
-// import Kin from "./components/Kin.vue";
+import FarmCapacity from "./components/FarmCapacity.vue";
+import FarmPractice from "./components/FarmPractice.vue";
+import Mechanization from "./components/Mechanization.vue";
 
 export default {
   name: "Character",
   components: {
     DefaultNav,
-    CreditHistory,
-    ProductivityViability,
-    Agronomy,
-    Psychometrics,
-    VerifyCharacterCode,
-    SuccessLuck,
-    EopCosts,
-    PercentageSteal,
-    SaveEnough,
-    Lazy,
-    // CompanyDetails,
-    // Kin,
+    FarmCapacity,
+    FarmPractice,
+    Mechanization,
   },
   data() {
     return {
-      activeTab: "agronomy",
+      activeTab: "mechanization",
     };
   },
   methods: {
@@ -168,7 +138,6 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" scoped>
 @import "@/assets/scss/main.scss";
 .big-container {
