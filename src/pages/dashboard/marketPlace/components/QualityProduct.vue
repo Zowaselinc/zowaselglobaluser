@@ -32,9 +32,11 @@
             required
           />
         </div>
-        <div class="crop_details mb-3 mt-5">Delivery Details</div>
+        <div v-if="type == 'wanted'" class="crop_details mb-3 mt-5">
+          Delivery Details
+        </div>
 
-        <div class="w-100 mb-3">
+        <div class="w-100 mb-3" v-if="type == 'wanted'">
           <label for="formGroupExampleInput" class="form-label mb-0"
             >Delivery window</label
           >
@@ -183,18 +185,23 @@ import countriesObject from "@/data/countries";
 
 export default {
   name: "QualityProduct",
+  props: {
+    type: String,
+  },
   data() {
     return {
       newCropData: {
         quantity: "",
         price: "",
-        delivery_window: { from: "", to: "" },
         warehouse_address: "",
         state: "",
         files: "",
         video: "",
         country: "",
         zip: "",
+        ...(this.type == "wanted"
+          ? { delivery_window: { from: "", to: "" } }
+          : {}),
       },
       countries: countriesObject.countries,
       fileName: "",
