@@ -19,7 +19,7 @@ const ADD_TO_CART_PATH = () => `input/cart/add`;
 const GET_CART_ITEMS_PATH = (id) => `input/cart/${id}`;
 const DELTE_CART_ITEM_PATH = (id) => `input/cart/delete/${id}`;
 const GET_SUB_CATEGORIES_PATH = () => "subcategory/getall";
-const GET_ADD_NEW_CROP__PATH = () => "crop/wanted/add";
+const ADD_NEW_CROP_PATH = (type) => `crop/${type}/add`;
 const GET_ORDERS_PATH = (id) => `users/${id}/orders`;
 const GET_SALES_PATH = (id) => `users/${id}/sales`;
 const ADD_CROP_INPUT_PATH = () => `input/add/`;
@@ -150,9 +150,19 @@ export default {
       })
       .catch((error) => {});
   },
-  getNewCrops: function (NewCropData, callback) {
+  addCropWanted: function (NewCropData, callback) {
     axios
-      .post(config.BASE_URL + GET_ADD_NEW_CROP__PATH(), NewCropData)
+      .post(config.BASE_URL + ADD_NEW_CROP_PATH("wanted"), NewCropData)
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.data);
+      });
+  },
+  addCropForSale: function (NewCropData, callback) {
+    axios
+      .post(config.BASE_URL + ADD_NEW_CROP_PATH("sale"), NewCropData)
       .then((response) => {
         callback(response.data);
       })
@@ -202,6 +212,5 @@ export default {
         callback(error.data);
       });
   },
-
   ...NegotiationService,
 };

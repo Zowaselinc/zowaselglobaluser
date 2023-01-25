@@ -7,7 +7,7 @@
         <form action="" @submit.prevent="step == 3 ? saveData() : changeTab()">
           <!-- Crop Details Components -->
           <CropDetails v-if="step == 1" ref="CD" />
-          <QualityProduct v-if="step == 2" ref="QP" />
+          <QualityProduct type="wanted" v-if="step == 2" ref="QP" />
           <CropSpecification v-if="step == 3" ref="CS" />
           <div id="btn-group" class="btn-group gap-3 my-4">
             <button
@@ -103,7 +103,7 @@ export default {
         }
       }
       // send data to the end-poit
-      await MarketPlaceService.getNewCrops(data, (response) => {
+      await MarketPlaceService.addCropWanted(data, (response) => {
         if (response && response.error == false) {
           Alert.success({
             message: "Crop added successfully",

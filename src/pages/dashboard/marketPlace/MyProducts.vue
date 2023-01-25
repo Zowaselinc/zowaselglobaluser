@@ -9,9 +9,20 @@
         <div class="headings">
           <h2 />
           <div class="right-btns">
-            <a href="/marketplace/newcrop" class="green-link"
-              >Add new Product</a
-            >
+            <template v-if="userData.user.type == 'merchant'">
+              <a href="/marketplace/newsale" class="green-link"
+                >Add Crop for Sale</a
+              >
+              <a href="/marketplace/newcrop" class="green-link"
+                >Add Crop For Auction</a
+              >
+            </template>
+            <template v-if="userData.user.type == 'corporate'">
+              <a href="/marketplace/newcrop" class="green-link"
+                >Add Crop Wanted</a
+              >
+              <a href="/marketplace/newcrop" class="green-link">Add Input</a>
+            </template>
           </div>
         </div>
         <a href="#" class="each-product">
