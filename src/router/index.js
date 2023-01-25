@@ -36,6 +36,7 @@ import Character from "@/pages/dashboard/kyf/Character.vue";
 import Kyf from "@/pages/dashboard/kyf/Kyf.vue";
 import Loan from "@/pages/dashboard/Loan.vue";
 import LoanHistory from "@/pages/dashboard/LoanHistory.vue";
+import LoanDetails from "@/pages/dashboard/LoanDetails.vue";
 import LogisticsDashboard from "@/pages/dashboard/Logistics.vue";
 import AddCropInput from "@/pages/dashboard/marketPlace/AddCropInput.vue";
 import AddCropSale from "@/pages/dashboard/marketPlace/AddCropSale.vue";
@@ -470,6 +471,11 @@ const routes = [
     path: "/dashboard/loanhistory",
     name: "LoanHistory",
     component: LoanHistory,
+  },
+  {
+    path: "/dashboard/loandetails",
+    name: "LoanDetails",
+    component: LoanDetails,
   },
   {
     path: "/dashboard/character",

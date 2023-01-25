@@ -50,7 +50,7 @@
                   <p>Paid</p>
                 </div>
               </td>
-              <td><a href="">Score Farmer</a></td>
+              <td><a href="/dashboard/loandetails">View Details</a></td>
             </tr>
             <tr>
               <td>Specta SME</td>
@@ -63,7 +63,7 @@
                   <p>Paid</p>
                 </div>
               </td>
-              <td><a href="">Score Farmer</a></td>
+              <td><a href="/dashboard/loandetails">View Details</a></td>
             </tr>
             <tr>
               <td>Specta SME</td>
@@ -76,7 +76,7 @@
                   <p>Paid</p>
                 </div>
               </td>
-              <td><a href="">Score Farmer</a></td>
+              <td><a href="/dashboard/loandetails">View Details</a></td>
             </tr>
             <tr>
               <td>Specta SME</td>
@@ -89,7 +89,7 @@
                   <p>Active</p>
                 </div>
               </td>
-              <td><a href="">Score Farmer</a></td>
+              <td><a href="/dashboard/loandetails">View Details</a></td>
             </tr>
             <tr>
               <td>Specta SME</td>
@@ -102,7 +102,7 @@
                   <p>Paid</p>
                 </div>
               </td>
-              <td><a href="">Score Farmer</a></td>
+              <td><a href="/dashboard/loandetails">View Details</a></td>
             </tr>
             <tr>
               <td>Specta SME</td>
@@ -115,7 +115,7 @@
                   <p>Active</p>
                 </div>
               </td>
-              <td><a href="">Score Farmer</a></td>
+              <td><a href="/dashboard/loandetails">View Details</a></td>
             </tr>
             <tr>
               <td>Specta SME</td>
@@ -128,7 +128,7 @@
                   <p>Active</p>
                 </div>
               </td>
-              <td><a href="">Score Farmer</a></td>
+              <td><a href="/dashboard/loandetails">View Details</a></td>
             </tr>
             <tr>
               <td>Specta SME</td>
@@ -141,7 +141,7 @@
                   <p>Paid</p>
                 </div>
               </td>
-              <td><a href="">Score Farmer</a></td>
+              <td><a href="">View Details</a></td>
             </tr>
             <tr>
               <td>Specta SME</td>
@@ -154,7 +154,7 @@
                   <p>Active</p>
                 </div>
               </td>
-              <td><a href="">Score Farmer</a></td>
+              <td><a href="/dashboard/loandetails">View Details</a></td>
             </tr>
           </tbody>
         </table>
