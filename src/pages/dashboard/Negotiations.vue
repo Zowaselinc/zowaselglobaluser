@@ -124,6 +124,7 @@
                 ' ' +
                 participant(conversationData).last_name
           "
+          :product="product"
           :messages="conversationData.negotiations"
           :load-messages="getNegotiation"
           :on-send-message="sendNegotiationMessage"
@@ -402,6 +403,8 @@ export default {
 
   .right-message {
     position: relative;
+    display: flex;
+    align-items: center;
   }
 
   .right-message p {
@@ -414,9 +417,10 @@ export default {
   }
 
   .right-message img {
-    position: absolute;
+    position: relative;
     right: 0px;
     bottom: 10px;
+    left: 10px;
     width: 30px;
     height: 30px;
   }

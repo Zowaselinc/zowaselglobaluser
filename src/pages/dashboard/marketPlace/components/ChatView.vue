@@ -315,7 +315,7 @@ export default {
       offerData: {
         qty: "",
         price: "",
-        color: "",
+        color: this.product.specification.color,
         moisture: this.product.specification.moisture,
         foreign_matter: this.product.specification.foreign_matter,
         broken_grains: this.product.specification.broken_grains,
