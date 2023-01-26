@@ -139,10 +139,12 @@
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Currency</label
           >
+          <span id="required">*</span>
           <select
             v-model="cropData.currency"
             class="form-select"
             aria-label="Default select example"
+            required
           >
             <option
               v-for="currency in currencies"
