@@ -2,7 +2,8 @@
   <DefaultNav>
     <div class="big-container">
       <div class="welcome-text">
-        <h2>My Crops/Inputs</h2>
+        <h2 v-if="userData.user.type == 'merchant'">My Crops</h2>
+        <h2 v-if="userData.user.type == 'corporate'">My Crops/Inputs</h2>
       </div>
 
       <div class="contents">
@@ -25,6 +26,30 @@
             </template>
           </div>
         </div>
+
+        <div v-if="userData.user.type == 'merchant'" class="content-tabs">
+          <button
+            :class="['normal-btn', activeTab == 'forSale' ? 'active-tab' : '']"
+            type="button"
+            @click="switchTab('forSale')"
+          >
+            For sale
+          </button>
+          <button
+            :class="[
+              'normal-btn',
+              activeTab == 'forAuction' ? 'active-tab' : '',
+            ]"
+            type="button"
+            @click="switchTab('forAuction')"
+          >
+            For Auction
+          </button>
+        </div>
+        <div v-if="userData.user.type == 'corporate'" class="content-tabs">
+          <button>My Crops</button>
+          <button>My Inputs</button>
+        </div>
         <!-- <div v-for="product in products" :key="product.id" class="contents">
           <a href="#" class="each-product">
             <div>
@@ -45,44 +70,9 @@
             </div>
           </a>
         </div> -->
-        <div class="contents">
-          <a href="#" class="each-product">
-            <div class="top-address">
-              <h3>Maize-200-brown</h3>
-              <p>Date: <span>2022-11-16 7:58pm</span></p>
-              <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
-              <p>Status <span>Active</span></p>
-            </div>
-            <div class="main-address">
-              <div class="right">
-                <h4>Amount: <span>NGN2,550</span></h4>
-                <div class="product-btns">
-                  <button class="edit">Edit</button>
-                  <button class="delete">Delete</button>
-                  <button class="view">View</button>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="each-product">
-            <div class="top-address">
-              <h3>Maize-200-brown</h3>
-              <p>Date: <span>2022-11-16 7:58pm</span></p>
-              <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
-              <p>Status <span>Active</span></p>
-            </div>
-            <div class="main-address">
-              <div class="right">
-                <h4>Amount: <span>NGN2,550</span></h4>
-                <div class="product-btns">
-                  <button class="edit">Edit</button>
-                  <button class="delete">Delete</button>
-                  <button class="view">View</button>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
+        <!-- component comes here -->
+        <ForSale v-if="activeTab == 'forSale'" />
+        <ForAuction v-if="activeTab == 'forAuction'" />
       </div>
     </div>
   </DefaultNav>
@@ -90,17 +80,22 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
+import ForSale from "@/pages/dashboard/marketPlace/components/ForSale.vue";
+import ForAuction from "@/pages/dashboard/marketPlace/components/ForAuction.vue";
 import MarketPlaceService from "@/services/marketplace";
 
 export default {
   name: "MyProducts",
   components: {
     DefaultNav,
+    ForSale,
+    ForAuction,
   },
   data() {
     return {
       userData: this.$store.state.user,
       products: [],
+      activeTab: "forSale",
     };
   },
   mounted() {
@@ -114,6 +109,9 @@ export default {
           console.log(this.products[0].rows.title);
         }
       });
+    },
+    switchTab(tab) {
+      this.activeTab = tab;
     },
   },
 };
@@ -238,7 +236,23 @@ export default {
   background-color: white;
   padding: 38px;
 }
+.content-tabs {
+  display: flex;
+  gap: 20px;
 
+  .normal-btn {
+    background: #ffffff;
+    border: 1.11212px solid #696671;
+    border-radius: 55.6062px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15.5697px;
+    color: #696671;
+    border-radius: 30px;
+    padding: 11px 33px;
+  }
+}
 .top-address {
   align-items: center;
   gap: 12px;
@@ -305,5 +319,10 @@ export default {
     letter-spacing: 0.02em;
     text-decoration: none;
   }
+}
+.active-tab {
+  background: #05b050 !important;
+  color: #ffffff !important;
+  border: 0 !important;
 }
 </style>
