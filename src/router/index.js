@@ -463,6 +463,11 @@ const routes = [
     component: Kyf,
   },
   {
+    path: "/dashboard/kyf/edit",
+    name: "KyfEdit",
+    component: Kyf,
+  },
+  {
     path: "/dashboard/each-loan",
     name: "EachLoan",
     component: EachLoan,

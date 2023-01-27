@@ -383,7 +383,7 @@ export default {
     color: rgba(45, 55, 72, 0.8);
   }
 }
-#required[data-v-269124fd] {
+#required {
   font-family: "Maven Pro";
   font-weight: bolder;
   font-size: 14px;

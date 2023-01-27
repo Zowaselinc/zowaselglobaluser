@@ -12,16 +12,23 @@
               <!-- input -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Input category</label
+                  >Crop Category</label
                 >
                 <span id="required">*</span>
-                <input
+                <select
                   v-model="inputData.category_id"
-                  type="text"
-                  class="form-control"
+                  class="form-select"
+                  aria-label="Default seglect example"
                   required
-                  placeholder="type your answer"
-                />
+                >
+                  <option
+                    v-for="category in categories"
+                    :key="category.id"
+                    :value="category.id"
+                  >
+                    {{ category.name }}
+                  </option>
+                </select>
               </div>
               <!-- input -->
               <div class="w-100 mb-3">
@@ -206,18 +213,25 @@
             <!-- form two -->
             <div class="form">
               <!-- input -->
-              <div class="w-100 mb-3 m_top">
+              <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Input sub-category</label
+                  >Input sub category</label
                 >
                 <span id="required">*</span>
-                <input
+                <select
                   v-model="inputData.subcategory_id"
-                  type="text"
-                  class="form-control"
+                  class="form-select"
+                  aria-label="Default select example"
                   required
-                  placeholder="type your answer"
-                />
+                >
+                  <option
+                    v-for="subCategory in subCategoryByCategory"
+                    :key="subCategory.id"
+                    :value="subCategory.id"
+                  >
+                    {{ subCategory.name }}
+                  </option>
+                </select>
               </div>
               <!-- input -->
               <div class="w-100 mb-3">
@@ -351,14 +365,14 @@
                       @change="uploadFile"
                       required
                     />
-
-                    <span
+                    <div
                       id="file_name"
                       v-if="fileName == ''"
                       @click="openFileDialog()"
-                      >click to browse</span
                     >
-
+                      <span>click to browse</span>
+                      <span id="required">*</span>
+                    </div>
                     <span v-else>{{ fileName }}</span>
                   </div>
                 </div>
@@ -399,6 +413,8 @@ export default {
   },
   data() {
     return {
+      categories: [],
+      subCategories: [],
       inputData: {
         category_id: "",
         price: "",
@@ -423,6 +439,7 @@ export default {
       },
       currencies: ["USD", "EUR", "GBP", "NGN"],
       countries: countriesObject.countries,
+      fileName: "",
     };
   },
   computed: {
@@ -433,6 +450,11 @@ export default {
             (item) => item.country == this.inputData.country
           )[0].states
         : [];
+    },
+    subCategoryByCategory() {
+      return this.subCategories.filter(
+        (item) => item.category_id == this.inputData.category_id
+      );
     },
   },
   mounted() {
@@ -459,6 +481,8 @@ export default {
       _this.handleContentChange();
       return _this.update();
     });
+    this.getCategory();
+    this.getSubCategory();
   },
   methods: {
     update: function update() {
@@ -473,8 +497,22 @@ export default {
     openFileDialog() {
       document.getElementById("hidden_input").click();
     },
+    // fetch input data from End point
+    getCategory() {
+      MarketPlaceService.getInputCategories((response) => {
+        console.log(response);
+        this.categories = response.data;
+      });
+    },
+    getSubCategory() {
+      MarketPlaceService.getSubCategories((response) => {
+        console.log(response);
+        this.subCategories = response.data;
+      });
+    },
+
     async saveData() {
-      // send data to the end-poit
+      // send data to the end-point
       await MarketPlaceService.saveInput(this.inputData, (response) => {
         if (response && response.error == false) {
           Alert.success({

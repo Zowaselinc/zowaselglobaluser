@@ -138,14 +138,13 @@
           <label for="formGroupExampleInput" class="form-label mb-0"
             >Enter video URL</label
           >
-          <span id="required">*</span>
+          <span id="optional">-optional</span>
           <input
             id="formGroupExampleInput"
             v-model="newCropData.video"
             type="text"
             class="form-control"
             placeholder="Type your answer"
-            required
           />
         </div>
         <div class="w-100 mb-3">
@@ -346,6 +345,13 @@ div.vertical-line {
   font-family: "Maven Pro";
   font-weight: bolder;
   font-size: 20px;
+}
+#optional {
+  font-family: "Maven Pro";
+  font-weight: bolder;
+  font-size: 14px;
+  color: rgba(113, 117, 125, 0.83);
+  font-style: italic;
 }
 .zone {
   height: 150px;
