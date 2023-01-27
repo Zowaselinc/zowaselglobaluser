@@ -33,7 +33,7 @@ export default {
       .then((response) => {
         callback(response.data);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   },
 
   getInputCategories: function (callback) {
@@ -42,7 +42,7 @@ export default {
       .then((response) => {
         callback(response.data);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   },
   getCropsForSale: function (callback) {
     axios
@@ -50,7 +50,7 @@ export default {
       .then((response) => {
         callback(response.data);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   },
   getCropsWanted: function (callback) {
     axios
@@ -58,7 +58,7 @@ export default {
       .then((response) => {
         callback(response.data);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   },
   getCropsForAuction: function (callback) {
     axios
@@ -66,7 +66,7 @@ export default {
       .then((response) => {
         callback(response.data);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   },
   getCropById: function (id, callback) {
     axios
@@ -74,7 +74,7 @@ export default {
       .then((response) => {
         callback(response.data);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   },
   getInputs: function (callback) {
     axios
@@ -82,7 +82,7 @@ export default {
       .then((response) => {
         callback(response.data);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   },
   getInputById: function (id, callback) {
     axios
@@ -90,7 +90,7 @@ export default {
       .then((response) => {
         callback(response.data);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   },
   getOrder: function (hash, callback) {
     axios
@@ -150,7 +150,7 @@ export default {
       .then((response) => {
         callback(response.data);
       })
-      .catch((error) => { });
+      .catch((error) => {});
   },
   addCropWanted: function (NewCropData, callback) {
     axios

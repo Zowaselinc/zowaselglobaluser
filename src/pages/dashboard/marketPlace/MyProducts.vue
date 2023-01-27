@@ -71,8 +71,8 @@
           </a>
         </div> -->
         <!-- component comes here -->
-        <ForSale v-if="activeTab == 'forSale'" />
-        <ForAuction v-if="activeTab == 'forAuction'" />
+        <ForSale :listData="cropsSale" v-if="activeTab == 'forSale'" />
+        <ForAuction :listData="cropsAuction" v-if="activeTab == 'forAuction'" />
       </div>
     </div>
   </DefaultNav>
@@ -94,19 +94,36 @@ export default {
   data() {
     return {
       userData: this.$store.state.user,
-      products: [],
+      cropsSale: [],
+      cropsAuction: [],
+      cropsWanted: [],
+      inputs: [],
       activeTab: "forSale",
     };
   },
   mounted() {
-    this.getProducts();
+    this.getCrops();
   },
   methods: {
-    getProducts(product) {
-      MarketPlaceService.getProducts(this.userData.user_id, (response) => {
+    getCrops() {
+      MarketPlaceService.getUserCrops(this.userData.user_id, (response) => {
         if (response && response.error == false) {
-          this.products = response.data;
-          console.log(this.products[0].rows.title);
+          this.cropsSale = response.data.rows.filter(
+            (crop) => crop.type == "offer"
+          );
+          this.cropsAuction = response.data.rows.filter(
+            (crop) => crop.type == "auction"
+          );
+          this.cropWanted = response.data.rows.filter(
+            (crop) => crop.type == "wanted"
+          );
+        }
+      });
+    },
+    getInputs() {
+      MarketPlaceService.getUserInputs(this.userData.user_id, (response) => {
+        if (response && response.error == false) {
+          this.inputs = response.data.rows;
         }
       });
     },
