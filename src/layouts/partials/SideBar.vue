@@ -250,6 +250,9 @@
           <div class="active-menu" @click="changeDir(' /dashboard/loans')">
             Farmers
           </div>
+          <div class="active-menu" @click="changeDir(' /dashboard/loantype')">
+            Loan Types
+          </div>
           <!-- <div
             class="active-menu"
             @click="changeDir(' /dashboard/creditscoreanalysis')"
