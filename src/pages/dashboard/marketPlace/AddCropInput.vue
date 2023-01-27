@@ -8,26 +8,22 @@
           <div class="crop-wanted-section d-flex flex-row gap-4">
             <div class="form">
               <div class="crop_details">Input Details</div>
-
               <!-- input -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Crop Category</label
+                  >Product Type</label
                 >
                 <span id="required">*</span>
                 <select
-                  v-model="inputData.category_id"
+                  v-model="inputData.product_type"
                   class="form-select"
                   aria-label="Default seglect example"
                   required
                 >
-                  <option
-                    v-for="category in categories"
-                    :key="category.id"
-                    :value="category.id"
-                  >
-                    {{ category.name }}
-                  </option>
+                  <option>Hybrid</option>
+                  <option>Normal</option>
+                  <option>Organic</option>
+                  <option>GMO</option>
                 </select>
               </div>
               <!-- input -->
@@ -39,20 +35,6 @@
                 <input
                   v-model="inputData.price"
                   type="number"
-                  class="form-control"
-                  required
-                  placeholder="type your answer"
-                />
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Title</label
-                >
-                <span id="required">*</span>
-                <input
-                  v-model="inputData.title"
-                  type="text"
                   class="form-control"
                   required
                   placeholder="type your answer"
@@ -75,16 +57,21 @@
               <!-- input -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >KG(5-50)</label
+                  >KG(5-100)</label
                 >
                 <span id="required">*</span>
-                <input
-                  v-model="inputData.kg"
-                  type="number"
-                  class="form-control"
+                <select
+                  v-model="inputData.kilograms"
+                  class="form-select"
+                  aria-label="Default select example"
                   required
-                  placeholder="type your answer"
-                />
+                >
+                  <option>5</option>
+                  <option>10</option>
+                  <option>25</option>
+                  <option>250</option>
+                  <option>100</option>
+                </select>
               </div>
               <!-- input -->
 
@@ -115,7 +102,20 @@
                   </div>
                 </div>
               </div>
-
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Stock</label
+                >
+                <span id="required">*</span>
+                <input
+                  v-model="inputData.stock"
+                  type="number"
+                  class="form-control"
+                  required
+                  placeholder="type your answer"
+                />
+              </div>
               <!-- input -->
               <div class="w-100 mb-3 m_top">
                 <label for="exampleInputEmail1" class="form-label mb-0"
@@ -135,7 +135,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Video</label
                 >
-                <span id="required">*</span>
+                <span id="optional">-optional</span>
                 <input
                   v-model="inputData.video"
                   type="text"
@@ -187,7 +187,6 @@
                 />
               </div>
               <!-- input -->
-
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Manufacture country</label
@@ -208,6 +207,26 @@
                   </option>
                 </select>
               </div>
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Currency</label
+                >
+                <span id="required">*</span>
+                <select
+                  v-model="inputData.currency"
+                  class="form-select"
+                  aria-label="Default select example"
+                  required
+                >
+                  <option
+                    v-for="currency in currencies"
+                    :key="currency"
+                    :value="currency"
+                  >
+                    {{ currency }}
+                  </option>
+                </select>
+              </div>
             </div>
             <div class="vertical-line" />
             <!-- form two -->
@@ -215,7 +234,28 @@
               <!-- input -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Input sub category</label
+                  >Catalog</label
+                >
+                <span id="required">*</span>
+                <select
+                  v-model="inputData.category_id"
+                  class="form-select"
+                  aria-label="Default seglect example"
+                  required
+                >
+                  <option
+                    v-for="category in categories"
+                    :key="category.id"
+                    :value="category.id"
+                  >
+                    {{ category.name }}
+                  </option>
+                </select>
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Products</label
                 >
                 <span id="required">*</span>
                 <select
@@ -239,27 +279,33 @@
                   >Packaging</label
                 >
                 <span id="required">*</span>
-                <input
+                <select
                   v-model="inputData.packaging"
-                  type="text"
-                  class="form-control"
+                  class="form-select"
+                  aria-label="Default select example"
                   required
-                  placeholder="type your answer"
-                />
+                >
+                  <option>Bag</option>
+                  <option>Bottles</option>
+                  <option>Sachet</option>
+                  <option>Carbon</option>
+                </select>
               </div>
               <!-- input -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Delivery Method</label
+                  >Shipping Method</label
                 >
                 <span id="required">*</span>
-                <input
+                <select
                   v-model="inputData.delivery_method"
-                  type="text"
-                  class="form-control"
+                  class="form-select"
+                  aria-label="Default select example"
                   required
-                  placeholder="type your answer"
-                />
+                >
+                  <option>Delivery</option>
+                  <option>Pick up at Crop Centers</option>
+                </select>
               </div>
               <!-- input -->
               <div class="w-100 mb-3">
@@ -267,13 +313,64 @@
                   >Liters(1-50)</label
                 >
                 <span id="required">*</span>
-                <input
+                <select
                   v-model="inputData.liters"
-                  type="number"
-                  class="form-control"
+                  class="form-select"
+                  aria-label="Default select example"
                   required
-                  placeholder="type your answer"
-                />
+                >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>10</option>
+                  <option>25</option>
+                  <option>50</option>
+                </select>
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Grams</label
+                >
+                <span id="optional">-optional</span>
+                <select
+                  v-model="inputData.grams"
+                  class="form-select"
+                  aria-label="Default select example"
+                  required
+                >
+                  <option>50</option>
+                  <option>100</option>
+                  <option>150</option>
+                  <option>200</option>
+                </select>
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Pieces in a carton</label
+                >
+                <span id="optional">-optional</span>
+                <select
+                  v-model="inputData.pieces_carton"
+                  class="form-select"
+                  aria-label="Default select example"
+                  required
+                >
+                  <option>6</option>
+                  <option>10</option>
+                  <option>12</option>
+                  <option>20</option>
+                  <option>24</option>
+                  <option>50</option>
+                  <option>60</option>
+                  <option>80</option>
+                  <option>100</option>
+                  <option>200</option>
+                  <option>400</option>
+                </select>
               </div>
               <!-- Editor -->
               <div class="crop_details">Product description</div>
@@ -284,68 +381,7 @@
                 </div>
               </div>
               <!-- editor ends -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Currency</label
-                >
-                <span id="required">*</span>
-                <select
-                  v-model="inputData.currency"
-                  class="form-select"
-                  aria-label="Default select example"
-                  required
-                >
-                  <option
-                    v-for="currency in currencies"
-                    :key="currency"
-                    :value="currency"
-                  >
-                    {{ currency }}
-                  </option>
-                </select>
-              </div>
-
               <!-- input -->
-
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Country</label
-                >
-                <span id="required">*</span>
-                <select
-                  v-model="inputData.country"
-                  class="form-select"
-                  aria-label="Default select example"
-                  required
-                >
-                  <option
-                    v-for="(country, index) in countries"
-                    :key="index"
-                    :value="country.country"
-                  >
-                    {{ country.country }}
-                  </option>
-                </select>
-              </div>
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >State</label
-                >
-                <span id="required">*</span>
-                <select
-                  v-model="inputData.state"
-                  class="form-select"
-                  aria-label="Default select example"
-                  required
-                >
-                  <option
-                    v-for="(state, index) in selectStateByCountry"
-                    :key="index"
-                  >
-                    {{ state }}
-                  </option>
-                </select>
-              </div>
               <div class="crop_details">Product image</div>
               <div class="dropzone_conatiner my-4">
                 <div id="my-dropzone" class="dropzone">
@@ -392,14 +428,14 @@ import DefaultNav from "@/layouts/DefaultNav.vue";
 import Alert from "@/utilities/alert";
 // // importing the marketplace service
 import MarketPlaceService from "@/services/marketplace";
+// import country
+import countriesObject from "@/data/countries";
+
 // quill editor
 import Quill from "quill";
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.bubble.css";
 import "quill/dist/quill.snow.css";
-// import the country-state object
-import countriesObject from "@/data/countries";
-
 export default {
   name: "AddCropInput",
   components: {
@@ -418,9 +454,8 @@ export default {
       inputData: {
         category_id: "",
         price: "",
-        title: "",
         crop_focus: "",
-        kg: "",
+        kilograms: "",
         delivery_window: { from: "", to: "" },
         usage_instruction: "",
         subcategory_id: "",
@@ -432,25 +467,19 @@ export default {
         manufacture_date: "",
         delivery_method: "",
         expiry_date: "",
-        state: "",
-        country: "",
         video: "",
         manufacture_country: "",
+        product_type: "",
+        grams: "",
+        pieces_carton: "",
+        stock: "",
       },
-      currencies: ["USD", "EUR", "GBP", "NGN"],
       countries: countriesObject.countries,
+      currencies: ["NGN"],
       fileName: "",
     };
   },
   computed: {
-    selectStateByCountry: function () {
-      // console.log(this.countries)
-      return this.countries && this.inputData.country != ""
-        ? this.countries.filter(
-            (item) => item.country == this.inputData.country
-          )[0].states
-        : [];
-    },
     subCategoryByCategory() {
       return this.subCategories.filter(
         (item) => item.category_id == this.inputData.category_id
@@ -527,7 +556,7 @@ export default {
     uploadFile() {
       const input = document.querySelector("#hidden_input");
       const file = input.files;
-      this.newCropData.files = file;
+      this.inputData.files = file;
 
       // get the file name
       this.fileName = file[0].name;
@@ -685,14 +714,19 @@ div.vertical-line {
     }
   }
 }
-
 #required {
   color: red;
   font-family: "Maven Pro";
   font-weight: bolder;
   font-size: 20px;
 }
-
+#optional {
+  font-family: "Maven Pro";
+  font-weight: bolder;
+  font-size: 14px;
+  color: rgba(113, 117, 125, 0.83);
+  font-style: italic;
+}
 .zone {
   height: 150px;
   font-size: 12px;

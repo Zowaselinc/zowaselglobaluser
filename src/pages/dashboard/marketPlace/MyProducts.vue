@@ -7,7 +7,7 @@
 
       <div class="contents">
         <div class="headings">
-          <h2 />
+          <h2>My products</h2>
           <div class="right-btns">
             <template v-if="userData.user.type == 'merchant'">
               <a href="/marketplace/newsale" class="green-link"

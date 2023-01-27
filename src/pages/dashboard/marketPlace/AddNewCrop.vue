@@ -4,14 +4,23 @@
       <div class="big-content">
         <!-- header -->
         <h1>New Crop Wanted</h1>
-        <form action="" @submit.prevent="step == 3 ? saveData() : changeTab()">
+        <form action="" @submit.prevent="changeTab()" v-show="step == 1">
           <!-- Crop Details Components -->
-          <CropDetails v-if="step == 1" ref="CD" />
-          <QualityProduct type="wanted" v-if="step == 2" ref="QP" />
-          <CropSpecification v-if="step == 3" ref="CS" />
+          <CropDetails v-show="step == 1" ref="CD" />
           <div id="btn-group" class="btn-group gap-3 my-4">
             <button
-              v-if="step != 1"
+              :id="['next_btn']"
+              :class="['btn', 'btn-primary']"
+              type="submit"
+            >
+              Next
+            </button>
+          </div>
+        </form>
+        <form action="" @submit.prevent="changeTab()" v-show="step == 2">
+          <QualityProduct type="wanted" ref="QP" />
+          <div id="btn-group" class="btn-group gap-3 my-4">
+            <button
               type="button"
               class="btn btn-primary active"
               aria-current="page"
@@ -27,13 +36,20 @@
             >
               Next
             </button>
+          </div>
+        </form>
+        <form action="" @submit.prevent="saveData()" v-show="step == 3">
+          <CropSpecification ref="CS" />
+          <div id="btn-group" class="btn-group gap-3 my-4">
             <button
-              v-if="step == 3"
-              type="submit"
-              :class="['btn', 'btn-primary']"
+              type="button"
+              class="btn btn-primary active"
+              aria-current="page"
+              @click="previouStep()"
             >
-              save
+              Back
             </button>
+            <button type="submit" :class="['btn', 'btn-primary']">save</button>
           </div>
         </form>
       </div>
