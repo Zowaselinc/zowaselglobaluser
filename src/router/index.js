@@ -72,7 +72,6 @@ import AddNewCrop from "@/pages/dashboard/marketPlace/AddNewCrop.vue";
 import UpdateShipping from "@/pages/dashboard/UpdateShipping.vue";
 import AddCropSale from "@/pages/dashboard/marketPlace/AddCropSale.vue";
 import CropAuction from "@/pages/dashboard/marketPlace/CropAuction.vue";
-import Preloader from "@/layouts/shared/Preloader.vue";
 
 const routes = [
   {
@@ -371,11 +370,6 @@ const routes = [
     path: "/dashboard/marketplace/:order/updateshipping",
     name: "UpdateShipping",
     component: UpdateShipping,
-  },
-  {
-    path: "/preloader",
-    name: "preloader",
-    component: Preloader,
   },
   {
     path: "/marketplace/addinput",
