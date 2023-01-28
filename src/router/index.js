@@ -13,6 +13,21 @@ import ResetSuccess from "@/pages/auth/ResetSuccess.vue";
 import UserType from "@/pages/auth/UserType.vue";
 import AgentType from "@/pages/auth/AgentType.vue";
 import DashboardHome from "@/pages/dashboard/DashboardHome.vue";
+import DoKyb from "@/pages/dashboard/DoKyb.vue";
+import EachInvoice from "@/pages/dashboard/EachInvoice.vue";
+import EachLoan from "@/pages/dashboard/EachLoan.vue";
+import FinanceDashboard from "@/pages/dashboard/Finance.vue";
+import Foodsafety from "@/pages/dashboard/Foodsafety.vue";
+import FundWallet from "@/pages/dashboard/FundWallet.vue";
+import Inputinformation from "@/pages/dashboard/Inputinformation.vue";
+import Invoice from "@/pages/dashboard/Invoice.vue";
+import Capacity from "@/pages/dashboard/kyf/Capacity.vue";
+import Character from "@/pages/dashboard/kyf/Character.vue";
+import Kyf from "@/pages/dashboard/kyf/Kyf.vue";
+import Loan from "@/pages/dashboard/Loan.vue";
+import LoanHistory from "@/pages/dashboard/LoanHistory.vue";
+import LoanDetails from "@/pages/dashboard/LoanDetails.vue";
+import LoanType from "@/pages/dashboard/LoanType.vue";
 import LogisticsDashboard from "@/pages/dashboard/Logistics.vue";
 import FinanceDashboard from "@/pages/dashboard/Finance.vue";
 import DoKyb from "@/pages/dashboard/DoKyb.vue";
@@ -361,6 +376,47 @@ const routes = [
     path: "/preloader",
     name: "preloader",
     component: Preloader,
+  },
+  {
+    path: "/marketplace/addinput",
+    name: "AddCropInput",
+    component: AddCropInput,
+  },
+  {
+    path: "/dashboard/kyf",
+    name: "Kyf",
+    component: Kyf,
+  },
+  {
+    path: "/dashboard/kyf/edit",
+    name: "KyfEdit",
+    component: Kyf,
+  },
+  {
+    path: "/dashboard/each-loan",
+    name: "EachLoan",
+    component: EachLoan,
+  },
+
+  {
+    path: "/dashboard/loanhistory",
+    name: "LoanHistory",
+    component: LoanHistory,
+  },
+  {
+    path: "/dashboard/loandetails",
+    name: "LoanDetails",
+    component: LoanDetails,
+  },
+  {
+    path: "/dashboard/character",
+    name: "Character",
+    component: Character,
+  },
+  {
+    path: "/dashboard/loantype",
+    name: "LoanType",
+    component: LoanType,
   },
 ];
 

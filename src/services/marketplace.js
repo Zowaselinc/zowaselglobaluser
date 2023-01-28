@@ -23,7 +23,8 @@ const ADD_NEW_CROP_PATH = (type) => `crop/${type}/add`;
 const GET_ORDERS_PATH = (id) => `users/${id}/orders`;
 const GET_SALES_PATH = (id) => `users/${id}/sales`;
 const ADD_CROP_INPUT_PATH = () => `input/add/`;
-const GET_PRODUCTS_PATH = (id) => `users/${id}/crops`;
+const GET_CROPS_BY_USER_PATH = (id) => `users/${id}/crops`;
+const GET_INPUTS_BY_USER_PATH = (id) => `users/${id}/inputs`;
 
 export default {
   getCropCategories: function (callback) {
@@ -213,9 +214,20 @@ export default {
         callback(error.data);
       });
   },
-  getProducts: function (id, callback) {
+  getUserCrops: function (id, callback) {
     axios
-      .get(config.BASE_URL + GET_PRODUCTS_PATH(id))
+      .get(config.BASE_URL + GET_CROPS_BY_USER_PATH(id))
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.data);
+      });
+  },
+
+  getUserInputs: function (id, callback) {
+    axios
+      .get(config.BASE_URL + GET_INPUTS_BY_USER_PATH(id))
       .then((response) => {
         callback(response.data);
       })
