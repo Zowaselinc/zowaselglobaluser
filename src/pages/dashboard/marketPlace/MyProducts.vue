@@ -22,7 +22,7 @@
               <a href="/marketplace/newcrop" class="green-link"
                 >Add Crop Wanted</a
               >
-              <a href="/marketplace/newcrop" class="green-link">Add Input</a>
+              <a href="/marketplace/addinput" class="green-link">Add Input</a>
             </template>
           </div>
         </div>
@@ -75,8 +75,16 @@
           />
         </div>
         <div v-if="userData.user.type == 'corporate'">
-          <MyCrop v-if="activeTab == 'cropsWanted'" :list-data="cropsWanted" />
-          <MyInput v-if="activeTab == 'input'" :list-data="inputs" />
+          <MyCrop
+            v-if="activeTab == 'cropsWanted'"
+            :list-data="cropsWanted"
+            :get-crops="getCrops"
+          />
+          <MyInput
+            v-if="activeTab == 'input'"
+            :list-data="inputs"
+            :get-crops="getCrops"
+          />
         </div>
       </div>
     </div>
@@ -107,7 +115,8 @@ export default {
       cropsAuction: [],
       cropsWanted: [],
       inputs: [],
-      activeTab: "forSale",
+      activeTab:
+        this.$store.state.user.type == "merchant" ? "forSale" : "cropsWanted",
     };
   },
   mounted() {
@@ -127,17 +136,18 @@ export default {
           this.cropsWanted = response.data.rows.filter(
             (crop) => crop.type == "wanted"
           );
+          console.log(this.cropsWanted);
         }
       });
     },
     getInputs() {
       MarketPlaceService.getUserInputs(this.userData.user_id, (response) => {
         if (response && response.error == false) {
-          this.inputs = response.data.rows;
+          this.inputs = response.data;
         }
-        console.log(this.inputs);
       });
     },
+
     switchTab(tab) {
       this.activeTab = tab;
     },

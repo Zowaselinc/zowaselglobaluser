@@ -46,13 +46,13 @@
                   >Crop Focus</label
                 >
                 <span id="required">*</span>
-                <input
+                <select
                   v-model="inputData.crop_focus"
-                  type="text"
-                  class="form-control"
-                  required
-                  placeholder="type your answer"
-                />
+                  class="form-select"
+                  aria-label="Default select example"
+                >
+                  <option>waiting for data</option>
+                </select>
               </div>
               <!-- input -->
               <div class="w-100 mb-3">
@@ -140,7 +140,6 @@
                   v-model="inputData.video"
                   type="text"
                   class="form-control"
-                  required
                   placeholder="type your answer"
                 />
               </div>
@@ -339,7 +338,6 @@
                   v-model="inputData.grams"
                   class="form-select"
                   aria-label="Default select example"
-                  required
                 >
                   <option>50</option>
                   <option>100</option>
@@ -357,7 +355,6 @@
                   v-model="inputData.pieces_carton"
                   class="form-select"
                   aria-label="Default select example"
-                  required
                 >
                   <option>6</option>
                   <option>10</option>
@@ -374,6 +371,7 @@
               </div>
               <!-- Editor -->
               <div class="crop_details">Product description</div>
+
               <div class="d-flex flex-row mb-3 gap-4 m_top">
                 <div class="w-100 editor-wrapper">
                   <!-- using quill editor tool-->
@@ -387,9 +385,9 @@
                 <div id="my-dropzone" class="dropzone">
                   <img id="preview-selected-image" class="img-fluid mb-2" />
                   <img
+                    id="image_icon"
                     src="@/assets/images/vectors/Image.svg"
                     alt="image"
-                    id="image_icon"
                   />
                   <div id="file-input">
                     <input
@@ -398,12 +396,12 @@
                       type="file"
                       multiple
                       accept="image/*"
-                      @change="uploadFile"
                       required
+                      @change="uploadFile"
                     />
                     <div
-                      id="file_name"
                       v-if="fileName == ''"
+                      id="file_name"
                       @click="openFileDialog()"
                     >
                       <span>click to browse</span>
@@ -541,14 +539,28 @@ export default {
     },
 
     async saveData() {
+      var data = new FormData();
+      var index = 0;
+      while (this.inputData.files[index]) {
+        data.append(`image_${index}`, this.inputData.files[index]);
+        index++;
+      }
+      for (var field in this.inputData) {
+        if (field != "files") {
+          if (typeof this.inputData[field] == "object") {
+            this.inputData[field] = JSON.stringify(this.inputData[field]);
+          }
+          data.append(field, this.inputData[field]);
+        }
+      }
       // send data to the end-point
-      await MarketPlaceService.saveInput(this.inputData, (response) => {
+      await MarketPlaceService.saveInput(data, (response) => {
         if (response && response.error == false) {
           Alert.success({
-            message: "Crop added successfully",
+            message: "Input added successfully",
           });
           setTimeout(() => {
-            window.location.reload();
+            window.location.assign("/dashboard/marketplace/myproducts");
           }, 2000);
         }
       });

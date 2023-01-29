@@ -76,7 +76,7 @@
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
 import Alert from "@/utilities/alert";
-import MarketplaceService from "@/services/marketplace";
+import MarketPlaceService from "@/services/marketplace";
 
 export default {
   name: "CardPayment",
@@ -98,7 +98,7 @@ export default {
       var item = this.cart[index];
       if (eval(item.input.stock) > eval(item.quantity)) {
         this.cart[index].quantity = eval(this.cart[index].quantity) + 1;
-        MarketplaceService.addToCart(
+        MarketPlaceService.addToCart(
           {
             input_id: item.input_id,
             user_id: item.user_id,
@@ -106,15 +106,13 @@ export default {
           },
           (response) => {}
         );
-
-        console.log(this.cart);
       }
     },
     decrement(index) {
       var item = this.cart[index];
       if (eval(item.quantity) > 1) {
         this.cart[index].quantity = eval(this.cart[index].quantity) - 1;
-        MarketplaceService.addToCart(
+        MarketPlaceService.addToCart(
           {
             input_id: item.input_id,
             user_id: item.user_id,
@@ -125,7 +123,7 @@ export default {
       }
     },
     removeCartItem(item) {
-      MarketplaceService.deleteCartItem(item.id, (response) => {
+      MarketPlaceService.deleteCartItem(item.id, (response) => {
         if (response.error == false) {
           this.getCartItems();
           Alert.success({
