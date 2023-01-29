@@ -4,7 +4,7 @@
       <div class="big-content">
         <!-- header -->
         <h1>New Crop Wanted</h1>
-        <form action="" @submit.prevent="changeTab()" v-show="step == 1">
+        <form v-show="step == 1" action="" @submit.prevent="changeTab()">
           <!-- Crop Details Components -->
           <CropDetails v-show="step == 1" ref="CD" />
           <div id="btn-group" class="btn-group gap-3 my-4">
@@ -17,8 +17,8 @@
             </button>
           </div>
         </form>
-        <form action="" @submit.prevent="changeTab()" v-show="step == 2">
-          <QualityProduct type="wanted" ref="QP" />
+        <form v-show="step == 2" action="" @submit.prevent="changeTab()">
+          <QualityProduct ref="QP" type="wanted" />
           <div id="btn-group" class="btn-group gap-3 my-4">
             <button
               type="button"
@@ -38,7 +38,7 @@
             </button>
           </div>
         </form>
-        <form action="" @submit.prevent="saveData()" v-show="step == 3">
+        <form v-show="step == 3" action="" @submit.prevent="saveData()">
           <CropSpecification ref="CS" />
           <div id="btn-group" class="btn-group gap-3 my-4">
             <button

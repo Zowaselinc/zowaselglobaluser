@@ -7,7 +7,7 @@
           <!-- top level header -->
           <div class="d-flex flex-row top_level_header">
             <div class="left_header d-flex flex-row gap-4 my-4">
-              <a class="left_arrow" v-if="editKyf">
+              <a v-if="editKyf" class="left_arrow">
                 <img
                   src="@/assets/images/vectors/arrowleft.png"
                   alt="left-arrow"
@@ -18,24 +18,24 @@
             </div>
             <!--next button -->
             <button
+              v-if="editKyf"
               type="submit"
               :class="['btn', 'btn-primary', 'my-4']"
-              v-if="editKyf"
             >
               Next
             </button>
             <!--save button -->
             <button
+              v-if="activeTab == 'kin'"
               type="submit"
               :class="['btn', 'btn-primary', 'my-4']"
-              v-if="activeTab == 'kin'"
             >
               save
             </button>
           </div>
           <!-- lower level header -->
 
-          <div class="lower_level-header d-flex gap-2" v-if="!editKyf">
+          <div v-if="!editKyf" class="lower_level-header d-flex gap-2">
             <button
               type="submit"
               :class="[
@@ -83,7 +83,7 @@
           </div>
 
           <!-- Editing screen header -->
-          <div class="editkyf mb-4" v-if="editKyf">
+          <div v-if="editKyf" class="editkyf mb-4">
             Changes to any field would automatically log the administrator out
             of all signed in devices.
           </div>

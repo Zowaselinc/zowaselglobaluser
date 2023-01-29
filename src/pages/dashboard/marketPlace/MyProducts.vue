@@ -71,8 +71,11 @@
           </a>
         </div> -->
         <!-- component comes here -->
-        <ForSale :listData="cropsSale" v-if="activeTab == 'forSale'" />
-        <ForAuction :listData="cropsAuction" v-if="activeTab == 'forAuction'" />
+        <ForSale v-if="activeTab == 'forSale'" :list-data="cropsSale" />
+        <ForAuction
+          v-if="activeTab == 'forAuction'"
+          :list-data="cropsAuction"
+        />
       </div>
     </div>
   </DefaultNav>

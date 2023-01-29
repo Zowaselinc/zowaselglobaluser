@@ -6,7 +6,11 @@
         <p>Empowering growers from seed to market</p>
       </div>
       <div class="second-bar">
-        <Filter />
+        <Filter
+          :apply="applyFilters"
+          :reset="resetFilters"
+          :market-type="activeView"
+        />
         <div v-if="false" class="input-area">
           <input type="text" placeholder="Search" />
           <div class="icon">
@@ -18,10 +22,12 @@
       <!-- MAIN CONTENT GOES HERE -->
       <CorporateMarket
         v-if="userData.user.type == 'corporate'"
+        ref="corporateMarket"
         :view="activeView"
       />
       <MerchantMarket
         v-if="userData.user.type == 'merchant'"
+        ref="merchantMarket"
         :view="activeView"
       />
     </div>
@@ -45,14 +51,12 @@ export default {
   },
   data() {
     return {
-      categories: [],
       userData: this.$store.state.user,
       activeView: "",
     };
   },
-  mounted() {
+  created() {
     this.activeView = this.$route.params.market;
-    this.getCropCategories();
   },
   methods: {
     changeTab(tab) {
@@ -65,10 +69,18 @@ export default {
         deColor = "green";
       }
     },
-    getCropCategories() {
-      MarketplaceService.getCropCategories((response) => {
-        this.categories = response.data;
-      });
+    applyFilters(filters) {
+      this.$refs.corporateMarket.applyFilters(filters);
+    },
+    resetFilters() {
+      this.filters = {
+        category: "",
+        price: {
+          min: 0,
+          max: 50000,
+        },
+      };
+      this.$refs.corporateMarket.resetFilters();
     },
   },
 };

@@ -387,9 +387,9 @@
                 <div id="my-dropzone" class="dropzone">
                   <img id="preview-selected-image" class="img-fluid mb-2" />
                   <img
+                    id="image_icon"
                     src="@/assets/images/vectors/Image.svg"
                     alt="image"
-                    id="image_icon"
                   />
                   <div id="file-input">
                     <input
@@ -398,12 +398,12 @@
                       type="file"
                       multiple
                       accept="image/*"
-                      @change="uploadFile"
                       required
+                      @change="uploadFile"
                     />
                     <div
-                      id="file_name"
                       v-if="fileName == ''"
+                      id="file_name"
                       @click="openFileDialog()"
                     >
                       <span>click to browse</span>

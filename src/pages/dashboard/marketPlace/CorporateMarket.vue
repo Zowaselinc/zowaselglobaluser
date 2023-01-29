@@ -12,7 +12,7 @@
       </div>
       <template v-if="view == 'cropsale'">
         <a
-          v-for="(crop, index) in sales.rows"
+          v-for="(crop, index) in listToRender"
           :key="index"
           href="#"
           class="each-item"
@@ -34,7 +34,7 @@
       </template>
       <template v-if="view == 'cropauction'">
         <a
-          v-for="(crop, index) in auctions.rows"
+          v-for="(crop, index) in listToRender"
           :key="index"
           href="#"
           class="each-item"
@@ -66,9 +66,9 @@
       </div>
       <!-- pagination -->
       <nav
+        v-if="false"
         aria-label="Page navigation example"
         class="d-flex justify-content-center my-4"
-        v-if="false"
       >
         <ul class="pagination">
           <li class="page-item">
@@ -120,11 +120,17 @@ export default {
       categories: [],
       sales: {},
       auctions: {},
-      filters: {
-        type: "",
-        kg: "",
-      },
+      filtered: null,
     };
+  },
+  computed: {
+    listToRender() {
+      return this.filtered
+        ? this.filtered.rows
+        : this.view == "cropauction"
+        ? this.auctions.rows
+        : this.sales.rows;
+    },
   },
   mounted() {
     this.getCropCategories();
@@ -153,6 +159,29 @@ export default {
       MarketplaceService.getCropsForAuction((response) => {
         this.auctions = response.data;
       });
+    },
+    applyFilters(filters) {
+      let filtered = JSON.parse(
+        JSON.stringify(this.view == "cropauction" ? this.auctions : this.sales)
+      );
+      Object.keys(filters).forEach((filter) => {
+        if (filter == "category" && filters[filter] != "") {
+          filtered.rows = filtered.rows.filter(
+            (item) => item.category.name == filters[filter]
+          );
+        }
+        if (filter == "price") {
+          filtered.rows = filtered.rows.filter(
+            (item) =>
+              eval(item.specification.price) >= eval(filters[filter].min) &&
+              eval(item.specification.price) <= eval(filters[filter].max)
+          );
+        }
+      });
+      this.filtered = filtered;
+    },
+    resetFilters() {
+      this.filtered = null;
     },
   },
 };

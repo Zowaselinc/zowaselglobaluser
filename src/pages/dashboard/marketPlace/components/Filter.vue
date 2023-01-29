@@ -30,54 +30,18 @@
           <div class="rowz d-flex align-items-center mb-3">
             <h2>Product Type</h2>
           </div>
-          <div class="rowz d-flex align-items-center mb-2 position-relative">
+          <div
+            v-for="category in categories"
+            :key="category.id"
+            class="rowz category-option d-flex align-items-center mb-2 position-relative"
+          >
             <div class="filter-words d-flex">
               <!-- checkbox component -->
-              <Checkbox />
-              <div class="ms-3 check-words">Fertilizers</div>
+              <Checkbox @click="filterCategory(category.name, $event)" />
+              <div class="ms-3 check-words">{{ category.name }}</div>
             </div>
-            <div class="number-identifier">
+            <div v-if="false" class="number-identifier">
               <span>54688</span>
-            </div>
-          </div>
-          <div class="rowz d-flex align-items-center mb-2 position-relative">
-            <div class="filter-words d-flex">
-              <!-- checkbox component -->
-              <Checkbox />
-              <div class="ms-3 check-words">Herbicides</div>
-            </div>
-            <div class="number-identifier">
-              <span>345890</span>
-            </div>
-          </div>
-          <div class="rowz d-flex align-items-center mb-2 position-relative">
-            <div class="filter-words d-flex">
-              <!-- checkbox component -->
-              <Checkbox />
-              <div class="ms-3 check-words">Fungicides</div>
-            </div>
-            <div class="number-identifier">
-              <span>47953</span>
-            </div>
-          </div>
-          <div class="rowz d-flex align-items-center mb-2 position-relative">
-            <div class="filter-words d-flex">
-              <!-- checkbox component -->
-              <Checkbox />
-              <div class="ms-3 check-words">Insectides</div>
-            </div>
-            <div class="number-identifier">
-              <span>56780</span>
-            </div>
-          </div>
-          <div class="rowz d-flex align-items-center mb-2 position-relative">
-            <div class="filter-words d-flex">
-              <!-- checkbox component -->
-              <Checkbox />
-              <div class="ms-3 check-words">Seeds</div>
-            </div>
-            <div class="number-identifier">
-              <span>234789</span>
             </div>
           </div>
 
@@ -90,21 +54,33 @@
             class="customRange-conatiner d-flex flex-row justify-content-center align-items-center position-relative"
           >
             <input
-              id="customRange1"
               v-model="min"
               type="range"
-              class="form-range fromSlider"
+              class="form-range min"
               min="0"
-              :max="max"
+              max="50000"
+              @input="handleMinRange($event)"
+              @change="endRangeMove('min')"
             />
             <input
-              id="customRange2"
               v-model="max"
               type="range"
-              class="form-range toSlider"
-              :min="min"
-              max="100000"
+              class="form-range max"
+              min="0"
+              max="50000"
+              @input="handleMaxRange($event)"
+              @change="endRangeMove('max')"
             />
+            <div
+              class="range-thumb min-thumb"
+              :style="'left:' + minPosition + '%;'"
+              @mouseenter="focusRange('min')"
+            ></div>
+            <div
+              class="range-thumb max-thumb"
+              :style="'right:' + maxPosition + '%;'"
+              @mouseenter="focusRange('max')"
+            ></div>
           </div>
 
           <div
@@ -114,60 +90,62 @@
               <div class="form_control_container__time">Min</div>
               <input
                 id="fromInput"
+                v-model="min"
                 class="form_control_container__time__input"
                 type="number"
-                value="10"
                 min="0"
-                max="100"
+                :max="max"
               />
             </div>
             <div class="form_control_container">
               <div class="form_control_container__time">Max</div>
               <input
                 id="toInput"
+                v-model="max"
                 class="form_control_container__time__input"
                 type="number"
-                value="40"
-                min="0"
-                max="100"
+                :min="min"
+                max="50000"
               />
             </div>
           </div>
         </div>
         <!-- row 2 -->
         <div class="filter-item d-flex flex-column row-2">
-          <!-- type -->
-          <div class="rowz d-flex align-items-center mb-4">
-            <h2>Manufacturer</h2>
-          </div>
-          <div class="rowz d-flex align-items-center mb-3 position-relative">
-            <div class="filter-words d-flex">
-              <!-- checkbox component -->
-              <Checkbox />
-              <div class="ms-3 check-words">Dangote refinery</div>
+          <template v-if="marketType.includes('input')">
+            <!-- type -->
+            <div class="rowz d-flex align-items-center mb-4">
+              <h2>Manufacturer</h2>
             </div>
-          </div>
-          <div class="rowz d-flex align-items-center mb-3 position-relative">
-            <div class="filter-words d-flex">
-              <!-- checkbox component -->
-              <Checkbox />
-              <div class="ms-3 check-words">Nasco</div>
+            <div class="rowz d-flex align-items-center mb-3 position-relative">
+              <div class="filter-words d-flex">
+                <!-- checkbox component -->
+                <Checkbox />
+                <div class="ms-3 check-words">Dangote refinery</div>
+              </div>
             </div>
-          </div>
-          <div class="rowz d-flex align-items-center mb-3 position-relative">
-            <div class="filter-words d-flex">
-              <!-- checkbox component -->
-              <Checkbox />
-              <div class="ms-3 check-words">60 Days</div>
+            <div class="rowz d-flex align-items-center mb-3 position-relative">
+              <div class="filter-words d-flex">
+                <!-- checkbox component -->
+                <Checkbox />
+                <div class="ms-3 check-words">Nasco</div>
+              </div>
             </div>
-          </div>
-          <div class="rowz d-flex align-items-center position-relative">
-            <div class="filter-words d-flex">
-              <!-- checkbox component -->
-              <Checkbox />
-              <div class="ms-3 check-words">Carbury</div>
+            <div class="rowz d-flex align-items-center mb-3 position-relative">
+              <div class="filter-words d-flex">
+                <!-- checkbox component -->
+                <Checkbox />
+                <div class="ms-3 check-words">60 Days</div>
+              </div>
             </div>
-          </div>
+            <div class="rowz d-flex align-items-center position-relative">
+              <div class="filter-words d-flex">
+                <!-- checkbox component -->
+                <Checkbox />
+                <div class="ms-3 check-words">Carbury</div>
+              </div>
+            </div>
+          </template>
 
           <!-- price -->
           <div class="rowz d-flex align-items-center mb-3">
@@ -214,17 +192,17 @@
               <div class="ms-3 check-words">Self Transport</div>
             </div>
           </div>
-          <div class="mb-4 rowz">
+          <div v-if="false" class="mb-4 rowz">
             <select class="form-select" aria-label="Default select example">
               <option>
                 Select crop center <span>&blacktriangledown;</span>
               </option>
             </select>
           </div>
-          <div class="rowz d-flex align-items-center mb-4">
+          <div v-if="false" class="rowz d-flex align-items-center mb-4">
             <h2>Quality</h2>
           </div>
-          <div class="d-flex mb-4 selct-input">
+          <div v-if="false" class="d-flex mb-4 selct-input">
             <select
               id="kilogram"
               class="form-select"
@@ -241,10 +219,16 @@
               aria-describedby="basic-addon2"
             />
           </div>
-          <button type="button" class="btn btn-lg mb-4 btn-1">
+          <button
+            type="button"
+            class="btn btn-lg mb-4 btn-1"
+            @click="apply(filters)"
+          >
             Apply filters
           </button>
-          <button type="button" class="btn btn-lg mb-4">Reset filters</button>
+          <button type="button" class="btn btn-lg mb-4" @click="reset()">
+            Reset filters
+          </button>
         </div>
       </div>
     </div>
@@ -253,20 +237,108 @@
 
 <script>
 import Checkbox from "@/components/Checkbox.vue";
+import MarketplaceService from "@/services/marketplace";
 export default {
   components: {
     Checkbox,
   },
+  props: {
+    marketType: {
+      type: String,
+      default: "",
+    },
+    apply: Function,
+    reset: Function,
+  },
   data() {
     return {
-      filter: false,
+      filter: true,
       min: 0,
-      max: 100000,
+      max: 50000,
+      categories: [],
+      filters: {
+        category: "",
+        price: {
+          min: 0,
+          max: 50000,
+        },
+      },
     };
+  },
+  computed: {
+    minPosition() {
+      var percentChange = (this.min / 50000) * 100;
+      return percentChange - percentChange * 0.1;
+    },
+    maxPosition() {
+      var percentChange = ((50000 - this.max) / 50000) * 100;
+      return percentChange - percentChange * 0.1;
+    },
+  },
+  mounted() {
+    if (this.marketType.includes("crop")) {
+      this.loadCropCategories();
+    } else {
+      this.loadInputCategories();
+    }
   },
   methods: {
     toggleFilter() {
       this.filter = !this.filter;
+    },
+    filterCategory(category, event) {
+      this.filters.category = category;
+      Array.from(
+        document.querySelectorAll(".category-option .checkbox-input")
+      ).forEach((input) => {
+        input.checked = false;
+      });
+      if (event.target.className == "checkbox-input") {
+        event.target.checked = true;
+      } else {
+        event.target.previousElementSibling.checked = true;
+      }
+    },
+    handleMinRange(event) {
+      if (event.target.value > this.max - 5000) {
+        event.target.value = this.max - 5000;
+        this.min = this.max - 5000;
+      }
+      this.min = event.target.value;
+      this.filters.price.min = this.min;
+    },
+    handleMaxRange(event) {
+      if (event.target.value < this.min + 3000) {
+        event.target.value = this.min + 3000;
+      }
+      this.max = event.target.value;
+      this.filters.price.max = this.max;
+    },
+    focusRange(type) {
+      if (type == "min") {
+        document.querySelector(`.form-range.${type}`).style.zIndex = 3;
+        document.querySelector(`.${type}-thumb`).style.pointerEvents = "none";
+        document.querySelector(`.max-thumb`).style.pointerEvents = "auto";
+        document.querySelector(`.form-range.max`).style.zIndex = 2;
+      } else {
+        document.querySelector(`.form-range.${type}`).style.zIndex = 3;
+        document.querySelector(`.${type}-thumb`).style.pointerEvents = "none";
+        document.querySelector(`.min-thumb`).style.pointerEvents = "auto";
+        document.querySelector(`.form-range.min`).style.zIndex = 2;
+      }
+    },
+    endRangeMove(type) {
+      document.querySelector(`.${type}-thumb`).style.pointerEvents = "auto";
+    },
+    loadCropCategories() {
+      MarketplaceService.getCropCategories((response) => {
+        this.categories = response.data;
+      });
+    },
+    loadInputCategories() {
+      MarketplaceService.getInputCategories((response) => {
+        this.categories = response.data;
+      });
     },
   },
 };
@@ -369,10 +441,6 @@ export default {
           color: #4a4754;
         }
 
-        .seller-type {
-          margin-top: 30px;
-        }
-
         .number-identifier {
           background: #ededee;
           border-radius: 4px;
@@ -444,22 +512,6 @@ export default {
     }
   }
 
-  #customRange1,
-  #customRange2 {
-    border: none !important;
-    padding: 0 !important;
-    -webkit-appearance: none;
-    appearance: none;
-  }
-
-  .form-range::-moz-range-thumb {
-    background-color: #05b050;
-  }
-
-  .form-range::-webkit-range-thumb {
-    background-color: #05b050;
-  }
-
   .form-range.fromSlider::-moz-range-track {
     height: 0rem;
   }
@@ -471,29 +523,42 @@ export default {
   }
 
   input[type="number"].form_control_container__time__input {
-    width: 70px;
+    width: 90%;
     height: 30px;
     border: none;
   }
 
   .form-range {
     width: 100%;
+    margin: 0px;
   }
 
-  .fromSlider {
-    height: 0;
-    z-index: 1;
-  }
-
-  .fromSlider::-webkit-slider-thumb:hover,
-  .toSlider::-webkit-slider-thumb:hover {
-    z-index: 1;
-  }
   input[type="range"] {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
     position: absolute;
+    border: none !important;
+    padding: 0 !important;
+    opacity: 1;
+  }
+
+  .range-thumb {
+    height: 23px;
+    width: 23px;
+    border-radius: 15px;
+    background-color: #05b050;
+    position: absolute;
+    border: 1px solid #fff;
+    z-index: 3;
+  }
+
+  .range-thumb.min-thumb {
+    left: 0;
+  }
+
+  .range-thumb.max-thumb {
+    right: 0;
   }
   //
 }

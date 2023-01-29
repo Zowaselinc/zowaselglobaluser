@@ -70,9 +70,9 @@
       </div>
       <!-- pagination -->
       <nav
+        v-if="false"
         aria-label="Page navigation example"
         class="d-flex justify-content-center my-4"
-        v-if="false"
       >
         <ul class="pagination">
           <li class="page-item">
