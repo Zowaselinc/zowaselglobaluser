@@ -3,24 +3,26 @@
     <a href="#" class="each-product">
       <div>
         <h3>
-          {{ product.subcategory.name }} {{ product.specification.color }}
+          {{ product.subcategory.name }}
         </h3>
         <p>
           Date: <span>{{ product.created_at }}</span>
         </p>
         <!-- <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p> -->
         <p>
-          Status: <span>{{ product.active == 1 ? "Active" : "Inactive" }}</span>
+          Status <span>{{ product.active == 1 ? "Active" : "Inactive" }}</span>
         </p>
       </div>
       <div class="main-address">
         <div class="right">
           <h4>
-            Amount: <span>NGN {{ product.specification.price }}</span>
+            Amount: <span>{{ product.price }}</span>
           </h4>
           <div class="product-btns">
             <button class="delete">Delete</button>
-            <button class="view">View</button>
+            <button class="view" @click="removeCropWanted(product)">
+              View
+            </button>
           </div>
         </div>
       </div>
@@ -29,8 +31,10 @@
 </template>
 
 <script>
+import MarketPlaceService from "@/services/marketplace";
+import Alert from "@/utilities/alert";
 export default {
-  name: "MyProductDetails",
+  name: "MyInput",
   components: {},
   props: {
     listData: {
@@ -45,7 +49,21 @@ export default {
     };
   },
   mounted() {},
-  methods: {},
+  methods: {
+    removeInput(item) {
+      MarketPlaceService.removeInput(item.id, (response) => {
+        if (response.error == false) {
+          this.getCrops();
+          Alert.success({
+            message: "Item Deleted Successfully",
+          });
+        }
+      });
+    },
+    parseDeliveryWindow(product) {
+      return JSON.parse(product.crop_request.delivery_window);
+    },
+  },
 };
 </script>
 
