@@ -10,13 +10,13 @@
         </p>
         <!-- <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p> -->
         <p>
-          Status: <span>{{ product.active == 1 ? "Active" : "Inactive" }}</span>
+          Status <span>{{ product.active == 1 ? "Active" : "Inactive" }}</span>
         </p>
       </div>
       <div class="main-address">
         <div class="right">
           <h4>
-            Amount: <span>NGN {{ product.specification.price }}</span>
+            Amount: <span>{{ product.specification.price }}</span>
           </h4>
           <div class="product-btns">
             <button class="edit">Edit</button>
@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  name: "MyProductDetails",
+  name: "MyInput",
   components: {},
   props: {
     listData: {

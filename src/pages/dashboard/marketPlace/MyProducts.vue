@@ -26,7 +26,6 @@
             </template>
           </div>
         </div>
-
         <div v-if="userData.user.type == 'merchant'" class="content-tabs">
           <button
             :class="['normal-btn', activeTab == 'forSale' ? 'active-tab' : '']"
@@ -46,33 +45,39 @@
             For Auction
           </button>
         </div>
+
         <div v-if="userData.user.type == 'corporate'" class="content-tabs">
-          <button>My Crops</button>
-          <button>My Inputs</button>
+          <button
+            :class="[
+              'normal-btn',
+              activeTab == 'cropsWanted' ? 'active-tab' : '',
+            ]"
+            type="button"
+            @click="switchTab('cropsWanted')"
+          >
+            My Crops
+          </button>
+          <button
+            :class="['normal-btn', activeTab == 'input' ? 'active-tab' : '']"
+            type="button"
+            @click="switchTab('input')"
+          >
+            My Inputs
+          </button>
         </div>
-        <!-- <div v-for="product in products" :key="product.id" class="contents">
-          <a href="#" class="each-product">
-            <div>
-              <h3>{{ product.rows.title }}</h3>
-              <p>Date: <span>2022-11-16 7:58pm</span></p>
-              <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
-              <p>Status <span>Active</span></p>
-            </div>
-            <div class="main-address">
-              <div class="right">
-                <h4>Amount: <span>NGN2,550</span></h4>
-                <div class="product-btns">
-                  <button class="edit">Edit</button>
-                  <button class="delete">Delete</button>
-                  <button class="view">View</button>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div> -->
+
         <!-- component comes here -->
-        <ForSale :listData="cropsSale" v-if="activeTab == 'forSale'" />
-        <ForAuction :listData="cropsAuction" v-if="activeTab == 'forAuction'" />
+        <div v-if="userData.user.type == 'merchant'">
+          <ForSale v-if="activeTab == 'forSale'" :list-data="cropsSale" />
+          <ForAuction
+            v-if="activeTab == 'forAuction'"
+            :list-data="cropsAuction"
+          />
+        </div>
+        <div v-if="userData.user.type == 'corporate'">
+          <MyCrop v-if="activeTab == 'cropsWanted'" :list-data="cropsWanted" />
+          <MyInput v-if="activeTab == 'input'" :list-data="inputs" />
+        </div>
       </div>
     </div>
   </DefaultNav>
@@ -82,6 +87,8 @@
 import DefaultNav from "@/layouts/DefaultNav.vue";
 import ForSale from "@/pages/dashboard/marketPlace/components/ForSale.vue";
 import ForAuction from "@/pages/dashboard/marketPlace/components/ForAuction.vue";
+import MyCrop from "@/pages/dashboard/marketPlace/components/Crop.vue";
+import MyInput from "@/pages/dashboard/marketPlace/components/Input.vue";
 import MarketPlaceService from "@/services/marketplace";
 
 export default {
@@ -90,6 +97,8 @@ export default {
     DefaultNav,
     ForSale,
     ForAuction,
+    MyCrop,
+    MyInput,
   },
   data() {
     return {
@@ -103,6 +112,7 @@ export default {
   },
   mounted() {
     this.getCrops();
+    this.getInputs();
   },
   methods: {
     getCrops() {
@@ -114,7 +124,7 @@ export default {
           this.cropsAuction = response.data.rows.filter(
             (crop) => crop.type == "auction"
           );
-          this.cropWanted = response.data.rows.filter(
+          this.cropsWanted = response.data.rows.filter(
             (crop) => crop.type == "wanted"
           );
         }
@@ -125,6 +135,7 @@ export default {
         if (response && response.error == false) {
           this.inputs = response.data.rows;
         }
+        console.log(this.inputs);
       });
     },
     switchTab(tab) {
