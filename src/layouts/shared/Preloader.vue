@@ -32,8 +32,8 @@ export default {
   border: 4px solid #fff;
   border-top: 4px solid #05b050;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   animation: spin 1s linear infinite;
 }
 

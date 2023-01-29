@@ -1,6 +1,9 @@
 <template>
   <DefaultNav>
-    <div class="big-container">
+    <!-- preloader -->
+    <Preloader v-if="loading" />
+    <!-- content -->
+    <div class="big-container" v-else>
       <div class="big-content">
         <!-- header -->
         <h1>New Crop Wanted</h1>
@@ -65,6 +68,8 @@ import CropSpecification from "@/pages/dashboard/marketPlace/components/CropSpec
 import Alert from "@/utilities/alert";
 // importing the marketplace service
 import MarketPlaceService from "@/services/marketplace";
+// import preloader
+import Preloader from "@/layouts/shared/Preloader.vue";
 
 export default {
   name: "AddNewcrop",
@@ -73,6 +78,7 @@ export default {
     CropDetails,
     QualityProduct,
     CropSpecification,
+    Preloader,
   },
   data() {
     return {
@@ -80,6 +86,7 @@ export default {
       crop_details: {},
       quality_product: {},
       crop_specification: {},
+      loading: false,
     };
   },
   methods: {
@@ -98,6 +105,8 @@ export default {
     },
 
     async saveData() {
+      // call the preloader
+      this.loading = true;
       // combine data from child components
       const addData = {
         ...this.crop_details,
@@ -119,7 +128,7 @@ export default {
         }
       }
       // send data to the end-poit
-      await MarketPlaceService.addCropWanted(data, (response) => {
+      MarketPlaceService.addCropWanted(data, (response) => {
         if (response && response.error == false) {
           Alert.success({
             message: "Crop added successfully",
@@ -128,6 +137,8 @@ export default {
             window.location.reload();
           }, 2000);
         }
+        // set the preloader
+        this.loading = false;
       });
     },
   },
