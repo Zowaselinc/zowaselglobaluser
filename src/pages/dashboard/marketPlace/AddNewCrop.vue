@@ -137,7 +137,7 @@ export default {
             window.location.reload();
           }, 2000);
         }
-        // set the preloader
+        // set the preloader to false
         this.loading = false;
       });
     },

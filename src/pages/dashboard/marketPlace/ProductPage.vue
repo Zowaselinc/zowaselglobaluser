@@ -13,6 +13,7 @@
             <h1>
               {{ product.subcategory.name }} - {{ product.specification.color }}
             </h1>
+            <p class="price">Quantity: {{ product.specification.qty }}</p>
             <p class="price">
               {{ product.currency }}{{ product.specification.price }}/{{
                 product.specification.test_weight.toUpperCase()
@@ -158,13 +159,25 @@
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
-            />
+            ></button>
           </div>
           <div class="modal-body">
-            <input type="text" class="modal-input" placeholder="Quantity" />
+            <input
+              type="text"
+              v-model="quantity"
+              class="modal-input"
+              placeholder="Quantity"
+            />
           </div>
           <div class="modal-footer">
-            <button type="button" class="fulfil">Proceed</button>
+            <button
+              type="button"
+              id="modalProceedBtn"
+              class="fulfil"
+              @click="proceed()"
+            >
+              Proceed
+            </button>
           </div>
         </div>
       </div>
@@ -175,6 +188,7 @@
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
 import MarketPlaceService from "@/services/marketplace";
+import Alert from "@/utilities/alert";
 export default {
   name: "ProductPage",
   components: {
@@ -183,6 +197,7 @@ export default {
   data() {
     return {
       product: null,
+      quantity: "",
     };
   },
   mounted() {
@@ -194,6 +209,17 @@ export default {
         this.product = response.data;
         this.product.images = JSON.parse(this.product.images);
       });
+    },
+    proceed() {
+      // get the proceed btn on the modal
+      const modalProceedBtn = document.getElementById("modalProceedBtn");
+      if (this.quantity <= this.product.specification.qty) {
+      } else {
+        Alert.error({
+          message: "Quantity exeeds offer quantity",
+        });
+        this.quantity = this.product.specification.qty;
+      }
     },
   },
 };
