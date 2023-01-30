@@ -2,6 +2,11 @@
   <DefaultNav>
     <div class="big-container">
       <div v-if="product" class="left">
+        <div class="top-section">
+          <a href="javascript:void(0)" @click="$router.back()">
+            <img src="@/assets/images/vectors/arrowleft.png" alt="" />
+          </a>
+        </div>
         <h1>
           {{ product.subcategory.name }} - {{ product.specification.color }}
         </h1>

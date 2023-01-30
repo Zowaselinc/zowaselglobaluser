@@ -12,7 +12,7 @@
       </div>
       <template v-if="view == 'cropsale'">
         <a
-          v-for="(crop, index) in listToRender"
+          v-for="(crop, index) in paginatedList"
           :key="index"
           href="#"
           class="each-item"
@@ -55,7 +55,7 @@
         </a>
       </template>
 
-      <div class="tags mb-2">
+      <div v-if="false" class="tags mb-2">
         <h4 class="mb-0">Related</h4>
         <a href="#">cash Crops</a>
         <a href="#">Seeds</a>
@@ -65,43 +65,8 @@
         <a href="#">aalm Oil</a>
       </div>
       <!-- pagination -->
-      <nav
-        v-if="false"
-        aria-label="Page navigation example"
-        class="d-flex justify-content-center my-4"
-      >
-        <ul class="pagination">
-          <li class="page-item">
-            <a
-              id="carret-icon"
-              class="page-link"
-              href="#"
-              aria-label="Previous"
-            >
-              <span aria-hidden="true">&lt;</span>
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">1</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">2</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">3</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">4</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">5</a>
-          </li>
-          <li id="carret-icon" class="page-item">
-            <a id="carret-icon" class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&gt;</span>
-            </a>
-          </li>
-        </ul>
+      <nav class="d-flex justify-content-center my-4">
+        <div id="pagination"></div>
       </nav>
     </div>
   </div>
@@ -121,6 +86,7 @@ export default {
       sales: {},
       auctions: {},
       filtered: null,
+      paginatedList: [],
     };
   },
   computed: {
@@ -132,10 +98,11 @@ export default {
         : this.sales.rows;
     },
   },
-  mounted() {
+  created() {
     this.getCropCategories();
-    this.getCropsForSale();
-    this.getCropsForAuction();
+    this.view == "cropsale"
+      ? this.getCropsForSale()
+      : this.getCropsForAuction();
   },
   methods: {
     checked() {
@@ -153,11 +120,13 @@ export default {
     getCropsForSale() {
       MarketplaceService.getCropsForSale((response) => {
         this.sales = response.data;
+        this.paginate(response.data.rows, "paginatedList");
       });
     },
     getCropsForAuction() {
       MarketplaceService.getCropsForAuction((response) => {
         this.auctions = response.data;
+        this.paginate(response.data.rows, "paginatedList");
       });
     },
     applyFilters(filters) {
@@ -179,6 +148,7 @@ export default {
         }
       });
       this.filtered = filtered;
+      this.paginate(filtered.rows, "paginatedList");
     },
     resetFilters() {
       this.filtered = null;

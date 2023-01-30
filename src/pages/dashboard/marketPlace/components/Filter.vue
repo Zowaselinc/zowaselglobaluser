@@ -86,7 +86,7 @@
           <div
             class="mt-2 d-flex flex-row justify-content-between align-items-center"
           >
-            <div class="form_control_container">
+            <div class="form_control_container flex-grow-1">
               <div class="form_control_container__time">Min</div>
               <input
                 id="fromInput"
@@ -97,7 +97,7 @@
                 :max="max"
               />
             </div>
-            <div class="form_control_container">
+            <div class="form_control_container flex-grow-1">
               <div class="form_control_container__time">Max</div>
               <input
                 id="toInput"

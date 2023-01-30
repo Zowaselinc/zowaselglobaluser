@@ -161,11 +161,7 @@
             />
           </div>
           <div class="modal-body">
-            <input
-              type="text"
-              class="modal-input"
-              placeholder="Input Quantity"
-            />
+            <input type="text" class="modal-input" placeholder="Quantity" />
           </div>
           <div class="modal-footer">
             <button type="button" class="fulfil">Proceed</button>
