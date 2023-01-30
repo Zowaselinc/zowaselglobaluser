@@ -19,7 +19,6 @@
             Amount: <span>NGN {{ product.specification.price }}</span>
           </h4>
           <div class="product-btns">
-            <button class="edit">Edit</button>
             <button class="delete">Delete</button>
             <button class="view">View</button>
           </div>

@@ -8,7 +8,14 @@
         <p>
           Date: <span>{{ product.created_at }}</span>
         </p>
-        <!-- <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p> -->
+        <p>
+          Delivery Window:
+          <span>{{
+            parseDeliveryWindow(product).from +
+            " -- " +
+            parseDeliveryWindow(product).to
+          }}</span>
+        </p>
         <p>
           Status <span>{{ product.active == 1 ? "Active" : "Inactive" }}</span>
         </p>
@@ -19,8 +26,9 @@
             Amount: <span>{{ product.specification.price }}</span>
           </h4>
           <div class="product-btns">
-            <button class="edit">Edit</button>
-            <button class="delete">Delete</button>
+            <button class="delete" @click="removeCropWanted(product)">
+              Delete
+            </button>
             <button class="view">View</button>
           </div>
         </div>
@@ -30,12 +38,18 @@
 </template>
 
 <script>
+import MarketPlaceService from "@/services/marketplace";
+import Alert from "@/utilities/alert";
 export default {
   name: "MyCrop",
   components: {},
   props: {
     listData: {
       type: Object,
+      default: null,
+    },
+    getCrops: {
+      type: Function,
       default: null,
     },
   },
@@ -46,7 +60,21 @@ export default {
     };
   },
   mounted() {},
-  methods: {},
+  methods: {
+    removeCropWanted(item) {
+      MarketPlaceService.deleteCropWanted(item.id, (response) => {
+        if (response.error == false) {
+          this.getCrops();
+          Alert.success({
+            message: "Item Deleted Successfully",
+          });
+        }
+      });
+    },
+    parseDeliveryWindow(product) {
+      return JSON.parse(product.crop_request.delivery_window);
+    },
+  },
 };
 </script>
 

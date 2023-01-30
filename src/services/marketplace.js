@@ -17,6 +17,8 @@ const GET_ORDER_PATH = (orderHash) => `order/${orderHash}`;
 const ADD_TO_CART_PATH = () => `input/cart/add`;
 const GET_CART_ITEMS_PATH = (id) => `input/cart/${id}`;
 const DELTE_CART_ITEM_PATH = (id) => `input/cart/delete/${id}`;
+const DELETE_CROP_WANTED_PATH = (id) => `crop/${id}`;
+const DELETE_INPUT_PATH = (id) => `input/${id}`;
 const GET_SUB_CATEGORIES_PATH = () => "subcategory/getall";
 const ADD_NEW_CROP_PATH = (type) => `crop/${type}/add`;
 const GET_ORDERS_PATH = (id) => `users/${id}/orders`;
@@ -137,6 +139,26 @@ export default {
   deleteCartItem: function (id, callback) {
     axios
       .delete(config.BASE_URL + DELTE_CART_ITEM_PATH(id))
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.data);
+      });
+  },
+  deleteCropWanted: function (id, callback) {
+    axios
+      .delete(config.BASE_URL + DELETE_CROP_WANTED_PATH(id))
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.data);
+      });
+  },
+  deleteInput: function (id, callback) {
+    axios
+      .delete(config.BASE_URL + DELETE_INPUT_PATH(id))
       .then((response) => {
         callback(response.data);
       })
