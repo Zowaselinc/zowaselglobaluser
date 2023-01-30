@@ -6,8 +6,8 @@
         <div class="header_wrapper">
           <!-- top level header -->
           <div class="d-flex flex-row top_level_header">
-            <div class="left_header d-flex flex-row gap-4">
-              <a class="left_arrow">
+            <div class="left_header d-flex flex-row gap-4 my-4">
+              <a v-if="editKyf" class="left_arrow">
                 <img
                   src="@/assets/images/vectors/arrowleft.png"
                   alt="left-arrow"
@@ -18,29 +18,34 @@
             </div>
             <!--next button -->
             <button
+              v-if="editKyf"
               type="submit"
               :class="['btn', 'btn-primary', 'my-4']"
-              @click="saveData()"
-              v-if="activeTab != 'kin'"
             >
               Next
             </button>
             <!--save button -->
             <button
+              v-if="activeTab == 'kin'"
               type="submit"
               :class="['btn', 'btn-primary', 'my-4']"
-              @click="saveData()"
-              v-if="activeTab == 'kin'"
             >
               save
             </button>
           </div>
           <!-- lower level header -->
 
-          <div class="lower_level-header d-flex gap-2">
+          <div v-if="!editKyf" class="lower_level-header d-flex gap-2">
             <button
               type="submit"
-              :class="['btn', 'btn-primary', 'my-4', 'col', 'first']"
+              :class="[
+                'btn',
+                'btn-primary',
+                'my-4',
+                'col',
+                'first',
+                activeTab == 'farmer_details' ? 'tab_color' : '',
+              ]"
               @click="changeTab('farmer_details')"
             >
               Farmer Details
@@ -48,7 +53,14 @@
             <span class="horizontal_line"></span>
             <button
               type="submit"
-              :class="['btn', 'btn-primary', 'my-4', 'col', 'second']"
+              :class="[
+                'btn',
+                'btn-primary',
+                'my-4',
+                'col',
+                'second',
+                activeTab == 'company_details' ? 'tab_color' : '',
+              ]"
               @click="changeTab('company_details')"
             >
               Company Details
@@ -56,11 +68,24 @@
             <span id="secon_line" class="horizontal_line second"></span>
             <button
               type="submit"
-              :class="['btn', 'btn-primary', 'my-4', 'col', 'third']"
+              :class="[
+                'btn',
+                'btn-primary',
+                'my-4',
+                'col',
+                'third',
+                activeTab == 'kin' ? 'tab_color' : '',
+              ]"
               @click="changeTab('kin')"
             >
               Next of Kin
             </button>
+          </div>
+
+          <!-- Editing screen header -->
+          <div v-if="editKyf" class="editkyf mb-4">
+            Changes to any field would automatically log the administrator out
+            of all signed in devices.
           </div>
         </div>
 
@@ -96,8 +121,20 @@ export default {
   },
   data() {
     return {
-      activeTab: "kin",
+      activeTab: "farmer_details",
     };
+  },
+  computed: {
+    editKyf() {
+      if (this.$route.fullPath == "/dashboard/kyf/edit") {
+        return true;
+      }
+      return false;
+    },
+  },
+
+  mounted() {
+    console.log(this.$route);
   },
   methods: {
     changeTab(tab) {
@@ -134,6 +171,10 @@ export default {
   padding: 0px 2.5rem;
   background: #f5f5f5;
 }
+// reset button state
+button:focus {
+  box-shadow: 0 0 0;
+}
 .top_level_header {
   margin-block: 3rem 2rem;
   justify-content: space-between;
@@ -168,16 +209,13 @@ export default {
     @include textStyles("Maven Pro", 600, 12px, 16px);
     letter-spacing: 0.04em;
     color: #34323b;
+    background: #f1f1f1;
+    padding-block: 10px;
   }
-  button.first {
+  button.tab_color {
     background: #fab900;
     color: #ffffff;
     border-color: #fab900;
-    padding-block: 10px;
-  }
-  .second,
-  .third {
-    background: #f1f1f1;
   }
   .horizontal_line {
     width: 20px;
@@ -188,5 +226,19 @@ export default {
   #second_line {
     border-color: #b5b4b9;
   }
+}
+// editkyf
+.editkyf {
+  width: 100%;
+  background: #cd4647;
+  box-shadow: 0px 12px 24px rgba(44, 39, 56, 0.04),
+    0px 24px 48px rgba(44, 39, 56, 0.08);
+  border-radius: 4px;
+  @include textStyles("Maven Pro", 400, 16px, 24px);
+  color: #ffffff;
+
+  mix-blend-mode: normal;
+  opacity: 0.86;
+  padding: 10px 0px 10px 50px;
 }
 </style>

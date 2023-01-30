@@ -8,6 +8,7 @@
           <label for="formGroupExampleInput" class="form-label mb-0"
             >Crop quantity</label
           >
+          <span id="required">*</span>
           <input
             id="formGroupExampleInput"
             v-model="newCropData.qty"
@@ -21,6 +22,7 @@
           <label for="formGroupExampleInput" class="form-label mb-0"
             >Amount/offer</label
           >
+          <span id="required">*</span>
           <input
             id="formGroupExampleInput"
             v-model="newCropData.price"
@@ -30,12 +32,15 @@
             required
           />
         </div>
-        <div class="crop_details mb-3 mt-5">Delivery Details</div>
+        <div v-if="type == 'wanted'" class="crop_details mb-3 mt-5">
+          Delivery Details
+        </div>
 
-        <div class="w-100 mb-3">
+        <div v-if="type == 'wanted'" class="w-100 mb-3">
           <label for="formGroupExampleInput" class="form-label mb-0"
             >Delivery window</label
           >
+          <span id="required">*</span>
           <div class="form-row">
             <div class="col">
               <input
@@ -64,6 +69,7 @@
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Country</label
           >
+          <span id="required">*</span>
           <select
             v-model="newCropData.country"
             class="form-select"
@@ -81,6 +87,7 @@
         </div>
         <div class="w-100 mb-3">
           <label for="exampleInputEmail1" class="form-label mb-0">State</label>
+          <span id="required">*</span>
           <select
             v-model="newCropData.state"
             class="form-select"
@@ -101,9 +108,9 @@
           <div id="my-dropzone" class="dropzone">
             <img id="preview-selected-image" class="img-fluid mb-2" />
             <img
+              id="image_icon"
               src="@/assets/images/vectors/Image.svg"
               alt="image"
-              id="image_icon"
             />
             <div id="file-input">
               <input
@@ -112,15 +119,17 @@
                 type="file"
                 multiple
                 accept="image/*"
-                @change="uploadFile"
                 required
+                @change="uploadFile"
               />
-              <span
+              <div
+                v-if="fileName == ''"
                 id="file_name"
                 @click="openFileDialog()"
-                v-if="fileName == ''"
-                >click to browse</span
               >
+                <span>click to browse</span>
+                <span id="required">*</span>
+              </div>
               <span v-else>{{ fileName }}</span>
             </div>
           </div>
@@ -129,19 +138,20 @@
           <label for="formGroupExampleInput" class="form-label mb-0"
             >Enter video URL</label
           >
+          <span id="optional">-optional</span>
           <input
             id="formGroupExampleInput"
             v-model="newCropData.video"
             type="text"
             class="form-control"
             placeholder="Type your answer"
-            required
           />
         </div>
         <div class="w-100 mb-3">
           <label for="exampleInputEmail1" class="form-label mb-0"
             >Zip code/postal</label
           >
+          <span id="required">*</span>
           <input
             id="formGroupExampleInput"
             v-model="newCropData.zip"
@@ -153,10 +163,11 @@
         </div>
         <div class="w-100 mb-3">
           <label for="formGroupExampleInput" class="form-label mb-0"
-            >Delivery Address</label
+            >Warehouse Address</label
           >
+          <span id="required">*</span>
           <input
-            v-model="newCropData.address"
+            v-model="newCropData.warehouse_address"
             type="text"
             class="form-control"
             placeholder=""
@@ -173,18 +184,23 @@ import countriesObject from "@/data/countries";
 
 export default {
   name: "QualityProduct",
+  props: {
+    type: String,
+  },
   data() {
     return {
       newCropData: {
         quantity: "",
         price: "",
-        delivery_window: { from: "", to: "" },
-        address: "",
+        warehouse_address: "",
         state: "",
         files: "",
         video: "",
         country: "",
         zip: "",
+        ...(this.type == "wanted"
+          ? { delivery_window: { from: "", to: "" } }
+          : {}),
       },
       countries: countriesObject.countries,
       fileName: "",
@@ -324,7 +340,19 @@ div.vertical-line {
     }
   }
 }
-
+#required {
+  color: red;
+  font-family: "Maven Pro";
+  font-weight: bolder;
+  font-size: 20px;
+}
+#optional {
+  font-family: "Maven Pro";
+  font-weight: bolder;
+  font-size: 14px;
+  color: rgba(113, 117, 125, 0.83);
+  font-style: italic;
+}
 .zone {
   height: 150px;
   font-size: 12px;

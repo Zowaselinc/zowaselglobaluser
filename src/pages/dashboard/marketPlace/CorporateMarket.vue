@@ -12,7 +12,7 @@
       </div>
       <template v-if="view == 'cropsale'">
         <a
-          v-for="(crop, index) in sales.rows"
+          v-for="(crop, index) in paginatedList"
           :key="index"
           href="#"
           class="each-item"
@@ -20,7 +20,7 @@
             $router.push({ name: 'CropDetails', params: { id: crop.id } })
           "
         >
-          <p>{{ crop.title }}</p>
+          <p>{{ crop.subcategory.name }} - {{ crop.specification.color }}</p>
           <p>
             <b>{{ crop.category.name }}</b>
           </p>
@@ -34,7 +34,7 @@
       </template>
       <template v-if="view == 'cropauction'">
         <a
-          v-for="(crop, index) in auctions.rows"
+          v-for="(crop, index) in listToRender"
           :key="index"
           href="#"
           class="each-item"
@@ -42,7 +42,7 @@
             $router.push({ name: 'CropDetails', params: { id: crop.id } })
           "
         >
-          <p>{{ crop.title }}</p>
+          <p>{{ crop.subcategory.name }} - {{ crop.specification.color }}</p>
           <p>
             <b>{{ crop.category.name }}</b>
           </p>
@@ -55,7 +55,7 @@
         </a>
       </template>
 
-      <div class="tags mb-2">
+      <div v-if="false" class="tags mb-2">
         <h4 class="mb-0">Related</h4>
         <a href="#">cash Crops</a>
         <a href="#">Seeds</a>
@@ -65,42 +65,8 @@
         <a href="#">aalm Oil</a>
       </div>
       <!-- pagination -->
-      <nav
-        aria-label="Page navigation example"
-        class="d-flex justify-content-center my-4"
-      >
-        <ul class="pagination">
-          <li class="page-item">
-            <a
-              id="carret-icon"
-              class="page-link"
-              href="#"
-              aria-label="Previous"
-            >
-              <span aria-hidden="true">&lt;</span>
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">1</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">2</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">3</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">4</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">5</a>
-          </li>
-          <li id="carret-icon" class="page-item">
-            <a id="carret-icon" class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&gt;</span>
-            </a>
-          </li>
-        </ul>
+      <nav class="d-flex justify-content-center my-4">
+        <div id="pagination"></div>
       </nav>
     </div>
   </div>
@@ -119,16 +85,24 @@ export default {
       categories: [],
       sales: {},
       auctions: {},
-      filters: {
-        type: "",
-        kg: "",
-      },
+      filtered: null,
+      paginatedList: [],
     };
   },
-  mounted() {
+  computed: {
+    listToRender() {
+      return this.filtered
+        ? this.filtered.rows
+        : this.view == "cropauction"
+        ? this.auctions.rows
+        : this.sales.rows;
+    },
+  },
+  created() {
     this.getCropCategories();
-    this.getCropsForSale();
-    this.getCropsForAuction();
+    this.view == "cropsale"
+      ? this.getCropsForSale()
+      : this.getCropsForAuction();
   },
   methods: {
     checked() {
@@ -146,12 +120,38 @@ export default {
     getCropsForSale() {
       MarketplaceService.getCropsForSale((response) => {
         this.sales = response.data;
+        this.paginate(response.data.rows, "paginatedList");
       });
     },
     getCropsForAuction() {
       MarketplaceService.getCropsForAuction((response) => {
         this.auctions = response.data;
+        this.paginate(response.data.rows, "paginatedList");
       });
+    },
+    applyFilters(filters) {
+      let filtered = JSON.parse(
+        JSON.stringify(this.view == "cropauction" ? this.auctions : this.sales)
+      );
+      Object.keys(filters).forEach((filter) => {
+        if (filter == "category" && filters[filter] != "") {
+          filtered.rows = filtered.rows.filter(
+            (item) => item.category.name == filters[filter]
+          );
+        }
+        if (filter == "price") {
+          filtered.rows = filtered.rows.filter(
+            (item) =>
+              eval(item.specification.price) >= eval(filters[filter].min) &&
+              eval(item.specification.price) <= eval(filters[filter].max)
+          );
+        }
+      });
+      this.filtered = filtered;
+      this.paginate(filtered.rows, "paginatedList");
+    },
+    resetFilters() {
+      this.filtered = null;
     },
   },
 };

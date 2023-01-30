@@ -8,25 +8,30 @@
           <div class="crop-wanted-section d-flex flex-row gap-4">
             <div class="form">
               <div class="crop_details">Input Details</div>
-
               <!-- input -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Input category</label
+                  >Product Type</label
                 >
-                <input
-                  v-model="inputData.category_id"
-                  type="text"
-                  class="form-control"
+                <span id="required">*</span>
+                <select
+                  v-model="inputData.product_type"
+                  class="form-select"
+                  aria-label="Default seglect example"
                   required
-                  placeholder="type your answer"
-                />
+                >
+                  <option>Hybrid</option>
+                  <option>Normal</option>
+                  <option>Organic</option>
+                  <option>GMO</option>
+                </select>
               </div>
               <!-- input -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Price</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.price"
                   type="number"
@@ -38,41 +43,35 @@
               <!-- input -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Title</label
-                >
-                <input
-                  v-model="inputData.title"
-                  type="text"
-                  class="form-control"
-                  required
-                  placeholder="type your answer"
-                />
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
                   >Crop Focus</label
                 >
-                <input
+                <span id="required">*</span>
+                <select
                   v-model="inputData.crop_focus"
-                  type="text"
-                  class="form-control"
-                  required
-                  placeholder="type your answer"
-                />
+                  class="form-select"
+                  aria-label="Default select example"
+                >
+                  <option>waiting for data</option>
+                </select>
               </div>
               <!-- input -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >KG(5-50)</label
+                  >KG(5-100)</label
                 >
-                <input
-                  v-model="inputData.kg"
-                  type="number"
-                  class="form-control"
+                <span id="required">*</span>
+                <select
+                  v-model="inputData.kilograms"
+                  class="form-select"
+                  aria-label="Default select example"
                   required
-                  placeholder="type your answer"
-                />
+                >
+                  <option>5</option>
+                  <option>10</option>
+                  <option>25</option>
+                  <option>250</option>
+                  <option>100</option>
+                </select>
               </div>
               <!-- input -->
 
@@ -80,6 +79,7 @@
                 <label for="formGroupExampleInput" class="form-label mb-0"
                   >Delivery window</label
                 >
+                <span id="required">*</span>
                 <div class="form-row">
                   <div class="col">
                     <input
@@ -102,12 +102,26 @@
                   </div>
                 </div>
               </div>
-
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Stock</label
+                >
+                <span id="required">*</span>
+                <input
+                  v-model="inputData.stock"
+                  type="number"
+                  class="form-control"
+                  required
+                  placeholder="type your answer"
+                />
+              </div>
               <!-- input -->
               <div class="w-100 mb-3 m_top">
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Input Application</label
                 >
+                <span id="required">*</span>
                 <textarea
                   v-model="inputData.usage_instruction"
                   type="text"
@@ -121,11 +135,11 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Video</label
                 >
+                <span id="optional">-optional</span>
                 <input
                   v-model="inputData.video"
                   type="text"
                   class="form-control"
-                  required
                   placeholder="type your answer"
                 />
               </div>
@@ -134,6 +148,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Manufacture Date</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.manufacture_date"
                   type="date"
@@ -147,6 +162,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Manufacture Name</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.manufacture_name"
                   type="text"
@@ -160,6 +176,7 @@
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Expiry Date</label
                 >
+                <span id="required">*</span>
                 <input
                   v-model="inputData.expiry_date"
                   type="date"
@@ -169,11 +186,11 @@
                 />
               </div>
               <!-- input -->
-
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Manufacture country</label
                 >
+                <span id="required">*</span>
                 <select
                   v-model="inputData.manufacture_country"
                   class="form-select"
@@ -189,75 +206,11 @@
                   </option>
                 </select>
               </div>
-            </div>
-            <div class="vertical-line" />
-            <!-- form two -->
-            <div class="form">
-              <!-- input -->
-              <div class="w-100 mb-3 m_top">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Input sub-category</label
-                >
-                <input
-                  v-model="inputData.subcategory_id"
-                  type="text"
-                  class="form-control"
-                  required
-                  placeholder="type your answer"
-                />
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Packaging</label
-                >
-                <input
-                  v-model="inputData.packaging"
-                  type="text"
-                  class="form-control"
-                  required
-                  placeholder="type your answer"
-                />
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Delivery Method</label
-                >
-                <input
-                  v-model="inputData.delivery_method"
-                  type="text"
-                  class="form-control"
-                  required
-                  placeholder="type your answer"
-                />
-              </div>
-              <!-- input -->
-              <div class="w-100 mb-3">
-                <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Liters(1-50)</label
-                >
-                <input
-                  v-model="inputData.liters"
-                  type="number"
-                  class="form-control"
-                  required
-                  placeholder="type your answer"
-                />
-              </div>
-              <!-- Editor -->
-              <div class="crop_details">Product description</div>
-              <div class="d-flex flex-row mb-3 gap-4 m_top">
-                <div class="w-100 editor-wrapper">
-                  <!-- using quill editor tool-->
-                  <div ref="editor" @text-change="handleContentChange" />
-                </div>
-              </div>
-              <!-- editor ends -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
                   >Currency</label
                 >
+                <span id="required">*</span>
                 <select
                   v-model="inputData.currency"
                   class="form-select"
@@ -273,45 +226,190 @@
                   </option>
                 </select>
               </div>
-
+            </div>
+            <div class="vertical-line" />
+            <!-- form two -->
+            <div class="form">
               <!-- input -->
-
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >Country</label
+                  >Catalog</label
                 >
+                <span id="required">*</span>
                 <select
-                  v-model="inputData.country"
+                  v-model="inputData.category_id"
                   class="form-select"
-                  aria-label="Default select example"
+                  aria-label="Default seglect example"
                   required
                 >
                   <option
-                    v-for="(country, index) in countries"
-                    :key="index"
-                    :value="country.country"
+                    v-for="category in categories"
+                    :key="category.id"
+                    :value="category.id"
                   >
-                    {{ country.country }}
+                    {{ category.name }}
                   </option>
                 </select>
               </div>
+              <!-- input -->
               <div class="w-100 mb-3">
                 <label for="exampleInputEmail1" class="form-label mb-0"
-                  >State</label
+                  >Products</label
                 >
+                <span id="required">*</span>
                 <select
-                  v-model="inputData.state"
+                  v-model="inputData.subcategory_id"
                   class="form-select"
                   aria-label="Default select example"
                   required
                 >
                   <option
-                    v-for="(state, index) in selectStateByCountry"
-                    :key="index"
+                    v-for="subCategory in subCategoryByCategory"
+                    :key="subCategory.id"
+                    :value="subCategory.id"
                   >
-                    {{ state }}
+                    {{ subCategory.name }}
                   </option>
                 </select>
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Packaging</label
+                >
+                <span id="required">*</span>
+                <select
+                  v-model="inputData.packaging"
+                  class="form-select"
+                  aria-label="Default select example"
+                  required
+                >
+                  <option>Bag</option>
+                  <option>Bottles</option>
+                  <option>Sachet</option>
+                  <option>Carbon</option>
+                </select>
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Shipping Method</label
+                >
+                <span id="required">*</span>
+                <select
+                  v-model="inputData.delivery_method"
+                  class="form-select"
+                  aria-label="Default select example"
+                  required
+                >
+                  <option>Delivery</option>
+                  <option>Pick up at Crop Centers</option>
+                </select>
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Liters(1-50)</label
+                >
+                <span id="required">*</span>
+                <select
+                  v-model="inputData.liters"
+                  class="form-select"
+                  aria-label="Default select example"
+                  required
+                >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>10</option>
+                  <option>25</option>
+                  <option>50</option>
+                </select>
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Grams</label
+                >
+                <span id="optional">-optional</span>
+                <select
+                  v-model="inputData.grams"
+                  class="form-select"
+                  aria-label="Default select example"
+                >
+                  <option>50</option>
+                  <option>100</option>
+                  <option>150</option>
+                  <option>200</option>
+                </select>
+              </div>
+              <!-- input -->
+              <div class="w-100 mb-3">
+                <label for="exampleInputEmail1" class="form-label mb-0"
+                  >Pieces in a carton</label
+                >
+                <span id="optional">-optional</span>
+                <select
+                  v-model="inputData.pieces_carton"
+                  class="form-select"
+                  aria-label="Default select example"
+                >
+                  <option>6</option>
+                  <option>10</option>
+                  <option>12</option>
+                  <option>20</option>
+                  <option>24</option>
+                  <option>50</option>
+                  <option>60</option>
+                  <option>80</option>
+                  <option>100</option>
+                  <option>200</option>
+                  <option>400</option>
+                </select>
+              </div>
+              <!-- Editor -->
+              <div class="crop_details">Product description</div>
+
+              <div class="d-flex flex-row mb-3 gap-4 m_top">
+                <div class="w-100 editor-wrapper">
+                  <!-- using quill editor tool-->
+                  <div ref="editor" @text-change="handleContentChange" />
+                </div>
+              </div>
+              <!-- editor ends -->
+              <!-- input -->
+              <div class="crop_details">Product image</div>
+              <div class="dropzone_conatiner my-4">
+                <div id="my-dropzone" class="dropzone">
+                  <img id="preview-selected-image" class="img-fluid mb-2" />
+                  <img
+                    id="image_icon"
+                    src="@/assets/images/vectors/Image.svg"
+                    alt="image"
+                  />
+                  <div id="file-input">
+                    <input
+                      id="hidden_input"
+                      ref="input"
+                      type="file"
+                      multiple
+                      accept="image/*"
+                      required
+                      @change="uploadFile"
+                    />
+                    <div
+                      v-if="fileName == ''"
+                      id="file_name"
+                      @click="openFileDialog()"
+                    >
+                      <span>click to browse</span>
+                      <span id="required">*</span>
+                    </div>
+                    <span v-else>{{ fileName }}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -328,14 +426,14 @@ import DefaultNav from "@/layouts/DefaultNav.vue";
 import Alert from "@/utilities/alert";
 // // importing the marketplace service
 import MarketPlaceService from "@/services/marketplace";
+// import country
+import countriesObject from "@/data/countries";
+
 // quill editor
 import Quill from "quill";
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.bubble.css";
 import "quill/dist/quill.snow.css";
-// import the country-state object
-import countriesObject from "@/data/countries";
-
 export default {
   name: "AddCropInput",
   components: {
@@ -349,12 +447,13 @@ export default {
   },
   data() {
     return {
+      categories: [],
+      subCategories: [],
       inputData: {
         category_id: "",
         price: "",
-        title: "",
         crop_focus: "",
-        kg: "",
+        kilograms: "",
         delivery_window: { from: "", to: "" },
         usage_instruction: "",
         subcategory_id: "",
@@ -366,23 +465,23 @@ export default {
         manufacture_date: "",
         delivery_method: "",
         expiry_date: "",
-        state: "",
-        country: "",
         video: "",
         manufacture_country: "",
+        product_type: "",
+        grams: "",
+        pieces_carton: "",
+        stock: "",
       },
-      currencies: ["USD", "EUR", "GBP", "NGN"],
       countries: countriesObject.countries,
+      currencies: ["NGN"],
+      fileName: "",
     };
   },
   computed: {
-    selectStateByCountry: function () {
-      // console.log(this.countries)
-      return this.countries && this.inputData.country != ""
-        ? this.countries.filter(
-            (item) => item.country == this.inputData.country
-          )[0].states
-        : [];
+    subCategoryByCategory() {
+      return this.subCategories.filter(
+        (item) => item.category_id == this.inputData.category_id
+      );
     },
   },
   mounted() {
@@ -409,6 +508,8 @@ export default {
       _this.handleContentChange();
       return _this.update();
     });
+    this.getCategory();
+    this.getSubCategory();
   },
   methods: {
     update: function update() {
@@ -420,19 +521,74 @@ export default {
     handleContentChange() {
       this.inputData.description = this.editor.root.innerHTML;
     },
+    openFileDialog() {
+      document.getElementById("hidden_input").click();
+    },
+    // fetch input data from End point
+    getCategory() {
+      MarketPlaceService.getInputCategories((response) => {
+        console.log(response);
+        this.categories = response.data;
+      });
+    },
+    getSubCategory() {
+      MarketPlaceService.getSubCategories((response) => {
+        console.log(response);
+        this.subCategories = response.data;
+      });
+    },
 
     async saveData() {
-      // send data to the end-poit
-      await MarketPlaceService.saveInput(this.inputData, (response) => {
+      var data = new FormData();
+      var index = 0;
+      while (this.inputData.files[index]) {
+        data.append(`image_${index}`, this.inputData.files[index]);
+        index++;
+      }
+      for (var field in this.inputData) {
+        if (field != "files") {
+          if (typeof this.inputData[field] == "object") {
+            this.inputData[field] = JSON.stringify(this.inputData[field]);
+          }
+          data.append(field, this.inputData[field]);
+        }
+      }
+      // send data to the end-point
+      await MarketPlaceService.saveInput(data, (response) => {
         if (response && response.error == false) {
           Alert.success({
-            message: "Crop added successfully",
+            message: "Input added successfully",
           });
           setTimeout(() => {
-            window.location.reload();
+            window.location.assign("/dashboard/marketplace/myproducts");
           }, 2000);
         }
       });
+    },
+    uploadFile() {
+      const input = document.querySelector("#hidden_input");
+      const file = input.files;
+      this.inputData.files = file;
+
+      // get the file name
+      this.fileName = file[0].name;
+
+      // preview the image
+
+      // if at least one image is selected proceed to display the image
+      if (file[0]) {
+        // get the image path
+        const imageSrc = URL.createObjectURL(file[0]);
+        // select the image preview element
+        const imagePreviewElement = document.querySelector(
+          "#preview-selected-image"
+        );
+        // assign the path to the image preview element
+        imagePreviewElement.src = imageSrc;
+        imagePreviewElement.style.display = "block";
+        // hide sibling img element
+        document.getElementById("image_icon").style.display = "none";
+      }
     },
   },
 };
@@ -541,5 +697,54 @@ div.vertical-line {
   .ql-container {
     min-height: 35vh;
   }
+}
+
+// using drop-zone
+.dropzone {
+  width: 100%;
+  min-height: 250px;
+  border: 2px dashed #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Maven Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 147%;
+  color: #4a4754;
+  padding: 10px 10px 15px 10px;
+
+  span {
+    font-weight: 700;
+    color: #05b050;
+    cursor: pointer;
+
+    + span {
+      font-size: 14px;
+    }
+  }
+}
+#required {
+  color: red;
+  font-family: "Maven Pro";
+  font-weight: bolder;
+  font-size: 20px;
+}
+#optional {
+  font-family: "Maven Pro";
+  font-weight: bolder;
+  font-size: 14px;
+  color: rgba(113, 117, 125, 0.83);
+  font-style: italic;
+}
+.zone {
+  height: 150px;
+  font-size: 12px;
+}
+
+#hidden_input {
+  display: none;
 }
 </style>

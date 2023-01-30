@@ -2,72 +2,90 @@
   <DefaultNav>
     <div class="big-container">
       <div class="welcome-text">
-        <h2>My Crops/Inputs</h2>
+        <h2 v-if="userData.user.type == 'merchant'">My Crops</h2>
+        <h2 v-if="userData.user.type == 'corporate'">My Crops/Inputs</h2>
       </div>
 
       <div class="contents">
         <div class="headings">
-          <h2 />
+          <h2>My products</h2>
           <div class="right-btns">
-            <a href="/marketplace/newcrop" class="green-link"
-              >Add new Product</a
-            >
+            <template v-if="userData.user.type == 'merchant'">
+              <a href="/marketplace/newsale" class="green-link"
+                >Add Crop for Sale</a
+              >
+              <a href="/marketplace/newcrop" class="green-link"
+                >Add Crop For Auction</a
+              >
+            </template>
+            <template v-if="userData.user.type == 'corporate'">
+              <a href="/marketplace/newcrop" class="green-link"
+                >Add Crop Wanted</a
+              >
+              <a href="/marketplace/addinput" class="green-link">Add Input</a>
+            </template>
           </div>
         </div>
-        <a href="#" class="each-product">
-          <div class="top-address">
-            <h3>Maize-200-brown</h3>
-            <p>Date: <span>2022-11-16 7:58pm</span></p>
-            <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
-            <p>Status <span>Active</span></p>
-          </div>
-          <div class="main-address">
-            <div class="right">
-              <h4>Amount: <span>NGN2,550</span></h4>
-              <div class="product-btns">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
-                <button class="view">View</button>
-              </div>
-            </div>
-          </div>
-        </a>
-        <a href="#" class="each-product">
-          <div class="top-address">
-            <h3>Maize-200-brown</h3>
-            <p>Date: <span>2022-11-16 7:58pm</span></p>
-            <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
-            <p>Status <span>Active</span></p>
-          </div>
-          <div class="main-address">
-            <div class="right">
-              <h4>Amount: <span>NGN2,550</span></h4>
-              <div class="product-btns">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
-                <button class="view">View</button>
-              </div>
-            </div>
-          </div>
-        </a>
-        <a href="#" class="each-product">
-          <div class="top-address">
-            <h3>Maize-200-brown</h3>
-            <p>Date: <span>2022-11-16 7:58pm</span></p>
-            <p>Delivery Window: <span>2022-11-16 -- 2022-12-02</span></p>
-            <p>Status <span>Active</span></p>
-          </div>
-          <div class="main-address">
-            <div class="right">
-              <h4>Amount: <span>NGN2,550</span></h4>
-              <div class="product-btns">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
-                <button class="view">View</button>
-              </div>
-            </div>
-          </div>
-        </a>
+        <div v-if="userData.user.type == 'merchant'" class="content-tabs">
+          <button
+            :class="['normal-btn', activeTab == 'forSale' ? 'active-tab' : '']"
+            type="button"
+            @click="switchTab('forSale')"
+          >
+            For sale
+          </button>
+          <button
+            :class="[
+              'normal-btn',
+              activeTab == 'forAuction' ? 'active-tab' : '',
+            ]"
+            type="button"
+            @click="switchTab('forAuction')"
+          >
+            For Auction
+          </button>
+        </div>
+
+        <div v-if="userData.user.type == 'corporate'" class="content-tabs">
+          <button
+            :class="[
+              'normal-btn',
+              activeTab == 'cropsWanted' ? 'active-tab' : '',
+            ]"
+            type="button"
+            @click="switchTab('cropsWanted')"
+          >
+            My Crops
+          </button>
+          <button
+            :class="['normal-btn', activeTab == 'input' ? 'active-tab' : '']"
+            type="button"
+            @click="switchTab('input')"
+          >
+            My Inputs
+          </button>
+        </div>
+
+        <!-- component comes here -->
+        <div v-if="userData.user.type == 'merchant'">
+          <ForSale v-if="activeTab == 'forSale'" :list-data="cropsSale" />
+          <ForAuction
+            v-if="activeTab == 'forAuction'"
+            :list-data="cropsAuction"
+          />
+        </div>
+        <div v-if="userData.user.type == 'corporate'">
+          <MyCrop
+            v-if="activeTab == 'cropsWanted'"
+            :list-data="cropsWanted"
+            :get-crops="getCrops"
+          />
+          <MyInput
+            v-if="activeTab == 'input'"
+            :list-data="inputs"
+            :get-crops="getCrops"
+          />
+        </div>
       </div>
     </div>
   </DefaultNav>
@@ -75,16 +93,64 @@
 
 <script>
 import DefaultNav from "@/layouts/DefaultNav.vue";
+import ForSale from "@/pages/dashboard/marketPlace/components/ForSale.vue";
+import ForAuction from "@/pages/dashboard/marketPlace/components/ForAuction.vue";
+import MyCrop from "@/pages/dashboard/marketPlace/components/Crop.vue";
+import MyInput from "@/pages/dashboard/marketPlace/components/Input.vue";
+import MarketPlaceService from "@/services/marketplace";
 
 export default {
   name: "MyProducts",
   components: {
     DefaultNav,
+    ForSale,
+    ForAuction,
+    MyCrop,
+    MyInput,
   },
   data() {
     return {
       userData: this.$store.state.user,
+      cropsSale: [],
+      cropsAuction: [],
+      cropsWanted: [],
+      inputs: [],
+      activeTab:
+        this.$store.state.user.type == "merchant" ? "forSale" : "cropsWanted",
     };
+  },
+  mounted() {
+    this.getCrops();
+    this.getInputs();
+  },
+  methods: {
+    getCrops() {
+      MarketPlaceService.getUserCrops(this.userData.user_id, (response) => {
+        if (response && response.error == false) {
+          this.cropsSale = response.data.rows.filter(
+            (crop) => crop.type == "offer"
+          );
+          this.cropsAuction = response.data.rows.filter(
+            (crop) => crop.type == "auction"
+          );
+          this.cropsWanted = response.data.rows.filter(
+            (crop) => crop.type == "wanted"
+          );
+          console.log(this.cropsWanted);
+        }
+      });
+    },
+    getInputs() {
+      MarketPlaceService.getUserInputs(this.userData.user_id, (response) => {
+        if (response && response.error == false) {
+          this.inputs = response.data;
+        }
+      });
+    },
+
+    switchTab(tab) {
+      this.activeTab = tab;
+    },
   },
 };
 </script>
@@ -208,7 +274,23 @@ export default {
   background-color: white;
   padding: 38px;
 }
+.content-tabs {
+  display: flex;
+  gap: 20px;
 
+  .normal-btn {
+    background: #ffffff;
+    border: 1.11212px solid #696671;
+    border-radius: 55.6062px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15.5697px;
+    color: #696671;
+    border-radius: 30px;
+    padding: 11px 33px;
+  }
+}
 .top-address {
   align-items: center;
   gap: 12px;
@@ -275,5 +357,10 @@ export default {
     letter-spacing: 0.02em;
     text-decoration: none;
   }
+}
+.active-tab {
+  background: #05b050 !important;
+  color: #ffffff !important;
+  border: 0 !important;
 }
 </style>

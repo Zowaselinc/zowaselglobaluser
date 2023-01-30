@@ -2,7 +2,14 @@
   <DefaultNav>
     <div class="big-container">
       <div v-if="product" class="left">
-        <h1>{{ product.title }}</h1>
+        <div class="top-section">
+          <a href="javascript:void(0)" @click="$router.back()">
+            <img src="@/assets/images/vectors/arrowleft.png" alt="" />
+          </a>
+        </div>
+        <h1>
+          {{ product.subcategory.name }} - {{ product.specification.color }}
+        </h1>
         <p>
           {{ product.currency }}{{ product.specification.price }}/{{
             product.packaging
@@ -77,6 +84,7 @@
           :recepient="product.user"
           :title="product.user.first_name + ' ' + product.user.last_name"
           :messages="negotiations"
+          :product="product"
           :load-messages="getNegotiation"
           :on-send-message="sendNegotiationMessage"
           :on-send-offer="sendNegotiationOffer"

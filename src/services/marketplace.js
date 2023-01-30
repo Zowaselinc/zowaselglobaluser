@@ -13,16 +13,20 @@ const GET_CROPS_AUCTION_PATH = () => "crop/getbycropauction";
 const GET_CROP_PATH = (id) => `crop/getbyid/${id}`;
 const CREATE_CROP_WANTED_PATH = () => `testpost`;
 const ADD_DELIVERY_ADDRESS = () => `order/cart/create`;
-
 const GET_ORDER_PATH = (orderHash) => `order/${orderHash}`;
 const ADD_TO_CART_PATH = () => `input/cart/add`;
 const GET_CART_ITEMS_PATH = (id) => `input/cart/${id}`;
 const DELTE_CART_ITEM_PATH = (id) => `input/cart/delete/${id}`;
+const DELETE_CROP_WANTED_PATH = (id) => `crop/${id}`;
+const DELETE_INPUT_PATH = (id) => `input/${id}`;
 const GET_SUB_CATEGORIES_PATH = () => "subcategory/getall";
-const GET_ADD_NEW_CROP__PATH = () => "crop/wanted/add";
+const ADD_NEW_CROP_PATH = (type) => `crop/${type}/add`;
 const GET_ORDERS_PATH = (id) => `users/${id}/orders`;
 const GET_SALES_PATH = (id) => `users/${id}/sales`;
 const ADD_CROP_INPUT_PATH = () => `input/add/`;
+const GET_CROPS_BY_USER_PATH = (id) => `users/${id}/crops`;
+const GET_INPUTS_BY_USER_PATH = (id) => `users/${id}/inputs`;
+const GENERATE_FULFIL_CROP_OFFER_PATH = (id) => `crop/${id}/fulfil`;
 
 export default {
   getCropCategories: function (callback) {
@@ -142,6 +146,26 @@ export default {
         callback(error.data);
       });
   },
+  deleteCropWanted: function (id, callback) {
+    axios
+      .delete(config.BASE_URL + DELETE_CROP_WANTED_PATH(id))
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.data);
+      });
+  },
+  deleteInput: function (id, callback) {
+    axios
+      .delete(config.BASE_URL + DELETE_INPUT_PATH(id))
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.data);
+      });
+  },
   getSubCategories: function (callback) {
     axios
       .get(config.BASE_URL + GET_SUB_CATEGORIES_PATH())
@@ -150,9 +174,19 @@ export default {
       })
       .catch((error) => {});
   },
-  getNewCrops: function (NewCropData, callback) {
+  addCropWanted: function (NewCropData, callback) {
     axios
-      .post(config.BASE_URL + GET_ADD_NEW_CROP__PATH(), NewCropData)
+      .post(config.BASE_URL + ADD_NEW_CROP_PATH("wanted"), NewCropData)
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.data);
+      });
+  },
+  addCropForSale: function (NewCropData, callback) {
+    axios
+      .post(config.BASE_URL + ADD_NEW_CROP_PATH("sale"), NewCropData)
       .then((response) => {
         callback(response.data);
       })
@@ -202,6 +236,39 @@ export default {
         callback(error.data);
       });
   },
+  getUserCrops: function (id, callback) {
+    axios
+      .get(config.BASE_URL + GET_CROPS_BY_USER_PATH(id))
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.data);
+      });
+  },
 
+  getUserInputs: function (id, callback) {
+    axios
+      .get(config.BASE_URL + GET_INPUTS_BY_USER_PATH(id))
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.data);
+      });
+  },
+  generate_fulfil_crop_offer: function (crop_id, quantity, callback) {
+    axios
+      .post(config.BASE_URL + GENERATE_FULFIL_CROP_OFFER_PATH(id), {
+        crop_id,
+        quantity,
+      })
+      .then((response) => {
+        callback(response.data);
+      })
+      .catch((error) => {
+        callback(error.response.data);
+      });
+  },
   ...NegotiationService,
 };

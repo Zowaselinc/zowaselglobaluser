@@ -1,17 +1,29 @@
 <template>
   <DefaultNav>
-    <div class="big-container">
+    <!-- preloader -->
+    <Preloader v-if="loading" />
+    <!-- content -->
+    <div class="big-container" v-else>
       <div class="big-content">
         <!-- header -->
         <h1>New Crop Wanted</h1>
-        <form action="" @submit.prevent="step == 3 ? saveData() : changeTab()">
+        <form v-show="step == 1" action="" @submit.prevent="changeTab()">
           <!-- Crop Details Components -->
-          <CropDetails v-if="step == 1" ref="CD" />
-          <QualityProduct v-if="step == 2" ref="QP" />
-          <CropSpecification v-if="step == 3" ref="CS" />
+          <CropDetails v-show="step == 1" ref="CD" />
           <div id="btn-group" class="btn-group gap-3 my-4">
             <button
-              v-if="step != 1"
+              :id="['next_btn']"
+              :class="['btn', 'btn-primary']"
+              type="submit"
+            >
+              Next
+            </button>
+          </div>
+        </form>
+        <form v-show="step == 2" action="" @submit.prevent="changeTab()">
+          <QualityProduct ref="QP" type="wanted" />
+          <div id="btn-group" class="btn-group gap-3 my-4">
+            <button
               type="button"
               class="btn btn-primary active"
               aria-current="page"
@@ -27,13 +39,20 @@
             >
               Next
             </button>
+          </div>
+        </form>
+        <form v-show="step == 3" action="" @submit.prevent="saveData()">
+          <CropSpecification ref="CS" />
+          <div id="btn-group" class="btn-group gap-3 my-4">
             <button
-              v-if="step == 3"
-              type="submit"
-              :class="['btn', 'btn-primary']"
+              type="button"
+              class="btn btn-primary active"
+              aria-current="page"
+              @click="previouStep()"
             >
-              save
+              Back
             </button>
+            <button type="submit" :class="['btn', 'btn-primary']">save</button>
           </div>
         </form>
       </div>
@@ -49,6 +68,8 @@ import CropSpecification from "@/pages/dashboard/marketPlace/components/CropSpec
 import Alert from "@/utilities/alert";
 // importing the marketplace service
 import MarketPlaceService from "@/services/marketplace";
+// import preloader
+import Preloader from "@/layouts/shared/Preloader.vue";
 
 export default {
   name: "AddNewcrop",
@@ -57,6 +78,7 @@ export default {
     CropDetails,
     QualityProduct,
     CropSpecification,
+    Preloader,
   },
   data() {
     return {
@@ -64,6 +86,7 @@ export default {
       crop_details: {},
       quality_product: {},
       crop_specification: {},
+      loading: false,
     };
   },
   methods: {
@@ -82,6 +105,8 @@ export default {
     },
 
     async saveData() {
+      // call the preloader
+      this.loading = true;
       // combine data from child components
       const addData = {
         ...this.crop_details,
@@ -103,7 +128,7 @@ export default {
         }
       }
       // send data to the end-poit
-      await MarketPlaceService.getNewCrops(data, (response) => {
+      MarketPlaceService.addCropWanted(data, (response) => {
         if (response && response.error == false) {
           Alert.success({
             message: "Crop added successfully",
@@ -112,6 +137,8 @@ export default {
             window.location.reload();
           }, 2000);
         }
+        // set the preloader to false
+        this.loading = false;
       });
     },
   },

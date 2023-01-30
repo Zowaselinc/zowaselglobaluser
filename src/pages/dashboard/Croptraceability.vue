@@ -4,7 +4,7 @@
       <div class="headings">
         <h2>Crop Traceability</h2>
         <div class="right-btns">
-          <a href="" class="green-link">Next</a>
+          <a href="/dashboard/cropquality" class="green-link">Next</a>
         </div>
       </div>
       <div class="d-flex text-center small-font">
@@ -24,14 +24,14 @@
       <form class="mt-3">
         <div>
           <label for="">Crop type</label>
-          <select id="inputState" class="form-control">
+          <select class="form-select" aria-label="Default select example">
             <option selected>Choose...</option>
             <option>...</option>
           </select>
         </div>
         <div>
           <label for="">Sourcing Location</label>
-          <select id="inputState" class="form-control">
+          <select class="form-select" aria-label="Default select example">
             <option selected>Choose...</option>
             <option>...</option>
           </select>
@@ -49,14 +49,14 @@
         <div class="row">
           <div class="col">
             <label for="">Crop Quality</label>
-            <select id="inputState" class="form-control">
+            <select class="form-select" aria-label="Default select example">
               <option selected>Choose...</option>
               <option>...</option>
             </select>
           </div>
           <div class="col">
             <label for="">Crop Variety</label>
-            <select id="inputState" class="form-control">
+            <select class="form-select" aria-label="Default select example">
               <option selected>Choose...</option>
               <option>...</option>
             </select>
@@ -99,7 +99,7 @@
           </div>
           <div class="col">
             <label for="">Gender</label>
-            <select id="inputState" class="form-control">
+            <select class="form-select" aria-label="Default select example">
               <option selected>Choose...</option>
               <option>...</option>
             </select>

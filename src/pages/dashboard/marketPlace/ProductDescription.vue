@@ -15,7 +15,9 @@
             </div>
           </div>
           <div v-if="product" class="text-area">
-            <h1>{{ product.title }}</h1>
+            <h1>
+              {{ product.subcategory.name }} - {{ product.specification.color }}
+            </h1>
             <p class="price">{{ product.currency }}{{ product.price }}</p>
             <p class="farmer">Naziri Farms</p>
             <p class="verified">

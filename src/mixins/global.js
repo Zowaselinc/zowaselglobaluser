@@ -37,6 +37,16 @@ export default {
       }
       return result;
     },
+    paginate(dataSource, listToUpdate) {
+      let vm = this;
+      $("#pagination").pagination({
+        dataSource: dataSource,
+        pageSize: 10,
+        callback: function (data, pagination) {
+          vm[listToUpdate] = data;
+        },
+      });
+    },
     placeString(string, defaultValue, data = {}) {
       let extra = {
         prefix: "",
