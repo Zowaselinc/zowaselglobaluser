@@ -259,7 +259,10 @@ export default {
   },
   generate_fulfil_crop_offer: function (crop_id, quantity, callback) {
     axios
-      .post(config.BASE_URL + GENERATE_FULFIL_CROP_OFFER_PATH(id), { crop_id, quantity })
+      .post(config.BASE_URL + GENERATE_FULFIL_CROP_OFFER_PATH(id), {
+        crop_id,
+        quantity,
+      })
       .then((response) => {
         callback(response.data);
       })
